@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,17 +27,17 @@
 
 package scalafx.scene.control
 
-import javafx.beans.{value => jfxbv}
-import javafx.scene.{control => jfxsc}
-import javafx.{css => jfxcss, event => jfxe, util => jfxu}
-import scalafx.Includes._
+import javafx.beans.value as jfxbv
+import javafx.scene.control as jfxsc
+import javafx.{css as jfxcss, event as jfxe, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.{Event, EventType}
 
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 import scala.language.implicitConversions
 
 /**
@@ -59,7 +59,7 @@ object TreeTableColumn {
    */
   object CellDataFeatures {
     implicit def sfxCellDataFeatures2jfx[S, T](v: CellDataFeatures[S, T])
-    : jfxsc.TreeTableColumn.CellDataFeatures[S, T] =
+      : jfxsc.TreeTableColumn.CellDataFeatures[S, T] =
       if (v != null) v.delegate else null
   }
 
@@ -73,7 +73,7 @@ object TreeTableColumn {
    * @since 8.0
    */
   class CellDataFeatures[S, T](override val delegate: jfxsc.TreeTableColumn.CellDataFeatures[S, T])
-    extends SFXDelegate[jfxsc.TreeTableColumn.CellDataFeatures[S, T]] {
+      extends SFXDelegate[jfxsc.TreeTableColumn.CellDataFeatures[S, T]] {
 
     /**
      * Instantiates a CellDataFeatures instance with the given properties set as read-only values of this instance.
@@ -125,7 +125,7 @@ object TreeTableColumn {
    * @since 8.0
    */
   class CellEditEvent[S, T](override val delegate: jfxsc.TreeTableColumn.CellEditEvent[S, T])
-    extends Event(delegate)
+      extends Event(delegate)
       with SFXDelegate[jfxsc.TreeTableColumn.CellEditEvent[S, T]] {
 
     /**
@@ -137,11 +137,11 @@ object TreeTableColumn {
      * @param newValue  The value input by the end user.
      */
     def this(
-              table: TreeTableView[S],
-              pos: TreeTablePosition[S, T],
-              eventType: jfxe.EventType[jfxsc.TreeTableColumn.CellEditEvent[S, T]],
-              newValue: T
-            ) =
+      table: TreeTableView[S],
+      pos: TreeTablePosition[S, T],
+      eventType: jfxe.EventType[jfxsc.TreeTableColumn.CellEditEvent[S, T]],
+      newValue: T
+    ) =
       this(new jfxsc.TreeTableColumn.CellEditEvent(table, pos, eventType, newValue))
 
     /**
@@ -191,13 +191,13 @@ object TreeTableColumn {
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableColumn.SortType.html]] */
   sealed abstract class SortType(override val delegate: jfxsc.TreeTableColumn.SortType)
-    extends SFXEnumDelegate[jfxsc.TreeTableColumn.SortType]
+      extends SFXEnumDelegate[jfxsc.TreeTableColumn.SortType]
 
   /**
    * If no cellFactory is specified on a TreeTableColumn instance, then this one will be used by default.
    */
-  val DefaultCellFactory: TreeTableColumn[_, _] => TreeTableCell[_, _] =
-    (column: TreeTableColumn[_, _]) => jfxsc.TreeTableColumn.DEFAULT_CELL_FACTORY.call(column)
+  val DefaultCellFactory: TreeTableColumn[?, ?] => TreeTableCell[?, ?] =
+    (column: TreeTableColumn[?, ?]) => jfxsc.TreeTableColumn.DEFAULT_CELL_FACTORY.call(column)
 
   /**
    * Parent event for any TreeTableColumn edit event.
@@ -228,7 +228,7 @@ object TreeTableColumn {
   /**
    * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
    */
-  def classCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+  def classCssMetaData: Seq[jfxcss.CssMetaData[? <: jfxcss.Styleable, ?]] =
     jfxsc.TreeTableColumn.getClassCssMetaData.asScala.toSeq
 
 }
@@ -246,7 +246,7 @@ object TreeTableColumn {
  * @since 8.0
  */
 class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] = new jfxsc.TreeTableColumn[S, T]())
-  extends TableColumnBase[jfxsc.TreeItem[S], T](delegate)
+    extends TableColumnBase[jfxsc.TreeItem[S], T](delegate)
     with SFXDelegate[jfxsc.TreeTableColumn[S, T]] {
 
   /**
@@ -272,15 +272,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   def cellFactory_=(callback: jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]]): Unit = {
     delegate.cellFactoryProperty.setValue(callback)
   }
-
-  @deprecated(
-    message = "" +
-      "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-      "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-      "Use the new `cellFactory` assignment method: `cellFactory = (cell, value) => {...}` that automatically " +
-      "handles empty cells.",
-    since = "16.0.*-R25"
-  )
   def cellFactory_=(f: TreeTableColumn[S, T] => TreeTableCell[S, T]): Unit = {
     delegate.cellFactoryProperty.setValue(
       new jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] {
@@ -480,7 +471,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
    *         TableColumnBase. If these children TableColumnBase instances are set as visible, they will appear
    *         beneath this table column.
    */
-  def columns: ObservableBuffer[jfxsc.TreeTableColumn[S, _]] = delegate.getColumns
+  def columns: ObservableBuffer[jfxsc.TreeTableColumn[S, ?]] = delegate.getColumns
 
   /**
    * Attempts to return an ObservableValue<T> for the item in the given index (which is of type S). In other words,
@@ -514,6 +505,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
    * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
    */
-  override def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala.toSeq
+  override def cssMetaData: Seq[jfxcss.CssMetaData[? <: jfxcss.Styleable, ?]] = delegate.getCssMetaData.asScala.toSeq
 
 }

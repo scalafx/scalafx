@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,16 +26,16 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, scene => jfxs, util => jfxu}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import javafx.{collections as jfxc, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{IntegerProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.collections.ObservableBuffer._
+import scalafx.collections.ObservableBuffer.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.util.StringConverter
-import scalafx.util.StringConverter._
+import scalafx.util.StringConverter.*
 
 import scala.language.implicitConversions
 
@@ -72,7 +72,7 @@ object ComboBox {
  * @tparam T The type of the value that has been selected or otherwise entered in to this ComboBox
  */
 class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])
-  extends ComboBoxBase(delegate)
+    extends ComboBoxBase(delegate)
     with SFXDelegate[jfxsc.ComboBox[T]] {
 
   /**
@@ -95,12 +95,6 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
     cellFactory() = callback
   }
 
-  @deprecated(message = "" +
-    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-    "Use the new `cellFactory` assignment method: `cellFactory_=(op: (ListCell[T], T) => Unit)` that automatically " +
-    "handles empty cells.",
-    since = "16.0.0-R25")
   def cellFactory_=(f: ListView[T] => ListCell[T]): Unit = {
     delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
       def call(v: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
@@ -233,7 +227,6 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * @since 2.2
    */
   def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty()
-
 
   /**
    * Append a item at end of list of items

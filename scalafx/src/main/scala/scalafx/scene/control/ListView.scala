@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import javafx.{collections as jfxc, event as jfxe, geometry as jfxg, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
@@ -46,14 +46,19 @@ object ListView {
   }
 
   class EditEvent[T](override val delegate: jfxsc.ListView.EditEvent[T])
-    extends Event(delegate)
+      extends Event(delegate)
       with SFXDelegate[jfxsc.ListView.EditEvent[T]] {
 
     /**
      * Creates a new EditEvent instance to represent an edit event. This event is used for
      * ListView.EDIT_START_EVENT, ListView.EDIT_COMMIT_EVENT and ListView.EDIT_CANCEL_EVENT types.
      */
-    def this(source: ListView[T], eventType: jfxe.EventType[_ <: jfxsc.ListView.EditEvent[T]], newValue: T, editIndex: Int) =
+    def this(
+      source: ListView[T],
+      eventType: jfxe.EventType[? <: jfxsc.ListView.EditEvent[T]],
+      newValue: T,
+      editIndex: Int
+    ) =
       this(new jfxsc.ListView.EditEvent[T](source, eventType, newValue, editIndex))
 
     /**
@@ -103,13 +108,12 @@ object ListView {
  * @constructor Creates a default ListView which will display contents stacked vertically.
  */
 class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[T])
-  extends Control(delegate)
+    extends Control(delegate)
     with SFXDelegate[jfxsc.ListView[T]] {
 
   /**
    * Creates a default ListView which will stack the contents retrieved from the provided
    * [[scalafx.collections.ObservableBuffer]] vertically.
-   *
    */
   def this(items: ObservableBuffer[T]) = this(new jfxsc.ListView[T](items))
 
@@ -120,21 +124,14 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   def this(items: Seq[T]) = this(new jfxsc.ListView[T](ObservableBuffer.from(items)))
 
   /**
-   * Setting a custom cell factory has the effect of deferring all cell creation, allowing for 
+   * Setting a custom cell factory has the effect of deferring all cell creation, allowing for
    * total customization of the cell.
    */
   def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]] = delegate.cellFactoryProperty
   def cellFactory_=(callback: javafx.util.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]): Unit = {
     cellFactory() = callback
   }
-
-  @deprecated(message = "" +
-    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-    "Use the new `cellFactory` assignment method: `cellFactory_=(op: (ListCell[T], T) => Unit)` that automatically " +
-    "handles empty cells.",
-    since = "16.0.0-R25")
-  def cellFactory_=(v: (ListView[T] => ListCell[T])): Unit = {
+  def cellFactory_=(v: ListView[T] => ListCell[T]): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
       def call(lv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
         v(lv)
@@ -280,7 +277,6 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
-
 
   /** This Node is shown to the user when the listview has no content to show. */
   def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty

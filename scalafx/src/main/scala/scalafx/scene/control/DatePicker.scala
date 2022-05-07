@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import javafx.util as jfxu
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
@@ -49,8 +49,7 @@ object DatePicker {
  * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/DatePicker.html]].
  */
 class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker())
-  extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
-
+    extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
 
   /**
    * Creates a `DatePicker` instance and sets the value to the given date.
@@ -83,12 +82,6 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   def dayCellFactory_=(callback: jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell]): Unit = {
     delegate.dayCellFactoryProperty().setValue(callback)
   }
-  @deprecated(message = "" +
-    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-    "Use the new `dayCellFactory` assignment method: `dayCellFactory = (cell, value) => {...}` that automatically " +
-    "handles empty cells.",
-    since = "16.0.0-R25")
   def dayCellFactory_=(value: DatePicker => DateCell): Unit = {
     dayCellFactory() = new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
       override def call(result: jfxsc.DatePicker): jfxsc.DateCell = {
@@ -151,7 +144,6 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
 
     delegate.dayCellFactoryProperty.setValue(callback)
   }
-
 
   /**
    * The editor for the `DatePicker`.
