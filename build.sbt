@@ -55,10 +55,10 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip := true
 ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.15"
+val Scala2_12 = "2.12.16"
 val Scala2_13 = "2.13.8"
-val Scala3_0  = "3.0.2"
-val Scala3_1  = "3.1.2"
+val Scala3_0 = "3.0.2"
+val Scala3_1 = "3.1.3"
 
 // Dependencies
 lazy val javafxModules =
@@ -85,8 +85,8 @@ lazy val scalafxSettings = Seq(
   version := scalafxVersion,
   // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries,
   //   but use it for forward testing
-  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_0, Scala3_1),
-  scalaVersion       := crossScalaVersions.value.head,
+  crossScalaVersions := Seq(Scala3_1, Scala3_0, Scala2_13, Scala2_12),
+  scalaVersion := Scala3_0,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "8"),
