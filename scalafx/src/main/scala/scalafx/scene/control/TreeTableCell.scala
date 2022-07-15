@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
@@ -108,13 +108,13 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
   }
 
   /**
-   * Updates the {{{TreeTableRow}}} associated with this {{{TreeTableCell}}}.
+   * Updates the `TreeTableRow` associated with this `TreeTableCell`.
    * <p>
    * Note: This function is intended to be used by experts, primarily
    * by those implementing new Skins. It is not common
    * for developers or designers to access this function directly.
    *
-   * @param row the {{{TreeTableRow}}} associated with this {{{TreeTableCell}}}
+   * @param row the `TreeTableRow` associated with this `TreeTableCell`
    * @since 17
    */
   def updateTableRow(row: TreeTableRow[S]): Unit = {
@@ -132,13 +132,13 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
   }
 
   /**
-   * Updates the {{{TreeTableColumn}}} associated with this {{{TreeTableCell}}}.
+   * Updates the `TreeTableColumn` associated with this `TreeTableCell`.
    * <p>
    * Note: This function is intended to be used by experts, primarily
    * by those implementing new Skins. It is not common
    * for developers or designers to access this function directly.
    *
-   * @param column the {{{TreeTableColumn}}} associated with this {{{TreeTableCell}}}
+   * @param column the `TreeTableColumn` associated with this `TreeTableCell`
    * @since 17
    */
   def updateTableColumn(column: TreeTableColumn[S, T]): Unit = {

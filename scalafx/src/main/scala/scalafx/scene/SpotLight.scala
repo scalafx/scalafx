@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.scene
 
-import javafx.{geometry => jfxg, scene => jfxs}
-import scalafx.Includes._
+import javafx.{geometry as jfxg, scene as jfxs}
+import scalafx.Includes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Point3D
@@ -40,34 +40,34 @@ object SpotLight {
 }
 
 /**
- * A {{{SpotLight}}} is a {{PointLight}}} that radiates light in a cone in a specific direction.
+ * A `SpotLight` is a `PointLight` that radiates light in a cone in a specific direction.
  * The direction is defined by the [[directionProperty()]] direction vector property of the light. The direction
- * can be rotated by setting a rotation transform on the {{{SpotLight}}}. For example, if the direction vector is
- * {{{(1, 1, 1)}}} and the light is not rotated, it will point in the {{{(1, 1, 1)}}} direction, and if the light is
- * rotated 90 degrees on the y axis, it will point in the {{{(1, 1, -1)}}} direction.
+ * can be rotated by setting a rotation transform on the `SpotLight`. For example, if the direction vector is
+ * `(1, 1, 1)` and the light is not rotated, it will point in the `(1, 1, 1)` direction, and if the light is
+ * rotated 90 degrees on the y axis, it will point in the `(1, 1, -1)` direction.
  * <p>
- * In addition to the factors that control the light intensity of a {{{PointLight}}}, a {{{SpotLight}}} has a
- * light-cone attenuation factor, {{{spot}}}, that is determined by 3 properties:
+ * In addition to the factors that control the light intensity of a `PointLight`, a `SpotLight` has a
+ * light-cone attenuation factor, `spot`, that is determined by 3 properties:
  * <ul>
  * <li> [[innerAngleProperty]] innerAngle: the angle of the inner cone (see image below)
  * <li> [[outerAngleProperty]] outerAngle: the angle of the outer cone (see image below)
  * <li> [[falloffProperty]] falloff: the factor that controls the light's intensity drop inside the outer cone
  * </ul>
- * The valid ranges for these properties are {{{0 <= innerAngle <= outerAngle <= 180}}} and {{{falloff >= 0}}};
+ * The valid ranges for these properties are `0 <= innerAngle <= outerAngle <= 180` and `falloff >= 0`;
  * values outside either of these ranges can produce unexpected results.
  * <p>
  * The angle of a point to the light is defined as the angle between its vector to the light's position and the
- * direction of the light. For such an angle {{{theta}}}, if
+ * direction of the light. For such an angle `theta`, if
  * <ul>
- * <li>{{{theta < innerAngle}}} then {{{spot = 1}}}
- * <li>{{{theta > outerAngle}}} then {{{spot = 0}}}
- * <li>{{{innerAngle <= theta <= outerAngle}}} then
+ * <li>`theta < innerAngle` then `spot = 1`
+ * <li>`theta > outerAngle` then `spot = 0`
+ * <li>`innerAngle <= theta <= outerAngle` then
  *
  * <pre>spot = pow((cos(theta) - cos(outer)) / (cos(inner) - cos(outer)), falloff)</pre>
  *
  * which represents a drop in intensity from the inner angle to the outer angle.
  * </ul>
- * As a result, {{{0 <= spot <= 1}}}. The overall intensity of the light is {{{I = lambert * atten * spot}}}.
+ * As a result, `0 <= spot <= 1`. The overall intensity of the light is `I = lambert * atten * spot`.
  * <p>
  * <img src="doc-files/spotlight.png" alt="Image of the Spotlight">
  *
@@ -83,7 +83,7 @@ class SpotLight(override val delegate: jfxs.SpotLight = new jfxs.SpotLight())
 
   /**
    * The direction vector of the spotlight. It can be rotated by setting a rotation transform on the
-   * {{{SpotLight}}}. The vector need not be normalized.
+   * `SpotLight`. The vector need not be normalized.
    */
   def direction: ObjectProperty[jfxg.Point3D] = delegate.directionProperty
 
@@ -93,10 +93,10 @@ class SpotLight(override val delegate: jfxs.SpotLight = new jfxs.SpotLight())
 
   /**
    * The angle of the spotlight's inner cone, in degrees. A point whose angle to the light is less than this angle is
-   * not attenuated by the spotlight factor ({{{spot = 1}}}). At larger angles, the light intensity starts to drop.
+   * not attenuated by the spotlight factor (`spot = 1`). At larger angles, the light intensity starts to drop.
    * See the class doc for more information.
    * <p>
-   * The valid range is {{{0 <= innerAngle <= outerAngle}}}; values outside of this range can produce unexpected
+   * The valid range is `0 <= innerAngle <= outerAngle`; values outside of this range can produce unexpected
    * results.
    */
   def innerAngle: DoubleProperty = delegate.innerAngleProperty
@@ -107,11 +107,11 @@ class SpotLight(override val delegate: jfxs.SpotLight = new jfxs.SpotLight())
 
   /**
    * The angle of the spotlight's outer cone, in degrees (as shown in the class doc image). A point whose angle to the
-   * light is greater than this angle receives no light ({{{spot = 0}}}). A point whose angle to the light is less
+   * light is greater than this angle receives no light (`spot = 0`). A point whose angle to the light is less
    * than the outer angle but greater than the inner angle receives partial intensity governed by the falloff factor.
    * See the class doc for more information.
    * <p>
-   * The valid range is {{{innerAngle <= outerAngle <= 180}}}; values outside of this range can produce unexpected
+   * The valid range is `innerAngle <= outerAngle <= 180`; values outside of this range can produce unexpected
    * results.
    */
   def outerAngle: DoubleProperty = delegate.outerAngleProperty
@@ -127,7 +127,7 @@ class SpotLight(override val delegate: jfxs.SpotLight = new jfxs.SpotLight())
    * linear drop in intensity, values greater than 1 give a convex drop, and values smaller than 1 give a concave
    * drop. See the class doc for more information.
    * <p>
-   * The valid range is {{{0 <= falloff}}}; values outside of this range can produce unexpected results.
+   * The valid range is `0 <= falloff`; values outside of this range can produce unexpected results.
    */
   def falloff: DoubleProperty = delegate.falloffProperty
 

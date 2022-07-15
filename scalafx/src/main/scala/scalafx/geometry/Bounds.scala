@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.geometry as jfxg
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -146,7 +146,7 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
    * The central x coordinate of this [[Bounds]].
    *
    * @return the central x coordinate
-   * This call is equivalent to {{{(getMaxX() + getMinX())/2.0}}}.
+   *         This call is equivalent to `(getMaxX() + getMinX())/2.0`.
    * @since 11
    */
   def centerX: Double = delegate.getCenterX
@@ -155,7 +155,7 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
    * The central y coordinate of this [[Bounds]].
    *
    * @return the central y coordinate
-   * This call is equivalent to {{{(getMaxY() + getMinY())/2.0}}}.
+   *         This call is equivalent to `(getMaxY() + getMinY())/2.0`.
    * @since 11
    */
   def centerY: Double = delegate.getCenterY
@@ -164,7 +164,7 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
    * The central z coordinate of this [[Bounds]].
    *
    * @return the central z coordinate
-   * This call is equivalent to {{{(getMaxZ() + getMinZ())/2.0}}}.
+   *         This call is equivalent to `(getMaxZ() + getMinZ())/2.0`.
    * @since 11
    */
   def centerZ: Double = delegate.getCenterZ
