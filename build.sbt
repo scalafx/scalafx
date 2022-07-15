@@ -25,19 +25,17 @@ publish / skip  := true
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
   scalafxSettings,
-  name        := "scalafx",
+  name := "scalafx",
   description := "The ScalaFX framework",
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
-  libraryDependencies ++= javafxModules.map(m =>
-    "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName
-  ),
-  run / fork      := true,
+  libraryDependencies ++= javafxModules,
+  run / fork := true,
   publishArtifact := true,
   // Don't publish for Scala 3.1 or later, only from 3.0
   //  see https://users.scala-lang.org/t/cross-publishing-scala-3-0-and-3-1/7969
   publish / skip := (CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((3, x)) if x > 0 => true
-    case _                     => false
+    case _ => false
   }),
   Test / publishArtifact := false
 )
@@ -45,16 +43,16 @@ lazy val scalafx = (project in file("scalafx")).settings(
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   scalafxSettings,
-  name        := "scalafx-demos",
+  name := "scalafx-demos",
   description := "The ScalaFX demonstrations",
-  libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
+  libraryDependencies ++= javafxModules,
   run / fork := true,
   javaOptions ++= Seq(
     "-Xmx512M",
     "-Djavafx.verbose"
   ),
   publishArtifact := false,
-  publish / skip  := true
+  publish / skip := true
 ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.15"
@@ -63,18 +61,14 @@ val Scala3_0  = "3.0.2"
 val Scala3_1  = "3.1.2"
 
 // Dependencies
-lazy val osName = System.getProperty("os.name") match {
-  case n if n.startsWith("Linux")   => "linux"
-  case n if n.startsWith("Mac")     => "mac"
-  case n if n.startsWith("Windows") => "win"
-  case _                            => throw new Exception("Unknown platform!")
-}
-lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.11"
+lazy val javafxModules =
+  Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+    .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.11"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
-    case _            => Seq.empty[ModuleID]
+    case _ => Seq.empty[ModuleID]
   }
 
 // Add src/main/scala-2.13+ for Scala 2.13 and newer
@@ -88,7 +82,7 @@ def versionSubDir(scalaVersion: String): String =
 // Common settings
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
-  version      := scalafxVersion,
+  version := scalafxVersion,
   // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries,
   //   but use it for forward testing
   crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_0, Scala3_1),
@@ -100,7 +94,7 @@ lazy val scalafxSettings = Seq(
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3")
       case Some((3, _)) => Seq("-source:3.0-migration", "-explain", "-explain-types")
-      case _            => Seq.empty[String]
+      case _ => Seq.empty[String]
     }
   },
   Compile / doc / scalacOptions ++= {

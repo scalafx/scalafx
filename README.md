@@ -20,36 +20,27 @@ using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 ScalaFX binaries are published in the Maven Central repository:
 [http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
 
-ScalaFX source code is using the SBT build system. For information on building with SBT
-see [README-SBT.txt](README-SBT.txt).
-
 The official website for ScalaFX is http://scalafx.org.
 
 ### ScalaFX Dependencies
 
-__ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is intended to support __Java 11 and newer__. 
-Staring with Java 11 JavaFX is no longer part of Java distribution.
-In addition to ScalaFX, JavaFX binaries needs to be explicitly added to a project.
-JavaFX's binaries depend on operating system used.
-Add following to SBT configuration:
+__ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is intended to support __Java 11 and newer__.
+
+#### SBT
+Here is how you can add dependency using SBT.
+
 ```scala
-// Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R25"
-
-// Determine OS version of JavaFX binaries
-lazy val osName = System.getProperty("os.name") match {
-  case n if n.startsWith("Linux")   => "linux"
-  case n if n.startsWith("Mac")     => "mac"
-  case n if n.startsWith("Windows") => "win"
-  case _ => throw new Exception("Unknown platform!")
-}
-
-// Add dependency on JavaFX libraries, OS dependent
-lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-libraryDependencies ++= javaFXModules.map(m =>
-  "org.openjfx" % s"javafx-$m" % "16" classifier osName
-)
+libraryDependencies += "org.scalafx" %% "scalafx" % "18.0.1-R28"
 ```
+
+Note that in ScalaFX version prior to `18.0.1-R28` and SBT older than 1.6, you needed to explicitly provide dependency on
+JavaFX modules including platform dependent modules. This is no longer needed.
+
+You can find examples of SBT setup in section [Demo Projects and Examples](#demo-projects-and-examples) below.
+
+#### Mill
+
+_The Mill section is under review for possible simplifications. Check back soon._
 
 If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
@@ -79,6 +70,8 @@ object yourProject extends ScalaModule {
   }
 }
 ```
+
+You can find sample ScalaFX Mill project here: [scalafx-millproject](https://github.com/rom1dep/scalafx-millproject)
 
 ### What is in the version number
 
@@ -144,10 +137,10 @@ folder of the project.
 
 The following software is needed to build ScalaFX:
 
-  1. [SBT](http://www.scala-sbt.org/) v.1.0.0 or better
+  1. [SBT](http://www.scala-sbt.org/) v.1.6.0 or better
   2. [Scala](http://www.scala.org/). ScalaFX 12 builds with Scala 2.10.2 or newer.
 
-It works with Windows, MacOS X and Linux ports.
+It works with Windows, Mac OS X, and Linux ports.
 
 
 ## Project Structure
