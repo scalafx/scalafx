@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.print
 
-import javafx.{print => jfxp}
+import javafx.print as jfxp
 import scalafx.Includes.{jfxIntegerProperty2sfx, jfxObjectProperty2sfx, jfxStringProperty2sfx}
 import scalafx.beans.property.{IntegerProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
@@ -73,7 +73,7 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
   }
 
   /**
-   * A {{{ StringProperty }}} representing the
+   * A `StringProperty` representing the
    * name of a filesystem file, to which the platform printer
    * driver should spool the rendered print data.
    * <p>
@@ -104,8 +104,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * a user writable file, when printing the results are platform-dependent.
    * Possible behaviours might include replacement with a default output file location,
    * printing to the printer instead, or a platform printing error.
-   * If a {{{ SecurityManager }}} is installed and it denies access to the
-   * specified file a {{{ SecurityException }}} may be thrown.
+   * If a `SecurityManager` is installed and it denies access to the
+   * specified file a `SecurityException` may be thrown.
    *
    * @return the name of a printer spool file
    * @since 17
