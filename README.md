@@ -40,8 +40,6 @@ You can find examples of SBT setup in section [Demo Projects and Examples](#demo
 
 #### Mill
 
-_The Mill section is under review for possible simplifications. Check back soon._
-
 If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
 ```scala
