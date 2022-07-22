@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master # default branch of the project
+      - stable # release branch
 
 jobs:
   update-graph:
