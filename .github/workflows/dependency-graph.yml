@@ -4,7 +4,7 @@ name: Update Dependency Graph
 on:
   push:
     branches:
-      - main # default branch of the project
+      - master # default branch of the project
 
 jobs:
   update-graph:
