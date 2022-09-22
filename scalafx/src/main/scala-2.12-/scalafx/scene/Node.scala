@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -261,6 +261,24 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Specifies whether this Node should be a part of focus traversal cycle.
    */
   def focusTraversable: BooleanProperty = delegate.focusTraversableProperty
+
+  /**
+   * Indicates whether this `Node` should visibly indicate focus.
+   * This flag is set when the node acquires input focus via keyboard navigation,
+   * and it is cleared when the node loses focus or when [[requestFocus]]
+   * is called.
+   *
+   * @since 19
+   */
+  def focusVisible: ReadOnlyBooleanProperty = delegate.focusVisibleProperty
+
+  /**
+   * Indicates whether this `Node` or any of its descendants currently
+   * has the input focus.
+   *
+   * @since 19
+   */
+  def focusWithin: ReadOnlyBooleanProperty = delegate.focusWithinProperty
 
   def focusTraversable_=(v: Boolean): Unit = {
     focusTraversable() = v
