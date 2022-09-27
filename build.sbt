@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "18.0.2"
-val scalafxVersion = "18.0.2-R30-SNAPSHOT"
+val javaFXVersion  = "19"
+val scalafxVersion = "19.0.0-R30-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -55,10 +55,10 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip := true
 ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.16"
-val Scala2_13 = "2.13.8"
+val Scala2_12 = "2.12.17"
+val Scala2_13 = "2.13.9"
 val Scala3_0 = "3.0.2"
-val Scala3_1 = "3.1.3"
+val Scala3_2 = "3.2.0"
 
 // Dependencies
 lazy val javafxModules =
@@ -83,9 +83,9 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries,
+  // Publishing with Scala 3.1+ overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1+ binaries,
   //   but use it for forward testing
-  crossScalaVersions := Seq(Scala3_1, Scala3_0, Scala2_13, Scala2_12),
+  crossScalaVersions := Seq(Scala3_2, Scala3_0, Scala2_13, Scala2_12),
   scalaVersion := Scala3_0,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,26 +27,26 @@
 
 package scalafx.scene
 
-import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
-import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
-import scalafx.Includes._
-import scalafx.beans.property._
-import scalafx.collections._
+import javafx.scene.{effect as jfxse, input as jfxsi, layout as jfxsl, transform as jfxst}
+import javafx.{event as jfxe, geometry as jfxg, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
+import scalafx.beans.property.*
+import scalafx.collections.*
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.SFXDelegate.delegateOrNull
-import scalafx.event.Event._
+import scalafx.event.Event.*
 import scalafx.event.{Event, EventHandlerDelegate2}
-import scalafx.geometry.Bounds._
-import scalafx.geometry.Point2D._
-import scalafx.geometry._
+import scalafx.geometry.*
+import scalafx.geometry.Bounds.*
+import scalafx.geometry.Point2D.*
 import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.input.Dragboard
 import scalafx.scene.layout.Priority
 import scalafx.scene.transform.Transform
 
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 import scala.language.implicitConversions
 
 /**
@@ -69,8 +69,8 @@ object Node {
  * @constructor creates a new ScalaFX Node from a JavaFX Node.
  * @param delegate JavaFX Node
  */
-abstract class Node protected(override val delegate: jfxs.Node)
-  extends EventHandlerDelegate2
+abstract class Node protected (override val delegate: jfxs.Node)
+    extends EventHandlerDelegate2
     with Styleable
     with SFXDelegate[jfxs.Node] {
 
@@ -262,6 +262,24 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def focusTraversable: BooleanProperty = delegate.focusTraversableProperty
 
+  /**
+   * Indicates whether this `Node` should visibly indicate focus.
+   * This flag is set when the node acquires input focus via keyboard navigation,
+   * and it is cleared when the node loses focus or when [[requestFocus]]
+   * is called.
+   *
+   * @since 19
+   */
+  def focusVisible: ReadOnlyBooleanProperty = delegate.focusVisibleProperty
+
+  /**
+   * Indicates whether this `Node` or any of its descendants currently
+   * has the input focus.
+   *
+   * @since 19
+   */
+  def focusWithin: ReadOnlyBooleanProperty = delegate.focusWithinProperty
+
   def focusTraversable_=(v: Boolean): Unit = {
     focusTraversable() = v
   }
@@ -349,7 +367,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a context menu has been requested on this Node.
    */
-  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] = delegate.onContextMenuRequestedProperty
+  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] =
+    delegate.onContextMenuRequestedProperty
 
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]): Unit = {
     onContextMenuRequested() = v
@@ -415,7 +434,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Defines a function to be called when this Node has input focus and the input method text has
    * changed.
    */
-  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] = delegate.onInputMethodTextChangedProperty
+  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] =
+    delegate.onInputMethodTextChangedProperty
 
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]): Unit = {
     onInputMethodTextChanged() = v
@@ -473,7 +493,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a full press-drag-release gesture enters this Node.
    */
-  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragEnteredProperty
+  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragEnteredProperty
 
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragEntered() = v
@@ -482,7 +503,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a full press-drag-release gesture leaves this Node.
    */
-  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragExitedProperty
+  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragExitedProperty
 
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragExited() = v
@@ -498,10 +520,11 @@ abstract class Node protected(override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within 
+   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within
    * this Node.
    */
-  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragReleasedProperty
+  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragReleasedProperty
 
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragReleased() = v
@@ -1090,7 +1113,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @since 2.2
    */
-  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
+  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
+    delegate.onRotationFinishedProperty()
 
   def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationFinished() = v
@@ -1101,7 +1125,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @since 2.2
    */
-  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
+  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
+    delegate.onRotationFinishedProperty()
 
   def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationStarted() = v
@@ -1251,20 +1276,19 @@ abstract class Node protected(override val delegate: jfxs.Node)
   }
 
   override def eventHandlerDelegate: EventHandled = new EventHandled {
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventHandler(eventType, eventHandler)
 
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+    def removeEventHandler[E <: jfxe.Event](
+      eventType: jfxe.EventType[E],
+      eventHandler: jfxe.EventHandler[_ >: E]
+    ): Unit =
       delegate.removeEventHandler(eventType, eventHandler)
 
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventFilter(eventType, eventFilter)
 
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.removeEventFilter(eventType, eventFilter)
 
     def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
