@@ -27,13 +27,13 @@
 
 package scalafx.controls
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
-import scalafx.controls.controls.{PropertiesNodes, _}
+import scalafx.controls.controls.*
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
-import scalafx.scene.control._
+import scalafx.scene.control.*
 import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.util.converter.DoubleStringConverter
@@ -86,7 +86,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   val originalValue = target.value.get
   val txfValue      = new TextField
   target.value.onChange(txfValue.text = target.value.get.toString)
-  txfValue.onAction = _ => super.fillDoublePropertyFromText(target.value, txfValue, false)
+  txfValue.onAction = _ => fillDoublePropertyFromText(target.value, txfValue, false)
 
   val originalBlockIncrement = target.blockIncrement.get
   val txfBlockIncrement = new TextField {
