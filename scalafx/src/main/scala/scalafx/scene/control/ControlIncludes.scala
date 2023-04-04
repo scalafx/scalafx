@@ -740,7 +740,7 @@ trait ControlIncludes extends CellIncludes {
   implicit def jfxTextFormatter2sfx[V](t: jfxsc.TextFormatter[V]): TextFormatter[V] =
     if (t != null) new TextFormatter(t) else null
 
-  implicit def jfxTextFormatterChange2sfx[V](t: jfxsc.TextFormatter.Change): TextFormatter.Change =
+  implicit def jfxTextFormatterChange2sfx(t: jfxsc.TextFormatter.Change): TextFormatter.Change =
     if (t != null) new TextFormatter.Change(t) else null
 
   /**
