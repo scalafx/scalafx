@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.control as jfxsc
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.ScrollPane.ScrollBarPolicy
@@ -48,29 +48,29 @@ object ControlIncludes extends ControlIncludes
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/package-summary.html `javafx.scene.control`]]
  * classes/traits to their $SFX counterparts.
  *
- * @define JFX                                                                                                                                   JavaFX
- * @define SFX                                                                                                                                   ScalaFX
- * @define START                                                                                                                                 Converts a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START  Converts a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
  * @define END ]] instance to its $SFX counterpart.
- * @define TTYPE                                                                                                                                 The type of the
- * @define ACCD                                                                                                                                  Accordion
- * @define TGGR                                                                                                                                  ToggleGroup
- * @define TGBT                                                                                                                                  ToggleButton
- * @define RDBT                                                                                                                                  RadioButton
- * @define BTBS                                                                                                                                  ButtonBase
- * @define BUTN                                                                                                                                  Button
- * @define CELL                                                                                                                                  Cell
- * @define CHBX                                                                                                                                  ChoiceBox
- * @define CEBX                                                                                                                                  CheckBox
- * @define CUMIT                                                                                                                                 CustomMenuItem
- * @define CMNIT                                                                                                                                 CheckMenuItem
- * @define SPMIT                                                                                                                                 SeparatorMenuItem
- * @define CTDP                                                                                                                                  ContentDisplay
- * @define CTMN                                                                                                                                  ContextMenu
- * @define CTRL                                                                                                                                  Control
- * @define CLPK                                                                                                                                  ColorPicker
- * @define CBBS                                                                                                                                  ComboBoxBase
- * @define CBBX                                                                                                                                  ComboBox
+ * @define TTYPE The type of the
+ * @define ACCD Accordion
+ * @define TGGR ToggleGroup
+ * @define TGBT ToggleButton
+ * @define RDBT RadioButton
+ * @define BTBS ButtonBase
+ * @define BUTN Button
+ * @define CELL Cell
+ * @define CHBX ChoiceBox
+ * @define CEBX CheckBox
+ * @define CUMIT CustomMenuItem
+ * @define CMNIT CheckMenuItem
+ * @define SPMIT SeparatorMenuItem
+ * @define CTDP ContentDisplay
+ * @define CTMN ContextMenu
+ * @define CTRL Control
+ * @define CLPK ColorPicker
+ * @define CBBS ComboBoxBase
+ * @define CBBX ComboBox
  * @define DTCL DateCell
  * @define DTPR DatePicker
  * @define FCMD FocusModel
@@ -132,24 +132,24 @@ object ControlIncludes extends ControlIncludes
  * @define TPCP TabPane.TabClosingPolicy
  * @define TXFD TextField
  * @define TXAR TextArea
- * @define TXIC                                                                                                                                  TextInputControl
- * @define TOTP                                                                                                                                  Tooltip
- * @define TOBR                                                                                                                                  ToolBar
- * @define TRCL                                                                                                                                  TreeCell
- * @define TRIT                                                                                                                                  TreeItem
- * @define TIME                                                                                                                                  TreeItem.TreeModificationEvent
- * @define TRVW                                                                                                                                  TreeView
- * @define TVEE                                                                                                                                  TreeView.EditEvent
- * @define TTRW                                                                                                                                  TreeTableRow
- * @define TTVW                                                                                                                                  TreeTableView
- * @define TTVR                                                                                                                                  TreeTableView.ResizeFeatures
- * @define TTVE                                                                                                                                  TreeTableView.EditEvent
- * @define TTVS                                                                                                                                  TreeTableView.TreeTableViewSelectionModel
- * @define TTVF                                                                                                                                  TreeTableView.TreeTableViewFocusModel
- * @define SREV                                                                                                                                  SortEvent
- * @define TTCL                                                                                                                                  TreeTableCell
- * @define TRSM                                                                                                                                  TreeSortMode
- * @define TRTP                                                                                                                                  TreeTablePosition
+ * @define TXIC TextInputControl
+ * @define TOTP Tooltip
+ * @define TOBR ToolBar
+ * @define TRCL TreeCell
+ * @define TRIT TreeItem
+ * @define TIME TreeItem.TreeModificationEvent
+ * @define TRVW TreeView
+ * @define TVEE TreeView.EditEvent
+ * @define TTRW TreeTableRow
+ * @define TTVW TreeTableView
+ * @define TTVR TreeTableView.ResizeFeatures
+ * @define TTVE TreeTableView.EditEvent
+ * @define TTVS TreeTableView.TreeTableViewSelectionModel
+ * @define TTVF TreeTableView.TreeTableViewFocusModel
+ * @define SREV SortEvent
+ * @define TTCL TreeTableCell
+ * @define TRSM TreeSortMode
+ * @define TRTP TreeTablePosition
  */
 trait ControlIncludes extends CellIncludes {
 
@@ -172,7 +172,7 @@ trait ControlIncludes extends CellIncludes {
   implicit def jfxDialogPane2sfx(a: jfxsc.DialogPane): DialogPane = if (a != null) new DialogPane(a) else null
 
   implicit def jfxDoubleSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory)
-  : SpinnerValueFactory.DoubleSpinnerValueFactory =
+    : SpinnerValueFactory.DoubleSpinnerValueFactory =
     if (ev != null) new SpinnerValueFactory.DoubleSpinnerValueFactory(ev) else null
 
   /**
@@ -372,7 +372,7 @@ trait ControlIncludes extends CellIncludes {
   implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange): IndexRange = if (r != null) new IndexRange(r) else null
 
   implicit def jfxIntegerSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory)
-  : SpinnerValueFactory.IntegerSpinnerValueFactory =
+    : SpinnerValueFactory.IntegerSpinnerValueFactory =
     if (ev != null) new SpinnerValueFactory.IntegerSpinnerValueFactory(ev) else null
 
   /**
@@ -403,7 +403,7 @@ trait ControlIncludes extends CellIncludes {
   implicit def jfxListCell[T](l: jfxsc.ListCell[T]): ListCell[T] = if (l != null) new ListCell(l) else null
 
   implicit def jfxListSpinnerValueFactory2sfx[T](ev: jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T])
-  : SpinnerValueFactory.ListSpinnerValueFactory[T] =
+    : SpinnerValueFactory.ListSpinnerValueFactory[T] =
     if (ev != null) new SpinnerValueFactory.ListSpinnerValueFactory(ev) else null
 
   /**
@@ -637,7 +637,7 @@ trait ControlIncludes extends CellIncludes {
    * @since 8.0
    */
   implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC])
-  : TablePositionBase[TC] =
+    : TablePositionBase[TC] =
     if (tpb != null) new TablePositionBase[TC](tpb) {}
     else null
 
@@ -661,16 +661,6 @@ trait ControlIncludes extends CellIncludes {
     if (tv != null) new TableView[S](tv) else null
 
   /**
-   * $START$RFBS.html $RFBS$END
-   *
-   * @tparam S $TTYPE $RFBS
-   * @param rf $JFX $RFBS
-   * @return $SFX $RFBS
-   */
-  implicit def jfxResizeFeaturesBase2sfx[S](rf: jfxsc.ResizeFeaturesBase[S]): ResizeFeaturesBase[S] =
-    if (rf != null) new ResizeFeaturesBase[S](rf) else null
-
-  /**
    * $START$TVRF.html $TVRF$END
    *
    * @tparam S $TTYPE $TVRF
@@ -688,7 +678,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TVSM
    */
   implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S])
-  : TableViewSelectionModel[S] =
+    : TableViewSelectionModel[S] =
     if (tvsm != null) new TableView.TableViewSelectionModel[S](tvsm) {}
     else null
 
@@ -715,7 +705,7 @@ trait ControlIncludes extends CellIncludes {
     if (tbcb != null)
       new TableColumnBase[S, T](tbcb) {
 
-        import scalafx.collections.CollectionIncludes._
+        import scalafx.collections.CollectionIncludes.*
 
         def columns: ObservableBuffer[_ <: jfxsc.TableColumnBase[S, _]] = delegate.getColumns
       }
@@ -743,14 +733,14 @@ trait ControlIncludes extends CellIncludes {
    * @since 8.0
    */
   implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC])
-  : TableFocusModel[T, TC] =
+    : TableFocusModel[T, TC] =
     if (tfm != null) new TableFocusModel[T, TC](tfm) {}
     else null
 
   implicit def jfxTextFormatter2sfx[V](t: jfxsc.TextFormatter[V]): TextFormatter[V] =
     if (t != null) new TextFormatter(t) else null
 
-  implicit def jfxTextFormatterChange2sfx[V](t: jfxsc.TextFormatter.Change): TextFormatter.Change =
+  implicit def jfxTextFormatterChange2sfx(t: jfxsc.TextFormatter.Change): TextFormatter.Change =
     if (t != null) new TextFormatter.Change(t) else null
 
   /**
@@ -770,7 +760,7 @@ trait ControlIncludes extends CellIncludes {
   implicit def jfxToggle2sfx(t: jfxsc.Toggle): Toggle =
     if (t != null) new Toggle {
       override val delegate: jfxsc.Toggle = t
-      def userData: AnyRef = delegate.getUserData
+      def userData: AnyRef                = delegate.getUserData
 
       def userData_=(v: AnyRef): Unit = {
         delegate.setUserData(v)
@@ -1088,7 +1078,7 @@ trait ControlIncludes extends CellIncludes {
     if (a != null) new TreeTableColumn[S, T](a) else null
 
   implicit def jfxTreeCellDataFeatures2sfx[S, T](a: jfxsc.TreeTableColumn.CellDataFeatures[S, T])
-  : TreeTableColumn.CellDataFeatures[S, T] =
+    : TreeTableColumn.CellDataFeatures[S, T] =
     if (a != null) new TreeTableColumn.CellDataFeatures[S, T](a) else null
 
   /**
@@ -1121,7 +1111,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TVVE
    */
   implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S])
-  : TreeTableView.ResizeFeatures[S] =
+    : TreeTableView.ResizeFeatures[S] =
     if (rf != null) new TreeTableView.ResizeFeatures[S](rf) else null
 
   /**
@@ -1132,7 +1122,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TTVS
    */
   implicit def jfxTreeTableViewSelectionModel2sfx[S](ttvsm: jfxsc.TreeTableView.TreeTableViewSelectionModel[S])
-  : TreeTableView.TreeTableViewSelectionModel[S] =
+    : TreeTableView.TreeTableViewSelectionModel[S] =
     if (ttvsm != null) new TreeTableView.TreeTableViewSelectionModel[S](ttvsm) {}
     else null
 
@@ -1144,7 +1134,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TTVF
    */
   implicit def jfxTreeTableViewFocusModel2sfx[S](ttvfm: jfxsc.TreeTableView.TreeTableViewFocusModel[S])
-  : TreeTableView.TreeTableViewFocusModel[S] =
+    : TreeTableView.TreeTableViewFocusModel[S] =
     if (ttvfm != null) new TreeTableView.TreeTableViewFocusModel[S](ttvfm) else null
 
 }
