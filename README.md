@@ -30,10 +30,10 @@ __ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is inten
 Here is how you can add dependency using SBT.
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "18.0.1-R28"
+libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
 ```
 
-Note that in ScalaFX version prior to `18.0.1-R28` and SBT older than 1.6, you needed to explicitly provide dependency on
+Note that in ScalaFX version prior to `20.0.0-R31` and SBT older than 1.6, you needed to explicitly provide dependency on
 JavaFX modules including platform dependent modules. This is no longer needed.
 
 You can find examples of SBT setup in section [Demo Projects and Examples](#demo-projects-and-examples) below.
@@ -92,7 +92,7 @@ javafx {
 
 dependencies {
     implementation 'org.scala-lang:scala3-library_3:3.2.2'
-    implementation 'org.scalafx:scalafx_3:19.0.0-R30'
+    implementation 'org.scalafx:scalafx_3:20.0.0-R31'
 }
 
 application {
@@ -169,6 +169,7 @@ The following software is needed to build ScalaFX:
 
   1. [SBT](http://www.scala-sbt.org/) v.1.6.0 or better
   2. [Scala](http://www.scala.org/). ScalaFX 12 builds with Scala 2.10.2 or newer.
+  3. Java 17 or better is required as of JavaFX 20 / ScalaFX 20.0.0-R31 (this is [JavaFX 20 requirement](https://openjfx.io/highlights/20/)
 
 It works with Windows, Mac OS X, and Linux ports.
 
@@ -195,7 +196,7 @@ The `project` folder is reserved for SBT build system setup.
 
 ## Source Code Branching Policy
 
-The current development is for ScalaFX 12.
+The current development is for ScalaFX 20.
 The development is done on the `master` branch.
 Releases are done on the `stable` branch.
 Releases are tagged with version number.
