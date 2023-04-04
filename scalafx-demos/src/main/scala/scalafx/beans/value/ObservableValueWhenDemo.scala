@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,19 +24,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+package scalafx.beans.value
 
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.beans.property.{BooleanProperty, StringProperty}
+
 
 /**
- * ResizeFeaturesBase Spec tests.
+ * Example of using [[ObservableValue.when]]
  */
-class ResizeFeaturesBaseSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.ResizeFeaturesBase[S], ResizeFeaturesBase[S]](classOf[jfxsc.ResizeFeaturesBase[S]], classOf[ResizeFeaturesBase[S]]) {
+object ObservableValueWhenDemo extends App {
 
-  override def getJavaClassInstance = new jfxsc.ResizeFeaturesBase(null, 0)
+  val condition         = BooleanProperty(true)
+  val longLivedProperty = StringProperty("A")
+  val whenProperty      = longLivedProperty.when(condition)
 
+  // observe whenProperty, which will in turn observe longLivedProperty
+  whenProperty.onChange((_, old, current) => println(s"whenProperty change : $old -> $current"));
+
+  longLivedProperty.value = "B" // "B" is printed
+
+  condition.value = false
+
+  // After condition becomes false, whenProperty stops observing longLivedProperty; condition
+  // and whenProperty may now be eligible for GC despite being observed by the ChangeListener
+  longLivedProperty.value = "C" // nothing is printed
+  longLivedProperty.value = "D" // nothing is printed
+
+  condition.value = true // longLivedProperty is observed again, and "D" is printed
 }

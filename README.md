@@ -71,6 +71,38 @@ object yourProject extends ScalaModule {
 
 You can find sample ScalaFX Mill project here: [scalafx-millproject](https://github.com/rom1dep/scalafx-millproject)
 
+#### Gradle
+
+Example of `build.gradle`:
+```groovy
+plugins {
+    id 'scala'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "19"
+    modules = ['javafx.controls', 'javafx.media']
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala3-library_3:3.2.2'
+    implementation 'org.scalafx:scalafx_3:19.0.0-R30'
+}
+
+application {
+    mainClass = 'hello.ScalaFXHelloWorld'
+}
+```
+
+A complete sample Gradle project can ge found in [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
+
+
 ### What is in the version number
 
 ScalaFX version number has two part. The first part corresponds to the latest JavaFX version it was tested with. The
@@ -107,7 +139,7 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
 project that illustrate use of ScalaFX.
-The simplest one, and recommended to start with, is [`scalafx-hello-world`](https://github.com/scalafx/scalafx-hello-world).
+The simplest one, and recommended to start with, is [scalafx-hello-world](https://github.com/scalafx/scalafx-hello-world). There is also a Gradle version here: [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
 
 ### Development Snapshots
 

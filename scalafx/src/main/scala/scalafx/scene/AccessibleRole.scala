@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
+import javafx.scene as jfxs
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
@@ -44,6 +44,58 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/AccessibleRole.html]]
  */
 object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, AccessibleRole] {
+
+  protected override def unsortedValues: Array[AccessibleRole] = Array(
+    Button,
+    CheckBox,
+    CheckMenuItem,
+    ComboBox,
+    ContextMenu,
+    DatePicker,
+    DecrementButton,
+    Hyperlink,
+    IncrementButton,
+    ImageView,
+    ListView,
+    ListItem,
+    Menu,
+    MenuBar,
+    MenuButton,
+    MenuItem,
+    Node,
+    PageItem,
+    Pagination,
+    Parent,
+    PasswordField,
+    ProgressIndicator,
+    RadioButton,
+    RadioMenuItem,
+    Slider,
+    Spinner,
+    Text,
+    TextArea,
+    TextField,
+    ToggleButton,
+    Tooltip,
+    ScrollBar,
+    ScrollPane,
+    SplitMenuButton,
+    TabItem,
+    TabPane,
+    TableCell,
+    TableColumn,
+    TableRow,
+    TableView,
+    Thumb,
+    TitledPane,
+    ToolBar,
+    TreeItem,
+    TreeTableCell,
+    TreeTableRow,
+    TreeTableView,
+    TreeView,
+    Dialog
+  )
 
   /**
    * Button role.
@@ -858,15 +910,20 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    */
   case object TreeView extends AccessibleRole(jfxs.AccessibleRole.TREE_VIEW)
 
-
-  protected override def unsortedValues: Array[AccessibleRole] = Array(Button, CheckBox, CheckMenuItem, ComboBox,
-    ContextMenu, DatePicker, DecrementButton, Hyperlink, IncrementButton, ImageView, ListView, ListItem, Menu,
-    MenuBar, MenuButton, MenuItem, Node, PageItem, Pagination, Parent, PasswordField, ProgressIndicator, RadioButton,
-    RadioMenuItem, Slider, Spinner, Text, TextArea, TextField, ToggleButton, Tooltip, ScrollBar, ScrollPane,
-    SplitMenuButton, TabItem, TabPane, TableCell, TableColumn, TableRow, TableView, Thumb, TitledPane,
-    ToolBar, TreeItem, TreeTableCell, TreeTableRow, TreeTableView, TreeView
-  )
+  /**
+   * Dialog role.
+   * <p>
+   * Attributes:
+   * <ul>
+   * <li> {@link AccessibleAttribute# TEXT} </li>
+   * <li> {@link AccessibleAttribute# ROLE_DESCRIPTION} </li>
+   * <li> {@link AccessibleAttribute# CHILDREN} </li>
+   * </ul>
+   *
+   * @since 20
+   */
+  case object Dialog extends AccessibleRole(jfxs.AccessibleRole.DIALOG)
 }
 
-sealed abstract class AccessibleRole(override val delegate: jfxs.AccessibleRole) extends SFXEnumDelegate[jfxs.AccessibleRole]
-
+sealed abstract class AccessibleRole(override val delegate: jfxs.AccessibleRole)
+    extends SFXEnumDelegate[jfxs.AccessibleRole]
