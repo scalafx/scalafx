@@ -65,7 +65,7 @@ val Scala3_3  = "3.3.0"
 lazy val javafxModules =
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.11"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.17"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
