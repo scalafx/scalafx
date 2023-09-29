@@ -46,7 +46,7 @@ import scalafx.scene.input.Dragboard
 import scalafx.scene.layout.Priority
 import scalafx.scene.transform.Transform
 
-import scala.collection.JavaConverters.*
+import scala.jdk.CollectionConverters.*
 import scala.language.implicitConversions
 
 /**

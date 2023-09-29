@@ -36,7 +36,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventTarget, EventType}
 import scalafx.scene.Node
 
-import scala.collection.JavaConverters.*
+import scala.jdk.CollectionConverters.*
 import scala.collection.mutable
 import scala.language.implicitConversions
 
