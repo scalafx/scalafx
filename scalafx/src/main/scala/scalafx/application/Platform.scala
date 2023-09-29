@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -126,23 +126,25 @@ object Platform {
    */
   def startup(runnable: Runnable): Unit = jfxa.Platform.startup(runnable)
 
-  /** Run the specified Runnable on the JavaFX Application Thread at some unspecified time in the future.
-    * Returns immediately.
-    */
+  /**
+   * Run the specified Runnable on the JavaFX Application Thread at some unspecified time in the future.
+   * Returns immediately.
+   */
   def runLater(runnable: java.lang.Runnable): Unit = {
     jfxa.Platform.runLater(runnable)
   }
 
-  /** Run the specified code block on the JavaFX Application Thread at some unspecified time in the future.
-    * Returns immediately.
-    *
-    * Example use:
-    * {{{
-    *   Platform.runLater {
-    *     println("Running on application thread.")
-    *   }
-    * }}}
-    */
+  /**
+   * Run the specified code block on the JavaFX Application Thread at some unspecified time in the future.
+   * Returns immediately.
+   *
+   * Example use:
+   * {{{
+   *   Platform.runLater {
+   *     println("Running on application thread.")
+   *   }
+   * }}}
+   */
   def runLater[R](op: => R): Unit = {
     runLater(new Runnable {
       def run(): Unit = {
@@ -152,34 +154,34 @@ object Platform {
   }
 
   /**
-    * Enter a nested event loop and block until the corresponding
-    * exitNestedEventLoop call is made.
-    * The key passed into this method is used to
-    * uniquely identify the matched enter/exit pair. This method creates a
-    * new nested event loop and blocks until the corresponding
-    * exitNestedEventLoop method is called with the same key.
-    * The return value of this method will be the `rval`
-    * object supplied to the exitNestedEventLoop method call that unblocks it.
-    *
-    * <p>
-    * This method must either be called from an input event handler or
-    * from the run method of a Runnable passed to
-    * [[javafx.application.Platform.runLater]].
-    * It must not be called during animation or layout processing.
-    * </p>
-    *
-    * @param key the Object that identifies the nested event loop, which
-    *            must not be null
-    * @throws IllegalArgumentException if the specified key is associated
-    *                                  with a nested event loop that has not yet returned
-    * @throws NullPointerException     if the key is null
-    * @throws IllegalStateException    if this method is called during
-    *                                  animation or layout processing.
-    * @throws IllegalStateException    if this method is called on a thread
-    *                                  other than the JavaFX Application Thread.
-    * @return the value passed into the corresponding call to exitEventLoop
-    * @since 9
-    */
+   * Enter a nested event loop and block until the corresponding
+   * exitNestedEventLoop call is made.
+   * The key passed into this method is used to
+   * uniquely identify the matched enter/exit pair. This method creates a
+   * new nested event loop and blocks until the corresponding
+   * exitNestedEventLoop method is called with the same key.
+   * The return value of this method will be the `rval`
+   * object supplied to the exitNestedEventLoop method call that unblocks it.
+   *
+   * <p>
+   * This method must either be called from an input event handler or
+   * from the run method of a Runnable passed to
+   * [[javafx.application.Platform.runLater]].
+   * It must not be called during animation or layout processing.
+   * </p>
+   *
+   * @param key the Object that identifies the nested event loop, which
+   *            must not be null
+   * @throws IllegalArgumentException if the specified key is associated
+   *                                  with a nested event loop that has not yet returned
+   * @throws NullPointerException     if the key is null
+   * @throws IllegalStateException    if this method is called during
+   *                                  animation or layout processing.
+   * @throws IllegalStateException    if this method is called on a thread
+   *                                  other than the JavaFX Application Thread.
+   * @return the value passed into the corresponding call to exitEventLoop
+   * @since 9
+   */
   def enterNestedEventLoop(key: Any): Any = jfxa.Platform.enterNestedEventLoop(key)
 
   /**
@@ -240,6 +242,18 @@ object Platform {
    * @since 9
    */
   def isNestedLoopRunning: Boolean = jfxa.Platform.isNestedLoopRunning
+
+  /**
+   * Indicates whether a nested event loop can be started from the current thread in the current state.
+   * A nested event loop can be started from an event handler or from a [[Runnable]] passed to
+   * [[runLater]].
+   * This method must be called on the JavaFX Application thread.
+   *
+   * @return `true` if a nested event loop can be started, and `false` otherwise.
+   * @throws IllegalStateException if this method is called on a thread other than the JavaFX Application Thread.
+   * @since 21
+   */
+  def canStartNestedEventLoop: Boolean = jfxa.Platform.canStartNestedEventLoop
 
   def isAccessibilityActive: Boolean = jfxa.Platform.isAccessibilityActive
 
