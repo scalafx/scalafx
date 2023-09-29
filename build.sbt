@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "20"
-val scalafxVersion = "20.0.0-R32-SNAPSHOT"
+val javaFXVersion  = "21"
+val scalafxVersion = "21.0.0-R32-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -29,8 +29,8 @@ lazy val scalafx = (project in file("scalafx")).settings(
   description := "The ScalaFX framework",
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
   libraryDependencies ++= javafxModules,
-  run / fork      := true,
-  publishArtifact := true,
+  run / fork             := true,
+  publishArtifact        := true,
   Test / publishArtifact := false
 )
 
@@ -74,8 +74,8 @@ def versionSubDir(scalaVersion: String): String =
 
 // Common settings
 lazy val scalafxSettings = Seq(
-  organization := "org.scalafx",
-  version      := scalafxVersion,
+  organization       := "org.scalafx",
+  version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
