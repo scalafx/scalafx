@@ -90,6 +90,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
     TitledPane,
     ToolBar,
     TreeItem,
+    CheckBoxTreeItem,
     TreeTableCell,
     TreeTableRow,
     TreeTableView,
@@ -825,6 +826,33 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * </ul>
    */
   case object TreeItem extends AccessibleRole(jfxs.AccessibleRole.TREE_ITEM)
+
+  /**
+   * Check Box Tree Item role.
+   * <p>
+   * Attributes:
+   * <ul>
+   * <li> {@link AccessibleAttribute# TEXT} </li>
+   * <li> {@link AccessibleAttribute# INDEX} </li>
+   * <li> {@link AccessibleAttribute# SELECTED} </li>
+   * <li> {@link AccessibleAttribute# EXPANDED} </li>
+   * <li> {@link AccessibleAttribute# LEAF} </li>
+   * <li> {@link AccessibleAttribute# DISCLOSURE_LEVEL} </li>
+   * <li> {@link AccessibleAttribute# TREE_ITEM_COUNT} </li>
+   * <li> {@link AccessibleAttribute# TREE_ITEM_AT_INDEX} </li>
+   * <li> {@link AccessibleAttribute# TREE_ITEM_PARENT} </li>
+   * <li> {@link AccessibleAttribute# TOGGLE_STATE} </li>
+   * </ul>
+   * Actions:
+   * <ul>
+   * <li> {@link AccessibleAction# EXPAND} </li>
+   * <li> {@link AccessibleAction# COLLAPSE} </li>
+   * <li> {@link AccessibleAction# REQUEST_FOCUS} </li>
+   * </ul>
+   *
+   * @since 21
+   */
+  case object CheckBoxTreeItem extends AccessibleRole(jfxs.AccessibleRole.CHECK_BOX_TREE_ITEM)
 
   /**
    * Tree Table Cell role.
