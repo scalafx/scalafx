@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,13 @@
  */
 package scalafx.concurrent
 
-import javafx.{concurrent => jfxc, event => jfxe}
-import scalafx.Includes._
+import javafx.{concurrent as jfxc, event as jfxe}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.event.EventHandlerDelegate2
+import scalafx.event.EventTarget
 
-import java.util.{concurrent => juc}
+import java.util.concurrent as juc
 import scala.language.implicitConversions
 
 object Service {
@@ -55,43 +55,9 @@ object Service {
  * Class.
  */
 abstract class Service[T](override val delegate: jfxc.Service[T])
-  extends Worker[T]
-    with jfxe.EventTarget
-    with EventHandlerDelegate2
+    extends EventTarget(delegate)
+    with Worker[T]
     with SFXDelegate[jfxc.Service[T]] {
-
-  override def eventHandlerDelegate: EventHandled = new EventHandled {
-
-    type EventTypeType[E <: jfxe.Event] = jfxe.EventType[E]
-    type EventHandlerType[E <: jfxe.Event] = jfxe.EventHandler[_ >: E]
-
-    // Registers an event handler to this type.
-    def addEventHandler[E <: jfxe.Event](eventType: EventTypeType[E],
-                                         eventHandler: EventHandlerType[E]): Unit =
-      delegate.addEventHandler(eventType, eventHandler)
-
-    // Unregisters a previously registered event handler from this type.
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventHandler(eventType, eventHandler)
-
-
-    // Registers an event filter to this type.
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventFilter(eventType, eventFilter)
-
-
-    // Unregisters a previously registered event filter from this type.
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventFilter(eventType, eventFilter)
-
-
-    // Construct an event dispatch chain for this target.
-    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
-      delegate.buildEventDispatchChain(chain)
-  }
 
   /**
    * The executor to use for running this Service.

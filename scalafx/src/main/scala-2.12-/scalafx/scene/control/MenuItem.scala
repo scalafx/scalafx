@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,14 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc, input => jfxsi}
-import javafx.{event => jfxe, scene => jfxs}
-import scalafx.Includes._
+import javafx.scene.{control as jfxsc, input as jfxsi}
+import javafx.{event as jfxe, scene as jfxs}
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableMap
 import scalafx.css.Styleable
 import scalafx.delegate.{FireDelegate, SFXDelegate}
-import scalafx.event.EventHandlerDelegate
+import scalafx.event.EventTarget
 import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
 
@@ -44,11 +44,10 @@ object MenuItem {
 }
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
-  extends jfxe.EventTarget
-  with Styleable
-  with EventHandlerDelegate
-  with FireDelegate[jfxsc.MenuItem]
-  with SFXDelegate[jfxsc.MenuItem] {
+    extends EventTarget(delegate)
+    with Styleable
+    with FireDelegate[jfxsc.MenuItem]
+    with SFXDelegate[jfxsc.MenuItem] {
 
   /**
    * Constructs a MenuItem and sets the display text with the specified text
@@ -62,7 +61,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   def this(text: String, graphic: Node) = this(new jfxsc.MenuItem(text, graphic))
 
   /**
-   *
    */
   def accelerator: ObjectProperty[jfxsi.KeyCombination] = delegate.acceleratorProperty
 
@@ -71,7 +69,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def disable: BooleanProperty = delegate.disableProperty
 
@@ -80,7 +77,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
 
@@ -89,7 +85,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def id: StringProperty = delegate.idProperty
 
@@ -107,7 +102,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def onAction: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onActionProperty
 
@@ -116,17 +110,14 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def parentMenu: ReadOnlyObjectProperty[jfxsc.Menu] = delegate.parentMenuProperty
 
   /**
-   *
    */
   def parentPopup: ReadOnlyObjectProperty[jfxsc.ContextMenu] = delegate.parentPopupProperty
 
   /**
-   *
    */
   def style: StringProperty = delegate.styleProperty
 
@@ -135,7 +126,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def text: StringProperty = delegate.textProperty
 
@@ -144,14 +134,12 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   *
    */
   def visible: BooleanProperty = delegate.visibleProperty
 
   def visible_=(v: Boolean): Unit = {
     visible() = v
   }
-
 
   /**
    * Returns an observable map of properties on this menu item for use primarily by application
@@ -181,6 +169,4 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   def onMenuValidation_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onMenuValidation() = eventHandler
   }
-
-  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 }

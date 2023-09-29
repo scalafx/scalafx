@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,14 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
-import scalafx.Includes._
+import javafx.event as jfxe
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
-import scalafx.collections._
+import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
-import scalafx.scene.Node._
+import scalafx.scene.Node.*
 
 import scala.language.implicitConversions
 
@@ -45,9 +45,8 @@ object Menu {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Menu.html]].
  */
 class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
-  extends MenuItem(delegate)
-  with jfxe.EventTarget
-  with SFXDelegate[jfxsc.Menu] {
+    extends MenuItem(delegate)
+    with SFXDelegate[jfxsc.Menu] {
 
   /**
    * Constructs a Menu and sets the display text with the specified text and sets the graphic Node to the given node.
