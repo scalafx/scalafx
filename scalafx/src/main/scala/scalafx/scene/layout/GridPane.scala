@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,17 @@
 package scalafx.scene.layout
 
 import javafx.collections.ObservableList
-import javafx.scene.{layout => jfxsl}
-import javafx.{scene => jfxs}
-import scalafx.Includes._
+import javafx.scene as jfxs
+import javafx.scene.layout as jfxsl
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
-import scalafx.geometry.Insets._
+import scalafx.geometry.Insets.*
 import scalafx.geometry.{HPos, Insets, VPos}
 import scalafx.scene.Node
-import scalafx.scene.Node._
+import scalafx.scene.Node.*
 
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 import scala.language.implicitConversions
 
 object GridPane {
@@ -49,7 +49,7 @@ object GridPane {
    * remaining rows/columns.
    */
   val Remaining: Int = jfxsl.GridPane.REMAINING
-  @deprecated ("Use Remaining; REMAINING will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Remaining; REMAINING will be removed in a future release", "8.0.60-R10")
   val REMAINING: Int = Remaining
 
   /**
@@ -190,26 +190,73 @@ object GridPane {
   /**
    * Sets the grid position, spans, and alignment for the child when contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int,
-                     halignment: HPos, valignment: VPos): Unit = {
+  def setConstraints(
+    child: Node,
+    columnIndex: Int,
+    rowIndex: Int,
+    columnspan: Int,
+    rowspan: Int,
+    halignment: HPos,
+    valignment: VPos
+  ): Unit = {
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment)
   }
 
   /**
    * Sets the grid position, spans, and alignment for the child when contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int,
-                     halignment: HPos, valignment: VPos, hgrow: Priority, vgrow: Priority): Unit = {
-    jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment, hgrow, vgrow)
+  def setConstraints(
+    child: Node,
+    columnIndex: Int,
+    rowIndex: Int,
+    columnspan: Int,
+    rowspan: Int,
+    halignment: HPos,
+    valignment: VPos,
+    hgrow: Priority,
+    vgrow: Priority
+  ): Unit = {
+    jfxsl.GridPane.setConstraints(
+      child,
+      columnIndex,
+      rowIndex,
+      columnspan,
+      rowspan,
+      halignment,
+      valignment,
+      hgrow,
+      vgrow
+    )
   }
 
   /**
    * Sets the grid position, spans, alignment, grow priorities, and margin for the child when
    * contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int,
-                     halignment: HPos, valignment: VPos, hgrow: Priority, vgrow: Priority, margin: Insets): Unit = {
-    jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment, hgrow, vgrow, margin)
+  def setConstraints(
+    child: Node,
+    columnIndex: Int,
+    rowIndex: Int,
+    columnspan: Int,
+    rowspan: Int,
+    halignment: HPos,
+    valignment: VPos,
+    hgrow: Priority,
+    vgrow: Priority,
+    margin: Insets
+  ): Unit = {
+    jfxsl.GridPane.setConstraints(
+      child,
+      columnIndex,
+      rowIndex,
+      columnspan,
+      rowspan,
+      halignment,
+      valignment,
+      hgrow,
+      vgrow,
+      margin
+    )
   }
 
 }
@@ -218,9 +265,18 @@ object GridPane {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html]]
  */
 class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.GridPane]
-  with SFXDelegate[jfxsl.GridPane] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.GridPane]
+    with SFXDelegate[jfxsl.GridPane] {
+
+  /**
+   * `GridPane` layout with the given `hgap` and `vgap`.
+   *
+   * @param hgap the size of the horizontal gaps between columns
+   * @param vgap the size of the vertical gaps between rows
+   * @since 21
+   */
+  def this(hgap: Double, vgap: Double) = this(new jfxsl.GridPane(hgap, vgap))
 
   /**
    * For debug purposes only: controls whether lines are displayed to show the gridpane's rows and
@@ -254,6 +310,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * List of column constraints.
    */
   def columnConstraints: ObservableList[jfxsl.ColumnConstraints] = delegate.getColumnConstraints
+
   /**
    * Sets the list of column constraints, replacing the prior content. If you want append to current content, use `add` or
    * similar.
@@ -272,6 +329,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * List of row constraints.
    */
   def rowConstraints: ObservableList[jfxsl.RowConstraints] = delegate.getRowConstraints
+
   /**
    * Sets the list of row constraints, replacing the prior content. If you want append to current content, use `add` or
    * similar.
