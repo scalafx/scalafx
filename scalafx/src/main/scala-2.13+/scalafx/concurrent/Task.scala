@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.concurrent
 
-import javafx.{concurrent => jfxc, event => jfxe}
-import scalafx.Includes._
+import javafx.{concurrent as jfxc, event as jfxe}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.event.EventHandlerDelegate2
+import scalafx.event.EventTarget
 
 import scala.language.implicitConversions
 
@@ -50,33 +50,9 @@ object Task {
  * Class.
  */
 abstract class Task[T](override val delegate: jfxc.Task[T])
-  extends Worker[T]
-    with jfxe.EventTarget
-    with EventHandlerDelegate2
+    extends EventTarget(delegate)
+    with Worker[T]
     with SFXDelegate[jfxc.Task[T]] {
-
-  override def eventHandlerDelegate: EventHandled = new EventHandled {
-
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventHandler(eventType, eventHandler)
-
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventHandler(eventType, eventHandler)
-
-
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventFilter(eventType, eventFilter)
-
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventFilter(eventType, eventFilter)
-
-    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
-      delegate.buildEventDispatchChain(chain)
-  }
 
   /**
    * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED

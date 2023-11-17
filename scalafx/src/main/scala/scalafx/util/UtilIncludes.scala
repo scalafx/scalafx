@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,10 @@
 
 package scalafx.util
 
-import javafx.beans.{property => jfxbp}
-import javafx.{util => jfxu}
+import javafx.util as jfxu
+import scalafx.util.Duration.DurationHelper
 
 import scala.language.implicitConversions
-import scalafx.util.Duration.DurationHelper
 
 object UtilIncludes extends UtilIncludes
 
@@ -82,7 +81,8 @@ trait UtilIncludes {
    * @param t A Scala Tuple2
    * @return A JavaFX Pair generated from Scala Tuple2.
    */
-  implicit def tuple22jfxPair[K, V](t: (K, V)): jfxu.Pair[K, V] = if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
+  implicit def tuple22jfxPair[K, V](t: (K, V)): jfxu.Pair[K, V] =
+    if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
 
   /**
    * Converts a Double to a Duration.
@@ -113,7 +113,9 @@ trait UtilIncludes {
    */
   implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]): StringConverter[T] = new StringConverter[T] {
     def fromString(string: String): T = c.fromString(string)
-    def toString(t: T): String = c.toString(t)
+    def toString(t: T): String        = c.toString(t)
   }
+
+  implicit def jfxSubscription2sfx(s: jfxu.Subscription): Subscription = if (s != null) new Subscription(s) else null
 
 }

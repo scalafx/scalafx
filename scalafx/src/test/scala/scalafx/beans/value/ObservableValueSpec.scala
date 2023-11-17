@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,23 @@
 
 package scalafx.beans.value
 
-import javafx.beans.value.{ChangeListener, ObservableValue => JFXObservableValue}
+import javafx.beans.value.{ChangeListener, ObservableValue as JFXObservableValue}
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.beans.binding.BindingIncludes._
-import scalafx.beans.property.DoubleProperty
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
+import scalafx.beans.property.IntegerProperty
+import scalafx.util.Subscription
 
 /**
  * ObservableValue Spec tests.
- *
- *
  */
 class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
-  var property: DoubleProperty = null
+  var property: IntegerProperty = null
 
   override def beforeEach(): Unit = {
-    property = new DoubleProperty(null, "observable value test")
+    property = new IntegerProperty(null, "observable value test")
+    property = IntegerProperty(0)
   }
 
   "ObservableValue" should "support anonymous change listeners" in {
@@ -92,7 +92,8 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
     // val subscription = property.onChange ...
     // ...
     // subscription.cancel()
-    val listener: ChangeListener[Number] = (obs: JFXObservableValue[_ <: Number], oldV: Number, newV: Number) => invalidateCalled = true
+    val listener: ChangeListener[Number] =
+      (obs: JFXObservableValue[_ <: Number], oldV: Number, newV: Number) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be(false)
     property() = 100
@@ -101,5 +102,52 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
     invalidateCalled = false
     property() = 200
     invalidateCalled should be(false)
+  }
+
+  it should "support subscribe 1 argument" in {
+    property() = 310
+    var updated = 0
+
+    // Subscribe to property changes
+    val s: Subscription = property.subscribe { (x) =>
+      println(x)
+      updated = x.intValue()
+    }
+    // Listener is called during call to `subscribe` so we get current value of the property
+    updated should be(310)
+
+    property() = 311
+    // We should see new updated value
+    updated should be(311)
+
+    // Cancel subscription
+    s.unsubscribe()
+
+    property() = 312
+    // No updates should be posted since we unsubscribed
+    updated should be(311)
+  }
+
+  it should "support subscribe 2 arguments" in {
+    property() = 310
+    var updatedOld = 0
+    var updatedNew = 0
+    val s: Subscription = property.subscribe { (x, y) =>
+      updatedOld = x.intValue()
+      updatedNew = y.intValue()
+    }
+    // Listener is NOT called during call to `subscribe`, unlike the 1 argument version
+    updatedOld should be(0)
+    updatedNew should be(0)
+
+    property() = 311
+    updatedOld should be(310)
+    updatedNew should be(311)
+
+    s.unsubscribe()
+
+    property() = 312
+    updatedOld should be(310)
+    updatedNew should be(311)
   }
 }

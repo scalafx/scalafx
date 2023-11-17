@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,12 @@
 
 package scalafx
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
-import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control._
+import scalafx.scene.control.*
 import scalafx.scene.layout.GridPane
 import scalafx.scene.paint.Color
 
@@ -41,24 +40,22 @@ object CheckBoxTest extends JFXApp3 {
   override def start(): Unit = {
     val check         = new CheckBox { text = "CheckBox" }
     val lblCheckState = new Label { text = check.selected.get().toString }
-    check.onAction = (event: ActionEvent) => {
+    check.onAction = () => {
       lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString
     }
     val btnAllowIndeterminate = new scalafx.scene.control.Button { text = "Allow Indeterminate" }
-    btnAllowIndeterminate.onAction = (event: ActionEvent) => {
+    btnAllowIndeterminate.onAction = () => {
       check.allowIndeterminate = !check.allowIndeterminate.get()
     }
     val lblAllowIndeterminate = new Label {
       text <== when(check.allowIndeterminate) choose "Can be Indeterminate" otherwise "Can not be Indeterminate"
     }
     val btnFire = new Button { text = "Fire!" }
-    btnFire.onAction = (event: ActionEvent) => check.fire()
+    btnFire.onAction = () => check.fire()
     val txfText = new TextField
     txfText.delegate.textProperty.bindBidirectional(check.text)
-    val grid = new GridPane {
-      padding = Insets(10)
-      hgap = 5
-      vgap = 5
+    val grid = new GridPane(7, 7) {
+      padding = Insets(14)
     }
     grid.add(check, 0, 0)
     grid.add(lblCheckState, 1, 0)

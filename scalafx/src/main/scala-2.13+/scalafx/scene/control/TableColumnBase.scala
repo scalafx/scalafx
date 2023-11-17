@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,24 +26,25 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, scene => jfxs}
-import scalafx.Includes._
-import scalafx.beans.property._
+import javafx.scene.control as jfxsc
+import javafx.{event as jfxe, scene as jfxs}
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.collections.ObservableBuffer
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
-import scalafx.event.EventHandlerDelegate1
+import scalafx.event.EventTarget
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.control.ContextMenu._
+import scalafx.scene.control.ContextMenu.*
 
-import java.{util => ju}
+import java.util as ju
 import scala.language.implicitConversions
 import scala.math.Ordering
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] =
+    if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -56,8 +57,8 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
-  extends EventHandlerDelegate1
+abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
+    extends EventTarget(delegate)
     with Styleable
     with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
@@ -223,25 +224,4 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Tests if this TableColumnBase has properties.
    */
   def hasProperties: Boolean = delegate.hasProperties
-
-  override def eventHandlerDelegate: EventHandled = new EventHandled {
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                         eventHandler: jfxe.EventHandler[E]): Unit =
-      delegate.addEventHandler(eventType, eventHandler)
-
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                            eventHandler: jfxe.EventHandler[E]): Unit =
-      delegate.removeEventHandler(eventType, eventHandler)
-
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                        eventFilter: jfxe.EventHandler[E]): Unit =
-      delegate.addEventFilter(eventType, eventFilter)
-
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                           eventFilter: jfxe.EventHandler[E]): Unit =
-      delegate.removeEventFilter(eventType, eventFilter)
-
-    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
-      delegate.buildEventDispatchChain(chain)
-  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.stage
 
-import javafx.{event => jfxe, stage => jfxs}
-import scalafx.Includes._
-import scalafx.beans.property._
+import javafx.{event as jfxe, stage as jfxs}
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
-import scalafx.event.{Event, EventHandlerDelegate2}
+import scalafx.event.{Event, EventTarget}
 
 import scala.language.implicitConversions
 
@@ -38,10 +38,9 @@ object Window {
   implicit def sfxWindow2jfx(v: Window): jfxs.Window = if (v != null) v.delegate else null
 }
 
-class Window protected(override val delegate: jfxs.Window)
-  extends EventHandlerDelegate2
-    with SFXDelegate[jfxs.Window]
-    with jfxe.EventTarget {
+class Window protected (override val delegate: jfxs.Window)
+    extends EventTarget(delegate)
+    with SFXDelegate[jfxs.Window] {
 
   /**
    * Specifies the event dispatcher for this node.
@@ -195,28 +194,6 @@ class Window protected(override val delegate: jfxs.Window)
    */
   def sizeToScene(): Unit = {
     delegate.sizeToScene()
-  }
-
-  override def eventHandlerDelegate: EventHandled = new EventHandled {
-
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventHandler(eventType, eventHandler)
-
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventHandler(eventType, eventHandler)
-
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventFilter(eventType, eventFilter)
-
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventFilter(eventType, eventFilter)
-
-    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
-      delegate.buildEventDispatchChain(chain)
   }
 
   /**

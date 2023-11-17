@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.SFXDelegate.delegateOrNull
 import scalafx.event.Event.*
-import scalafx.event.{Event, EventHandlerDelegate2}
+import scalafx.event.{Event, EventTarget}
 import scalafx.geometry.*
 import scalafx.geometry.Bounds.*
 import scalafx.geometry.Point2D.*
@@ -46,7 +46,7 @@ import scalafx.scene.input.Dragboard
 import scalafx.scene.layout.Priority
 import scalafx.scene.transform.Transform
 
-import scala.collection.JavaConverters.*
+import scala.jdk.CollectionConverters.*
 import scala.language.implicitConversions
 
 /**
@@ -70,7 +70,7 @@ object Node {
  * @param delegate JavaFX Node
  */
 abstract class Node protected (override val delegate: jfxs.Node)
-    extends EventHandlerDelegate2
+    extends EventTarget(delegate)
     with Styleable
     with SFXDelegate[jfxs.Node] {
 
@@ -1273,26 +1273,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
 
   def onTouchStationary_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]): Unit = {
     onTouchStationary() = v
-  }
-
-  override def eventHandlerDelegate: EventHandled = new EventHandled {
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventHandler(eventType, eventHandler)
-
-    def removeEventHandler[E <: jfxe.Event](
-      eventType: jfxe.EventType[E],
-      eventHandler: jfxe.EventHandler[_ >: E]
-    ): Unit =
-      delegate.removeEventHandler(eventType, eventHandler)
-
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.addEventFilter(eventType, eventFilter)
-
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
-      delegate.removeEventFilter(eventType, eventFilter)
-
-    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
-      delegate.buildEventDispatchChain(chain)
   }
 
   /**

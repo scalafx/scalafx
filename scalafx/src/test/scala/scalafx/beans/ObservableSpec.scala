@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2023, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,17 +27,16 @@
 
 package scalafx.beans
 
-import javafx.{beans => jfxb}
+import javafx.beans as jfxb
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.beans.binding.BindingIncludes._
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
 import scalafx.beans.property.DoubleProperty
+import scalafx.util.Subscription
 
 /**
  * Observable Spec tests.
- *
- *
  */
 class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = _
@@ -92,7 +91,7 @@ class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support removing explicit listeners JFX => ..." in {
     var invalidateCalled = false
-    val listener = (obs: jfxb.Observable) => invalidateCalled = true
+    val listener         = (* : jfxb.Observable) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be(false)
     property() = 100
@@ -105,13 +104,33 @@ class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support removing explicit listeners SFX => ..." in {
     var invalidateCalled = false
-    val listener = (obs: Observable) => invalidateCalled = true
+    val listener         = (* : Observable) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be(false)
     property() = 100
     invalidateCalled should be(true)
     invalidateCalled = false
     property removeListener listener
+    property() = 200
+    invalidateCalled should be(false)
+  }
+
+  it should "support subscribe" in {
+
+    var invalidateCalled = false
+
+    // This should work without a cast but need to make sure that we call `subscribe` on Observable
+    val s: Subscription =
+      property.asInstanceOf[Observable].subscribe { () =>
+        invalidateCalled = true
+      }
+
+    invalidateCalled should be(false)
+    property() = 100
+    invalidateCalled should be(true)
+
+    s.unsubscribe()
+    invalidateCalled = false
     property() = 200
     invalidateCalled should be(false)
   }
