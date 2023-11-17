@@ -1,4 +1,4 @@
-import java.net.URL
+import java.net.URI
 import scala.xml.transform.{RewriteRule, RuleTransformer}
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 
@@ -9,7 +9,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion  = "21"
-val scalafxVersion = "21.0.0-R32-SNAPSHOT"
+val scalafxVersion = "21.0.0-R32"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -166,9 +166,9 @@ lazy val manifestSetting = packageOptions += {
 // See also http://maven.apache.org/pom.html#Developers
 
 lazy val mavenCentralSettings = Seq(
-  homepage            := Option(new URL("http://www.scalafx.org/")),
+  homepage            := Option(new URI("http://www.scalafx.org/").toURL),
   startYear           := Option(2011),
-  licenses            := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
+  licenses            := Seq(("BSD", new URI("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt").toURL)),
   sonatypeProfileName := "org.scalafx",
   scmInfo := Option(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
   publishMavenStyle := true,
