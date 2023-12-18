@@ -200,7 +200,7 @@ The current development is for ScalaFX 20.
 The development is done on the `master` branch.
 Releases are done on the `stable` branch.
 Releases are tagged with version number.
-Pull requests are only accepted off a brunch created from the `master` branch.
+Pull requests are only accepted off a branch created from the `master` branch.
 When working on a pull request, create a separate branch for each feature or bug fix.
 This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
 
