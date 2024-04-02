@@ -72,5 +72,12 @@ trait ApplicationIncludes {
   implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature =
     ConditionalFeature.jfxEnum2sfx(e)
 
-  implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices = new HostServices(e)
+  implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices =
+    Option(e).map(new HostServices(_)).orNull
+
+  implicit def jfxPreferences2sfx(p: jfxa.Platform.Preferences): Platform.Preferences =
+    Option(p).map(new Platform.Preferences(_) {}).orNull
+
+  implicit def jfxColorScheme2sfx(o: jfxa.ColorScheme): ColorScheme = ColorScheme.jfxEnum2sfx(o)
+
 }
