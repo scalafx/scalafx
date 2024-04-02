@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,9 @@
  */
 package scalafx.application
 
+import javafx.application as jfxa
 
-import javafx.{application => jfxa}
-
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 import scala.collection.mutable
 import scala.language.implicitConversions
 
@@ -37,13 +36,13 @@ object ApplicationIncludes extends ApplicationIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/package-summary.html `javafx.application`]] Classes to 
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/package-summary.html `javafx.application`]] Classes to
  * their ScalaFX counterparts.
  */
 trait ApplicationIncludes {
 
   /**
-   * Converts a 
+   * Converts a
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
    * instance to its ScalaFX counterpart.
    *
@@ -63,14 +62,22 @@ trait ApplicationIncludes {
     else null
 
   /**
-   * Converts a 
+   * Converts a
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX ConditionalFeature
    * @return ScalaFX ConditionalFeature
    */
-  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature = ConditionalFeature.jfxEnum2sfx(e)
+  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature =
+    ConditionalFeature.jfxEnum2sfx(e)
 
-  implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices = new HostServices(e)
+  implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices =
+    Option(e).map(new HostServices(_)).orNull
+
+  implicit def jfxPreferences2sfx(p: jfxa.Platform.Preferences): Platform.Preferences =
+    Option(p).map(new Platform.Preferences(_) {}).orNull
+
+  implicit def jfxColorScheme2sfx(o: jfxa.ColorScheme): ColorScheme = ColorScheme.jfxEnum2sfx(o)
+
 }

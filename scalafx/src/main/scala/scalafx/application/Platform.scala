@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,54 @@
 package scalafx.application
 
 import javafx.application as jfxa
+import javafx.scene.paint as jfxap
 import scalafx.Includes.*
-import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.input.KeyCode
 
 import scala.language.implicitConversions
 
 /** Application platform support, wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Platform.html javafx.application.Platform]]. */
 object Platform {
+
+  object Preferences {
+    implicit def sfxPreferences2jfx(p: Preferences): jfxa.Platform.Preferences = if (p != null) p.delegate else null
+
+  }
+
+  /**
+   * Contains UI preferences of the current platform, wrapper for [[https://openjfx.io/javadoc/22/javafx.graphics/javafx/application/Platform.Preferences.html javafx.application.Platform.Preferences]]
+   *
+   * @since JavaFX 22
+   */
+  abstract class Preferences(override val delegate: jfxa.Platform.Preferences)
+      extends SFXDelegate[jfxa.Platform.Preferences] {
+
+    /**
+     * The accent color, which can be used to highlight the active or
+     * important part of a control and make it stand out from the rest of the user interface.
+     */
+    def accentColor: ReadOnlyObjectProperty[jfxap.Color] = delegate.accentColorProperty
+
+    /**
+     * The color used for background regions.
+     */
+    def backgroundColor: ReadOnlyObjectProperty[jfxap.Color] = delegate.backgroundColorProperty
+
+    /**
+     * The platform color scheme, which specifies whether applications should prefer light text on dark backgrounds,
+     * or dark text on light backgrounds.
+     */
+    def colorScheme: ReadOnlyObjectProperty[jfxa.ColorScheme] = delegate.colorSchemeProperty
+
+    /**
+     * The color used for foreground elements like text.
+     *
+     * @return
+     */
+    def foregroundColor: ReadOnlyObjectProperty[jfxap.Color] = delegate.foregroundColorProperty
+  }
 
   /** Causes the JavaFX application to terminate. */
   def exit(): Unit = {
@@ -271,4 +311,8 @@ object Platform {
    */
   def accessibilityActive: ReadOnlyBooleanProperty = jfxa.Platform.accessibilityActiveProperty
 
+  /**
+   * Gets the preferences of the current platform, wraps [[https://openjfx.io/javadoc/22/javafx.graphics/javafx/application/Platform.html#getPreferences() Platform#getPreferences]]
+   */
+  def preferences: Preferences = jfxa.Platform.getPreferences
 }

@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "21"
-val scalafxVersion = "21.0.0-R32"
+val javaFXVersion  = "22"
+val scalafxVersion = "22.0.0-R33-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -49,15 +49,15 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip  := true
 ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.18"
-val Scala2_13 = "2.13.12"
-val Scala3_3  = "3.3.1"
+val Scala2_12 = "2.12.19"
+val Scala2_13 = "2.13.13"
+val Scala3_3  = "3.3.3"
 
 // Dependencies
 lazy val javafxModules =
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.17"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.18"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)

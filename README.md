@@ -30,7 +30,7 @@ __ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is inten
 Here is how you can add dependency using SBT.
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
+libraryDependencies += "org.scalafx" %% "scalafx" % "21.0.0-R32"
 ```
 
 Note that in ScalaFX version prior to `20.0.0-R31` and SBT older than 1.6, you needed to explicitly provide dependency on
@@ -86,13 +86,13 @@ repositories {
 }
 
 javafx {
-    version = "19"
+    version = "21"
     modules = ['javafx.controls', 'javafx.media']
 }
 
 dependencies {
-    implementation 'org.scala-lang:scala3-library_3:3.2.2'
-    implementation 'org.scalafx:scalafx_3:20.0.0-R31'
+    implementation 'org.scala-lang:scala3-library_3:3.3.1'
+    implementation 'org.scalafx:scalafx_3:21.0.0-R32'
 }
 
 application {
@@ -200,7 +200,7 @@ The current development is for ScalaFX 20.
 The development is done on the `master` branch.
 Releases are done on the `stable` branch.
 Releases are tagged with version number.
-Pull requests are only accepted off a brunch created from the `master` branch.
+Pull requests are only accepted off a branch created from the `master` branch.
 When working on a pull request, create a separate branch for each feature or bug fix.
 This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
 
