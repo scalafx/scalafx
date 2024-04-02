@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -311,4 +311,8 @@ object Platform {
    */
   def accessibilityActive: ReadOnlyBooleanProperty = jfxa.Platform.accessibilityActiveProperty
 
+  /**
+   * Gets the preferences of the current platform, wraps [[https://openjfx.io/javadoc/22/javafx.graphics/javafx/application/Platform.html#getPreferences() Platform#getPreferences]]
+   */
+  def preferences: Preferences = jfxa.Platform.getPreferences
 }
