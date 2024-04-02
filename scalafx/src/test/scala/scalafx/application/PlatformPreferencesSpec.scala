@@ -24,53 +24,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.application
 
 import javafx.application as jfxa
+import scalafx.Includes.*
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
-import scala.collection.JavaConverters.*
-import scala.collection.mutable
-import scala.language.implicitConversions
+class PlatformPreferencesSpec
+    extends SimpleSFXDelegateSpec[jfxa.Platform.Preferences, Platform.Preferences](
+      classOf[jfxa.Platform.Preferences],
+      classOf[Platform.Preferences]
+    )
+    with RunOnApplicationThread {
 
-object ApplicationIncludes extends ApplicationIncludes
+  override protected def getScalaClassInstance: Platform.Preferences =
+    new Platform.Preferences(getJavaClassInstance) {}
 
-/**
- * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/package-summary.html `javafx.application`]] Classes to
- * their ScalaFX counterparts.
- */
-trait ApplicationIncludes {
-
-  /**
-   * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
-   * instance to its ScalaFX counterpart.
-   *
-   * @param p JavaFX Parameters
-   * @return ScalaFX Parameters
-   */
-  implicit def jfxParameters2sfx(p: jfxa.Application.Parameters): JFXApp3.Parameters =
-    if (p != null) new JFXApp3.Parameters {
-      def raw: mutable.Buffer[String] = p.getRaw.asScala
-
-      def named: mutable.Map[String, String] = p.getNamed.asScala
-
-      def unnamed: mutable.Buffer[String] = p.getUnnamed.asScala
-
-      def delegate: jfxa.Application.Parameters = p
-    }
-    else null
-
-  /**
-   * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
-   * instance to its ScalaFX counterpart.
-   *
-   * @param e JavaFX ConditionalFeature
-   * @return ScalaFX ConditionalFeature
-   */
-  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature =
-    ConditionalFeature.jfxEnum2sfx(e)
-
-  implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices = new HostServices(e)
+  override def getJavaClassInstance: jfxa.Platform.Preferences = jfxa.Platform.getPreferences
 }
