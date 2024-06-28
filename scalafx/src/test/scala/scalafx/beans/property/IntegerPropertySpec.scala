@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,21 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.property as jfxbp
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
 
 /**
  * IntegerProperty Spec tests.
- *
- *
  */
 class IntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
-  var integerProperty: jfxbp.IntegerProperty = null
+  val bean                                    = new Object()
+  var integerProperty: jfxbp.IntegerProperty  = null
   var integerProperty2: jfxbp.IntegerProperty = null
   var integerProperty3: jfxbp.IntegerProperty = null
-  var booleanProperty: jfxbp.BooleanProperty = null
+  var booleanProperty: jfxbp.BooleanProperty  = null
 
   override def beforeEach(): Unit = {
     integerProperty = new IntegerProperty(bean, "Test Integer")
@@ -114,7 +112,7 @@ class IntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    integerProperty3 <== integerProperty + 35 + 35l + 35f + 35d
+    integerProperty3 <== integerProperty + 35 + 35L + 35f + 35d
     integerProperty() = 21
     integerProperty3() should equal(161)
     integerProperty3.unbind()
@@ -129,7 +127,7 @@ class IntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    integerProperty3 <== integerProperty - 12 - 12l - 12f - 12d
+    integerProperty3 <== integerProperty - 12 - 12L - 12f - 12d
     integerProperty() = 40
     integerProperty3() should equal(-8)
     integerProperty3.unbind()
@@ -144,7 +142,7 @@ class IntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    integerProperty3 <== integerProperty * 2 * 2l * 2f * 2d
+    integerProperty3 <== integerProperty * 2 * 2L * 2f * 2d
     integerProperty() = 5
     integerProperty3() should equal(80)
     integerProperty3.unbind()
@@ -159,7 +157,7 @@ class IntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    integerProperty3 <== integerProperty / 2 / 2l / 5f / 5d
+    integerProperty3 <== integerProperty / 2 / 2L / 5f / 5d
     integerProperty() = 100
     integerProperty3() should equal(1)
     integerProperty3.unbind()
@@ -296,8 +294,8 @@ class IntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = integerProperty * integerProperty2
+    var changeCount     = 0
+    val binding         = integerProperty * integerProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

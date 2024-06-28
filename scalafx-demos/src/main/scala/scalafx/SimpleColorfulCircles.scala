@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,7 @@
 
 package scalafx
 
-import scala.language.postfixOps
-import scala.math.random
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.animation.Timeline
 import scalafx.animation.Timeline.Indefinite
 import scalafx.application.JFXApp3
@@ -43,6 +41,9 @@ import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.shape.StrokeType.Outside
 import scalafx.scene.shape.{Circle, Rectangle}
 
+import scala.language.postfixOps
+import scala.math.random
+
 /**
  * SimpleColorfulCircles
  */
@@ -54,16 +55,17 @@ object SimpleColorfulCircles extends JFXApp3 {
       height = 600
       scene = new Scene { _scene =>
         fill = Black
-        circles = for (i <- 0 until 30) yield new Circle {
-          centerX = random * 800
-          centerY = random * 600
-          radius = 150
-          fill = White opacity 0.05d
-          stroke = White opacity 0.16d
-          strokeWidth = 4
-          strokeType = Outside
-          effect = new BoxBlur(10, 10, 3)
-        }
+        circles =
+          for (i <- 0 until 30) yield new Circle {
+            centerX = random() * 800
+            centerY = random() * 600
+            radius = 150
+            fill = White opacity 0.05d
+            stroke = White opacity 0.16d
+            strokeWidth = 4
+            strokeType = Outside
+            effect = new BoxBlur(10, 10, 3)
+          }
         content = circles :+ (new Rectangle {
           width <== _scene.width
           height <== _scene.height
@@ -83,9 +85,10 @@ object SimpleColorfulCircles extends JFXApp3 {
     new Timeline {
       cycleCount = Indefinite
       autoReverse = true
-      keyFrames = for (circle <- circles) yield at(40.s) {
-        Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
-      }
+      keyFrames =
+        for (circle <- circles) yield at(40.s) {
+          Set(circle.centerX -> random() * 800, circle.centerY -> random() * 600)
+        }
     }.play()
   }
 }
