@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,18 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-
-import scalafx.Includes._
+import javafx.scene as jfxs
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Parent Spec tests.
- *
- *
  */
 class ParentSpec
-  extends SimpleSFXDelegateSpec[jfxs.Parent, Parent](classOf[jfxs.Parent], classOf[Parent]) {
+    extends SimpleSFXDelegateSpec[jfxs.Parent, Parent](classOf[jfxs.Parent], classOf[Parent]) {
 
-  override protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
+  override protected def getScalaClassInstance: Parent = new Parent(getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new jfxs.Group
+  override protected def getJavaClassInstance: jfxs.Group = new jfxs.Group
 
 }

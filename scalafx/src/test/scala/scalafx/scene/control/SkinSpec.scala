@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,27 +26,26 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+import javafx.scene as jfxs
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Skin[T] Spec tests.
- *
  */
 class SkinSpec[T <: jfxsc.Skinnable]
-  extends SimpleSFXDelegateSpec[jfxsc.Skin[T], Skin[T]](classOf[jfxsc.Skin[T]], classOf[Skin[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.Skin[T], Skin[T]](classOf[jfxsc.Skin[T]], classOf[Skin[T]]) {
 
-  override protected def getScalaClassInstance = new Skin[T] {
-    override val delegate = getJavaClassInstance
+  override protected def getScalaClassInstance: Skin[T] = new Skin[T] {
+    override val delegate: jfxsc.Skin[T] = getJavaClassInstance
   }
 
-  // How Skin is a abstract class, it is done a basic implementation
-  override protected def getJavaClassInstance = new jfxsc.Skin[T] {
-    def dispose(): Unit = {}
+  override protected def getJavaClassInstance: javafx.scene.control.Skin[T] = new jfxsc.Skin[T] {
+    override def dispose(): Unit = {}
 
-    def getNode = null
-    def getSkinnable = null.asInstanceOf[T]
+    override def getNode: jfxs.Node = null
+    override def getSkinnable: T    = null.asInstanceOf[T]
   }
 
 }

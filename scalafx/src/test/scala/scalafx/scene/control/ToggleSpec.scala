@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,22 +26,19 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Toggle Spec tests.
- *
- *
  */
 class ToggleSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Toggle, Toggle](classOf[jfxsc.Toggle], classOf[Toggle])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Toggle, Toggle](classOf[jfxsc.Toggle], classOf[Toggle])
+    with RunOnApplicationThread {
 
-  override def getScalaClassInstance = new ToggleButton
+  override def getScalaClassInstance: ToggleButton = new ToggleButton
 
-  override def getJavaClassInstance = new jfxsc.ToggleButton
+  override def getJavaClassInstance: jfxsc.ToggleButton = new jfxsc.ToggleButton
 
 }

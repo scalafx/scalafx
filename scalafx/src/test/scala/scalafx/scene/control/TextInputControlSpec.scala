@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,23 +26,22 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TextInputControl Spec tests.
- *
- *
  */
 class TextInputControlSpec
-  extends SimpleSFXDelegateSpec[jfxsc.TextInputControl, TextInputControl](
-    classOf[jfxsc.TextInputControl], classOf[TextInputControl])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.TextInputControl, TextInputControl](
+      classOf[jfxsc.TextInputControl],
+      classOf[TextInputControl]
+    )
+    with RunOnApplicationThread {
 
-  override protected def getScalaClassInstance = new TextField
+  override protected def getScalaClassInstance: TextField = new TextField
 
-  override protected def getJavaClassInstance = new jfxsc.TextField
+  override protected def getJavaClassInstance: jfxsc.TextField = new jfxsc.TextField
 
 }

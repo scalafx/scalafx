@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,21 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-
-import scalafx.Includes._
+import javafx.scene.layout as jfxsl
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ConstraintsBase Spec tests.
- *
- *
  */
 class ConstraintsBaseSpec
-  extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase]) {
+    extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](
+      classOf[jfxsl.ConstraintsBase],
+      classOf[ConstraintsBase]
+    ) {
 
-  override protected def getScalaClassInstance = new RowConstraints
+  override protected def getScalaClassInstance: RowConstraints = new RowConstraints
 
-  override protected def getJavaClassInstance = new jfxsl.RowConstraints
+  override protected def getJavaClassInstance: jfxsl.RowConstraints = new jfxsl.RowConstraints
 
 }

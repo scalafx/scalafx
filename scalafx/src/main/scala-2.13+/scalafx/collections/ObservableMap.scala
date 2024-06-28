@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,12 @@
  */
 package scalafx.collections
 
-import javafx.{collections => jfxc}
+import javafx.collections as jfxc
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
-import java.{util => ju}
+import java.util as ju
 import scala.collection.{MapFactory, MapFactoryDefaults, StrictOptimizedIterableOps, mutable}
 import scala.language.implicitConversions
 
@@ -41,21 +41,22 @@ import scala.language.implicitConversions
  * @define OM `ObservableMap`
  */
 object ObservableMap extends MapFactory[ObservableMap] {
+
   /**
-   * Extracts a JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]] from a 
+   * Extracts a JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]] from a
    * ScalaFX's $OM.
    *
    * @param om ScalaFX's $OM.
    * @return JavaFX's $OM inside parameter.
    */
-  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]): jfxc.ObservableMap[K, V] = if (om != null) om.delegate else null
+  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]): jfxc.ObservableMap[K, V] =
+    if (om != null) om.delegate else null
 
   override def from[K, V](source: IterableOnce[(K, V)]): ObservableMap[K, V] = empty.addAll(source)
 
   override def newBuilder[K, V]: mutable.Builder[(K, V), ObservableMap[K, V]] = {
     new mutable.GrowableBuilder[(K, V), ObservableMap[K, V]](empty[K, V])
   }
-
 
   // CHANGING INDICATORS - BEGIN
 
@@ -127,12 +128,12 @@ object ObservableMap extends MapFactory[ObservableMap] {
  * @define MAP `Map`
  */
 trait ObservableMap[K, V]
-  extends mutable.Map[K, V]
+    extends mutable.Map[K, V]
     with mutable.MapOps[K, V, mutable.Map, ObservableMap[K, V]]
     with StrictOptimizedIterableOps[(K, V), mutable.Iterable, ObservableMap[K, V]]
     with MapFactoryDefaults[K, V, ObservableMap, mutable.Iterable]
-  with Observable
-  with SFXDelegate[jfxc.ObservableMap[K, V]] {
+    with Observable
+    with SFXDelegate[jfxc.ObservableMap[K, V]] {
 
   override def mapFactory: MapFactory[ObservableMap] = ObservableMap
 
@@ -146,7 +147,7 @@ trait ObservableMap[K, V]
    *
    * @return An empty $OM
    */
-  override def empty = new ObservableHashMap[K, V]()
+  override def empty: ObservableMap[K, V] = new ObservableHashMap[K, V]()
 
   /**
    * Adds a new key/value pair to this $MAP.
@@ -211,7 +212,7 @@ trait ObservableMap[K, V]
    */
   override def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
-  import scalafx.collections.ObservableMap._
+  import scalafx.collections.ObservableMap.*
 
   /**
    * Add a listener function to $MAP's changes. This function '''will handle''' this map's modifications data.
@@ -276,5 +277,6 @@ trait ObservableMap[K, V]
  *                 method from
  *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html `FXCollections`]].
  */
-class ObservableHashMap[K, V](override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(new ju.HashMap[K, V]))
-  extends ObservableMap[K, V] 
+class ObservableHashMap[K, V](override val delegate: jfxc.ObservableMap[K, V] =
+  jfxc.FXCollections.observableMap(new ju.HashMap[K, V]))
+    extends ObservableMap[K, V]

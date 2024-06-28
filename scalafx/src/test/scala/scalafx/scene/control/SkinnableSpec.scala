@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,25 +26,24 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+import javafx.beans.property as jfxbp
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Skinnable Spec tests.
- *
  */
 class SkinnableSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Skinnable, Skinnable](classOf[jfxsc.Skinnable], classOf[Skinnable]) {
+    extends SimpleSFXDelegateSpec[jfxsc.Skinnable, Skinnable](classOf[jfxsc.Skinnable], classOf[Skinnable]) {
 
-  override protected def getScalaClassInstance = new Skinnable {
-    override val delegate = getJavaClassInstance
+  override protected def getScalaClassInstance: scalafx.scene.control.Skinnable = new Skinnable {
+    override val delegate: jfxsc.Skinnable = getJavaClassInstance
   }
 
-  // How Skinnable is a abstract class, it is done a basic implementation
-  override protected def getJavaClassInstance = new jfxsc.Skinnable {
-    def skinProperty = null
-    def getSkin = null
+  override protected def getJavaClassInstance: jfxsc.Skinnable = new jfxsc.Skinnable {
+    def skinProperty: jfxbp.ObjectProperty[jfxsc.Skin[?]] = null
+    def getSkin: jfxsc.Skin[?]                            = null
 
     def setSkin(s: jfxsc.Skin[_]): Unit = {}
   }

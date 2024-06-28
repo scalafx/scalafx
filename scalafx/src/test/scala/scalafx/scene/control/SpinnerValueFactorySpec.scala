@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,11 +41,11 @@ class SpinnerValueFactorySpec[Integer]
     classOf[jfxsc.SpinnerValueFactory[Integer]], classOf[SpinnerValueFactory[Integer]])
   with RunOnApplicationThread {
 
-  override protected def getScalaClassInstance = new SpinnerValueFactory[Integer](getJavaClassInstance) {}
+  override protected def getScalaClassInstance:SpinnerValueFactory[Integer] = new SpinnerValueFactory[Integer](getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new jfxsc.SpinnerValueFactory[Integer]() {
-    override def decrement(steps: Int) = ???
-    override def increment(steps: Int) = ???
+  override protected def getJavaClassInstance: jfxsc.SpinnerValueFactory[Integer] = new jfxsc.SpinnerValueFactory[Integer]() {
+    override def decrement(steps: Int): Unit = ???
+    override def increment(steps: Int): Unit = ???
   }
 
 }

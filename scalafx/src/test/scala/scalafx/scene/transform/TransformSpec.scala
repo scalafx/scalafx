@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,20 +26,17 @@
  */
 package scalafx.scene.transform
 
-import javafx.scene.{transform => jfxst}
-
-import scalafx.Includes._
+import javafx.scene.transform as jfxst
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Transform Spec tests.
- *
- *
  */
 class TransformSpec
-  extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
+    extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
 
-  override def getScalaClassInstance = new Transform(getJavaClassInstance) {}
+  override def getScalaClassInstance: Transform = new Transform(getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new Affine()
+  override protected def getJavaClassInstance: jfxst.Affine = new jfxst.Affine()
 }

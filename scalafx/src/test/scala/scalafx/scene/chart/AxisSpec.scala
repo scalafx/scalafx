@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,36 +26,34 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
-import scalafx.Includes._
+import javafx.scene.chart as jfxsc
+import scalafx.Includes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Axis Spec tests.
- *
- *
  */
 class AxisSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
+    with RunOnApplicationThread {
 
-  override def getScalaClassInstance = new Axis[T](getJavaClassInstance) {}
+  override def getScalaClassInstance: Axis[T] = new Axis[T](getJavaClassInstance) {}
 
-  override def getJavaClassInstance = new jfxsc.Axis[T] {
-    protected def autoRange(length: Double) = null
-    protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
-    def getDisplayPosition(value: T) = 0.0
-    protected def getRange = null
-    protected def getTickMarkLabel(value: T) = ""
-    def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
-    def getZeroPosition = 0.0
-    def isValueOnAxis(value: T) = false
+  override def getJavaClassInstance: jfxsc.Axis[T] = new jfxsc.Axis[T] {
+    protected def autoRange(length: Double): AnyRef                                  = null
+    protected def calculateTickValues(length: Double, range: Any): java.util.List[T] = new java.util.ArrayList[T]
+    def getDisplayPosition(value: T): Double                                         = 0.0
+    protected def getRange: AnyRef                                                   = null
+    protected def getTickMarkLabel(value: T): String                                 = ""
+    def getValueForDisplay(displayPosition: Double): T                               = null.asInstanceOf[T]
+    def getZeroPosition: Double                                                      = 0.0
+    def isValueOnAxis(value: T): Boolean                                             = false
 
     protected def setRange(range: Any, animate: Boolean): Unit = {}
 
-    def toNumericValue(value: T) = 0.0
-    def toRealValue(value: Double) = null.asInstanceOf[T]
+    def toNumericValue(value: T): Double = 0.0
+    def toRealValue(value: Double): T    = null.asInstanceOf[T]
   }
 
   it should "correctly implement invalidateRange [Issue #310]" in {
