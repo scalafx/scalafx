@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 
 package scalafx
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.scene.Scene
-import scalafx.scene.paint.Color
+import scalafx.scene.paint.Color.{Green, LightGreen, Red}
 import scalafx.scene.shape.Rectangle
 
 object JavaFXChangeListener extends JFXApp3 {
@@ -40,22 +40,20 @@ object JavaFXChangeListener extends JFXApp3 {
       width = 600
       height = 450
       scene = new Scene {
-        fill = Color.LightGreen
+        fill = LightGreen
         content = new Rectangle {
           x = 25
           y = 40
           width = 100
           height = 100
-          // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
-          // fill <== when (hover) choose Color.Green otherwise Color.Red
-          // NOTE Scala 3: variable `helper` was added to force type (and implicit conversions) on right side of `<==`
-          //               This is not needed in Scala 2
+          // TODO Scala 3: Original line of code.
+          //   Compiles with Scala 2.
+          //   Does not compile with Scala 3.
+//           fill <== when (hover) choose Green otherwise Red
 
-          import javafx.scene.{paint => jfxsp}
-          import scalafx.beans.binding.ObjectBinding
-
-          val helper: ObjectBinding[jfxsp.Color] = when(hover) choose Color.Green otherwise Color.Red
-          fill <== helper
+          // NOTE Scala 3: type parameter for `fill` value is a JavaFX Color,
+          //   to help Scala 3 derive proper types we hint using `delegate`
+          fill <== when(hover) choose Green otherwise Red.delegate
         }
       }
     }
