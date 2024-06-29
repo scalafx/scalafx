@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object Axis {
   }
 
   class TickMark[T](override val delegate: jfxsc.Axis.TickMark[T] = new jfxsc.Axis.TickMark[T]())
-    extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
+      extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
 
     def label: StringExpression = delegate.labelProperty
 
@@ -80,7 +80,7 @@ object Axis {
 }
 
 abstract class Axis[T](override val delegate: jfxsc.Axis[T])
-  extends Region(delegate)
+    extends Region(delegate)
     with SFXDelegate[jfxsc.Axis[T]] {
 
   def animated: BooleanProperty = delegate.animatedProperty

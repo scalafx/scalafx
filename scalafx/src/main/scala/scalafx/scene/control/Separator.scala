@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,12 +39,13 @@ object Separator {
   implicit def sfxSeparator2jfx(v: Separator): jfxsc.Separator = if (v != null) v.delegate else null
 
   /**
-    * Create new separator with provided orientation.
-    */
+   * Create new separator with provided orientation.
+   */
   def apply(orientation: Orientation): Separator = new jfxsc.Separator(orientation)
 }
 
-class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {
+class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate)
+    with SFXDelegate[jfxsc.Separator] {
 
   def halignment: ObjectProperty[jfxg.HPos] = delegate.halignmentProperty
 

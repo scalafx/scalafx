@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import scala.language.implicitConversions
  * Companion Object for [[scalafx.print.PrintIncludes]].
  */
 object PrintIncludes
-  extends PrintIncludes
+    extends PrintIncludes
 
 /**
  * Contains implicit methods to convert from
@@ -152,7 +152,8 @@ trait PrintIncludes {
    * @param mt $JFX $MT
    * @return $SFX $MT
    */
-  implicit def jfxPrinterMarginType2sfx(mt: jfxp.Printer.MarginType): Printer.MarginType = Printer.MarginType.jfxEnum2sfx(mt)
+  implicit def jfxPrinterMarginType2sfx(mt: jfxp.Printer.MarginType): Printer.MarginType =
+    Printer.MarginType.jfxEnum2sfx(mt)
 
   /**
    * $START$PJ.html $PJ$END
@@ -168,7 +169,8 @@ trait PrintIncludes {
    * @param js $JFX $JS
    * @return $SFX $JS
    */
-  implicit def jfxPrintJobJobStatus2sfx(js: jfxp.PrinterJob.JobStatus): PrinterJob.JobStatus = PrinterJob.JobStatus.jfxEnum2sfx(js)
+  implicit def jfxPrintJobJobStatus2sfx(js: jfxp.PrinterJob.JobStatus): PrinterJob.JobStatus =
+    PrinterJob.JobStatus.jfxEnum2sfx(js)
 
   /**
    * $START$PQ.html $PQ$END

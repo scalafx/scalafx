@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,21 @@ import scalafx.Includes._
 
 /**
  * FloatStringConverter Spec tests.
- *
- *
  */
 class FloatStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[java.lang.Float, jfxuc.FloatStringConverter, Float, FloatStringConverter](classOf[jfxuc.FloatStringConverter], classOf[FloatStringConverter], classOf[Float]) {
+    extends AbstractStringConverterDelegateSpec[
+      java.lang.Float,
+      jfxuc.FloatStringConverter,
+      Float,
+      FloatStringConverter
+    ](classOf[jfxuc.FloatStringConverter], classOf[FloatStringConverter], classOf[Float]) {
 
-  val examples = List((0.0f, "0.0"), (123.45f, "123.45"), (-123.45f, "-123.45"),
-    (Float.MaxValue, Float.MaxValue.toString), (Float.MinValue, Float.MinValue.toString))
+  val examples = List(
+    (0.0f, "0.0"),
+    (123.45f, "123.45"),
+    (-123.45f, "-123.45"),
+    (Float.MaxValue, Float.MaxValue.toString),
+    (Float.MinValue, Float.MinValue.toString)
+  )
 
 }

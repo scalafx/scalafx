@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,18 +41,22 @@ import scala.language.implicitConversions
  * Object companion for [[scalafx.scene.control.ButtonBar]].
  */
 object ButtonBar {
+
   /**
    * The default button ordering on Windows.
    */
   val ButtonOrderWindows: String = jfxsc.ButtonBar.BUTTON_ORDER_WINDOWS
+
   /**
    * The default button ordering on Mac OS.
    */
   val ButtonOrderMacOs: String = jfxsc.ButtonBar.BUTTON_ORDER_MAC_OS
+
   /**
    * The default button ordering on Linux (specifically, GNOME).
    */
   val ButtonOrderLinux: String = jfxsc.ButtonBar.BUTTON_ORDER_LINUX
+
   /**
    * A button ordering string that specifies there is no button ordering. In
    * other words, buttons will be placed in the order that exist in the
@@ -60,6 +64,7 @@ object ButtonBar {
    * different than using an HBox is that the buttons are right-aligned.
    */
   val ButtonOrderNone: String = jfxsc.ButtonBar.BUTTON_ORDER_NONE
+
   /**
    * Converts a ScalaFX ButtonBar to its JavaFX counterpart.
    *
@@ -68,6 +73,7 @@ object ButtonBar {
    */
   implicit def sfxButtonBar2jfx(v: ButtonBar): jfxsc.ButtonBar =
     if (v != null) v.delegate else null
+
   /**
    * Sets the given ButtonData on the given button. If this button is
    * subsequently placed in a [[scalafx.scene.control.ButtonBar]] it will be placed in the
@@ -79,6 +85,7 @@ object ButtonBar {
   def setButtonData(button: Node, buttonData: ButtonBar.ButtonData): Unit = {
     jfxsc.ButtonBar.setButtonData(button, buttonData)
   }
+
   /**
    * Returns the previously set ButtonData property on the given button. If this
    * was never set, this method will return null.
@@ -86,6 +93,7 @@ object ButtonBar {
    * @param button The button to return the previously set ButtonData for.
    */
   def getButtonData(button: Node): ButtonBar.ButtonData = jfxsc.ButtonBar.getButtonData(button)
+
   /**
    * By default all buttons are uniformly sized in a ButtonBar, meaning that all
    * buttons take the width of the widest button. It is possible to opt-out of this
@@ -104,6 +112,7 @@ object ButtonBar {
   def setButtonUniformSize(button: Node, uniformSize: Boolean): Unit = {
     jfxsc.ButtonBar.setButtonUniformSize(button, uniformSize)
   }
+
   /**
    * Returns whether the given node is part of the uniform sizing calculations
    * or not. By default all nodes that have not opted out (via
@@ -120,7 +129,7 @@ object ButtonBar {
    * @param delegate JavaFX ButtonData
    */
   sealed abstract class ButtonData(override val delegate: jfxsc.ButtonBar.ButtonData)
-    extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
+      extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
     def typeCode: String = delegate.getTypeCode
   }
 
@@ -128,10 +137,10 @@ object ButtonBar {
    * Wraps a $JFX $URL0 $FC]].
    *
    * @define EN          ButtonData
-    * @define URL0       [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html
-    * @define JFX        JavaFX
+   * @define URL0       [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html
+   * @define JFX        JavaFX
    * @define ORIGINALDOC Original Documentation]].
-    **/
+   */
   object ButtonData extends SFXEnumDelegateCompanion[jfxsc.ButtonBar.ButtonData, ButtonData] {
 
     /**
@@ -231,7 +240,6 @@ object ButtonBar {
      */
     case object Other extends ButtonData(jfxsc.ButtonBar.ButtonData.OTHER)
 
-
     /**
      * A glue push gap that will take as much space as it can and at least
      * an "unrelated" gap. (Platform dependent)
@@ -247,8 +255,23 @@ object ButtonBar {
      */
     case object SmallGap extends ButtonData(jfxsc.ButtonBar.ButtonData.SMALL_GAP)
 
-    protected override def unsortedValues: Array[ButtonData] = Array(Left, Right, Help, Help2, Yes, No,
-      NextForward, BackPrevious, Finish, Apply, CancelClose, OKDone, Other, BigGap, SmallGap)
+    protected override def unsortedValues: Array[ButtonData] = Array(
+      Left,
+      Right,
+      Help,
+      Help2,
+      Yes,
+      No,
+      NextForward,
+      BackPrevious,
+      Finish,
+      Apply,
+      CancelClose,
+      OKDone,
+      Other,
+      BigGap,
+      SmallGap
+    )
   }
 
 }
@@ -264,11 +287,10 @@ object ButtonBar {
  * @define ORIGINALDOC Original Documentation]].
  * @constructor      Creates a default ButtonBar instance using the default properties for
  *                   the users operating system.
-
  */
 class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ButtonBar] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ButtonBar] {
 
   /**
    * Creates a ButtonBar with the given button order (refer to
@@ -277,7 +299,6 @@ class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
    * @param buttonOrder The button order to use in this button bar instance.
    */
   def this(buttonOrder: String) = this(new jfxsc.ButtonBar(buttonOrder))
-
 
   def buttons: ObservableBuffer[jfxs.Node] = delegate.getButtons
 

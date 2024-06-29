@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ object WebIncludes extends WebIncludes
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/
  * @define END ]]` instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.web.
-           * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX counterpart.
+ * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX counterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *
@@ -73,7 +73,8 @@ trait WebIncludes {
    * @param pf $JFX $PF
    * @return $SFX $PF
    */
-  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures): PopupFeatures = if (pf != null) new PopupFeatures(pf) else null
+  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures): PopupFeatures =
+    if (pf != null) new PopupFeatures(pf) else null
 
   /**
    * $START$PD.html $PD$END
@@ -122,10 +123,11 @@ trait WebIncludes {
    * @param handler $PARAMWR $WE
    * @return $RETWR $WE
    */
-  implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any): EventHandler[jfxsw.WebEvent[T]] = new jfxe.EventHandler[jfxsw.WebEvent[T]] {
-    def handle(event: jfxsw.WebEvent[T]): Unit = {
-      handler(event)
+  implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any): EventHandler[jfxsw.WebEvent[T]] =
+    new jfxe.EventHandler[jfxsw.WebEvent[T]] {
+      def handle(event: jfxsw.WebEvent[T]): Unit = {
+        handler(event)
+      }
     }
-  }
 
 }

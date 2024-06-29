@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object Styleable {
  * @since 8.0
  */
 trait Styleable
-  extends SFXDelegate[jfxcss.Styleable] {
+    extends SFXDelegate[jfxcss.Styleable] {
 
   /**
    * The CssMetaData of this Styleable.
@@ -66,9 +66,9 @@ trait Styleable
   /**
    * The id of this Styleable.
    *
-   * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not 
-   * conflict with its subclasses already have a method with this name which returns a 
-   * `StringProperty`. 
+   * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not
+   * conflict with its subclasses already have a method with this name which returns a
+   * `StringProperty`.
    */
   def getId: String = delegate.getId
 
@@ -80,9 +80,9 @@ trait Styleable
   /**
    * A string representation of the CSS style associated with this specific Node.
    *
-   * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not 
-   * conflict with its subclasses already have a method with this name which returns a 
-   * `StringProperty`. 
+   * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not
+   * conflict with its subclasses already have a method with this name which returns a
+   * `StringProperty`.
    */
   def getStyle: String = delegate.getStyle
 

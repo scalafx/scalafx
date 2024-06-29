@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,6 +37,7 @@ import scalafx.scene.control.Alert.AlertType
 import scala.language.implicitConversions
 
 object Alert {
+
   /**
    * Converts a ScalaFX Alert to its JavaFX counterpart.
    *
@@ -51,6 +52,7 @@ object Alert {
    * the `Alert` class can use to pre-populate various properties.
    */
   object AlertType extends SFXEnumDelegateCompanion[jfxsc.Alert.AlertType, AlertType] {
+
     /**
      * The `None` alert type has the effect of not setting any default properties
      * in the Alert.
@@ -92,12 +94,12 @@ object Alert {
      */
     case object Error extends AlertType(jfxsc.Alert.AlertType.ERROR)
 
-    /** Contain constants which will be source for `values` List  */
+    /** Contain constants which will be source for `values` List */
     override protected def unsortedValues: Array[AlertType] = Array(None, Information, Warning, Confirmation, Error)
   }
 
   sealed abstract class AlertType(override val delegate: jfxsc.Alert.AlertType)
-    extends SFXEnumDelegate[jfxsc.Alert.AlertType]
+      extends SFXEnumDelegate[jfxsc.Alert.AlertType]
 
 }
 
@@ -111,10 +113,10 @@ object Alert {
  * Example of displaying an information dialog:
  * {{{
  *   new Alert(AlertType.Information) {
-       title = "Information Dialog"
-       headerText = "Look, an Information Dialog"
-       contentText = "I have a great message for you!"
-     }.showAndWait()
+ *       title = "Information Dialog"
+ *       headerText = "Look, an Information Dialog"
+ *       contentText = "I have a great message for you!"
+ *     }.showAndWait()
  * }}}
  *
  * A bit more elaborated example that is using a custom buttons:
@@ -146,8 +148,8 @@ object Alert {
  * @define ORIGINALDOC Original Documentation]].
  */
 class Alert(override val delegate: jfxsc.Alert)
-  extends Dialog[jfxsc.ButtonType](delegate)
-  with SFXDelegate[jfxsc.Alert] {
+    extends Dialog[jfxsc.ButtonType](delegate)
+    with SFXDelegate[jfxsc.Alert] {
 
   /**
    * Creates an alert with the given AlertType (refer to the `AlertType`
@@ -205,7 +207,6 @@ class Alert(override val delegate: jfxsc.Alert)
   def alertType_=(v: AlertType): Unit = {
     alertType() = v
   }
-
 
   /**
    * Returns an `ObservableBuffer` of all `ButtonType` instances that

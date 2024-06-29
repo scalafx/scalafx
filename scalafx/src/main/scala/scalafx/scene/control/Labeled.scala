@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,9 +44,9 @@ object Labeled {
 }
 
 abstract class Labeled(override val delegate: jfxsc.Labeled)
-  extends Control(delegate)
-  with AlignmentDelegate[jfxsc.Labeled]
-  with SFXDelegate[jfxsc.Labeled] {
+    extends Control(delegate)
+    with AlignmentDelegate[jfxsc.Labeled]
+    with SFXDelegate[jfxsc.Labeled] {
 
   /**
    * Specifies the positioning of the graphic relative to the text.

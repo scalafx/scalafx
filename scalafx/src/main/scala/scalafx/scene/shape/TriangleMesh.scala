@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,6 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
-
 object TriangleMesh {
   implicit def sfxTriangleMesh2jfx(tm: TriangleMesh): jfxss.TriangleMesh = if (tm != null) tm.delegate else null
 }
@@ -43,7 +42,7 @@ object TriangleMesh {
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/TriangleMesh.html]].
  */
 class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.TriangleMesh())
-  extends Mesh(delegate)
+    extends Mesh(delegate)
     with SFXDelegate[jfxss.TriangleMesh] {
 
   /**

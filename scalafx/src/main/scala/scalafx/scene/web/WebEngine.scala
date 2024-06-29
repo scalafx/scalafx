@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,7 @@ object WebEngine {
  * @param delegate A JavaFX WebEngine. Its default value is a new instance.
  */
 class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
-  extends SFXDelegate[jfxsw.WebEngine] {
+    extends SFXDelegate[jfxsw.WebEngine] {
 
   /**
    * Creates a new engine and loads a Web page into it.
@@ -80,7 +80,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * JavaScript popup handler property.
    */
-  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] = delegate.createPopupHandlerProperty
+  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] =
+    delegate.createPopupHandlerProperty
 
   def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine): Unit = {
     createPopupHandler() = new jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine] {

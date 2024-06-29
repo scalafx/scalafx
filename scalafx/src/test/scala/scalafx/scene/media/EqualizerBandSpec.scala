@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * EqualizerBand Spec tests.
- *
- *
  */
 class EqualizerBandSpec
-  extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, EqualizerBand](classOf[jfxsm.EqualizerBand], classOf[EqualizerBand])
+    extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, EqualizerBand](
+      classOf[jfxsm.EqualizerBand],
+      classOf[EqualizerBand]
+    )

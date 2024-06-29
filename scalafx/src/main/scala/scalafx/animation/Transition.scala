@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,8 +59,8 @@ object Transition extends AnimationStatics {
  * @define TR `Transition`
  */
 abstract class Transition(override val delegate: jfxa.Transition)
-  extends Animation(delegate)
-  with SFXDelegate[jfxa.Transition] {
+    extends Animation(delegate)
+    with SFXDelegate[jfxa.Transition] {
 
   /**
    * Controls the timing for acceleration and deceleration at each $TR cycle. Default Value: `Interpolator.EASE_BOTH`.

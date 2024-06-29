@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,12 +46,10 @@ object BorderWidths {
    */
   val Default: BorderWidths = jfxsl.BorderWidths.DEFAULT
 
-
   /**
    * An empty set of widths, such that all values are 0 and are literal values.
    */
   val Empty: BorderWidths = jfxsl.BorderWidths.EMPTY
-
 
   /**
    * A set of widths representing 100% on each side.
@@ -63,7 +61,7 @@ object BorderWidths {
  * Defines widths for four components (top, right, bottom, and left).
  */
 class BorderWidths(override val delegate: jfxsl.BorderWidths)
-  extends SFXDelegate[jfxsl.BorderWidths] {
+    extends SFXDelegate[jfxsl.BorderWidths] {
 
   /**
    * Creates a new BorderWidths using the given width for all four borders, and treating this
@@ -80,11 +78,26 @@ class BorderWidths(override val delegate: jfxsl.BorderWidths)
   /**
    * Creates a new BorderWidths.
    */
-  def this(top: Double, right: Double, bottom: Double, left: Double,
-           topAsPercentage: Boolean, rightAsPercentage: Boolean,
-           bottomAsPercentage: Boolean, leftAsPercentage: Boolean) =
-    this(new jfxsl.BorderWidths(top, right, bottom, left,
-      topAsPercentage, rightAsPercentage, bottomAsPercentage, leftAsPercentage))
+  def this(
+    top: Double,
+    right: Double,
+    bottom: Double,
+    left: Double,
+    topAsPercentage: Boolean,
+    rightAsPercentage: Boolean,
+    bottomAsPercentage: Boolean,
+    leftAsPercentage: Boolean
+  ) =
+    this(new jfxsl.BorderWidths(
+      top,
+      right,
+      bottom,
+      left,
+      topAsPercentage,
+      rightAsPercentage,
+      bottomAsPercentage,
+      leftAsPercentage
+    ))
 
   /**
    * The non-negative value (with the exception of AUTO) indicating the border thickness on

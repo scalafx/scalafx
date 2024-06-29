@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,14 +38,17 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.language.implicitConversions
 
 /**
-  * Test for [[scalafx.util.converter.FormatStringConverterSpec]].
-  */
+ * Test for [[scalafx.util.converter.FormatStringConverterSpec]].
+ */
 class FormatStringConverterSpec
-  extends SimpleSFXDelegateSpec[jfxuc.FormatStringConverter[Number], FormatStringConverter[Number]](
-    classOf[jfxuc.FormatStringConverter[Number]], classOf[FormatStringConverter[Number]]) {
+    extends SimpleSFXDelegateSpec[jfxuc.FormatStringConverter[Number], FormatStringConverter[Number]](
+      classOf[jfxuc.FormatStringConverter[Number]],
+      classOf[FormatStringConverter[Number]]
+    ) {
 
   override protected def getJavaClassInstance = getScalaClassInstance
-  override protected def getScalaClassInstance = new FormatStringConverter[Number](NumberFormat.getCurrencyInstance(Locale.US))
+  override protected def getScalaClassInstance =
+    new FormatStringConverter[Number](NumberFormat.getCurrencyInstance(Locale.US))
 
   def getConverterForExample: FormatStringConverter[Number] = getScalaClassInstance
 
@@ -69,7 +72,6 @@ class FormatStringConverterSpec
 
     examples.foreach(example => runConversionsForExamples(example._1, example._2))
   }
-
 
   it should "convert Number to String and vice-versa" in {
     this.runConverterForExamples()

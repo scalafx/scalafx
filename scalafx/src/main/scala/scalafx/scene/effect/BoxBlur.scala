@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,10 +41,10 @@ object BoxBlur {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/BoxBlur.html]]
  */
 class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
-  extends Effect(delegate)
-  with DimensionDelegate[jfxse.BoxBlur]
-  with InputDelegate[jfxse.BoxBlur]
-  with SFXDelegate[jfxse.BoxBlur] {
+    extends Effect(delegate)
+    with DimensionDelegate[jfxse.BoxBlur]
+    with InputDelegate[jfxse.BoxBlur]
+    with SFXDelegate[jfxse.BoxBlur] {
 
   /**
    * Creates a new instance of BoxBlur with specified width, height and iterations.

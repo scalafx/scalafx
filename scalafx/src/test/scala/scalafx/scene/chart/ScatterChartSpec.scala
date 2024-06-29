@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,13 +33,13 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ScatterChart Spec tests.
- *
- *
  */
 class ScatterChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ScatterChart[Number, Number], ScatterChart[Number, Number]](
-    classOf[jfxsc.ScatterChart[Number, Number]], classOf[ScatterChart[Number, Number]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.ScatterChart[Number, Number], ScatterChart[Number, Number]](
+      classOf[jfxsc.ScatterChart[Number, Number]],
+      classOf[ScatterChart[Number, Number]]
+    )
+    with RunOnApplicationThread {
 
   override def getJavaClassInstance = new jfxsc.ScatterChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 

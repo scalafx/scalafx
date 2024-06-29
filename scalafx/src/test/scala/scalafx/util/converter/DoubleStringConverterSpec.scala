@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,21 @@ import scalafx.Includes._
 
 /**
  * DoubleStringConverter Spec tests.
- *
- *
  */
 class DoubleStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[java.lang.Double, jfxuc.DoubleStringConverter, Double, DoubleStringConverter](classOf[jfxuc.DoubleStringConverter], classOf[DoubleStringConverter], classOf[Double]) {
+    extends AbstractStringConverterDelegateSpec[
+      java.lang.Double,
+      jfxuc.DoubleStringConverter,
+      Double,
+      DoubleStringConverter
+    ](classOf[jfxuc.DoubleStringConverter], classOf[DoubleStringConverter], classOf[Double]) {
 
-  val examples = List((0.0, "0.0"), (123.09, "123.09"), (-123.45, "-123.45"),
-    (Double.MaxValue, Double.MaxValue.toString), (Double.MinValue, Double.MinValue.toString))
+  val examples = List(
+    (0.0, "0.0"),
+    (123.09, "123.09"),
+    (-123.45, "-123.45"),
+    (Double.MaxValue, Double.MaxValue.toString),
+    (Double.MinValue, Double.MinValue.toString)
+  )
 
 }

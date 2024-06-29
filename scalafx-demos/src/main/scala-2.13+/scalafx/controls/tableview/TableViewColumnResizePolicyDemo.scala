@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,9 +46,9 @@ import scalafx.scene.layout.VBox
 object TableViewColumnResizePolicyDemo extends JFXApp3 {
 
   class MyDomain(val nameValue: String, val descriptionValue: String, val colorValue: String) {
-    val name = new StringProperty(nameValue)
+    val name        = new StringProperty(nameValue)
     val description = new StringProperty(descriptionValue)
-    val color = new StringProperty(colorValue)
+    val color       = new StringProperty(colorValue)
   }
 
   override def start(): Unit = {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,6 +59,7 @@ object DConvert {
  * Object companion for [[scalafx.scene.control.Dialog]].
  */
 object Dialog {
+
   /**
    * Converts a ScalaFX Dialog to its JavaFX counterpart.
    *
@@ -80,7 +81,7 @@ object Dialog {
  * @define ORIGINALDOC Original Documentation]].
  */
 class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
-  extends EventTarget(delegate)
+    extends EventTarget(delegate)
     with SFXDelegate[jfxsc.Dialog[R]] {
 
   /**
@@ -117,7 +118,6 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @param style the style for this dialog.
    * @throws IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
-   *
    */
   def initStyle(style: StageStyle): Unit = {
     delegate.initStyle(style)
@@ -312,7 +312,6 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def y_=(v: Double): Unit = {
     delegate.setY(v)
   }
-
 
   /**
    * Called just prior to the Dialog being shown.

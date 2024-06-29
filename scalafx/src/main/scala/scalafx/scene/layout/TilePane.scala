@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -73,7 +73,7 @@ object TilePane {
 }
 
 class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
-  extends Pane(delegate)
+    extends Pane(delegate)
     with AlignmentDelegate[jfxsl.TilePane]
     with SFXDelegate[jfxsl.TilePane] {
 

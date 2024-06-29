@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,11 @@ import scalafx.testutil.{DimensionDelegateSpec, PositionDelegateSpec, SimpleSFXD
 
 /**
  * Rectangle Spec tests.
- *
- *
  */
 class RectangleSpec
-  extends SimpleSFXDelegateSpec[jfxss.Rectangle, Rectangle](classOf[jfxss.Rectangle], classOf[Rectangle])
-  with PositionDelegateSpec[Rectangle]
-  with DimensionDelegateSpec[Rectangle] {
+    extends SimpleSFXDelegateSpec[jfxss.Rectangle, Rectangle](classOf[jfxss.Rectangle], classOf[Rectangle])
+    with PositionDelegateSpec[Rectangle]
+    with DimensionDelegateSpec[Rectangle] {
 
   val positionDelegate = getScalaClassInstance
 

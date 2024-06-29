@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,9 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * CustomMenuItem Spec tests.
- *
- *
  */
 class CustomMenuItemSpec
-  extends SimpleSFXDelegateSpec[jfxsc.CustomMenuItem, CustomMenuItem](
-      classOf[jfxsc.CustomMenuItem], classOf[CustomMenuItem])
+    extends SimpleSFXDelegateSpec[jfxsc.CustomMenuItem, CustomMenuItem](
+      classOf[jfxsc.CustomMenuItem],
+      classOf[CustomMenuItem]
+    )

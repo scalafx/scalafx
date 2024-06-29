@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.print.Collation]]. */
 class CollationSpec extends SFXEnumDelegateSpec[jfxp.Collation, Collation](
-  javaClass = classOf[jfxp.Collation],
-  scalaClass = classOf[Collation],
-  companion = Collation)
-  
+      javaClass = classOf[jfxp.Collation],
+      scalaClass = classOf[Collation],
+      companion = Collation
+    )

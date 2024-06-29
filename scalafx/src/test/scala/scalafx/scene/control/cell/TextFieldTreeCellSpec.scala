@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TextFieldTreeCell Spec tests.
- *
- *
  */
 class TextFieldTreeCellSpec[T]
-  extends SimpleSFXDelegateSpec[jfxscc.TextFieldTreeCell[T], TextFieldTreeCell[T]](
-    classOf[jfxscc.TextFieldTreeCell[T]], classOf[TextFieldTreeCell[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.TextFieldTreeCell[T], TextFieldTreeCell[T]](
+      classOf[jfxscc.TextFieldTreeCell[T]],
+      classOf[TextFieldTreeCell[T]]
+    )
+    with RunOnApplicationThread

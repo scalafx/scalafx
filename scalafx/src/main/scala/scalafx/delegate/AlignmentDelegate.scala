@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object AlignmentDelegate {
  * represented by `alignmentProperty` and its respective getter and setters.
  */
 trait AlignmentDelegate[J <: Object with Aligned]
-  extends SFXDelegate[J] {
+    extends SFXDelegate[J] {
 
   /**
    * The overall alignment of children (or text) within the component's width and height.

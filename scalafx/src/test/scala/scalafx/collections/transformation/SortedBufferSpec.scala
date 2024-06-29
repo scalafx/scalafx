@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,12 +39,13 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.language.implicitConversions
 
 /**
- *
  * Test for [[scalafx.collections.transformation.SortedBuffer]].
  */
 class SortedBufferSpec[E]
-  extends SimpleSFXDelegateSpec[jfxct.SortedList[E], SortedBuffer[E]](
-    classOf[jfxct.SortedList[E]], classOf[SortedBuffer[E]]) {
+    extends SimpleSFXDelegateSpec[jfxct.SortedList[E], SortedBuffer[E]](
+      classOf[jfxct.SortedList[E]],
+      classOf[SortedBuffer[E]]
+    ) {
 
   override def getScalaClassInstance = new SortedBuffer(ObservableBuffer.empty[E])
 

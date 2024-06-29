@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,8 @@ import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side
 
 object BackgroundPosition {
-  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition): jfxsl.BackgroundPosition = if (v != null) v.delegate else null
+  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition): jfxsl.BackgroundPosition =
+    if (v != null) v.delegate else null
 
   /** A BackgroundPosition which will center a BackgroundImage. */
   val Center: BackgroundPosition = jfxsl.BackgroundPosition.CENTER
@@ -49,13 +50,25 @@ object BackgroundPosition {
  * Wrapper for [[http://docs.oracle.com/javafx/8/api/javafx/scene/layout/BackgroundPosition]]
  */
 class BackgroundPosition(override val delegate: jfxsl.BackgroundPosition)
-  extends SFXDelegate[jfxsl.BackgroundPosition] {
+    extends SFXDelegate[jfxsl.BackgroundPosition] {
 
   /** Creates a new BackgroundPosition. */
-  def this(horizontalSide: Side, horizontalPosition: Double, horizontalAsPercentage: Boolean,
-           verticalSide: Side, verticalPosition: Double, verticalAsPercentage: Boolean) =
-    this(new jfxsl.BackgroundPosition(horizontalSide, horizontalPosition, horizontalAsPercentage,
-      verticalSide, verticalPosition, verticalAsPercentage))
+  def this(
+    horizontalSide: Side,
+    horizontalPosition: Double,
+    horizontalAsPercentage: Boolean,
+    verticalSide: Side,
+    verticalPosition: Double,
+    verticalAsPercentage: Boolean
+  ) =
+    this(new jfxsl.BackgroundPosition(
+      horizontalSide,
+      horizontalPosition,
+      horizontalAsPercentage,
+      verticalSide,
+      verticalPosition,
+      verticalAsPercentage
+    ))
 
   /**
    * The value indicating the position of the BackgroundImage relative to the Region along the

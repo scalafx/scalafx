@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ object EventDispatcher {
  * @define ORIGINALDOC Original Documentation]].
  */
 abstract class EventDispatcher(override val delegate: jfxe.EventDispatcher)
-  extends SFXDelegate[jfxe.EventDispatcher] {
+    extends SFXDelegate[jfxe.EventDispatcher] {
 
   /**
    * Dispatches the specified event by this . Does

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 package scalafx.animation
 
-
 import javafx.{animation => jfxa, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -50,7 +49,8 @@ object SequentialTransition extends AnimationStatics {
    * @param v ScalaFX $ST
    * @return JavaFX $ST extracted from `v`.
    */
-  implicit def sfxSequentialTransition2jfx(v: SequentialTransition): jfxa.SequentialTransition = if (v != null) v.delegate else null
+  implicit def sfxSequentialTransition2jfx(v: SequentialTransition): jfxa.SequentialTransition =
+    if (v != null) v.delegate else null
 
 }
 
@@ -66,8 +66,8 @@ object SequentialTransition extends AnimationStatics {
  * @define DV Default value:
  */
 class SequentialTransition(override val delegate: jfxa.SequentialTransition = new jfxa.SequentialTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.SequentialTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.SequentialTransition] {
 
   // CONSTRUCTORS
 
@@ -110,6 +110,7 @@ class SequentialTransition(override val delegate: jfxa.SequentialTransition = ne
    * A list of $ANS that will be played sequentially.
    */
   def children: ObservableBuffer[jfxa.Animation] = delegate.getChildren
+
   /**
    * Sets the list of $ANS, replacing the prior content. If you want append to current content, use `add` or
    * similar.

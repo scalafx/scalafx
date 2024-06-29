@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TextArea Spec tests.
- *
  */
 class TextAreaSpec
-  extends SimpleSFXDelegateSpec[jfxsc.TextArea, TextArea](classOf[jfxsc.TextArea], classOf[TextArea])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.TextArea, TextArea](classOf[jfxsc.TextArea], classOf[TextArea])
+    with RunOnApplicationThread

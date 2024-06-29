@@ -34,6 +34,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.application.ColorScheme]] */
 class ColorSchemeSpecs extends SFXEnumDelegateSpec[jfxa.ColorScheme, ColorScheme](
-  javaClass = classOf[jfxa.ColorScheme],
-  scalaClass = classOf[ColorScheme],
-  companion = ColorScheme)
+      javaClass = classOf[jfxa.ColorScheme],
+      scalaClass = classOf[ColorScheme],
+      companion = ColorScheme
+    )

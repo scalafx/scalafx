@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,14 +38,15 @@ object ColorAdjust {
 }
 
 class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.ColorAdjust]
-  with SFXDelegate[jfxse.ColorAdjust] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.ColorAdjust]
+    with SFXDelegate[jfxse.ColorAdjust] {
 
   /**
    * Creates a new instance of ColorAdjust with the specified hue, saturation, brightness, and contrast.
    */
-  def this(hue: Double, saturation: Double, brightness: Double, contrast: Double) = this(new jfxse.ColorAdjust(hue, saturation, brightness, contrast))
+  def this(hue: Double, saturation: Double, brightness: Double, contrast: Double) =
+    this(new jfxse.ColorAdjust(hue, saturation, brightness, contrast))
 
   /**
    * The brightness adjustment value.

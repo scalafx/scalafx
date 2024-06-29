@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,11 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * StyleConverter Spec tests. It is being used Conversion from String to String (stringConverter)  
+ * StyleConverter Spec tests. It is being used Conversion from String to String (stringConverter)
  */
 class StyleConverterSpec
-  extends SimpleSFXDelegateSpec[jfxcss.StyleConverter[String, String], StyleConverter[String, String]](
-    classOf[jfxcss.StyleConverter[String, String]], classOf[StyleConverter[String, String]]) {
+    extends SimpleSFXDelegateSpec[jfxcss.StyleConverter[String, String], StyleConverter[String, String]](
+      classOf[jfxcss.StyleConverter[String, String]],
+      classOf[StyleConverter[String, String]]
+    ) {
 
   override protected def getScalaClassInstance = StyleConverter.stringConverter
 

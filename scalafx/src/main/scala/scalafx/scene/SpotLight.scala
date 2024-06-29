@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -75,8 +75,8 @@ object SpotLight {
  * @see PhongMaterial
  */
 class SpotLight(override val delegate: jfxs.SpotLight = new jfxs.SpotLight())
-  extends LightBase(delegate)
-  with SFXDelegate[jfxs.SpotLight] {
+    extends LightBase(delegate)
+    with SFXDelegate[jfxs.SpotLight] {
 
   /** Creates a new instance of `SpotLight` class using the specified color. */
   def this(color: Color) = this(new jfxs.SpotLight(color))

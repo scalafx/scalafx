@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,6 +52,5 @@ object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPostu
   def findByName(name: String): FontPosture = jfxst.FontPosture.findByName(name)
 }
 
-
 sealed abstract class FontPosture(override val delegate: jfxst.FontPosture)
-  extends SFXEnumDelegate[jfxst.FontPosture]
+    extends SFXEnumDelegate[jfxst.FontPosture]

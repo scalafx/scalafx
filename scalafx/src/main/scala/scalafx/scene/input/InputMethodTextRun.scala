@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,12 @@ import scalafx.scene.input.InputIncludes.jfxInputMethodHighlight2sfx
 import scala.language.implicitConversions
 
 object InputMethodTextRun {
-  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun = if (imtr != null) imtr.delegate else null
+  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun =
+    if (imtr != null) imtr.delegate else null
 }
 
 class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun)
-  extends SFXDelegate[jfxsi.InputMethodTextRun] {
+    extends SFXDelegate[jfxsi.InputMethodTextRun] {
 
   def this(text: String, highlight: InputMethodHighlight) = {
     this(new jfxsi.InputMethodTextRun(text, highlight))

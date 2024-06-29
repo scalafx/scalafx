@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import scalafx.scene.Node
 import java.lang
 import scala.language.implicitConversions
 
-
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
@@ -58,6 +57,7 @@ import scala.language.implicitConversions
  * @define TVFM       TableViewFocusModel
  */
 object TableView {
+
   /**
    * Converts a ScalaFX $TV instance to its $JFX counterpart.
    *
@@ -74,7 +74,8 @@ object TableView {
    * It delegates to JavaFX
    * [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
    */
-  val UnconstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] = jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
+  val UnconstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
 
   /**
    * Simple policy that ensures the width of all visible leaf columns in this table sum up to equal
@@ -87,7 +88,8 @@ object TableView {
    *
    * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
    */
-  val ConstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] = jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
+  val ConstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
@@ -110,7 +112,7 @@ object TableView {
    * @param delegate $JFX $RF $CONSPARAM
    */
   class ResizeFeatures[S](override val delegate: jfxsc.TableView.ResizeFeatures[S])
-    extends ResizeFeaturesBase[S](delegate)
+      extends ResizeFeaturesBase[S](delegate)
       with SFXDelegate[jfxsc.TableView.ResizeFeatures[S]] {
 
     /**
@@ -144,7 +146,8 @@ object TableView {
      * @param tvsm ScalaFX TableViewSelectionModel
      * @return JavaFX TableViewSelectionModel
      */
-    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]): jfxsc.TableView.TableViewSelectionModel[S] =
+    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S])
+      : jfxsc.TableView.TableViewSelectionModel[S] =
       delegateOrNull(tvsm)
 
   }
@@ -156,7 +159,7 @@ object TableView {
    * @param delegate $JFX $TVSM $CONSPARAM
    */
   abstract class TableViewSelectionModel[S](override val delegate: jfxsc.TableView.TableViewSelectionModel[S])
-    extends TableSelectionModel[S](delegate)
+      extends TableSelectionModel[S](delegate)
       with SFXDelegate[jfxsc.TableView.TableViewSelectionModel[S]] {
 
     /**
@@ -224,7 +227,7 @@ object TableView {
    * @param delegate $JFX $TVFM $CONSPARAM
    */
   class TableViewFocusModel[S](override val delegate: jfxsc.TableView.TableViewFocusModel[S])
-    extends TableFocusModel[S, jfxsc.TableColumn[S, _]](delegate)
+      extends TableFocusModel[S, jfxsc.TableColumn[S, _]](delegate)
       with SFXDelegate[jfxsc.TableView.TableViewFocusModel[S]] {
 
     /**
@@ -272,7 +275,7 @@ object TableView {
  * @tparam S The type of the objects contained within the TableView items list.
  */
 class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableView[S])
-  extends Control(delegate)
+    extends Control(delegate)
     with SFXDelegate[jfxsc.TableView[S]] {
 
   /**
@@ -304,12 +307,15 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
     // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
     // ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
     val f: TableView.ResizeFeatures[S] => Boolean =
-    (features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features)
+      (features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features)
     ObjectProperty(f)
   }
 
   def columnResizePolicy_=(p: TableView.ResizeFeatures[_] => Boolean): Unit = {
-    delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean] {
+    delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[
+      jfxsc.TableView.ResizeFeatures[_],
+      java.lang.Boolean
+    ] {
       def call(v: jfxsc.TableView.ResizeFeatures[_]): java.lang.Boolean = {
         p(v)
       }
@@ -441,7 +447,8 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * Called when there's a request to scroll a column into view using `scrollToColumn(TableColumn)` or `scrollToColumnIndex(int)`.
    */
-  def onScrollToColumn: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]] = delegate.onScrollToColumnProperty
+  def onScrollToColumn: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]] =
+    delegate.onScrollToColumnProperty
 
   def onScrollToColumn_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]): Unit = {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]](onScrollToColumn, v)

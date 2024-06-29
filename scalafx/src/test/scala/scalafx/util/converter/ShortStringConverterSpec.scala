@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,21 @@ import scalafx.Includes._
 
 /**
  * ShortStringConverter Spec tests.
- *
- *
  */
 class ShortStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[java.lang.Short, jfxuc.ShortStringConverter, Short, ShortStringConverter](classOf[jfxuc.ShortStringConverter], classOf[ShortStringConverter], classOf[Short]) {
+    extends AbstractStringConverterDelegateSpec[
+      java.lang.Short,
+      jfxuc.ShortStringConverter,
+      Short,
+      ShortStringConverter
+    ](classOf[jfxuc.ShortStringConverter], classOf[ShortStringConverter], classOf[Short]) {
 
-  val examples = List((0.toShort, "0"), (123.toShort, "123"), (-123.toShort, "-123"),
-    (Short.MaxValue, Short.MaxValue.toString), (Short.MinValue, Short.MinValue.toString))
+  val examples = List(
+    (0.toShort, "0"),
+    (123.toShort, "123"),
+    (-123.toShort, "-123"),
+    (Short.MaxValue, Short.MaxValue.toString),
+    (Short.MinValue, Short.MinValue.toString)
+  )
 
 }

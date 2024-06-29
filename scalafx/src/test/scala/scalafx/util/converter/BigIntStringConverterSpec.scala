@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,11 +32,14 @@ import scalafx.Includes._
 
 /**
  * BigIntegerStringConverter Spec tests.
- *
- *
  */
 class BigIntStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[java.math.BigInteger, jfxuc.BigIntegerStringConverter, BigInt, BigIntStringConverter](classOf[jfxuc.BigIntegerStringConverter], classOf[BigIntStringConverter], classOf[BigInt]) {
+    extends AbstractStringConverterDelegateSpec[
+      java.math.BigInteger,
+      jfxuc.BigIntegerStringConverter,
+      BigInt,
+      BigIntStringConverter
+    ](classOf[jfxuc.BigIntegerStringConverter], classOf[BigIntStringConverter], classOf[BigInt]) {
 
   val examples = List((BigInt(0), "0"), (BigInt(12345), "12345"), (BigInt(-12345), "-12345"))
 

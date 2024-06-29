@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,21 +37,21 @@ import scala.collection.Set
 import scala.language.implicitConversions
 
 /**
-  * Object companion for [[scalafx.scene.input.Dragboard]].
-  */
+ * Object companion for [[scalafx.scene.input.Dragboard]].
+ */
 object Dragboard {
   implicit def sfxDragboard2jfx(d: Dragboard): jfxsi.Dragboard = if (d != null) d.delegate else null
 }
 
 /**
-  * Wraps a $JFX [[ $URL0 $FC]].
-  *
-  * @constructor Creates a new $FC from a $JFX one.
-  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
-  * @define FC   Dragboard
-  * @define URL0 http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Dragboard.html
-  * @define JFX  JavaFX
-  */
+ * Wraps a $JFX [[ $URL0 $FC]].
+ *
+ * @constructor Creates a new $FC from a $JFX one.
+ * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ * @define FC   Dragboard
+ * @define URL0 http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Dragboard.html
+ * @define JFX  JavaFX
+ */
 class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delegate) with SFXDelegate[jfxsi.Dragboard] {
 
   /** The image used as a drag view. */
@@ -59,9 +59,10 @@ class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delega
   def dragView_=(image: Image): Unit = {
     delegate.setDragView(image)
   }
+
   /**
-    * Sets the visual representation of data being transfered in a drag and drop gesture.
-    */
+   * Sets the visual representation of data being transfered in a drag and drop gesture.
+   */
   def dragView_=(image: Image, offsetX: Double, offsetY: Double): Unit = {
     delegate.setDragView(image)
   }

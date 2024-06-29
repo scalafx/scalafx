@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,8 +45,8 @@ object ToolBar {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ToolBar.html]].
  */
 class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ToolBar] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ToolBar] {
 
   /**
    * The items contained in the ToolBar.
@@ -61,6 +61,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
   def items_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.items, c)
   }
+
   /**
    * Sets a node, replacing the prior content. If you want append to current content, use `add` or similar.
    *
@@ -83,6 +84,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
   def content_=(c: Iterable[Node]): Unit = {
     items = c
   }
+
   /**
    * Sets a node, replacing the prior content. If you want append to current content, use `add` or similar.
    *

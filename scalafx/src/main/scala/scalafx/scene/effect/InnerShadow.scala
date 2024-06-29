@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,11 +42,11 @@ object InnerShadow {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/InnerShadow.html]]
  */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
-  extends Effect(delegate)
-  with ColorDelegate[jfxse.InnerShadow]
-  with DimensionDelegate[jfxse.InnerShadow]
-  with InputDelegate[jfxse.InnerShadow]
-  with SFXDelegate[jfxse.InnerShadow] {
+    extends Effect(delegate)
+    with ColorDelegate[jfxse.InnerShadow]
+    with DimensionDelegate[jfxse.InnerShadow]
+    with InputDelegate[jfxse.InnerShadow]
+    with SFXDelegate[jfxse.InnerShadow] {
 
   /**
    * Creates a new instance of InnerShadow with the specified blurType, color, radius, spread, offsetX and offsetY.

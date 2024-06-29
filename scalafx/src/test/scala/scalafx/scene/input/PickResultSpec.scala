@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** PickResult Spec tests. */
 class PickResultSpec
-  extends SimpleSFXDelegateSpec[jfxsi.PickResult, PickResult](classOf[jfxsi.PickResult], classOf[PickResult]) {
+    extends SimpleSFXDelegateSpec[jfxsi.PickResult, PickResult](classOf[jfxsi.PickResult], classOf[PickResult]) {
 
   override protected def getJavaClassInstance = new jfxsi.PickResult(null, 0, 0)
 }

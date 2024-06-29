@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,9 +78,9 @@ object HBox {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html]]
  */
 class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.HBox]
-  with SFXDelegate[jfxsl.HBox] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.HBox]
+    with SFXDelegate[jfxsl.HBox] {
 
   /**
    * Creates an HBox layout with the specified spacing between children.

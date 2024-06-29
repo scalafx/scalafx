@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,4 +36,4 @@ object DoubleStringConverter {
 }
 
 class DoubleStringConverter(delegate: jfxuc.DoubleStringConverter = new jfxuc.DoubleStringConverter)
-  extends StringConverterDelegate[java.lang.Double, Double, jfxuc.DoubleStringConverter](delegate)
+    extends StringConverterDelegate[java.lang.Double, Double, jfxuc.DoubleStringConverter](delegate)

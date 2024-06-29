@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,12 @@ import javafx.util.{converter => jfxuc}
 import scala.language.implicitConversions
 
 object TimeStringConverter {
-  implicit def sfxTimeStringConverter2jfx(c: TimeStringConverter): jfxuc.TimeStringConverter = if (c != null) c.delegate else null
+  implicit def sfxTimeStringConverter2jfx(c: TimeStringConverter): jfxuc.TimeStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class TimeStringConverter(delegate: jfxuc.TimeStringConverter = new jfxuc.TimeStringConverter)
-  extends DateTimeStringConverterDelegate[jfxuc.TimeStringConverter](delegate) {
+    extends DateTimeStringConverterDelegate[jfxuc.TimeStringConverter](delegate) {
 
   def this(locale: Locale) = this(new jfxuc.TimeStringConverter(locale))
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,8 +57,8 @@ object CustomMenuItem {
  * @define ORIGINALDOC Original Documentation]].
  */
 class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.CustomMenuItem)
-  extends MenuItem(delegate)
-  with SFXDelegate[jfxsc.CustomMenuItem] {
+    extends MenuItem(delegate)
+    with SFXDelegate[jfxsc.CustomMenuItem] {
 
   /**
    * Constructs a CustomMenuItem and initializes its content with the node specified.

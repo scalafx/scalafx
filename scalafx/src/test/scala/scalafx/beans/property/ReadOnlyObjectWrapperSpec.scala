@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,22 +38,19 @@ import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
 import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
-
 /**
  * ObjectProperty Spec tests.
- *
- *
  */
 class ReadOnlyObjectWrapperSpec
-  extends AnyFlatSpec
+    extends AnyFlatSpec
     with BeforeAndAfterEach
     with RunOnApplicationThread {
 
-  val bean = new Object()
-  var objectProperty: jfxbp.ReadOnlyObjectWrapper[String] = null
+  val bean                                                 = new Object()
+  var objectProperty: jfxbp.ReadOnlyObjectWrapper[String]  = null
   var objectProperty2: jfxbp.ReadOnlyObjectWrapper[String] = null
-  var sfxObjectProperty: ReadOnlyObjectWrapper[String] = null
-  var booleanProperty: jfxbp.BooleanProperty = null
+  var sfxObjectProperty: ReadOnlyObjectWrapper[String]     = null
+  var booleanProperty: jfxbp.BooleanProperty               = null
 
   override protected def beforeEach(): Unit = {
     objectProperty = new ReadOnlyObjectWrapper[String](bean, "Test Object")
@@ -182,8 +179,8 @@ class ReadOnlyObjectWrapperSpec
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = objectProperty === objectProperty2
+    var changeCount     = 0
+    val binding         = objectProperty === objectProperty2
     binding onInvalidate {
       invalidateCount += 1
     }
@@ -201,14 +198,14 @@ class ReadOnlyObjectWrapperSpec
   it should "support implicit conversion to a String Binding" is (pending)
 
   it should "support implicit conversion from a ScalaFX ReadOnlyObjectWrapper with a SFXDelegate of a type T to a JavaFX ReadOnlyObjectWrapper of type T" in {
-    val scalaObjProperty: ReadOnlyObjectWrapper[Button] = ReadOnlyObjectWrapper[Button](new Button("Test"))
+    val scalaObjProperty: ReadOnlyObjectWrapper[Button]            = ReadOnlyObjectWrapper[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ReadOnlyObjectWrapper[jfxsc.Button] = scalaObjProperty
 
     javaObjProperty.get should be(scalaObjProperty.value.delegate)
   }
 
   it should "support readOnlyProperty" in {
-    val wrapper = ReadOnlyObjectWrapper("Test")
+    val wrapper                                          = ReadOnlyObjectWrapper("Test")
     val readOnlyProperty: ReadOnlyObjectProperty[String] = wrapper.readOnlyProperty
     readOnlyProperty() should equal("Test")
 

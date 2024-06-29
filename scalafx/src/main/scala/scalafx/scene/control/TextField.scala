@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,9 +39,9 @@ object TextField {
 }
 
 class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
-  extends TextInputControl(delegate)
-  with AlignmentDelegate[jfxsc.TextField]
-  with SFXDelegate[jfxsc.TextField] {
+    extends TextInputControl(delegate)
+    with AlignmentDelegate[jfxsc.TextField]
+    with SFXDelegate[jfxsc.TextField] {
 
   /**
    * The action handler associated with this text field, or null if no action handler is assigned.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ trait Bindings {
    * @return The highest Value
    */
   def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*): jfxbv.ObservableNumberValue =
-    (values foldLeft v1) (jfxbb.Bindings.min)
+    (values foldLeft v1)(jfxbb.Bindings.min)
 
   /**
    * Returns the Lowest value among a collection of $JFX
@@ -65,7 +65,7 @@ trait Bindings {
    * @return The Lowest Value
    */
   def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*): jfxbv.ObservableNumberValue =
-    (values foldLeft v1) (jfxbb.Bindings.max)
+    (values foldLeft v1)(jfxbb.Bindings.max)
 
   /**
    * Returns the sum of a collection of $JFX
@@ -76,7 +76,7 @@ trait Bindings {
    * @return The Value sum.
    */
   def add(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*): jfxbv.ObservableNumberValue =
-    (values foldLeft v1) (jfxbb.Bindings.add)
+    (values foldLeft v1)(jfxbb.Bindings.add)
 
   /**
    * @param condition Function that returns a $JFX
@@ -90,9 +90,9 @@ trait Bindings {
       new NumberConditionBuilder(whenBuilder.`then`(chooseExpression.delegate))
     def choose(chooseExpression: jfxbv.ObservableNumberValue) =
       new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
-    def choose(chooseExpression: Int) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
-    def choose(chooseExpression: Long) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
-    def choose(chooseExpression: Float) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
+    def choose(chooseExpression: Int)    = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
+    def choose(chooseExpression: Long)   = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
+    def choose(chooseExpression: Float)  = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
     def choose(chooseExpression: Double) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
 
     def choose[T](chooseExpression: jfxbv.ObservableBooleanValue) =

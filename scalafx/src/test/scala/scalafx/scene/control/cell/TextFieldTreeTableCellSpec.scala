@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,5 +35,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * TextFieldTreeTableCell Spec tests.
  */
 class TextFieldTreeTableCellSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxscc.TextFieldTreeTableCell[S, T], TextFieldTreeTableCell[S, T]](
-    classOf[jfxscc.TextFieldTreeTableCell[S, T]], classOf[TextFieldTreeTableCell[S, T]])
+    extends SimpleSFXDelegateSpec[jfxscc.TextFieldTreeTableCell[S, T], TextFieldTreeTableCell[S, T]](
+      classOf[jfxscc.TextFieldTreeTableCell[S, T]],
+      classOf[TextFieldTreeTableCell[S, T]]
+    )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,11 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * HLineTo Spec tests.
- *
- *
  */
 class HLineToSpec
-  extends SimpleSFXDelegateSpec[jfxss.HLineTo, HLineTo](classOf[jfxss.HLineTo], classOf[HLineTo]) {
+    extends SimpleSFXDelegateSpec[jfxss.HLineTo, HLineTo](classOf[jfxss.HLineTo], classOf[HLineTo]) {
 
   val positionDelegate = getScalaClassInstance
 

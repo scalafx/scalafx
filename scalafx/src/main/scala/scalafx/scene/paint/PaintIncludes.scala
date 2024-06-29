@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -88,7 +88,7 @@ trait PaintIncludes {
    * @param h $PARAMHEX
    * @return $SFX $RETHEX
    */
-  implicit def hex2sfxColor(h: Int): Color = Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
+  implicit def hex2sfxColor(h: Int): Color = Color.rgb(h >>> 16 & 0xff, h >>> 8 & 0xff, h & 0xff)
 
   /**
    * $BEGINHEX $JFX $CLR. $ENDHEX
@@ -96,7 +96,7 @@ trait PaintIncludes {
    * @param h $PARAMHEX
    * @return $JFX $RETHEX
    */
-  implicit def hex2jfxColor(h: Int): jfxsp.Color = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
+  implicit def hex2jfxColor(h: Int): jfxsp.Color = jfxsp.Color.rgb(h >>> 16 & 0xff, h >>> 8 & 0xff, h & 0xff)
 
   /**
    * $BEGINTUPLE3 $SFX $CLR.
@@ -112,7 +112,8 @@ trait PaintIncludes {
    * @param tuple $PTUPLE4
    * @return $RETTUPLE
    */
-  implicit def tuple42SfxColor(tuple: (Int, Int, Int, Double)): Color = Color.rgb(tuple._1, tuple._2, tuple._3, tuple._4)
+  implicit def tuple42SfxColor(tuple: (Int, Int, Int, Double)): Color =
+    Color.rgb(tuple._1, tuple._2, tuple._3, tuple._4)
 
   /**
    * $BEGINTUPLE3 $JFX $CLR.
@@ -128,7 +129,8 @@ trait PaintIncludes {
    * @param tuple $PTUPLE4
    * @return $RETTUPLE
    */
-  implicit def tuple42JfxColor(tuple: (Int, Int, Int, Double)): jfxsp.Color = jfxsp.Color.rgb(tuple._1, tuple._2, tuple._3, tuple._4)
+  implicit def tuple42JfxColor(tuple: (Int, Int, Int, Double)): jfxsp.Color =
+    jfxsp.Color.rgb(tuple._1, tuple._2, tuple._3, tuple._4)
 
   /**
    * $START$CLR.html $CLR$END
@@ -152,7 +154,8 @@ trait PaintIncludes {
    * @param lg $JFX $LGD
    * @return $SFX $LGD
    */
-  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient): LinearGradient = if (lg != null) new LinearGradient(lg) else null
+  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient): LinearGradient =
+    if (lg != null) new LinearGradient(lg) else null
 
   /**
    * $START$PHM.html $PHM$END
@@ -160,7 +163,8 @@ trait PaintIncludes {
    * @param pm $JFX $PHM
    * @return $SFX $PHM
    */
-  implicit def jfxPhongMaterial2sfx(pm: jfxsp.PhongMaterial): PhongMaterial = if (pm != null) new PhongMaterial(pm) else null
+  implicit def jfxPhongMaterial2sfx(pm: jfxsp.PhongMaterial): PhongMaterial =
+    if (pm != null) new PhongMaterial(pm) else null
 
   /**
    * $START$RGD.html $RGD$END
@@ -168,7 +172,8 @@ trait PaintIncludes {
    * @param rg $JFX $RGD
    * @return $SFX $RGD
    */
-  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient): RadialGradient = if (rg != null) new RadialGradient(rg) else null
+  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient): RadialGradient =
+    if (rg != null) new RadialGradient(rg) else null
 
   /**
    * $START$STP.html $STP$END
@@ -184,6 +189,7 @@ trait PaintIncludes {
    * @param p $JFX $PNT
    * @return $SFX $PNT
    */
-  implicit def jfxPaint2sfx(p: jfxsp.Paint): Paint = if (p != null) new Paint(p) {} else null
+  implicit def jfxPaint2sfx(p: jfxsp.Paint): Paint = if (p != null) new Paint(p) {}
+  else null
 
 }

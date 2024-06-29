@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@ object PhongMaterial {
 
 /** The PhongMaterial class provides definitions of properties that represent a form of Phong shaded material. */
 class PhongMaterial(override val delegate: jfxsp.PhongMaterial = new jfxsp.PhongMaterial())
-  extends Material(delegate)
-  with SFXDelegate[jfxsp.PhongMaterial] {
+    extends Material(delegate)
+    with SFXDelegate[jfxsp.PhongMaterial] {
 
   def this(diffuseColor: Color) = this(new jfxsp.PhongMaterial(diffuseColor))
 

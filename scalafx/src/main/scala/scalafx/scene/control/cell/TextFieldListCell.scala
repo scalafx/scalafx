@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,8 @@ object TextFieldListCell {
    * @param cell ScalaFX $TFLC
    * @return JavaFX $TFLC
    */
-  implicit def sfxTextFieldListCell2jfx[T](cell: TextFieldListCell[T]): jfxscc.TextFieldListCell[T] = if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldListCell2jfx[T](cell: TextFieldListCell[T]): jfxscc.TextFieldListCell[T] =
+    if (cell != null) cell.delegate else null
 
   /**
    * $FLVINTI
@@ -76,7 +77,8 @@ object TextFieldListCell {
    * Added to satisfy Spec Texts.
    */
   @deprecated(message = "Use forListView[T](StringConverter[T])", since = "1.0")
-  def forListView[T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.TextFieldListCell.forListView[T](converter)
+  def forListView[T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
+    jfxscc.TextFieldListCell.forListView[T](converter)
 
 }
 
@@ -90,10 +92,10 @@ object TextFieldListCell {
  * @define TFLC `TextFieldListCell`
  */
 class TextFieldListCell[T](override val delegate: jfxscc.TextFieldListCell[T] = new jfxscc.TextFieldListCell[T])
-  extends ListCell[T](delegate)
-  with ConvertableCell[jfxscc.TextFieldListCell[T], T, T]
-  with UpdatableCell[jfxscc.TextFieldListCell[T], T]
-  with SFXDelegate[jfxscc.TextFieldListCell[T]] {
+    extends ListCell[T](delegate)
+    with ConvertableCell[jfxscc.TextFieldListCell[T], T, T]
+    with UpdatableCell[jfxscc.TextFieldListCell[T], T]
+    with SFXDelegate[jfxscc.TextFieldListCell[T]] {
 
   /**
    * Creates a `TextFieldListCell` that provides a TextField when put into editing mode that allows editing of the

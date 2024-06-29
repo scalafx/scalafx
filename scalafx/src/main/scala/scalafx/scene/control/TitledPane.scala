@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@ object TitledPane {
 }
 
 class TitledPane(override val delegate: jfxsc.TitledPane = new jfxsc.TitledPane)
-  extends Labeled(delegate)
-  with SFXDelegate[jfxsc.TitledPane] {
+    extends Labeled(delegate)
+    with SFXDelegate[jfxsc.TitledPane] {
 
   def animated: BooleanProperty = delegate.animatedProperty
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Stop Spec tests.
- *
- *
  */
 class StopSpec
-  extends SimpleSFXDelegateSpec[jfxsp.Stop, Stop](classOf[jfxsp.Stop], classOf[Stop]) {
+    extends SimpleSFXDelegateSpec[jfxsp.Stop, Stop](classOf[jfxsp.Stop], classOf[Stop]) {
 
   override protected def getJavaClassInstance = new jfxsp.Stop(0, 0)
 

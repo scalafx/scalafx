@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,13 +41,18 @@ object BackgroundImage {
  * Defines properties describing how to render an image as the background to some `Region`.
  */
 class BackgroundImage(override val delegate: jfxsl.BackgroundImage)
-  extends SFXDelegate[jfxsl.BackgroundImage] {
+    extends SFXDelegate[jfxsl.BackgroundImage] {
 
   /**
    * Creates a new BackgroundImage.
    */
-  def this(image: Image, repeatX: BackgroundRepeat, repeatY: BackgroundRepeat,
-           position: BackgroundPosition, size: BackgroundSize) =
+  def this(
+    image: Image,
+    repeatX: BackgroundRepeat,
+    repeatY: BackgroundRepeat,
+    position: BackgroundPosition,
+    size: BackgroundSize
+  ) =
     this(new jfxsl.BackgroundImage(image, repeatX, repeatY, position, size))
 
   /**

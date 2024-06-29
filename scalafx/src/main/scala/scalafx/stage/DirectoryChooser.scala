@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,11 +37,12 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object DirectoryChooser {
-  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser = if (dc != null) dc.delegate else null
+  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser =
+    if (dc != null) dc.delegate else null
 }
 
 class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)
-  extends SFXDelegate[jfxs.DirectoryChooser] {
+    extends SFXDelegate[jfxs.DirectoryChooser] {
 
   /**
    * The initial directory for the displayed dialog.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,9 +44,9 @@ object StringProperty {
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.SimpleStringProperty)
-  extends ReadOnlyStringProperty(delegate)
-  with Property[String, String]
-  with SFXDelegate[jfxbp.StringProperty] {
+    extends ReadOnlyStringProperty(delegate)
+    with Property[String, String]
+    with SFXDelegate[jfxbp.StringProperty] {
 
   def this(initialValue: String) = this(new jfxbp.SimpleStringProperty(initialValue))
 

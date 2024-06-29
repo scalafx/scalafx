@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -156,8 +156,8 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
     }
     trait MouseHandler { def handler: MouseEvent => Unit }
     trait ShapeDrawInteractor extends MouseHandler {
-      private var _start = new Point2D(0, 0)
-      private var _end   = new Point2D(0, 0)
+      private var _start   = new Point2D(0, 0)
+      private var _end     = new Point2D(0, 0)
       def startPt: Point2D = _start
       def startPt_=(p: Point2D): Unit = {
         _start = p

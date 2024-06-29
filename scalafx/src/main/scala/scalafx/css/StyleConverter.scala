@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -117,7 +117,7 @@ object StyleConverter {
    * @since 9
    */
   class StringStore(override val delegate: jfxcss.StyleConverter.StringStore = new jfxcss.StyleConverter.StringStore)
-    extends SFXDelegate[jfxcss.StyleConverter.StringStore]{
+      extends SFXDelegate[jfxcss.StyleConverter.StringStore] {
 
     def strings: Seq[String] = delegate.strings.asScala.toSeq
 
@@ -133,7 +133,7 @@ object StyleConverter {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleConverter.html JavaFX
  * StyleConverter]].
  *
- * @constructor Creates a new ScalaFX StyleConverter from a JavaFX StyleConverter. 
+ * @constructor Creates a new ScalaFX StyleConverter from a JavaFX StyleConverter.
  *              Its default value is a new JavaFX StyleConverter.
  * @param delegate JavaFX StyleConverter.
  * @tparam F
@@ -141,7 +141,7 @@ object StyleConverter {
  * @since 8.0
  */
 class StyleConverter[F, T](override val delegate: jfxcss.StyleConverter[F, T] = new jfxcss.StyleConverter)
-  extends SFXDelegate[jfxcss.StyleConverter[F, T]] {
+    extends SFXDelegate[jfxcss.StyleConverter[F, T]] {
 
   /**
    * Convert from the parsed CSS value to the target property type.

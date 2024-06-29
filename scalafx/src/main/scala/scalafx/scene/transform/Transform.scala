@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,6 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
-
 object Transform {
 
   implicit def sfxTransform2jfx(v: Transform): jfxst.Transform = if (v != null) v.delegate else null
@@ -42,12 +41,26 @@ object Transform {
   /**
    * Returns a new Affine object from 12 number values representing the 6 specifiable entries of the 3x4 Affine transformation matrix.
    */
-  def affine(mxx: Double, myx: Double, mxy: Double, myy: Double, tx: Double, ty: Double): Affine = jfxst.Transform.affine(mxx, myx, mxy, myy, tx, ty)
+  def affine(mxx: Double, myx: Double, mxy: Double, myy: Double, tx: Double, ty: Double): Affine =
+    jfxst.Transform.affine(mxx, myx, mxy, myy, tx, ty)
 
   /**
    * Returns a new Affine object from 12 number values representing the 6 specifiable entries of the 3x4 Affine transformation matrix.
    */
-  def affine(mxx: Double, mxy: Double, mxz: Double, tx: Double, myx: Double, myy: Double, myz: Double, ty: Double, mzx: Double, mzy: Double, mzz: Double, tz: Double): Affine =
+  def affine(
+    mxx: Double,
+    mxy: Double,
+    mxz: Double,
+    tx: Double,
+    myx: Double,
+    myy: Double,
+    myz: Double,
+    ty: Double,
+    mzx: Double,
+    mzy: Double,
+    mzz: Double,
+    tz: Double
+  ): Affine =
     jfxst.Transform.affine(mxx, mxy, mxz, tx, myx, myy, myz, ty, mzx, mzy, mzz, tz)
 
   /**
@@ -93,7 +106,8 @@ abstract class Transform(override val delegate: jfxst.Transform) extends SFXDele
   def identity: ReadOnlyBooleanProperty = delegate.identityProperty
 
   /** The onTransformChanged event handler is called whenever the transform changes any of its parameters. */
-  def onTransformChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]] = delegate.onTransformChangedProperty
+  def onTransformChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]] =
+    delegate.onTransformChangedProperty
 
   def onTransformChanged_=(v: jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]): Unit = {
     ObjectProperty.fillProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]](this.onTransformChanged, v)

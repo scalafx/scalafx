@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,13 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Construct a new Image with the specified parameters.
    */
-  def this(inputStream: InputStream, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean) =
+  def this(
+    inputStream: InputStream,
+    requestedWidth: Double,
+    requestedHeight: Double,
+    preserveRatio: Boolean,
+    smooth: Boolean
+  ) =
     this(new jfxsi.Image(inputStream, requestedWidth, requestedHeight, preserveRatio, smooth))
 
   /**
@@ -71,11 +77,17 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Construct a new Image with the specified parameters.
    */
-  def this(url: String, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean, backgroundLoading: Boolean) =
+  def this(
+    url: String,
+    requestedWidth: Double,
+    requestedHeight: Double,
+    preserveRatio: Boolean,
+    smooth: Boolean,
+    backgroundLoading: Boolean
+  ) =
     this(new jfxsi.Image(url, requestedWidth, requestedHeight, preserveRatio, smooth, backgroundLoading))
 
   /**
-   *
    */
   def this(that: AnyRef, imagePath: String) = this(new jfxsi.Image(that.getClass.getResourceAsStream(imagePath)))
 

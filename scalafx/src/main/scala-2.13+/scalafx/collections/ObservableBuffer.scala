@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,8 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    *
    * @param ob ObservableBuffer
    */
-  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]): jfxc.ObservableList[T] = if (ob != null) ob.delegate else null
+  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]): jfxc.ObservableList[T] =
+    if (ob != null) ob.delegate else null
 
   override def from[T](source: IterableOnce[T]): ObservableBuffer[T] = (newBuilder[T] ++= source).result()
 
@@ -130,7 +131,6 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    */
   case class Update[T](from: Int, to: Int) extends Change[T]
 
-
   // CHANGING INDICATORS - END
 
   // HELPER METHODS (ORIGINATED FROM FXCOLLECTIONS) - BEGIN
@@ -204,10 +204,9 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
  * @define buf         `Buffer`
  * @define WhyOverride Overridden method to make it behave like a wrapped $OL.
  * @define noCL        The new $OB won't have Change and Invalidation Listeners from original $buf.
- *
  */
 class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.FXCollections.observableArrayList[T])
-  extends mutable.AbstractBuffer[T]
+    extends mutable.AbstractBuffer[T]
     with mutable.IndexedBuffer[T]
     with mutable.IndexedSeqOps[T, ObservableBuffer, ObservableBuffer[T]]
     with StrictOptimizedSeqOps[T, ObservableBuffer, ObservableBuffer[T]]
@@ -289,7 +288,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @return A new $OB with all the elements of this $buf except those in `xs`. $noCL
    */
   def --(xs: IterableOnce[T]): ObservableBuffer[T] = {
-    val ob = new ObservableBuffer[T]
+    val ob   = new ObservableBuffer[T]
     val list = xs.iterator.to(List)
     this.filterNot(list.contains(_)).foreach(ob += _)
     ob
@@ -303,7 +302,10 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @param elems Other elements to remove
    * @return $ownOB
    */
-  @deprecated("Super method -= is deprecated. Use `--=` aka `subtractAll` instead of varargs `-=`; infix operations with an operand of multiple args will be deprecated", "R22")
+  @deprecated(
+    "Super method -= is deprecated. Use `--=` aka `subtractAll` instead of varargs `-=`; infix operations with an operand of multiple args will be deprecated",
+    "R22"
+  )
   override def -=(elem1: T, elem2: T, elems: T*): ObservableBuffer.this.type = {
     // Custom implementation to minimize number of change notification.
     // This will issue only one change notification for all xs element,
@@ -482,9 +484,13 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
         val changes = ArrayBuffer.empty[Change[T1]]
         while (c.next()) {
           if (c.wasPermutated()) {
-            changes += Reorder(c.getFrom, c.getTo, {
-              x => c.getPermutation(x)
-            })
+            changes += Reorder(
+              c.getFrom,
+              c.getTo,
+              {
+                x => c.getPermutation(x)
+              }
+            )
           } else if (c.wasUpdated()) {
             changes += Update(c.getFrom, c.getTo)
           } else {

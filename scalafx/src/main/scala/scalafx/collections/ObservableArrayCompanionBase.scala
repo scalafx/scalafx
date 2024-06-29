@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,8 +49,11 @@ import scala.language.implicitConversions
  *
  * @constructor Create new base $OA.
  */
-private[collections] abstract class ObservableArrayCompanionBase[V: ClassTag, T <: ObservableArray[V, T, D],
-D <: jfxc.ObservableArray[D]] {
+private[collections] abstract class ObservableArrayCompanionBase[V: ClassTag, T <: ObservableArray[
+  V,
+  T,
+  D
+], D <: jfxc.ObservableArray[D]] {
 
   // TODO: Enter link when JavaFX 8 API Docs are available on-line.
   /**

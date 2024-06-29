@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,9 +32,9 @@ import scalafx.scene.paint.Color
 
 class Person(firstName_ : String, lastName_ : String, phone_ : String, favoriteColor_ : Color = Color.Blue) {
 
-  val firstName = new StringProperty(this, "firstName", firstName_)
-  val lastName = new StringProperty(this, "lastName", lastName_)
-  val phone = new StringProperty(this, "phone", phone_)
+  val firstName     = new StringProperty(this, "firstName", firstName_)
+  val lastName      = new StringProperty(this, "lastName", lastName_)
+  val phone         = new StringProperty(this, "phone", phone_)
   val favoriteColor = new ObjectProperty(this, "favoriteColor", favoriteColor_)
 
   firstName.onChange((x, _, _) => System.out.println(x.value))

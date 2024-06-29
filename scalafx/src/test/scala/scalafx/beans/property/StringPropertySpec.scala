@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,15 +33,13 @@ import org.scalatest.matchers.should.Matchers._
 
 /**
  * StringProperty Spec tests.
- *
- *
  */
 class StringPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
-  var booleanProperty: BooleanProperty = null
-  var stringProperty: StringProperty = null
-  var stringProperty2: StringProperty = null
-  var stringProperty3: StringProperty = null
+  val bean                              = new Object()
+  var booleanProperty: BooleanProperty  = null
+  var stringProperty: StringProperty    = null
+  var stringProperty2: StringProperty   = null
+  var stringProperty3: StringProperty   = null
   var sfxStringProperty: StringProperty = null
 
   override def beforeEach(): Unit = {

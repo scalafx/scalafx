@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  * Companion object for [[scalafx.css.StyleOrigin]].
  */
 object StyleOrigin
-  extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
+    extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
 
   /**
    * The stylesheet is an external file
@@ -65,4 +65,4 @@ object StyleOrigin
  * @since 8.0
  */
 class StyleOrigin(override val delegate: jfxcss.StyleOrigin)
-  extends SFXEnumDelegate[jfxcss.StyleOrigin]
+    extends SFXEnumDelegate[jfxcss.StyleOrigin]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ object Printer {
    * Companion Object for [[scalafx.print.Printer.MarginType]].
    */
   object MarginType
-    extends SFXEnumDelegateCompanion[jfxp.Printer.MarginType, Printer.MarginType] {
+      extends SFXEnumDelegateCompanion[jfxp.Printer.MarginType, Printer.MarginType] {
 
     /**
      * This requests a default 0.75 inch margin on all sides.
@@ -89,7 +89,7 @@ object Printer {
    * @since 8.0
    */
   sealed abstract class MarginType(override val delegate: jfxp.Printer.MarginType)
-    extends SFXEnumDelegate[jfxp.Printer.MarginType]
+      extends SFXEnumDelegate[jfxp.Printer.MarginType]
 
   // MarginType - end
 
@@ -120,7 +120,7 @@ object Printer {
  * @since 8.0
  */
 final class Printer(override val delegate: jfxp.Printer)
-  extends SFXDelegate[jfxp.Printer] {
+    extends SFXDelegate[jfxp.Printer] {
 
   /**
    * the default page layout for this printer.
@@ -148,7 +148,14 @@ final class Printer(override val delegate: jfxp.Printer)
    * @param bMargin the bottom margin to use in pts.
    * @return PageLayout based on the specified parameters.
    */
-  def createPageLayout(paper: Paper, orient: PageOrientation, lMargin: Double, rMargin: Double, tMargin: Double, bMargin: Double): PageLayout =
+  def createPageLayout(
+    paper: Paper,
+    orient: PageOrientation,
+    lMargin: Double,
+    rMargin: Double,
+    tMargin: Double,
+    bMargin: Double
+  ): PageLayout =
     delegate.createPageLayout(paper, orient, lMargin, rMargin, tMargin, bMargin)
 
   /**

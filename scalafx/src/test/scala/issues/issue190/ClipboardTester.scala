@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ object ClipboardTester extends JFXApp3 {
               text = "Print clipboard"
               onAction = _ => {
                 val systemClipboard = Clipboard.systemClipboard
-                val contentTypes = systemClipboard.contentTypes
+                val contentTypes    = systemClipboard.contentTypes
                 println(s"\nClipboard contains " + contentTypes.size + " type(s).")
                 contentTypes.foreach { ct =>
                   println("Checking content type: " + ct)
@@ -86,7 +86,7 @@ object ClipboardTester extends JFXApp3 {
               text = "Add file content (3)"
               onAction = _ => {
                 Clipboard.systemClipboard.content = ClipboardContent(
-                  DataFormat.Files -> Seq(new File("c:/tmp")).asJava,
+                  DataFormat.Files     -> Seq(new File("c:/tmp")).asJava,
                   DataFormat.PlainText -> "Hello Clipboard!"
                 )
               }
@@ -95,7 +95,7 @@ object ClipboardTester extends JFXApp3 {
               text = "Add text/HTML content (1)"
               onAction = _ => {
                 val clipboard = Clipboard.systemClipboard
-                val content = new ClipboardContent()
+                val content   = new ClipboardContent()
                 content.putString("Some text")
                 content.putHtml("<b>Some</b> text")
                 clipboard.content = content
@@ -106,7 +106,7 @@ object ClipboardTester extends JFXApp3 {
               onAction = _ => {
                 Clipboard.systemClipboard.content = ClipboardContent(
                   DataFormat.PlainText -> "Some text",
-                  DataFormat.Html -> "<b>Some</b> text"
+                  DataFormat.Html      -> "<b>Some</b> text"
                 )
               }
             }

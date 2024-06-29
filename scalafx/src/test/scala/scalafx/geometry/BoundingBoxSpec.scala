@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,11 +34,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * BoundingBox Spec tests.
- *
  */
 class BoundingBoxSpec
-  extends SimpleSFXDelegateSpec[jfxg.BoundingBox, BoundingBox](
-    classOf[jfxg.BoundingBox], classOf[BoundingBox]) {
+    extends SimpleSFXDelegateSpec[jfxg.BoundingBox, BoundingBox](
+      classOf[jfxg.BoundingBox],
+      classOf[BoundingBox]
+    ) {
 
   override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
 

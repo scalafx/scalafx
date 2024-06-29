@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,8 @@ import scalafx.delegate.SFXDelegate
  * Object companion for [[scalafx.scene.control.SeparatorMenuItem]].
  */
 object SeparatorMenuItem {
-  implicit def sfxSeparatorMenuItem2jfx(s: SeparatorMenuItem): jfxsc.SeparatorMenuItem = if (s != null) s.delegate else null
+  implicit def sfxSeparatorMenuItem2jfx(s: SeparatorMenuItem): jfxsc.SeparatorMenuItem =
+    if (s != null) s.delegate else null
 }
 
 /**
@@ -54,8 +55,8 @@ object SeparatorMenuItem {
  * @define ORIGINALDOC Original Documentation]].
  */
 class SeparatorMenuItem(override val delegate: jfxsc.SeparatorMenuItem)
-  extends CustomMenuItem(delegate)
-  with SFXDelegate[jfxsc.SeparatorMenuItem] {
+    extends CustomMenuItem(delegate)
+    with SFXDelegate[jfxsc.SeparatorMenuItem] {
   def this() = {
     this(new jfxsc.SeparatorMenuItem)
   }

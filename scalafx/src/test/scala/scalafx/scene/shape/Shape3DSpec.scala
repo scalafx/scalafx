@@ -34,9 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Shape3D Spec tests. */
 class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
+    extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
 
-  override protected def getScalaClassInstance:Box = new Box()
+  override protected def getScalaClassInstance: Box = new Box()
 
   override def getJavaClassInstance: jfxss.Box = new jfxss.Box()
 }

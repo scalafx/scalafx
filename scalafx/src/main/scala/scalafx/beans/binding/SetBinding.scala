@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,28 +35,28 @@ import scalafx.beans.value.ObservableValue
 import scalafx.collections.CollectionIncludes.jfxObservableSet2sfxObservableSet
 import scalafx.collections.ObservableSet
 
-
 object SetBinding {
+
   /**
-    * Converts a ScalaFX SetBinding to its JavaFX counterpart LisBinding.
-    *
-    * @param v ScalaFX SetBinding
-    * @return JavaFX SetBinding
-    */
+   * Converts a ScalaFX SetBinding to its JavaFX counterpart LisBinding.
+   *
+   * @param v ScalaFX SetBinding
+   * @return JavaFX SetBinding
+   */
   implicit def sfxSetBinding2jfx[E <: Any](v: SetBinding[E]): jfxbb.SetBinding[E] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 SetBinding]].
-  *
-  * @define TC          SetBinding
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetBinding.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 SetBinding]].
+ *
+ * @define TC          SetBinding
+ * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetBinding.html
+ * @define JFX         JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
 class SetBinding[E <: Any](override val delegate: jfxbb.SetBinding[E])
-  extends SetExpression(delegate)
+    extends SetExpression(delegate)
     with ObservableValue[ObservableSet[E], jfxc.ObservableSet[E]] {
 
   override def value: ObservableSet[E] = delegate.get

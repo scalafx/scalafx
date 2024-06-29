@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,4 @@ package scalafx.beans
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/package-summary.html `javafx.beans.property`]] package.
  */
-package object property {
-
-}
+package object property {}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,8 @@ object ComboBoxTreeCell {
    * @param cell ScalaFX $CBTC
    * @return JavaFX $CBTC
    */
-  implicit def sfxComboBoxTreeCell2jfx[T](cell: ComboBoxTreeCell[T]): jfxscc.ComboBoxTreeCell[T] = if (cell != null) cell.delegate else null
+  implicit def sfxComboBoxTreeCell2jfx[T](cell: ComboBoxTreeCell[T]): jfxscc.ComboBoxTreeCell[T] =
+    if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT
@@ -74,7 +75,8 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](items)
+  def forTreeView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
+    jfxscc.ComboBoxTreeCell.forTreeView[T](items)
 
   /**
    * $FTCINIT
@@ -91,7 +93,10 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
+  def forTreeView[T](
+    converter: jfxu.StringConverter[T],
+    items: jfxc.ObservableList[T]
+  ): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
     jfxscc.ComboBoxTreeCell.forTreeView[T](converter, items)
 
   /**
@@ -109,7 +114,10 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], T*)", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](converter, items: _*)
+  def forTreeView[T](
+    converter: jfxu.StringConverter[T],
+    items: T*
+  ): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](converter, items: _*)
 
   /**
    * $FTCINIT
@@ -125,7 +133,8 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](T*)", since = "1.0")
-  def forTreeView[T](items: Array[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](items: _*)
+  def forTreeView[T](items: Array[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
+    jfxscc.ComboBoxTreeCell.forTreeView[T](items: _*)
 
 }
 
@@ -145,12 +154,12 @@ object ComboBoxTreeCell {
  * @define ITEMSPARAM The items to show in the $CMBX popup menu when selected by the user.
  */
 class ComboBoxTreeCell[T](override val delegate: jfxscc.ComboBoxTreeCell[T] = new jfxscc.ComboBoxTreeCell[T])
-  extends TreeCell[T](delegate)
-  with ConvertableCell[jfxscc.ComboBoxTreeCell[T], T, T]
-  with ComboBoxEditableCell[jfxscc.ComboBoxTreeCell[T], T]
-  with UpdatableCell[jfxscc.ComboBoxTreeCell[T], T]
-  with ItemableCell[jfxscc.ComboBoxTreeCell[T], T]
-  with SFXDelegate[jfxscc.ComboBoxTreeCell[T]] {
+    extends TreeCell[T](delegate)
+    with ConvertableCell[jfxscc.ComboBoxTreeCell[T], T, T]
+    with ComboBoxEditableCell[jfxscc.ComboBoxTreeCell[T], T]
+    with UpdatableCell[jfxscc.ComboBoxTreeCell[T], T]
+    with ItemableCell[jfxscc.ComboBoxTreeCell[T], T]
+    with SFXDelegate[jfxscc.ComboBoxTreeCell[T]] {
 
   /**
    * $CONSTITEMS

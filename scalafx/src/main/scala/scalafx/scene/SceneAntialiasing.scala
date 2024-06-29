@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,11 +46,11 @@ object SceneAntialiasing {
     if (v != null) v.delegate else null.asInstanceOf[jfxs.SceneAntialiasing]
 
   /**
-    * Converts a JavaFX `SceneAntialiasing` to its respective `SceneAntialiasing`.
-    *
-    * @param e JavaFX `SceneAntialiasing`
-    * @return `ScalaFX` equivalent to argument.
-    */
+   * Converts a JavaFX `SceneAntialiasing` to its respective `SceneAntialiasing`.
+   *
+   * @param e JavaFX `SceneAntialiasing`
+   * @return `ScalaFX` equivalent to argument.
+   */
   def apply(e: jfxs.SceneAntialiasing): SceneAntialiasing =
     if (e != null) values.find(_.delegate == e).get
     else null.asInstanceOf[SceneAntialiasing]
@@ -72,4 +72,4 @@ object SceneAntialiasing {
 }
 
 sealed abstract class SceneAntialiasing(override val delegate: jfxs.SceneAntialiasing)
-  extends SFXDelegate[jfxs.SceneAntialiasing]
+    extends SFXDelegate[jfxs.SceneAntialiasing]

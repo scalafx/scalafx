@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,8 +40,8 @@ object WritableImage {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/WritableImage.html]]
  */
 class WritableImage(override val delegate: jfxsi.WritableImage)
-  extends Image(delegate)
-  with SFXDelegate[jfxsi.WritableImage] {
+    extends Image(delegate)
+    with SFXDelegate[jfxsi.WritableImage] {
 
   /**
    * Construct an empty image of the specified dimensions.
@@ -58,7 +58,8 @@ class WritableImage(override val delegate: jfxsi.WritableImage)
    * Construct an image of the specified dimensions, initialized from the indicated region of the
    * [[scalafx.scene.image.PixelReader]].
    */
-  def this(reader: PixelReader, x: Int, y: Int, width: Int, height: Int) = this(new jfxsi.WritableImage(reader, x, y, width, height))
+  def this(reader: PixelReader, x: Int, y: Int, width: Int, height: Int) =
+    this(new jfxsi.WritableImage(reader, x, y, width, height))
 
   /**
    * This method returns a PixelWriter that provides access to write the pixels of the image.

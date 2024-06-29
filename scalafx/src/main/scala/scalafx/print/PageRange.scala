@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ object PageRange {
  * @since 8.0
  */
 final class PageRange(override val delegate: jfxp.PageRange)
-  extends SFXDelegate[jfxp.PageRange] {
+    extends SFXDelegate[jfxp.PageRange] {
 
   /**
    * Create a new PageRange with the specified start and end page numbers.

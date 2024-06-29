@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,44 +44,49 @@ object PickResult {
   val FACE_UNDEFINED: Int = FaceUndefined
 }
 
-/** A container for the result of a pick event. Wrapper for JavaFX's
-  * [[http://download.java.net/jdk8/jfxdocs/javafx/scene/input/PickResult.html PickResult]]. */
+/**
+ * A container for the result of a pick event. Wrapper for JavaFX's
+ * [[http://download.java.net/jdk8/jfxdocs/javafx/scene/input/PickResult.html PickResult]].
+ */
 class PickResult(override val delegate: jfxsi.PickResult)
-  extends SFXDelegate[jfxsi.PickResult] {
+    extends SFXDelegate[jfxsi.PickResult] {
 
-  /** Creates a pick result for a 2D case where no additional information is needed.
-    *
-    * Converts the given scene coordinates to the target's local coordinate space and stores
-    * the value as the intersected point. Sets intersected node to the given target,
-    * distance to 1.0, face to FACE_UNDEFINED and texCoord to null.
-    *
-    * @param target - The picked target (null in case of a Scene)
-    * @param sceneX - The scene X coordinate
-    * @param sceneY - The scene Y coordinate
-    */
+  /**
+   * Creates a pick result for a 2D case where no additional information is needed.
+   *
+   * Converts the given scene coordinates to the target's local coordinate space and stores
+   * the value as the intersected point. Sets intersected node to the given target,
+   * distance to 1.0, face to FACE_UNDEFINED and texCoord to null.
+   *
+   * @param target - The picked target (null in case of a Scene)
+   * @param sceneX - The scene X coordinate
+   * @param sceneY - The scene Y coordinate
+   */
   def this(target: jfxe.EventTarget, sceneX: Double, sceneY: Double) = {
     this(new jfxsi.PickResult(target, sceneX, sceneY))
   }
 
-  /** Creates a new instance of PickResult for a non-3d-shape target.
-    *
-    * Sets face to FACE_UNDEFINED and texCoord to null.
-    *
-    * @param node - The intersected node
-    * @param point - The intersected point in local coordinate of the picked Node
-    * @param distance - The intersected distance between camera position and the picked Node
-    */
+  /**
+   * Creates a new instance of PickResult for a non-3d-shape target.
+   *
+   * Sets face to FACE_UNDEFINED and texCoord to null.
+   *
+   * @param node - The intersected node
+   * @param point - The intersected point in local coordinate of the picked Node
+   * @param distance - The intersected distance between camera position and the picked Node
+   */
   def this(node: Node, point: Point3D, distance: Double) = {
     this(new jfxsi.PickResult(node, point, distance))
   }
 
-  /** Creates a new instance of PickResult.
-    * @param node - The intersected node
-    * @param point - The intersected point in local coordinate of the picked Node
-    * @param distance - The intersected distance between camera position and the picked Node
-    * @param face - The intersected face of the picked Node
-    * @param texCoord - The intersected texture coordinates of the picked Node
-    */
+  /**
+   * Creates a new instance of PickResult.
+   * @param node - The intersected node
+   * @param point - The intersected point in local coordinate of the picked Node
+   * @param distance - The intersected distance between camera position and the picked Node
+   * @param face - The intersected face of the picked Node
+   * @param texCoord - The intersected texture coordinates of the picked Node
+   */
   def this(node: Node, point: Point3D, distance: Double, face: Int, texCoord: Point2D) = {
     this(new jfxsi.PickResult(node, point, distance, face, texCoord))
   }
@@ -89,25 +94,27 @@ class PickResult(override val delegate: jfxsi.PickResult)
   /** Returns the intersected distance between camera position and the intersected point. */
   def intersectedDistance: Double = delegate.getIntersectedDistance
 
-  /** Returns the intersected face of the picked Node,
-    * `FACE_UNDEFINED` if the node doesn't have user-specified faces or was picked on bounds.
-    */
+  /**
+   * Returns the intersected face of the picked Node,
+   * `FACE_UNDEFINED` if the node doesn't have user-specified faces or was picked on bounds.
+   */
   def intersectedFace: Int = delegate.getIntersectedFace
 
   /** Returns the intersected node. Returns `None` if there was no intersection with any node and the scene was picked. */
   def intersectedNode: Option[Node] = delegate.getIntersectedNode match {
     case null => None
-    case v => Option[Node](v)
+    case v    => Option[Node](v)
   }
 
   /** Returns the intersected point in local coordinate of the picked Node. */
   def intersectedPoint: Point3D = delegate.getIntersectedPoint
 
-  /** Return the intersected texture coordinates of the picked 3d shape.
-    * If the picked target is not Shape3D or has pickOnBounds==true, it returns `None`.
-    */
+  /**
+   * Return the intersected texture coordinates of the picked 3d shape.
+   * If the picked target is not Shape3D or has pickOnBounds==true, it returns `None`.
+   */
   def intersectedTexCoord: Option[Point2D] = delegate.getIntersectedTexCoord match {
     case null => None
-    case v => Option[Point2D](v)
+    case v    => Option[Point2D](v)
   }
 }

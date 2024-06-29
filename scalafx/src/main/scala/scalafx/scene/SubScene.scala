@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,35 +40,37 @@ object SubScene {
   implicit def sfxSubScene2jfx(v: SubScene): jfxs.SubScene = if (v != null) v.delegate else null
 }
 
-
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/SubScene.html]]. */
 class SubScene(override val delegate: jfxs.SubScene)
-  extends Node(delegate)
-  with SFXDelegate[jfxs.SubScene] {
+    extends Node(delegate)
+    with SFXDelegate[jfxs.SubScene] {
 
   // TODO Combine common features with Scene in a trait used by both.
 
-  /** Creates a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
-    * as root Node with a specified size.
-    *
-    * @param width The width of the scene
-    * @param height The height of the scene
-    */
+  /**
+   * Creates a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
+   * as root Node with a specified size.
+   *
+   * @param width The width of the scene
+   * @param height The height of the scene
+   */
   def this(width: Double, height: Double) = this(new jfxs.SubScene(new jfxs.Group(), width, height))
 
-  /** Constructs a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
-    * as root Node, with a dimension of width and height,
-    * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
-    */
+  /**
+   * Constructs a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
+   * as root Node, with a dimension of width and height,
+   * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
+   */
   def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.SubScene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /** Creates a SubScene for a specific root Node with a specific size. */
   def this(root: Parent, width: Double, height: Double) = this(new jfxs.SubScene(root, width, height))
 
-  /** Constructs a SubScene consisting of a root, with a dimension of width and height,
-    * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
-    */
+  /**
+   * Constructs a SubScene consisting of a root, with a dimension of width and height,
+   * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
+   */
   def this(root: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.SubScene(root, width, height, depthBuffer, antiAliasing))
 
@@ -84,9 +86,9 @@ class SubScene(override val delegate: jfxs.SubScene)
    */
   def getChildren: ObservableBuffer[jfxs.Node] = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxsl.Pane => pane.getChildren
+    case pane: jfxsl.Pane  => pane.getChildren
     case _ => throw new IllegalStateException("Cannot access children of root: " + root +
-      "\nUse a class that extends Group or Pane, or override the getChildren method.")
+        "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
 
   /**
@@ -145,6 +147,7 @@ class SubScene(override val delegate: jfxs.SubScene)
    * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
    */
   def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheetProperty
+
   /**
    * Set the URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
    * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent

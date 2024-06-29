@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,14 +48,13 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
   /**
    * Request that the node be decremented by a large value.
    * A smaller decrement is requested using {@link #DECREMENT}.
-   *
    */
   case object BlockDecrement extends AccessibleAction(jfxs.AccessibleAction.BLOCK_DECREMENT)
 
   /**
    * Request that the node be incremented by a large value.
    * A smaller increment is requested using {@link #INCREMENT}.
-
+   *
    * Used by Slider, ScrollBar, and others
    */
   case object BlockIncrement extends AccessibleAction(jfxs.AccessibleAction.BLOCK_INCREMENT)
@@ -72,7 +71,6 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * A larger decrement is requested using {@link #BLOCK_DECREMENT}.
    *
    * Used by Slider, ScrollBar, and others
-   *
    */
   case object Decrement extends AccessibleAction(jfxs.AccessibleAction.DECREMENT)
 
@@ -80,7 +78,6 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * Request that the node should become expanded.
    *
    * Used by TreeItem, TitledPane, and others
-   *
    */
   case object Expand extends AccessibleAction(jfxs.AccessibleAction.EXPAND)
 
@@ -90,7 +87,6 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * that is has been activated.
    *
    * Used by Button, Hyperlink, and others
-   *
    */
   case object Fire extends AccessibleAction(jfxs.AccessibleAction.FIRE)
 
@@ -99,7 +95,6 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * A larger increment is requested using {@link #BLOCK_INCREMENT}.
    *
    * Used by Slider, ScrollBar, and others
-   *
    */
   case object Increment extends AccessibleAction(jfxs.AccessibleAction.INCREMENT)
 
@@ -204,12 +199,24 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    */
   case object ShowMenu extends AccessibleAction(jfxs.AccessibleAction.SHOW_MENU)
 
-
   protected override def unsortedValues: Array[AccessibleAction] = Array(
-    BlockDecrement, BlockIncrement, Collapse, Decrement, Expand, Fire, Increment, RequestFocus, ShowItem,
-    ShowTextRange, SetSelectedItems, SetTextSelection, SetText, SetValue, ShowMenu
+    BlockDecrement,
+    BlockIncrement,
+    Collapse,
+    Decrement,
+    Expand,
+    Fire,
+    Increment,
+    RequestFocus,
+    ShowItem,
+    ShowTextRange,
+    SetSelectedItems,
+    SetTextSelection,
+    SetText,
+    SetValue,
+    ShowMenu
   )
 }
 
-
-sealed abstract class AccessibleAction(override val delegate: jfxs.AccessibleAction) extends SFXEnumDelegate[jfxs.AccessibleAction]
+sealed abstract class AccessibleAction(override val delegate: jfxs.AccessibleAction)
+    extends SFXEnumDelegate[jfxs.AccessibleAction]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,6 +58,5 @@ object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
   protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
 }
 
-
 sealed abstract class DrawMode(override val delegate: jfxss.DrawMode)
-  extends SFXEnumDelegate[jfxss.DrawMode]
+    extends SFXEnumDelegate[jfxss.DrawMode]

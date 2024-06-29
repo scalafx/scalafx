@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@ package scalafx.testutil
 import java.lang.reflect.Method
 
 trait PropertyComparator
-  extends AbstractComparator {
+    extends AbstractComparator {
 
   private def getScalaFXProperties(scalafxClass: Class[_]) = {
     scalafxClass.getMethods

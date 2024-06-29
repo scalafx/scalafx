@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,8 +45,8 @@ object AreaChart {
 }
 
 class AreaChart[X, Y](override val delegate: jfxsc.AreaChart[X, Y])
-  extends XYChart[X, Y](delegate)
-  with SFXDelegate[jfxsc.AreaChart[X, Y]] {
+    extends XYChart[X, Y](delegate)
+    with SFXDelegate[jfxsc.AreaChart[X, Y]] {
 
   def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.AreaChart[X, Y](xAxis, yAxis))

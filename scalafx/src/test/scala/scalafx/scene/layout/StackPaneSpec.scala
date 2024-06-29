@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,5 +35,5 @@ import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
  * StackPane Spec tests.
  */
 class StackPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.StackPane, StackPane](classOf[jfxsl.StackPane], classOf[StackPane])
-  with AlignmentDelegateSpec[jfxsl.StackPane, StackPane]
+    extends SimpleSFXDelegateSpec[jfxsl.StackPane, StackPane](classOf[jfxsl.StackPane], classOf[StackPane])
+    with AlignmentDelegateSpec[jfxsl.StackPane, StackPane]

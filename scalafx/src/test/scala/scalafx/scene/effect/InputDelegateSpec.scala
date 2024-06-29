@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,9 +37,9 @@ trait InputDelegateSpec[D <: InputDelegate[_]] extends AnyFlatSpec {
   protected val inputDelegate: D
 
   it should "allow observe changes in Input Effect" in {
-    var changed = false
+    var changed      = false
     val initialInput = new Lighting
-    val finalInput = new ColorInput
+    val finalInput   = new ColorInput
 
     inputDelegate.input = initialInput
 

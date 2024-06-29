@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,9 +67,15 @@ object ContentDisplay extends SFXEnumDelegateCompanion[jfxsc.ContentDisplay, Con
   val TOP: ContentDisplay = Top
 
   protected override def unsortedValues: Array[ContentDisplay] = Array(
-    Top, Right, Bottom, Left, Center, GraphicOnly, TextOnly
+    Top,
+    Right,
+    Bottom,
+    Left,
+    Center,
+    GraphicOnly,
+    TextOnly
   )
 }
 
-
-sealed abstract class ContentDisplay(override val delegate: jfxsc.ContentDisplay) extends SFXEnumDelegate[jfxsc.ContentDisplay]
+sealed abstract class ContentDisplay(override val delegate: jfxsc.ContentDisplay)
+    extends SFXEnumDelegate[jfxsc.ContentDisplay]

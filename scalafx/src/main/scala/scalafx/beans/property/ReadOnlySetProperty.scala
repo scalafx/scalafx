@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,70 +37,71 @@ import scalafx.collections.ObservableSet
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlySetProperty {
+
   /**
-    * Converts a ScalaFX ReadOnlySetProperty to its JavaFX counterpart ReadOnlySetProperty.
-    *
-    * @param v ScalaFX ReadOnlySetProperty
-    * @return JavaFX ReadOnlySetProperty
-    */
+   * Converts a ScalaFX ReadOnlySetProperty to its JavaFX counterpart ReadOnlySetProperty.
+   *
+   * @param v ScalaFX ReadOnlySetProperty
+   * @return JavaFX ReadOnlySetProperty
+   */
   implicit def sfxReadOnlySetProperty2jfx[E <: Any](v: ReadOnlySetProperty[E]): jfxbp.ReadOnlySetProperty[E] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 ReadOnlySetProperty]].
-  *
-  * @define TC          ReadOnlySetProperty
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlySetProperty.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 ReadOnlySetProperty]].
+ *
+ * @define TC          ReadOnlySetProperty
+ * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlySetProperty.html
+ * @define JFX         JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
 class ReadOnlySetProperty[E <: Any](override val delegate: jfxbp.ReadOnlySetProperty[E])
-  extends SetExpression[E](delegate)
+    extends SetExpression[E](delegate)
     with ReadOnlyProperty[ObservableSet[E], jfxc.ObservableSet[E]]
     with SFXDelegate[jfxbp.ReadOnlySetProperty[E]] {
-
 
   override def value: ObservableSet[E] = delegate.get()
 
   /**
-    * Creates a content binding between the ObservableSet, that is wrapped in this ReadOnlySetProperty,
-    * and another ObservableSet.
-    *
-    * A content binding ensures that the content of the wrapped ObservableSets is the same as that of the other set.
-    * If the content of the other set changes, the wrapped set will be updated automatically.
-    * Once the wrapped set is bound to another set, you must not change it directly.
-    *
-    * @param set the ObservableSet this property should be bound to
-    */
+   * Creates a content binding between the ObservableSet, that is wrapped in this ReadOnlySetProperty,
+   * and another ObservableSet.
+   *
+   * A content binding ensures that the content of the wrapped ObservableSets is the same as that of the other set.
+   * If the content of the other set changes, the wrapped set will be updated automatically.
+   * Once the wrapped set is bound to another set, you must not change it directly.
+   *
+   * @param set the ObservableSet this property should be bound to
+   */
   def bindContent(set: ObservableSet[E]): Unit = delegate.bindContent(set.delegate)
 
   /**
-    * Creates a bidirectional content binding of the ObservableSet, that is wrapped in this ReadOnlySetProperty,
-    * and another ObservableSet.
-    *
-    * A bidirectional content binding ensures that the content of two ObservableSets is the same.
-    * If the content of one of the sets changes, the other one will be updated automatically.
-    *
-    * @param set the ObservableSet this property should be bound to
-    */
+   * Creates a bidirectional content binding of the ObservableSet, that is wrapped in this ReadOnlySetProperty,
+   * and another ObservableSet.
+   *
+   * A bidirectional content binding ensures that the content of two ObservableSets is the same.
+   * If the content of one of the sets changes, the other one will be updated automatically.
+   *
+   * @param set the ObservableSet this property should be bound to
+   */
   def bindContentBidirectional(set: ObservableSet[E]): Unit = delegate.bindContentBidirectional(set.delegate)
 
   /**
-    * Deletes a content binding between the ObservableSet, that is wrapped in this ReadOnlySetProperty, and another Object.
-    *
-    * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
-    *
-    * @param sfx the SFXDelegate object to which the binding should be removed
-    */
+   * Deletes a content binding between the ObservableSet, that is wrapped in this ReadOnlySetProperty, and another Object.
+   *
+   * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
+   *
+   * @param sfx the SFXDelegate object to which the binding should be removed
+   */
   def unbindContent[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContent(sfx.delegate)
 
   /**
-    * Deletes a bidirectional content binding between the ObservableSet, that is wrapped in this ReadOnlySetProperty, and another Object.
-    *
-    * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
-    *
-    * @param sfx the SFXDelegate object to which the binding should be removed
-    */
-  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContentBidirectional(sfx.delegate)
+   * Deletes a bidirectional content binding between the ObservableSet, that is wrapped in this ReadOnlySetProperty, and another Object.
+   *
+   * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
+   *
+   * @param sfx the SFXDelegate object to which the binding should be removed
+   */
+  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit =
+    delegate.unbindContentBidirectional(sfx.delegate)
 }

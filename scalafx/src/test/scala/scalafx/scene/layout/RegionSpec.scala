@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +33,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Region Spec tests.
- *
- *
  */
 class RegionSpec
-  extends SimpleSFXDelegateSpec[jfxsl.Region, Region](classOf[jfxsl.Region], classOf[Region])
+    extends SimpleSFXDelegateSpec[jfxsl.Region, Region](classOf[jfxsl.Region], classOf[Region])

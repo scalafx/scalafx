@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,8 @@ object Lighting {
 
 }
 
-class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) extends Effect(delegate) with SFXDelegate[jfxse.Lighting] {
+class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) extends Effect(delegate)
+    with SFXDelegate[jfxse.Lighting] {
 
   /**
    * Creates a new instance of Lighting with the specified light.

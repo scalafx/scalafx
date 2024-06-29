@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,8 @@ object ChoiceBoxListCell {
    *
    * @param cell ScalaFX $CBLC
    */
-  implicit def sfxChoiceBoxListCell2jfx[T](cell: ChoiceBoxListCell[T]): jfxscc.ChoiceBoxListCell[T] = if (cell != null) cell.delegate else null
+  implicit def sfxChoiceBoxListCell2jfx[T](cell: ChoiceBoxListCell[T]): jfxscc.ChoiceBoxListCell[T] =
+    if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
@@ -73,7 +74,8 @@ object ChoiceBoxListCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forListView[T](ObservableBuffer[T])", since = "1.0")
-  def forListView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.ChoiceBoxListCell.forListView[T](items)
+  def forListView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
+    jfxscc.ChoiceBoxListCell.forListView[T](items)
 
   /**
    * $FLVINIT
@@ -90,7 +92,10 @@ object ChoiceBoxListCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forListView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forListView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
+  def forListView[T](
+    converter: jfxu.StringConverter[T],
+    items: jfxc.ObservableList[T]
+  ): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
     jfxscc.ChoiceBoxListCell.forListView[T](converter, items)
 
   /**
@@ -108,7 +113,10 @@ object ChoiceBoxListCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forListView[T](StringConverter[T], T*)", since = "1.0")
-  def forListView[T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.ChoiceBoxListCell.forListView[T](converter, items: _*)
+  def forListView[T](
+    converter: jfxu.StringConverter[T],
+    items: T*
+  ): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.ChoiceBoxListCell.forListView[T](converter, items: _*)
 
   /**
    * $FLVINIT
@@ -124,7 +132,8 @@ object ChoiceBoxListCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forListView[T](T*)", since = "1.0")
-  def forListView[T](items: Array[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.ChoiceBoxListCell.forListView[T](items: _*)
+  def forListView[T](items: Array[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
+    jfxscc.ChoiceBoxListCell.forListView[T](items: _*)
 
 }
 
@@ -140,7 +149,7 @@ object ChoiceBoxListCell {
  * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  */
 class ChoiceBoxListCell[T](override val delegate: jfxscc.ChoiceBoxListCell[T] = new jfxscc.ChoiceBoxListCell[T])
-  extends ListCell[T](delegate)
+    extends ListCell[T](delegate)
     with ConvertableCell[jfxscc.ChoiceBoxListCell[T], T, T]
     with UpdatableCell[jfxscc.ChoiceBoxListCell[T], T]
     with ItemableCell[jfxscc.ChoiceBoxListCell[T], T]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@ object PathTransition extends AnimationStatics {
    * Companion Object for $OT, where its values are defined.
    */
   object OrientationType
-    extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
+      extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
 
     /**
      * The targeted node's rotation matrix stays unchanged along the geometric path.
@@ -87,7 +87,7 @@ object PathTransition extends AnimationStatics {
    * @param delegate JavaFX $OT to be delegated.
    */
   sealed abstract class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
-    extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
+      extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
 
 }
 
@@ -101,8 +101,8 @@ object PathTransition extends AnimationStatics {
  * @define CONSTR The constructor of $PT.
  */
 class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.PathTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.PathTransition] {
 
   /**
    * $CONSTR

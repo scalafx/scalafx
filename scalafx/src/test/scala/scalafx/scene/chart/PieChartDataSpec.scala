@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PieChart.Data Spec tests.
- *
- *
  */
 class PieChartDataSpec
-  extends SimpleSFXDelegateSpec[jfxsc.PieChart.Data, PieChart.Data](classOf[jfxsc.PieChart.Data], classOf[PieChart.Data]) {
+    extends SimpleSFXDelegateSpec[jfxsc.PieChart.Data, PieChart.Data](
+      classOf[jfxsc.PieChart.Data],
+      classOf[PieChart.Data]
+    ) {
 
   override def getJavaClassInstance = new jfxsc.PieChart.Data("", 0.0)
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,9 +41,9 @@ object QuadCurveTo {
 }
 
 class QuadCurveTo(override val delegate: jfxss.QuadCurveTo = new jfxss.QuadCurveTo())
-  extends PathElement(delegate)
-  with PositionDelegate[jfxss.QuadCurveTo]
-  with SFXDelegate[jfxss.QuadCurveTo] {
+    extends PathElement(delegate)
+    with PositionDelegate[jfxss.QuadCurveTo]
+    with SFXDelegate[jfxss.QuadCurveTo] {
 
   def controlX: DoubleProperty = delegate.controlXProperty
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,15 +42,13 @@ import scalafx.testutil.RunOnApplicationThread
 
 /**
  * ObjectProperty Spec tests.
- *
- *
  */
 class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
-  val bean = new Object()
-  var objectProperty: jfxbp.ObjectProperty[String] = _
+  val bean                                          = new Object()
+  var objectProperty: jfxbp.ObjectProperty[String]  = _
   var objectProperty2: jfxbp.ObjectProperty[String] = _
-  var sfxObjectProperty: ObjectProperty[String] = _
-  var booleanProperty: jfxbp.BooleanProperty = _
+  var sfxObjectProperty: ObjectProperty[String]     = _
+  var booleanProperty: jfxbp.BooleanProperty        = _
 
   override protected def beforeEach(): Unit = {
     objectProperty = ObjectProperty[String](bean, "Test Object")
@@ -179,8 +177,8 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = objectProperty === objectProperty2
+    var changeCount     = 0
+    val binding         = objectProperty === objectProperty2
     binding onInvalidate {
       invalidateCount += 1
     }
@@ -198,7 +196,7 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
   it should "support implicit conversion to a String Binding" is pending
 
   it should "support implicit conversion from a ScalaFX ObjectProperty with a SFXDelegate of a type T to a JavaFX ObjectProperty of type T" in {
-    val scalaObjProperty: ObjectProperty[Button] = ObjectProperty[Button](new Button("Test"))
+    val scalaObjProperty: ObjectProperty[Button]            = ObjectProperty[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ObjectProperty[jfxsc.Button] = scalaObjProperty
 
     javaObjProperty.get should be(scalaObjProperty.value.delegate)
@@ -244,8 +242,8 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
 
   private def evaluateFillProperty[T <: Object](property: ObjectProperty[T], newValue: T): Unit = {
     val originalValue: T = property.value
-    var oldVal: T = null.asInstanceOf[T]
-    var newVal: T = null.asInstanceOf[T]
+    var oldVal: T        = null.asInstanceOf[T]
+    var newVal: T        = null.asInstanceOf[T]
     property.delegate.addListener(new jfxbv.ChangeListener[T] {
       def changed(obs: jfxbv.ObservableValue[_ <: T], oldV: T, newV: T): Unit = {
         oldVal = oldV
@@ -276,4 +274,3 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     evaluateFillProperty(ObjectProperty[ju.Date](new java.sql.Date(1234678L)), new ju.Date)
   }
 }
-

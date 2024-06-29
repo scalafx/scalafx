@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,15 +35,18 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * CellEditEvent tests.
  */
 class TableColumnCellEditEventSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxsc.TableColumn.CellEditEvent[S, T], TableColumn.CellEditEvent[S, T]](
-    classOf[jfxsc.TableColumn.CellEditEvent[S, T]], classOf[TableColumn.CellEditEvent[S, T]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.TableColumn.CellEditEvent[S, T], TableColumn.CellEditEvent[S, T]](
+      classOf[jfxsc.TableColumn.CellEditEvent[S, T]],
+      classOf[TableColumn.CellEditEvent[S, T]]
+    )
+    with RunOnApplicationThread {
 
   override def getJavaClassInstance =
     new jfxsc.TableColumn.CellEditEvent(
       new jfxsc.TableView[S],
       new jfxsc.TablePosition[S, T](new jfxsc.TableView(), 0, null),
       null,
-      null.asInstanceOf[T])
+      null.asInstanceOf[T]
+    )
 
 }

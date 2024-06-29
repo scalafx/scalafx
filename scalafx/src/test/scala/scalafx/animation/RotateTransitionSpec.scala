@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * RotateTransition Spec tests.
- *
- *
  */
 class RotateTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.RotateTransition, RotateTransition](
-    classOf[jfxa.RotateTransition], classOf[RotateTransition])
+    extends SimpleSFXDelegateSpec[jfxa.RotateTransition, RotateTransition](
+      classOf[jfxa.RotateTransition],
+      classOf[RotateTransition]
+    )

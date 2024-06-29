@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,5 +44,5 @@ object SelectionMode extends SFXEnumDelegateCompanion[jfxsc.SelectionMode, Selec
   protected override def unsortedValues: Array[SelectionMode] = Array(Single, Multiple)
 }
 
-
-sealed abstract class SelectionMode(override val delegate: jfxsc.SelectionMode) extends SFXEnumDelegate[jfxsc.SelectionMode]
+sealed abstract class SelectionMode(override val delegate: jfxsc.SelectionMode)
+    extends SFXEnumDelegate[jfxsc.SelectionMode]

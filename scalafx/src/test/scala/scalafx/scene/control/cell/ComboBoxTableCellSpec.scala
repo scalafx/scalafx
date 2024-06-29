@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ComboBoxTableCell Spec tests.
- *
- *
  */
 class ComboBoxTableCellSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxscc.ComboBoxTableCell[S, T], ComboBoxTableCell[S, T]](
-    classOf[jfxscc.ComboBoxTableCell[S, T]], classOf[ComboBoxTableCell[S, T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.ComboBoxTableCell[S, T], ComboBoxTableCell[S, T]](
+      classOf[jfxscc.ComboBoxTableCell[S, T]],
+      classOf[ComboBoxTableCell[S, T]]
+    )
+    with RunOnApplicationThread

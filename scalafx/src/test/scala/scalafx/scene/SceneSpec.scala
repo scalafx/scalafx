@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,12 +34,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Scene Spec tests.
- *
- *
  */
 class SceneSpec
-  extends SimpleSFXDelegateSpec[jfxs.Scene, Scene](classOf[jfxs.Scene], classOf[Scene])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxs.Scene, Scene](classOf[jfxs.Scene], classOf[Scene])
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Scene(getJavaClassInstance)
 

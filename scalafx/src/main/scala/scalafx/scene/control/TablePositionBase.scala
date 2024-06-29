@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,8 @@ object TablePositionBase {
    * @return JavaFX TablePositionBase
    * @since 8.0
    */
-  implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: TablePositionBase[TC]): jfxsc.TablePositionBase[TC] =
+  implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: TablePositionBase[TC])
+    : jfxsc.TablePositionBase[TC] =
     if (tpb != null) tpb.delegate else null
 
 }
@@ -58,7 +59,7 @@ object TablePositionBase {
  * @since 8.0
  */
 abstract class TablePositionBase[TC <: jfxsc.TableColumnBase[_, _]](override val delegate: jfxsc.TablePositionBase[TC])
-  extends SFXDelegate[jfxsc.TablePositionBase[TC]] {
+    extends SFXDelegate[jfxsc.TablePositionBase[TC]] {
 
   //  protected	TablePositionBase(int row, TC tableColumn)
 

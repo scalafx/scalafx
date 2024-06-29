@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ object MediaException {
   implicit def sfxMediaException2jfx(me: MediaException): jfxsm.MediaException = if (me != null) me.delegate else null
 
   object Type
-    extends SFXEnumDelegateCompanion[jfxsm.MediaException.Type, Type] {
+      extends SFXEnumDelegateCompanion[jfxsm.MediaException.Type, Type] {
 
     /**
      * Indicates an error has occurred: the media appears to be invalid or corrupted.
@@ -109,8 +109,17 @@ object MediaException {
     @deprecated("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
     val UNKNOWN: Type = Unknown
 
-    protected override def unsortedValues: Array[Type] = Array(MediaCorrupted, MediaInaccessible, MediaUnavailable,
-      MediaUnspecified, MediaUnsupported, OperationUnsupported, PlaybackError, PlaybackHalted, Unknown)
+    protected override def unsortedValues: Array[Type] = Array(
+      MediaCorrupted,
+      MediaInaccessible,
+      MediaUnavailable,
+      MediaUnspecified,
+      MediaUnsupported,
+      OperationUnsupported,
+      PlaybackError,
+      PlaybackHalted,
+      Unknown
+    )
 
   }
 
@@ -118,13 +127,13 @@ object MediaException {
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaException.Type.html]]
    */
   sealed abstract class Type(override val delegate: jfxsm.MediaException.Type)
-    extends SFXEnumDelegate[jfxsm.MediaException.Type]
+      extends SFXEnumDelegate[jfxsm.MediaException.Type]
 
 }
 
 class MediaException(override val delegate: jfxsm.MediaException)
-  extends Exception(delegate)
-  with SFXDelegate[jfxsm.MediaException] {
+    extends Exception(delegate)
+    with SFXDelegate[jfxsm.MediaException] {
 
   /**
    * Retrieves the category into which this error falls.

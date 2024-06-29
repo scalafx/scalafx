@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,8 @@ object ScrollToEvent {
   /**
    * This event occurs if the user requests scrolling a `TableColumnBase` (ie `TableColumn` or `TreeTableColumn`) into view.
    */
-  def scrollToColumn[T <: jfxsc.TableColumnBase[_, _]](): jfxe.EventType[jfxsc.ScrollToEvent[T]] = jfxsc.ScrollToEvent.scrollToColumn()
+  def scrollToColumn[T <: jfxsc.TableColumnBase[_, _]](): jfxe.EventType[jfxsc.ScrollToEvent[T]] =
+    jfxsc.ScrollToEvent.scrollToColumn()
 
   /**
    * This event occurs if the user requests scrolling a given index into view.
@@ -74,8 +75,8 @@ object ScrollToEvent {
  * @tparam T scroll target type
  */
 class ScrollToEvent[T](override val delegate: jfxsc.ScrollToEvent[T])
-  extends Event(delegate)
-  with SFXDelegate[jfxsc.ScrollToEvent[T]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.ScrollToEvent[T]] {
 
   /**
    * Construct a new Event with the specified event source, target and type.
@@ -85,10 +86,10 @@ class ScrollToEvent[T](override val delegate: jfxsc.ScrollToEvent[T])
    * @param eventType the event type
    * @param scrollTarget the target of the scroll to operation
    */
-  def this(source: Any, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsc.ScrollToEvent[T]], scrollTarget: T) = this(new jfxsc.ScrollToEvent[T](source, target, eventType, scrollTarget))
+  def this(source: Any, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsc.ScrollToEvent[T]], scrollTarget: T) =
+    this(new jfxsc.ScrollToEvent[T](source, target, eventType, scrollTarget))
 
   /**
-   *
    */
   def scrollTarget: T = delegate.getScrollTarget
 

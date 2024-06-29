@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,11 +45,13 @@ import scalafx.delegate.SFXDelegate
  *                it has to be resolved automatically by the compiler.
  * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
  *                it has to be resolved automatically by the compiler.
- *
  */
-abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S]) (implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
-  extends SFXDelegateSpec[J, S](javaClass, scalaClass)
-  with PropertyComparator {
+abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (
+  javaClass: Class[J],
+  scalaClass: Class[S]
+)(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
+    extends SFXDelegateSpec[J, S](javaClass, scalaClass)
+    with PropertyComparator {
 
   it should "implement all the JavaFX properties" in {
     compareProperties(javaClass, scalaClass)

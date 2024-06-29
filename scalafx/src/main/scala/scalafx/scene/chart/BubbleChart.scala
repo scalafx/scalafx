@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,8 +44,8 @@ object BubbleChart {
 }
 
 class BubbleChart[X, Y](override val delegate: jfxsc.BubbleChart[X, Y])
-  extends XYChart[X, Y](delegate)
-  with SFXDelegate[jfxsc.BubbleChart[X, Y]] {
+    extends XYChart[X, Y](delegate)
+    with SFXDelegate[jfxsc.BubbleChart[X, Y]] {
 
   def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.BubbleChart[X, Y](xAxis, yAxis))

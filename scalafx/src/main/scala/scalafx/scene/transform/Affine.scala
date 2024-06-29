@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,8 @@ object Affine {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Affine.html]]
  */
-class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Transform(delegate) with SFXDelegate[jfxst.Affine] {
+class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Transform(delegate)
+    with SFXDelegate[jfxst.Affine] {
 
   /**
    * Defines the X coordinate scaling element of the 3x4 matrix.

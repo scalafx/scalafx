@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,8 @@ object HLineTo {
   def apply(x: Double) = new HLineTo(new jfxss.HLineTo(x))
 }
 
-class HLineTo(override val delegate: jfxss.HLineTo = new jfxss.HLineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.HLineTo] {
+class HLineTo(override val delegate: jfxss.HLineTo = new jfxss.HLineTo()) extends PathElement(delegate)
+    with SFXDelegate[jfxss.HLineTo] {
 
   /**
    * Defines the X coordinate.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,9 +38,9 @@ object MotionBlur {
 }
 
 class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.MotionBlur]
-  with SFXDelegate[jfxse.MotionBlur] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.MotionBlur]
+    with SFXDelegate[jfxse.MotionBlur] {
 
   /**
    * Creates a new instance of MotionBlur with the specified angle and radius.

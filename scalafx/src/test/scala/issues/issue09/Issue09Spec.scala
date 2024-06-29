@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 package issues.issue09
 
-
 import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
@@ -39,7 +38,7 @@ class Issue09Spec extends AnyFlatSpec {
     val b = DoubleProperty(0)
     val c = DoubleProperty(0)
 
-    val s = (a + b + c) / 2D
+    val s = (a + b + c) / 2d
 
     // Exception was thrown here:
     //   java.lang.ClassCastException: javafx.beans.binding.Bindings$20

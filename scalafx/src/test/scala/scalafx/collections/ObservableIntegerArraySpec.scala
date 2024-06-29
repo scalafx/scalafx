@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,9 +38,10 @@ import scala.collection.mutable.Buffer
  * ObservableIntegerArray Spec tests.
  */
 class ObservableIntegerArraySpec
-  extends SimpleSFXDelegateSpec[jfxc.ObservableIntegerArray, ObservableIntegerArray](
-    classOf[jfxc.ObservableIntegerArray], classOf[ObservableIntegerArray]
-  ) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableIntegerArray, ObservableIntegerArray](
+      classOf[jfxc.ObservableIntegerArray],
+      classOf[ObservableIntegerArray]
+    ) {
 
   /**
    * Test trait for instance testing.
@@ -48,13 +49,13 @@ class ObservableIntegerArraySpec
 
   trait InstanceTests {
     val array0: Array[Int] = Array.empty
-    val array1 = Array(4, 5, 6, 7)
-    val array2 = Array(8, 9, 10, 11, 12)
-    val instance0 = ObservableIntegerArray(array0)
-    val instance1 = ObservableIntegerArray(array1)
-    val instance2 = ObservableIntegerArray(array2)
-    val change = Buffer.empty[(ObservableIntegerArray, Change)]
-    var changes = 0
+    val array1             = Array(4, 5, 6, 7)
+    val array2             = Array(8, 9, 10, 11, 12)
+    val instance0          = ObservableIntegerArray(array0)
+    val instance1          = ObservableIntegerArray(array1)
+    val instance2          = ObservableIntegerArray(array2)
+    val change             = Buffer.empty[(ObservableIntegerArray, Change)]
+    var changes            = 0
     def onChangeFull(a: ObservableIntegerArray, c: Change): Unit = {
       change += ((a, c))
     }
@@ -149,7 +150,6 @@ class ObservableIntegerArraySpec
       assert((oa(i) - expected(i)).abs < 1.0e-6f)
     }
   }
-
 
   /**
    * Class tests.
@@ -356,7 +356,6 @@ class ObservableIntegerArraySpec
     testNonEmpty(ObservableIntegerArray.range(5, 0, -2), a531)
     testNonEmpty(ObservableIntegerArray.range(5, -1, -2), a531)
   }
-
 
   it should "support element access through (i) operator" in {
     val a = ObservableIntegerArray(1, 2, 3, 4, 5)

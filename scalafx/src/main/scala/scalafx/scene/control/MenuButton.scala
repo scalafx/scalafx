@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,6 @@ import scalafx.scene.Node._
 
 import scala.language.implicitConversions
 
-
 object MenuButton {
   implicit def sfxToggleButton2jfx(mb: MenuButton): jfxsc.MenuButton = if (mb != null) mb.delegate else null
 
@@ -62,8 +61,8 @@ object MenuButton {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/MenuButton.html]].
  */
 class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
-  extends ButtonBase(delegate)
-  with SFXDelegate[jfxsc.MenuButton] {
+    extends ButtonBase(delegate)
+    with SFXDelegate[jfxsc.MenuButton] {
 
   /** Creates a toggle button with the specified text as its label. */
   def this(text: String) = this(new jfxsc.MenuButton(text))
@@ -73,6 +72,7 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
 
   /** The items to show within this buttons menu. */
   def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
+
   /**
    * Sets the items, replacing the prior content. If you want append to current content, use `add` or
    * similar.
@@ -82,7 +82,6 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
   def items_=(c: Iterable[MenuItem]): Unit = {
     fillSFXCollection(this.items, c)
   }
-
 
   /** Indicates on which side the ContextMenu should open in relation to the MenuButton. */
   def popupSide: jfxbp.ObjectProperty[jfxg.Side] = delegate.popupSideProperty()
@@ -99,52 +98,53 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
   /** Gets the value of the property showing. */
   def showing: Boolean = delegate.isShowing
 
-  /** If the Menu is not disabled and the ContextMenu is not already showing,
-    * then this will cause the ContextMenu to be shown.
-    */
+  /**
+   * If the Menu is not disabled and the ContextMenu is not already showing,
+   * then this will cause the ContextMenu to be shown.
+   */
   def show(): Unit = {
     delegate.show()
   }
 
   /**
-    * Called just prior to the `ContextMenu` being hidden.
-    *
-    * @return the on hiding property
-    * @since 10
-    */
+   * Called just prior to the `ContextMenu` being hidden.
+   *
+   * @return the on hiding property
+   * @since 10
+   */
   def onHiding: ObjectProperty[EventHandler[Event]] = delegate.onHidingProperty
   def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHiding() = eventHandler
   }
 
   /**
-    * Called just prior to the `ContextMenu` being shown.
-    *
-    * @return the on showing property
-    * @since 10
-    */
+   * Called just prior to the `ContextMenu` being shown.
+   *
+   * @return the on showing property
+   * @since 10
+   */
   def onShowing: ObjectProperty[EventHandler[Event]] = delegate.onShowingProperty
   def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = eventHandler
   }
 
   /**
-    * Called just after the `ContextMenu` is shown.
-    *
-    * @return the on shown property
-    * @since 10
-    */
+   * Called just after the `ContextMenu` is shown.
+   *
+   * @return the on shown property
+   * @since 10
+   */
   def onShown: ObjectProperty[EventHandler[Event]] = delegate.onShownProperty
   def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShown() = eventHandler
   }
 
   /**
-    * Called just after the `ContextMenu` has been hidden.
-    *
-    * @return the on hidden property
-    * @since 10
-    */
+   * Called just after the `ContextMenu` has been hidden.
+   *
+   * @return the on hidden property
+   * @since 10
+   */
   def onHidden: ObjectProperty[EventHandler[Event]] = delegate.onHiddenProperty
   def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = eventHandler

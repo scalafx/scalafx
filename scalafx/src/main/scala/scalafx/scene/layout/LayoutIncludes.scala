@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -77,16 +77,20 @@ trait LayoutIncludes {
    */
   implicit def jfxBackground2sfx(v: jfxsl.Background): Background = if (v != null) new Background(v) else null
 
-  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill): BackgroundFill = if (v != null) new BackgroundFill(v) else null
+  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill): BackgroundFill =
+    if (v != null) new BackgroundFill(v) else null
 
-  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage): BackgroundImage = if (v != null) new BackgroundImage(v) else null
+  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage): BackgroundImage =
+    if (v != null) new BackgroundImage(v) else null
 
   implicit def jfxBackgroundPosition2sfx(v: jfxsl.BackgroundPosition): BackgroundPosition =
     if (v != null) new BackgroundPosition(v) else null
 
-  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat = if (v != null) BackgroundRepeat(v) else null
+  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat =
+    if (v != null) BackgroundRepeat(v) else null
 
-  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize): BackgroundSize = if (v != null) new BackgroundSize(v) else null
+  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize): BackgroundSize =
+    if (v != null) new BackgroundSize(v) else null
 
   /**
    * $START$BRDR.html $BRDR$END
@@ -121,7 +125,8 @@ trait LayoutIncludes {
    * @param v $JFX $CLCT
    * @return $SFX $CLCT
    */
-  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints): ColumnConstraints = if (v != null) new ColumnConstraints(v) else null
+  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints): ColumnConstraints =
+    if (v != null) new ColumnConstraints(v) else null
 
   /**
    * $START$CTBS.html $CTBS$END
@@ -129,9 +134,12 @@ trait LayoutIncludes {
    * @param v $JFX $CTBS
    * @return $SFX $CTBS
    */
-  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase): ConstraintsBase = if (v != null) new ConstraintsBase(v) {} else null
+  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase): ConstraintsBase = if (v != null)
+    new ConstraintsBase(v) {}
+  else null
 
-  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii): CornerRadii = if (v != null) new CornerRadii(v) {} else null
+  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii): CornerRadii = if (v != null) new CornerRadii(v) {}
+  else null
 
   /**
    * $START$FLPN.html $FLPN$END
@@ -187,7 +195,8 @@ trait LayoutIncludes {
    * @param v $JFX $RWCT
    * @return $SFX $RWCT
    */
-  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints): RowConstraints = if (v != null) new RowConstraints(v) else null
+  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints): RowConstraints =
+    if (v != null) new RowConstraints(v) else null
 
   /**
    * $START$STPN.html $STPN$END

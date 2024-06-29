@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,9 +32,9 @@ import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.layout.Priority]] */
 class LineChartSortingPolicySpec extends SFXEnumDelegateSpec[jfxsc.LineChart.SortingPolicy, LineChart.SortingPolicy](
-  javaClass = classOf[jfxsc.LineChart.SortingPolicy],
-  scalaClass = classOf[LineChart.SortingPolicy],
-  companion = LineChart.SortingPolicy)
+      javaClass = classOf[jfxsc.LineChart.SortingPolicy],
+      scalaClass = classOf[LineChart.SortingPolicy],
+      companion = LineChart.SortingPolicy
+    )

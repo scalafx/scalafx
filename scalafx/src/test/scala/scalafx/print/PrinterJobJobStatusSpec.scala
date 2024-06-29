@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +32,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.print.PrinterJob.JobStatus]]. */
 class PrinterJobJobStatusSpec extends SFXEnumDelegateSpec[jfxp.PrinterJob.JobStatus, PrinterJob.JobStatus](
-  javaClass = classOf[jfxp.PrinterJob.JobStatus],
-  scalaClass = classOf[PrinterJob.JobStatus],
-  companion = PrinterJob.JobStatus)
+      javaClass = classOf[jfxp.PrinterJob.JobStatus],
+      scalaClass = classOf[PrinterJob.JobStatus],
+      companion = PrinterJob.JobStatus
+    )

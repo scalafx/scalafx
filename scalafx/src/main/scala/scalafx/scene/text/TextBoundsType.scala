@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,6 +50,5 @@ object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, Tex
   protected override def unsortedValues: Array[TextBoundsType] = Array(Logical, Visual, LogicalVerticalCenter)
 }
 
-
 sealed abstract class TextBoundsType(override val delegate: jfxst.TextBoundsType)
-  extends SFXEnumDelegate[jfxst.TextBoundsType]
+    extends SFXEnumDelegate[jfxst.TextBoundsType]

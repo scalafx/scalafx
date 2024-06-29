@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Side.html javafx.geometry.Side]] */
 object Side
-  extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
+    extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
 
   case object Bottom extends Side(jfxg.Side.BOTTOM)
   @deprecated("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
@@ -57,7 +57,7 @@ object Side
 }
 
 sealed abstract class Side(override val delegate: jfxg.Side)
-  extends SFXEnumDelegate[jfxg.Side] {
+    extends SFXEnumDelegate[jfxg.Side] {
 
   /** Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`). */
   def isHorizontal: Boolean = delegate.isHorizontal

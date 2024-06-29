@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,8 @@ object RadioButton {
 }
 
 class RadioButton(override val delegate: jfxsc.RadioButton = new jfxsc.RadioButton)
-  extends ToggleButton(delegate)
-  with SFXDelegate[jfxsc.RadioButton] {
+    extends ToggleButton(delegate)
+    with SFXDelegate[jfxsc.RadioButton] {
 
   /**
    * Creates a radio button with the specified text as its label.

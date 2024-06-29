@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,16 +35,14 @@ import scalafx.Includes._
 
 /**
  * ReadOnlyStringProperty Spec tests.
- *
- *
  */
 class ReadOnlyStringPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
-  var booleanProperty: jfxbp.BooleanProperty = null
+  val bean                                                 = new Object()
+  var booleanProperty: jfxbp.BooleanProperty               = null
   var readOnlyStringProperty: jfxbp.ReadOnlyStringProperty = null
-  var stringProperty: jfxbp.StringProperty = null
-  var stringProperty2: jfxbp.StringProperty = null
-  var sfxStringProperty: StringProperty = null
+  var stringProperty: jfxbp.StringProperty                 = null
+  var stringProperty2: jfxbp.StringProperty                = null
+  var sfxStringProperty: StringProperty                    = null
 
   override def beforeEach(): Unit = {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")

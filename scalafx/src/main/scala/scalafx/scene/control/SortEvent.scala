@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,8 +70,8 @@ object SortEvent {
  * @define JFX JavaFX
  */
 class SortEvent[C](override val delegate: jfxsc.SortEvent[C])
-  extends Event(delegate)
-  with SFXDelegate[jfxsc.SortEvent[C]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.SortEvent[C]] {
 
   /**
    * Constructor with source and target

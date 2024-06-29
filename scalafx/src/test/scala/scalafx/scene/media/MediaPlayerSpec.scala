@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * MediaPlayer Spec tests.
- *
- *
  */
 class MediaPlayerSpec
-  extends SimpleSFXDelegateSpec[jfxsm.MediaPlayer, MediaPlayer](classOf[jfxsm.MediaPlayer], classOf[MediaPlayer])
-  with UrlMedia {
+    extends SimpleSFXDelegateSpec[jfxsm.MediaPlayer, MediaPlayer](classOf[jfxsm.MediaPlayer], classOf[MediaPlayer])
+    with UrlMedia {
 
   override protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url))
 

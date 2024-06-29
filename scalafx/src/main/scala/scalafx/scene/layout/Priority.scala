@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,6 +60,5 @@ object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
   def min(a: jfxsl.Priority, b: jfxsl.Priority): Priority = jfxsl.Priority.min(a, b)
 }
 
-
 sealed abstract class Priority(override val delegate: jfxsl.Priority)
-  extends SFXEnumDelegate[jfxsl.Priority]
+    extends SFXEnumDelegate[jfxsl.Priority]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,42 +36,44 @@ import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableMap
 
 object MapExpression {
+
   /**
-    * Converts a ScalaFX MapExpression to its JavaFX counterpart MapProperty.
-    *
-    * @param v ScalaFX MapExpression
-    * @return JavaFX MapExpression
-    */
+   * Converts a ScalaFX MapExpression to its JavaFX counterpart MapProperty.
+   *
+   * @param v ScalaFX MapExpression
+   * @return JavaFX MapExpression
+   */
   implicit def sfxMapExpression2jfx[K, V](v: MapExpression[K, V]): jfxbb.MapExpression[K, V] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 $TC]].
-  *
-  * @define TC          MapExpression
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapExpression.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 $TC]].
+ *
+ * @define TC          MapExpression
+ * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapExpression.html
+ * @define JFX         JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
 class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
+
   /**
-    * A boolean property that is `true`, if the the map is empty.
-    */
+   * A boolean property that is `true`, if the the map is empty.
+   */
   def empty: ReadOnlyBooleanProperty = delegate.emptyProperty()
 
   /**
-    * An integer property that represents the size of the map.
-    */
+   * An integer property that represents the size of the map.
+   */
   def size: ReadOnlyIntegerProperty = delegate.sizeProperty()
 
   /**
-    * Optionally returns the value associated with a key.
-    *
-    * @param key the key value
-    * @return an option value containing the value associated with key in this $MAP, or None if
-    *         none exists.
-    */
+   * Optionally returns the value associated with a key.
+   *
+   * @param key the key value
+   * @return an option value containing the value associated with key in this $MAP, or None if
+   *         none exists.
+   */
   def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
   def +=(kv: (K, V)): V = delegate.put(kv._1, kv._2)
@@ -82,19 +84,19 @@ class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
   }
 
   /**
-    * Creates a new BooleanBinding that holds true if this map is equal to another ObservableMap.
-    *
-    * @param other the other ObservableMap
-    * @return the new BooleanBinding
-    */
+   * Creates a new BooleanBinding that holds true if this map is equal to another ObservableMap.
+   *
+   * @param other the other ObservableMap
+   * @return the new BooleanBinding
+   */
   def isEqualTo(other: ObservableMap[_, _]): BooleanBinding = delegate.isEqualTo(other.delegate)
 
   /**
-    * Creates a new BooleanBinding that holds true if this map is not equal to another ObservableMap.
-    *
-    * @param other the other ObservableMap
-    * @return the new BooleanBinding
-    */
+   * Creates a new BooleanBinding that holds true if this map is not equal to another ObservableMap.
+   *
+   * @param other the other ObservableMap
+   * @return the new BooleanBinding
+   */
   def isNotEqualTo(other: ObservableMap[_, _]): BooleanBinding = delegate.isNotEqualTo(other.delegate)
 
   def -=(key: Any): V = this.delegate.remove(key)

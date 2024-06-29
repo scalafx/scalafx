@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,6 +60,5 @@ object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButt
   protected override def unsortedValues: Array[MouseButton] = Array(None, Primary, Middle, Secondary, Back, Forward)
 }
 
-
 sealed abstract class MouseButton(override val delegate: jfxsi.MouseButton)
-  extends SFXEnumDelegate[jfxsi.MouseButton]
+    extends SFXEnumDelegate[jfxsi.MouseButton]

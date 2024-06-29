@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,9 @@ trait DelegateIncludes {
    * @param obj ObjectProperty that a wraps Scala's SFXDelegate
    * @return A new Java's ObjectProperty
    */
-  implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](obj: ObjectProperty[S]): jfxbp.ObjectProperty[D] =
+  implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](
+    obj: ObjectProperty[S]
+  ): jfxbp.ObjectProperty[D] =
     new jfxbp.SimpleObjectProperty[D](obj.value.delegate)
 
   /**
@@ -57,7 +59,9 @@ trait DelegateIncludes {
    * @param obj ObjectProperty that a wraps Scala's SFXDelegate
    * @return A new Java's ObjectProperty
    */
-  implicit def sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper[D <: Object, S <: SFXDelegate[D]](obj: ReadOnlyObjectWrapper[S]): jfxbp.ReadOnlyObjectWrapper[D] =
+  implicit def sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper[D <: Object, S <: SFXDelegate[D]](
+    obj: ReadOnlyObjectWrapper[S]
+  ): jfxbp.ReadOnlyObjectWrapper[D] =
     new jfxbp.ReadOnlyObjectWrapper[D](obj.value.delegate)
 
 }

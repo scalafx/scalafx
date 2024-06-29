@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,9 +37,9 @@ object ToggleButton {
 }
 
 class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
-  extends ButtonBase(delegate)
-  with Toggle
-  with SFXDelegate[jfxsc.ToggleButton] {
+    extends ButtonBase(delegate)
+    with Toggle
+    with SFXDelegate[jfxsc.ToggleButton] {
 
   /**
    * Creates a toggle button with the specified text as its label.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ package scalafx.delegate
  * @tparam E Original JavaFX `enum`
  */
 trait SFXEnumDelegate[E <: java.lang.Enum[E]]
-  extends SFXDelegate[E] {
+    extends SFXDelegate[E] {
 
   /**
    * Return the same string value as enum `delegate`.

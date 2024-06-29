@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,6 +47,7 @@ object Region {
    * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
    */
   val USE_COMPUTED_SIZE: Double = jfxsl.Region.USE_COMPUTED_SIZE
+
   /**
    * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
    * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
@@ -54,37 +55,79 @@ object Region {
    */
   val USE_PREF_SIZE: Double = jfxsl.Region.USE_PREF_SIZE
 
-  /** Utility method which lays out the child within an area of it's parent defined by areaX, areaY,
-    * areaWidth x areaHeight, with a baseline offset relative to that area. */
-  def layoutInArea(child: javafx.scene.Node,
-                   areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
-                   margin: jfxg.Insets, fillWidth: Boolean, fillHeight: Boolean,
-                   halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean): Unit = {
+  /**
+   * Utility method which lays out the child within an area of it's parent defined by areaX, areaY,
+   * areaWidth x areaHeight, with a baseline offset relative to that area.
+   */
+  def layoutInArea(
+    child: javafx.scene.Node,
+    areaX: Double,
+    areaY: Double,
+    areaWidth: Double,
+    areaHeight: Double,
+    areaBaselineOffset: Double,
+    margin: jfxg.Insets,
+    fillWidth: Boolean,
+    fillHeight: Boolean,
+    halignment: jfxg.HPos,
+    valignment: jfxg.VPos,
+    isSnapToPixel: Boolean
+  ): Unit = {
     jfxsl.Region.layoutInArea(
       child,
-      areaX, areaY, areaWidth, areaHeight, areaBaselineOffset,
-      margin, fillWidth, fillHeight,
-      halignment, valignment, isSnapToPixel)
+      areaX,
+      areaY,
+      areaWidth,
+      areaHeight,
+      areaBaselineOffset,
+      margin,
+      fillWidth,
+      fillHeight,
+      halignment,
+      valignment,
+      isSnapToPixel
+    )
   }
 
-  /** Utility method which positions the child within an area of this region defined by areaX, areaY,
-    * areaWidth x areaHeight, with a baseline offset relative to that area. */
-  def positionInArea(child: javafx.scene.Node,
-                     areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
-                     margin: jfxg.Insets, halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean): Unit = {
-    jfxsl.Region.positionInArea(child,
-      areaX, areaY, areaWidth, areaHeight,
-      areaBaselineOffset, margin, halignment, valignment, isSnapToPixel)
+  /**
+   * Utility method which positions the child within an area of this region defined by areaX, areaY,
+   * areaWidth x areaHeight, with a baseline offset relative to that area.
+   */
+  def positionInArea(
+    child: javafx.scene.Node,
+    areaX: Double,
+    areaY: Double,
+    areaWidth: Double,
+    areaHeight: Double,
+    areaBaselineOffset: Double,
+    margin: jfxg.Insets,
+    halignment: jfxg.HPos,
+    valignment: jfxg.VPos,
+    isSnapToPixel: Boolean
+  ): Unit = {
+    jfxsl.Region.positionInArea(
+      child,
+      areaX,
+      areaY,
+      areaWidth,
+      areaHeight,
+      areaBaselineOffset,
+      margin,
+      halignment,
+      valignment,
+      isSnapToPixel
+    )
   }
 }
 
 class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
-  extends Parent(delegate)
-  with SFXDelegate[jfxsl.Region] {
+    extends Parent(delegate)
+    with SFXDelegate[jfxsl.Region] {
 
-  /** The background of the Region, which is made up of zero or more BackgroundFills,
-    * and zero or more BackgroundImages.
-    */
+  /**
+   * The background of the Region, which is made up of zero or more BackgroundFills,
+   * and zero or more BackgroundImages.
+   */
   def background: ObjectProperty[jfxsl.Background] = delegate.backgroundProperty()
 
   def background_=(v: Background): Unit = {
@@ -98,8 +141,10 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
     border() = v
   }
 
-  /** Defines a hint to the system indicating that the Shape used to define the region's
-    * background is stable and would benefit from caching. */
+  /**
+   * Defines a hint to the system indicating that the Shape used to define the region's
+   * background is stable and would benefit from caching.
+   */
   def cacheShape: BooleanProperty = delegate.cacheProperty()
 
   def cacheShape_=(v: Boolean): Unit = {

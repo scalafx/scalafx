@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,9 +38,9 @@ object Glow {
 }
 
 class Glow(override val delegate: jfxse.Glow = new jfxse.Glow)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.Glow]
-  with SFXDelegate[jfxse.Glow] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.Glow]
+    with SFXDelegate[jfxse.Glow] {
 
   /**
    * Creates a new instance of Glow with specified level.

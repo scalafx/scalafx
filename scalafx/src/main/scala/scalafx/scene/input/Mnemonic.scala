@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,8 @@ object Mnemonic {
 }
 
 class Mnemonic(override val delegate: jfxsi.Mnemonic)
-  extends FireDelegate[jfxsi.Mnemonic]
-  with SFXDelegate[jfxsi.Mnemonic] {
+    extends FireDelegate[jfxsi.Mnemonic]
+    with SFXDelegate[jfxsi.Mnemonic] {
 
   /**
    * Constructs a Mnemonic with the specified target Node and trigger KeyCombination.

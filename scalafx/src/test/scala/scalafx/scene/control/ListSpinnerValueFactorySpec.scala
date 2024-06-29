@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,12 +37,19 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * ListSpinnerValueFactory Spec tests.
  */
 class ListSpinnerValueFactorySpec[Integer]
-  extends SimpleSFXDelegateSpec[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[Integer], SpinnerValueFactory.ListSpinnerValueFactory[Integer]](
-    classOf[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[Integer]], classOf[SpinnerValueFactory.ListSpinnerValueFactory[Integer]])
-  with RunOnApplicationThread   {
+    extends SimpleSFXDelegateSpec[
+      jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[Integer],
+      SpinnerValueFactory.ListSpinnerValueFactory[Integer]
+    ](
+      classOf[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[Integer]],
+      classOf[SpinnerValueFactory.ListSpinnerValueFactory[Integer]]
+    )
+    with RunOnApplicationThread {
 
-    override protected def getScalaClassInstance = new SpinnerValueFactory.ListSpinnerValueFactory(new ObservableBuffer[Integer]())
+  override protected def getScalaClassInstance =
+    new SpinnerValueFactory.ListSpinnerValueFactory(new ObservableBuffer[Integer]())
 
-    override protected def getJavaClassInstance = new jfxsc.SpinnerValueFactory.ListSpinnerValueFactory(new ObservableBuffer[Integer]())
+  override protected def getJavaClassInstance =
+    new jfxsc.SpinnerValueFactory.ListSpinnerValueFactory(new ObservableBuffer[Integer]())
 
-  }
+}

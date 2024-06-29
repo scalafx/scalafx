@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,8 @@ import scala.language.implicitConversions
 object TextFlow {
   implicit def sfxTextFlow2jfx(v: TextFlow): jfxst.TextFlow = if (v != null) v.delegate else null
 
-  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = jfxst.TextFlow.getClassCssMetaData.asScala
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxst.TextFlow.getClassCssMetaData.asScala
 
 }
 
@@ -56,7 +57,7 @@ object TextFlow {
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/text/TextFlow.html]]
  */
 class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
-  extends Pane(delegate)
+    extends Pane(delegate)
     with SFXDelegate[jfxst.TextFlow] {
 
   /**

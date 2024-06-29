@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,9 +38,9 @@ object GaussianBlur {
 }
 
 class GaussianBlur(override val delegate: jfxse.GaussianBlur = new jfxse.GaussianBlur)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.GaussianBlur]
-  with SFXDelegate[jfxse.GaussianBlur] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.GaussianBlur]
+    with SFXDelegate[jfxse.GaussianBlur] {
 
   def this(radius: Double) = this(new jfxse.GaussianBlur(radius))
 

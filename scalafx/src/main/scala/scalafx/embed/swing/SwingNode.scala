@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,8 +58,8 @@ object SwingNode {
  * @since 8.0
  */
 class SwingNode(override val delegate: jfxes.SwingNode = new jfxes.SwingNode)
-  extends Node(delegate)
-  with SFXDelegate[jfxes.SwingNode] {
+    extends Node(delegate)
+    with SFXDelegate[jfxes.SwingNode] {
 
   /**
    * the JComponent instance attached to this SwingNode.

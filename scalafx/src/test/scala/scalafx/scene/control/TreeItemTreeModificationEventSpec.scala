@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * TreeItem.TreeModificationEvent Spec tests.
- *
- *
  */
 class TreeItemTreeModificationEventSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.TreeItem.TreeModificationEvent[T], TreeItem.TreeModificationEvent[T]](classOf[jfxsc.TreeItem.TreeModificationEvent[T]], classOf[TreeItem.TreeModificationEvent[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.TreeItem.TreeModificationEvent[T], TreeItem.TreeModificationEvent[T]](
+      classOf[jfxsc.TreeItem.TreeModificationEvent[T]],
+      classOf[TreeItem.TreeModificationEvent[T]]
+    ) {
 
   override def getJavaClassInstance =
     new jfxsc.TreeItem.TreeModificationEvent[T](null, new jfxsc.TreeItem[T])

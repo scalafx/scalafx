@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,33 +33,35 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlyDoubleWrapper {
-  implicit def sfxReadOnlyDoubleWrapper2jfx(w: ReadOnlyDoubleWrapper): jfxbp.ReadOnlyDoubleWrapper = if (w != null) w.delegate else null
+  implicit def sfxReadOnlyDoubleWrapper2jfx(w: ReadOnlyDoubleWrapper): jfxbp.ReadOnlyDoubleWrapper =
+    if (w != null) w.delegate else null
 
-  /** Creates a new ReadOnlyDoubleWrapper instance.
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlyDoubleWrapper instance.
+   * @param value the initial value of the wrapped value
+   */
   def apply(value: Double) = new ReadOnlyDoubleWrapper(new jfxbp.ReadOnlyDoubleWrapper(value))
 }
 
-
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyDoubleWrapper.html javafx.beans.property.ReadOnlyDoubleWrapper]] */
 class ReadOnlyDoubleWrapper(override val delegate: jfxbp.ReadOnlyDoubleWrapper = new jfxbp.ReadOnlyDoubleWrapper())
-  extends DoubleProperty(delegate)
-  with SFXDelegate[jfxbp.ReadOnlyDoubleWrapper] {
+    extends DoubleProperty(delegate)
+    with SFXDelegate[jfxbp.ReadOnlyDoubleWrapper] {
 
-  /** Creates a new ReadOnlyDoubleWrapper instance.
-    * @param bean the bean of this ReadOnlyDoubleWrapper
-    * @param name the name of this ReadOnlyDoubleWrapper
-    */
+  /**
+   * Creates a new ReadOnlyDoubleWrapper instance.
+   * @param bean the bean of this ReadOnlyDoubleWrapper
+   * @param name the name of this ReadOnlyDoubleWrapper
+   */
   def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyDoubleWrapper(bean, name))
 
-  /** Creates a new ReadOnlyDoubleWrapper instance.
-    * @param value the initial value of the wrapped value
-    * @param bean the bean of this ReadOnlyDoubleWrapper
-    * @param name the name of this ReadOnlyDoubleWrapper
-    */
+  /**
+   * Creates a new ReadOnlyDoubleWrapper instance.
+   * @param value the initial value of the wrapped value
+   * @param bean the bean of this ReadOnlyDoubleWrapper
+   * @param name the name of this ReadOnlyDoubleWrapper
+   */
   def this(bean: Object, name: String, value: Double) = this(new jfxbp.ReadOnlyDoubleWrapper(bean, name, value))
 
   /** The read-only property, that is synchronized with this ReadOnlyDoubleWrapper. */

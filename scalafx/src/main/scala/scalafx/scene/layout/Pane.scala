@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,13 +44,14 @@ object Pane {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html]].
  */
 class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
-  extends Region(delegate)
+    extends Region(delegate)
     with SFXDelegate[jfxsl.Pane] {
 
   /**
    * Gets the list of children of this Parent.
    */
   def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
+
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add`, `+=` or
    * similar.
@@ -60,6 +61,7 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   def children_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.children, c)
   }
+
   /**
    * Sets a child, replacing the prior content. If you want append to current content, use `add`, `+=` or similar.
    *

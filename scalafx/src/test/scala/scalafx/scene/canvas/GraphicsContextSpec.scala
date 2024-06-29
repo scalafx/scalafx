@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * GraphicsContext Spec tests.
- *
  */
 class GraphicsContextSpec
-  extends SimpleSFXDelegateSpec[jfxsc.GraphicsContext, GraphicsContext](classOf[jfxsc.GraphicsContext], classOf[GraphicsContext]) {
+    extends SimpleSFXDelegateSpec[jfxsc.GraphicsContext, GraphicsContext](
+      classOf[jfxsc.GraphicsContext],
+      classOf[GraphicsContext]
+    ) {
 
   override def getScalaClassInstance = (new Canvas).graphicsContext2D
 

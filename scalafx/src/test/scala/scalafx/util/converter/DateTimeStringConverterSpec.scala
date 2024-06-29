@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,14 +33,18 @@ import scalafx.Includes._
 
 /**
  * DateTimeStringConverter Spec tests.
- *
- *
  */
 class DateTimeStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[Date, jfxuc.DateTimeStringConverter, Date, DateTimeStringConverter](classOf[jfxuc.DateTimeStringConverter], classOf[DateTimeStringConverter], classOf[Date]) {
+    extends AbstractStringConverterDelegateSpec[Date, jfxuc.DateTimeStringConverter, Date, DateTimeStringConverter](
+      classOf[jfxuc.DateTimeStringConverter],
+      classOf[DateTimeStringConverter],
+      classOf[Date]
+    ) {
 
-  val examples = List((dateFormat.parse("2012-04-01 12:34:56"), "01/04/2012 12:34:56"),
-    (dateFormat.parse("2000-02-29 00:00:00"), "29/02/2000 00:00:00"))
+  val examples = List(
+    (dateFormat.parse("2012-04-01 12:34:56"), "01/04/2012 12:34:56"),
+    (dateFormat.parse("2000-02-29 00:00:00"), "29/02/2000 00:00:00")
+  )
 
   override protected def getConverterForExample = new DateTimeStringConverter("dd/MM/yyyy HH:mm:ss")
 

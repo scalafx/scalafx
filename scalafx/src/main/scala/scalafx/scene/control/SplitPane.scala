@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,10 +41,12 @@ object SplitPane {
   implicit def sfxSplitPane2jfx(v: SplitPane): jfxsc.SplitPane = if (v != null) v.delegate else null
 
   object Divider {
-    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider): jfxsc.SplitPane.Divider = if (v != null) v.delegate else null
+    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider): jfxsc.SplitPane.Divider =
+      if (v != null) v.delegate else null
   }
 
-  class Divider(override val delegate: jfxsc.SplitPane.Divider = new jfxsc.SplitPane.Divider) extends SFXDelegate[jfxsc.SplitPane.Divider] {
+  class Divider(override val delegate: jfxsc.SplitPane.Divider = new jfxsc.SplitPane.Divider)
+      extends SFXDelegate[jfxsc.SplitPane.Divider] {
 
     /**
      * Represents the location where the divider should ideally be positioned, between 0.0 and 1.0 (inclusive).
@@ -71,7 +73,8 @@ object SplitPane {
 
 }
 
-class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) extends Control(delegate) with SFXDelegate[jfxsc.SplitPane] {
+class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) extends Control(delegate)
+    with SFXDelegate[jfxsc.SplitPane] {
 
   /**
    * The orientation for the SplitPane.

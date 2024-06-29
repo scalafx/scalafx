@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,8 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object MouseDragEvent {
-  implicit def sfxMouseDragEvent2jfx(mde: MouseDragEvent): jfxsi.MouseDragEvent = if (mde != null) mde.delegate else null
+  implicit def sfxMouseDragEvent2jfx(mde: MouseDragEvent): jfxsi.MouseDragEvent =
+    if (mde != null) mde.delegate else null
 
   /**
    * Common supertype for all mouse event types.
@@ -73,7 +74,8 @@ object MouseDragEvent {
 
 }
 
-class MouseDragEvent(override val delegate: jfxsi.MouseDragEvent) extends MouseEvent(delegate) with SFXDelegate[jfxsi.MouseDragEvent] {
+class MouseDragEvent(override val delegate: jfxsi.MouseDragEvent) extends MouseEvent(delegate)
+    with SFXDelegate[jfxsi.MouseDragEvent] {
 
   /**
    * Returns the source object of the ongoing gesture.

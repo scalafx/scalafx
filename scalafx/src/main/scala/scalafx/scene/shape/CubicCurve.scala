@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,8 @@ object CubicCurve {
   implicit def sfxCubicCurve2jfx(v: CubicCurve): jfxss.CubicCurve = if (v != null) v.delegate else null
 }
 
-class CubicCurve(override val delegate: jfxss.CubicCurve = new jfxss.CubicCurve()) extends Shape(delegate) with SFXDelegate[jfxss.CubicCurve] {
+class CubicCurve(override val delegate: jfxss.CubicCurve = new jfxss.CubicCurve()) extends Shape(delegate)
+    with SFXDelegate[jfxss.CubicCurve] {
   def controlX1: DoubleProperty = delegate.controlX1Property
 
   def controlX1_=(v: Double): Unit = {

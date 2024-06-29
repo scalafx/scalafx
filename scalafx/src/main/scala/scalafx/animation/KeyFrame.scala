@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,10 +59,12 @@ object KeyFrame {
    * @param values a `Set` of [[scalafx.animation.KeyValue]] instances. Default Value: empty Set.
    * @return A new $KF
    */
-  def apply(time: Duration,
-            name: String = null,
-            onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
-            values: Set[_ <: KeyValue[_, _]] = Set.empty): KeyFrame = {
+  def apply(
+    time: Duration,
+    name: String = null,
+    onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
+    values: Set[_ <: KeyValue[_, _]] = Set.empty
+  ): KeyFrame = {
     val mappedValues: Set[jfxa.KeyValue] = values.map((x: KeyValue[_, _]) => x.delegate)
     new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues.asJava))
   }
@@ -78,7 +80,7 @@ object KeyFrame {
  * @define KF `KeyFrame`
  */
 class KeyFrame(override val delegate: jfxa.KeyFrame)
-  extends SFXDelegate[jfxa.KeyFrame] {
+    extends SFXDelegate[jfxa.KeyFrame] {
 
   /**
    * Returns the time offset of this $KF.

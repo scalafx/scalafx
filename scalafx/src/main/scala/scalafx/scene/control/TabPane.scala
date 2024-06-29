@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object TabPane {
   implicit def sfxTabPane2jfx(v: TabPane): jfxsc.TabPane = if (v != null) v.delegate else null
 
   object TabClosingPolicy
-    extends SFXEnumDelegateCompanion[jfxsc.TabPane.TabClosingPolicy, TabClosingPolicy] {
+      extends SFXEnumDelegateCompanion[jfxsc.TabPane.TabClosingPolicy, TabClosingPolicy] {
 
     /**
      * All tabs will have the option to be closed.
@@ -74,7 +74,7 @@ object TabPane {
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
   sealed abstract class TabClosingPolicy(override val delegate: jfxsc.TabPane.TabClosingPolicy)
-    extends SFXEnumDelegate[jfxsc.TabPane.TabClosingPolicy]
+      extends SFXEnumDelegate[jfxsc.TabPane.TabClosingPolicy]
 
   /**
    * TabPane mode will be changed to floating allowing the TabPane to be placed alongside other control.
@@ -84,8 +84,8 @@ object TabPane {
 }
 
 class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.TabPane] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.TabPane] {
 
   /**
    * The rotatedGraphic state of the tabs in the TabPane.

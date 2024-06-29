@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Rectangle2D Spec tests.
- *
  */
 class Rectangle2DSpec
-  extends SimpleSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D](classOf[jfxg.Rectangle2D], classOf[Rectangle2D]) {
+    extends SimpleSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D](classOf[jfxg.Rectangle2D], classOf[Rectangle2D]) {
 
   override protected def getScalaClassInstance = new Rectangle2D(0, 0, 0, 0)
 

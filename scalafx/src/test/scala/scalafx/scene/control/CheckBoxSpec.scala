@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * CheckBox Spec tests.
- *
  */
 class CheckBoxSpec
-  extends SimpleSFXDelegateSpec[jfxsc.CheckBox, CheckBox](classOf[jfxsc.CheckBox], classOf[CheckBox])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.CheckBox, CheckBox](classOf[jfxsc.CheckBox], classOf[CheckBox])
+    with RunOnApplicationThread

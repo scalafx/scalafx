@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,4 @@ object Effect {
   implicit def sfxEffect2jfx(e: Effect): jfxe.Effect = if (e != null) e.delegate else null.asInstanceOf[jfxe.Effect]
 }
 
-abstract class Effect protected(override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
-
-}
+abstract class Effect protected (override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {}

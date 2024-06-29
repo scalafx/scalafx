@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,6 @@ object MoveTo {
 }
 
 class MoveTo(override val delegate: jfxss.MoveTo = new jfxss.MoveTo())
-  extends PathElement(delegate)
-  with PositionDelegate[jfxss.MoveTo]
-  with SFXDelegate[jfxss.MoveTo] {
-
-}
+    extends PathElement(delegate)
+    with PositionDelegate[jfxss.MoveTo]
+    with SFXDelegate[jfxss.MoveTo] {}

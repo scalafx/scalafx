@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,13 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * DisplacementMap Spec tests.
- *
  */
 class DisplacementMapSpec
-  extends SimpleSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap](
-    classOf[jfxse.DisplacementMap], classOf[DisplacementMap])
-  with InputDelegateSpec[DisplacementMap] {
+    extends SimpleSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap](
+      classOf[jfxse.DisplacementMap],
+      classOf[DisplacementMap]
+    )
+    with InputDelegateSpec[DisplacementMap] {
 
   val inputDelegate = getScalaClassInstance
 

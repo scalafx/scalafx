@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,9 +39,9 @@ object ImageInput {
 }
 
 class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
-  extends Effect(delegate)
-  with PositionDelegate[jfxse.ImageInput]
-  with SFXDelegate[jfxse.ImageInput] {
+    extends Effect(delegate)
+    with PositionDelegate[jfxse.ImageInput]
+    with SFXDelegate[jfxse.ImageInput] {
 
   /**
    * Creates a new instance of ImageInput with the specified source.

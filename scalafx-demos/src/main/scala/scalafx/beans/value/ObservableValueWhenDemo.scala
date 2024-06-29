@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.beans.value
 
 import scalafx.beans.property.{BooleanProperty, StringProperty}
-
 
 /**
  * Example of using [[ObservableValue.when]]

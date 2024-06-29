@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,21 +29,21 @@ package scalafx.delegate
 object SFXDelegate {
 
   /**
-    * Return `delegate` contained in this wrapper or `null`.
-    * This is useful in situations when passing calling directly JavaFX API that accepts `null` arguments.
-    *
-    * Call to
-    * {{{
-    *   delegateOrNull(wrapper)
-    * }}}
-    * is equivalent to
-    * {{{
-    *   if (wrapper != null) wrapper.delegate else null
-    * }}}
-    *
-    * @param wrapper ScalaFX wrapper
-    * @tparam J JavaFX type
-    */
+   * Return `delegate` contained in this wrapper or `null`.
+   * This is useful in situations when passing calling directly JavaFX API that accepts `null` arguments.
+   *
+   * Call to
+   * {{{
+   *   delegateOrNull(wrapper)
+   * }}}
+   * is equivalent to
+   * {{{
+   *   if (wrapper != null) wrapper.delegate else null
+   * }}}
+   *
+   * @param wrapper ScalaFX wrapper
+   * @tparam J JavaFX type
+   */
   def delegateOrNull[J <: Object](wrapper: SFXDelegate[J]): J = {
     if (wrapper != null) wrapper.delegate else null.asInstanceOf[J]
   }
@@ -51,15 +51,15 @@ object SFXDelegate {
 }
 
 /**
-  * Basic trait for all JavaFX classes wrapping.
-  *
-  * @tparam D JavaFX class to be wrapped.
-  */
+ * Basic trait for all JavaFX classes wrapping.
+ *
+ * @tparam D JavaFX class to be wrapped.
+ */
 trait SFXDelegate[+D <: Object] extends AnyRef {
 
   /**
-    * JavaFX object to be wrapped.
-    */
+   * JavaFX object to be wrapped.
+   */
   def delegate: D
 
   /**
@@ -68,11 +68,11 @@ trait SFXDelegate[+D <: Object] extends AnyRef {
   override def toString: String = "[SFX]" + delegate.toString
 
   /**
-    * Verifies if a object is equals to this delegate.
-    *
-    * @param ref Object to be compared.
-    * @return if the other object is equals to this delegate or not.
-    */
+   * Verifies if a object is equals to this delegate.
+   *
+   * @param ref Object to be compared.
+   * @return if the other object is equals to this delegate or not.
+   */
   override def equals(ref: Any): Boolean = {
     ref match {
       case sfxd: SFXDelegate[_] => delegate.equals(sfxd.delegate)

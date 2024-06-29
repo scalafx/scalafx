@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,8 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object IntegerProperty {
-  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty): jfxbp.IntegerProperty = if (ip != null) ip.delegate else null
+  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty): jfxbp.IntegerProperty =
+    if (ip != null) ip.delegate else null
 
   /**
    * Creates a new IntegerProperty instance using the SimpleIntegerProperty as the target.
@@ -44,9 +45,9 @@ object IntegerProperty {
 }
 
 class IntegerProperty(override val delegate: jfxbp.IntegerProperty = new jfxbp.SimpleIntegerProperty)
-  extends ReadOnlyIntegerProperty(delegate)
-  with Property[Int, Number]
-  with SFXDelegate[jfxbp.IntegerProperty] {
+    extends ReadOnlyIntegerProperty(delegate)
+    with Property[Int, Number]
+    with SFXDelegate[jfxbp.IntegerProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleIntegerProperty(bean, name))
 

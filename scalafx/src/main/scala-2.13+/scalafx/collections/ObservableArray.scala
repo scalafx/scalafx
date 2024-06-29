@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,9 +67,9 @@ object ObservableArray {
  * @constructor Create new base $OA.
  * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
-abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: jfxc.ObservableArray[D]]
-(override val delegate: D)
-  extends mutable.Builder[V, T]
+abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: jfxc.ObservableArray[D]](
+  override val delegate: D
+) extends mutable.Builder[V, T]
     with Observable
     with SFXDelegate[D] {
 
@@ -405,7 +405,6 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    * @return `true` if the collection contains at least one element, `false` otherwise.
    */
   def nonEmpty: Boolean = delegate.size() > 0
-
 
   /**
    * Add a listener function to $ARY's changes.

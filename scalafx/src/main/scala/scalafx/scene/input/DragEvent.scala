@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -94,7 +94,6 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
     delegate.acceptTransferModes(transferModes: _*)
   }
 
-
   /**
    * Gets transfer mode accepted by potential target.
    */
@@ -159,6 +158,7 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
    * Whether setDropCompleted(true) has been called on this event.
    */
   def dropCompleted: Boolean = delegate.isDropCompleted
+
   /**
    * Indicates that transfer handling of this DragEvent was completed successfully during a DRAG_DROPPED event handler.
    */
@@ -171,4 +171,4 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
 /*
 Event	copyFor(java.lang.Object newSource, EventTarget newTarget)
 Creates and returns a copy of this event with the specified event source and target.
-*/
+ */

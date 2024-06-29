@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * MotionBlur Spec tests.
- *
- *
  */
 class MotionBlurSpec
-  extends SimpleSFXDelegateSpec[jfxse.MotionBlur, MotionBlur](classOf[jfxse.MotionBlur], classOf[MotionBlur])
-  with InputDelegateSpec[MotionBlur] {
+    extends SimpleSFXDelegateSpec[jfxse.MotionBlur, MotionBlur](classOf[jfxse.MotionBlur], classOf[MotionBlur])
+    with InputDelegateSpec[MotionBlur] {
 
   val inputDelegate = getScalaClassInstance
 

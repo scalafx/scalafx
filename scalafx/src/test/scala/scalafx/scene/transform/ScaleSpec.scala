@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,10 @@ import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * Scale Spec tests.
- *
- *
  */
 class ScaleSpec
-  extends SimpleSFXDelegateSpec[jfxst.Scale, Scale](classOf[jfxst.Scale], classOf[Scale])
-  with PositionDelegateSpec[Scale] {
+    extends SimpleSFXDelegateSpec[jfxst.Scale, Scale](classOf[jfxst.Scale], classOf[Scale])
+    with PositionDelegateSpec[Scale] {
 
   val positionDelegate = new Scale(new jfxst.Scale)
 

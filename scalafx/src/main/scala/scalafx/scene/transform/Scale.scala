@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,9 +41,9 @@ object Scale {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Scale.html]]
  */
 class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
-  extends Transform(delegate)
-  with PositionDelegate[jfxst.Scale]
-  with SFXDelegate[jfxst.Scale] {
+    extends Transform(delegate)
+    with PositionDelegate[jfxst.Scale]
+    with SFXDelegate[jfxst.Scale] {
 
   /**
    * Creates a two-dimensional Scale.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * RadioMenuItem Spec tests.
- *
- *
  */
 class RadioMenuItemSpec
-  extends SimpleSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem](
-    classOf[jfxsc.RadioMenuItem], classOf[RadioMenuItem]) {
+    extends SimpleSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem](
+      classOf[jfxsc.RadioMenuItem],
+      classOf[RadioMenuItem]
+    ) {
 
   override def getJavaClassInstance = new jfxsc.RadioMenuItem("")
 

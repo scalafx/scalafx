@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.media.MediaPlayer.Status]]. */
 class MediaPlayerStatusSpec
-  extends SFXEnumDelegateSpec[jfxsm.MediaPlayer.Status, MediaPlayer.Status](
-    classOf[jfxsm.MediaPlayer.Status],
-    classOf[MediaPlayer.Status],
-    MediaPlayer.Status)
+    extends SFXEnumDelegateSpec[jfxsm.MediaPlayer.Status, MediaPlayer.Status](
+      classOf[jfxsm.MediaPlayer.Status],
+      classOf[MediaPlayer.Status],
+      MediaPlayer.Status
+    )

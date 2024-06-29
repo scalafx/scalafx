@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,33 +36,35 @@ import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableSet
 
 object SetExpression {
+
   /**
-    * Converts a ScalaFX SetExpression to its JavaFX counterpart.
-    *
-    * @param v ScalaFX SetExpression
-    * @return JavaFX SetExpression
-    */
+   * Converts a ScalaFX SetExpression to its JavaFX counterpart.
+   *
+   * @param v ScalaFX SetExpression
+   * @return JavaFX SetExpression
+   */
   implicit def sfxSetExpression2jfx[E <: Any](v: SetExpression[E]): jfxbb.SetExpression[E] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 $TC]].
-  *
-  * @define TC          SetExpression
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetExpression.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 $TC]].
+ *
+ * @define TC          SetExpression
+ * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetExpression.html
+ * @define JFX         JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
 class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
+
   /**
-    * A boolean property that is `true`, if the the set is empty.
-    */
+   * A boolean property that is `true`, if the the set is empty.
+   */
   def empty: ReadOnlyBooleanProperty = delegate.emptyProperty()
 
   /**
-    * An integer property that represents the size of the set.
-    */
+   * An integer property that represents the size of the set.
+   */
   def size: ReadOnlyIntegerProperty = delegate.sizeProperty()
 
   def +=(element: E): Boolean = delegate.add(element)
@@ -74,19 +76,19 @@ class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
   }
 
   /**
-    * Creates a new BooleanBinding that holds true if this set is equal to another ObservableSet.
-    *
-    * @param other the other ObservableSet
-    * @return the new BooleanBinding
-    */
+   * Creates a new BooleanBinding that holds true if this set is equal to another ObservableSet.
+   *
+   * @param other the other ObservableSet
+   * @return the new BooleanBinding
+   */
   def isEqualTo(other: ObservableSet[_]): BooleanBinding = delegate.isEqualTo(other.delegate)
 
   /**
-    * Creates a new BooleanBinding that holds true if this set is not equal to another ObservableSet.
-    *
-    * @param other the other ObservableSet
-    * @return the new BooleanBinding
-    */
+   * Creates a new BooleanBinding that holds true if this set is not equal to another ObservableSet.
+   *
+   * @param other the other ObservableSet
+   * @return the new BooleanBinding
+   */
   def isNotEqualTo(other: ObservableSet[_]): BooleanBinding = delegate.isNotEqualTo(other.delegate)
 
   def -=(element: E): Boolean = this.delegate.remove(element)

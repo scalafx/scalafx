@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,4 +36,4 @@ object BooleanStringConverter {
 }
 
 class BooleanStringConverter(delegate: jfxuc.BooleanStringConverter = new jfxuc.BooleanStringConverter)
-  extends StringConverterDelegate[java.lang.Boolean, Boolean, jfxuc.BooleanStringConverter](delegate)
+    extends StringConverterDelegate[java.lang.Boolean, Boolean, jfxuc.BooleanStringConverter](delegate)

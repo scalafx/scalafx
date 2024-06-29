@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,5 +29,6 @@ package scalafx.util.converter
 import java.util.Date
 import javafx.util.{converter => jfxuc}
 
-private[converter] abstract class DateTimeStringConverterDelegate[C <: jfxuc.DateTimeStringConverter] protected(delegate: C)
-  extends StringConverterJavaToJavaDelegate[Date, C](delegate)
+private[converter] abstract class DateTimeStringConverterDelegate[C <: jfxuc.DateTimeStringConverter] protected (
+  delegate: C
+) extends StringConverterJavaToJavaDelegate[Date, C](delegate)

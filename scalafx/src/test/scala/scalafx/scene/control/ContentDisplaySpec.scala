@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,9 +32,9 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.control.ContentDisplay]]. */
 class ContentDisplaySpec extends SFXEnumDelegateSpec[jfxsc.ContentDisplay, ContentDisplay](
-  javaClass = classOf[jfxsc.ContentDisplay],
-  scalaClass = classOf[ContentDisplay],
-  companion = ContentDisplay)
+      javaClass = classOf[jfxsc.ContentDisplay],
+      scalaClass = classOf[ContentDisplay],
+      companion = ContentDisplay
+    )

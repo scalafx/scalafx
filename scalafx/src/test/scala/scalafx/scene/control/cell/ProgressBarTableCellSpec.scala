@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ProgressBarTableCell Spec tests.
- *
  */
 class ProgressBarTableCellSpec[S]
-  extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](classOf[jfxscc.ProgressBarTableCell[S]], classOf[ProgressBarTableCell[S]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](
+      classOf[jfxscc.ProgressBarTableCell[S]],
+      classOf[ProgressBarTableCell[S]]
+    )
+    with RunOnApplicationThread

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,12 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
  * Test for [[scalafx.scene.control.Alert]].
  */
 class AlertSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Alert, Alert](classOf[jfxsc.Alert], classOf[Alert])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Alert, Alert](classOf[jfxsc.Alert], classOf[Alert])
+    with RunOnApplicationThread {
 
-  override protected def getJavaClassInstance = new jfxsc.Alert(jfxsc.Alert.AlertType.CONFIRMATION)
+  override protected def getJavaClassInstance  = new jfxsc.Alert(jfxsc.Alert.AlertType.CONFIRMATION)
   override protected def getScalaClassInstance = new Alert(Alert.AlertType.Confirmation)
 }

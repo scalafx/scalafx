@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,8 @@ trait GeometryIncludes {
    * @param b JavaFX Bounds
    * @return ScalaFX Bounds
    */
-  implicit def jfxBounds2sfx(b: jfxg.Bounds): Bounds = if (b != null) new Bounds(b) {} else null
+  implicit def jfxBounds2sfx(b: jfxg.Bounds): Bounds = if (b != null) new Bounds(b) {}
+  else null
 
   /**
    * Converts a
@@ -77,7 +78,8 @@ trait GeometryIncludes {
    * @param h JavaFX HorizontalDirection
    * @return ScalaFX HorizontalDirection
    */
-  implicit def jfxHorizontalDirection2sfx(h: jfxg.HorizontalDirection): HorizontalDirection = HorizontalDirection.jfxEnum2sfx(h)
+  implicit def jfxHorizontalDirection2sfx(h: jfxg.HorizontalDirection): HorizontalDirection =
+    HorizontalDirection.jfxEnum2sfx(h)
 
   /**
    * Converts a

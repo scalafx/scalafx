@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,6 +50,5 @@ object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, Str
   protected override def unsortedValues: Array[StrokeLineJoin] = Array(Miter, Bevel, Round)
 }
 
-
 sealed abstract class StrokeLineJoin(override val delegate: jfxss.StrokeLineJoin)
-  extends SFXEnumDelegate[jfxss.StrokeLineJoin]
+    extends SFXEnumDelegate[jfxss.StrokeLineJoin]

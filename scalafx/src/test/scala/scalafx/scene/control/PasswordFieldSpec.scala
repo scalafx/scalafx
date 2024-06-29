@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * PasswordField Spec tests.
- *
  */
 class PasswordFieldSpec
-  extends SimpleSFXDelegateSpec[jfxsc.PasswordField, PasswordField](
-    classOf[jfxsc.PasswordField], classOf[PasswordField])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.PasswordField, PasswordField](
+      classOf[jfxsc.PasswordField],
+      classOf[PasswordField]
+    )
+    with RunOnApplicationThread

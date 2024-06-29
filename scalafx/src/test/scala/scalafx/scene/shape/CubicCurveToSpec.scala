@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,10 @@ import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * CubicCurveTo Spec tests.
- *
  */
 class CubicCurveToSpec
-  extends SimpleSFXDelegateSpec[jfxss.CubicCurveTo, CubicCurveTo](classOf[jfxss.CubicCurveTo], classOf[CubicCurveTo])
-  with PositionDelegateSpec[CubicCurveTo] {
+    extends SimpleSFXDelegateSpec[jfxss.CubicCurveTo, CubicCurveTo](classOf[jfxss.CubicCurveTo], classOf[CubicCurveTo])
+    with PositionDelegateSpec[CubicCurveTo] {
 
   val positionDelegate = getScalaClassInstance
 

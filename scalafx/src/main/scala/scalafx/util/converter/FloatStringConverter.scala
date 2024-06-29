@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,4 +36,4 @@ object FloatStringConverter {
 }
 
 class FloatStringConverter(delegate: jfxuc.FloatStringConverter = new jfxuc.FloatStringConverter)
-  extends StringConverterDelegate[java.lang.Float, Float, jfxuc.FloatStringConverter](delegate)
+    extends StringConverterDelegate[java.lang.Float, Float, jfxuc.FloatStringConverter](delegate)
