@@ -54,7 +54,7 @@ class Issue16Spec extends AnyFlatSpec {
 
     // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
     // fill <== when (hover) choose Color.Green otherwise Color.Red
-    // NOTE Scala 3: variable `helper` was added to force type (and implicint conversions) on right side of `<==`
+    // NOTE Scala 3: variable `helper` was added to force type (and implicit conversions) on right side of `<==`
     //               This is not needed in Scala 2
     import javafx.scene.{paint => jfxsp}
     import scalafx.beans.binding.ObjectBinding

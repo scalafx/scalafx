@@ -125,7 +125,12 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
             var mouseHandlerSubscription: Option[Subscription] = None
             alignToggleGroup.selectedToggle.onChange {
               mouseHandlerSubscription.foreach(_.cancel())
-              val handlerId = alignToggleGroup.selectedToggle().asInstanceOf[javafx.scene.control.ToggleButton].id()
+              val handlerId = alignToggleGroup.selectedToggle() match {
+                case tb: javafx.scene.control.ToggleButton =>
+                  tb.id()
+                case null =>
+                  "rectangle" // default, if none selected
+              }
               val selectedHandler = handlerId match {
                 case "rectangle" =>
                   Option(RectangleInteractor.handler)
