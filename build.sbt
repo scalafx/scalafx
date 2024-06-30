@@ -84,7 +84,7 @@ lazy val scalafxSettings = Seq(
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
-      case Some((3, _)) => Seq("-source:3.2-migration", "-explain", "-explain-types")
+      case Some((3, _)) => Seq("-source:3.3-migration", "-explain", "-explain-types")
       case _            => Seq.empty[String]
     }
   },
