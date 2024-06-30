@@ -44,7 +44,7 @@ import scala.collection.JavaConverters._
  */
 class PackageCollectionFillerSpec extends AnyFlatSpec with RunOnApplicationThread {
 
-  private case class Analyzer[T](originalList: jfxc.ObservableList[T]) {
+  case class Analyzer[T](originalList: jfxc.ObservableList[T]) {
     val originalElements: List[T]        = originalList.toList
     val copy: List[T]                    = originalList.toList
     var addedElements: ju.List[_ <: T]   = _

@@ -27,16 +27,16 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
+import scalafx.Includes.*
 
 /**
  * ReadOnlyStringProperty Spec tests.
  */
-class ReadOnlyStringPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
+class ReadOnlyStringPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
   val bean                                                 = new Object()
   var booleanProperty: jfxbp.BooleanProperty               = null
   var readOnlyStringProperty: jfxbp.ReadOnlyStringProperty = null

@@ -27,7 +27,7 @@
 package scalafx.testutil
 
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
+import org.scalatest.matchers.should.Matchers.*
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -121,7 +121,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     if (skipJfxToSfxCause.isEmpty) {
       // Test if conversion behaves correctly
       val sfxObject    = getScalaClassInstance
-      val jfxObject: J = sfxObject
+      val jfxObject: J = sfx2jfx(sfxObject)
 
       jfxObject should be(sfxObject.delegate)
     } else {
@@ -149,8 +149,8 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
 
     if (skipSfxToJfxCause.isEmpty) {
       // Test if conversion behaves correctly
-      val jfxObject    = getJavaClassInstance
-      val sfxObject: S = jfxObject
+      val jfxObject: J = getJavaClassInstance
+      val sfxObject: S = jfx2sfx(jfxObject)
 
       sfxObject.delegate should be(jfxObject)
     } else {

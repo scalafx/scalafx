@@ -27,11 +27,11 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import javafx.scene.{control => jfxsc}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
+import javafx.scene.control as jfxsc
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
 import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
@@ -44,7 +44,8 @@ import scalafx.testutil.RunOnApplicationThread
 class ReadOnlyObjectWrapperSpec
     extends AnyFlatSpec
     with BeforeAndAfterEach
-    with RunOnApplicationThread {
+    with RunOnApplicationThread
+    with NonImplicitAssertions {
 
   val bean                                                 = new Object()
   var objectProperty: jfxbp.ReadOnlyObjectWrapper[String]  = null
@@ -216,33 +217,34 @@ class ReadOnlyObjectWrapperSpec
   it should "be able to hold a value type like Double" in {
 
     val p = ReadOnlyObjectWrapper[Double](42.1)
-    assert(42.1 === p.value)
+    p.value should be(42.1)
     val readOnlyProperty = p.readOnlyProperty
-    assert(42.1 === readOnlyProperty())
+    readOnlyProperty() should be(42.1)
   }
 
   it should "bind its readOnlyProperty hold a value type like Double" in {
     val p = ReadOnlyObjectWrapper[Double](42.1)
-    assert(42.1 === p.value)
+    p.value should be(42.1)
     val readOnlyProperty = p.readOnlyProperty
-    assert(42.1 === readOnlyProperty())
+    readOnlyProperty() should be(42.1)
 
     p.value = 13.2
-    assert(13.2 === readOnlyProperty())
+    readOnlyProperty() should be(13.2)
   }
 
   it should "readOnlyProperty holding a value type like Double should bind to JFX" in {
+
     val p = ReadOnlyObjectWrapper[Double](42.1)
-    assert(42.1 === p.value)
+    p.value should be(42.1)
     val readOnlyProperty = p.readOnlyProperty
-    assert(42.1 === readOnlyProperty())
+    readOnlyProperty() should be(42.1)
 
     val jfxProperty = new jfxbp.SimpleObjectProperty[Double](this, "jfx", 224.3)
-    assert(224.3 === jfxProperty())
+    jfxProperty() should be(224.3)
 
     jfxProperty <== readOnlyProperty
     p.value = 13.4
-    assert(13.4 === jfxProperty())
-    assert(13.4 === readOnlyProperty())
+    jfxProperty() should be(13.4)
+    readOnlyProperty() should be(13.4)
   }
 }

@@ -26,7 +26,7 @@
  */
 package scalafx.event
 
-import javafx.{event => jfxe}
+import javafx.event as jfxe
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -153,7 +153,7 @@ trait EventIncludes {
   /**
    * Converts a closure to a JavaFX EventHandler. It is used when the event properties ''will be used''.
    *
-   * Enables following use:
+   * Enables the following use:
    * {{{
    * button.onAction = (e:ActionEvent) => {
    *   println("Handling button action: " + e)
@@ -165,13 +165,14 @@ trait EventIncludes {
    * @param handler Closure that that takes scalafx.event.Event as argument.
    * @return JavaFX EventHandler which handle method will call handler
    */
-  implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(implicit
-    jfx2sfx: J => S
-  ): jfxe.EventHandler[J] =
+  implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(
+    implicit jfx2sfx: J => S
+  ): jfxe.EventHandler[J] = {
     new jfxe.EventHandler[J] {
       def handle(event: J): Unit = {
-        handler(event)
+        handler(jfx2sfx(event))
       }
     }
+  }
 
 }

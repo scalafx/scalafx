@@ -27,23 +27,24 @@
 
 package scalafx.beans.property
 
-import java.{util => ju}
-
-import javafx.beans.{property => jfxbp, value => jfxbv}
-import javafx.scene.{control => jfxsc}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.{property as jfxbp, value as jfxbv}
+import javafx.scene.control as jfxsc
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
 import scalafx.Includes.{jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
 import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
+import java.util as ju
+
 /**
  * ObjectProperty Spec tests.
  */
-class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
+class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnApplicationThread
+    with NonImplicitAssertions {
   val bean                                          = new Object()
   var objectProperty: jfxbp.ObjectProperty[String]  = _
   var objectProperty2: jfxbp.ObjectProperty[String] = _
@@ -58,7 +59,7 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
   }
 
   "An Object Property" should "have a default value of null" in {
-    objectProperty.value should be(null.asInstanceOf[String])
+    objectProperty.value should equal(null.asInstanceOf[String])
   }
 
   it should "be assignable using update" in {
@@ -105,9 +106,9 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     booleanProperty <== objectProperty === objectProperty2
     objectProperty() = "One"
     objectProperty2() = "Two"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     objectProperty2() = "One"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     booleanProperty.unbind()
   }
 
@@ -115,36 +116,36 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     booleanProperty <== objectProperty === sfxObjectProperty
     objectProperty() = "One"
     sfxObjectProperty() = "Two"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     sfxObjectProperty() = "One"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== objectProperty === "One"
     objectProperty() = "Two"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     objectProperty() = "One"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     booleanProperty.unbind()
   }
 
   it should "support null comparisons for equal to (===)" in {
     booleanProperty <== objectProperty === null
     objectProperty() = "clearly not null"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     objectProperty() = null
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== objectProperty =!= objectProperty2
     objectProperty() = "One"
     objectProperty2() = "Two"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     objectProperty2() = "One"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     booleanProperty.unbind()
   }
 
@@ -152,27 +153,27 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     booleanProperty <== objectProperty =!= sfxObjectProperty
     objectProperty() = "One"
     sfxObjectProperty() = "Two"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     sfxObjectProperty() = "One"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== objectProperty =!= "One"
     objectProperty() = "Two"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     objectProperty() = "One"
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
     booleanProperty.unbind()
   }
 
   it should "support null comparisons for not equal to (=!=)" in {
     booleanProperty <== objectProperty =!= null
     objectProperty() = "clearly not null"
-    booleanProperty() should be(true)
+    booleanProperty() should equal(true)
     objectProperty() = null
-    booleanProperty() should be(false)
+    booleanProperty() should equal(false)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -199,7 +200,7 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     val scalaObjProperty: ObjectProperty[Button]            = ObjectProperty[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ObjectProperty[jfxsc.Button] = scalaObjProperty
 
-    javaObjProperty.get should be(scalaObjProperty.value.delegate)
+    javaObjProperty.get should equal(scalaObjProperty.value.delegate)
   }
 
   it should "be able to hold a value type like Double" in {
@@ -207,7 +208,7 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     val p = new ObjectProperty[Double]
     p.value = 42.1
 
-    assert(42.1 === p.value)
+    p.value should equal(42.1)
   }
 
   it should "bind SFX <==> JFX holding a value type like Double" in {
@@ -216,12 +217,12 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
 
     sfxProperty <==> jfxProperty
     sfxProperty() = 17.8
-    assert(17.8 === sfxProperty())
-    assert(17.8 === jfxProperty())
+    sfxProperty() should equal(17.8)
+    jfxProperty() should equal(17.8)
 
     jfxProperty() = 21.2
-    assert(21.2 === sfxProperty())
-    assert(21.2 === jfxProperty())
+    sfxProperty() should equal(21.2)
+    jfxProperty() should equal(21.2)
   }
 
   it should "bind JFX <==> SFX holding a value type like Double" in {
@@ -230,15 +231,15 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
 
     jfxProperty <==> sfxProperty
     sfxProperty() = 17.8
-    assert(17.8 === sfxProperty())
-    assert(17.8 === jfxProperty())
+    sfxProperty() should equal(17.8)
+    jfxProperty() should equal(17.8)
 
     jfxProperty() = 21.1
-    assert(21.1 === sfxProperty())
-    assert(21.1 === jfxProperty())
+    sfxProperty() should equal(21.1)
+    jfxProperty() should equal(21.1)
   }
 
-  // Testing fillProperty method from companion.
+  // Testing fillProperty method from the companion.
 
   private def evaluateFillProperty[T <: Object](property: ObjectProperty[T], newValue: T): Unit = {
     val originalValue: T = property.value
@@ -253,9 +254,9 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
 
     ObjectProperty.fillProperty(property, newValue)
 
-    property.value should be(newValue)
-    newVal should be(newValue)
-    oldVal should be(originalValue)
+    property.value should equal(newValue)
+    newVal should equal(newValue)
+    oldVal should equal(originalValue)
   }
 
   "fillProperty" should "fill property with null if receives null" in {

@@ -27,17 +27,17 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import javafx.scene.{paint => jfxsp}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
+import javafx.scene.paint as jfxsp
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
+import scalafx.Includes.*
 
 /**
  * ReadOnlyObjectProperty Spec tests.
  */
-class ReadOnlyObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
+class ReadOnlyObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
   val bean                                                              = new Object()
   var readOnlyObjectProperty: jfxbp.ReadOnlyObjectProperty[jfxsp.Paint] = null
   var objectProperty1: jfxbp.ObjectProperty[jfxsp.Paint]                = null

@@ -28,15 +28,15 @@
 package scalafx.beans.property
 
 import javafx.beans.property as jfxbp
-import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
 import scalafx.Includes.*
 
 /**
  * ReadOnlyFloatProperty Spec tests.
  */
-class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
+class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
   val bean                                               = new Object()
   var readOnlyFloatProperty: jfxbp.ReadOnlyFloatProperty = null
   var floatProperty1: jfxbp.FloatProperty                = null

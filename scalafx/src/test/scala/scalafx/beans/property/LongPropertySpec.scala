@@ -28,7 +28,7 @@
 package scalafx.beans.property
 
 import javafx.beans.property as jfxbp
-import org.scalatest.BeforeAndAfterEach
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
 import scalafx.Includes.*
@@ -36,7 +36,7 @@ import scalafx.Includes.*
 /**
  * LongProperty Spec tests.
  */
-class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
+class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
   val bean                                   = new Object()
   var longProperty: jfxbp.LongProperty       = null
   var longProperty2: jfxbp.LongProperty      = null

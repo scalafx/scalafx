@@ -26,8 +26,8 @@
  */
 package scalafx.beans
 
-import javafx.beans.{value => jfxbv}
-import javafx.{beans => jfxb}
+import javafx.beans as jfxb
+import javafx.beans.value as jfxbv
 import scalafx.beans.binding.BindingIncludes
 import scalafx.beans.property.PropertyIncludes
 import scalafx.beans.value.ObservableValue
@@ -75,4 +75,10 @@ trait LowerPriorityIncludes {
       override def delegate: jfxbv.ObservableValue[T] = o
       override def value: T                           = delegate.getValue
     }
+
+  implicit def jfxObservableValue2sfxBooleanValue(x: jfxbv.ObservableValue[java.lang.Boolean])
+    : ObservableValue[Boolean, java.lang.Boolean] = new ObservableValue[scala.Boolean, java.lang.Boolean] {
+    override def delegate: jfxbv.ObservableValue[java.lang.Boolean] = x
+    override def value: scala.Boolean                               = delegate.getValue
+  }
 }
