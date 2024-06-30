@@ -520,6 +520,7 @@ object TreeTableView {
    * width and so on. When all right hand side columns reach minimum size, the user cannot increase the size of resized
    * column any more.
    */
+  @deprecated(since = "JavaFX 20")
   val ConstrainedResizePolicy: TreeTableView.ResizeFeatures[_] => Boolean =
     tvrf => jfxsc.TreeTableView.CONSTRAINED_RESIZE_POLICY(tvrf)
 

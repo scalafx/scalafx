@@ -88,6 +88,7 @@ object TableView {
    *
    * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
    */
+  @deprecated(since = "JavaFX 20")
   val ConstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
     jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
 
