@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,22 +27,20 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
+import scalafx.Includes.*
 
 /**
  * ReadOnlyBooleanProperty Spec tests.
- *
- *
  */
-class ReadOnlyBooleanPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
+class ReadOnlyBooleanPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
+  val bean                                                   = new Object()
   var readOnlyBooleanProperty: jfxbp.ReadOnlyBooleanProperty = null
-  var booleanProperty1: jfxbp.BooleanProperty = null
-  var booleanProperty2: jfxbp.BooleanProperty = null
+  var booleanProperty1: jfxbp.BooleanProperty                = null
+  var booleanProperty2: jfxbp.BooleanProperty                = null
 
   override def beforeEach(): Unit = {
     readOnlyBooleanProperty = new ReadOnlyBooleanProperty(bean, "Test Read-only Boolean", true)
@@ -118,8 +116,8 @@ class ReadOnlyBooleanPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = booleanProperty1 || booleanProperty2
+    var changeCount     = 0
+    val binding         = booleanProperty1 || booleanProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

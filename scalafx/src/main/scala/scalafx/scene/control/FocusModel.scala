@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object FocusModel {
  * @tparam T The type of the underlying data model for the UI control.
  */
 abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T])
-  extends SFXDelegate[jfxsc.FocusModel[T]] {
+    extends SFXDelegate[jfxsc.FocusModel[T]] {
 
   /**
    * The index of the current item in the FocusModel which has the focus.

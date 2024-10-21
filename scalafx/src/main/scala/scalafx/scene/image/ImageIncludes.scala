@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,7 +78,9 @@ trait ImageIncludes {
    * @param pf $JFX $PXF
    * @return $SFX $PXF
    */
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]): PixelFormat[B] = if (pf != null) new PixelFormat[B](pf) {} else null
+  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]): PixelFormat[B] = if (pf != null)
+    new PixelFormat[B](pf) {}
+  else null
 
   /**
    * $START$PFT.html $PFT$END
@@ -118,7 +120,8 @@ trait ImageIncludes {
    * @param wi $JFX $WRI
    * @return $SFX $WRI
    */
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage): WritableImage = if (wi != null) new WritableImage(wi) else null
+  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage): WritableImage =
+    if (wi != null) new WritableImage(wi) else null
 
   /**
    * $START$WPF.html $WPF$END
@@ -126,6 +129,7 @@ trait ImageIncludes {
    * @param pf $JFX $WPF
    * @return $SFX $WPF
    */
-  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]): WritablePixelFormat[B] = new WritablePixelFormat[B](pf) {}
+  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]): WritablePixelFormat[B] =
+    new WritablePixelFormat[B](pf) {}
 
 }

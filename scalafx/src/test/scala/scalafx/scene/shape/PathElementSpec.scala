@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,18 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-
-import scalafx.Includes._
+import javafx.scene.shape as jfxss
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PathElement Spec tests.
- *
- *
  */
 class PathElementSpec
-  extends SimpleSFXDelegateSpec[jfxss.PathElement, PathElement](classOf[jfxss.PathElement], classOf[PathElement]) {
+    extends SimpleSFXDelegateSpec[jfxss.PathElement, PathElement](classOf[jfxss.PathElement], classOf[PathElement]) {
 
-  override protected def getScalaClassInstance = new ClosePath
+  override protected def getScalaClassInstance: ClosePath = new ClosePath
 
-  override def getJavaClassInstance = new jfxss.ClosePath
+  override def getJavaClassInstance: jfxss.ClosePath = new jfxss.ClosePath
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,8 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * Stage Spec tests.
  */
 class StageSpec
-  extends SimpleSFXDelegateSpec[jfxs.Stage, Stage](classOf[jfxs.Stage], classOf[Stage])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxs.Stage, Stage](classOf[jfxs.Stage], classOf[Stage])
+    with RunOnApplicationThread {
 
   it should "allow scene to be set to null" in {
     new Stage() {

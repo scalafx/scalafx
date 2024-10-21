@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,10 +32,9 @@ import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.AccessibleAction]]. */
 class AccessibleActionSpec extends SFXEnumDelegateSpec[jfxs.AccessibleAction, AccessibleAction](
-  javaClass = classOf[jfxs.AccessibleAction],
-  scalaClass = classOf[AccessibleAction],
-  companion = AccessibleAction)
-
+      javaClass = classOf[jfxs.AccessibleAction],
+      scalaClass = classOf[AccessibleAction],
+      companion = AccessibleAction
+    )

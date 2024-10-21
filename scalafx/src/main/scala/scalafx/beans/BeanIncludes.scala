@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,8 @@
  */
 package scalafx.beans
 
-
-import javafx.beans.{value => jfxbv}
-import javafx.{beans => jfxb}
+import javafx.beans as jfxb
+import javafx.beans.value as jfxbv
 import scalafx.beans.binding.BindingIncludes
 import scalafx.beans.property.PropertyIncludes
 import scalafx.beans.value.ObservableValue
@@ -66,13 +65,20 @@ trait LowerPriorityIncludes {
   /**
    * Converts a
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html `javafx.beans.value.ObservableValue`]]
-   * instance to its ScalaFX counterpart ''which Java Type and Scala Type are the same''. 
+   * instance to its ScalaFX counterpart ''which Java Type and Scala Type are the same''.
    *
    * @param o JavaFX ObservableValue
-   * @return ScalaFX ObservableValue ''which Java Type and Scala Type are the same''. 
+   * @return ScalaFX ObservableValue ''which Java Type and Scala Type are the same''.
    */
-  implicit def jfxObservableValue2sfx[T](o: jfxbv.ObservableValue[T]): ObservableValue[T, T] = new ObservableValue[T, T] {
-    override def delegate: jfxbv.ObservableValue[T] = o
-    override def value: T = delegate.getValue
+  implicit def jfxObservableValue2sfx[T](o: jfxbv.ObservableValue[T]): ObservableValue[T, T] =
+    new ObservableValue[T, T] {
+      override def delegate: jfxbv.ObservableValue[T] = o
+      override def value: T                           = delegate.getValue
+    }
+
+  implicit def jfxObservableValue2sfxBooleanValue(x: jfxbv.ObservableValue[java.lang.Boolean])
+    : ObservableValue[Boolean, java.lang.Boolean] = new ObservableValue[scala.Boolean, java.lang.Boolean] {
+    override def delegate: jfxbv.ObservableValue[java.lang.Boolean] = x
+    override def value: scala.Boolean                               = delegate.getValue
   }
 }

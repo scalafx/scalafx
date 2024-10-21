@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,8 @@ import scalafx.beans.value.ObservableValue
 import scala.language.implicitConversions
 
 object ObjectExpression {
-  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] = if (oe != null) oe.delegate else null
+  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] =
+    if (oe != null) oe.delegate else null
 }
 
 class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
@@ -42,7 +43,8 @@ class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
   def ===(v: jfxbv.ObservableObjectValue[_]): BooleanBinding = delegate.isEqualTo(v)
 
   // explicit conversion needed due to AnyRef typed method
-  def ===[T](v: ObservableValue[T, T]): BooleanBinding = delegate.isEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
+  def ===[T](v: ObservableValue[T, T]): BooleanBinding =
+    delegate.isEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
 
   def ===(v: AnyRef): BooleanBinding = delegate.isEqualTo(v)
 
@@ -51,7 +53,8 @@ class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
   def =!=(v: jfxbv.ObservableObjectValue[_]): BooleanBinding = delegate.isNotEqualTo(v)
 
   // explicit conversion needed due to AnyRef typed method
-  def =!=[T](v: ObservableValue[T, T]): BooleanBinding = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
+  def =!=[T](v: ObservableValue[T, T]): BooleanBinding =
+    delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
 
   def =!=(v: AnyRef): BooleanBinding = delegate.isNotEqualTo(v)
 

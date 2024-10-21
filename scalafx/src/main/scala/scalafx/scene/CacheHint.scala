@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ object CacheHint extends SFXEnumDelegateCompanion[jfxs.CacheHint, CacheHint] {
   @deprecated("Use Default; DEFAULT will be removed in a future release", "8.0.60-R10")
   val DEFAULT: CacheHint = Default
 
-
   case object Quality extends CacheHint(jfxs.CacheHint.QUALITY)
 
   @deprecated("Use Quality; QUALITY will be removed in a future release", "8.0.60-R10")
@@ -64,9 +63,13 @@ object CacheHint extends SFXEnumDelegateCompanion[jfxs.CacheHint, CacheHint] {
   val SPEED: CacheHint = Speed
 
   protected override def unsortedValues: Array[CacheHint] = Array(
-    Default, Speed, Quality, Scale, Rotate, ScaleAndRotate
+    Default,
+    Speed,
+    Quality,
+    Scale,
+    Rotate,
+    ScaleAndRotate
   )
 }
-
 
 sealed abstract class CacheHint(override val delegate: jfxs.CacheHint) extends SFXEnumDelegate[jfxs.CacheHint]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,6 +65,5 @@ object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, Transfe
   protected override def unsortedValues: Array[TransferMode] = Array(Copy, Move, Link)
 }
 
-
 sealed abstract class TransferMode(override val delegate: jfxsi.TransferMode)
-  extends SFXEnumDelegate[jfxsi.TransferMode]
+    extends SFXEnumDelegate[jfxsi.TransferMode]

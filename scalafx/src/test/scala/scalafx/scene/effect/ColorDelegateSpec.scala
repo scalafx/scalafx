@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,9 +38,9 @@ trait ColorDelegateSpec[D <: ColorDelegate[_]] extends AnyFlatSpec {
   protected val colorDelegate: D
 
   it should "allow observe changes in Color" in {
-    var changed = false
+    var changed      = false
     val initialColor = Color.White
-    val finalColor = Color.Black
+    val finalColor   = Color.Black
 
     colorDelegate.color = initialColor
 

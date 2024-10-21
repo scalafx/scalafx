@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,11 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Window Spec tests.
- *
- *
  */
 class WindowEventSpec
-  extends SimpleSFXDelegateSpec[jfxs.WindowEvent, WindowEvent](classOf[jfxs.WindowEvent], classOf[WindowEvent]) {
+    extends SimpleSFXDelegateSpec[jfxs.WindowEvent, WindowEvent](classOf[jfxs.WindowEvent], classOf[WindowEvent]) {
 
   override protected def getJavaClassInstance = new jfxs.WindowEvent(null, null)
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,6 @@ package scalafx.scene
 import javafx.{scene => jfxs}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/DepthTest.html javafx.scene.DepthTest]] */
 object DepthTest extends SFXEnumDelegateCompanion[jfxs.DepthTest, DepthTest] {
 
@@ -48,9 +47,7 @@ object DepthTest extends SFXEnumDelegateCompanion[jfxs.DepthTest, DepthTest] {
   @deprecated("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
   val INHERIT: DepthTest = Inherit
 
-
   protected override def unsortedValues: Array[DepthTest] = Array(Disabled, Enable, Inherit)
 }
-
 
 sealed abstract class DepthTest(override val delegate: jfxs.DepthTest) extends SFXEnumDelegate[jfxs.DepthTest]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,26 +26,24 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
-import scalafx.Includes._
+import javafx.scene.chart as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ValueAxis Spec tests.
- *
- *
  */
 class ValueAxisSpec[T <: Number]
-  extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]])
+    with RunOnApplicationThread {
 
-  override def getScalaClassInstance = new ValueAxis[T](getJavaClassInstance) {}
+  override def getScalaClassInstance: ValueAxis[T] = new ValueAxis[T](getJavaClassInstance) {}
 
-  override def getJavaClassInstance = new jfxsc.ValueAxis[T] {
-    protected def calculateMinorTickMarks = new java.util.ArrayList[T]
-    protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
-    protected def getRange = null
-    protected def getTickMarkLabel(value: T) = ""
+  override def getJavaClassInstance: jfxsc.ValueAxis[T] = new jfxsc.ValueAxis[T] {
+    protected def calculateMinorTickMarks: java.util.ArrayList[T]                         = new java.util.ArrayList[T]
+    protected def calculateTickValues(length: Double, range: Any): java.util.ArrayList[T] = new java.util.ArrayList[T]
+    protected def getRange: AnyRef                                                        = null
+    protected def getTickMarkLabel(value: T)                                              = ""
 
     protected def setRange(range: Any, animate: Boolean): Unit = {}
   }

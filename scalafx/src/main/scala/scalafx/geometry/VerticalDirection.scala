@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,12 @@ import scalafx.delegate._
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/VerticalDirection.html javafx.geometry.VerticalDirection]] */
 object VerticalDirection
-  extends SFXEnumDelegateCompanion[jfxg.VerticalDirection, VerticalDirection] {
+    extends SFXEnumDelegateCompanion[jfxg.VerticalDirection, VerticalDirection] {
 
   /** The down direction. */
   case object Down extends VerticalDirection(jfxg.VerticalDirection.DOWN)
   @deprecated("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
   val DOWN: VerticalDirection = Down
-
 
   /** The up direction. */
   case object Up extends VerticalDirection(jfxg.VerticalDirection.UP)
@@ -50,4 +49,4 @@ object VerticalDirection
 }
 
 sealed abstract class VerticalDirection(override val delegate: jfxg.VerticalDirection)
-  extends SFXEnumDelegate[jfxg.VerticalDirection]
+    extends SFXEnumDelegate[jfxg.VerticalDirection]

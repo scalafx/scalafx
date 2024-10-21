@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,8 +43,8 @@ object ScrollBar {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollBar.html]]
  */
 class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ScrollBar] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ScrollBar] {
 
   /**
    * The amount by which to adjust the scrollbar if the track of the bar is clicked.

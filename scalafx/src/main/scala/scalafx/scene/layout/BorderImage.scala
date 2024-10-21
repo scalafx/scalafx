@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,14 +43,21 @@ object BorderImage {
  * [[scalafx.scene.layout.Region]].
  */
 class BorderImage(override val delegate: jfxsl.BorderImage)
-  extends SFXDelegate[jfxsl.BorderImage] {
+    extends SFXDelegate[jfxsl.BorderImage] {
 
   /**
    * Creates a new BackgroundImage.Defines properties describing how to render an image as
    * the border of some Region.
    */
-  def this(image: Image, widths: BorderWidths, insets: Insets, slices: BorderWidths,
-           filled: Boolean, repeatX: BorderRepeat, repeatY: BorderRepeat) =
+  def this(
+    image: Image,
+    widths: BorderWidths,
+    insets: Insets,
+    slices: BorderWidths,
+    filled: Boolean,
+    repeatX: BorderRepeat,
+    repeatY: BorderRepeat
+  ) =
     this(new jfxsl.BorderImage(image, widths, insets, slices, filled, repeatX, repeatY))
 
   /**

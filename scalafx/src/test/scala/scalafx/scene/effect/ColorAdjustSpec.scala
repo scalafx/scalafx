@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ColorAdjust Spec tests.
- *
- *
  */
 class ColorAdjustSpec
-  extends SimpleSFXDelegateSpec[jfxse.ColorAdjust, ColorAdjust](classOf[jfxse.ColorAdjust], classOf[ColorAdjust])
-  with InputDelegateSpec[ColorAdjust] {
+    extends SimpleSFXDelegateSpec[jfxse.ColorAdjust, ColorAdjust](classOf[jfxse.ColorAdjust], classOf[ColorAdjust])
+    with InputDelegateSpec[ColorAdjust] {
 
   val inputDelegate = getScalaClassInstance
 

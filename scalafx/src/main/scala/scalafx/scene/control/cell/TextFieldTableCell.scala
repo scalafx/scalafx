@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,8 @@ object TextFieldTableCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]): jfxscc.TextFieldTableCell[S, T] = if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]): jfxscc.TextFieldTableCell[S, T] =
+    if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
@@ -76,7 +77,9 @@ object TextFieldTableCell {
    * Added to satisfy Spec Texts.
    */
   @deprecated(message = "Use forTableColumn[S, T](StringConverter[T])", since = "1.0")
-  def forTableColumn[S, T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.TextFieldTableCell.forTableColumn[S, T](converter)
+  def forTableColumn[S, T](converter: jfxu.StringConverter[T])
+    : jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
+    jfxscc.TextFieldTableCell.forTableColumn[S, T](converter)
 
 }
 
@@ -89,11 +92,12 @@ object TextFieldTableCell {
  *
  * @define TFTC `TextFieldTableCell`
  */
-class TextFieldTableCell[S, T](override val delegate: jfxscc.TextFieldTableCell[S, T] = new jfxscc.TextFieldTableCell[S, T])
-  extends TableCell[S, T](delegate)
-  with ConvertableCell[jfxscc.TextFieldTableCell[S, T], T, T]
-  with UpdatableCell[jfxscc.TextFieldTableCell[S, T], T]
-  with SFXDelegate[jfxscc.TextFieldTableCell[S, T]] {
+class TextFieldTableCell[S, T](override val delegate: jfxscc.TextFieldTableCell[S, T] =
+  new jfxscc.TextFieldTableCell[S, T])
+    extends TableCell[S, T](delegate)
+    with ConvertableCell[jfxscc.TextFieldTableCell[S, T], T, T]
+    with UpdatableCell[jfxscc.TextFieldTableCell[S, T], T]
+    with SFXDelegate[jfxscc.TextFieldTableCell[S, T]] {
 
   /**
    * Creates a `TextFieldTableCell` that provides a TextField when put into editing mode that allows editing of the

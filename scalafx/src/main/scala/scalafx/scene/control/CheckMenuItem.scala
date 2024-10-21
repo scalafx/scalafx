@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,30 +34,30 @@ import scalafx.scene.Node
 
 import scala.language.implicitConversions
 
-
 object CheckMenuItem {
   implicit def sfxCheckMenuItem2jfx(m: CheckMenuItem): jfxsc.CheckMenuItem = if (m != null) m.delegate else null
 }
 
 /** A MenuItem that can be toggled between selected and unselected states. */
 class CheckMenuItem(override val delegate: jfxsc.CheckMenuItem = new jfxsc.CheckMenuItem)
-  extends MenuItem
-  with SFXDelegate[jfxsc.CheckMenuItem] {
+    extends MenuItem
+    with SFXDelegate[jfxsc.CheckMenuItem] {
 
   /** Constructs a CheckMenuItem and sets the display text with the specified text. */
   def this(text: String) = this(new jfxsc.CheckMenuItem(text))
 
-  /** Constructs a CheckMenuItem and sets the display text with the specified text and
-    * sets the graphic Node to the given node.
-    */
+  /**
+   * Constructs a CheckMenuItem and sets the display text with the specified text and
+   * sets the graphic Node to the given node.
+   */
   def this(text: String, graphic: Node) = this(new jfxsc.CheckMenuItem(text, graphic))
 
-
-  /** Represents the current state of this CheckMenuItem.
-    *
-    * Bind to this to be informed whenever the user interacts with the CheckMenuItem
-    * (and causes the selected state to be toggled).
-    */
+  /**
+   * Represents the current state of this CheckMenuItem.
+   *
+   * Bind to this to be informed whenever the user interacts with the CheckMenuItem
+   * (and causes the selected state to be toggled).
+   */
   def selected: BooleanProperty = delegate.selectedProperty
 
   def selected_=(v: Boolean): Unit = {

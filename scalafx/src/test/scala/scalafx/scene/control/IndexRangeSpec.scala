@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * IndexRange Spec tests.
- *
- *
  */
 class IndexRangeSpec
-  extends SimpleSFXDelegateSpec[jfxsc.IndexRange, IndexRange](classOf[jfxsc.IndexRange], classOf[IndexRange]) {
+    extends SimpleSFXDelegateSpec[jfxsc.IndexRange, IndexRange](classOf[jfxsc.IndexRange], classOf[IndexRange]) {
 
   override protected def getScalaClassInstance = new IndexRange(1, 2)
 

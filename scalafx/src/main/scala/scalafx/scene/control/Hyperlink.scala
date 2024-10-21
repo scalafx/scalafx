@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,8 +39,8 @@ object Hyperlink {
 }
 
 class Hyperlink(override val delegate: jfxsc.Hyperlink = new jfxsc.Hyperlink)
-  extends ButtonBase(delegate)
-  with SFXDelegate[jfxsc.Hyperlink] {
+    extends ButtonBase(delegate)
+    with SFXDelegate[jfxsc.Hyperlink] {
 
   /**
    * Create a hyperlink with the specified text as its label.

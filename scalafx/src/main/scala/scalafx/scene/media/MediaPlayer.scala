@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ object MediaPlayer {
   implicit def sfxMediaPlayer2jfx(mp: MediaPlayer): jfxsm.MediaPlayer = if (mp != null) mp.delegate else null
 
   object Status
-    extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {
+      extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {
 
     /**
      * State of the player after dispose() method is invoked.
@@ -108,15 +108,15 @@ object MediaPlayer {
     @deprecated("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
     val UNKNOWN: Status = Unknown
 
-    protected override def unsortedValues: Array[Status] = Array(Disposed, Halted, Paused, Playing,
-      Ready, Stalled, Stopped, Unknown)
+    protected override def unsortedValues: Array[Status] =
+      Array(Disposed, Halted, Paused, Playing, Ready, Stalled, Stopped, Unknown)
   }
 
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaPlayer.Status.html]]
    */
   sealed abstract class Status(override val delegate: jfxsm.MediaPlayer.Status)
-    extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]
+      extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]
 
   /**
    * A value representing an effectively infinite number of playback cycles.
@@ -305,7 +305,6 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onPaused() = MediaPlayer.runnable(op)
   }
 
-
   /**
    * Event handler invoked when the status changes to PLAYING.
    */
@@ -318,7 +317,6 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   def onPlaying_=(op: => Unit): Unit = {
     onPlaying() = MediaPlayer.runnable(op)
   }
-
 
   /**
    * Event handler invoked when the status changes to READY.
@@ -333,7 +331,6 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onReady() = MediaPlayer.runnable(op)
   }
 
-
   /**
    * Event handler invoked when the player currentTime reaches stopTime and will be repeating.
    */
@@ -346,7 +343,6 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   def onRepeat_=(op: => Unit): Unit = {
     onRepeat() = MediaPlayer.runnable(op)
   }
-
 
   /**
    * Event handler invoked when the status changes to STALLED.
@@ -361,7 +357,6 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onStalled() = MediaPlayer.runnable(op)
   }
 
-
   /**
    * Event handler invoked when the status changes to STOPPED.
    */
@@ -374,7 +369,6 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   def onStopped_=(op: => Unit): Unit = {
     onStopped() = MediaPlayer.runnable(op)
   }
-
 
   /**
    * The rate at which the media should be played.

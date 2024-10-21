@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.control.TableColumn.SortType]]. */
 class TableColumnSortTypeSpec
-  extends SFXEnumDelegateSpec[jfxsc.TableColumn.SortType, TableColumn.SortType](
-    classOf[jfxsc.TableColumn.SortType],
-    classOf[TableColumn.SortType],
-    TableColumn.SortType)
+    extends SFXEnumDelegateSpec[jfxsc.TableColumn.SortType, TableColumn.SortType](
+      classOf[jfxsc.TableColumn.SortType],
+      classOf[TableColumn.SortType],
+      TableColumn.SortType
+    )

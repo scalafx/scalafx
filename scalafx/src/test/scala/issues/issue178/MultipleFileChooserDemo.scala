@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object MultipleFileChooserDemo extends JFXApp3 {
           children = new Button {
             text = "Open file chooser and select multiple files or Cancel"
             onAction = _ => {
-              val fc = new FileChooser()
+              val fc        = new FileChooser()
               val selection = fc.showOpenMultipleDialog(stage)
 
               println("Selection: " + selection)

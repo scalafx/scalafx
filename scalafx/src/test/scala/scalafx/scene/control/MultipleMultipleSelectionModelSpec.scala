@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,19 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc}
-import scalafx.Includes._
+import javafx.collections as jfxc
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * MultipleSelectionModel Spec tests.
- *
  */
 class MultipleMultipleSelectionModelSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T]](
-    classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T]](
+      classOf[jfxsc.MultipleSelectionModel[T]],
+      classOf[MultipleSelectionModel[T]]
+    ) {
 
   class SimpleMultipleSelectionModel[T1] extends jfxsc.MultipleSelectionModel[T1] {
     def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null
@@ -71,8 +72,9 @@ class MultipleMultipleSelectionModelSpec[T]
     def selectPrevious(): Unit = {}
   }
 
-  override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
+  override protected def getScalaClassInstance: MultipleSelectionModel[T] =
+    new MultipleSelectionModel[T](getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T]
+  override protected def getJavaClassInstance: jfxsc.MultipleSelectionModel[T] = new SimpleMultipleSelectionModel[T]
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,7 @@ object ImageCursor {
 }
 
 class ImageCursor(override val delegate: jfxs.ImageCursor = new jfxs.ImageCursor)
-  extends Cursor(delegate) with SFXDelegate[jfxs.ImageCursor] {
+    extends Cursor(delegate) with SFXDelegate[jfxs.ImageCursor] {
 
   /**
    * Constructs an ImageCursor from the specified image.

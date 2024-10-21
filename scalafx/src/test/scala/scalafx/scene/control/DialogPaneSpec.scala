@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
  * Test for [[scalafx.scene.control.DialogPane]].
  */
 class DialogPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsc.DialogPane, DialogPane](
-    classOf[jfxsc.DialogPane], classOf[DialogPane])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.DialogPane, DialogPane](
+      classOf[jfxsc.DialogPane],
+      classOf[DialogPane]
+    )
+    with RunOnApplicationThread

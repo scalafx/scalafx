@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -125,7 +125,12 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
             var mouseHandlerSubscription: Option[Subscription] = None
             alignToggleGroup.selectedToggle.onChange {
               mouseHandlerSubscription.foreach(_.cancel())
-              val handlerId = alignToggleGroup.selectedToggle().asInstanceOf[javafx.scene.control.ToggleButton].id()
+              val handlerId = alignToggleGroup.selectedToggle() match {
+                case tb: javafx.scene.control.ToggleButton =>
+                  tb.id()
+                case null =>
+                  "rectangle" // default, if none selected
+              }
               val selectedHandler = handlerId match {
                 case "rectangle" =>
                   Option(RectangleInteractor.handler)
@@ -151,8 +156,8 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
     }
     trait MouseHandler { def handler: MouseEvent => Unit }
     trait ShapeDrawInteractor extends MouseHandler {
-      private var _start = new Point2D(0, 0)
-      private var _end   = new Point2D(0, 0)
+      private var _start   = new Point2D(0, 0)
+      private var _end     = new Point2D(0, 0)
       def startPt: Point2D = _start
       def startPt_=(p: Point2D): Unit = {
         _start = p

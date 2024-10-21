@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,10 +34,11 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
  * Test for [[scalafx.scene.control.ChoiceDialog]].
  */
 class ChoiceDialogSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.ChoiceDialog[T], ChoiceDialog[T]](
-    classOf[jfxsc.ChoiceDialog[T]], classOf[ChoiceDialog[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.ChoiceDialog[T], ChoiceDialog[T]](
+      classOf[jfxsc.ChoiceDialog[T]],
+      classOf[ChoiceDialog[T]]
+    )
+    with RunOnApplicationThread

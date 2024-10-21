@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,20 +27,18 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
-
-import scalafx.Includes._
+import javafx.geometry as jfxg
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Bounds Spec tests.
- *
  */
 class BoundsSpec
-  extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
+    extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
 
-  override protected def getScalaClassInstance = new Bounds(getJavaClassInstance) {}
+  override protected def getScalaClassInstance: Bounds = new Bounds(getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
+  override protected def getJavaClassInstance: jfxg.BoundingBox = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
 
 }

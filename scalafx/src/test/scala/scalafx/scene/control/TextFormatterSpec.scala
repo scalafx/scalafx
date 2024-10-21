@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,14 +34,16 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
  * Test for [[scalafx.scene.control.TextFormatter]].
  */
 class TextFormatterSpec
-  extends SimpleSFXDelegateSpec[jfxsc.TextFormatter[String], TextFormatter[String]](
-    classOf[jfxsc.TextFormatter[String]], classOf[TextFormatter[String]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.TextFormatter[String], TextFormatter[String]](
+      classOf[jfxsc.TextFormatter[String]],
+      classOf[TextFormatter[String]]
+    )
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance: TextFormatter[String] = new TextFormatter(getJavaClassInstance)
-  override protected def getJavaClassInstance: jfxsc.TextFormatter[String] = new jfxsc.TextFormatter(TextFormatter.IdentityStringConverter)
+  override protected def getJavaClassInstance: jfxsc.TextFormatter[String] =
+    new jfxsc.TextFormatter(TextFormatter.IdentityStringConverter)
 }

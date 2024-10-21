@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,16 +33,14 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Service Spec tests.
- *
- *
  */
 class ServiceSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.Service[T], Service[T]](classOf[jfxc.Service[T]], classOf[Service[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.Service[T], Service[T]](classOf[jfxc.Service[T]], classOf[Service[T]]) {
 
   override protected def getScalaClassInstance = Service[T](null)
 
   override protected def getJavaClassInstance = new jfxc.Service[T] {
-    protected def createTask = null
+    protected def createTask: Null = null
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,9 +32,9 @@ import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.effect.BlurType]]. */
 class BlurTypeSpec extends SFXEnumDelegateSpec[jfxse.BlurType, BlurType](
-  javaClass = classOf[jfxse.BlurType],
-  scalaClass = classOf[BlurType],
-  companion = BlurType)
+      javaClass = classOf[jfxse.BlurType],
+      scalaClass = classOf[BlurType],
+      companion = BlurType
+    )

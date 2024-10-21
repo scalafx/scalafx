@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object PageLayout {
  * @since 8.0
  */
 final class PageLayout(override val delegate: jfxp.PageLayout)
-  extends SFXDelegate[jfxp.PageLayout] {
+    extends SFXDelegate[jfxp.PageLayout] {
 
   /**
    * The bottom margin of the page layout in points.

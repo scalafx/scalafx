@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,23 +26,23 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
-
-import scalafx.Includes._
+import javafx.scene.chart as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Chart Spec tests.
- *
- *
  */
 class XYChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.XYChart[Number, Number], XYChart[Number, Number]](
-    classOf[jfxsc.XYChart[Number, Number]], classOf[XYChart[Number, Number]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.XYChart[Number, Number], XYChart[Number, Number]](
+      classOf[jfxsc.XYChart[Number, Number]],
+      classOf[XYChart[Number, Number]]
+    )
+    with RunOnApplicationThread {
 
-  override def getScalaClassInstance = new XYChart[Number, Number](getJavaClassInstance) {}
+  override def getScalaClassInstance: XYChart[Number, Number] = new XYChart[Number, Number](getJavaClassInstance) {}
 
-  override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
+  override def getJavaClassInstance: jfxsc.LineChart[Number, Number] =
+    new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

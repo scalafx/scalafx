@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,15 @@ object LinearGradient {
    * @param cycleMethod  cycle method applied to the gradient
    * @param stops  the gradient's color specification
    */
-  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) =
+  def apply(
+    startX: Double,
+    startY: Double,
+    endX: Double,
+    endY: Double,
+    proportional: Boolean,
+    cycleMethod: CycleMethod,
+    stops: List[Stop]
+  ) =
     new LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops.map(_.delegate))
 
   /**
@@ -63,7 +71,15 @@ object LinearGradient {
    * @param cycleMethod  cycle method applied to the gradient
    * @param stops  the gradient's color specification
    */
-  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
+  def apply(
+    startX: Double,
+    startY: Double,
+    endX: Double,
+    endY: Double,
+    proportional: Boolean,
+    cycleMethod: CycleMethod,
+    stops: Stop*
+  ) =
     new LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops.map(_.delegate))
 
   /**
@@ -74,11 +90,10 @@ object LinearGradient {
 }
 
 /**
- *
  */
 class LinearGradient(override val delegate: jfxsp.LinearGradient)
-  extends Paint(delegate)
-  with SFXDelegate[jfxsp.LinearGradient] {
+    extends Paint(delegate)
+    with SFXDelegate[jfxsp.LinearGradient] {
 
   /**
    * Creates a new instance of LinearGradient.
@@ -98,13 +113,15 @@ class LinearGradient(override val delegate: jfxsp.LinearGradient)
    * @param stops  the gradient's color specification.
    *               Default value = [[scala.Nil]]
    */
-  def this(startX: Double = 0,
-           startY: Double = 0,
-           endX: Double = 1,
-           endY: Double = 1,
-           proportional: Boolean = true,
-           cycleMethod: CycleMethod = CycleMethod.NoCycle,
-           stops: Seq[jfxsp.Stop] = Nil) =
+  def this(
+    startX: Double = 0,
+    startY: Double = 0,
+    endX: Double = 1,
+    endY: Double = 1,
+    proportional: Boolean = true,
+    cycleMethod: CycleMethod = CycleMethod.NoCycle,
+    stops: Seq[jfxsp.Stop] = Nil
+  ) =
     this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops.asJava))
 
   /**

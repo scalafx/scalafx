@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,13 +35,13 @@ import scalafx.geometry.Pos
  * Trait to test AlignmentDelegate subclasses
  */
 trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]]
-  extends SFXDelegateSpec[J, D] {
+    extends SFXDelegateSpec[J, D] {
 
   it should "have its Alignment observed when changed" in {
-    var changed = false
-    val delegate = getScalaClassInstance
+    var changed      = false
+    val delegate     = getScalaClassInstance
     val initialValue = Pos.BaselineCenter
-    val finalValue = Pos.CenterRight
+    val finalValue   = Pos.CenterRight
 
     delegate.alignment = initialValue
     val subscription = delegate.alignment.onChange((ov, oldValue, newValue) => {

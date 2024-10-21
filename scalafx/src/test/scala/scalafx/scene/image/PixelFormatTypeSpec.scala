@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.image.PixelFormat.Type]]. */
 class PixelFormatTypeSpec
-  extends SFXEnumDelegateSpec[jfxsi.PixelFormat.Type, PixelFormat.Type](
-    classOf[jfxsi.PixelFormat.Type],
-    classOf[PixelFormat.Type],
-    PixelFormat.Type)
+    extends SFXEnumDelegateSpec[jfxsi.PixelFormat.Type, PixelFormat.Type](
+      classOf[jfxsi.PixelFormat.Type],
+      classOf[PixelFormat.Type],
+      PixelFormat.Type
+    )

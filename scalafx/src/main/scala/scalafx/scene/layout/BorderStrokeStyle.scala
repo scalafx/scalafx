@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,8 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 object BorderStrokeStyle {
-  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle = if (v != null) v.delegate else null
+  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle =
+    if (v != null) v.delegate else null
 
   /**
    * A predefined dashed pattern to be used for stroking
@@ -65,13 +66,19 @@ object BorderStrokeStyle {
  * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.html javafx.scene.layout.BorderStrokeStyle]].
  */
 class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
-  extends SFXDelegate[jfxsl.BorderStrokeStyle] {
+    extends SFXDelegate[jfxsl.BorderStrokeStyle] {
 
   /**
    * Creates a new BorderStrokeStyle.
    */
-  def this(strokeType: StrokeType, lineJoin: StrokeLineJoin, lineCap: StrokeLineCap,
-           miterLimit: Double, dashOffset: Double, dashArray: Seq[java.lang.Double]) =
+  def this(
+    strokeType: StrokeType,
+    lineJoin: StrokeLineJoin,
+    lineCap: StrokeLineCap,
+    miterLimit: Double,
+    dashOffset: Double,
+    dashArray: Seq[java.lang.Double]
+  ) =
     this(new jfxsl.BorderStrokeStyle(strokeType, lineJoin, lineCap, miterLimit, dashOffset, dashArray.asJava))
 
   /**

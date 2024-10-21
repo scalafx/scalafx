@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,6 +34,7 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object TextInputDialog {
+
   /**
    * Converts a ScalaFX TextInputDialog to its JavaFX counterpart.
    *
@@ -57,15 +58,14 @@ object TextInputDialog {
  * @define ORIGINALDOC Original Documentation]].
  */
 class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.TextInputDialog())
-  extends Dialog[String](delegate)
-  with SFXDelegate[jfxsc.TextInputDialog] {
+    extends Dialog[String](delegate)
+    with SFXDelegate[jfxsc.TextInputDialog] {
 
   /**
    * Creates a new TextInputDialog with the default value entered into the
    * dialog `TextField`.
    */
   def this(defaultValue: String) = this(new jfxsc.TextInputDialog(defaultValue))
-
 
   /**
    * Shows the dialog and waits for the user response (in other words, brings

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,12 +34,13 @@ import scalafx.geometry.Insets
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- *
  * Test for [[scalafx.scene.layout.BorderImageSpec]].
  */
 class BorderImageSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BorderImage, BorderImage](
-    classOf[jfxsl.BorderImage], classOf[BorderImage]) {
+    extends SimpleSFXDelegateSpec[jfxsl.BorderImage, BorderImage](
+      classOf[jfxsl.BorderImage],
+      classOf[BorderImage]
+    ) {
 
   override protected def getScalaClassInstance = new BorderImage(getJavaClassInstance) {}
 

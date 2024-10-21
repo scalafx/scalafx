@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,8 @@ object ListCell {
 }
 
 class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[T])
-  extends IndexedCell(delegate)
-  with SFXDelegate[jfxsc.ListCell[T]] {
+    extends IndexedCell(delegate)
+    with SFXDelegate[jfxsc.ListCell[T]] {
 
   /**
    * The ListView associated with this Cell.

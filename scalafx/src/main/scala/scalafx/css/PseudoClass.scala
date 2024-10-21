@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,7 +65,7 @@ object PseudoClass {
  * @since 8.0
  */
 abstract class PseudoClass(override val delegate: jfxcss.PseudoClass)
-  extends SFXDelegate[jfxcss.PseudoClass] {
+    extends SFXDelegate[jfxcss.PseudoClass] {
 
   /**
    * There is only one `PseudoClass` instance for a given pseudoClass.

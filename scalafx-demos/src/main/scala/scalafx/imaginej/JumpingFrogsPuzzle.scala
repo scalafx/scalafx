@@ -209,7 +209,7 @@ class Model(var optionalFrogMap: Map[Int, Option[Frog]]) {
 
   private def positionSingleton(frog: Frog) =
     for {
-      (i, Some(`frog`)) <- optionalFrogMap
+      case (i, Some(`frog`)) <- optionalFrogMap
     } yield i
 
   private def update(next: Int => Int) = (frog: Frog) => {

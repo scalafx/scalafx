@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,6 +36,7 @@ import scalafx.delegate.SFXDelegate
  * Object companion for [[scalafx.scene.control.TablePosition]]
  */
 object TablePosition {
+
   /**
    * Converts a ScalaFX TablePosition into a JavaFX version.
    *
@@ -57,8 +58,8 @@ object TablePosition {
  * @tparam T The type of the items contained within the TableColumn.
  */
 class TablePosition[S, T](override val delegate: jfxsc.TablePosition[S, T])
-  extends TablePositionBase[jfxsc.TableColumn[S, T]](delegate)
-  with SFXDelegate[jfxsc.TablePosition[S, T]] {
+    extends TablePositionBase[jfxsc.TableColumn[S, T]](delegate)
+    with SFXDelegate[jfxsc.TablePosition[S, T]] {
 
   /**
    * Constructs a TablePosition instance to represent the given row/column position in the given TableView instance.

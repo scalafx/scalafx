@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,11 +41,13 @@ class BoundingBox(override val delegate: jfxg.BoundingBox) extends Bounds(delega
   /**
    * Creates a new instance of 2D BoundingBox.
    */
-  def this(minX: Double, minY: Double, width: Double, height: Double) = this(new jfxg.BoundingBox(minX, minY, width, height))
+  def this(minX: Double, minY: Double, width: Double, height: Double) =
+    this(new jfxg.BoundingBox(minX, minY, width, height))
 
   /**
    * Creates a new instance of 3D BoundingBox.
    */
-  def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) = this(new jfxg.BoundingBox(minX, minY, minZ, width, height, depth))
+  def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) =
+    this(new jfxg.BoundingBox(minX, minY, minZ, width, height, depth))
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * CheckBoxTableCell Spec tests.
- *
- *
  */
 class CheckBoxTableCellSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTableCell[S, T], CheckBoxTableCell[S, T]](
-    classOf[jfxscc.CheckBoxTableCell[S, T]], classOf[CheckBoxTableCell[S, T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTableCell[S, T], CheckBoxTableCell[S, T]](
+      classOf[jfxscc.CheckBoxTableCell[S, T]],
+      classOf[CheckBoxTableCell[S, T]]
+    )
+    with RunOnApplicationThread

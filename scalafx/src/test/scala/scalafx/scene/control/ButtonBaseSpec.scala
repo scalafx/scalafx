@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,22 +26,22 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ButtonBase Spec tests.
- *
  */
 class ButtonBaseSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](
-    classOf[jfxsc.ButtonBase], classOf[ButtonBase])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](
+      classOf[jfxsc.ButtonBase],
+      classOf[ButtonBase]
+    )
+    with RunOnApplicationThread {
 
-  override protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button) {}
+  override protected def getScalaClassInstance: ButtonBase = new ButtonBase(new jfxsc.Button) {}
 
-  override protected def getJavaClassInstance = new jfxsc.Button {}
+  override protected def getJavaClassInstance: jfxsc.Button = new jfxsc.Button {}
 
 }

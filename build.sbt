@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "22"
-val scalafxVersion = "22.0.0-R33"
+val javaFXVersion  = "23.0.1"
+val scalafxVersion = "23.0.1-R34-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -49,15 +49,15 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip  := true
 ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.19"
-val Scala2_13 = "2.13.13"
-val Scala3_3  = "3.3.3"
+val Scala2_12 = "2.12.20"
+val Scala2_13 = "2.13.15"
+val Scala3_3  = "3.3.4"
 
 // Dependencies
 lazy val javafxModules =
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.18"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.19"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
@@ -80,11 +80,11 @@ lazy val scalafxSettings = Seq(
   scalaVersion       := Scala3_3,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "17"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "21"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
-      case Some((3, _)) => Seq("-source:3.0-migration", "-explain", "-explain-types")
+      case Some((3, _)) => Seq("-source:3.3-migration", "-explain", "-explain-types")
       case _            => Seq.empty[String]
     }
   },

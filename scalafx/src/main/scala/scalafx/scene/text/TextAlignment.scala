@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,6 +55,5 @@ object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextA
   protected override def unsortedValues: Array[TextAlignment] = Array(Left, Center, Right, Justify)
 }
 
-
 sealed abstract class TextAlignment(override val delegate: jfxst.TextAlignment)
-  extends SFXEnumDelegate[jfxst.TextAlignment]
+    extends SFXEnumDelegate[jfxst.TextAlignment]

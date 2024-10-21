@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ChoiceBoxTableCell Spec tests.
- *
- *
  */
 class ChoiceBoxTableCellSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxscc.ChoiceBoxTableCell[S, T], ChoiceBoxTableCell[S, T]](
-    classOf[jfxscc.ChoiceBoxTableCell[S, T]], classOf[ChoiceBoxTableCell[S, T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.ChoiceBoxTableCell[S, T], ChoiceBoxTableCell[S, T]](
+      classOf[jfxscc.ChoiceBoxTableCell[S, T]],
+      classOf[ChoiceBoxTableCell[S, T]]
+    )
+    with RunOnApplicationThread

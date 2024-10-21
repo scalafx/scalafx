@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ object BigIntStringConverter {
 }
 
 class BigIntStringConverter(delegate: jfxuc.BigIntegerStringConverter = new jfxuc.BigIntegerStringConverter)
-  extends StringConverterDelegate[java.math.BigInteger, BigInt, jfxuc.BigIntegerStringConverter](delegate) {
+    extends StringConverterDelegate[java.math.BigInteger, BigInt, jfxuc.BigIntegerStringConverter](delegate) {
 
   override def fromString(s: String) = new BigInt(delegate.fromString(s))
 

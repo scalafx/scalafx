@@ -47,7 +47,7 @@ object ControlsTest extends JFXApp3 {
       right = controlsPane
     }
     stage = new JFXApp3.PrimaryStage {
-      title = "CheckBox Test"
+      title = "Controls Test"
       width = 800
       height = 600
       scene = new Scene { content = mainContent }

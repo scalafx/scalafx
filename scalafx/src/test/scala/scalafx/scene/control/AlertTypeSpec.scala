@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,11 +35,11 @@ import scalafx.scene.control.Alert.AlertType
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /**
- *
  * Test for [[scalafx.scene.control.Alert.AlertType]].
  */
 class AlertTypeSpec
-  extends SFXEnumDelegateSpec[jfxsc.Alert.AlertType, AlertType](
-    javaClass = classOf[jfxsc.Alert.AlertType],
-    scalaClass = classOf[AlertType],
-    companion = Alert.AlertType)
+    extends SFXEnumDelegateSpec[jfxsc.Alert.AlertType, AlertType](
+      javaClass = classOf[jfxsc.Alert.AlertType],
+      scalaClass = classOf[AlertType],
+      companion = Alert.AlertType
+    )

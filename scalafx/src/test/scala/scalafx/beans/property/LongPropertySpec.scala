@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,22 +27,20 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
 
 /**
  * LongProperty Spec tests.
- *
- *
  */
-class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
-  var longProperty: jfxbp.LongProperty = null
-  var longProperty2: jfxbp.LongProperty = null
-  var longProperty3: jfxbp.LongProperty = null
+class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
+  val bean                                   = new Object()
+  var longProperty: jfxbp.LongProperty       = null
+  var longProperty2: jfxbp.LongProperty      = null
+  var longProperty3: jfxbp.LongProperty      = null
   var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach(): Unit = {
@@ -114,7 +112,7 @@ class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    longProperty3 <== longProperty + 35 + 35l + 35f + 35d
+    longProperty3 <== longProperty + 35 + 35L + 35f + 35d
     longProperty() = 21
     longProperty3() should equal(161)
     longProperty3.unbind()
@@ -129,7 +127,7 @@ class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    longProperty3 <== longProperty - 12 - 12l - 12f - 12d
+    longProperty3 <== longProperty - 12 - 12L - 12f - 12d
     longProperty() = 40
     longProperty3() should equal(-8)
     longProperty3.unbind()
@@ -144,7 +142,7 @@ class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    longProperty3 <== longProperty * 2 * 2l * 2f * 2d
+    longProperty3 <== longProperty * 2 * 2L * 2f * 2d
     longProperty() = 5
     longProperty3() should equal(80)
     longProperty3.unbind()
@@ -159,7 +157,7 @@ class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    longProperty3 <== longProperty / 2 / 2l / 5f / 5d
+    longProperty3 <== longProperty / 2 / 2L / 5f / 5d
     longProperty() = 100
     longProperty3() should equal(1)
     longProperty3.unbind()
@@ -296,8 +294,8 @@ class LongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = longProperty * longProperty2
+    var changeCount     = 0
+    val binding         = longProperty * longProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

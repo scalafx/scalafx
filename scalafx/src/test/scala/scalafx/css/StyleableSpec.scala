@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,29 +26,31 @@
  */
 package scalafx.css
 
-import javafx.{css => jfxcss}
-
-import scalafx.Includes._
+import javafx.collections.{ObservableList, ObservableSet}
+import javafx.css as jfxcss
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import java.util
 
 /**
  * Styleable Spec tests.
  */
 class StyleableSpec
-  extends SimpleSFXDelegateSpec[jfxcss.Styleable, Styleable](classOf[jfxcss.Styleable], classOf[Styleable]) {
+    extends SimpleSFXDelegateSpec[jfxcss.Styleable, Styleable](classOf[jfxcss.Styleable], classOf[Styleable]) {
 
-  override protected def getScalaClassInstance = new Styleable {
-    override val delegate = getJavaClassInstance
+  override protected def getScalaClassInstance: Styleable = new Styleable {
+    override val delegate: jfxcss.Styleable = getJavaClassInstance
   }
 
-  override protected def getJavaClassInstance = new jfxcss.Styleable {
-    def getCssMetaData = null
-    def getId = ""
-    def getPseudoClassStates = null
-    def getStyle = ""
-    def getStyleableParent = null
-    def getStyleClass = null
-    def getTypeSelector = ""
+  override protected def getJavaClassInstance: javafx.css.Styleable = new jfxcss.Styleable {
+    override def getCssMetaData: util.List[jfxcss.CssMetaData[? <: jfxcss.Styleable, ?]] = null
+    override def getId: String                                                           = ""
+    override def getPseudoClassStates: ObservableSet[jfxcss.PseudoClass]                 = null
+    override def getStyle: String                                                        = ""
+    override def getStyleableParent: jfxcss.Styleable                                    = null
+    override def getStyleClass: ObservableList[String]                                   = null
+    override def getTypeSelector: String                                                 = ""
   }
 
 }

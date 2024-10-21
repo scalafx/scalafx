@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,9 +32,9 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.text.FontWeight]] */
 class FontWeightSpec extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
-  javaClass = classOf[jfxst.FontWeight],
-  scalaClass = classOf[FontWeight],
-  companion = FontWeight)
+      javaClass = classOf[jfxst.FontWeight],
+      scalaClass = classOf[FontWeight],
+      companion = FontWeight
+    )

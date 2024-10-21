@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,14 +43,18 @@ object BarChart {
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) =
     new BarChart[X, Y](new jfxsc.BarChart[X, Y](xAxis, yAxis, data))
 
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y],
-                  data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]], categoryGap: Double) =
+  def apply[X, Y](
+    xAxis: Axis[X],
+    yAxis: Axis[Y],
+    data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]],
+    categoryGap: Double
+  ) =
     new BarChart[X, Y](new jfxsc.BarChart[X, Y](xAxis, yAxis, data, categoryGap))
 }
 
 class BarChart[X, Y](override val delegate: jfxsc.BarChart[X, Y])
-  extends XYChart[X, Y](delegate)
-  with SFXDelegate[jfxsc.BarChart[X, Y]] {
+    extends XYChart[X, Y](delegate)
+    with SFXDelegate[jfxsc.BarChart[X, Y]] {
 
   def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.BarChart[X, Y](xAxis, yAxis))

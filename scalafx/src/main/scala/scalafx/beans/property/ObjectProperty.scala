@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,7 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package scalafx.beans.property
-
 
 import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
@@ -154,9 +153,9 @@ object ObjectProperty {
  * This assumes that will not provide property type but let Scala compiler infer correct one.
  */
 class ObjectProperty[T <: Any](override val delegate: jfxbp.ObjectProperty[T] = new jfxbp.SimpleObjectProperty[T])
-  extends ReadOnlyObjectProperty[T](delegate)
-  with Property[T, T]
-  with SFXDelegate[jfxbp.ObjectProperty[T]] {
+    extends ReadOnlyObjectProperty[T](delegate)
+    with Property[T, T]
+    with SFXDelegate[jfxbp.ObjectProperty[T]] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleObjectProperty[T](bean, name))
 

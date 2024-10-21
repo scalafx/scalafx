@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,11 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Event Spec tests.
- *
- *
  */
 class EventSpec
-  extends SimpleSFXDelegateSpec[jfxe.Event, Event](classOf[jfxe.Event], classOf[Event]) {
+    extends SimpleSFXDelegateSpec[jfxe.Event, Event](classOf[jfxe.Event], classOf[Event]) {
 
   override protected def getJavaClassInstance = new jfxe.Event(jfxe.Event.ANY)
 

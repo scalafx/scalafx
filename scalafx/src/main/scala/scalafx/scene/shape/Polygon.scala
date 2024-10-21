@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,8 @@ object Polygon {
   def apply(points: Double*) = new Polygon(new jfxss.Polygon(points: _*))
 }
 
-class Polygon(override val delegate: jfxss.Polygon = new jfxss.Polygon) extends Shape(delegate) with SFXDelegate[jfxss.Polygon] {
+class Polygon(override val delegate: jfxss.Polygon = new jfxss.Polygon) extends Shape(delegate)
+    with SFXDelegate[jfxss.Polygon] {
 
   /**
    * Gets the coordinates of the PolyLine segments.

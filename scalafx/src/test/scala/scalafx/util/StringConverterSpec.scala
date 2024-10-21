@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 
 /**
- *
  */
 package scalafx.util
 
@@ -40,7 +39,6 @@ import scalafx.util.StringConverter._
 
 /**
  * StringConverter Spec tests.
- *
  */
 class StringConverterSpec extends AnyFlatSpec {
 
@@ -51,14 +49,14 @@ class StringConverterSpec extends AnyFlatSpec {
     def fromString(s: String) = s match {
       case "t" => true
       case "f" => false
-      case _ => throw new java.text.ParseException("'%s' can not be converted to a boolean".format(s), 0)
+      case _   => throw new java.text.ParseException("'%s' can not be converted to a boolean".format(s), 0)
     }
   }
 
-  // Getting decimal and group separator from current Locale 
-  private val symbols = DecimalFormatSymbols.getInstance()
+  // Getting decimal and group separator from current Locale
+  private val symbols  = DecimalFormatSymbols.getInstance()
   val decimalSeparator = symbols.getDecimalSeparator
-  val groupSeparator = symbols.getGroupingSeparator
+  val groupSeparator   = symbols.getGroupingSeparator
 
   // HELPER METHODS - BEGIN
 
@@ -90,7 +88,13 @@ class StringConverterSpec extends AnyFlatSpec {
     }
   }
 
-  private def testConversion[T](converter: StringConverter[T], string: String, value: T, converterName: String, typeName: String): Unit = {
+  private def testConversion[T](
+    converter: StringConverter[T],
+    string: String,
+    value: T,
+    converterName: String,
+    typeName: String
+  ): Unit = {
     converterName should "convert '%s' in a %s and vice-versa".format(string, typeName) in {
       val numericValue = converter.fromString(string)
       numericValue should equal(value)
@@ -104,7 +108,7 @@ class StringConverterSpec extends AnyFlatSpec {
 
   private def testImplicitConversion(): Unit = {
     "A Scala StringConverter" should "be convertible to a JavaFX StringConverter" in {
-      val sc = StringConverter[Char](s => s.charAt(0), ch => ch.toString)
+      val sc                             = StringConverter[Char](s => s.charAt(0), ch => ch.toString)
       val jc: jfxu.StringConverter[Char] = sc
 
       jc.isInstanceOf[jfxu.StringConverter[_]] should be(true)
@@ -112,7 +116,7 @@ class StringConverterSpec extends AnyFlatSpec {
 
     "A JavaFX StringConverter" should "be convertible to a Scala StringConverter" in {
       val jc = new jfxu.StringConverter[Char] {
-        def toString(c: Char) = c.toString
+        def toString(c: Char)     = c.toString
         def fromString(s: String) = s.charAt(0)
       }
       val sc: StringConverter[Char] = jc

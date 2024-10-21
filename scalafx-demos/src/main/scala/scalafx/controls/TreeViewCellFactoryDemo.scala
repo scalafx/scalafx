@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,8 @@ object TreeViewCellFactoryDemo extends JFXApp3 {
   )
 
   def toTreeItem(p: Person): TreeItem[Person] = {
-    if (p.children.isEmpty) new TreeItem(p) else new TreeItem(p) {
+    if (p.children.isEmpty) new TreeItem(p)
+    else new TreeItem(p) {
       children = p.children.map(toTreeItem)
     }
   }

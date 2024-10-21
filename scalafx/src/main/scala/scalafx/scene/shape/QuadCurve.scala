@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,8 @@ object QuadCurve {
     new QuadCurve(new jfxss.QuadCurve(startX, startY, controlX, controlY, endX, endY))
 }
 
-class QuadCurve(override val delegate: jfxss.QuadCurve = new jfxss.QuadCurve()) extends Shape(delegate) with SFXDelegate[jfxss.QuadCurve] {
+class QuadCurve(override val delegate: jfxss.QuadCurve = new jfxss.QuadCurve()) extends Shape(delegate)
+    with SFXDelegate[jfxss.QuadCurve] {
   def controlX: DoubleProperty = delegate.controlXProperty
 
   def controlX_=(v: Double): Unit = {

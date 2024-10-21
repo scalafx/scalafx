@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc, paint => jfxsp, text => jfxst}
-import javafx.{geometry => jfxg, scene => jfxs}
-import scalafx.Includes._
-import scalafx.beans.property._
+import javafx.scene.{control as jfxsc, paint as jfxsp, text as jfxst}
+import javafx.{geometry as jfxg, scene as jfxs}
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
@@ -44,9 +44,9 @@ object Labeled {
 }
 
 abstract class Labeled(override val delegate: jfxsc.Labeled)
-  extends Control(delegate)
-  with AlignmentDelegate[jfxsc.Labeled]
-  with SFXDelegate[jfxsc.Labeled] {
+    extends Control(delegate)
+    with AlignmentDelegate[jfxsc.Labeled]
+    with SFXDelegate[jfxsc.Labeled] {
 
   /**
    * Specifies the positioning of the graphic relative to the text.
@@ -143,6 +143,18 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
   def textOverrun_=(v: OverrunStyle): Unit = {
     textOverrun() = v
   }
+
+  /**
+   * Indicates whether the text has been truncated
+   * because it cannot fit into the available width.
+   *
+   * When truncated, the [[ellipsisString ellipsisString]]
+   * gets inserted in the place dictated by the
+   * [[textOverrun textOverrun]] property.
+   *
+   * @since 23
+   */
+  def textTruncated: ReadOnlyBooleanProperty = delegate.textTruncatedProperty
 
   /**
    * Whether all text should be underlined.

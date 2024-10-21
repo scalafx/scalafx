@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ trait PositionDelegateSpec[D <: PositionDelegate[_]] extends AnyFlatSpec {
   val positionDelegate: D
 
   private def testDoublePropertyUpdate(testedProperty: DoubleProperty, propertyName: String): Unit = {
-    var moved = false
+    var moved          = false
     val observerDouble = new DoubleProperty(positionDelegate, propertyName)
 
     testedProperty.value = -10.0

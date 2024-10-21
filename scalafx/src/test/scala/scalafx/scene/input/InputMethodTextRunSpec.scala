@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,14 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** InputMethodTextRun Spec tests. */
 class InputMethodTextRunSpec
-  extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun]) {
+    extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](
+      classOf[jfxsi.InputMethodTextRun],
+      classOf[InputMethodTextRun]
+    ) {
 
-  override protected def getJavaClassInstance = new jfxsi.InputMethodTextRun("Coffee rules", jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
+  override protected def getJavaClassInstance =
+    new jfxsi.InputMethodTextRun("Coffee rules", jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
 
-  override protected def getScalaClassInstance = new InputMethodTextRun("Coffee rules", InputMethodHighlight.SelectedConverted)
+  override protected def getScalaClassInstance =
+    new InputMethodTextRun("Coffee rules", InputMethodHighlight.SelectedConverted)
 }

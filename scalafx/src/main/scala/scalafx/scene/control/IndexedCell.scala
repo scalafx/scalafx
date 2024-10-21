@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,8 @@ object IndexedCell {
 }
 
 class IndexedCell[T](override val delegate: jfxsc.IndexedCell[T] = new jfxsc.IndexedCell[T])
-  extends Cell(delegate)
-  with SFXDelegate[jfxsc.IndexedCell[T]] {
+    extends Cell(delegate)
+    with SFXDelegate[jfxsc.IndexedCell[T]] {
 
   /**
    * The location of this cell in the virtualized control (e.g: ListView, TreeView, TableView, etc).

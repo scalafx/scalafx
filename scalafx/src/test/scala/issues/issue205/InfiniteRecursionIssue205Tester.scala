@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ object InfiniteRecursionIssue205Tester extends JFXApp3 {
 
   class Person(firstName_ : String, lastName_ : String) {
     val firstName = new StringProperty(this, "firstName", firstName_)
-    val lastName = new StringProperty(this, "lastName", lastName_)
+    val lastName  = new StringProperty(this, "lastName", lastName_)
   }
 
   override def start(): Unit = {

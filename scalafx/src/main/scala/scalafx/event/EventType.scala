@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,8 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object EventType {
-  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] = Option(et).map(_.delegate).orNull
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] =
+    Option(et).map(_.delegate).orNull
 
   /**
    * The root event type. All other event types are either direct or indirect sub types of it.
@@ -46,7 +47,7 @@ object EventType {
 class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
 
   /**
-   * Constructs a new `EventType` with the specified super type and the name set to null. 
+   * Constructs a new `EventType` with the specified super type and the name set to null.
    */
   // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
   def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) =

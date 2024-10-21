@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -84,10 +84,10 @@ object PopupControl {
  * @param delegate JavaFX PopupControl to be wrapped. It defaul value is a new JavaFX PopupControl
  */
 class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl)
-  extends PopupWindow(delegate)
-  with Styleable
-  with Skinnable
-  with SFXDelegate[jfxsc.PopupControl] {
+    extends PopupWindow(delegate)
+    with Styleable
+    with Skinnable
+    with SFXDelegate[jfxsc.PopupControl] {
 
   /**
    * The id of this Node.
@@ -136,7 +136,6 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
 
   /**
    * Property for overriding the control's computed preferred height.
-   *
    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
 

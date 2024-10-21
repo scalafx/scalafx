@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,137 +35,147 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
-
 object ReadOnlyBufferWrapper {
+
   /**
-    * Converts a ScalaFX ReadOnlyBufferWrapper to its JavaFX counterpart ReadOnlyListWrapper.
-    *
-    * @param v ScalaFX ReadOnlyBufferWrapper
-    * @return JavaFX ReadOnlyListWrapper
-    */
+   * Converts a ScalaFX ReadOnlyBufferWrapper to its JavaFX counterpart ReadOnlyListWrapper.
+   *
+   * @param v ScalaFX ReadOnlyBufferWrapper
+   * @return JavaFX ReadOnlyListWrapper
+   */
   implicit def sfxReadOnlyBufferWrapper2jfx[E <: Any](v: ReadOnlyBufferWrapper[E]): jfxbp.ReadOnlyListWrapper[E] =
     if (v != null) v.delegate else null
 
-  /** Creates a new ReadOnlyBufferWrapper instance.
-    *
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlyBufferWrapper instance.
+   *
+   * @param value the initial value of the wrapped value
+   */
   def apply[E <: Any](value: ObservableBuffer[E]) = new ReadOnlyBufferWrapper(new jfxbp.ReadOnlyListWrapper(value))
 
   /**
-    * Creates a new ReadOnlyBufferWrapper.
-    *
-    * @param bean the bean of this ReadOnlyBufferWrapper
-    * @param name the name of this ReadOnlyBufferWrapper
-    */
+   * Creates a new ReadOnlyBufferWrapper.
+   *
+   * @param bean the bean of this ReadOnlyBufferWrapper
+   * @param name the name of this ReadOnlyBufferWrapper
+   */
   def apply[E <: Any](bean: Any, name: String) =
     new ReadOnlyBufferWrapper(new jfxbp.ReadOnlyListWrapper[E](bean, name))
 
   /**
-    * Creates a new ReadOnlyBufferWrapper.
-    *
-    * @param bean  the bean of this ReadOnlyBufferWrapper
-    * @param name  the name of this ReadOnlyBufferWrapper
-    * @param value the initial value
-    */
+   * Creates a new ReadOnlyBufferWrapper.
+   *
+   * @param bean  the bean of this ReadOnlyBufferWrapper
+   * @param name  the name of this ReadOnlyBufferWrapper
+   * @param value the initial value
+   */
   def apply[E <: Any](bean: Any, name: String, value: ObservableBuffer[E]) =
     new ReadOnlyBufferWrapper(new jfxbp.ReadOnlyListWrapper(bean, name, value.delegate))
 
   /**
-    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
-    *
-    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
-    * @return new ReadOnlyBufferWrapper from items
-    */
+   * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+   *
+   * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+   * @return new ReadOnlyBufferWrapper from items
+   */
   def apply[E <: Any](items: Seq[E]): ReadOnlyBufferWrapper[E] = {
     import scala.collection.JavaConverters._
     new ReadOnlyBufferWrapper[E](
-      new jfxbp.ReadOnlyListWrapper(jfxc.FXCollections.observableArrayList[E](items.asJava)))
+      new jfxbp.ReadOnlyListWrapper(jfxc.FXCollections.observableArrayList[E](items.asJava))
+    )
   }
 
   /**
-    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
-    *
-    * @param bean  the bean of this ReadOnlyBufferWrapper
-    * @param name  the name of this ReadOnlyBufferWrapper
-    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
-    * @return new ReadOnlyBufferWrapper from items
-    */
+   * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+   *
+   * @param bean  the bean of this ReadOnlyBufferWrapper
+   * @param name  the name of this ReadOnlyBufferWrapper
+   * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+   * @return new ReadOnlyBufferWrapper from items
+   */
   def apply[E <: Any](bean: Any, name: String, items: Seq[E]): ReadOnlyBufferWrapper[E] = {
     import scala.collection.JavaConverters._
     new ReadOnlyBufferWrapper[E](
-      new jfxbp.ReadOnlyListWrapper(bean, name, jfxc.FXCollections.observableArrayList[E](items.asJava)))
+      new jfxbp.ReadOnlyListWrapper(bean, name, jfxc.FXCollections.observableArrayList[E](items.asJava))
+    )
   }
 }
 
-
 /**
-  * Wraps `javafx.beans.property.ReadOnlyListWrapper`.
-  */
-class ReadOnlyBufferWrapper[E <: Any](override val delegate: jfxbp.ReadOnlyListWrapper[E] = new jfxbp.ReadOnlyListWrapper[E])
-  extends BufferProperty[E]
+ * Wraps `javafx.beans.property.ReadOnlyListWrapper`.
+ */
+class ReadOnlyBufferWrapper[E <: Any](override val delegate: jfxbp.ReadOnlyListWrapper[E] =
+  new jfxbp.ReadOnlyListWrapper[E])
+    extends BufferProperty[E]
     with SFXDelegate[jfxbp.ReadOnlyListWrapper[E]] {
 
-  /** Creates a new ReadOnlyBufferWrapper instance.
-    *
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlyBufferWrapper instance.
+   *
+   * @param value the initial value of the wrapped value
+   */
   def this(value: ObservableBuffer[E]) =
     this(new jfxbp.ReadOnlyListWrapper[E](value))
 
   /**
-    * Creates a new ReadOnlyBufferWrapper.
-    *
-    * @param bean the bean of this ReadOnlyBufferWrapper
-    * @param name the name of this ReadOnlyBufferWrapper
-    */
+   * Creates a new ReadOnlyBufferWrapper.
+   *
+   * @param bean the bean of this ReadOnlyBufferWrapper
+   * @param name the name of this ReadOnlyBufferWrapper
+   */
   def this(bean: Any, name: String) =
     this(new jfxbp.ReadOnlyListWrapper[E](bean, name))
 
   /**
-    * Creates a new ReadOnlyBufferWrapper.
-    *
-    * @param bean  the bean of this ReadOnlyBufferWrapper
-    * @param name  the name of this ReadOnlyBufferWrapper
-    * @param value the initial value
-    */
+   * Creates a new ReadOnlyBufferWrapper.
+   *
+   * @param bean  the bean of this ReadOnlyBufferWrapper
+   * @param name  the name of this ReadOnlyBufferWrapper
+   * @param value the initial value
+   */
   def this(bean: Any, name: String, value: ObservableBuffer[E]) =
     this(new jfxbp.ReadOnlyListWrapper[E](bean, name, value))
 
   /**
-    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
-    *
-    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
-    * @return new ReadOnlyBufferWrapper from items
-    */
+   * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+   *
+   * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+   * @return new ReadOnlyBufferWrapper from items
+   */
   def this(items: Seq[E]) = {
     this(
       new jfxbp.ReadOnlyListWrapper(
         jfxc.FXCollections.observableArrayList[E](
-          scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
+          scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava
+        )
+      )
+    )
   }
 
   /**
-    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
-    *
-    * @param bean  the bean of this ReadOnlyBufferWrapper
-    * @param name  the name of this ReadOnlyBufferWrapper
-    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
-    * @return new ReadOnlyBufferWrapper from items
-    */
+   * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+   *
+   * @param bean  the bean of this ReadOnlyBufferWrapper
+   * @param name  the name of this ReadOnlyBufferWrapper
+   * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+   * @return new ReadOnlyBufferWrapper from items
+   */
   def this(bean: Any, name: String, items: Seq[E]) = {
     this(
       new jfxbp.ReadOnlyListWrapper(
         bean,
         name,
         jfxc.FXCollections.observableArrayList[E](
-          scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
+          scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava
+        )
+      )
+    )
   }
 
   /**
-    * Returns the readonly property, that is synchronized with this ReadOnlyListWrapper.
-    *
-    * @return the readonly property
-    */
+   * Returns the readonly property, that is synchronized with this ReadOnlyListWrapper.
+   *
+   * @return the readonly property
+   */
   def readOnlyProperty: ReadOnlyBufferProperty[E] = delegate.getReadOnlyProperty
 }

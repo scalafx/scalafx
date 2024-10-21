@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -133,7 +133,8 @@ trait EffectIncludes {
    * @param dm $JFX $DSM
    * @return $SFX $DSM
    */
-  implicit def jfxDisplacementMap2sfx(dm: jfxse.DisplacementMap): DisplacementMap = if (dm != null) new DisplacementMap(dm) else null
+  implicit def jfxDisplacementMap2sfx(dm: jfxse.DisplacementMap): DisplacementMap =
+    if (dm != null) new DisplacementMap(dm) else null
 
   /**
    * $START$EFF.html $EFF$END
@@ -141,7 +142,8 @@ trait EffectIncludes {
    * @param e $JFX $EFF
    * @return $SFX $EFF
    */
-  implicit def jfxEffect2sfx(e: jfxse.Effect): Effect = if (e != null) new Effect(e) {} else null
+  implicit def jfxEffect2sfx(e: jfxse.Effect): Effect = if (e != null) new Effect(e) {}
+  else null
 
   /**
    * $START$DPS.html $DPS$END
@@ -165,7 +167,8 @@ trait EffectIncludes {
    * @param gb $JFX $GSB
    * @return $SFX $GSB
    */
-  implicit def jfxGaussianBlur2sfx(gb: jfxse.GaussianBlur): GaussianBlur = if (gb != null) new GaussianBlur(gb) else null
+  implicit def jfxGaussianBlur2sfx(gb: jfxse.GaussianBlur): GaussianBlur =
+    if (gb != null) new GaussianBlur(gb) else null
 
   /**
    * $START$GLW.html $GLW$END
@@ -197,7 +200,8 @@ trait EffectIncludes {
    * @param l $JFX $LIG
    * @return $SFX $LIG
    */
-  implicit def jfxLight2sfx(l: jfxse.Light): Light = if (l != null) new Light(l) {} else null
+  implicit def jfxLight2sfx(l: jfxse.Light): Light = if (l != null) new Light(l) {}
+  else null
 
   /**
    * $START$LDS.html $LDS$END
@@ -245,7 +249,8 @@ trait EffectIncludes {
    * @param pt $JFX $PTR
    * @return $SFX $PTR
    */
-  implicit def jfxPerspectiveTransform2sfx(pt: jfxse.PerspectiveTransform): PerspectiveTransform = if (pt != null) new PerspectiveTransform(pt) else null
+  implicit def jfxPerspectiveTransform2sfx(pt: jfxse.PerspectiveTransform): PerspectiveTransform =
+    if (pt != null) new PerspectiveTransform(pt) else null
 
   /**
    * $START$RFL.html $RFL$END

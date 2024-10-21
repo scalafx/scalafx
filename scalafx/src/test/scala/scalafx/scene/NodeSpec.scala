@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,18 @@
  */
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-
-import scalafx.Includes._
+import javafx.scene as jfxs
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Node Spec tests.
  */
 class NodeSpec
-  extends SimpleSFXDelegateSpec[jfxs.Node, Node](classOf[jfxs.Node], classOf[Node]) {
+    extends SimpleSFXDelegateSpec[jfxs.Node, Node](classOf[jfxs.Node], classOf[Node]) {
 
-  override protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
+  override protected def getScalaClassInstance: Node = new Node(getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new jfxs.Group
+  override protected def getJavaClassInstance: jfxs.Group = new jfxs.Group
 
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,14 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object NonInvertibleTransformException {
-  implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException): jfxst.NonInvertibleTransformException =
+  implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException)
+    : jfxst.NonInvertibleTransformException =
     if (v != null) v.delegate else null
 }
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/scene/transform/NonInvertibleTransformException.html]] */
 class NonInvertibleTransformException(override val delegate: jfxst.NonInvertibleTransformException)
-  extends Exception(delegate) with SFXDelegate[jfxst.NonInvertibleTransformException] {
+    extends Exception(delegate) with SFXDelegate[jfxst.NonInvertibleTransformException] {
 
   def this(message: String) = {
     this(new jfxst.NonInvertibleTransformException(message))

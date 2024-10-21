@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,8 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-
 
 import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
@@ -111,7 +109,7 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
       children = button
     }
 
-    var groupCounter = 0
+    var groupCounter  = 0
     var buttonCounter = 0
     button.handleEvent(ActionEvent.Action) {
       () =>

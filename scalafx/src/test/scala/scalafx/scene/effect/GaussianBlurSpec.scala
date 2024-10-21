@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * GaussianBlur Spec tests.
- *
- *
  */
 class GaussianBlurSpec
-  extends SimpleSFXDelegateSpec[jfxse.GaussianBlur, GaussianBlur](classOf[jfxse.GaussianBlur], classOf[GaussianBlur])
-  with InputDelegateSpec[GaussianBlur] {
+    extends SimpleSFXDelegateSpec[jfxse.GaussianBlur, GaussianBlur](classOf[jfxse.GaussianBlur], classOf[GaussianBlur])
+    with InputDelegateSpec[GaussianBlur] {
 
   val inputDelegate = getScalaClassInstance
 

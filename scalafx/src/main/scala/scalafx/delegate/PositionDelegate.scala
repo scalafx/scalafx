@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,10 +46,9 @@ object PositionDelegate {
 /**
  * Trait that unifies JavaFX classes that contains properties indicating localization in 2
  * dimensions, represented by `xProperty` and `yProperty` and their respective getter and setters.
- *
  */
 trait PositionDelegate[J <: Object with Positioned]
-  extends SFXDelegate[J] {
+    extends SFXDelegate[J] {
 
   /**
    * X Position

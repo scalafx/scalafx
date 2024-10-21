@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,14 +38,15 @@ object Reflection {
 }
 
 class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.Reflection]
-  with SFXDelegate[jfxse.Reflection] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.Reflection]
+    with SFXDelegate[jfxse.Reflection] {
 
   /**
    * Creates a new instance of Reflection with the specified topOffset, fraction, topOpacity and bottomOpacity.
    */
-  def this(topOffset: Double, fraction: Double, topOpacity: Double, bottomOpacity: Double) = this(new jfxse.Reflection(topOffset, fraction, topOpacity, bottomOpacity))
+  def this(topOffset: Double, fraction: Double, topOpacity: Double, bottomOpacity: Double) =
+    this(new jfxse.Reflection(topOffset, fraction, topOpacity, bottomOpacity))
 
   /**
    * The bottom opacity value, which is the opacity of the reflection at its bottom extreme.

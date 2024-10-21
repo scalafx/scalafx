@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,8 @@ object MenuBar {
   implicit def sfxMenuBar2jfx(cb: MenuBar): jfxsc.MenuBar = if (cb != null) cb.delegate else null
 }
 
-class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extends Control(delegate) with SFXDelegate[jfxsc.MenuBar] {
+class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extends Control(delegate)
+    with SFXDelegate[jfxsc.MenuBar] {
 
   /**
    * Gets the list of Menus for this instance.

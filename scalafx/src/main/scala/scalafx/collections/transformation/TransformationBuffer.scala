@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,7 @@ import scalafx.collections.{ObservableBuffer, ObservableBufferBase}
 import scalafx.delegate.SFXDelegate
 
 object TransformationBuffer {
+
   /**
    * Converts a ScalaFX TransformationBuffer to its JavaFX counterpart TransformationList.
    *
@@ -61,8 +62,8 @@ object TransformationBuffer {
  * @define ORIGINALDOC Original Documentation]].
  */
 abstract class TransformationBuffer[E, F](override val delegate: jfxct.TransformationList[E, F])
-  extends ObservableBufferBase[E](delegate)
-  with SFXDelegate[jfxct.TransformationList[E, F]] {
+    extends ObservableBufferBase[E](delegate)
+    with SFXDelegate[jfxct.TransformationList[E, F]] {
 
   /**
    * The source list specified in the constructor of this transformation list.
@@ -76,11 +77,11 @@ abstract class TransformationBuffer[E, F](override val delegate: jfxct.Transform
    */
   def getSourceIndex(index: Int): Int = delegate.getSourceIndex(index)
 
-
   /**
    * Maps the index of this list's element to an index of the provided list.
    */
-  def getSourceIndexFor(buffer: ObservableBuffer[E], index: Int): Int = delegate.getSourceIndexFor(buffer.delegate, index)
+  def getSourceIndexFor(buffer: ObservableBuffer[E], index: Int): Int =
+    delegate.getSourceIndexFor(buffer.delegate, index)
 
   /**
    * Checks whether the provided list is in the chain under this TransformationList.

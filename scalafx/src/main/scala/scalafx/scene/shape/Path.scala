@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@ object Path {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Path.html]].
  */
 class Path(override val delegate: jfxss.Path = new jfxss.Path())
-  extends Shape(delegate)
-  with SFXDelegate[jfxss.Path] {
+    extends Shape(delegate)
+    with SFXDelegate[jfxss.Path] {
 
   /**
    * The filling rule constant for determining the interior of the path.
@@ -58,6 +58,7 @@ class Path(override val delegate: jfxss.Path = new jfxss.Path())
    * Observable list of path elements of this path.
    */
   def elements: ObservableBuffer[jfxss.PathElement] = delegate.getElements
+
   /**
    * Sets the list of path elements, replacing the prior content. If you want append to current content, use `add` or
    * similar.

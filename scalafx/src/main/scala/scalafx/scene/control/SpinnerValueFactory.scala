@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.scene.control
 
-
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
 import scalafx.Includes._
@@ -38,28 +37,26 @@ import scalafx.util.StringConverter
 
 import scala.language.implicitConversions
 
-
 object SpinnerValueFactory {
 
   implicit def sfxSpinnerValueFactory2jfx[T](v: SpinnerValueFactory[T]): jfxsc.SpinnerValueFactory[T] =
     if (v != null) v.delegate else null
 
   object ListSpinnerValueFactory {
-    implicit def sfxListSpinnerValueFactory2jfx[T](v: ListSpinnerValueFactory[T]): jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T] =
+    implicit def sfxListSpinnerValueFactory2jfx[T](v: ListSpinnerValueFactory[T])
+      : jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T] =
       if (v != null) v.delegate else null
   }
-
 
   /**
    * A SpinnerValueFactory implementation designed to iterate through
    * a list of values.
    *
-   *
    * @tparam T The type of the elements in the List.
    */
   class ListSpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T])
-    extends SpinnerValueFactory(delegate)
-    with SFXDelegate[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T]] {
+      extends SpinnerValueFactory(delegate)
+      with SFXDelegate[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T]] {
 
     /**
      * Creates a new instance of the ListSpinnerValueFactory with the given
@@ -83,13 +80,14 @@ object SpinnerValueFactory {
   }
 
   object IntegerSpinnerValueFactory {
-    implicit def sfxIntegerSpinnerValueFactory2jfx(v: IntegerSpinnerValueFactory): jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory =
+    implicit def sfxIntegerSpinnerValueFactory2jfx(v: IntegerSpinnerValueFactory)
+      : jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory =
       if (v != null) v.delegate else null
   }
 
   class IntegerSpinnerValueFactory(override val delegate: jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory)
-    extends SpinnerValueFactory[Integer](delegate)
-    with SFXDelegate[jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory] {
+      extends SpinnerValueFactory[Integer](delegate)
+      with SFXDelegate[jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory] {
 
     /**
      * Constructs a new IntegerSpinnerValueFactory that sets the initial value
@@ -159,19 +157,18 @@ object SpinnerValueFactory {
   }
 
   object DoubleSpinnerValueFactory {
-    implicit def sfxDoubleSpinnerValueFactory2jfx(v: DoubleSpinnerValueFactory): jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory =
+    implicit def sfxDoubleSpinnerValueFactory2jfx(v: DoubleSpinnerValueFactory)
+      : jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory =
       if (v != null) v.delegate else null
   }
-
 
   /**
    * A `SpinnerValueFactory` implementation designed to iterate through
    * double values.
-   *
    */
   class DoubleSpinnerValueFactory(override val delegate: jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory)
-    extends SpinnerValueFactory(delegate)
-    with SFXDelegate[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory] {
+      extends SpinnerValueFactory(delegate)
+      with SFXDelegate[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory] {
 
     /**
      * Constructs a new DoubleSpinnerValueFactory that sets the initial value
@@ -254,7 +251,7 @@ object SpinnerValueFactory {
  *           coincide with the type of the Spinner that the value factory is set on.
  */
 abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueFactory[T])
-  extends SFXDelegate[jfxsc.SpinnerValueFactory[T]] {
+    extends SFXDelegate[jfxsc.SpinnerValueFactory[T]] {
 
   /**
    * Represents the current value of the SpinnerValueFactory, or null if no
@@ -286,4 +283,3 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
   }
 
 }
-

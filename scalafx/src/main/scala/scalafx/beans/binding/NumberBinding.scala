@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,7 @@ object NumberBinding {
   implicit def sfxNumberBinding2jfx(nb: NumberBinding): jfxbb.NumberBinding = if (nb != null) nb.delegate else null
 }
 
-class NumberBinding(override val delegate: jfxbb.NumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {
+class NumberBinding(override val delegate: jfxbb.NumberBinding) extends NumberExpression(delegate)
+    with ObservableValue[Number, Number] {
   def value: Number = delegate.getValue
 }

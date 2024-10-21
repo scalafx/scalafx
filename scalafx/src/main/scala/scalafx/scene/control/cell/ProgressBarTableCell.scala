@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,6 @@ import scalafx.scene.control.{TableCell, TableColumn}
  * Companion Object for [[scalafx.scene.control.cell.ProgressBarTableCell]].
  *
  * @define PBTC `ProgressBarTableCell`
- *
  */
 object ProgressBarTableCell {
 
@@ -48,7 +47,8 @@ object ProgressBarTableCell {
    * @param cell ScalaFX $PBTC
    * @return JavaFX $PBTC
    */
-  implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]): jfxscc.ProgressBarTableCell[S] = if (cell != null) cell.delegate else null
+  implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]): jfxscc.ProgressBarTableCell[S] =
+    if (cell != null) cell.delegate else null
 
   /**
    * Provides a `ProgressBar` that allows easy visualisation of a Number value as it proceeds from 0.0 to 1.0.
@@ -69,9 +69,8 @@ object ProgressBarTableCell {
  *
  * @define PBTC `ProgressBarTableCell`
  */
-class ProgressBarTableCell[S](override val delegate: jfxscc.ProgressBarTableCell[S] = new jfxscc.ProgressBarTableCell[S])
-  extends TableCell[S, java.lang.Double](delegate)
-  with UpdatableCell[jfxscc.ProgressBarTableCell[S], java.lang.Double]
-  with SFXDelegate[jfxscc.ProgressBarTableCell[S]] {
-
-}
+class ProgressBarTableCell[S](override val delegate: jfxscc.ProgressBarTableCell[S] =
+  new jfxscc.ProgressBarTableCell[S])
+    extends TableCell[S, java.lang.Double](delegate)
+    with UpdatableCell[jfxscc.ProgressBarTableCell[S], java.lang.Double]
+    with SFXDelegate[jfxscc.ProgressBarTableCell[S]] {}

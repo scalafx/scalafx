@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,12 @@
  */
 package scalafx.collections
 
-import javafx.{collections => jfxc}
+import javafx.collections as jfxc
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
-import java.{util => ju}
+import java.util as ju
 import scala.collection.{IterableFactory, mutable}
 import scala.language.implicitConversions
 
@@ -56,7 +56,6 @@ object ObservableSet extends IterableFactory[ObservableSet] {
   override def empty[T]: ObservableSet[T] = new ObservableHashSet[T]()
 
   override def newBuilder[T]: mutable.Builder[T, ObservableSet[T]] = new mutable.GrowableBuilder(empty[T])
-
 
   // CHANGING INDICATORS - BEGIN
 
@@ -106,7 +105,7 @@ object ObservableSet extends IterableFactory[ObservableSet] {
  * @define SET `Set`
  */
 trait ObservableSet[T]
-  extends mutable.AbstractSet[T]
+    extends mutable.AbstractSet[T]
     //    with SetOps[T, ObservableSet, ObservableSet[T]]
     //    with StrictOptimizedIterableOps[T, ObservableSet, ObservableSet[T]]
     //    with IterableFactoryDefaults[T, ObservableSet]
@@ -125,7 +124,7 @@ trait ObservableSet[T]
    *
    * @return A empty [[scalafx.collections.ObservableHashSet]]
    */
-  override def empty = new ObservableHashSet[T]
+  override def empty: ObservableSet[T] = new ObservableHashSet[T]
 
   /**
    * Adds a single element to the set.
@@ -180,7 +179,7 @@ trait ObservableSet[T]
    */
   def contains(elem: T): Boolean = delegate.contains(elem)
 
-  import scalafx.collections.ObservableSet._
+  import scalafx.collections.ObservableSet.*
 
   /**
    * Add a listener function to $SET's changes. This function '''will handle''' this map's modifications data.
@@ -194,7 +193,7 @@ trait ObservableSet[T]
           case (true, false) => ObservableSet.Add(change.getElementAdded)
           case (false, true) => ObservableSet.Remove(change.getElementRemoved)
           case _ => throw new IllegalStateException("Irregular Change. Added: " +
-            change.getElementAdded + ", Removed: " + change.getElementRemoved)
+              change.getElementAdded + ", Removed: " + change.getElementRemoved)
         }
 
         op(ObservableSet.this, changeEvent)
@@ -245,6 +244,6 @@ trait ObservableSet[T]
  *                 method from
  *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html FXCollections]].
  */
-class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet(new ju.HashSet[T]))
-  extends ObservableSet[T] {
-}
+class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] =
+  jfxc.FXCollections.observableSet(new ju.HashSet[T]))
+    extends ObservableSet[T] {}

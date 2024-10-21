@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,8 +57,8 @@ object ChoiceBox {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceBox.html]].
  */
 class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J])
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ChoiceBox[J]] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ChoiceBox[J]] {
 
   /**
    * Create a new ChoiceBox with the given set of items.
@@ -107,14 +107,12 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
   /**
    * The value of this ChoiceBox is defined as the selected item in the
    * ChoiceBox selection model.
-   *
    */
   def value: ObjectProperty[J] = delegate.valueProperty
 
   def value_=(v: J): Unit = {
     value() = v
   }
-
 
   /**
    * The ChoiceBox action, which is invoked whenever the ChoiceBox value property is changed.
@@ -160,6 +158,5 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
   def onHidden_=(implicit aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = aeh
   }
-
 
 }

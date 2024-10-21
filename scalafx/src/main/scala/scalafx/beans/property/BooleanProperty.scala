@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,8 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object BooleanProperty {
-  implicit def sfxBooleanProperty2jfx(bp: BooleanProperty): jfxbp.BooleanProperty = if (bp != null) bp.delegate else null
+  implicit def sfxBooleanProperty2jfx(bp: BooleanProperty): jfxbp.BooleanProperty =
+    if (bp != null) bp.delegate else null
 
   /**
    * Creates a new BooleanProperty instance using the SimpleBooleanProperty as the target.
@@ -45,9 +46,9 @@ object BooleanProperty {
 }
 
 class BooleanProperty(override val delegate: jfxbp.BooleanProperty = new jfxbp.SimpleBooleanProperty)
-  extends ReadOnlyBooleanProperty(delegate)
-  with Property[Boolean, java.lang.Boolean]
-  with SFXDelegate[jfxbp.BooleanProperty] {
+    extends ReadOnlyBooleanProperty(delegate)
+    with Property[Boolean, java.lang.Boolean]
+    with SFXDelegate[jfxbp.BooleanProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleBooleanProperty(bean, name))
 

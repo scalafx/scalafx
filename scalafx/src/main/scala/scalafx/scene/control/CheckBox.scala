@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,8 @@ object CheckBox {
 }
 
 class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox)
-  extends ButtonBase(delegate)
-  with SFXDelegate[jfxsc.CheckBox] {
+    extends ButtonBase(delegate)
+    with SFXDelegate[jfxsc.CheckBox] {
 
   /**
    * Creates a check box with the specified text as its label.
@@ -47,7 +47,7 @@ class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox)
   def this(text: String) = this(new jfxsc.CheckBox(text))
 
   /**
-   * Determines whether the user toggling the CheckBox should cycle through all three states: 
+   * Determines whether the user toggling the CheckBox should cycle through all three states:
    * checked, unchecked, and undefined.
    */
   def allowIndeterminate: BooleanProperty = delegate.allowIndeterminateProperty

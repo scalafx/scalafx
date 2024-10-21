@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,10 +39,10 @@ object ColorInput {
 }
 
 class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)
-  extends Effect(delegate)
-  with PositionDelegate[jfxse.ColorInput]
-  with DimensionDelegate[jfxse.ColorInput]
-  with SFXDelegate[jfxse.ColorInput] {
+    extends Effect(delegate)
+    with PositionDelegate[jfxse.ColorInput]
+    with DimensionDelegate[jfxse.ColorInput]
+    with SFXDelegate[jfxse.ColorInput] {
 
   /**
    * Creates a new instance of ColorInput with the specified x, y, width, height, and paint.

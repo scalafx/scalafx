@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,19 +28,18 @@ package scalafx.graphics3d
 
 // JavaFX system properties: -Dprism.printStats=true -Dprism.verbose=true
 
-import java.io.File
-
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
+import scalafx.scene.*
 import scalafx.scene.media.{Media, MediaPlayer, MediaView}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.{Font, Text}
 import scalafx.scene.transform.Rotate
-import scalafx.scene._
 
+import java.io.File
 import scala.language.postfixOps
 
 /**
@@ -140,9 +139,9 @@ object VideoCubeDemo extends JFXApp3 {
     val starryBackground = new Group {
       val stars = (1 to 500).map(_ =>
         new Rectangle {
-          x = lowX + scala.math.random * (highX - lowX)
-          y = lowY + scala.math.random * (highY - lowY)
-          val s = 1 + scala.math.random * 3
+          x = lowX + scala.math.random() * (highX - lowX)
+          y = lowY + scala.math.random() * (highY - lowY)
+          val s = 1 + scala.math.random() * 3
           width = s
           height = s
           fill = Color.White
@@ -240,11 +239,11 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
    *   the derived colour
    */
   class MediaViewCubeFace(
-      val mediaPlayer: MediaPlayer,
-      size: Double,
-      offset: Double = -0.01,
-      color: Color = Color.LightBlue,
-      shade: Double = 1.0
+    val mediaPlayer: MediaPlayer,
+    size: Double,
+    offset: Double = -0.01,
+    color: Color = Color.LightBlue,
+    shade: Double = 1.0
   ) extends Group {
 
     def this(mediaPlayer: MediaPlayer, offset: Double) = this(mediaPlayer, 0.0, offset)

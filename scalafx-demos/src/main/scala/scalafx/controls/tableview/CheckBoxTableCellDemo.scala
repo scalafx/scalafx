@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object CheckBoxTableCellDemo extends JFXApp3 {
 
   class Item(selected_ : Boolean, name_ : String) {
     val selected = new BooleanProperty(this, "selected", selected_)
-    val name = new StringProperty(this, "name", name_)
+    val name     = new StringProperty(this, "name", name_)
   }
 
   private val data = ObservableBuffer.from[Item](

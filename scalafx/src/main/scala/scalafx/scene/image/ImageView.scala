@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,9 +41,9 @@ object ImageView {
 }
 
 class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
-  extends Node(delegate)
-  with PositionDelegate[jfxsi.ImageView]
-  with SFXDelegate[jfxsi.ImageView] {
+    extends Node(delegate)
+    with PositionDelegate[jfxsi.ImageView]
+    with SFXDelegate[jfxsi.ImageView] {
 
   /** Allocates a new ImageView object using the given image. */
   def this(image: Image) = {

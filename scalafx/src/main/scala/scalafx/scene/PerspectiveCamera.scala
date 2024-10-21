@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,14 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object PerspectiveCamera {
-  implicit def sfxPerspectiveCamera2jfx(c: PerspectiveCamera): jfxs.PerspectiveCamera = if (c != null) c.delegate else null
+  implicit def sfxPerspectiveCamera2jfx(c: PerspectiveCamera): jfxs.PerspectiveCamera =
+    if (c != null) c.delegate else null
 }
 
 class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs.PerspectiveCamera)
-  extends Camera(delegate) with SFXDelegate[jfxs.PerspectiveCamera] {
+    extends Camera(delegate) with SFXDelegate[jfxs.PerspectiveCamera] {
 
-  /** Constructs a PerspectiveCamera with the specified fixedEyeAtCameraZero flag.  */
+  /** Constructs a PerspectiveCamera with the specified fixedEyeAtCameraZero flag. */
   def this(fixedEyeAtCameraZero: Boolean) = this(new jfxs.PerspectiveCamera(fixedEyeAtCameraZero))
 
   /**

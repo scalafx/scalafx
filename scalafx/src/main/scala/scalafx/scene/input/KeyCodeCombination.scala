@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,20 +33,30 @@ import scalafx.scene.input.InputIncludes.jfxKeyCode2sfx
 import scala.language.implicitConversions
 
 object KeyCodeCombination {
-  implicit def sfxKeyCodeCombination2jfx(kcc: KeyCodeCombination): jfxsi.KeyCodeCombination = if (kcc != null) kcc.delegate else null
+  implicit def sfxKeyCodeCombination2jfx(kcc: KeyCodeCombination): jfxsi.KeyCodeCombination =
+    if (kcc != null) kcc.delegate else null
 }
 
-class KeyCodeCombination(override val delegate: jfxsi.KeyCodeCombination) extends KeyCombination(delegate) with SFXDelegate[jfxsi.KeyCodeCombination] {
+class KeyCodeCombination(override val delegate: jfxsi.KeyCodeCombination) extends KeyCombination(delegate)
+    with SFXDelegate[jfxsi.KeyCodeCombination] {
 
   /**
    * Constructs a KeyCodeCombination for the specified main key and with the specified list of modifiers.
    */
-  def this(code: jfxsi.KeyCode, modifiers: jfxsi.KeyCombination.Modifier*) = this(new jfxsi.KeyCodeCombination(code, modifiers: _*))
+  def this(code: jfxsi.KeyCode, modifiers: jfxsi.KeyCombination.Modifier*) =
+    this(new jfxsi.KeyCodeCombination(code, modifiers: _*))
 
   /**
    * Constructs a KeyCodeCombination for the specified main key and with an explicit specification of all modifier keys.
    */
-  def this(code: jfxsi.KeyCode, shift: jfxsi.KeyCombination.ModifierValue, control: jfxsi.KeyCombination.ModifierValue, alt: jfxsi.KeyCombination.ModifierValue, meta: jfxsi.KeyCombination.ModifierValue, shortcut: jfxsi.KeyCombination.ModifierValue) =
+  def this(
+    code: jfxsi.KeyCode,
+    shift: jfxsi.KeyCombination.ModifierValue,
+    control: jfxsi.KeyCombination.ModifierValue,
+    alt: jfxsi.KeyCombination.ModifierValue,
+    meta: jfxsi.KeyCombination.ModifierValue,
+    shortcut: jfxsi.KeyCombination.ModifierValue
+  ) =
     this(new jfxsi.KeyCodeCombination(code, shift, control, alt, meta, shortcut))
 
   /**

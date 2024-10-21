@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,22 +33,26 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BackgroundRepeat.html javafx.scene.layout.BackgroundRepeat]] */
 object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat, BackgroundRepeat] {
 
-  /** The image is placed once and not repeated.     */
+  /** The image is placed once and not repeated. */
   case object NoRepeat extends BackgroundRepeat(jfxsl.BackgroundRepeat.NO_REPEAT)
 
-  /** The image is repeated as often as needed to cover the area.   */
+  /** The image is repeated as often as needed to cover the area. */
   case object Repeat extends BackgroundRepeat(jfxsl.BackgroundRepeat.REPEAT)
 
-  /** The image is repeated as often as will fit within the area.     */
+  /** The image is repeated as often as will fit within the area. */
   case object Round extends BackgroundRepeat(jfxsl.BackgroundRepeat.ROUND)
 
-  /** The image is repeated as often as will fit within the area without being clipped and then
-    * the images are spaced out to fill the area.
-    */
+  /**
+   * The image is repeated as often as will fit within the area without being clipped and then
+   * the images are spaced out to fill the area.
+   */
   case object Space extends BackgroundRepeat(jfxsl.BackgroundRepeat.SPACE)
 
   protected override def unsortedValues: Array[BackgroundRepeat] = Array(
-    NoRepeat, Repeat, Round, Space
+    NoRepeat,
+    Repeat,
+    Round,
+    Space
   )
 }
 
@@ -56,4 +60,4 @@ object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat,
  * Enumeration of options for repeating images in backgrounds
  */
 sealed abstract class BackgroundRepeat(override val delegate: jfxsl.BackgroundRepeat)
-  extends SFXEnumDelegate[jfxsl.BackgroundRepeat]
+    extends SFXEnumDelegate[jfxsl.BackgroundRepeat]

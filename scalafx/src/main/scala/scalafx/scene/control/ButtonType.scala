@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,6 +38,7 @@ import scalafx.scene.control.ButtonBar.ButtonData
  * Object companion for [[scalafx.scene.control.ButtonType]].
  */
 object ButtonType {
+
   /**
    * Converts a ScalaFX ButtonType to its JavaFX counterpart.
    *
@@ -55,7 +56,7 @@ object ButtonType {
 
   /**
    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "OK" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of 
+   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
    * [[scalafx.scene.control.ButtonBar.ButtonData.OKDone]].
    */
   val OK: ButtonType = jfxsc.ButtonType.OK
@@ -111,7 +112,6 @@ object ButtonType {
 }
 
 /**
- *
  * The ButtonType is used to specify which buttons should be shown to users in the dialogs.
  *
  * Wraps a $JFX $URL0 $TC]].
@@ -122,7 +122,7 @@ object ButtonType {
  * @define ORIGINALDOC Original Documentation]].
  */
 class ButtonType(override val delegate: jfxsc.ButtonType)
-  extends SFXDelegate[jfxsc.ButtonType] {
+    extends SFXDelegate[jfxsc.ButtonType] {
 
   def this(text: String) = this(new jfxsc.ButtonType(text))
 

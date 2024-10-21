@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.testutil
 
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
+import org.scalatest.matchers.should.Matchers.*
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -47,14 +47,16 @@ import scalafx.delegate.SFXDelegate
  *                it has to be resolved automatically by the compiler.
  * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
  *                it has to be resolved automatically by the compiler.
- *
  */
-abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaClass: Class[J], scalaClass: Class[S])(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
-  extends AnyFlatSpec
+abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])(
+  implicit
+  jfx2sfx: J => S = null,
+  sfx2jfx: S => J = null
+) extends AnyFlatSpec
     with AbstractComparator {
 
   /////////////////////////////
-  // PROTECTED METHODS - BEGIN 
+  // PROTECTED METHODS - BEGIN
   /////////////////////////////
 
   /**
@@ -77,13 +79,13 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
   protected def getJavaClassInstance: J = javaClass.getDeclaredConstructor().newInstance()
 
   /**
-   * Flag used to skip Java to Scala Conversion test. To Skip, it is necessary override it with a 
+   * Flag used to skip Java to Scala Conversion test. To Skip, it is necessary override it with a
    * non empty String explaining the cause.
    */
   protected val skipJfxToSfxCause: String = ""
 
   /**
-   * Flag used to skip Scala to Java Conversion test. To Skip, it is necessary override it with a 
+   * Flag used to skip Scala to Java Conversion test. To Skip, it is necessary override it with a
    * non empty String explaining the cause.
    */
   protected val skipSfxToJfxCause: String = ""
@@ -105,11 +107,11 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
   protected def expectedNullJFXToSFXValue: S = null.asInstanceOf[S]
 
   ///////////////////////////
-  // PROTECTED METHODS - END 
+  // PROTECTED METHODS - END
   ///////////////////////////
 
   /////////////////
-  // TESTS - BEGIN 
+  // TESTS - BEGIN
   /////////////////
 
   "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from ScalaFX to JavaFX" in {
@@ -118,8 +120,8 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
 
     if (skipJfxToSfxCause.isEmpty) {
       // Test if conversion behaves correctly
-      val sfxObject = getScalaClassInstance
-      val jfxObject: J = sfxObject
+      val sfxObject    = getScalaClassInstance
+      val jfxObject: J = sfx2jfx(sfxObject)
 
       jfxObject should be(sfxObject.delegate)
     } else {
@@ -132,8 +134,10 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
     assert(sfx2jfx != null, "There is no implicit conversion from ScalaFX to JavaFX")
 
     try {
-      assert(expectedNullSFXToJFXValue === sfx2jfx(null.asInstanceOf[S]),
-        ". Implicit conversion of ScalaFX `null` to JavaFX should be `" + expectedNullSFXToJFXValue + "`.")
+      assert(
+        expectedNullSFXToJFXValue === sfx2jfx(null.asInstanceOf[S]),
+        ". Implicit conversion of ScalaFX `null` to JavaFX should be `" + expectedNullSFXToJFXValue + "`."
+      )
     } catch {
       case ex: NullPointerException => fail("sfx2jfx implicit conversion should accept `null` argument.")
     }
@@ -145,8 +149,8 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
 
     if (skipSfxToJfxCause.isEmpty) {
       // Test if conversion behaves correctly
-      val jfxObject = getJavaClassInstance
-      val sfxObject: S = jfxObject
+      val jfxObject: J = getJavaClassInstance
+      val sfxObject: S = jfx2sfx(jfxObject)
 
       sfxObject.delegate should be(jfxObject)
     } else {
@@ -160,8 +164,10 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
 
     // Check for `null` guard
     try {
-      assert(expectedNullJFXToSFXValue === jfx2sfx(null.asInstanceOf[J]),
-        ". Implicit conversion of JavaFX `null` to ScalaFX should be `" + expectedNullJFXToSFXValue + "`.")
+      assert(
+        expectedNullJFXToSFXValue === jfx2sfx(null.asInstanceOf[J]),
+        ". Implicit conversion of JavaFX `null` to ScalaFX should be `" + expectedNullJFXToSFXValue + "`."
+      )
     } catch {
       case ex: NullPointerException => fail("jfx2sfx implicit conversion should accept `null` argument.")
     }
@@ -172,7 +178,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
   }
 
   ///////////////
-  // TESTS - END  
+  // TESTS - END
   ///////////////
 
 }

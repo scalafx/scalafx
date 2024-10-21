@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,8 @@ object Rectangle2D {
 
 class Rectangle2D(override val delegate: jfxg.Rectangle2D) extends SFXDelegate[jfxg.Rectangle2D] {
 
-  def this(minX: Double, minY: Double, width: Double, height: Double) = this(new jfxg.Rectangle2D(minX, minY, width, height))
+  def this(minX: Double, minY: Double, width: Double, height: Double) =
+    this(new jfxg.Rectangle2D(minX, minY, width, height))
 
   /**
    * Tests if the specified (x, y) coordinates are inside the boundary of Rectangle2D.

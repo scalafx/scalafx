@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object Stage {
  * Any further stage would be simply instantiated by the no-arg constructor.
  */
 class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
-  extends Window(delegate)
+    extends Window(delegate)
     with SFXDelegate[jfxs.Stage] {
 
   /**

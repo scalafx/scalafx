@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,10 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Insets Spec tests.
- *
  */
 class InsetsSpec
-  extends SimpleSFXDelegateSpec[jfxg.Insets, Insets](classOf[jfxg.Insets], classOf[Insets]) {
+    extends SimpleSFXDelegateSpec[jfxg.Insets, Insets](classOf[jfxg.Insets], classOf[Insets]) {
 
   override protected def getScalaClassInstance = Insets.Empty
 

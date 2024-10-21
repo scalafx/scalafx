@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,9 +31,9 @@ import javafx.{animation => jfxa}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.animation.Animation.Status]]. */
 class AnimationStatusSpec extends SFXEnumDelegateSpec[jfxa.Animation.Status, Animation.Status](
-  classOf[jfxa.Animation.Status],
-  classOf[Animation.Status],
-  Animation.Status)
+      classOf[jfxa.Animation.Status],
+      classOf[Animation.Status],
+      Animation.Status
+    )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,4 @@ package scalafx
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/package-summary.html `javafx.util`]] package.
  */
-package object util {
-
-}
+package object util {}

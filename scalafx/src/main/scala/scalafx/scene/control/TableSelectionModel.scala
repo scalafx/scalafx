@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,8 +60,8 @@ object TableSelectionModel {
  * @since 8.0
  */
 class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T])
-  extends MultipleSelectionModel[T](delegate)
-  with SFXDelegate[jfxsc.TableSelectionModel[T]] {
+    extends MultipleSelectionModel[T](delegate)
+    with SFXDelegate[jfxsc.TableSelectionModel[T]] {
 
   //    protected abstract int getItemCount()
 
@@ -138,7 +138,12 @@ class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T]
   /**
    * Selects the cells in the range (minRow, minColumn) to (maxRow, maxColumn), inclusive.
    */
-  def selectRange(minRow: Int, minColumn: TableColumnBase[T, _], maxRow: Int, maxColumn: TableColumnBase[T, _]): Unit = {
+  def selectRange(
+    minRow: Int,
+    minColumn: TableColumnBase[T, _],
+    maxRow: Int,
+    maxColumn: TableColumnBase[T, _]
+  ): Unit = {
     delegate.selectRange(minRow, minColumn, maxRow, maxColumn)
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,9 +38,9 @@ object SepiaTone {
 }
 
 class SepiaTone(override val delegate: jfxse.SepiaTone = new jfxse.SepiaTone)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.SepiaTone]
-  with SFXDelegate[jfxse.SepiaTone] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.SepiaTone]
+    with SFXDelegate[jfxse.SepiaTone] {
 
   /**
    * Creates a new instance of SepiaTone with the specified level.

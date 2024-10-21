@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,10 @@ import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * Translate Spec tests.
- *
- *
  */
 class TranslateSpec
-  extends SimpleSFXDelegateSpec[jfxst.Translate, Translate](classOf[jfxst.Translate], classOf[Translate])
-  with PositionDelegateSpec[Translate] {
+    extends SimpleSFXDelegateSpec[jfxst.Translate, Translate](classOf[jfxst.Translate], classOf[Translate])
+    with PositionDelegateSpec[Translate] {
 
   val positionDelegate = getScalaClassInstance
 

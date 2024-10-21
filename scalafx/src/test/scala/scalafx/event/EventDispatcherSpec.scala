@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,22 @@
 
 package scalafx.event
 
-import javafx.{event => jfxe}
-
-import scalafx.Includes._
+import javafx.event as jfxe
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
-  *
-  * Test for [[scalafx.event.EventDispatcherSpec]].
-  */
+ * Test for [[scalafx.event.EventDispatcherSpec]].
+ */
 class EventDispatcherSpec
-  extends SimpleSFXDelegateSpec[jfxe.EventDispatcher, EventDispatcher](
-       classOf[jfxe.EventDispatcher], classOf[EventDispatcher]) {
+    extends SimpleSFXDelegateSpec[jfxe.EventDispatcher, EventDispatcher](
+      classOf[jfxe.EventDispatcher],
+      classOf[EventDispatcher]
+    ) {
 
+  override protected def getScalaClassInstance: EventDispatcher = getJavaClassInstance
 
-     override protected def getScalaClassInstance : EventDispatcher = getJavaClassInstance
-
-     override protected def getJavaClassInstance = new jfxe.EventDispatcher() {
-       override def dispatchEvent(event: jfxe.Event, tail: jfxe.EventDispatchChain) = ???
-     }
-   }
+  override protected def getJavaClassInstance: javafx.event.EventDispatcher = new jfxe.EventDispatcher() {
+    override def dispatchEvent(event: jfxe.Event, tail: jfxe.EventDispatchChain): jfxe.Event = ???
+  }
+}

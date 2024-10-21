@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,4 +35,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * Node Spec tests.
  */
 class PointLightSpec
-  extends SimpleSFXDelegateSpec[jfxs.PointLight, PointLight](classOf[jfxs.PointLight], classOf[PointLight])
+    extends SimpleSFXDelegateSpec[jfxs.PointLight, PointLight](classOf[jfxs.PointLight], classOf[PointLight])

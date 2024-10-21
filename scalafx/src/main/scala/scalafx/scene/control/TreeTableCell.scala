@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,8 +67,8 @@ object TreeTableCell {
  * @define ORIGINALDOC Original Documentation]].
  */
 class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new jfxsc.TreeTableCell[S, T])
-  extends IndexedCell[T](delegate)
-  with SFXDelegate[jfxsc.TreeTableCell[S, T]] {
+    extends IndexedCell[T](delegate)
+    with SFXDelegate[jfxsc.TreeTableCell[S, T]] {
 
   /**
    * @see $URL0#tableColumnProperty $ORIGINALDOC

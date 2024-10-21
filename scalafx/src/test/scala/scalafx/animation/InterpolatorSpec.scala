@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scala.language.postfixOps
 class InterpolatorSpec extends AnyFlatSpec with PropertyComparator {
   "Interpolators" should "support all the built-in interpolators" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val kv1 = doubleProperty -> 50 tween Interpolator.Discrete
+    val kv1            = doubleProperty -> 50 tween Interpolator.Discrete
     kv1.interpolator should equal(jfxa.Interpolator.DISCRETE)
     val kv2 = doubleProperty -> 50 tween Interpolator.EaseBoth
     kv2.interpolator should equal(jfxa.Interpolator.EASE_BOTH)
@@ -57,14 +57,14 @@ class InterpolatorSpec extends AnyFlatSpec with PropertyComparator {
 
   it should "support spline interpolations" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val kv1 = doubleProperty -> 50 tween Interpolator.Spline(.2, .2, .8, .8)
+    val kv1            = doubleProperty -> 50 tween Interpolator.Spline(.2, .2, .8, .8)
     // equals method doesn't work, so the best we can do is test the class type
     kv1.interpolator.getClass should equal(Interpolator.Spline(.2, .2, .8, .8).getClass)
   }
 
   it should "support tangent interpolations" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val kv1 = doubleProperty -> 50 tween Interpolator.Tangent((100 ms), .3)
+    val kv1            = doubleProperty -> 50 tween Interpolator.Tangent((100 ms), .3)
     // equals method doesn't work, so the best we can do is test the class type
     kv1.interpolator.getClass should equal(Interpolator.Tangent((100 ms), .3).getClass)
     val kv2 = doubleProperty -> 50 tween Interpolator.Tangent((50 ms), .5, (100 ms), .3)

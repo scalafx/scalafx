@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,6 +37,7 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 object ChoiceDialog {
+
   /**
    * Converts a ScalaFX ChoiceDialog to its JavaFX counterpart.
    *
@@ -51,7 +52,7 @@ object ChoiceDialog {
  * A dialog that shows a list of choices to the user, from which they can pick
  * one item at most.
  *
-  * Wraps a $JFX [[ $URL0 $TC]].
+ * Wraps a $JFX [[ $URL0 $TC]].
  *
  * @see Dialog
  * @tparam T The type of the items to show to the user, and the type that is returned
@@ -59,13 +60,13 @@ object ChoiceDialog {
  * @constructor Creates a default, empty instance of ChoiceDialog with no set items and a
  *              null default choice. Users of this constructor will subsequently need to
  *              call `items` to specify which items to show to the user.
-  * @define TC   ChoiceDialog
-  * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/ChoiceDialog.html
-  * @define JFX  JavaFX
+ * @define TC   ChoiceDialog
+ * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/ChoiceDialog.html
+ * @define JFX  JavaFX
  */
 class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.ChoiceDialog[T]())
-  extends Dialog[T](delegate)
-  with SFXDelegate[jfxsc.ChoiceDialog[T]] {
+    extends Dialog[T](delegate)
+    with SFXDelegate[jfxsc.ChoiceDialog[T]] {
 
   /**
    * Creates a new ChoiceDialog instance with the first argument specifying the
@@ -80,7 +81,8 @@ class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.C
    *                      This item must be contained within the choices varargs array.
    * @param choices All possible choices to present to the user.
    */
-  def this(defaultChoice: T, choices: Iterable[T]) = this(new jfxsc.ChoiceDialog[T](defaultChoice, choices.asJavaCollection))
+  def this(defaultChoice: T, choices: Iterable[T]) =
+    this(new jfxsc.ChoiceDialog[T](defaultChoice, choices.asJavaCollection))
 
   /**
    * Shows the dialog and waits for the user response (in other words, brings
@@ -108,6 +110,7 @@ class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.C
    * Returns the property representing the currently selected item in the dialog.
    */
   def selectedItem: ReadOnlyObjectProperty[T] = delegate.selectedItemProperty
+
   /**
    * Sets the currently selected item in the dialog.
    * @param item The item to select in the dialog.

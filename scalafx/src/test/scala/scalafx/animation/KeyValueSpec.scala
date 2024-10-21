@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,28 +26,33 @@
  */
 package scalafx.animation
 
-import javafx.beans.{property => jfxbp}
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
-import scalafx.beans.property._
+import javafx.animation as jfxa
+import javafx.beans.property as jfxbp
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * KeyValue Spec tests.
  */
 class KeyValueSpec
-  extends SimpleSFXDelegateSpec[jfxa.KeyValue, KeyValue[_, _]](classOf[jfxa.KeyValue], classOf[KeyValue[_, _]]) {
+    extends SimpleSFXDelegateSpec[jfxa.KeyValue, KeyValue[_, _]](classOf[jfxa.KeyValue], classOf[KeyValue[_, _]]) {
 
   //////////////////////////////
-  // PRIVATE VALUES AND METHODS 
+  // PRIVATE VALUES AND METHODS
   //////////////////////////////
 
   private val name = "test"
 
   private val doubleProperty = new DoubleProperty(null, name)
 
-  private def evaluateFromSfx(property: Property[_, _], endValue: Any, kv: KeyValue[_, _], evaluateInterpolator: Boolean = false): Unit = {
+  private def evaluateFromSfx(
+    property: Property[_, _],
+    endValue: Any,
+    kv: KeyValue[_, _],
+    evaluateInterpolator: Boolean = false
+  ): Unit = {
     kv.target should equal(property.delegate)
     kv.endValue should equal(endValue)
     if (evaluateInterpolator)
@@ -60,15 +65,15 @@ class KeyValueSpec
   }
 
   //////////////////////////////
-  // OVERRIDE PROTECTED METHODS 
+  // OVERRIDE PROTECTED METHODS
   //////////////////////////////
 
-  override protected def getScalaClassInstance = KeyValue(doubleProperty, 50d)
+  override protected def getScalaClassInstance: KeyValue[Double, Number] = KeyValue(doubleProperty, 50d)
 
-  override protected def getJavaClassInstance = new jfxa.KeyValue(doubleProperty, double2Double(50))
+  override protected def getJavaClassInstance: jfxa.KeyValue = new jfxa.KeyValue(doubleProperty, double2Double(50))
 
   /////////
-  // TESTS 
+  // TESTS
   /////////
 
   it should "have a convenient apply construction format for integers" in {
@@ -85,13 +90,13 @@ class KeyValueSpec
 
   it should "have a convenient apply construction format for longs" in {
     val property = new LongProperty(null, name)
-    val endValue = 50l
+    val endValue = 50L
     evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx longs" in {
     val property = new LongProperty(null, name).delegate
-    val endValue = 50l
+    val endValue = 50L
     evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 

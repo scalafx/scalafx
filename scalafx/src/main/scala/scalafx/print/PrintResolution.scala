@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ object PrintResolution {
  * @param delegate JavaFX PrintResolution. Since there is no public constructor for it, there is not a default value.
  */
 final class PrintResolution(override val delegate: jfxp.PrintResolution)
-  extends SFXDelegate[jfxp.PrintResolution] {
+    extends SFXDelegate[jfxp.PrintResolution] {
 
   /**
    * Returns the resolution in dpi. across the paper feed direction.

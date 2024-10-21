@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,11 +42,11 @@ object Shadow {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/Shadow.html]].
  */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
-  extends Effect(delegate)
-  with ColorDelegate[jfxse.Shadow]
-  with InputDelegate[jfxse.Shadow]
-  with DimensionDelegate[jfxse.Shadow]
-  with SFXDelegate[jfxse.Shadow] {
+    extends Effect(delegate)
+    with ColorDelegate[jfxse.Shadow]
+    with InputDelegate[jfxse.Shadow]
+    with DimensionDelegate[jfxse.Shadow]
+    with SFXDelegate[jfxse.Shadow] {
 
   /**
    * Creates a new instance of Shadow with the specified blurType, color, radius.

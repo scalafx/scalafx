@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,17 +33,18 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ListView.EditEvent Spec tests.
- *
- *
  */
 class ListViewEditEventSpec[T <: Any]
-  extends SimpleSFXDelegateSpec[jfxsc.ListView.EditEvent[T], ListView.EditEvent[T]](classOf[jfxsc.ListView.EditEvent[T]], classOf[ListView.EditEvent[T]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.ListView.EditEvent[T], ListView.EditEvent[T]](
+      classOf[jfxsc.ListView.EditEvent[T]],
+      classOf[ListView.EditEvent[T]]
+    )
+    with RunOnApplicationThread {
 
   /*
    * In third argument, I it was used simply null compiler throws a error with message:
-   * "type mismatch;  found   : Null(null)  required: T". Solution found was make a cast from 
-   * null to type T. 
+   * "type mismatch;  found   : Null(null)  required: T". Solution found was make a cast from
+   * null to type T.
    */
   override def getJavaClassInstance =
     new jfxsc.ListView.EditEvent[T](new jfxsc.ListView[T], null, null.asInstanceOf[T], 0)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,8 +35,11 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * TableViewFocusModel tests.
  */
 class TableViewTableViewFocusModelSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewFocusModel[S], TableView.TableViewFocusModel[S]](classOf[jfxsc.TableView.TableViewFocusModel[S]], classOf[TableView.TableViewFocusModel[S]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewFocusModel[S], TableView.TableViewFocusModel[S]](
+      classOf[jfxsc.TableView.TableViewFocusModel[S]],
+      classOf[TableView.TableViewFocusModel[S]]
+    )
+    with RunOnApplicationThread {
 
   override def getJavaClassInstance = new jfxsc.TableView.TableViewFocusModel(new jfxsc.TableView[S])
 

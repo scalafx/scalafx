@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,6 @@ import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-
 
 /**
  * Example for [[https://github.com/scalafx/scalafx/issues/16 Issue 16]] provided by "Alain.Fa...@gmail.com".

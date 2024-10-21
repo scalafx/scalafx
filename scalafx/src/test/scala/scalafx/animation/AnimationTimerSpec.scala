@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * AnimationTimer Spec tests.
- *
- *
  */
 class AnimationTimerSpec
-  extends SimpleSFXDelegateSpec[jfxa.AnimationTimer, AnimationTimer](classOf[jfxa.AnimationTimer], classOf[AnimationTimer]) {
+    extends SimpleSFXDelegateSpec[jfxa.AnimationTimer, AnimationTimer](
+      classOf[jfxa.AnimationTimer],
+      classOf[AnimationTimer]
+    ) {
 
   override protected def getScalaClassInstance: AnimationTimer = AnimationTimer((now: Long) => ())
 

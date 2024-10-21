@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Point3D Spec tests.
- *
  */
 class Point3DSpec
-  extends SimpleSFXDelegateSpec[jfxg.Point3D, Point3D](classOf[jfxg.Point3D], classOf[Point3D]) {
+    extends SimpleSFXDelegateSpec[jfxg.Point3D, Point3D](classOf[jfxg.Point3D], classOf[Point3D]) {
 
   override protected def getScalaClassInstance = new Point3D(0, 0, 0)
 

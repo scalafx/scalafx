@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,7 @@ package scalafx
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html `javafx.css`]] package.
- * 
+ *
  * @since 8.0
  */
-package object css {
-
-}
+package object css {}

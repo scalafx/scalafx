@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * WebEngine Spec tests.
- *
- *
  */
 class WebEngineSpec
-  extends SimpleSFXDelegateSpec[jfxsw.WebEngine, WebEngine](classOf[jfxsw.WebEngine], classOf[WebEngine])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsw.WebEngine, WebEngine](classOf[jfxsw.WebEngine], classOf[WebEngine])
+    with RunOnApplicationThread

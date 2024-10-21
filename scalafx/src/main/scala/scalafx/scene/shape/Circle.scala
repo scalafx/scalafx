@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,8 @@ object Circle {
     new Circle(new jfxss.Circle(radius, fill))
 }
 
-class Circle(override val delegate: jfxss.Circle = new jfxss.Circle()) extends Shape(delegate) with SFXDelegate[jfxss.Circle] {
+class Circle(override val delegate: jfxss.Circle = new jfxss.Circle()) extends Shape(delegate)
+    with SFXDelegate[jfxss.Circle] {
   def centerX: DoubleProperty = delegate.centerXProperty
 
   def centerX_=(v: Double): Unit = {

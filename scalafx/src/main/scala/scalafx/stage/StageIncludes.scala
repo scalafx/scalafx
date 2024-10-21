@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,7 +65,8 @@ trait StageIncludes {
    * @param dc $JFX $DC
    * @return $SFX $DC
    */
-  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser): DirectoryChooser = if (dc != null) new DirectoryChooser(dc) else null
+  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser): DirectoryChooser =
+    if (dc != null) new DirectoryChooser(dc) else null
 
   /**
    * $START$FC.html $FC$END
@@ -81,7 +82,8 @@ trait StageIncludes {
    * @param ef $JFX $FE
    * @return $SFX $FE
    */
-  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter): ExtensionFilter = if (ef != null) new FileChooser.ExtensionFilter(ef) else null
+  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter): ExtensionFilter =
+    if (ef != null) new FileChooser.ExtensionFilter(ef) else null
 
   /**
    * $START$PW.html $PW$END
@@ -89,7 +91,8 @@ trait StageIncludes {
    * @param pw $JFX $PW
    * @return $SFX $PW
    */
-  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {} else null
+  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {}
+  else null
 
   /**
    * $START$PWAL.html $PWAL$END
@@ -97,7 +100,8 @@ trait StageIncludes {
    * @param v $JFX $PWAL
    * @return $SFX $PWAL
    */
-  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation): AnchorLocation = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
+  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation): AnchorLocation =
+    PopupWindow.AnchorLocation.jfxEnum2sfx(v)
 
   /**
    * $START$PP.html $PP$END
@@ -145,7 +149,8 @@ trait StageIncludes {
    * @param w $JFX $WN
    * @return $SFX $WN
    */
-  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {} else null
+  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {}
+  else null
 
   /**
    * $START$WE.html $WE$END
@@ -153,6 +158,7 @@ trait StageIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {} else null
+  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {}
+  else null
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,19 +27,16 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-
-import scalafx.Includes._
+import javafx.scene as jfxs
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PerspectiveCamera Spec tests.
- *
- *
  */
 class CameraSpec
-  extends SimpleSFXDelegateSpec[jfxs.Camera, Camera](classOf[jfxs.Camera], classOf[Camera]) {
+    extends SimpleSFXDelegateSpec[jfxs.Camera, Camera](classOf[jfxs.Camera], classOf[Camera]) {
 
-  override protected def getScalaClassInstance = new PerspectiveCamera()
-  override protected def getJavaClassInstance = getScalaClassInstance.delegate
+  override protected def getScalaClassInstance: PerspectiveCamera     = new PerspectiveCamera()
+  override protected def getJavaClassInstance: jfxs.PerspectiveCamera = getScalaClassInstance.delegate
 }

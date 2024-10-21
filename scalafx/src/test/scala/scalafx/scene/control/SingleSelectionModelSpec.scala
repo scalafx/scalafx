@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,10 +32,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SingleSelectionModel[T] Spec tests.
- *
  */
 class SingleSelectionModelSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.SingleSelectionModel[T], SingleSelectionModel[T]](classOf[jfxsc.SingleSelectionModel[T]], classOf[SingleSelectionModel[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.SingleSelectionModel[T], SingleSelectionModel[T]](
+      classOf[jfxsc.SingleSelectionModel[T]],
+      classOf[SingleSelectionModel[T]]
+    ) {
 
   override protected def getScalaClassInstance = new SingleSelectionModel[T](getJavaClassInstance) {}
 

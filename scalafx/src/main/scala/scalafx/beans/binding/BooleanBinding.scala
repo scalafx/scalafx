@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,7 @@ object BooleanBinding {
   implicit def sfxBooleanBinding2jfx(bb: BooleanBinding): jfxbb.BooleanBinding = if (bb != null) bb.delegate else null
 }
 
-class BooleanBinding(override val delegate: jfxbb.BooleanBinding) extends BooleanExpression(delegate) with ObservableValue[Boolean, java.lang.Boolean] {
+class BooleanBinding(override val delegate: jfxbb.BooleanBinding) extends BooleanExpression(delegate)
+    with ObservableValue[Boolean, java.lang.Boolean] {
   def value: Boolean = delegate.get
 }

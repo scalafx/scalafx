@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,6 +45,5 @@ object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
   protected override def unsortedValues: Array[FillRule] = Array(EvenOdd, NonZero)
 }
 
-
 sealed abstract class FillRule(override val delegate: jfxss.FillRule)
-  extends SFXEnumDelegate[jfxss.FillRule]
+    extends SFXEnumDelegate[jfxss.FillRule]

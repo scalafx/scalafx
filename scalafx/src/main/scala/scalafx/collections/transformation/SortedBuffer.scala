@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,6 +39,7 @@ import scala.language.implicitConversions
 import scala.math.Ordering
 
 object SortedBuffer {
+
   /**
    * Converts a ScalaFX SortedBuffer to its JavaFX counterpart SortedList.
    *
@@ -58,8 +59,8 @@ object SortedBuffer {
  * @define ORIGINALDOC Original Documentation]].
  */
 class SortedBuffer[E](override val delegate: jfxct.SortedList[E])
-  extends TransformationBuffer[E, E](delegate)
-  with SFXDelegate[jfxct.SortedList[E]] {
+    extends TransformationBuffer[E, E](delegate)
+    with SFXDelegate[jfxct.SortedList[E]] {
 
   /**
    * Constructs a new unordered SortedList wrapper around the source list.
@@ -73,11 +74,11 @@ class SortedBuffer[E](override val delegate: jfxct.SortedList[E])
    *
    * @param source the source list.
    */
-  def this(source: ObservableBuffer[E], ordering: Ordering[_ >: E]) = this(delegate = new jfxct.SortedList[E](source.delegate, ordering))
+  def this(source: ObservableBuffer[E], ordering: Ordering[_ >: E]) =
+    this(delegate = new jfxct.SortedList[E](source.delegate, ordering))
 
   def this(source: ObservableBuffer[E], lessThan: (_ >: E, _ >: E) => Boolean) =
     this(delegate = new jfxct.SortedList[E](source.delegate, Ordering.fromLessThan(lessThan)))
-
 
   /**
    * The comparator that denotes the order of this SortedList.

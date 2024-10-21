@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ import scala.language.implicitConversions
 object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderRepeat] {
 
   /**
-   * The image is tiled (repeated) to fill the area. 
+   * The image is tiled (repeated) to fill the area.
    */
   case object Repeat extends BorderRepeat(jfxsl.BorderRepeat.REPEAT)
 
@@ -61,6 +61,5 @@ object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderR
   protected override def unsortedValues: Array[BorderRepeat] = Array(Repeat, Round, Space, Stretch)
 }
 
-
 sealed abstract class BorderRepeat(override val delegate: jfxsl.BorderRepeat)
-  extends SFXEnumDelegate[jfxsl.BorderRepeat]
+    extends SFXEnumDelegate[jfxsl.BorderRepeat]

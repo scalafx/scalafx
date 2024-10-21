@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,11 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * WebEvent[_] Spec tests.
- *
- *
  */
 class WebEventSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsw.WebEvent[T], WebEvent[T]](classOf[jfxsw.WebEvent[T]], classOf[WebEvent[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsw.WebEvent[T], WebEvent[T]](classOf[jfxsw.WebEvent[T]], classOf[WebEvent[T]]) {
 
   override protected def getJavaClassInstance = new jfxsw.WebEvent[T](null, null, null.asInstanceOf[T])
 

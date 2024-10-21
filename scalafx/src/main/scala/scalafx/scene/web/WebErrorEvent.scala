@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,10 @@ object WebErrorEvent {
    */
   val UserDataDirectoryAlreadyInUse: EventType[jfxsw.WebErrorEvent] =
     jfxsw.WebErrorEvent.USER_DATA_DIRECTORY_ALREADY_IN_USE
-  @deprecated("Use UserDataDirectoryAlreadyInUse; USER_DATA_DIRECTORY_ALREADY_IN_USE will be removed in a future release", "8.0.60-R10")
+  @deprecated(
+    "Use UserDataDirectoryAlreadyInUse; USER_DATA_DIRECTORY_ALREADY_IN_USE will be removed in a future release",
+    "8.0.60-R10"
+  )
   val USER_DATA_DIRECTORY_ALREADY_IN_USE: EventType[jfxsw.WebErrorEvent] = UserDataDirectoryAlreadyInUse
 
   /**
@@ -70,7 +73,10 @@ object WebErrorEvent {
    */
   val UserDataDirectoryIOError: EventType[jfxsw.WebErrorEvent] =
     jfxsw.WebErrorEvent.USER_DATA_DIRECTORY_IO_ERROR
-  @deprecated("Use UserDataDirectoryIOError; USER_DATA_DIRECTORY_IO_ERROR will be removed in a future release", "8.0.60-R10")
+  @deprecated(
+    "Use UserDataDirectoryIOError; USER_DATA_DIRECTORY_IO_ERROR will be removed in a future release",
+    "8.0.60-R10"
+  )
   val USER_DATA_DIRECTORY_IO_ERROR: EventType[jfxsw.WebErrorEvent] = UserDataDirectoryIOError
 
   /**
@@ -79,7 +85,10 @@ object WebErrorEvent {
    */
   val UserDataDirectorySecurityError: EventType[jfxsw.WebErrorEvent] =
     jfxsw.WebErrorEvent.USER_DATA_DIRECTORY_SECURITY_ERROR
-  @deprecated("Use UserDataDirectorySecurityError; USER_DATA_DIRECTORY_SECURITY_ERROR will be removed in a future release", "8.0.60-R10")
+  @deprecated(
+    "Use UserDataDirectorySecurityError; USER_DATA_DIRECTORY_SECURITY_ERROR will be removed in a future release",
+    "8.0.60-R10"
+  )
   val USER_DATA_DIRECTORY_SECURITY_ERROR: EventType[jfxsw.WebErrorEvent] = UserDataDirectorySecurityError
 
 }
@@ -92,7 +101,7 @@ object WebErrorEvent {
  * @since 8.0
  */
 final class WebErrorEvent(override val delegate: jfxsw.WebErrorEvent)
-  extends Event(delegate) with SFXDelegate[jfxsw.WebErrorEvent] {
+    extends Event(delegate) with SFXDelegate[jfxsw.WebErrorEvent] {
 
   /**
    * Creates a new WebErrorEvent.

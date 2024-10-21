@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,11 +32,12 @@ import javafx.util.{converter => jfxuc}
 import scala.language.implicitConversions
 
 object BigDecimalStringConverter {
-  implicit def sfxBigDecimalStringConverter2jfx(c: BigDecimalStringConverter): jfxuc.BigDecimalStringConverter = if (c != null) c.delegate else null
+  implicit def sfxBigDecimalStringConverter2jfx(c: BigDecimalStringConverter): jfxuc.BigDecimalStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class BigDecimalStringConverter(delegate: jfxuc.BigDecimalStringConverter = new jfxuc.BigDecimalStringConverter)
-  extends StringConverterDelegate[jm.BigDecimal, BigDecimal, jfxuc.BigDecimalStringConverter](delegate) {
+    extends StringConverterDelegate[jm.BigDecimal, BigDecimal, jfxuc.BigDecimalStringConverter](delegate) {
 
   override def toString(b: BigDecimal): String = delegate.toString(b.bigDecimal)
 

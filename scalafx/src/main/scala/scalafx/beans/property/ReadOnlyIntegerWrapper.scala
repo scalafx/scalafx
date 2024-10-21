@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,34 +33,37 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlyIntegerWrapper {
-  implicit def sfxReadOnlyIntegerWrapper2jfx(w: ReadOnlyIntegerWrapper): jfxbp.ReadOnlyIntegerWrapper = if (w != null) w.delegate else null
+  implicit def sfxReadOnlyIntegerWrapper2jfx(w: ReadOnlyIntegerWrapper): jfxbp.ReadOnlyIntegerWrapper =
+    if (w != null) w.delegate else null
 
-  /** Creates a new ReadOnlyIntegerWrapper instance.
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlyIntegerWrapper instance.
+   * @param value the initial value of the wrapped value
+   */
   def apply(value: Int) = new ReadOnlyIntegerWrapper(new jfxbp.ReadOnlyIntegerWrapper(value))
 }
 
-
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyIntegerWrapper.html javafx.beans.property.ReadOnlyIntegerWrapper]] */
 class ReadOnlyIntegerWrapper(override val delegate: jfxbp.ReadOnlyIntegerWrapper = new jfxbp.ReadOnlyIntegerWrapper())
-  extends IntegerProperty(delegate)
-  with SFXDelegate[jfxbp.ReadOnlyIntegerWrapper] {
+    extends IntegerProperty(delegate)
+    with SFXDelegate[jfxbp.ReadOnlyIntegerWrapper] {
 
-  /** The read-only property, that is synchronized with this ReadOnlyIntegerWrapper.
-    * @param bean the bean of this ReadOnlyIntegerWrapper
-    * @param name the name of this ReadOnlyIntegerWrapper
-    */
+  /**
+   * The read-only property, that is synchronized with this ReadOnlyIntegerWrapper.
+   * @param bean the bean of this ReadOnlyIntegerWrapper
+   * @param name the name of this ReadOnlyIntegerWrapper
+   */
   def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyIntegerWrapper(bean, name))
 
-  /** Creates a new ReadOnlyIntegerWrapper instance.
-    * @param initialValue the initial value of the wrapped value
-    * @param bean the bean of this ReadOnlyIntegerWrapper
-    * @param name the name of this ReadOnlyIntegerWrapper
-    */
-  def this(bean: Object, name: String, initialValue: Int) = this(new jfxbp.ReadOnlyIntegerWrapper(bean, name, initialValue))
+  /**
+   * Creates a new ReadOnlyIntegerWrapper instance.
+   * @param initialValue the initial value of the wrapped value
+   * @param bean the bean of this ReadOnlyIntegerWrapper
+   * @param name the name of this ReadOnlyIntegerWrapper
+   */
+  def this(bean: Object, name: String, initialValue: Int) =
+    this(new jfxbp.ReadOnlyIntegerWrapper(bean, name, initialValue))
 
   /** Creates a new ReadOnlyIntegerWrapper instance. */
   def readOnlyProperty: ReadOnlyIntegerProperty = delegate.getReadOnlyProperty

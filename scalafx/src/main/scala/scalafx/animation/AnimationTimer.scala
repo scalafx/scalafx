@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ import scala.language.implicitConversions
 object AnimationTimer {
 
   /**
-   * Converts a ScalaFX $AT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html $AT]], 
+   * Converts a ScalaFX $AT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html $AT]],
    * extracting its delegate.
    *
    * @param at ScalaFX $AT
@@ -70,7 +70,7 @@ object AnimationTimer {
  * @define AT `AnimationTimer`
  */
 abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
-  extends SFXDelegate[jfxa.AnimationTimer] {
+    extends SFXDelegate[jfxa.AnimationTimer] {
 
   /**
    * This method needs to be overridden by extending classes.

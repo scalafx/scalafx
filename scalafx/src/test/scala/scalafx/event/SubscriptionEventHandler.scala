@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 package scalafx.event
 
-
 import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.beans.property.StringProperty
 
@@ -34,7 +33,7 @@ class SubscriptionEventHandler extends AnyFlatSpec {
 
   "A subscription" should "be created from EventSources" in {
     val property: StringProperty = StringProperty("")
-    var called = false
+    var called                   = false
 
     val subscription = property onInvalidate {
       called = true

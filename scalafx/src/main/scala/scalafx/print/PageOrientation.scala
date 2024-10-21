@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  * Companion Object for [[scalafx.print.PageOrientation]].
  */
 object PageOrientation
-  extends SFXEnumDelegateCompanion[jfxp.PageOrientation, PageOrientation] {
+    extends SFXEnumDelegateCompanion[jfxp.PageOrientation, PageOrientation] {
 
   /**
    * The printable area's origin is at the bottom left of the paper.
@@ -64,4 +64,4 @@ object PageOrientation
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageOrientation.html JavaFX PageOrientation]].
  */
 sealed abstract class PageOrientation(override val delegate: jfxp.PageOrientation)
-  extends SFXEnumDelegate[jfxp.PageOrientation]
+    extends SFXEnumDelegate[jfxp.PageOrientation]

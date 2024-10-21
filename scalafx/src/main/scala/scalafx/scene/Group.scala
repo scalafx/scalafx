@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,8 +43,8 @@ object Group {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html]].
  */
 class Group(override val delegate: jfxs.Group = new jfxs.Group())
-  extends Parent(delegate)
-  with SFXDelegate[jfxs.Group] {
+    extends Parent(delegate)
+    with SFXDelegate[jfxs.Group] {
 
   /**
    * Constructs a group consisting of children.
@@ -55,6 +55,7 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
    * Gets the list of children of this `Group`.
    */
   def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
+
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
    * similar.
@@ -64,6 +65,7 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
   def children_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.children, c)
   }
+
   /**
    * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
    *

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,8 +65,8 @@ object ScaleTransition extends AnimationStatics {
  * @define DV Default value:
  */
 class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.ScaleTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.ScaleTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.ScaleTransition] {
 
   // CONSTRUCTORS
 

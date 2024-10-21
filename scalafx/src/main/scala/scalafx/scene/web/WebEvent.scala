@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,14 +89,14 @@ object WebEvent {
  * @param delegate JavaFX WebEvent. Since it has no default constructor, there is not default value.
  */
 final class WebEvent[T](override val delegate: jfxsw.WebEvent[T])
-  extends Event(delegate)
-  with SFXDelegate[jfxsw.WebEvent[T]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsw.WebEvent[T]] {
 
   /**
    * Creates a new event object.
-   *
    */
-  def this(source: Any, eventType: EventType[jfxsw.WebEvent[_]], data: T) = this(new jfxsw.WebEvent(source, eventType, data))
+  def this(source: Any, eventType: EventType[jfxsw.WebEvent[_]], data: T) =
+    this(new jfxsw.WebEvent(source, eventType, data))
 
   /**
    * Returns data item carried by this event.

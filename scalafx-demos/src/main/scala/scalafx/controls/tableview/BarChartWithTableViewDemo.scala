@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ import scalafx.stage.{Modality, Stage}
 object BarChartWithTableViewDemo extends JFXApp3 {
 
   class Position(name_ : String, value_ : Int) {
-    val name = new StringProperty(this, "name", name_)
+    val name  = new StringProperty(this, "name", name_)
     val value = new ObjectProperty[Int](this, "value", value_)
   }
 

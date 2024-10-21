@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,14 +33,16 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object ReadOnlyDoubleProperty {
-  implicit def sfxReadOnlyDoubleProperty2jfx(rodp: ReadOnlyDoubleProperty): jfxbp.ReadOnlyDoubleProperty = if (rodp != null) rodp.delegate else null
+  implicit def sfxReadOnlyDoubleProperty2jfx(rodp: ReadOnlyDoubleProperty): jfxbp.ReadOnlyDoubleProperty =
+    if (rodp != null) rodp.delegate else null
 }
 
-class ReadOnlyDoubleProperty(override val delegate: jfxbp.ReadOnlyDoubleProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Double, Number] with SFXDelegate[jfxbp.ReadOnlyDoubleProperty] {
+class ReadOnlyDoubleProperty(override val delegate: jfxbp.ReadOnlyDoubleProperty) extends NumberExpression(delegate)
+    with ReadOnlyProperty[Double, Number] with SFXDelegate[jfxbp.ReadOnlyDoubleProperty] {
   def this(bean: Object, name: String, value: Double) = this(new jfxbp.ReadOnlyDoublePropertyBase() {
     def getBean: AnyRef = bean
     def getName: String = name
-    def get: Double = value
+    def get: Double     = value
   })
 
   override def value: Double = delegate.get

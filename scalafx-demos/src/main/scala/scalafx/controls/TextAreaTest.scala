@@ -39,13 +39,14 @@ import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
 object TextAreaTest extends JFXApp3 {
+  private val initialPreferredHeight: Int = 380
   override def start(): Unit = {
     lazy val textArea = new TextArea { prefColumnCount = 20 }
     val controlsPane = new VBox {
       spacing = 5
       fillWidth = true
       alignment = Pos.Center
-      prefHeight <== stage.scene().height
+      prefHeight <== initialPreferredHeight
       hgrow = Priority.Never
       children =
         List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
@@ -57,12 +58,13 @@ object TextAreaTest extends JFXApp3 {
     stage = new JFXApp3.PrimaryStage {
       title = "TextArea Test"
       width = 450
-      height = 380
+      height = initialPreferredHeight
       scene = new Scene {
         fill = Color.LightGray
         content = mainPane
       }
     }
+    controlsPane.prefHeight <== stage.scene().height
   }
 }
 

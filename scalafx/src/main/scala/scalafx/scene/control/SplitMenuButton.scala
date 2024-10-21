@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,14 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object SplitMenuButton {
-  implicit def sfxSplitMenuButton2jfx(smb: SplitMenuButton): jfxsc.SplitMenuButton = if (smb != null) smb.delegate else null
+  implicit def sfxSplitMenuButton2jfx(smb: SplitMenuButton): jfxsc.SplitMenuButton =
+    if (smb != null) smb.delegate else null
 }
 
 /** Wrapper for `javafx.scene.control.SplitMenuButton`. */
 class SplitMenuButton(override val delegate: jfxsc.SplitMenuButton = new jfxsc.SplitMenuButton())
-  extends MenuButton(delegate)
-  with SFXDelegate[jfxsc.SplitMenuButton] {
+    extends MenuButton(delegate)
+    with SFXDelegate[jfxsc.SplitMenuButton] {
 
   /** Creates a new split menu button with the given list of menu items. */
   def this(items: MenuItem*) = {

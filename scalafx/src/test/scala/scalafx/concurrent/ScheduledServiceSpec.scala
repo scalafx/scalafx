@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,23 +26,23 @@
  */
 package scalafx.concurrent
 
-import javafx.{concurrent => jfxc}
-
-import scalafx.Includes._
+import javafx.concurrent as jfxc
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ScheduledService Spec tests.
- *
- *
  */
 class ScheduledServiceSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.ScheduledService[T], ScheduledService[T]](classOf[jfxc.ScheduledService[T]], classOf[ScheduledService[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.ScheduledService[T], ScheduledService[T]](
+      classOf[jfxc.ScheduledService[T]],
+      classOf[ScheduledService[T]]
+    ) {
 
-  override protected def getScalaClassInstance = ScheduledService[T](null)
+  override protected def getScalaClassInstance: ScheduledService[T] = ScheduledService[T](null)
 
-  override protected def getJavaClassInstance = new jfxc.ScheduledService[T] {
-    protected def createTask = null
+  override protected def getJavaClassInstance: jfxc.ScheduledService[T] = new jfxc.ScheduledService[T] {
+    protected def createTask: jfxc.Task[T] = null
   }
 
 }

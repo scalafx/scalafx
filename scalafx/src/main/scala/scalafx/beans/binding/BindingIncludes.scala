@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 
 package scalafx.beans.binding
-
 
 import javafx.beans.{binding => jfxbb, value => jfxbv}
 import javafx.{beans => jfxb}
@@ -65,7 +64,8 @@ trait BindingIncludes extends Bindings {
    * @param bb $JFX $BOB
    * @return $SFX $BOB
    */
-  implicit def jfxBooleanBinding2sfx(bb: jfxbb.BooleanBinding): BooleanBinding = if (bb != null) new BooleanBinding(bb) else null
+  implicit def jfxBooleanBinding2sfx(bb: jfxbb.BooleanBinding): BooleanBinding =
+    if (bb != null) new BooleanBinding(bb) else null
 
   /**
    * $START$BOE.html $BOE$END
@@ -73,7 +73,8 @@ trait BindingIncludes extends Bindings {
    * @param be $JFX $BOE
    * @return $SFX $BOE
    */
-  implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression): BooleanExpression = if (be != null) new BooleanExpression(be) else null
+  implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression): BooleanExpression =
+    if (be != null) new BooleanExpression(be) else null
 
   implicit def jfxListBinding2sfx[E <: Any](v: jfxbb.ListBinding[E]): BufferBinding[E] =
     if (v != null) new BufferBinding(v) else null
@@ -93,7 +94,8 @@ trait BindingIncludes extends Bindings {
    * @param nb $JFX $NUB
    * @return $SFX $NUB
    */
-  implicit def jfxNumberBinding2sfx(nb: jfxbb.NumberBinding): NumberBinding = if (nb != null) new NumberBinding(nb) else null
+  implicit def jfxNumberBinding2sfx(nb: jfxbb.NumberBinding): NumberBinding =
+    if (nb != null) new NumberBinding(nb) else null
 
   /**
    * $START$NUE.html $NUE$END
@@ -101,7 +103,8 @@ trait BindingIncludes extends Bindings {
    * @param ne $JFX $NUE
    * @return $SFX $NUE
    */
-  implicit def jfxNumberExpression2sfx(ne: jfxbb.NumberExpression): NumberExpression = if (ne != null) new NumberExpression(ne) else null
+  implicit def jfxNumberExpression2sfx(ne: jfxbb.NumberExpression): NumberExpression =
+    if (ne != null) new NumberExpression(ne) else null
 
   /**
    * $START$OBB.html $OBB$END
@@ -110,7 +113,8 @@ trait BindingIncludes extends Bindings {
    * @param ob $JFX $OBB
    * @return $SFX $OBB
    */
-  implicit def jfxObjectBinding2sfx[T](ob: jfxbb.ObjectBinding[T]): ObjectBinding[T] = if (ob != null) new ObjectBinding[T](ob) else null
+  implicit def jfxObjectBinding2sfx[T](ob: jfxbb.ObjectBinding[T]): ObjectBinding[T] =
+    if (ob != null) new ObjectBinding[T](ob) else null
 
   /**
    * $START$OBE.html $OBE$END
@@ -119,7 +123,8 @@ trait BindingIncludes extends Bindings {
    * @param oe $JFX $OBE
    * @return $SFX $OBE
    */
-  implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]): ObjectExpression[T] = if (oe != null) new ObjectExpression[T](oe) else null
+  implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]): ObjectExpression[T] =
+    if (oe != null) new ObjectExpression[T](oe) else null
 
   implicit def jfxSetBinding2sfx[E <: Any](v: jfxbb.SetBinding[E]): SetBinding[E] =
     if (v != null) new SetBinding(v) else null
@@ -133,7 +138,8 @@ trait BindingIncludes extends Bindings {
    * @param sb $JFX $STB
    * @return $SFX $STB
    */
-  implicit def jfxStringBinding2sfx(sb: jfxbb.StringBinding): StringBinding = if (sb != null) new StringBinding(sb) else null
+  implicit def jfxStringBinding2sfx(sb: jfxbb.StringBinding): StringBinding =
+    if (sb != null) new StringBinding(sb) else null
 
   /**
    * $START$STE.html $STE$END
@@ -141,7 +147,8 @@ trait BindingIncludes extends Bindings {
    * @param se $JFX $STE
    * @return $SFX $STE
    */
-  implicit def jfxStringExpression2sfx(se: jfxbb.StringExpression): StringExpression = if (se != null) new StringExpression(se) else null
+  implicit def jfxStringExpression2sfx(se: jfxbb.StringExpression): StringExpression =
+    if (se != null) new StringExpression(se) else null
 
   // Conversion helper for variable precision numbers (e.g. 100+-.01)
 
@@ -158,45 +165,48 @@ trait BindingIncludes extends Bindings {
   /**
    * Converts a closure to a $JFX InvalidationListener.
    *
-    * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
-    *           have to return `Unit`). Return value is ignored in generated listener.
+   * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
+   *           have to return `Unit`). Return value is ignored in generated listener.
    * @param il Closure to be converted.
    * @return a new $JFX InvalidationListener.
    */
-  implicit def closure2InvalidationListener[R](il: jfxb.Observable => R): jfxb.InvalidationListener = new jfxb.InvalidationListener {
-    def invalidated(observable: jfxb.Observable): Unit = {
-      il(observable)
+  implicit def closure2InvalidationListener[R](il: jfxb.Observable => R): jfxb.InvalidationListener =
+    new jfxb.InvalidationListener {
+      def invalidated(observable: jfxb.Observable): Unit = {
+        il(observable)
+      }
     }
-  }
 
   /**
-    * Converts a closure to a $JFX InvalidationListener.
-    *
-    * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
-    *           have to return `Unit`). Return value is ignored in generated listener.
-    * @param il Closure to be converted.
-    * @return a new $JFX InvalidationListener.
-    */
-  implicit def closureSFX2InvalidationListener[R](il: Observable => R): jfxb.InvalidationListener = new jfxb.InvalidationListener {
-    def invalidated(observable: jfxb.Observable): Unit = {
-      il(scalafx.beans.BeanIncludes.jfxObservable2sfx(observable))
+   * Converts a closure to a $JFX InvalidationListener.
+   *
+   * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
+   *           have to return `Unit`). Return value is ignored in generated listener.
+   * @param il Closure to be converted.
+   * @return a new $JFX InvalidationListener.
+   */
+  implicit def closureSFX2InvalidationListener[R](il: Observable => R): jfxb.InvalidationListener =
+    new jfxb.InvalidationListener {
+      def invalidated(observable: jfxb.Observable): Unit = {
+        il(scalafx.beans.BeanIncludes.jfxObservable2sfx(observable))
+      }
     }
-  }
 
   /**
    * Converts a closure to a $JFX ChangeListener.
    *
    * @tparam P  Change listener type.
-    * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
-    *           have to return `Unit`). Return value is ignored in generated listener.
+   * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
+   *           have to return `Unit`). Return value is ignored in generated listener.
    * @param cl Closure to be converted.
    * @return a new $JFX ChangeListener.
    */
-  implicit def closure2ChangedListener[P, R](cl: (jfxbv.ObservableValue[_ <: P], P, P) => R): jfxbv.ChangeListener[P] = new jfxbv.ChangeListener[P]() {
-    def changed(observable: jfxbv.ObservableValue[_ <: P], oldValue: P, newValue: P): Unit = {
-      cl(observable, oldValue, newValue)
+  implicit def closure2ChangedListener[P, R](cl: (jfxbv.ObservableValue[_ <: P], P, P) => R): jfxbv.ChangeListener[P] =
+    new jfxbv.ChangeListener[P]() {
+      def changed(observable: jfxbv.ObservableValue[_ <: P], oldValue: P, newValue: P): Unit = {
+        cl(observable, oldValue, newValue)
+      }
     }
-  }
 
   // Upconversions from primitives to bindings
   // Needed for min and max, which take a list of bindings -- all other uses have the primitives declared directly for efficiency
@@ -205,7 +215,7 @@ trait BindingIncludes extends Bindings {
    * Converts a Integer to a $JFX IntegerBinding
    *
    * @param i Integer to generate a new IntegerBinding
-    * @return a new IntegerBinding generated from the Integer.
+   * @return a new IntegerBinding generated from the Integer.
    */
   implicit def integer2IntegerBinding(i: Int): jfxbb.IntegerBinding = new jfxbb.IntegerBinding {
     def computeValue(): Int = i

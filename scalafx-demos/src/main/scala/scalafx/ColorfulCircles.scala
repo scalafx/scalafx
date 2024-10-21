@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,7 @@
 
 package scalafx
 
-import scala.collection.immutable.VectorBuilder
-import scala.language.postfixOps
-import scala.math.random
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.animation.Timeline
 import scalafx.animation.Timeline.Indefinite
 import scalafx.application.JFXApp3
@@ -43,6 +40,10 @@ import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.shape.StrokeType.Outside
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.{Group, Scene}
+
+import scala.collection.immutable.VectorBuilder
+import scala.language.postfixOps
+import scala.math.random
 
 /**
  * ColorfulCircles
@@ -64,37 +65,40 @@ object ColorfulCircles extends JFXApp3 {
                 fill = Black
               },
               new Group {
-                val circles = for (i <- 0 until 15) yield new Circle {
-                  radius = 200
-                  fill = White opacity 0.05d
-                  stroke = White opacity 0.2d
-                  strokeWidth = 4
-                  strokeType = Outside
-                }
+                val circles =
+                  for (i <- 0 until 15) yield new Circle {
+                    radius = 200
+                    fill = White opacity 0.05d
+                    stroke = White opacity 0.2d
+                    strokeWidth = 4
+                    strokeType = Outside
+                  }
                 children = circles
                 circlesToAnimate ++= circles
                 effect = new BoxBlur(30, 30, 3)
               },
               new Group {
-                val circles = for (i <- 0 until 20) yield new Circle {
-                  radius = 70
-                  fill = White opacity 0.05d
-                  stroke = White opacity 0.1d
-                  strokeWidth = 2
-                  strokeType = Outside
-                }
+                val circles =
+                  for (i <- 0 until 20) yield new Circle {
+                    radius = 70
+                    fill = White opacity 0.05d
+                    stroke = White opacity 0.1d
+                    strokeWidth = 2
+                    strokeType = Outside
+                  }
                 children = circles
                 circlesToAnimate ++= circles
                 effect = new BoxBlur(2, 2, 2)
               },
               new Group {
-                val circles = for (i <- 0 until 10) yield new Circle {
-                  radius = 150
-                  fill = White opacity 0.05d
-                  stroke = White opacity 0.16d
-                  strokeWidth = 4
-                  strokeType = Outside
-                }
+                val circles =
+                  for (i <- 0 until 10) yield new Circle {
+                    radius = 150
+                    fill = White opacity 0.05d
+                    stroke = White opacity 0.16d
+                    strokeWidth = 4
+                    strokeType = Outside
+                  }
                 children = circles
                 circlesToAnimate ++= circles
                 effect = new BoxBlur(10, 10, 3)
@@ -124,10 +128,10 @@ object ColorfulCircles extends JFXApp3 {
       keyFrames = (for (circle <- circlesToAnimate.result())
         yield Seq(
           at(0.s) {
-            Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+            Set(circle.centerX -> random() * 800, circle.centerY -> random() * 600)
           },
           at(40.s) {
-            Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+            Set(circle.centerX -> random() * 800, circle.centerY -> random() * 600)
           }
         )).flatten
     }.play()

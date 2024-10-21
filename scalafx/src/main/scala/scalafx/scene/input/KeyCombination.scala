@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ import scala.language.implicitConversions
 object KeyCombination {
 
   object ModifierValue
-    extends SFXEnumDelegateCompanion[jfxsi.KeyCombination.ModifierValue, ModifierValue] {
+      extends SFXEnumDelegateCompanion[jfxsi.KeyCombination.ModifierValue, ModifierValue] {
 
     /**
      * Constant which indicates that the modifier key can be either up or down.
@@ -70,13 +70,14 @@ object KeyCombination {
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCombination.ModifierValue.html]]
    */
   sealed abstract class ModifierValue(override val delegate: jfxsi.KeyCombination.ModifierValue)
-    extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
+      extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
 
   object Modifier {
     implicit def sfxModifier2jfx(m: Modifier): jfxsi.KeyCombination.Modifier = if (m != null) m.delegate else null
   }
 
-  class Modifier(override val delegate: jfxsi.KeyCombination.Modifier) extends SFXDelegate[jfxsi.KeyCombination.Modifier] {
+  class Modifier(override val delegate: jfxsi.KeyCombination.Modifier)
+      extends SFXDelegate[jfxsi.KeyCombination.Modifier] {
 
     /**
      * Gets the modifier key of this Modifier.
@@ -160,7 +161,8 @@ object KeyCombination {
 
 }
 
-abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombination) extends SFXDelegate[jfxsi.KeyCombination] {
+abstract class KeyCombination protected (override val delegate: jfxsi.KeyCombination)
+    extends SFXDelegate[jfxsi.KeyCombination] {
 
   /**
    * The state of the alt key in this key combination.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object ScrollPane {
   implicit def sfxScrollPane2jfx(v: ScrollPane): jfxsc.ScrollPane = if (v != null) v.delegate else null
 
   object ScrollBarPolicy
-    extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {
+      extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {
 
     /** Indicates that a scroll bar should always be shown. */
     case object Always extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
@@ -66,13 +66,13 @@ object ScrollPane {
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollPane.ScrollBarPolicy.html]] */
   sealed abstract class ScrollBarPolicy(override val delegate: jfxsc.ScrollPane.ScrollBarPolicy)
-    extends SFXEnumDelegate[jfxsc.ScrollPane.ScrollBarPolicy]
+      extends SFXEnumDelegate[jfxsc.ScrollPane.ScrollBarPolicy]
 
 }
 
 class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ScrollPane] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ScrollPane] {
 
   /**
    * The node used as the content of this ScrollPane.
@@ -84,7 +84,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * If true and if the contained node is a Resizable, then the node will be kept resized to match the height of the 
+   * If true and if the contained node is a Resizable, then the node will be kept resized to match the height of the
    * ScrollPane's viewport.
    */
   def fitToHeight: BooleanProperty = delegate.fitToHeightProperty
@@ -94,7 +94,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * If true and if the contained node is a Resizable, then the node will be kept resized to match the width of the 
+   * If true and if the contained node is a Resizable, then the node will be kept resized to match the width of the
    * ScrollPane's viewport.
    */
   def fitToWidth: BooleanProperty = delegate.fitToWidthProperty

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Hyperlink Spec tests.
- *
- *
  */
 class HyperlinkSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink](classOf[jfxsc.Hyperlink], classOf[Hyperlink])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink](classOf[jfxsc.Hyperlink], classOf[Hyperlink])
+    with RunOnApplicationThread

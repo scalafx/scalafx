@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scala.language.implicitConversions
  * @define TTYPE   The type of the elements contained within the `ListView`.
  * @define FLVINIT Provides a `TextField that allows editing of the cell content when the cell is double-clicked, or when TreeView.edit(javafx.scene.control.TreeItem) is called.
  *                 @define FLVRET A Function that can be inserted into the cell factory property of a `TreeView`, that enables textual editing of the content.
- **/
+ */
 object TextFieldTreeCell {
 
   /**
@@ -53,7 +53,8 @@ object TextFieldTreeCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]): jfxsc.cell.TextFieldTreeCell[T] = if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]): jfxsc.cell.TextFieldTreeCell[T] =
+    if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
@@ -82,7 +83,8 @@ object TextFieldTreeCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T])", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.TextFieldTreeCell.forTreeView[T](converter)
+  def forTreeView[T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
+    jfxscc.TextFieldTreeCell.forTreeView[T](converter)
 
 }
 
@@ -96,13 +98,13 @@ object TextFieldTreeCell {
  * @define TFTC `TextFieldTreeCell`
  */
 class TextFieldTreeCell[T](override val delegate: jfxscc.TextFieldTreeCell[T] = new jfxscc.TextFieldTreeCell[T])
-  extends TreeCell[T](delegate)
-  with ConvertableCell[jfxscc.TextFieldTreeCell[T], T, T]
-  with UpdatableCell[jfxscc.TextFieldTreeCell[T], T]
-  with SFXDelegate[jfxscc.TextFieldTreeCell[T]] {
+    extends TreeCell[T](delegate)
+    with ConvertableCell[jfxscc.TextFieldTreeCell[T], T, T]
+    with UpdatableCell[jfxscc.TextFieldTreeCell[T], T]
+    with SFXDelegate[jfxscc.TextFieldTreeCell[T]] {
 
   /**
-   * Creates a `TextFieldTreeCell` that provides a `TextField` when put into editing mode that allows editing of the 
+   * Creates a `TextFieldTreeCell` that provides a `TextField` when put into editing mode that allows editing of the
    * cell content.
    *
    * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.

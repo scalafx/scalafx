@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,10 +57,11 @@ object SingleSelectionModel {
       protected def getModelItem(index: Int): T = modelItem(index)
 
       protected def getItemCount: Int = itemCount
-    }) {}
+    }
+  ) {}
 
 }
 
 abstract class SingleSelectionModel[T](override val delegate: jfxsc.SingleSelectionModel[T])
-  extends SelectionModel[T](delegate)
-  with SFXDelegate[jfxsc.SingleSelectionModel[T]] 
+    extends SelectionModel[T](delegate)
+    with SFXDelegate[jfxsc.SingleSelectionModel[T]]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,12 +36,17 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * DoubleSpinnerValueFactory Spec tests.
  */
 class DoubleSpinnerValueFactorySpec
-  extends SimpleSFXDelegateSpec[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory, SpinnerValueFactory.DoubleSpinnerValueFactory](
-    classOf[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory], classOf[SpinnerValueFactory.DoubleSpinnerValueFactory])
-  with RunOnApplicationThread   {
+    extends SimpleSFXDelegateSpec[
+      jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory,
+      SpinnerValueFactory.DoubleSpinnerValueFactory
+    ](
+      classOf[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory],
+      classOf[SpinnerValueFactory.DoubleSpinnerValueFactory]
+    )
+    with RunOnApplicationThread {
 
-    override protected def getScalaClassInstance = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, 10)
+  override protected def getScalaClassInstance = new SpinnerValueFactory.DoubleSpinnerValueFactory(1, 10)
 
-    override protected def getJavaClassInstance = new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(1, 10)
+  override protected def getJavaClassInstance = new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(1, 10)
 
-  }
+}

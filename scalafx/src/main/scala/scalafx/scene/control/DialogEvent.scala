@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,6 +39,7 @@ import scalafx.event.{Event, EventType}
  * Object companion for [[scalafx.scene.control.DialogEvent]].
  */
 object DialogEvent {
+
   /**
    * Converts a ScalaFX DialogEvent to its JavaFX counterpart.
    *
@@ -47,26 +48,32 @@ object DialogEvent {
    */
   implicit def sfxDialogEvent2jfx(v: DialogEvent): jfxsc.DialogEvent =
     if (v != null) v.delegate else null
+
   /**
    * Common supertype for all dialog event types.
    */
   val Any: EventType[jfxsc.DialogEvent] = jfxsc.DialogEvent.ANY
+
   /**
    * This event occurs on dialog just before it is shown.
    */
   val DialogShowing: EventType[jfxsc.DialogEvent] = jfxsc.DialogEvent.DIALOG_SHOWING
+
   /**
    * This event occurs on dialog just after it is shown.
    */
   val DialogShown: EventType[jfxsc.DialogEvent] = jfxsc.DialogEvent.DIALOG_SHOWN
+
   /**
    * This event occurs on dialog just before it is hidden.
    */
   val DialogHiding: EventType[jfxsc.DialogEvent] = jfxsc.DialogEvent.DIALOG_HIDING
+
   /**
    * This event occurs on dialog just after it is hidden.
    */
   val DialogHidden: EventType[jfxsc.DialogEvent] = jfxsc.DialogEvent.DIALOG_HIDDEN
+
   /**
    * This event is delivered to a
    * dialog when there is an external request to close that dialog. If the
@@ -86,8 +93,8 @@ object DialogEvent {
  * @define ORIGINALDOC Original Documentation]].
  */
 class DialogEvent(override val delegate: jfxsc.DialogEvent)
-  extends Event(delegate)
-  with SFXDelegate[jfxsc.DialogEvent] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.DialogEvent] {
 
   def this(source: Dialog[_], eventType: EventType[_ <: jfxe.Event]) =
     this(new jfxsc.DialogEvent(source.delegate, eventType.delegate))

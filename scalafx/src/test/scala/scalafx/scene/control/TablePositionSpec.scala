@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,8 +35,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * TablePositionSpec tests.
  */
 class TablePositionSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxsc.TablePosition[S, T], TablePosition[S, T]](
-    classOf[jfxsc.TablePosition[S, T]], classOf[TablePosition[S, T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.TablePosition[S, T], TablePosition[S, T]](
+      classOf[jfxsc.TablePosition[S, T]],
+      classOf[TablePosition[S, T]]
+    ) {
 
   override def getJavaClassInstance = new jfxsc.TablePosition[S, T](new jfxsc.TableView(), 0, null)
 

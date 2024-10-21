@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * BackgroundPosition Spec tests.
  */
 class BackgroundPositionSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BackgroundPosition, BackgroundPosition](
-    classOf[jfxsl.BackgroundPosition], classOf[BackgroundPosition]) {
+    extends SimpleSFXDelegateSpec[jfxsl.BackgroundPosition, BackgroundPosition](
+      classOf[jfxsl.BackgroundPosition],
+      classOf[BackgroundPosition]
+    ) {
 
   override protected def getScalaClassInstance = new BackgroundPosition(getJavaClassInstance) {}
 

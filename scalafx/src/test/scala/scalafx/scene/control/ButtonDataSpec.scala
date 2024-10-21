@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,10 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /**
- *
  * Test for [[scalafx.scene.control.ButtonData]].
  */
 class ButtonDataSpec extends SFXEnumDelegateSpec[jfxsc.ButtonBar.ButtonData, ButtonBar.ButtonData](
-  javaClass = classOf[jfxsc.ButtonBar.ButtonData],
-  scalaClass = classOf[ButtonBar.ButtonData],
-  companion = ButtonBar.ButtonData)
+      javaClass = classOf[jfxsc.ButtonBar.ButtonData],
+      scalaClass = classOf[ButtonBar.ButtonData],
+      companion = ButtonBar.ButtonData
+    )

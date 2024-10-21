@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,13 +33,11 @@ import scalafx.testutil.{DimensionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * BoxBlur Spec tests.
- *
- *
  */
 class BoxBlurSpec
-  extends SimpleSFXDelegateSpec[jfxse.BoxBlur, BoxBlur](classOf[jfxse.BoxBlur], classOf[BoxBlur])
-  with DimensionDelegateSpec[BoxBlur]
-  with InputDelegateSpec[BoxBlur] {
+    extends SimpleSFXDelegateSpec[jfxse.BoxBlur, BoxBlur](classOf[jfxse.BoxBlur], classOf[BoxBlur])
+    with DimensionDelegateSpec[BoxBlur]
+    with InputDelegateSpec[BoxBlur] {
 
   val dimensionDelegate = getScalaClassInstance
 

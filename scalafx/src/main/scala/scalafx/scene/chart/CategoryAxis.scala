@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,8 +49,8 @@ object CategoryAxis {
 }
 
 class CategoryAxis(override val delegate: jfxsc.CategoryAxis = new jfxsc.CategoryAxis)
-  extends Axis[String](delegate)
-  with SFXDelegate[jfxsc.CategoryAxis] {
+    extends Axis[String](delegate)
+    with SFXDelegate[jfxsc.CategoryAxis] {
 
   def categorySpacing: ReadOnlyDoubleProperty = delegate.categorySpacingProperty
 

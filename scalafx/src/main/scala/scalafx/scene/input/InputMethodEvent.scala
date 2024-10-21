@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,12 +35,14 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object InputMethodEvent {
-  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent): jfxsi.InputMethodEvent = if (ime != null) ime.delegate else null
+  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent): jfxsi.InputMethodEvent =
+    if (ime != null) ime.delegate else null
 
   val InputMethodTextChanged: EventType[jfxsi.InputMethodEvent] = jfxsi.InputMethodEvent.INPUT_METHOD_TEXT_CHANGED
 }
 
-class InputMethodEvent(override val delegate: jfxsi.InputMethodEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.InputMethodEvent] {
+class InputMethodEvent(override val delegate: jfxsi.InputMethodEvent) extends InputEvent(delegate)
+    with SFXDelegate[jfxsi.InputMethodEvent] {
 
   /**
    * The input method caret position within the composed text.

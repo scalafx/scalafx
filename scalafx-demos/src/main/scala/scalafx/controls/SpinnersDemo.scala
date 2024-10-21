@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,18 +48,21 @@ object SpinnersDemo extends JFXApp3 {
       Spinner.StyleClassSplitArrowsVertical,
       Spinner.StyleClassSplitArrowsHorizontal
     )
-    val intSpinners = for (s <- styles) yield new Spinner[Integer](1, 99, 5) {
-      styleClass += s
-      prefWidth = 100
-    }
-    val stringSpinners = for (s <- styles) yield new Spinner[String](ObservableBuffer("Grace", "Matt", "Katie")) {
-      styleClass += s
-      prefWidth = 100
-    }
-    val doubleSpinners = for (s <- styles) yield new Spinner[Double](0.0d, 1.0d, 0.5d, 0.01d) {
-      styleClass += s
-      prefWidth = 100
-    }
+    val intSpinners =
+      for (s <- styles) yield new Spinner[Integer](1, 99, 5) {
+        styleClass += s
+        prefWidth = 100
+      }
+    val stringSpinners =
+      for (s <- styles) yield new Spinner[String](ObservableBuffer("Grace", "Matt", "Katie")) {
+        styleClass += s
+        prefWidth = 100
+      }
+    val doubleSpinners =
+      for (s <- styles) yield new Spinner[Double](0.0d, 1.0d, 0.5d, 0.01d) {
+        styleClass += s
+        prefWidth = 100
+      }
     stage = new PrimaryStage {
       title = "Spinners Demo"
       scene = new Scene {

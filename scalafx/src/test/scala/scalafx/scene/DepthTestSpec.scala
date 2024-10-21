@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,10 +32,9 @@ import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.DepthTest]]. */
 class DepthTestSpec extends SFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
-  javaClass = classOf[jfxs.DepthTest],
-  scalaClass = classOf[DepthTest],
-  companion = DepthTest)
-
+      javaClass = classOf[jfxs.DepthTest],
+      scalaClass = classOf[DepthTest],
+      companion = DepthTest
+    )

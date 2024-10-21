@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -92,7 +92,7 @@ class StringExpression(val delegate: jfxbb.StringExpression) {
   def concat(v: Any): StringExpression = {
     val jfxV = v match {
       case d: SFXDelegate[_] => d.delegate
-      case a => a
+      case a                 => a
     }
     new StringExpression(delegate.concat(jfxV))
   }

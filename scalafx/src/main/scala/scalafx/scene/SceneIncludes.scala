@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,14 +47,14 @@ object SceneIncludes extends SceneIncludes
  * Classes/Traits to their ScalaFX counterparts.
  */
 trait SceneIncludes extends ChartIncludes
-with LayoutIncludes
-with PaintIncludes
-with ShapeIncludes
-with TextIncludes
-with ImageIncludes
-with EffectIncludes
-with LowerPriorityIncludes
-with ControlIncludes
+    with LayoutIncludes
+    with PaintIncludes
+    with ShapeIncludes
+    with TextIncludes
+    with ImageIncludes
+    with EffectIncludes
+    with LowerPriorityIncludes
+    with ControlIncludes
 
 /**
  * Contains implicit methods to convert from
@@ -104,7 +104,8 @@ trait LowerPriorityIncludes {
    * @param v $JFX $CAM
    * @return $SFX $CAM
    */
-  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {} else null
+  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {}
+  else null
 
   /**
    * $START$CUR.html $CUR$END
@@ -112,7 +113,8 @@ trait LowerPriorityIncludes {
    * @param v $JFX $CUR
    * @return $SFX $CUR
    */
-  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {} else null
+  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {}
+  else null
 
   /**
    * $START$DPT.html $DPT$END
@@ -138,7 +140,8 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor): ImageCursor = if (ic != null) new ImageCursor(ic) else null
 
-  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {} else null
+  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {}
+  else null
 
   /**
    * $START$NOD.html $NOD$END
@@ -146,7 +149,8 @@ trait LowerPriorityIncludes {
    * @param v $JFX $NOD
    * @return $SFX $NOD
    */
-  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {} else null
+  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {}
+  else null
 
   /**
    * $START$PRC.html $PRC$END
@@ -154,7 +158,8 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PRC
    * @return $SFX $PRC
    */
-  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera): ParallelCamera = if (v != null) new ParallelCamera(v) else null
+  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera): ParallelCamera =
+    if (v != null) new ParallelCamera(v) else null
 
   /**
    * $START$PAR.html $PAR$END
@@ -162,7 +167,8 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PAR
    * @return $SFX $PAR
    */
-  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {} else null
+  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {}
+  else null
 
   /**
    * $START$PEC.html $PEC$END
@@ -170,7 +176,8 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PEC
    * @return $SFX $PEC
    */
-  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera): PerspectiveCamera = if (v != null) new PerspectiveCamera(v) else null
+  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera): PerspectiveCamera =
+    if (v != null) new PerspectiveCamera(v) else null
 
   implicit def jfxPointLight2sfx(v: jfxs.PointLight): PointLight = if (v != null) new PointLight(v) else null
 
@@ -202,7 +209,8 @@ trait LowerPriorityIncludes {
    * @param p A $SFX [[scalafx.beans.property.ReadOnlyObjectProperty]] containing a $JFX $SCE.
    * @return $SFX $SCP
    */
-  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]): SceneProperty = if (p != null) new SceneProperty(p) else null
+  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]): SceneProperty =
+    if (p != null) new SceneProperty(p) else null
 
   /**
    * $START$SNP.html $SNP$END
@@ -210,7 +218,8 @@ trait LowerPriorityIncludes {
    * @param sp $JFX $SNP
    * @return $SFX $SNP
    */
-  implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters): SnapshotParameters = if (sp != null) new SnapshotParameters(sp) else null
+  implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters): SnapshotParameters =
+    if (sp != null) new SnapshotParameters(sp) else null
 
   /**
    * $START$SSCE.html $SSCE$END

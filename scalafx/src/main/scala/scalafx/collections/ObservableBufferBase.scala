@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package scalafx.collections
 
-
 import javafx.{collections => jfxc}
 
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object ObservableBufferBase {
+
   /**
    * Converts a ScalaFX ObservableBufferBase to its JavaFX counterpart ObservableListBase.
    *
@@ -53,7 +53,6 @@ object ObservableBufferBase {
  * On JavaFX side this is an abstract class that serves as a base class for ObservableList implementations that wa added in JavFX 8.
  * In ScalaFX 8 the implementation is actually in ObservableBuffer.
  *
- *
  * Wraps a $JFX $URL0 $TC]].
  *
  * @tparam E - the type of the elements contained in the List
@@ -64,5 +63,5 @@ object ObservableBufferBase {
  * @define ORIGINALDOC Original Documentation]].
  */
 abstract class ObservableBufferBase[E](override val delegate: jfxc.ObservableListBase[E])
-  extends ObservableBuffer[E](delegate)
-  with SFXDelegate[jfxc.ObservableListBase[E]]
+    extends ObservableBuffer[E](delegate)
+    with SFXDelegate[jfxc.ObservableListBase[E]]

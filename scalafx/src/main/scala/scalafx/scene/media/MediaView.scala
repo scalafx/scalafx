@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,9 +41,9 @@ object MediaView {
 }
 
 class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
-  extends Node(delegate)
-  with PositionDelegate[jfxsm.MediaView]
-  with SFXDelegate[jfxsm.MediaView] {
+    extends Node(delegate)
+    with PositionDelegate[jfxsm.MediaView]
+    with SFXDelegate[jfxsm.MediaView] {
 
   /**
    * Creates a MediaView instance associated with the specified MediaPlayer.

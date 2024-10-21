@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,8 +34,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Path Spec tests.
- *
- *
  */
 class PathSpec
-  extends SimpleSFXDelegateSpec[jfxss.Path, Path](classOf[jfxss.Path], classOf[Path])
+    extends SimpleSFXDelegateSpec[jfxss.Path, Path](classOf[jfxss.Path], classOf[Path])

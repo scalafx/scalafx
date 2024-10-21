@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,21 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
+import scalafx.Includes.*
 
 /**
  * ReadOnlyIntegerProperty Spec tests.
- *
- *
  */
-class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
+class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
+  val bean                                                   = new Object()
   var readOnlyIntegerProperty: jfxbp.ReadOnlyIntegerProperty = null
-  var integerProperty1: jfxbp.IntegerProperty = null
-  var integerProperty2: jfxbp.IntegerProperty = null
-  var booleanProperty: jfxbp.BooleanProperty = null
+  var integerProperty1: jfxbp.IntegerProperty                = null
+  var integerProperty2: jfxbp.IntegerProperty                = null
+  var booleanProperty: jfxbp.BooleanProperty                 = null
 
   override def beforeEach(): Unit = {
     readOnlyIntegerProperty = new ReadOnlyIntegerProperty(bean, "Test Read-only Integer", 50)
@@ -82,7 +80,7 @@ class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty + 35 + 35l + 35f + 35d
+    integerProperty2 <== readOnlyIntegerProperty + 35 + 35L + 35f + 35d
     integerProperty2() should equal(190)
     integerProperty2.unbind()
   }
@@ -95,7 +93,7 @@ class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty - 12 - 12l - 12f - 12d
+    integerProperty2 <== readOnlyIntegerProperty - 12 - 12L - 12f - 12d
     integerProperty2() should equal(2)
     integerProperty2.unbind()
   }
@@ -108,7 +106,7 @@ class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty * 2 * 2l * 2f * 2d
+    integerProperty2 <== readOnlyIntegerProperty * 2 * 2L * 2f * 2d
     integerProperty2() should equal(800)
     integerProperty2.unbind()
   }
@@ -121,7 +119,7 @@ class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty / 2 / 2l / 5f / 5d
+    integerProperty2 <== readOnlyIntegerProperty / 2 / 2L / 5f / 5d
     integerProperty2() should equal(0)
     integerProperty2.unbind()
   }
@@ -242,8 +240,8 @@ class ReadOnlyIntegerPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = readOnlyIntegerProperty * integerProperty2
+    var changeCount     = 0
+    val binding         = readOnlyIntegerProperty * integerProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

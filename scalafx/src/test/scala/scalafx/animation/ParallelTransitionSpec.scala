@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ParallelTransition Spec tests.
- *
- *
  */
 class ParallelTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition](
-    classOf[jfxa.ParallelTransition], classOf[ParallelTransition])
+    extends SimpleSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition](
+      classOf[jfxa.ParallelTransition],
+      classOf[ParallelTransition]
+    )

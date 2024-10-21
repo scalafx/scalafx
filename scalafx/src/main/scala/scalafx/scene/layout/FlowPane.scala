@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,9 +72,9 @@ object FlowPane {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html]]
  */
 class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.FlowPane]
-  with SFXDelegate[jfxsl.FlowPane] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.FlowPane]
+    with SFXDelegate[jfxsl.FlowPane] {
 
   /**
    * Creates a horizontal FlowPane layout with the specified hgap/vgap.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,14 +33,16 @@ import scalafx.Includes._
 
 /**
  * TimeStringConverter Spec tests.
- *
- *
  */
 class TimeStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[Date, jfxuc.TimeStringConverter, Date, TimeStringConverter](classOf[jfxuc.TimeStringConverter], classOf[TimeStringConverter], classOf[Date]) {
+    extends AbstractStringConverterDelegateSpec[Date, jfxuc.TimeStringConverter, Date, TimeStringConverter](
+      classOf[jfxuc.TimeStringConverter],
+      classOf[TimeStringConverter],
+      classOf[Date]
+    ) {
 
-  val examples = List((dateFormat.parse("1970-01-01 12:34:56"), "12:34:56"),
-    (dateFormat.parse("1970-01-01 00:00:00"), "00:00:00"))
+  val examples =
+    List((dateFormat.parse("1970-01-01 12:34:56"), "12:34:56"), (dateFormat.parse("1970-01-01 00:00:00"), "00:00:00"))
 
   override protected def getConverterForExample = new TimeStringConverter("HH:mm:ss")
 

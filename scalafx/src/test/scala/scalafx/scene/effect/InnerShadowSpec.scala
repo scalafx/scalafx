@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,10 +35,10 @@ import scalafx.testutil.{DimensionDelegateSpec, SimpleSFXDelegateSpec}
  * InnerShadow Spec tests.
  */
 class InnerShadowSpec
-  extends SimpleSFXDelegateSpec[jfxse.InnerShadow, InnerShadow](classOf[jfxse.InnerShadow], classOf[InnerShadow])
-  with ColorDelegateSpec[InnerShadow]
-  with DimensionDelegateSpec[InnerShadow]
-  with InputDelegateSpec[InnerShadow] {
+    extends SimpleSFXDelegateSpec[jfxse.InnerShadow, InnerShadow](classOf[jfxse.InnerShadow], classOf[InnerShadow])
+    with ColorDelegateSpec[InnerShadow]
+    with DimensionDelegateSpec[InnerShadow]
+    with InputDelegateSpec[InnerShadow] {
 
   val colorDelegate = getScalaClassInstance
 

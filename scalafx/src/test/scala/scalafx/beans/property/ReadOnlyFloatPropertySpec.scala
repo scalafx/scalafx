@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,21 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import org.scalatest.BeforeAndAfterEach
+import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
+import scalafx.Includes.*
 
 /**
  * ReadOnlyFloatProperty Spec tests.
- *
- *
  */
-class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
+class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with NonImplicitAssertions {
+  val bean                                               = new Object()
   var readOnlyFloatProperty: jfxbp.ReadOnlyFloatProperty = null
-  var floatProperty1: jfxbp.FloatProperty = null
-  var floatProperty2: jfxbp.FloatProperty = null
-  var booleanProperty: jfxbp.BooleanProperty = null
+  var floatProperty1: jfxbp.FloatProperty                = null
+  var floatProperty2: jfxbp.FloatProperty                = null
+  var booleanProperty: jfxbp.BooleanProperty             = null
 
   override def beforeEach(): Unit = {
     readOnlyFloatProperty = new ReadOnlyFloatProperty(bean, "Test Read-only Float", 50)
@@ -82,7 +80,7 @@ class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    floatProperty2 <== readOnlyFloatProperty + 35 + 35l + 35f + 35d
+    floatProperty2 <== readOnlyFloatProperty + 35 + 35L + 35f + 35d
     floatProperty2() should equal(190)
     floatProperty2.unbind()
   }
@@ -95,7 +93,7 @@ class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    floatProperty2 <== readOnlyFloatProperty - 12 - 12l - 12f - 12d
+    floatProperty2 <== readOnlyFloatProperty - 12 - 12L - 12f - 12d
     floatProperty2() should equal(2)
     floatProperty2.unbind()
   }
@@ -108,7 +106,7 @@ class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    floatProperty2 <== readOnlyFloatProperty * 2 * 2l * 2f * 2d
+    floatProperty2 <== readOnlyFloatProperty * 2 * 2L * 2f * 2d
     floatProperty2() should equal(800)
     floatProperty2.unbind()
   }
@@ -121,7 +119,7 @@ class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    floatProperty2 <== readOnlyFloatProperty / 2 / 2l / 5f / 5d
+    floatProperty2 <== readOnlyFloatProperty / 2 / 2L / 5f / 5d
     floatProperty2() should equal(.5)
     floatProperty2.unbind()
   }
@@ -242,8 +240,8 @@ class ReadOnlyFloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = readOnlyFloatProperty * floatProperty2
+    var changeCount     = 0
+    val binding         = readOnlyFloatProperty * floatProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ object JobSettings {
  * @since 8.0
  */
 final class JobSettings(override val delegate: jfxp.JobSettings)
-  extends SFXDelegate[jfxp.JobSettings] {
+    extends SFXDelegate[jfxp.JobSettings] {
 
   /**
    * Property representing an instance of `Collation`.

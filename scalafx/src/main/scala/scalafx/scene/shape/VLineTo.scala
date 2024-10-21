@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,8 @@ object VLineTo {
   def apply(y: Double) = new VLineTo(new jfxss.VLineTo(y))
 }
 
-class VLineTo(override val delegate: jfxss.VLineTo = new jfxss.VLineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.VLineTo] {
+class VLineTo(override val delegate: jfxss.VLineTo = new jfxss.VLineTo()) extends PathElement(delegate)
+    with SFXDelegate[jfxss.VLineTo] {
   def y: DoubleProperty = delegate.yProperty
 
   def y_=(v: Double): Unit = {

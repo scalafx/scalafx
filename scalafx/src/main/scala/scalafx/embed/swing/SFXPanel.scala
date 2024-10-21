@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,18 +52,17 @@ object SFXPanel {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/JFXPanel.html JavaFX 
- * JFXPanel]]. To use methods and properties from JComponent, use its delegate. 
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/JFXPanel.html JavaFX
+ * JFXPanel]]. To use methods and properties from JComponent, use its delegate.
  *
  * @constructor Creates a new SFXPanel from its JavaFX counterpart.
  * @param delegate JavaFX JFXPanel. Its default value is a new JFXPanel
  * @since 8.0
  */
 class SFXPanel(override val delegate: jfxes.JFXPanel = new jfxes.JFXPanel)
-  extends SFXDelegate[jfxes.JFXPanel] {
+    extends SFXDelegate[jfxes.JFXPanel] {
 
   /**
-   *
    */
   def inputMethodRequests: InputMethodRequests = delegate.getInputMethodRequests
 
@@ -88,6 +87,7 @@ class SFXPanel(override val delegate: jfxes.JFXPanel = new jfxes.JFXPanel)
    * so this method overrides JComponent.isOpaque() to always return a false value.
    */
   def opaque: Boolean = delegate.isOpaque
+
   /**
    * SFXPanel's opacity is controlled by the JavaFX content which is displayed in this component,
    * so this method overrides JComponent.setOpaque(boolean) to only accept a false value.

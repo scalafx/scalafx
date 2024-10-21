@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,8 @@ object Ellipse {
     new Ellipse(new jfxss.Ellipse(centerX, centerY, radiusX, radiusY))
 }
 
-class Ellipse(override val delegate: jfxss.Ellipse = new jfxss.Ellipse()) extends Shape(delegate) with SFXDelegate[jfxss.Ellipse] {
+class Ellipse(override val delegate: jfxss.Ellipse = new jfxss.Ellipse()) extends Shape(delegate)
+    with SFXDelegate[jfxss.Ellipse] {
   def centerX: DoubleProperty = delegate.centerXProperty
 
   def centerX_=(v: Double): Unit = {

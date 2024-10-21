@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * BackgroundImage Spec tests.
  */
 class BackgroundImageSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
-    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage]) {
+    extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
+      classOf[jfxsl.BackgroundImage],
+      classOf[BackgroundImage]
+    ) {
 
   override protected def getScalaClassInstance = new BackgroundImage(getJavaClassInstance) {}
 
@@ -46,6 +48,7 @@ class BackgroundImageSpec
     BackgroundRepeat.NoRepeat,
     BackgroundRepeat.NoRepeat,
     BackgroundPosition.Center,
-    BackgroundSize.Default)
+    BackgroundSize.Default
+  )
 
 }

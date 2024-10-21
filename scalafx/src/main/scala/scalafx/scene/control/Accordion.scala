@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,8 @@ object Accordion {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Accordion.html]].
  */
 class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.Accordion] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.Accordion] {
 
   /**
    * The expanded TitledPane in the Accordion.

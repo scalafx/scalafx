@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object Example1App extends App {
         case ObservableBuffer.Add(_, _)        => println(s"  case Add    : $change")
         case ObservableBuffer.Remove(_, _)     => println(s"  case Remove : $change")
         case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
-        case ObservableBuffer.Update(_, _) => println(s"  case Update: $change")
+        case ObservableBuffer.Update(_, _)     => println(s"  case Update: $change")
       }
   })
 

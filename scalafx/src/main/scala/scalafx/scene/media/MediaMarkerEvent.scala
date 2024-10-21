@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,10 +34,12 @@ import scalafx.event._
 import scalafx.util.Duration
 
 object MediaMarkerEvent {
-  implicit def sfxMediaMarkerEvent2jfx(mme: MediaMarkerEvent): jfxsm.MediaMarkerEvent = if (mme != null) mme.delegate else null
+  implicit def sfxMediaMarkerEvent2jfx(mme: MediaMarkerEvent): jfxsm.MediaMarkerEvent =
+    if (mme != null) mme.delegate else null
 }
 
-class MediaMarkerEvent(override val delegate: jfxsm.MediaMarkerEvent) extends ActionEvent(delegate) with SFXDelegate[jfxsm.MediaMarkerEvent] {
+class MediaMarkerEvent(override val delegate: jfxsm.MediaMarkerEvent) extends ActionEvent(delegate)
+    with SFXDelegate[jfxsm.MediaMarkerEvent] {
 
   /**
    * Retrieves the marker the event represents.

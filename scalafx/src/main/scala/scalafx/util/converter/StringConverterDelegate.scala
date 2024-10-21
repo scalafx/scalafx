@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,9 +44,10 @@ import scalafx.util.StringConverter
  *
  * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfxu.StringConverter[J]] protected(override val delegate: C)
-  extends StringConverter[S]
-  with SFXDelegate[C] {
+abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfxu.StringConverter[J]] protected (
+  override val delegate: C
+) extends StringConverter[S]
+    with SFXDelegate[C] {
 
   def fromString(string: String): S = delegate.fromString(string).asInstanceOf[S]
 
@@ -65,5 +66,6 @@ abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfx
  *
  * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterJavaToJavaDelegate[J <: java.lang.Object, C <: jfxu.StringConverter[J]] protected(override val delegate: C)
-  extends StringConverterDelegate[J, J, C](delegate)
+abstract class StringConverterJavaToJavaDelegate[J <: java.lang.Object, C <: jfxu.StringConverter[J]] protected (
+  override val delegate: C
+) extends StringConverterDelegate[J, J, C](delegate)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.css.StyleOrigin]]. */
 class StyleOriginSpec extends SFXEnumDelegateSpec[jfxcss.StyleOrigin, StyleOrigin](
-  javaClass = classOf[jfxcss.StyleOrigin],
-  scalaClass = classOf[StyleOrigin],
-  companion = StyleOrigin)
+      javaClass = classOf[jfxcss.StyleOrigin],
+      scalaClass = classOf[StyleOrigin],
+      companion = StyleOrigin
+    )

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,6 @@ object Cursor {
   @deprecated("Use ClosedHand; CLOSED_HAND will be removed in a future release", "8.0.60-R10")
   val CLOSED_HAND: Cursor = ClosedHand
 
-
   /**
    * The crosshair cursor type.
    */
@@ -83,7 +82,7 @@ object Cursor {
   val H_RESIZE: Cursor = HResize
 
   /**
-   * The hand cursor type, resembling a pointing hand, often used to indicate that something 
+   * The hand cursor type, resembling a pointing hand, often used to indicate that something
    * can be clicked, such as a hyperlink.
    */
   val Hand: Cursor = new Cursor(jfxs.Cursor.HAND) {}

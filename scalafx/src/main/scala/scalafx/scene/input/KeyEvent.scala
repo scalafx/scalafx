@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,6 @@ class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegat
 
   /**
    * The key code associated with the key in this key pressed or key released event.
-   *
    */
   def code: KeyCode = delegate.getCode
 

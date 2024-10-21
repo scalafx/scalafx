@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,14 +33,15 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * StackedAreaChart Spec tests.
- *
- *
  */
 class StackedAreaChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.StackedAreaChart[Number, Number], StackedAreaChart[Number, Number]](
-    classOf[jfxsc.StackedAreaChart[Number, Number]], classOf[StackedAreaChart[Number, Number]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.StackedAreaChart[Number, Number], StackedAreaChart[Number, Number]](
+      classOf[jfxsc.StackedAreaChart[Number, Number]],
+      classOf[StackedAreaChart[Number, Number]]
+    )
+    with RunOnApplicationThread {
 
-  override def getJavaClassInstance = new jfxsc.StackedAreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
+  override def getJavaClassInstance =
+    new jfxsc.StackedAreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

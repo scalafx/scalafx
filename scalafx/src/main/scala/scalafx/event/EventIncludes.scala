@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.event
 
-import javafx.{event => jfxe}
+import javafx.event as jfxe
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -61,13 +61,16 @@ trait EventIncludes {
   implicit def jfxEvent2sfx(e: jfxe.Event): Event = if (e != null) new Event(e) else null
 
   implicit def jfxEventDispatcher2sfx(e: jfxe.EventDispatcher): EventDispatcher =
-    if (e != null) new EventDispatcher(e) {} else null
+    if (e != null) new EventDispatcher(e) {}
+    else null
 
   implicit def jfxEventDispatchChain2sfx(e: jfxe.EventDispatchChain): EventDispatchChain =
-    if (e != null) new EventDispatchChain(e) {} else null
+    if (e != null) new EventDispatchChain(e) {}
+    else null
 
   implicit def jfxEventTarget2sfx(e: jfxe.EventTarget): EventTarget =
-    if (e != null) new EventTarget(e) {} else null
+    if (e != null) new EventTarget(e) {}
+    else null
 
   /**
    * Converts a
@@ -78,7 +81,8 @@ trait EventIncludes {
    * @param e JavaFX EventType
    * @return ScalaFX EventType
    */
-  implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]): EventType[T] = if (e != null) new EventType[T](e) else null
+  implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]): EventType[T] =
+    if (e != null) new EventType[T](e) else null
 
   /**
    * Converts a
@@ -116,7 +120,7 @@ trait EventIncludes {
    * @tparam J JavaFX Event subclass.
    * @param handler code executed when event is handled.
    * @return JavaFX EventHandler which will wrap the input code `handler`.
-   **/
+   */
   @deprecated("Starting with Scala 2.12 `handle{...}` can be replaced with idiomatic Scala code `_ => {...}`", "R19")
   def handle[J <: jfxe.Event, R](handler: => R): jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
     def handle(event: J): Unit = {
@@ -149,7 +153,7 @@ trait EventIncludes {
   /**
    * Converts a closure to a JavaFX EventHandler. It is used when the event properties ''will be used''.
    *
-   * Enables following use:
+   * Enables the following use:
    * {{{
    * button.onAction = (e:ActionEvent) => {
    *   println("Handling button action: " + e)
@@ -161,11 +165,14 @@ trait EventIncludes {
    * @param handler Closure that that takes scalafx.event.Event as argument.
    * @return JavaFX EventHandler which handle method will call handler
    */
-  implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(implicit jfx2sfx: J => S): jfxe.EventHandler[J] =
+  implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(
+    implicit jfx2sfx: J => S
+  ): jfxe.EventHandler[J] = {
     new jfxe.EventHandler[J] {
       def handle(event: J): Unit = {
-        handler(event)
+        handler(jfx2sfx(event))
       }
     }
+  }
 
 }

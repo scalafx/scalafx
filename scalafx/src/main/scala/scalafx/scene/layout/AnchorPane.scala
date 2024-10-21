@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -109,6 +109,5 @@ object AnchorPane {
 
 }
 
-class AnchorPane(override val delegate: jfxsl.AnchorPane = new jfxsl.AnchorPane) extends Pane(delegate) with SFXDelegate[jfxsl.AnchorPane] {
-
-}
+class AnchorPane(override val delegate: jfxsl.AnchorPane = new jfxsl.AnchorPane) extends Pane(delegate)
+    with SFXDelegate[jfxsl.AnchorPane] {}

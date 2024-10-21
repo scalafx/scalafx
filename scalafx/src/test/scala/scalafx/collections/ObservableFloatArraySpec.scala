@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,10 @@ import scala.collection.mutable.Buffer
  * ObservableFloatArray Spec tests.
  */
 class ObservableFloatArraySpec
-  extends SimpleSFXDelegateSpec[jfxc.ObservableFloatArray, ObservableFloatArray](classOf[jfxc.ObservableFloatArray],
-    classOf[ObservableFloatArray]) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableFloatArray, ObservableFloatArray](
+      classOf[jfxc.ObservableFloatArray],
+      classOf[ObservableFloatArray]
+    ) {
 
   /**
    * Test trait for instance testing.
@@ -47,13 +49,13 @@ class ObservableFloatArraySpec
 
   trait InstanceTests {
     val array0: Array[Float] = Array.empty
-    val array1 = Array(4.0f, 5.0f, 6.0f, 7.0f)
-    val array2 = Array(8.0f, 9.0f, 10.0f, 11.0f, 12.0f)
-    val instance0 = ObservableFloatArray(array0)
-    val instance1 = ObservableFloatArray(array1)
-    val instance2 = ObservableFloatArray(array2)
-    val change = Buffer.empty[(ObservableFloatArray, Change)]
-    var changes = 0
+    val array1               = Array(4.0f, 5.0f, 6.0f, 7.0f)
+    val array2               = Array(8.0f, 9.0f, 10.0f, 11.0f, 12.0f)
+    val instance0            = ObservableFloatArray(array0)
+    val instance1            = ObservableFloatArray(array1)
+    val instance2            = ObservableFloatArray(array2)
+    val change               = Buffer.empty[(ObservableFloatArray, Change)]
+    var changes              = 0
     def onChangeFull(a: ObservableFloatArray, c: Change): Unit = {
       change += ((a, c))
     }
@@ -68,8 +70,7 @@ class ObservableFloatArraySpec
     instance2.onChange(onChangeFull(_, _))
     instance2.onChange(onChangeBrief())
 
-    def verifyChange(n: Int, array: ObservableFloatArray, sizeChanged:
-    Boolean, start: Int, end: Int): Unit = {
+    def verifyChange(n: Int, array: ObservableFloatArray, sizeChanged: Boolean, start: Int, end: Int): Unit = {
       val (a, c) = change(n)
       assert(a eq array)
       assert(c.sizeChanged === sizeChanged)

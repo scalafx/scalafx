@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -82,21 +82,29 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
   val BLACK: FontWeight = Black
 
   protected override def unsortedValues: Array[FontWeight] = Array(
-    Thin, ExtraLight, Light, Normal, Medium, SemiBold, Bold, ExtraBold, Black
+    Thin,
+    ExtraLight,
+    Light,
+    Normal,
+    Medium,
+    SemiBold,
+    Bold,
+    ExtraBold,
+    Black
   )
 
   /** Returns FontWeight by its name. */
   def findByName(name: String): FontWeight = jfxst.FontWeight.findByName(name)
 
-  /** Returns the closest [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
-    * and OpenType specifications.
-    */
+  /**
+   * Returns the closest [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
+   * and OpenType specifications.
+   */
   def findByWeight(weight: Int): FontWeight = jfxst.FontWeight.findByWeight(weight)
 }
 
-
 sealed abstract class FontWeight(override val delegate: jfxst.FontWeight)
-  extends SFXEnumDelegate[jfxst.FontWeight] {
+    extends SFXEnumDelegate[jfxst.FontWeight] {
 
   /** Return the visual weight (degree of blackness or thickness) specified by this FontWeight. */
   def weight: Int = delegate.getWeight

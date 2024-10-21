@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@ object PrinterAttributes {
  * @since 8.0
  */
 final class PrinterAttributes(override val delegate: jfxp.PrinterAttributes)
-  extends SFXDelegate[jfxp.PrinterAttributes] {
+    extends SFXDelegate[jfxp.PrinterAttributes] {
 
   /**
    * The default collation setting.

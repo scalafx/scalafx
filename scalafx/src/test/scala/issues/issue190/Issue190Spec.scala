@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@ class Issue190Spec extends AnyFlatSpec with RunOnApplicationThread {
 
     //    Clipboard.systemClipboard.content = ClipboardContent(
     val content = ClipboardContent(
-      DataFormat.Files -> Seq(new File("Test"), new File("Test2")).asJava,
+      DataFormat.Files     -> Seq(new File("Test"), new File("Test2")).asJava,
       DataFormat.PlainText -> "Test3"
     )
 

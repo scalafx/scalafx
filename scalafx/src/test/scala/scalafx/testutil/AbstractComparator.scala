@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,19 +71,19 @@ private[testutil] trait AbstractComparator extends Assertions {
       (scalaMethod.getParameterTypes.length == argTypes.size) && (scalaMethod.getParameterTypes.toList == argTypes)
 
     /**
-     *
      */
     private def findMethodWithManyArgsVarargs(argTypesExceptLast: List[Class[_]])(method: Method): Boolean =
       (method.getParameterTypes.length == argTypesExceptLast.size + 1) &&
         (method.getParameterTypes.init.toList == argTypesExceptLast) &&
         lastArgumentIsVararg(method)
 
-    def getFinderMethod(javaMethod: Method): Method => Boolean = (javaMethod.getParameterTypes.length, javaMethod.isVarArgs) match {
-      case (0, _) => methodHasNoArgs
-      case (1, true) => methodHasOneArgVararg
-      case (_, true) => findMethodWithManyArgsVarargs(javaMethod.getParameterTypes.toList.init)
-      case (_, false) => findMethodWithManyArgs(javaMethod.getParameterTypes.toList)
-    }
+    def getFinderMethod(javaMethod: Method): Method => Boolean =
+      (javaMethod.getParameterTypes.length, javaMethod.isVarArgs) match {
+        case (0, _)     => methodHasNoArgs
+        case (1, true)  => methodHasOneArgVararg
+        case (_, true)  => findMethodWithManyArgsVarargs(javaMethod.getParameterTypes.toList.init)
+        case (_, false) => findMethodWithManyArgs(javaMethod.getParameterTypes.toList)
+      }
 
     /**
      * Verifies if a method has a determined name.
@@ -147,19 +147,19 @@ private[testutil] trait AbstractComparator extends Assertions {
 
     def classParameterToString(classParameter: Class[_], isVarargs: Boolean = false) = {
       (classParameter.isArray, classParameter.getName.matches("""^\[.$"""), isVarargs) match {
-        case (true, true, true) => classParameter.getName.last + "..."
-        case (true, true, false) => classParameter.getName.last + "[]"
-        case (true, false, true) => classParameter.getName.substring(2).init + "..."
+        case (true, true, true)   => classParameter.getName.last + "..."
+        case (true, true, false)  => classParameter.getName.last + "[]"
+        case (true, false, true)  => classParameter.getName.substring(2).init + "..."
         case (true, false, false) => classParameter.getName.substring(2).init + "[]"
-        case (false, _, _) => classParameter.getName
+        case (false, _, _)        => classParameter.getName
       }
     }
 
     val strParameters = (m.getParameterTypes.length, m.isVarArgs) match {
-      case (0, _) => ""
+      case (0, _)    => ""
       case (1, true) => classParameterToString(m.getParameterTypes.last, isVarargs = true)
       case (_, true) => m.getParameterTypes.init.map(classParameterToString(_)).mkString("", ", ", ", ") +
-        classParameterToString(m.getParameterTypes.last, isVarargs = true)
+          classParameterToString(m.getParameterTypes.last, isVarargs = true)
       case (_, false) => m.getParameterTypes.map(classParameterToString(_)).mkString(", ")
     }
 
@@ -187,22 +187,24 @@ private[testutil] trait AbstractComparator extends Assertions {
   }
 
   /**
-   *
-   *
    * @param javaMethods            Relation of methods from a Java class
    * @param scalaMethods           Relation of methods from a Scala class.
    * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Default value:
    *                               [[scala.Nil]].
    */
   @tailrec
-  private def compare(javaMethods: List[Method], scalaMethods: List[Method], javaMethodsNotMirrored: List[Method] = Nil): List[Method] = {
+  private def compare(
+    javaMethods: List[Method],
+    scalaMethods: List[Method],
+    javaMethodsNotMirrored: List[Method] = Nil
+  ): List[Method] = {
     javaMethods match {
       case Nil => javaMethodsNotMirrored
       case javaMethod :: otherMethods =>
-        val finderMethod = MethodsComparators.getFinderMethod(javaMethod)
-        val desirableName = getDesirableMethodName(javaMethod)
+        val finderMethod   = MethodsComparators.getFinderMethod(javaMethod)
+        val desirableName  = getDesirableMethodName(javaMethod)
         val scalaHasMethod = scalaMethods.filter(MethodsComparators.sameName(desirableName, _)).exists(finderMethod)
-        val javaMethods = if (scalaHasMethod) javaMethodsNotMirrored else javaMethod :: javaMethodsNotMirrored
+        val javaMethods    = if (scalaHasMethod) javaMethodsNotMirrored else javaMethod :: javaMethodsNotMirrored
 
         compare(otherMethods, scalaMethods, javaMethods)
     }
@@ -217,16 +219,20 @@ private[testutil] trait AbstractComparator extends Assertions {
    * @param useStatic  If it will be compared only static methods (`true`) or only declared methods (`false`).
    */
   private def compareMethods(javaClass: Class[_], scalaClass: Class[_], useStatic: Boolean): Unit = {
-    val javaMethods = groupMethods(javaClass, useStatic)
+    val javaMethods  = groupMethods(javaClass, useStatic)
     val scalaMethods = groupMethods(scalaClass, useStatic)
 
     val methodsNotFound = compare(javaMethods, scalaMethods)
 
-    assert(methodsNotFound.isEmpty, "Missing %s Methods: ".format(if (useStatic) "Static" else "Declared") + methodsNotFound.map(methodToString).mkString(", "))
+    assert(
+      methodsNotFound.isEmpty,
+      "Missing %s Methods: ".format(if (useStatic) "Static" else "Declared") + methodsNotFound.map(methodToString)
+        .mkString(", ")
+    )
   }
 
   //////////////////
-  // HELPER METHODS 
+  // HELPER METHODS
   //////////////////
 
   /**
@@ -242,7 +248,7 @@ private[testutil] trait AbstractComparator extends Assertions {
   protected def isPublicMethod(method: Method): Boolean = Modifier.isPublic(method.getModifiers)
 
   ////////////////////
-  // ABSTRACT METHODS 
+  // ABSTRACT METHODS
   ////////////////////
 
   /**
@@ -255,12 +261,11 @@ private[testutil] trait AbstractComparator extends Assertions {
   protected def isSpecialMethodName(methodName: String): Boolean
 
   /**
-   *
    */
   protected def getDesirableMethodName(javaMethod: Method): String
 
   //////////////////
-  // PUBLIC METHODS 
+  // PUBLIC METHODS
   //////////////////
 
   /**

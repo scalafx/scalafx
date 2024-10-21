@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,6 +38,7 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object FilteredBuffer {
+
   /**
    * Converts a ScalaFX FilteredBuffer to its JavaFX counterpart FilteredList.
    *
@@ -57,8 +58,8 @@ object FilteredBuffer {
  * @define ORIGINALDOC Original Documentation]].
  */
 class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
-  extends TransformationBuffer[E, E](delegate)
-  with SFXDelegate[jfxct.FilteredList[E]] {
+    extends TransformationBuffer[E, E](delegate)
+    with SFXDelegate[jfxct.FilteredList[E]] {
 
   /**
    * Constructs a new FilteredBuffer wrapper around the source buffer.
@@ -75,13 +76,16 @@ class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
    * @param predicate the predicate to match the elements. Cannot be null.
    */
   def this(source: ObservableBuffer[E], predicate: (_ >: E) => Boolean) =
-    this(delegate = new jfxct.FilteredList[E](source.delegate, new ju.function.Predicate[E] {
-      override def test(t: E): Boolean = predicate(t)
-    }))
-
+    this(delegate =
+      new jfxct.FilteredList[E](
+        source.delegate,
+        new ju.function.Predicate[E] {
+          override def test(t: E): Boolean = predicate(t)
+        }
+      )
+    )
 
   /**
-   *
    * The predicate that will match the elements that will be in this FilteredBuffer.
    */
   def predicate: ObjectProperty[ju.function.Predicate[_ >: E]] = delegate.predicateProperty
@@ -90,8 +94,11 @@ class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
   }
 
   def predicate_=(predicate: (E) => Boolean): Unit = {
-    ObjectProperty.fillProperty(delegate.predicateProperty, new ju.function.Predicate[E] {
-      override def test(t: E): Boolean = predicate(t)
-    })
+    ObjectProperty.fillProperty(
+      delegate.predicateProperty,
+      new ju.function.Predicate[E] {
+        override def test(t: E): Boolean = predicate(t)
+      }
+    )
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,9 +44,9 @@ object DoubleProperty {
 }
 
 class DoubleProperty(override val delegate: jfxbp.DoubleProperty = new jfxbp.SimpleDoubleProperty)
-  extends ReadOnlyDoubleProperty(delegate)
-  with Property[Double, Number]
-  with SFXDelegate[jfxbp.DoubleProperty] {
+    extends ReadOnlyDoubleProperty(delegate)
+    with Property[Double, Number]
+    with SFXDelegate[jfxbp.DoubleProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleDoubleProperty(bean, name))
 

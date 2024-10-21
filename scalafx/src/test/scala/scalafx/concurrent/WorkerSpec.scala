@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,23 +26,20 @@
  */
 package scalafx.concurrent
 
-import javafx.{concurrent => jfxc}
-
-import scalafx.Includes._
+import javafx.concurrent as jfxc
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Worker Spec tests.
- *
- *
  */
 class WorkerSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.Worker[T], Worker[T]](classOf[jfxc.Worker[T]], classOf[Worker[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.Worker[T], Worker[T]](classOf[jfxc.Worker[T]], classOf[Worker[T]]) {
 
-  override protected def getScalaClassInstance = Task[T](null.asInstanceOf[T])
+  override protected def getScalaClassInstance: Task[T] = Task[T](null.asInstanceOf[T])
 
-  override protected def getJavaClassInstance = new jfxc.Task[T] {
-    def call = null.asInstanceOf[T]
+  override protected def getJavaClassInstance: jfxc.Task[T] = new jfxc.Task[T] {
+    def call: T = null.asInstanceOf[T]
   }
 
 }

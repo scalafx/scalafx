@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HPos.html javafx.geometry.HPos]] */
 object HPos
-  extends SFXEnumDelegateCompanion[jfxg.HPos, HPos] {
+    extends SFXEnumDelegateCompanion[jfxg.HPos, HPos] {
 
   /** Indicates centered horizontal position. */
   case object Center extends HPos(jfxg.HPos.CENTER)
@@ -54,6 +54,5 @@ object HPos
   protected override def unsortedValues: Array[HPos] = Array(Left, Center, Right)
 }
 
-
 sealed abstract class HPos(override val delegate: jfxg.HPos)
-  extends SFXEnumDelegate[jfxg.HPos]
+    extends SFXEnumDelegate[jfxg.HPos]

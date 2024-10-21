@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,22 +26,28 @@
  */
 package scalafx.util.converter
 
-import java.util.Locale
+import javafx.util.converter as jfxuc
+import scalafx.Includes.*
 
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes._
+import java.util.Locale
 
 /**
  * PercentageStringConverter Spec tests.
- *
- *
  */
 class PercentageStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[Number, jfxuc.PercentageStringConverter, Number, PercentageStringConverter](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter], classOf[Number]) {
+    extends AbstractStringConverterDelegateSpec[
+      Number,
+      jfxuc.PercentageStringConverter,
+      Number,
+      PercentageStringConverter
+    ](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter], classOf[Number]) {
 
-  val examples = List((java.lang.Integer.valueOf(10), "1,000%"), (java.lang.Integer.valueOf(0), "0%"),
-    (java.lang.Integer.valueOf(-10), "-1,000%"))
+  val examples: List[(Integer, String)] = List(
+    (java.lang.Integer.valueOf(10), "1,000%"),
+    (java.lang.Integer.valueOf(0), "0%"),
+    (java.lang.Integer.valueOf(-10), "-1,000%")
+  )
 
-  override protected def getScalaClassInstance = new PercentageStringConverter(Locale.US)
+  override protected def getScalaClassInstance: PercentageStringConverter = new PercentageStringConverter(Locale.US)
 
 }

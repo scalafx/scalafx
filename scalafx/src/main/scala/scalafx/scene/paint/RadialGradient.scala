@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,10 +43,28 @@ object RadialGradient {
    */
   def valueOf(value: String): RadialGradient = jfxsp.RadialGradient.valueOf(value)
 
-  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]): RadialGradient = {
+  def apply(
+    focusAngle: Double,
+    focusDistance: Double,
+    centerX: Double,
+    centerY: Double,
+    radius: Double,
+    proportional: Boolean,
+    cycleMethod: CycleMethod,
+    stops: List[Stop]
+  ): RadialGradient = {
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
-    new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
+    new RadialGradient(new jfxsp.RadialGradient(
+      focusAngle,
+      focusDistance,
+      centerX,
+      centerY,
+      radius,
+      proportional,
+      cycleMethod,
+      stopsList
+    ))
   }
 
   /* This should work but it looks like it calls the constructor that
@@ -54,17 +72,54 @@ object RadialGradient {
     def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
       new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops: _*))
    */
-  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*): RadialGradient = {
+  def apply(
+    focusAngle: Double,
+    focusDistance: Double,
+    centerX: Double,
+    centerY: Double,
+    radius: Double,
+    proportional: Boolean,
+    cycleMethod: CycleMethod,
+    stops: Stop*
+  ): RadialGradient = {
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
-    new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
+    new RadialGradient(new jfxsp.RadialGradient(
+      focusAngle,
+      focusDistance,
+      centerX,
+      centerY,
+      radius,
+      proportional,
+      cycleMethod,
+      stopsList
+    ))
   }
 }
 
-class RadialGradient(override val delegate: jfxsp.RadialGradient) extends Paint(delegate) with SFXDelegate[jfxsp.RadialGradient] {
+class RadialGradient(override val delegate: jfxsp.RadialGradient) extends Paint(delegate)
+    with SFXDelegate[jfxsp.RadialGradient] {
 
-  def this(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: jfxsp.CycleMethod, stops: Seq[jfxsp.Stop]) =
-    this(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops.asJava))
+  def this(
+    focusAngle: Double,
+    focusDistance: Double,
+    centerX: Double,
+    centerY: Double,
+    radius: Double,
+    proportional: Boolean,
+    cycleMethod: jfxsp.CycleMethod,
+    stops: Seq[jfxsp.Stop]
+  ) =
+    this(new jfxsp.RadialGradient(
+      focusAngle,
+      focusDistance,
+      centerX,
+      centerY,
+      radius,
+      proportional,
+      cycleMethod,
+      stops.asJava
+    ))
 
   /**
    * Defines the X coordinate of the center point of the circle defining the gradient.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  * Companion Object for [[scalafx.print.PrintQuality]].
  */
 object PrintQuality
-  extends SFXEnumDelegateCompanion[jfxp.PrintQuality, PrintQuality] {
+    extends SFXEnumDelegateCompanion[jfxp.PrintQuality, PrintQuality] {
 
   /**
    * Specify DRAFT quality printing.
@@ -63,4 +63,4 @@ object PrintQuality
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintQuality.html JavaFX PrintQuality]].
  */
 sealed abstract class PrintQuality(override val delegate: jfxp.PrintQuality)
-  extends SFXEnumDelegate[jfxp.PrintQuality]
+    extends SFXEnumDelegate[jfxp.PrintQuality]

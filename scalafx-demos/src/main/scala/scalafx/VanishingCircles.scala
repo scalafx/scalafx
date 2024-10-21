@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 
 package scalafx
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.animation.Animation.Indefinite
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BoxBlur
-import scalafx.scene.paint.Color._
+import scalafx.scene.paint.Color.*
 import scalafx.scene.shape.Circle
 
 import scala.language.postfixOps
@@ -52,28 +52,30 @@ object VanishingCircles extends JFXApp3 {
       height = 600
       scene = new Scene {
         fill = Black
-        circles = for (i <- 0 until 50) yield new Circle {
-          centerX = random * 800
-          centerY = random * 600
-          radius = 150
-          fill = color(random, random, random, 0.2d)
-          effect = new BoxBlur(10, 10, 3)
-          strokeWidth <== when(hover) choose 4 otherwise 0
-          stroke = White
-          onMouseClicked = _ =>
-            Timeline(at(3.s) {
-              radius -> 0
-            }).play()
-        }
+        circles =
+          for (i <- 0 until 50) yield new Circle {
+            centerX = random() * 800
+            centerY = random() * 600
+            radius = 150
+            fill = color(random(), random(), random(), 0.2d)
+            effect = new BoxBlur(10, 10, 3)
+            strokeWidth <== when(hover) choose 4 otherwise 0
+            stroke = White
+            onMouseClicked = _ =>
+              Timeline(at(3.s) {
+                radius -> 0
+              }).play()
+          }
         content = circles
       }
     }
     new Timeline {
       cycleCount = Indefinite
       autoReverse = true
-      keyFrames = for (circle <- circles) yield at(40.s) {
-        Set(circle.centerX -> random * stage.width(), circle.centerY -> random * stage.height())
-      }
+      keyFrames =
+        for (circle <- circles) yield at(40.s) {
+          Set(circle.centerX -> random() * stage.width(), circle.centerY -> random() * stage.height())
+        }
     }.play()
   }
 }

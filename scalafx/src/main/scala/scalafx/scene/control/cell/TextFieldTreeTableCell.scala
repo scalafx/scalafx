@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2024, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ import scala.language.implicitConversions
  * @define TTYPE   The type of the elements contained within the `ListView`.
  * @define FLVINIT Provides a `TextField that allows editing of the cell content when the cell is double-clicked, or when TreeView.edit(javafx.scene.control.TreeItem) is called.
  *                 @define FLVRET A Function that can be inserted into the cell factory property of a `TreeView`, that enables textual editing of the content.
- **/
+ */
 object TextFieldTreeTableCell {
 
   /**
@@ -54,7 +54,8 @@ object TextFieldTreeTableCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTreeTableCell2jfx[S, T](cell: TextFieldTreeTableCell[S, T]): jfxsc.cell.TextFieldTreeTableCell[S, T] =
+  implicit def sfxTextFieldTreeTableCell2jfx[S, T](cell: TextFieldTreeTableCell[S, T])
+    : jfxsc.cell.TextFieldTreeTableCell[S, T] =
     if (cell != null) cell.delegate else null
 
   /**
@@ -78,7 +79,9 @@ object TextFieldTreeTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](StringConverter[T])", since = "1.0")
-  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.TextFieldTreeTableCell.forTreeTableColumn[S, T](converter)
+  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T])
+    : jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] =
+    jfxscc.TextFieldTreeTableCell.forTreeTableColumn[S, T](converter)
 
 }
 
@@ -91,11 +94,12 @@ object TextFieldTreeTableCell {
  *
  * @define TFTC `TextFieldTreeTableCell`
  */
-class TextFieldTreeTableCell[S, T](override val delegate: jfxscc.TextFieldTreeTableCell[S, T] = new jfxscc.TextFieldTreeTableCell[S, T])
-  extends TreeTableCell[S, T](delegate)
-  with ConvertableCell[jfxscc.TextFieldTreeTableCell[S, T], T, T]
-  with UpdatableCell[jfxscc.TextFieldTreeTableCell[S, T], T]
-  with SFXDelegate[jfxscc.TextFieldTreeTableCell[S, T]] {
+class TextFieldTreeTableCell[S, T](override val delegate: jfxscc.TextFieldTreeTableCell[S, T] =
+  new jfxscc.TextFieldTreeTableCell[S, T])
+    extends TreeTableCell[S, T](delegate)
+    with ConvertableCell[jfxscc.TextFieldTreeTableCell[S, T], T, T]
+    with UpdatableCell[jfxscc.TextFieldTreeTableCell[S, T], T]
+    with SFXDelegate[jfxscc.TextFieldTreeTableCell[S, T]] {
 
   /**
    * Creates a `TextFieldTreeTableCell` that provides a `TextField` when put into editing mode that allows editing of the
