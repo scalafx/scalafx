@@ -8,10 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '21', '23' ]
+        java: [ '22', '23', '24' ]
     name: Java ${{ matrix.Java }} sample
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +20,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.java }}
+          cache: sbt
+      - uses: sbt/setup-sbt@v1
       - name: Run headless test
         uses: coactions/setup-xvfb@v1
         with:
