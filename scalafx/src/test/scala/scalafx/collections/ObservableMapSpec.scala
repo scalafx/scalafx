@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,14 @@
  */
 package scalafx.collections
 
-import javafx.{collections => jfxc}
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
-import scalafx.collections.ObservableMap._
+import javafx.collections as jfxc
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
+import scalafx.collections.ObservableMap.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-import scala.collection.JavaConverters._
-import scala.collection.mutable._
+import scala.collection.JavaConverters.*
+import scala.collection.mutable
 
 /**
  * ObservableMap[K, V] Spec tests.
@@ -53,24 +53,24 @@ class ObservableMapSpec[K, V]
    * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(
-    generatedMap: Map[Int, String],
+    generatedMap: mutable.Map[Int, String],
     originalMap: ObservableMap[Int, String],
     shouldBeTheSame: Boolean
   ): Unit = {
     if (shouldBeTheSame) {
-      generatedMap should be theSameInstanceAs (originalMap)
+      generatedMap should be theSameInstanceAs originalMap
     } else {
       generatedMap should not be theSameInstanceAs(originalMap)
       generatedMap.getClass.getInterfaces.contains(classOf[ObservableMap[Int, String]]) should be(true)
     }
   }
 
-  override def getScalaClassInstance = ObservableMap.empty
+  override def getScalaClassInstance: ObservableMap[K, V] = ObservableMap.empty[K, V]
 
-  override def getJavaClassInstance = jfxc.FXCollections.observableHashMap[K, V]
+  override def getJavaClassInstance: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableHashMap[K, V]
 
   it should "generate new instances using Companion's apply" in {
-    def assertGeneratedMap(map: Map[Int, String]): Unit = {
+    def assertGeneratedMap(map: mutable.Map[Int, String]): Unit = {
       map.toSet should equal(Map((1, "one"), (2, "two")).toSet)
     }
 
@@ -82,8 +82,8 @@ class ObservableMapSpec[K, V]
     map1.put(2, "two")
     assertGeneratedMap(ObservableMap.from(map1.asScala))
 
-    val map2 = Map.empty[Int, String]
-    map2 += ((1, "one"), (2, "two"))
+    val map2 = mutable.Map.empty[Int, String]
+    map2 ++= Seq((1, "one"), (2, "two"))
     assertGeneratedMap(ObservableMap.from(map2))
   }
 
@@ -123,7 +123,7 @@ class ObservableMapSpec[K, V]
     // Preparation
     val map = ObservableMap((1, "one"), (2, "two"))
     map onChange {
-      (sourceMap, change) => sourceMap should be(map)
+      (sourceMap, *) => sourceMap should be(map)
     }
 
     // Execution
@@ -133,22 +133,22 @@ class ObservableMapSpec[K, V]
   it should "notify each addition individually" in {
     // Preparation
     val map          = ObservableMap.empty[Int, String]
-    val addedEntries = Buffer.empty[(Int, String)]
+    val addedEntries = mutable.Buffer.empty[(Int, String)]
     map onChange {
-      (sourceMap, change) =>
+      (*, change) =>
         change match {
-          case Add(key, valueAdded) => {
-            addedEntries += ((key, valueAdded))
+          case Add(key1, valueAdded) => {
+            addedEntries += ((key1, valueAdded))
           }
-          case _ => fail("Unexpected change: " + change)
+          case _ => fail(s"Unexpected change: $change")
         }
     }
 
     // Execution
     map(0) = 0.toString
-    compareInstances((map += (1 -> 1.toString)), map, true)
-    compareInstances((map += (2 -> 2.toString) += (3 -> 3.toString)), map, true)
-    compareInstances((map += ((4, 4.toString))), map, true)
+    compareInstances(map += (1 -> 1.toString), map, true)
+    compareInstances(map += (2 -> 2.toString) += (3 -> 3.toString), map, true)
+    compareInstances(map += ((4, 4.toString)), map, true)
     compareInstances((map += ((5, 5.toString), (6, 6.toString))), map, true)
     compareInstances((map += (7 -> 7.toString, 8 -> 8.toString)), map, true)
     compareInstances((map ++= List((9, 9.toString))), map, true)
@@ -172,35 +172,34 @@ class ObservableMapSpec[K, V]
   it should "notify each removing individually" in {
     // Preparation
     val map            = ObservableMap.from((0 to 20).map(i => (i, i.toString)))
-    val removedEntries = Buffer.empty[(Int, String)]
+    val removedEntries = mutable.Buffer.empty[(Int, String)]
     map onChange {
-      (sourceMap, change) =>
+      (*, change) =>
         change match {
-          case Remove(key, valueRemoved) => {
-            removedEntries += ((key, valueRemoved))
-          }
-          case _ => fail("Unexpected change: " + change)
+          case Remove(key1, valueRemoved) =>
+            removedEntries += ((key1, valueRemoved))
+          case _ => fail(s"Unexpected change: $change")
         }
     }
 
     // Execution
-    compareInstances((map -= 0), map, true)
-    compareInstances((map -= 1 -= 2), map, true)
-    compareInstances((map -= (3)), map, true)
-    compareInstances((map -= (4, 5)), map, true)
-    compareInstances((map --= List(6)), map, true)
-    compareInstances((map --= List(7, 8)), map, true)
-    (map remove (9)) should equal(Option(9.toString))
+    compareInstances(map -= 0, map, true)
+    compareInstances(map -= 1 -= 2, map, true)
+    compareInstances(map -= 3, map, true)
+    compareInstances(map -= (4, 5), map, true)
+    compareInstances(map --= List(6), map, true)
+    compareInstances(map --= List(7, 8), map, true)
+    (map remove 9) should equal(Option(9.toString))
     // Trying remove not registered key. Should not activate onchange
     map -= -1
     (map remove 1) should be(None)
     // Next operations must not affect original map, so they must not call onchange function
-    compareInstances((map - 10), map, false)
-    compareInstances((map - 11 - 12), map, false)
-    compareInstances((map - (13)), map, false)
-    compareInstances((map - (14, 15)), map, false)
-    compareInstances((map -- List(16)), map, false)
-    compareInstances((map -- List(17, 18)), map, false)
+    compareInstances(map - 10, map, false)
+    compareInstances(map - 11 - 12, map, false)
+    compareInstances(map - 13, map, false)
+    compareInstances(map - (14, 15), map, false)
+    compareInstances(map -- List(16), map, false)
+    compareInstances(map -- List(17, 18), map, false)
 
     // First Verification
     map should equal(ObservableMap.from((10 to 20).map(i => (i, i.toString))))
@@ -212,7 +211,7 @@ class ObservableMapSpec[K, V]
     //      The `for` loop implements operation equivalent to `map.retain`
     //      without throwing ConcurrentModificationException.
     //    compareInstances(map.retain((i, str) => i % 2 == 0), map, true)
-    for (k <- map.keys.toArray if (k % 2 != 0)) { map.remove(k) }
+    for (k <- map.keys.toArray if k % 2 != 0) { map.remove(k) }
     map should equal(ObservableMap.from((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
     removedEntries.toList.sortWith(_._1 < _._1) should equal(
       (10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList
@@ -230,17 +229,16 @@ class ObservableMapSpec[K, V]
   it should "notify any replacement individually" in {
     // Preparation
     val map             = ObservableMap.from((0 to 20).map(i => (i, i.toString)))
-    val replacedEntries = Buffer.empty[(Int, String, String)]
+    val replacedEntries = mutable.Buffer.empty[(Int, String, String)]
     map onChange {
-      (sourceMap, change) =>
+      (*, change) =>
         change match {
-          case Replace(key, valueAdded, valueRemoved) => {
-            replacedEntries += ((key, valueAdded, valueRemoved))
-          }
-          case _ => fail("Unexpected change: " + change)
+          case Replace(key1, valueAdded, valueRemoved) =>
+            replacedEntries += ((key1, valueAdded, valueRemoved))
+          case _ => fail(s"Unexpected change: $change")
         }
     }
-    val expectedEntries = Buffer.empty[(Int, String, String)]
+    val expectedEntries = mutable.Buffer.empty[(Int, String, String)]
 
     // Execution. compareInstances method is not called because operations below was tested yet.
     // Operations that change this map
@@ -280,30 +278,30 @@ class ObservableMapSpec[K, V]
 
   it should "keep his behavior with other types of sets beyond HashMap" in {
     // Preparation
-    val map           = ObservableMap.from(new LinkedHashMap[Int, String])
-    val addedValues   = Buffer.empty[(Int, String)]
-    val removedValues = Buffer.empty[(Int, String)]
+    val map           = ObservableMap.from(new mutable.LinkedHashMap[Int, String])
+    val addedValues   = mutable.Buffer.empty[(Int, String)]
+    val removedValues = mutable.Buffer.empty[(Int, String)]
     map onChange {
-      (sourceSet, change) =>
+      (*, change) =>
         change match {
-          case Add(key, value)    => addedValues += ((key, value))
-          case Remove(key, value) => removedValues += ((key, value))
-          case Replace(key, added, removed) => {
-            addedValues += ((key, added))
-            removedValues += ((key, removed))
+          case Add(key1, value1)    => addedValues += ((key1, value1))
+          case Remove(key1, value1) => removedValues += ((key1, value1))
+          case Replace(key1, added, removed) => {
+            addedValues += ((key1, added))
+            removedValues += ((key1, removed))
           }
         }
     }
 
     // Execution
-    compareInstances((map += ((3, 3.toString), (1, 1.toString), (5, 5.toString))), map, true)
-    compareInstances((map -= (1, 4)), map, true)
+    compareInstances((map ++= Seq((3, 3.toString), (1, 1.toString), (5, 5.toString))), map, true)
+    compareInstances(map --= Seq(1, 4), map, true)
     map(3) = "three"
 
     // Verification
     map.toList should equal(List((3, "three"), (5, 5.toString)))
-    addedValues should equal(Buffer((3, 3.toString), (1, 1.toString), (5, 5.toString), (3, "three")))
-    removedValues should equal(Buffer((1, 1.toString), (3, 3.toString)))
+    addedValues should equal(mutable.Buffer((3, 3.toString), (1, 1.toString), (5, 5.toString), (3, "three")))
+    removedValues should equal(mutable.Buffer((1, 1.toString), (3, 3.toString)))
   }
 
 }

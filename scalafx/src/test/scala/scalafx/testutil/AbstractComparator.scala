@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -130,9 +130,9 @@ private[testutil] trait AbstractComparator extends Assertions {
     def scalaizePropertyNames(m: Method): String = {
       val name = m.getName
 
-      if (isSetter(m)) name(3).toLower + name.substring(4) + "_="
-      else if (isGetter(m)) name(3).toLower + name.substring(4)
-      else if (isBooleanGetter(m)) name(2).toLower + name.substring(3)
+      if (isSetter(m)) s"${name(3).toLower}${name.substring(4)}_="
+      else if (isGetter(m)) s"${name(3).toLower}${name.substring(4)}"
+      else if (isBooleanGetter(m)) s"${name(2).toLower}${name.substring(3)}"
       else name
     }
 
@@ -147,10 +147,10 @@ private[testutil] trait AbstractComparator extends Assertions {
 
     def classParameterToString(classParameter: Class[_], isVarargs: Boolean = false) = {
       (classParameter.isArray, classParameter.getName.matches("""^\[.$"""), isVarargs) match {
-        case (true, true, true)   => classParameter.getName.last + "..."
-        case (true, true, false)  => classParameter.getName.last + "[]"
-        case (true, false, true)  => classParameter.getName.substring(2).init + "..."
-        case (true, false, false) => classParameter.getName.substring(2).init + "[]"
+        case (true, true, true)   => s"${classParameter.getName.last}..."
+        case (true, true, false)  => s"${classParameter.getName.last}[]"
+        case (true, false, true)  => s"${classParameter.getName.substring(2).init}..."
+        case (true, false, false) => s"${classParameter.getName.substring(2).init}[]"
         case (false, _, _)        => classParameter.getName
       }
     }

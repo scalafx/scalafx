@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,13 @@
  */
 package scalafx.graphics3d
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
-import scalafx.scene._
+import scalafx.scene.*
 import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, DrawMode}
-import scalafx.scene.transform.Transform._
+import scalafx.scene.transform.Transform.*
 import scalafx.scene.transform.{Rotate, Translate}
 
 /** Demo of a triangular frame of a 3D box, originally based on example in Ensemble 8. */
@@ -49,7 +49,7 @@ object Simple3DBoxApp extends JFXApp3 {
         }
         fill = Color.AliceBlue
         camera = new PerspectiveCamera(true) {
-          transforms += (new Rotate(-20, Rotate.YAxis), new Rotate(-20, Rotate.XAxis), new Translate(0, 0, -15))
+          transforms ++= Seq(new Rotate(-20, Rotate.YAxis), new Rotate(-20, Rotate.XAxis), new Translate(0, 0, -15))
         }
       }
     }

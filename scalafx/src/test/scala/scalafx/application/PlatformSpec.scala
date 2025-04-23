@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,18 +42,18 @@ class PlatformSpec extends AnyFlatSpec with Matchers with RunOnApplicationThread
     val scalaMethods = Platform.getClass.getMethods
     for (jm <- javaMethods if Modifier.isPublic(jm.getModifiers) && Modifier.isStatic(jm.getModifiers)) {
       val found = scalaMethods.exists(sm => {
-        def firstToUpper(s: String) = s.head.toUpper + s.tail
+        def firstToUpper(s: String) = s"${s.head.toUpper}${s.tail}"
 
         val javaName  = jm.getName
         val scalaName = sm.getName
         scalaName == javaName ||
-        "is" + firstToUpper(scalaName) == javaName ||
-        "get" + firstToUpper(scalaName) == javaName ||
-        "set" + firstToUpper(scalaName) == javaName ||
-        scalaName + "Property" == javaName
+        s"is${firstToUpper(scalaName)}" == javaName ||
+        s"get${firstToUpper(scalaName)}" == javaName ||
+        s"set${firstToUpper(scalaName)}" == javaName ||
+        s"${scalaName}Property" == javaName
       })
 
-      assert(found, "Declares equivalent of `" + jm.getName + "`")
+      assert(found, s"Declares equivalent of `${jm.getName}`")
     }
   }
 
