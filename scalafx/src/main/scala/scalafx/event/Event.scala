@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.event
 
-import javafx.{event => jfxe}
-import scalafx.Includes._
+import javafx.event as jfxe
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -47,6 +47,8 @@ object Event {
   /**
    * Common supertype for all event types.
    */
+  val Any: EventType[jfxe.Event] = jfxe.Event.ANY
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY: EventType[jfxe.Event] = jfxe.Event.ANY
 
   /**

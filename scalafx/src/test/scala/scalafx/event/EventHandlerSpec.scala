@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.event.{ActionEvent, Event}
 import scalafx.scene.Group
 import scalafx.scene.control.Button
@@ -39,7 +39,7 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
     val group = new Group()
 
     var counter = 0
-    val subscription = group.handleEvent(Event.ANY) {
+    val subscription = group.handleEvent(Event.Any) {
       () =>
         // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
         counter += 1
