@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,32 +58,32 @@ class JFXApp3ParametersSpec
   private def getParameters(args: Seq[String]): JFXApp3.Parameters = JFXApp3.Parameters(args)
 
   it should "returns a empty list of parameters from empty arguments" in {
-    getParameters(Array[String]()).raw shouldBe empty
+    getParameters(Seq.empty[String]).raw shouldBe empty
   }
 
   it should "allows raw arguments" in {
-    val args       = Array("arg1", "arg2")
+    val args       = Seq("arg1", "arg2")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs args.toSeq
-    parameters.unnamed should contain theSameElementsInOrderAs args.toSeq
+    parameters.raw should contain theSameElementsInOrderAs args
+    parameters.unnamed should contain theSameElementsInOrderAs args
     parameters.named shouldBe empty
   }
 
   it should "allows named arguments" in {
-    val args       = Array("--arg1=value1", "--arg2=value2")
+    val args       = Seq("--arg1=value1", "--arg2=value2")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs args.toSeq
+    parameters.raw should contain theSameElementsInOrderAs args
     parameters.unnamed shouldBe empty
     parameters.named should contain theSameElementsAs Map("arg1" -> "value1", "arg2" -> "value2")
   }
 
   it should "allows mix raw and named arguments" in {
-    val args       = Array("arg1", "--arg2=value2", "-arg3=value3")
+    val args       = Seq("arg1", "--arg2=value2", "-arg3=value3")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs args.toSeq
+    parameters.raw should contain theSameElementsInOrderAs args
     parameters.unnamed should contain theSameElementsInOrderAs Seq("arg1", "-arg3=value3")
     parameters.named should contain theSameElementsAs Map("arg2" -> "value2")
   }

@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "23.0.1"
-val scalafxVersion = "23.0.1-R34"
+val javaFXVersion  = "24"
+val scalafxVersion = "24.0.0-R34-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -50,8 +50,8 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.20"
-val Scala2_13 = "2.13.15"
-val Scala3_3  = "3.3.4"
+val Scala2_13 = "2.13.16"
+val Scala3_3  = "3.3.5"
 
 // Dependencies
 lazy val javafxModules =

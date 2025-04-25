@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{media => jfxsm}
-import scalafx.Includes._
+import javafx.scene.media as jfxsm
+import scalafx.Includes.*
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
@@ -39,11 +39,15 @@ object EqualizerBand {
   /**
    * Maximum possible gain value.
    */
+  val MaxGain: Double = jfxsm.EqualizerBand.MAX_GAIN
+  @deprecated("Use MaxGain; MAX_GAIN will be removed in a future release", "8.0.60-R10")
   val MAX_GAIN: Double = jfxsm.EqualizerBand.MAX_GAIN
 
   /**
    * Minimum possible gain value.
    */
+  val MinGain: Double = jfxsm.EqualizerBand.MIN_GAIN
+  @deprecated("Use MinGain; MIN_GAIN will be removed in a future release", "8.0.60-R10")
   val MIN_GAIN: Double = jfxsm.EqualizerBand.MIN_GAIN
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ class TableViewSpec[S]
     val tableView = new TableView[String]()
     tableView.columns.size should (equal(0))
 
-    tableView.columns += (firstTC, lastTC)
+    tableView.columns ++= Seq(firstTC, lastTC)
     tableView.columns.size should (equal(2))
   }
 
@@ -60,7 +60,7 @@ class TableViewSpec[S]
     val tableView = new TableView[String]()
     tableView.columns.size should (equal(0))
 
-    tableView.columns += (firstTC, lastTC)
+    tableView.columns ++= Seq(firstTC, lastTC)
     tableView.columns.size should (equal(2))
 
     tableView.sortOrder.size should (equal(0))

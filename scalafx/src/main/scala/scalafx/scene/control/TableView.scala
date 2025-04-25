@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import javafx.{collections as jfxc, event as jfxe, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
@@ -88,9 +88,89 @@ object TableView {
    *
    * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
    */
-  @deprecated(since = "JavaFX 20")
+  @deprecated("Use ConstrainedResizePolicyFlexLastColumn instead.", since = "JavaFX 20")
   val ConstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
     jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
+
+  /**
+   * A resize policy that adjusts other columns in order to fit the table width.
+   * During UI adjustment, proportionately resizes all columns to preserve the total width.
+   *
+   * When column constraints make it impossible to fit all the columns into the allowed area,
+   * the columns are either clipped, or an empty space appears.  This policy disables the horizontal
+   * scroll bar.
+   *
+   * @since 20
+   */
+  val ConstrainedResizePolicyAllColumns: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS
+
+  /**
+   * A resize policy that adjusts the last column in order to fit the table width.
+   * During UI adjustment, resizes the last column only to preserve the total width.
+   *
+   * When column constraints make it impossible to fit all the columns into the allowed area,
+   * the columns are either clipped, or an empty space appears.  This policy disables the horizontal
+   * scroll bar.
+   *
+   * @since 20
+   */
+  val ConstrainedResizePolicyLastColumn: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY_LAST_COLUMN
+
+  /**
+   * A resize policy that adjusts the next column in order to fit the table width.
+   * During UI adjustment, resizes the next column the opposite way.
+   *
+   * When column constraints make it impossible to fit all the columns into the allowed area,
+   * the columns are either clipped, or an empty space appears.  This policy disables the horizontal
+   * scroll bar.
+   *
+   * @since 20
+   */
+  val ConstrainedResizePolicyNextColumn: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY_NEXT_COLUMN
+
+  /**
+   * A resize policy that adjusts subsequent columns in order to fit the table width.
+   * During UI adjustment, proportionally resizes subsequent columns to preserve the total width.
+   *
+   * When column constraints make it impossible to fit all the columns into the allowed area,
+   * the columns are either clipped, or an empty space appears.  This policy disables the horizontal
+   * scroll bar.
+   *
+   * @since 20
+   */
+  val ConstrainedResizePolicySubsequentColumns: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY_SUBSEQUENT_COLUMNS
+
+  /**
+   * A resize policy that adjusts columns, starting with the next one, in order to fit the table width.
+   * During UI adjustment, resizes the next column to preserve the total width.  When the next column
+   * cannot be further resized due to a constraint, the following column gets resized, and so on.
+   *
+   * When column constraints make it impossible to fit all the columns into the allowed area,
+   * the columns are either clipped, or an empty space appears.  This policy disables the horizontal
+   * scroll bar.
+   *
+   * @since 20
+   */
+  val ConstrainedResizePolicyFlexNextColumn: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY_FLEX_NEXT_COLUMN
+
+  /**
+   * A resize policy that adjusts columns, starting with the last one, in order to fit the table width.
+   * During UI adjustment, resizes the last column to preserve the total width.  When the last column
+   * cannot be further resized due to a constraint, the column preceding the last one gets resized, and so on.
+   *
+   * When column constraints make it impossible to fit all the columns into the allowed area,
+   * the columns are either clipped, or an empty space appears.  This policy disables the horizontal
+   * scroll bar.
+   *
+   * @since 20
+   */
+  val ConstrainedResizePolicyFlexLastColumn: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
+    jfxsc.TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND

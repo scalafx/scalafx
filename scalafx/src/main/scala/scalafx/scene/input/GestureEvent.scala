@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,13 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{input => jfxsi}
-import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
-import scalafx.Includes._
+import javafx.event as jfxe
+import javafx.scene.input as jfxsi
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
+
+import scala.language.implicitConversions
 
 object GestureEvent {
   implicit def sfxGestureEvent2jfx(ge: GestureEvent): jfxsi.GestureEvent = if (ge != null) ge.delegate else null
@@ -40,6 +40,9 @@ object GestureEvent {
   /**
    * Common supertype for all gestures.
    */
+  val Any: EventType[jfxsi.GestureEvent] = jfxsi.GestureEvent.ANY
+
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY: EventType[jfxsi.GestureEvent] = jfxsi.GestureEvent.ANY
 
 }

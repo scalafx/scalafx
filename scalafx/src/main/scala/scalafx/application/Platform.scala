@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -75,6 +75,47 @@ object Platform {
      * @return
      */
     def foregroundColor: ReadOnlyObjectProperty[jfxap.Color] = delegate.foregroundColorProperty
+
+    /**
+     * Specifies whether applications should always show scroll bars. If not set, an application may
+     * choose to hide scroll bars that are not actively used, or make them smaller or less noticeable.
+     *
+     * If the platform does not report this preference, this property defaults to `false`.
+     *
+     * @since 24
+     */
+    def persistentScrollBars: ReadOnlyBooleanProperty = delegate.persistentScrollBarsProperty()
+
+    /**
+     * Specifies whether applications should minimize the amount of internet traffic, which users
+     * might request because they are on a metered network or a limited data plan.
+     *
+     * If the platform does not report this preference, this property defaults to `false`.
+     *
+     * @since 24
+     */
+    def reducedData: ReadOnlyBooleanProperty = delegate.reducedDataProperty()
+
+    /**
+     * Specifies whether applications should minimize the amount of non-essential animations,
+     * reducing discomfort for users who experience motion sickness or vertigo.
+     *
+     * If the platform does not report this preference, this property defaults to `false`.
+     *
+     * @since 24
+     */
+    def reducedMotion: ReadOnlyBooleanProperty = delegate.reducedMotionProperty()
+
+    /**
+     * Specifies whether applications should minimize the amount of transparent or translucent
+     * layer effects, which can help to increase contrast and readability for some users.
+     *
+     * If the platform does not report this preference, this property defaults to `false`.
+     *
+     * @since 24
+     */
+    def reducedTransparency: ReadOnlyBooleanProperty = delegate.reducedTransparencyProperty()
+
   }
 
   /** Causes the JavaFX application to terminate. */
@@ -250,7 +291,7 @@ object Platform {
   /**
    * Returns a flag indicating whether the key corresponding to `keyCode`
    * is in the locked (or "on") state.
-   * `keyCode` must be one of: [[KeyCode.CAPS]] or [[KeyCode.NUM_LOCK]].
+   * `keyCode` must be one of: [[KeyCode.Caps]] or [[KeyCode.NumLock]].
    * If the underlying system is not able to determine the state of the
    * specified `keyCode`, `None` is returned.
    * If the keyboard attached to the system doesn't have the specified key,
@@ -267,7 +308,7 @@ object Platform {
    * @since 17
    */
   def isKeyLocked(keyCode: KeyCode): Option[Boolean] = if (jfxa.Platform.isKeyLocked(keyCode).isPresent) {
-    Some(jfxa.Platform.isKeyLocked(keyCode).get)
+    Option(jfxa.Platform.isKeyLocked(keyCode).get)
   } else None
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl, shape => jfxss}
-import javafx.{geometry => jfxg}
-import scalafx.Includes._
+import javafx.geometry as jfxg
+import javafx.scene.{layout as jfxsl, shape as jfxss}
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
@@ -46,6 +46,8 @@ object Region {
    * size returned by computeMinWidth(), computeMinHeight(), computePrefWidth(),
    * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
    */
+  val UseComputedSize: Double = jfxsl.Region.USE_COMPUTED_SIZE
+  @deprecated("Use UseComputedSize; USE_COMPUTED_SIZE will be removed in a future release", "8.0.60-R10")
   val USE_COMPUTED_SIZE: Double = jfxsl.Region.USE_COMPUTED_SIZE
 
   /**
@@ -53,6 +55,8 @@ object Region {
    * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
    * that max and/or min constraint.
    */
+  val UsePrefSize: Double = jfxsl.Region.USE_PREF_SIZE
+  @deprecated("Use UsePrefSize; USE_PREF_SIZE will be removed in a future release", "8.0.60-R10")
   val USE_PREF_SIZE: Double = jfxsl.Region.USE_PREF_SIZE
 
   /**

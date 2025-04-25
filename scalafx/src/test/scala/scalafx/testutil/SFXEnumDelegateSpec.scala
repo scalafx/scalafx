@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.testutil
 
 import java.lang.reflect.Method
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
+import scala.collection.mutable
 
 /**
  * Abstract class that facilitates testing of wrappers for Java enums.
@@ -85,7 +85,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   private def assertScalaEnumWithOrdinal(s: S, index: Int): Unit = {
     assert(
       s.delegate.ordinal() == index,
-      "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index)
+      s"$s - Expected position: ${s.delegate.ordinal()}, actual: $index"
     )
   }
 
@@ -109,20 +109,20 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   // TESTS - BEGIN
   /////////////////
 
-  it should "declare all public declared methods of " + javaClass.getName in {
+  it should s"declare all public declared methods of ${javaClass.getName}" in {
     compareDeclaredMethods(javaClass, scalaClass)
   }
 
   it should "presents all constants from its original JavaFX class" in {
-    val diff = javaEnumConstants.asScala -- companion.values.map(_.delegate)
+    val diff: mutable.Set[E] = javaEnumConstants.asScala.diff(companion.values.map(_.delegate).toSet)
 
-    assert(diff.isEmpty, "Missing constants: " + diff.mkString(", "))
+    assert(diff.isEmpty, s"Missing constants: ${diff.mkString(", ")}")
   }
 
   it should "generate all ScalaFX enums from JavaFX enums names" in {
     val missingJavaEnumNames = javaEnumConstants.asScala.map(_.name).filterNot(nameIsPresent)
 
-    assert(missingJavaEnumNames.isEmpty, "Missing constants: " + missingJavaEnumNames.mkString(", "))
+    assert(missingJavaEnumNames.isEmpty, s"Missing constants: ${missingJavaEnumNames.mkString(", ")}")
   }
 
   it should "not find a non registered name among enum constants" in {

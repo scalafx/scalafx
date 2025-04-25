@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,10 +58,10 @@ object MediaEventTester extends JFXApp3 {
         markerText.text = event.marker.getKey
       }
     val mediaView = new MediaView(mediaPlayer) {
-      onError = (event: MediaErrorEvent) => println("Media view error: " + event)
+      onError = (event: MediaErrorEvent) => println(s"Media view error: $event")
     }
     val root = new StackPane {
-      children += (mediaView, markerText)
+      children ++= Seq(mediaView, markerText)
       style = "-fx-background-color: black;"
     }
     stage = new PrimaryStage {

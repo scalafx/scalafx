@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,13 +60,13 @@ object ColorSelector extends JFXApp3 {
     val synchronizedControls = new ObservableBuffer[SliderControl]
     def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]): Unit = {
       changes.head match {
-        case Add(pos, added) =>
+        case Add(_, added) =>
           val media = buffer.map(_.value.value).sum / buffer.size
           added.last.value <==> synchronizedValue
           buffer.foreach(_.value = media)
-        case Remove(pos, removed) =>
+        case Remove(_, removed) =>
           removed.last.value unbind synchronizedValue
-        case otherChange =>
+        case _ =>
           throw new UnsupportedOperationException(
             "Only add and remove defined for the ColorSelector SliderControl sync"
           )
@@ -136,7 +136,7 @@ object ColorSelector extends JFXApp3 {
       promptText = "Color Format"
       converter = StringConverter.toStringConverter { (f: Formatter) => f.description }
       value = RgbFormatter
-      onAction = (event: ActionEvent) => formatColor()
+      onAction = (* : ActionEvent) => formatColor()
     }
     def verifyWebColor(): Unit = {
       cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
@@ -157,7 +157,7 @@ object ColorSelector extends JFXApp3 {
     }
     currentColor.onChange(
       rectangleRegion.setStyle(
-        "-fx-background-color: " + RgbFormatter.format(currentColor(), !chbDisableAlpha.selected.value)
+        s"-fx-background-color: ${RgbFormatter.format(currentColor(), !chbDisableAlpha.selected.value)}"
       )
     )
     controlRed.value.onChange {
@@ -197,7 +197,7 @@ object ColorSelector extends JFXApp3 {
 
     val rectangleRowsConstraint = new RowConstraints {
       vgrow = Priority.Always
-      prefHeight = Region.USE_COMPUTED_SIZE
+      prefHeight = Region.UseComputedSize
     }
     val otherRowsConstraint = new RowConstraints {
       vgrow = Priority.Never

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,11 +72,11 @@ object TableViewColumnResizePolicyDemo extends JFXApp3 {
       new MyDomain("Potato", "This is a vegetable.", "Brown")
     )
     val table1 = createTableView(data)
-    table1.columnResizePolicy = TableView.ConstrainedResizePolicy
+    table1.columnResizePolicy = TableView.ConstrainedResizePolicyFlexLastColumn
     val table2 = createTableView(data)
     table2.columnResizePolicy = TableView.UnconstrainedResizePolicy
     root.children = Seq(
-      new Label("Constrained Resize Policy") {
+      new Label("Constrained Resize Policy: Flex Last Column") {
         style = "-fx-font-weight:bold;"
       },
       table1,
