@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -192,8 +192,9 @@ trait ObservableSet[T]
         val changeEvent: Change[J] = (change.wasAdded, change.wasRemoved) match {
           case (true, false) => ObservableSet.Add(change.getElementAdded)
           case (false, true) => ObservableSet.Remove(change.getElementRemoved)
-          case _ => throw new IllegalStateException("Irregular Change. Added: " +
-              change.getElementAdded + ", Removed: " + change.getElementRemoved)
+          case _ => throw new IllegalStateException(
+              s"Irregular Change. Added: ${change.getElementAdded}, Removed: ${change.getElementRemoved}"
+            )
         }
 
         op(ObservableSet.this, changeEvent)
@@ -236,14 +237,15 @@ trait ObservableSet[T]
  * [[scalafx.collections.ObservableSet]] implementation backed for a
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html `HashSet`]] from Java Collection.
  *
- * @param delegate JavaFX
+ * @param aDelegate JavaFX
  *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html ObservableSet]]
- *                 instance to be wrapped by this class. By default it is a
+ *                 instance to be wrapped by this class. By default, it is a
  *                 [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html HashSet]] wrapped by
  *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableSet(java.util.Set) observableSet]]
  *                 method from
  *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html FXCollections]].
  */
-class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] =
-  jfxc.FXCollections.observableSet(new ju.HashSet[T]))
-    extends ObservableSet[T] {}
+class ObservableHashSet[T](aDelegate: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet(new ju.HashSet[T]))
+    extends ObservableSet[T] {
+  override def delegate: jfxc.ObservableSet[T] = aDelegate
+}
