@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,18 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc, text => jfxst}
-import javafx.{css => jfxcss, scene => jfxs, util => jfxu}
-import scalafx.Includes._
-import scalafx.beans.property._
+import javafx.scene.{control as jfxsc, text as jfxst}
+import javafx.{css as jfxcss, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
-import scalafx.scene.Node._
+import scalafx.scene.Node.*
 import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.{Font, TextAlignment}
 import scalafx.util.Duration
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
 import scala.collection.mutable
 import scala.language.implicitConversions
 

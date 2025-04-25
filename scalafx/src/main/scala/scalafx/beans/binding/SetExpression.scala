@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{binding => jfxbb}
-
-import scala.language.implicitConversions
+import javafx.beans.binding as jfxbb
 import scalafx.beans.binding.BindingIncludes.jfxBooleanBinding2sfx
 import scalafx.beans.property.PropertyIncludes.{jfxReadOnlyBooleanProperty2sfx, jfxReadOnlyIntegerProperty2sfx}
 import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableSet
+
+import scala.language.implicitConversions
 
 object SetExpression {
 
@@ -71,7 +71,7 @@ class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
 
   def ++=(elem1: E, elem2: E, elems: E*): Boolean = this.++=(Seq(elem1, elem2) ++ elems)
   def ++=(xs: Seq[E]): Boolean = {
-    import scala.collection.JavaConverters._
+    import scalafx.util.JavaConverters.*
     delegate.addAll(xs.asJavaCollection)
   }
 
@@ -95,13 +95,13 @@ class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
 
   def --=(elem1: E, elem2: E, elems: E*): Boolean = this.--=(Seq(elem1, elem2) ++ elems)
   def --=(xs: Seq[E]): Boolean = {
-    import scala.collection.JavaConverters._
+    import scalafx.util.JavaConverters.*
     delegate.removeAll(xs.asJavaCollection)
   }
 
   def retainAll(elem1: E, elem2: E, elems: E*): Boolean = this.retainAll(Seq(elem1, elem2) ++ elems)
   def retainAll(xs: Seq[E]): Boolean = {
-    import scala.collection.JavaConverters._
+    import scalafx.util.JavaConverters.*
     delegate.retainAll(xs.asJavaCollection)
   }
 }

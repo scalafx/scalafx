@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package scalafx.scene.text
 
-import java.io.InputStream
-
-import javafx.scene.{text => jfxst}
+import javafx.scene.text as jfxst
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.text.TextIncludes._
+import scalafx.scene.text.TextIncludes.*
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
+import java.io.InputStream
 import scala.collection.mutable
 import scala.language.implicitConversions
 

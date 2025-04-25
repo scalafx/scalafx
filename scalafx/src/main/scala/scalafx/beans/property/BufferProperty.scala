@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,11 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-import javafx.{collections => jfxc}
+import javafx.beans.property as jfxbp
+import javafx.collections as jfxc
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+import scalafx.util.JavaConverters.*
 
 import scala.language.implicitConversions
 
@@ -79,7 +80,7 @@ object BufferProperty {
    * @return new BufferProperty from items
    */
   def apply[E <: Any](items: Seq[E]): BufferProperty[E] = {
-    import scala.collection.JavaConverters._
+    import scalafx.util.JavaConverters.*
     new BufferProperty[E](
       new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava))
     )
@@ -94,12 +95,12 @@ object BufferProperty {
    * @return new BufferProperty from items
    */
   def apply[E <: Any](bean: Any, name: String, items: Seq[E]): BufferProperty[E] = {
-    import scala.collection.JavaConverters.seqAsJavaListConverter
+    import scalafx.util.JavaConverters.*
     new BufferProperty[E](
       new jfxbp.SimpleListProperty(
         bean,
         name,
-        jfxc.FXCollections.observableArrayList[E](seqAsJavaListConverter(items).asJava)
+        jfxc.FXCollections.observableArrayList[E](items.asJava)
       )
     )
   }
@@ -151,11 +152,7 @@ class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = ne
    * @return new BufferProperty from items
    */
   def this(items: Seq[E]) = {
-    this(new jfxbp.SimpleListProperty(
-      jfxc.FXCollections.observableArrayList[E](
-        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava
-      )
-    ))
+    this(new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava)))
   }
 
   /**
@@ -170,9 +167,7 @@ class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = ne
     this(new jfxbp.SimpleListProperty(
       bean,
       name,
-      jfxc.FXCollections.observableArrayList[E](
-        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava
-      )
+      jfxc.FXCollections.observableArrayList[E](items.asJava)
     ))
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
 import java.{util => ju}
-import scala.collection.JavaConverters._
+import scalafx.util.JavaConverters._
 import scala.collection.generic.{GenericCompanion, GenericSetTemplate, MutableSetFactory}
 import scala.collection.mutable.{Builder, Set, SetLike}
 import scala.language.implicitConversions
@@ -50,7 +50,8 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * @param os ScalaFX's $OS.
    * @return JavaFX's $OS inside parameter.
    */
-  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]): jfxc.ObservableSet[T] = if (os != null) os.delegate else null
+  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]): jfxc.ObservableSet[T] =
+    if (os != null) os.delegate else null
 
   // CHANGING INDICATORS - BEGIN
 
@@ -121,12 +122,12 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
  * @define SET `Set`
  */
 trait ObservableSet[T]
-  extends Set[T]
-  with SetLike[T, ObservableSet[T]]
-  with GenericSetTemplate[T, ObservableSet]
-  with Builder[T, ObservableSet[T]]
-  with Observable
-  with SFXDelegate[jfxc.ObservableSet[T]] {
+    extends Set[T]
+    with SetLike[T, ObservableSet[T]]
+    with GenericSetTemplate[T, ObservableSet]
+    with Builder[T, ObservableSet[T]]
+    with Observable
+    with SFXDelegate[jfxc.ObservableSet[T]] {
 
   /**
    * The factory companion object that builds instances of class $OS.
@@ -212,7 +213,7 @@ trait ObservableSet[T]
           case (true, false) => ObservableSet.Add(change.getElementAdded)
           case (false, true) => ObservableSet.Remove(change.getElementRemoved)
           case _ => throw new IllegalStateException("Irregular Change. Added: " +
-            change.getElementAdded + ", Removed: " + change.getElementRemoved)
+              change.getElementAdded + ", Removed: " + change.getElementRemoved)
         }
 
         op(ObservableSet.this, changeEvent)
@@ -263,5 +264,6 @@ trait ObservableSet[T]
  *                 method from
  *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html FXCollections]].
  */
-class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet(new ju.HashSet[T]))
-  extends ObservableSet[T]
+class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] =
+  jfxc.FXCollections.observableSet(new ju.HashSet[T]))
+    extends ObservableSet[T]

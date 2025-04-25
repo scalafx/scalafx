@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{binding => jfxbb}
-
-import scala.language.implicitConversions
+import javafx.beans.binding as jfxbb
 import scalafx.beans.binding.BindingIncludes.jfxBooleanBinding2sfx
 import scalafx.beans.property.PropertyIncludes.{jfxReadOnlyBooleanProperty2sfx, jfxReadOnlyIntegerProperty2sfx}
 import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableMap
+
+import scala.language.implicitConversions
 
 object MapExpression {
 
@@ -79,7 +79,7 @@ class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
   def +=(kv: (K, V)): V = delegate.put(kv._1, kv._2)
 
   def ++=(m: Map[K, V]): Unit = {
-    import scala.collection.JavaConverters._
+    import scalafx.util.JavaConverters.*
     delegate.putAll(m.asJava)
   }
 
@@ -102,7 +102,7 @@ class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
   def -=(key: Any): V = this.delegate.remove(key)
 
   def values(): Iterable[V] = {
-    import scala.collection.JavaConverters._
+    import scalafx.util.JavaConverters.*
     delegate.values().asScala
   }
 }

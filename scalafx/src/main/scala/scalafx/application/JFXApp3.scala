@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,8 +32,8 @@ import javafx.{application as jfxa, stage as jfxs}
 import scalafx.application.JFXApp3.{Parameters, PrimaryStage}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.Stage
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters.*
 import scala.collection.mutable.ListBuffer
 import scala.collection.{Map, Seq, mutable}
 import scala.language.implicitConversions

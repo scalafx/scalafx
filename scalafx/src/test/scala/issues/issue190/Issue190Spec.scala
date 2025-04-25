@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,13 @@
 
 package issues.issue190
 
-import java.io.File
-
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
+import org.scalatest.matchers.should.Matchers.*
 import scalafx.scene.input.{Clipboard, ClipboardContent, DataFormat}
 import scalafx.testutil.RunOnApplicationThread
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
+import java.io.File
 
 /** Issue 190: Convenience methods not working for clipboard */
 class Issue190Spec extends AnyFlatSpec with RunOnApplicationThread {

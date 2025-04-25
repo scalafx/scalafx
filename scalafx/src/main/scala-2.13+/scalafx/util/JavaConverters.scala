@@ -24,36 +24,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.media
 
-import javafx.scene.media as jfxsm
-import scalafx.delegate.SFXDelegate
-import scalafx.util.JavaConverters.*
+package scalafx.util
 
-import java.util.Locale
-import scala.collection.mutable
-import scala.language.implicitConversions
+import scala.collection.convert.{AsJavaExtensions, AsScalaExtensions}
 
-object Track {
-  implicit def sfxTrack2jfx(t: Track): jfxsm.Track = if (t != null) t.delegate else null
-}
-
-abstract class Track(override val delegate: jfxsm.Track) extends SFXDelegate[jfxsm.Track] {
-
-  /**
-   * Retrieves the name of the track.
-   */
-  def name: String = delegate.getName
-
-  /**
-   * The `Locale` specifying the language and possibly the country that the `Track` contents are formatted for.
-   */
-  def locale: Locale = delegate.getLocale
-
-  def metadata: mutable.Map[String, AnyRef] = delegate.getMetadata.asScala
-
-  /**
-   * Gets the `trackID` as defined by the media container format.
-   */
-  def trackID: Long = delegate.getTrackID
-}
+/**
+ * Reimplemented locally to reduce warnings in 2.12/2.13/3 cross-compiled code
+ */
+object JavaConverters extends AsJavaExtensions with AsScalaExtensions

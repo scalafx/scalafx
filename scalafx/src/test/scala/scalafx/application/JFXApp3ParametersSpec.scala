@@ -31,9 +31,9 @@ import org.scalatest.matchers.should.Matchers.*
 import scalafx.Includes.jfxParameters2sfx
 import scalafx.application.JFXApp3.Parameters.sfxParameters2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.util.JavaConverters.*
 
 import java.util
-import scala.collection.JavaConverters.*
 
 /**
  * JFXApp3.Parameters Spec tests.

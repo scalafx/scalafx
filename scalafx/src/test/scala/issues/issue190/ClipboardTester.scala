@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,9 +33,9 @@ import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.input.{Clipboard, ClipboardContent, DataFormat}
 import scalafx.scene.layout.VBox
+import scalafx.util.JavaConverters.*
 
 import java.io.File
-import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 /**

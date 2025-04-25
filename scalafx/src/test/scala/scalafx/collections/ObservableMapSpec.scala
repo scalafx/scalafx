@@ -31,8 +31,8 @@ import org.scalatest.matchers.should.Matchers.*
 import scalafx.Includes.*
 import scalafx.collections.ObservableMap.*
 import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters.*
 import scala.collection.mutable
 
 /**

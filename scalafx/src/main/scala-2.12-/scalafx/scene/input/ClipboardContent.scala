@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@ import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageIncludes.jfxImage2sfx
 
-import scala.collection.JavaConverters._
+import scalafx.util.JavaConverters._
 import scala.collection.{Map, Seq}
 import scala.language.implicitConversions
 
@@ -80,7 +80,7 @@ object ClipboardContent {
   *
   * When using with `DataFormat.Files` you have to use Java `List` as a container, which is less convenient:
   * {{{
-  *   import scala.collection.JavaConverters._
+  *   import scalafx.util.JavaConverters._
   *
   *   val content = ClipboardContent(
   *     DataFormat.Files -> Seq(new File("one"), new File("two")).asJava,
