@@ -4,7 +4,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 
 //
 // Environment variables used by the build:
-// GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined Scaladocs will be build without diagrams.
+// GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined, Scaladocs will be built without diagrams.
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
@@ -64,22 +64,12 @@ def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
     case _            => Seq.empty[ModuleID]
   }
 
-// Add src/main/scala-2.13+ for Scala 2.13 and newer
-//   and src/main/scala-2.12- for Scala versions older than 2.13
-def versionSubDir(scalaVersion: String): String =
-  CrossVersion.partialVersion(scalaVersion) match {
-    case Some((2, n)) if n < 13 => "scala-2.12-"
-    case Some((_, _))           => "scala-2.13+"
-  }
-
 // Common settings
 lazy val scalafxSettings = Seq(
   organization       := "org.scalafx",
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
-  Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
-  Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "21"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
@@ -164,7 +154,6 @@ lazy val manifestSetting = packageOptions += {
 
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
-
 lazy val mavenCentralSettings = Seq(
   homepage            := Option(new URI("http://www.scalafx.org/").toURL),
   startYear           := Option(2011),
