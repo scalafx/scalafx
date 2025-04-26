@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

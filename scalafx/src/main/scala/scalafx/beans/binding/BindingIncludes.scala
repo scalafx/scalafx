@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{binding => jfxbb, value => jfxbv}
-import javafx.{beans => jfxb}
+import javafx.beans as jfxb
+import javafx.beans.{binding as jfxbb, value as jfxbv}
 import scalafx.beans.Observable
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,7 @@
 
 package issues.issue180
 
-import javafx.beans.{binding => jfxbb}
-
+import javafx.beans.binding as jfxbb
 import scalafx.scene.Group
 
 /**

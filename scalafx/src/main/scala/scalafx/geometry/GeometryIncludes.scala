@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.geometry as jfxg
 
 import scala.language.implicitConversions
 
@@ -47,8 +47,7 @@ trait GeometryIncludes {
    * @param b JavaFX Bounds
    * @return ScalaFX Bounds
    */
-  implicit def jfxBounds2sfx(b: jfxg.Bounds): Bounds = if (b != null) new Bounds(b) {}
-  else null
+  implicit def jfxBounds2sfx(b: jfxg.Bounds): Bounds = if (b != null) new Bounds(b) {} else null
 
   /**
    * Converts a

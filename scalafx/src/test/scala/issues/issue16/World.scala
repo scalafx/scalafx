@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package issues.issue16
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
@@ -60,7 +60,7 @@ object World extends JFXApp3 {
           // NOTE Scala 3: variable `helper` was added to force type (and implicint conversions) on right side of `<==`
           //               This is not needed in Scala 2
 
-          import javafx.scene.{paint => jfxsp}
+          import javafx.scene.paint as jfxsp
           import scalafx.beans.binding.ObjectBinding
 
           val helper: ObjectBinding[jfxsp.Color] = when(hover) choose Color.Green otherwise Color.Red

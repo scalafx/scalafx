@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,17 +31,17 @@ import javafx.{collections => jfxc}
 /**
  * Companion Object for [[scalafx.collections.ObservableIntegerArray]].
  */
-object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, ObservableIntegerArray,
-  jfxc.ObservableIntegerArray] {
+object ObservableIntegerArray
+    extends ObservableArrayCompanionBase[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray] {
 
   /**
    * @inheritdoc
    */
-  override def apply(v: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(v:_*))
+  override def apply(v: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(v: _*))
 
   /**
-    * Returns an array containing equally spaced values in some integer interval.
-    *
+   * Returns an array containing equally spaced values in some integer interval.
+   *
    * @param start Start value of the array.
    * @param end   End value of the array, exclusive (that is, first value '''not''' included in array).  If `start`
    *              exceeds `end` (>= `end` if `step` is positive or <= `end` if `step` is negative), then an empty array will
@@ -65,7 +65,7 @@ object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, Observab
  * @define ARY `Array`
  */
 class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXCollections.observableIntegerArray())
-  extends ObservableArray[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray](delegate) {
+    extends ObservableArray[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray](delegate) {
 
   /**
    * Create $OIA with specified capacity.
@@ -75,8 +75,7 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    * @param n Size of new $OIA.  This value cannot be negative.
    * @throws NegativeArraySizeException if `n` is negative.
    */
-  def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n):_*))
-
+  def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n): _*))
 
   // ObservableIntegerArray interface functions, allow class to act like it implements the JavaFX
   // ObservableIntegerArray interface, without actually being interchangeable with one.

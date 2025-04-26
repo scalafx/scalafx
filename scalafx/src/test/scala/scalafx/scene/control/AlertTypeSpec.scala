@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import scalafx.Includes.*
 import scalafx.scene.control.Alert.AlertType
 import scalafx.testutil.SFXEnumDelegateSpec
+
+import scala.language.implicitConversions
 
 /**
  * Test for [[scalafx.scene.control.Alert.AlertType]].

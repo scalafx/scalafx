@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.stage
 
-import javafx.{stage => jfxs}
-
-import scala.language.implicitConversions
+import javafx.stage as jfxs
 import scalafx.stage.FileChooser.ExtensionFilter
 import scalafx.stage.PopupWindow.AnchorLocation
+
+import scala.language.implicitConversions
 
 object StageIncludes extends StageIncludes
 
@@ -91,8 +91,7 @@ trait StageIncludes {
    * @param pw $JFX $PW
    * @return $SFX $PW
    */
-  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {}
-  else null
+  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {} else null
 
   /**
    * $START$PWAL.html $PWAL$END
@@ -149,8 +148,7 @@ trait StageIncludes {
    * @param w $JFX $WN
    * @return $SFX $WN
    */
-  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {}
-  else null
+  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {} else null
 
   /**
    * $START$WE.html $WE$END
@@ -158,7 +156,6 @@ trait StageIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {}
-  else null
+  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {} else null
 
 }

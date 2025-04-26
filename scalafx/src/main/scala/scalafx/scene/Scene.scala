@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 
 package scalafx.scene
 
-import javafx.scene.{input => jfxsi, layout => jfxsl, paint => jfxsp}
-import javafx.{collections => jfxc, event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
-import scalafx.Includes._
+import javafx.scene.{input as jfxsi, layout as jfxsl, paint as jfxsp}
+import javafx.{collections as jfxc, event as jfxe, geometry as jfxg, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
-import scalafx.collections._
+import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.NodeOrientation
 import scalafx.scene.image.WritableImage

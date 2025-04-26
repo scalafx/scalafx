@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{media => jfxsm}
-import javafx.{event => jfxe, geometry => jfxg}
-import scalafx.Includes._
+import javafx.scene.media as jfxsm
+import javafx.{event as jfxe, geometry as jfxg}
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D

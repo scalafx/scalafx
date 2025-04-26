@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{binding => jfxbb, value => jfxbv}
+import javafx.beans.{binding as jfxbb, value as jfxbv}
 import scalafx.beans.Observable
-import scalafx.beans.binding.BindingIncludes._
+import scalafx.beans.binding.BindingIncludes.*
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 
@@ -170,9 +170,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createBooleanBinding(func: () => Boolean, dependencies: Observable*): BooleanBinding = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createBooleanBinding(
       new jfxuc.Callable[java.lang.Boolean] {
@@ -192,9 +192,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createDoubleBinding(func: () => Double, dependencies: Observable*): jfxbb.DoubleBinding = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createDoubleBinding(
       new jfxuc.Callable[java.lang.Double] {
@@ -214,9 +214,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createFloatBinding(func: () => Float, dependencies: Observable*): jfxbb.FloatBinding = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createFloatBinding(
       new jfxuc.Callable[java.lang.Float] {
@@ -236,9 +236,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createIntegerBinding(func: () => Int, dependencies: Observable*): jfxbb.IntegerBinding = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createIntegerBinding(
       new jfxuc.Callable[java.lang.Integer] {
@@ -258,9 +258,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createLongBinding(func: () => Long, dependencies: Observable*): jfxbb.LongBinding = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createLongBinding(
       new jfxuc.Callable[java.lang.Long] {
@@ -280,9 +280,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createObjectBinding[T](func: () => T, dependencies: Observable*): ObjectBinding[T] = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createObjectBinding(
       new jfxuc.Callable[T] {
@@ -302,9 +302,9 @@ trait Bindings {
    * @return The generated binding
    */
   def createStringBinding(func: () => String, dependencies: Observable*): StringBinding = {
-    import javafx.beans.{binding => jfxbb}
+    import javafx.beans.binding as jfxbb
 
-    import java.util.{concurrent => jfxuc}
+    import java.util.concurrent as jfxuc
 
     jfxbb.Bindings.createStringBinding(
       new jfxuc.Callable[String] {

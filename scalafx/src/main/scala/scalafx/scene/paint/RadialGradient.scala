@@ -26,13 +26,12 @@
  */
 package scalafx.scene.paint
 
-import java.util
-
-import javafx.scene.{paint => jfxsp}
-import scalafx.Includes._
+import javafx.scene.paint as jfxsp
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
+import scalafx.util.JavaConverters.*
 
-import scalafx.util.JavaConverters._
+import java.util
 import scala.language.implicitConversions
 
 object RadialGradient {

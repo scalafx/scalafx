@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package scalafx.collections
 
-import javafx.{beans => jfxb, collections => jfxc}
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
-import scalafx.collections.ObservableBuffer._
+import javafx.{beans as jfxb, collections as jfxc}
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
+import scalafx.collections.ObservableBuffer.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-import java.{util => ju}
+import java.util as ju
 import scala.collection.mutable
 
 /**

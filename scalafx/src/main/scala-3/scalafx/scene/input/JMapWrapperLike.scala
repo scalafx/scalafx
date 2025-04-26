@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,7 @@
 
 package scalafx.scene.input
 
-import java.{util => ju}
-
+import java.util as ju
 import scala.collection.{Iterator, mutable}
 
 private[input] trait JMapWrapperLike[A, B]

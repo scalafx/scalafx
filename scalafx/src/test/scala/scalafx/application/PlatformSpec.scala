@@ -27,13 +27,13 @@
 
 package scalafx.application
 
-import java.lang.reflect.Modifier
-
-import javafx.{application => jfxa}
+import javafx.application as jfxa
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.testutil.RunOnApplicationThread
+
+import java.lang.reflect.Modifier
 
 class PlatformSpec extends AnyFlatSpec with Matchers with RunOnApplicationThread {
 

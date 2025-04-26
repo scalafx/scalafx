@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,16 +27,15 @@
 
 package scalafx.scene.input
 
-import java.io.File
-
-import javafx.scene.{input => jfxsi}
+import javafx.scene.input as jfxsi
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageIncludes.jfxImage2sfx
 
+import java.io.File
 import scala.collection.{Map, Seq}
-import scala.jdk.CollectionConverters._
+import scala.jdk.CollectionConverters.*
 import scala.language.implicitConversions
 
 object ClipboardContent {

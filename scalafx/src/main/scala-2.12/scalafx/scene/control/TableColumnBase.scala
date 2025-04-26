@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,8 @@ import scala.language.implicitConversions
 import scala.math.Ordering
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] =
+    if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -57,10 +58,10 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
-  extends EventHandlerDelegate
-  with Styleable
-  with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
+abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
+    extends EventHandlerDelegate
+    with Styleable
+    with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
   /**
    * This enables support for nested columns, which can be useful to group together related data.

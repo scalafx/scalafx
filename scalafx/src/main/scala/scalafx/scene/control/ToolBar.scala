@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{geometry => jfxg, scene => jfxs}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import javafx.{geometry as jfxg, scene as jfxs}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
-import scalafx.collections._
+import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node

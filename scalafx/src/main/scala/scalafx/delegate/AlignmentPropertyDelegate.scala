@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{binding => jfxbb, property => jfxbp}
-import javafx.{geometry => jfxg}
+import javafx.beans.{binding as jfxbb, property as jfxbp}
+import javafx.geometry as jfxg
 import scalafx.beans.binding.BindingIncludes.jfxObjectBinding2sfx
 import scalafx.beans.binding.ObjectBinding
 

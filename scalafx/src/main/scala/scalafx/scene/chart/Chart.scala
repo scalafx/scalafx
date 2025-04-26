@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
-import javafx.{geometry => jfxg}
-import scalafx.Includes._
+import javafx.geometry as jfxg
+import javafx.scene.chart as jfxsc
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side

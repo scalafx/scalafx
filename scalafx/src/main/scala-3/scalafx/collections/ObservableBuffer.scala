@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,15 @@
 
 package scalafx.collections
 
-import javafx.{collections => jfxc}
+import javafx.collections as jfxc
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
-import java.{util => ju}
+import java.util as ju
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{IterableFactoryDefaults, SeqFactory, StrictOptimizedSeqFactory, StrictOptimizedSeqOps, mutable}
-import scala.jdk.CollectionConverters._
+import scala.jdk.CollectionConverters.*
 import scala.language.implicitConversions
 
 /**
@@ -468,7 +468,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     jfxc.FXCollections.sort(delegate, (p1: T, p2: T) => if (lt(p1, p2)) -1 else if (lt(p2, p1)) 1 else 0)
   }
 
-  import scalafx.collections.ObservableBuffer._
+  import scalafx.collections.ObservableBuffer.*
 
   /**
    * Add a listener function to list's changes. This function '''will handle''' this buffer's

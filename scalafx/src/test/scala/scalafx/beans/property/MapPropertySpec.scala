@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.property as jfxbp
+import scalafx.Includes.*
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 import scala.language.implicitConversions
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Test for [[scalafx.beans.property.MapProperty]].

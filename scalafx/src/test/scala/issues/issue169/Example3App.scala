@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,8 @@
 
 package issues.issue169
 
-import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
-
-import scalafx.Includes._
+import javafx.{beans as jfxb, collections as jfxc, util as jfxu}
+import scalafx.Includes.*
 import scalafx.collections.ObservableBuffer
 
 /**

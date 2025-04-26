@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,15 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg, scene => jfxs}
-import scalafx.Includes._
+import javafx.scene.layout as jfxsl
+import javafx.{geometry as jfxg, scene as jfxs}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Insets._
+import scalafx.geometry.Insets.*
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
-import scalafx.scene.Node._
+import scalafx.scene.Node.*
 
 import scala.language.implicitConversions
 

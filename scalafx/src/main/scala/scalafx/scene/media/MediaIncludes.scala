@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{media => jfxsm}
-
-import scala.language.implicitConversions
+import javafx.scene.media as jfxsm
 import scalafx.scene.media.MediaException.Type
 import scalafx.scene.media.MediaPlayer.Status
+
+import scala.language.implicitConversions
 
 object MediaIncludes extends MediaIncludes
 
@@ -182,8 +182,7 @@ trait MediaIncludes {
    * @param t $JFX $TRAC
    * @return $SFX $TRAC
    */
-  implicit def jfxTrack2sfx(t: jfxsm.Track): Track = if (t != null) new Track(t) {}
-  else null
+  implicit def jfxTrack2sfx(t: jfxsm.Track): Track = if (t != null) new Track(t) {} else null
 
   /**
    * $START$VDTC.html $VDTC$END

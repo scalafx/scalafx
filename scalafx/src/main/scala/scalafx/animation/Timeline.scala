@@ -26,12 +26,12 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import scalafx.Includes._
+import javafx.animation as jfxa
+import scalafx.Includes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+import scalafx.util.JavaConverters.*
 
-import scalafx.util.JavaConverters._
 import scala.language.implicitConversions
 
 /**

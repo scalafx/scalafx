@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
+import javafx.scene as jfxs
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
+
+import scala.language.implicitConversions
 
 object AmbientLight {
   implicit def sfxAmbientLight2jfx(al: AmbientLight): jfxs.AmbientLight = if (al != null) al.delegate else null

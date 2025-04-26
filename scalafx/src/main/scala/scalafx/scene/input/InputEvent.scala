@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,12 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{input => jfxsi}
-import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
+import javafx.event as jfxe
+import javafx.scene.input as jfxsi
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
+
+import scala.language.implicitConversions
 
 // so far ony minimal stuff
 

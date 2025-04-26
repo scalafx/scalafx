@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 
 package scalafx.collections.transformation
 
-import javafx.collections.{transformation => jfxct}
-
-import scala.language.implicitConversions
-import scalafx.Includes._
+import javafx.collections.transformation as jfxct
+import scalafx.Includes.*
 import scalafx.collections.{ObservableBuffer, ObservableBufferBase}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object TransformationBuffer {
 

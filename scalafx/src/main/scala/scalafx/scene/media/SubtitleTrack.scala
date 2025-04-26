@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{media => jfxsm}
+import javafx.scene.media as jfxsm
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object SubtitleTrack {
   implicit def sfxSubtitleTrack2jfx(st: SubtitleTrack): jfxsm.SubtitleTrack = if (st != null) st.delegate else null

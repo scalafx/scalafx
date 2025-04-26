@@ -44,12 +44,13 @@ object TreeItem {
   implicit def sfxTreeItemToJfx[T](v: TreeItem[T]): jfxsc.TreeItem[T] = if (v != null) v.delegate else null
 
   object TreeModificationEvent {
-    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]): jfxsc.TreeItem.TreeModificationEvent[T] = if (v != null) v.delegate else null
+    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]): jfxsc.TreeItem.TreeModificationEvent[T] =
+      if (v != null) v.delegate else null
   }
 
   class TreeModificationEvent[T](override val delegate: jfxsc.TreeItem.TreeModificationEvent[T])
-    extends Event(delegate)
-    with SFXDelegate[jfxsc.TreeItem.TreeModificationEvent[T]] {
+      extends Event(delegate)
+      with SFXDelegate[jfxsc.TreeItem.TreeModificationEvent[T]] {
 
     /**
      * Constructs a basic TreeModificationEvent - this is useful in situations
@@ -70,10 +71,12 @@ object TreeItem {
      * Constructs a TreeModificationEvent for when the TreeItem has had its
      * children list changed.
      */
-    def this(eventType: jfxe.EventType[_ <: jfxe.Event],
-             treeItem: jfxsc.TreeItem[T],
-             added: mutable.Buffer[_ <: jfxsc.TreeItem[T]],
-             removed: mutable.Buffer[_ <: jfxsc.TreeItem[T]]) =
+    def this(
+      eventType: jfxe.EventType[_ <: jfxe.Event],
+      treeItem: jfxsc.TreeItem[T],
+      added: mutable.Buffer[_ <: jfxsc.TreeItem[T]],
+      removed: mutable.Buffer[_ <: jfxsc.TreeItem[T]]
+    ) =
       this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added.asJava, removed.asJava))
 
     /**
@@ -153,32 +156,38 @@ object TreeItem {
    * An EventType used when the TreeItem receives a modification to its
    * expanded property, such that the TreeItem is now in the collapsed state.
    */
-  def branchCollapsedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.branchCollapsedEvent)
+  def branchCollapsedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.branchCollapsedEvent)
 
   /**
    * An EventType used when the TreeItem receives a modification to its
    * expanded property, such that the TreeItem is now in the expanded state.
    */
-  def branchExpandedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.branchExpandedEvent)
+  def branchExpandedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.branchExpandedEvent)
 
   /**
    * An EventType used when the TreeItem receives a direct modification to its
    * children list.
    */
-  def childrenModificationEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.childrenModificationEvent)
+  def childrenModificationEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.childrenModificationEvent)
 
-  /** The general EventType used when the TreeItem receives a modification
+  /**
+   * The general EventType used when the TreeItem receives a modification
    * that results in the number of children being visible changes.
    *
    * @since 8.0
    */
-  def expandedItemCountChangeEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.expandedItemCountChangeEvent)
+  def expandedItemCountChangeEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.expandedItemCountChangeEvent)
 
   /**
    * An EventType used when the TreeItem receives a modification to its
    * graphic property.
    */
-  def graphicChangedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.graphicChangedEvent)
+  def graphicChangedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.graphicChangedEvent)
 
   /**
    * The general EventType used when the TreeItem receives a modification that
@@ -191,13 +200,15 @@ object TreeItem {
    * The base EventType used to indicate that an event has occurred within a
    * TreeItem.
    */
-  def treeNotificationEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.treeNotificationEvent)
+  def treeNotificationEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.treeNotificationEvent)
 
   /**
    * An EventType used when the TreeItem receives a modification to its value
    * property.
    */
-  def valueChangedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.valueChangedEvent)
+  def valueChangedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] =
+    new EventType(jfxsc.TreeItem.valueChangedEvent)
 
 }
 
@@ -205,8 +216,8 @@ object TreeItem {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeItem.html javafx.scene.control.TreeItem]] class.
  */
 class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
-  extends EventHandlerDelegate
-  with SFXDelegate[jfxsc.TreeItem[T]] {
+    extends EventHandlerDelegate
+    with SFXDelegate[jfxsc.TreeItem[T]] {
 
   /**
    * Creates a TreeItem with the value property set to the provided object.

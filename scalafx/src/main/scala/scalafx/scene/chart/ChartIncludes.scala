@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
-
-import scala.language.implicitConversions
+import javafx.scene.chart as jfxsc
 import scalafx.scene.chart.Axis.TickMark
 import scalafx.scene.chart.NumberAxis.DefaultFormatter
 import scalafx.scene.chart.XYChart.{Data, Series}
+
+import scala.language.implicitConversions
 
 object ChartIncludes extends ChartIncludes
 
@@ -88,8 +88,7 @@ trait ChartIncludes {
    * @param a $JFX $AXIS
    * @return $SFX $AXIS
    */
-  implicit def jfxAxis2sfx[X](a: jfxsc.Axis[X]): Axis[X] = if (a != null) new Axis[X](a) {}
-  else null
+  implicit def jfxAxis2sfx[X](a: jfxsc.Axis[X]): Axis[X] = if (a != null) new Axis[X](a) {} else null
 
   /**
    * $START$BRCH.html $BRCH$END
@@ -119,8 +118,7 @@ trait ChartIncludes {
    * @param c $JFX $CHAR
    * @return $SFX $CHAR
    */
-  implicit def jfxChart2sfx(c: jfxsc.Chart): Chart = if (c != null) new Chart(c) {}
-  else null
+  implicit def jfxChart2sfx(c: jfxsc.Chart): Chart = if (c != null) new Chart(c) {} else null
 
   /**
    * $START$LNCH.html $LNCH$END

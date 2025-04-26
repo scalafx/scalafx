@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 
 package scalafx.event
 
-import javafx.{event => jfxe}
+import javafx.event as jfxe
+import scalafx.Includes.*
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
 
 object EventDispatcher {
   implicit def sfxEventDispatcher2jfx(v: EventDispatcher): jfxe.EventDispatcher =

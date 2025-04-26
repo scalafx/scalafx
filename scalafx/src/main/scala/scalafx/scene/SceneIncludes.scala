@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.scene
 
-import javafx.{scene => jfxs}
+import javafx.scene as jfxs
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.chart.ChartIncludes
 import scalafx.scene.control.ControlIncludes
@@ -104,8 +104,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $CAM
    * @return $SFX $CAM
    */
-  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {}
-  else null
+  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {} else null
 
   /**
    * $START$CUR.html $CUR$END
@@ -113,8 +112,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $CUR
    * @return $SFX $CUR
    */
-  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {}
-  else null
+  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {} else null
 
   /**
    * $START$DPT.html $DPT$END
@@ -140,8 +138,7 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor): ImageCursor = if (ic != null) new ImageCursor(ic) else null
 
-  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {}
-  else null
+  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {} else null
 
   /**
    * $START$NOD.html $NOD$END
@@ -149,8 +146,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $NOD
    * @return $SFX $NOD
    */
-  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {}
-  else null
+  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {} else null
 
   /**
    * $START$PRC.html $PRC$END
@@ -167,8 +163,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PAR
    * @return $SFX $PAR
    */
-  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {}
-  else null
+  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {} else null
 
   /**
    * $START$PEC.html $PEC$END

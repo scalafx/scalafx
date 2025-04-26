@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,7 @@ import scala.language.{implicitConversions, reflectiveCalls}
  * Companion Object for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]]
  * interface.
  */
-object EventHandler {
-}
+object EventHandler {}
 
 /**
  * Trait used for handle events manipulation. JavaFX class wrapped must have methods defined in
@@ -53,7 +52,6 @@ object EventHandler {
 trait EventHandlerDelegate {
 
   /**
-   *
    */
   type EventHandled = {
     // Registers an event handler to this type.
@@ -91,7 +89,6 @@ trait EventHandlerDelegate {
     eventHandlerDelegate.addEventHandler(eventType, eventHandler)
   }
 
-
   /**
    * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/ Magnet Pattern]]
    * to avoid compilation error "ambiguous reference to overloaded definition"
@@ -124,7 +121,9 @@ trait EventHandlerDelegate {
       }
     }
 
-    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): HandlerMagnet[J, S] = {
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit
+      jfx2sfx: J => S
+    ): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
         override val eventHandler: jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
           def handle(event: J): Unit = {
@@ -161,10 +160,12 @@ trait EventHandlerDelegate {
    * @tparam S ScalaFX type for `J` type wrapper.
    * @return Returns a subscription that can be used to cancel/remove this event handler
    */
-  def handleEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(handler: HandlerMagnet[J, S]): Subscription = {
+  def handleEvent[
+    J <: jfxe.Event,
+    S <: Event with SFXDelegate[J]
+  ](eventType: EventType[J])(handler: HandlerMagnet[J, S]): Subscription = {
     handler(eventType)
   }
-
 
   /**
    * Unregisters a previously registered event handler from this task. One handler might have been
@@ -175,7 +176,10 @@ trait EventHandlerDelegate {
    * @param eventType  the event type from which to unregister
    * @param eventHandler  the handler to unregister
    */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit = {
+  def removeEventHandler[E <: jfxe.Event](
+    eventType: jfxe.EventType[E],
+    eventHandler: jfxe.EventHandler[_ >: E]
+  ): Unit = {
     eventHandlerDelegate.removeEventHandler(eventType, eventHandler)
   }
 
@@ -223,7 +227,9 @@ trait EventHandlerDelegate {
       }
     }
 
-    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): FilterMagnet[J, S] = {
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit
+      jfx2sfx: J => S
+    ): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter: jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
           def handle(event: J): Unit = {
@@ -266,7 +272,8 @@ trait EventHandlerDelegate {
    * @tparam S ScalaFX type for `J` type wrapper.
    */
   def filterEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(
-    filter: FilterMagnet[J, S]): Subscription = {
+    filter: FilterMagnet[J, S]
+  ): Subscription = {
     filter(eventType)
   }
 
@@ -279,13 +286,17 @@ trait EventHandlerDelegate {
    * @param eventType the event type from which to unregister
    * @param eventHandler the filter to unregister
    */
-  def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit = {
+  def removeEventFilter[E <: jfxe.Event](
+    eventType: jfxe.EventType[E],
+    eventHandler: jfxe.EventHandler[_ >: E]
+  ): Unit = {
     eventHandlerDelegate.removeEventFilter(eventType, eventHandler)
   }
 
   /**
    * Construct an event dispatch chain for this target.
    */
-  def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain = eventHandlerDelegate.buildEventDispatchChain(chain)
+  def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
+    eventHandlerDelegate.buildEventDispatchChain(chain)
 
 }

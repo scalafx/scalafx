@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,8 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventTarget, EventType}
 import scalafx.scene.Node
 
-import scala.jdk.CollectionConverters.*
 import scala.collection.mutable
+import scala.jdk.CollectionConverters.*
 import scala.language.implicitConversions
 
 object TreeItem {

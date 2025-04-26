@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object CheckBoxTreeTableCellDemo extends JFXApp3 {
 
   class Item(selected_ : Boolean, name_ : String) {
     val selected = new BooleanProperty(this, "selected", selected_)
-    val name = new StringProperty(this, "name", name_)
+    val name     = new StringProperty(this, "name", name_)
   }
 
   override def start(): Unit = {

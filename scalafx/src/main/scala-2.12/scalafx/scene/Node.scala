@@ -69,8 +69,8 @@ object Node {
  * @constructor creates a new ScalaFX Node from a JavaFX Node.
  * @param delegate JavaFX Node
  */
-abstract class Node protected(override val delegate: jfxs.Node)
-  extends EventHandlerDelegate
+abstract class Node protected (override val delegate: jfxs.Node)
+    extends EventHandlerDelegate
     with Styleable
     with SFXDelegate[jfxs.Node] {
 
@@ -367,7 +367,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a context menu has been requested on this Node.
    */
-  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] = delegate.onContextMenuRequestedProperty
+  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] =
+    delegate.onContextMenuRequestedProperty
 
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]): Unit = {
     onContextMenuRequested() = v
@@ -433,7 +434,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Defines a function to be called when this Node has input focus and the input method text has
    * changed.
    */
-  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] = delegate.onInputMethodTextChangedProperty
+  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] =
+    delegate.onInputMethodTextChangedProperty
 
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]): Unit = {
     onInputMethodTextChanged() = v
@@ -491,7 +493,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a full press-drag-release gesture enters this Node.
    */
-  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragEnteredProperty
+  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragEnteredProperty
 
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragEntered() = v
@@ -500,7 +503,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a full press-drag-release gesture leaves this Node.
    */
-  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragExitedProperty
+  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragExitedProperty
 
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragExited() = v
@@ -516,10 +520,11 @@ abstract class Node protected(override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within 
+   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within
    * this Node.
    */
-  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragReleasedProperty
+  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragReleasedProperty
 
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragReleased() = v
@@ -1108,7 +1113,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @since 2.2
    */
-  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
+  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
+    delegate.onRotationFinishedProperty()
 
   def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationFinished() = v
@@ -1119,7 +1125,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @since 2.2
    */
-  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
+  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
+    delegate.onRotationFinishedProperty()
 
   def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationStarted() = v

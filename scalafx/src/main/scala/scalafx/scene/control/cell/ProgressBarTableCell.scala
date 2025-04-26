@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,12 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.scene.control.{cell => jfxscc}
-
-import scala.language.implicitConversions
-import scalafx.Includes._
+import javafx.scene.control.cell as jfxscc
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TableCell, TableColumn}
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.scene.control.cell.ProgressBarTableCell]].

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 
 package scalafx.scene.paint
 
-import javafx.scene.{image => jfxsi, paint => jfxsp}
-import scalafx.Includes._
+import javafx.scene.{image as jfxsi, paint as jfxsp}
+import scalafx.Includes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image

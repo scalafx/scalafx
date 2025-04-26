@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,18 @@
  */
 package scalafx.scene.control
 
+import javafx.beans.property as jfxbp
 import javafx.beans.property.ObjectProperty
-import javafx.beans.{property => jfxbp}
 import javafx.event.{Event, EventHandler}
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, event => jfxe, geometry => jfxg}
-import scalafx.Includes._
-import scalafx.collections._
+import javafx.scene.control as jfxsc
+import javafx.{collections as jfxc, event as jfxe, geometry as jfxg}
+import scalafx.Includes.*
+import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 import scalafx.geometry.Side
 import scalafx.scene.Node
-import scalafx.scene.Node._
+import scalafx.scene.Node.*
 
 import scala.language.implicitConversions
 

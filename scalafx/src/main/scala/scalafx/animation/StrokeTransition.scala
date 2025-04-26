@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.animation
 
-import javafx.scene.{paint => jfxsp, shape => jfxss}
-import javafx.{animation => jfxa, util => jfxu}
-import scalafx.Includes._
+import javafx.scene.{paint as jfxsp, shape as jfxss}
+import javafx.{animation as jfxa, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color

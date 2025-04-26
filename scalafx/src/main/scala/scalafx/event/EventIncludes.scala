@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,16 +61,13 @@ trait EventIncludes {
   implicit def jfxEvent2sfx(e: jfxe.Event): Event = if (e != null) new Event(e) else null
 
   implicit def jfxEventDispatcher2sfx(e: jfxe.EventDispatcher): EventDispatcher =
-    if (e != null) new EventDispatcher(e) {}
-    else null
+    if (e != null) new EventDispatcher(e) {} else null
 
   implicit def jfxEventDispatchChain2sfx(e: jfxe.EventDispatchChain): EventDispatchChain =
-    if (e != null) new EventDispatchChain(e) {}
-    else null
+    if (e != null) new EventDispatchChain(e) {} else null
 
   implicit def jfxEventTarget2sfx(e: jfxe.EventTarget): EventTarget =
-    if (e != null) new EventTarget(e) {}
-    else null
+    if (e != null) new EventTarget(e) {} else null
 
   /**
    * Converts a
