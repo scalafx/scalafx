@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,66 +40,56 @@ import scalafx.scene.shape.Circle
  * ScalaFX version of the example from http://tutorials.jenkov.com/javafx/treetableview.html
  */
 //noinspection TypeAnnotation
-object TreeTableViewDemo extends JFXApp3 {
+object TreeTableViewDemo extends JFXApp3:
 
   val translucentColor = Color(0, 0, 0, 0)
 
-  class Car(brandName: String, modelName: String, sampleColor: Color) {
+  class Car(brandName: String, modelName: String, sampleColor: Color):
     val brand = StringProperty(brandName)
     val model = StringProperty(modelName)
     val color = ObjectProperty[Color](sampleColor)
-  }
 
-  val mercedes = new TreeItem(new Car("Mercedes", "", translucentColor)) {
+  val mercedes = new TreeItem(new Car("Mercedes", "", translucentColor)):
     children = Seq(
       new TreeItem(new Car("Mercedes", "SL500", Color.Aqua)),
       new TreeItem(new Car("Mercedes", "SL500 AMG", Color.Aquamarine)),
       new TreeItem(new Car("Mercedes", "CLA 200", Color.Silver))
     )
-  }
 
-  val audi = new TreeItem(new Car("Audi", "", translucentColor)) {
+  val audi = new TreeItem(new Car("Audi", "", translucentColor)):
     children = Seq(
       new TreeItem(new Car("Audi", "A1", Color.Crimson)),
       new TreeItem(new Car("Audi", "A5", Color.Chocolate)),
       new TreeItem(new Car("Audi", "A7", Color.Coral))
     )
-  }
 
-  override def start(): Unit = {
-    stage = new PrimaryStage {
+  override def start(): Unit =
+    stage = new PrimaryStage:
       title = "TreeTableView CellFactory Demo"
-      icons += (new Image("/scalafx/sfx.png"))
-      scene = new Scene {
-        root = new TreeTableView[Car] {
+      icons += new Image("/scalafx/sfx.png")
+      scene = new Scene:
+        root = new TreeTableView[Car]:
           columns ++= Seq(
-            new TreeTableColumn[Car, String]("Brand") {
+            new TreeTableColumn[Car, String]("Brand"):
               cellValueFactory = _.value.value.value.brand
-              prefWidth = 150
-            },
-            new TreeTableColumn[Car, String]("Model") {
+              prefWidth =
+                150
+            ,
+            new TreeTableColumn[Car, String]("Model"):
               cellValueFactory = _.value.value.value.model
-              prefWidth = 120
-            },
-            new TreeTableColumn[Car, Color]("Color") {
+              prefWidth =
+                120
+            ,
+            new TreeTableColumn[Car, Color]("Color"):
               cellValueFactory = _.value.value.value.color
-              cellFactory = (cell: TreeTableCell[Car, Color], value: Color) => {
-                cell.graphic = new Circle {
+              cellFactory = (cell: TreeTableCell[Car, Color], value: Color) =>
+                cell.graphic = new Circle:
                   fill = value
                   radius = 8
-                }
-              }
               prefWidth = 120
-            }
           )
-          root = new TreeItem(new Car("Cars", "", translucentColor)) {
+          root = new TreeItem(new Car("Cars", "", translucentColor)):
             children = Seq(
               audi,
               mercedes
             )
-          }
-        }
-      }
-    }
-  }
-}

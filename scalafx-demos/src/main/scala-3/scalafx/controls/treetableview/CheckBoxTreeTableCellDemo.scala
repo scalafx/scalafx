@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,38 +40,36 @@ import scala.language.implicitConversions
 /**
  * Example of using `CheckBoxTableCell` in `TableView`.
  */
-object CheckBoxTreeTableCellDemo extends JFXApp3 {
-  override def start(): Unit = {
-    class Item(selected_ : Boolean, name_ : String) {
+object CheckBoxTreeTableCellDemo extends JFXApp3:
+
+  override def start(): Unit =
+
+    class Item(selected_ : Boolean, name_ : String):
       val selected = new BooleanProperty(this, "selected", selected_)
       val name     = new StringProperty(this, "name", name_)
-    }
+
     val data = new TreeItem[Item](new Item(false, ""))
-    for (i <- 1 to 10) {
+    for i <- 1 to 10 do
       data.children.add(new TreeItem[Item](new Item(i % 2 == 0, s"Item $i")))
-    }
-    stage = new PrimaryStage {
+
+    stage = new PrimaryStage:
       title = "Example of a TreeTableView with Check Boxes"
-      scene = new Scene {
-        root = new TreeTableView[Item](data) {
+      scene = new Scene:
+        root = new TreeTableView[Item](data):
           columns ++= List(
-            new TreeTableColumn[Item, String] {
+            new TreeTableColumn[Item, String]:
               text = "Name"
               cellValueFactory = _.value.getValue.name
-              prefWidth = 180
-            },
-            new TreeTableColumn[Item, java.lang.Boolean] {
+              prefWidth =
+                180
+            ,
+            new TreeTableColumn[Item, java.lang.Boolean]:
               text = "Selected"
               cellValueFactory =
                 _.value.value.value.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
               cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this)
               editable = true
               prefWidth = 180
-            }
           )
+
           editable = true
-        }
-      }
-    }
-  }
-}

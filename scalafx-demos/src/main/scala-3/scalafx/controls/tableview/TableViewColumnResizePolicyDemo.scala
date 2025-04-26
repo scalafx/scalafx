@@ -43,29 +43,26 @@ import scalafx.scene.layout.VBox
  *
  * Based on JavaFX example from [[https://gist.github.com/SaiPradeepDandem/1581600]].
  */
-object TableViewColumnResizePolicyDemo extends JFXApp3 {
+object TableViewColumnResizePolicyDemo extends JFXApp3:
 
-  class MyDomain(val nameValue: String, val descriptionValue: String, val colorValue: String) {
+  class MyDomain(val nameValue: String, val descriptionValue: String, val colorValue: String):
     val name        = new StringProperty(nameValue)
     val description = new StringProperty(descriptionValue)
     val color       = new StringProperty(colorValue)
-  }
 
-  override def start(): Unit = {
-    val box = new VBox {
+  override def start(): Unit =
+    val box = new VBox:
       spacing = 15
       autosize()
-    }
-    stage = new PrimaryStage {
-      scene = new Scene(700, 400) {
+
+    stage = new PrimaryStage:
+      scene = new Scene(700, 400):
         title = "TableView Column Resize Policy Demo"
         root = box
-      }
-    }
-    configureTable(box)
-  }
 
-  def configureTable(root: VBox): Unit = {
+    configureTable(box)
+
+  def configureTable(root: VBox): Unit =
     val data = ObservableBuffer(
       new MyDomain("Apple", "This is a fruit.", "Red"),
       new MyDomain("Orange", "This is also a fruit.", "Orange"),
@@ -76,38 +73,38 @@ object TableViewColumnResizePolicyDemo extends JFXApp3 {
     val table2 = createTableView(data)
     table2.columnResizePolicy = TableView.UnconstrainedResizePolicy
     root.children = Seq(
-      new Label("Constrained Resize Policy: Flex Last Column") {
+      new Label("Constrained Resize Policy: Flex Last Column"):
         style = "-fx-font-weight:bold;"
-      },
+      ,
       table1,
-      new Label("Unconstrained Resize Policy") {
+      new Label("Unconstrained Resize Policy"):
         style = "-fx-font-weight:bold;"
-      },
+      ,
       table2
     )
-  }
 
-  def createTableView(data: ObservableBuffer[MyDomain]): TableView[MyDomain] = {
-    val table = new TableView[MyDomain] {
+  def createTableView(data: ObservableBuffer[MyDomain]): TableView[MyDomain] =
+    val table = new TableView[MyDomain]:
       columns ++= Seq(
-        new TableColumn[MyDomain, String] {
+        new TableColumn[MyDomain, String]:
           text = "Title"
           prefWidth = 100
-          cellValueFactory = _.value.name
-        },
-        new TableColumn[MyDomain, String] {
+          cellValueFactory =
+            _.value.name
+        ,
+        new TableColumn[MyDomain, String]:
           text = "Description"
           prefWidth = 250
-          cellValueFactory = _.value.description
-        },
-        new TableColumn[MyDomain, String] {
+          cellValueFactory =
+            _.value.description
+        ,
+        new TableColumn[MyDomain, String]:
           text = "Color"
           prefWidth = 100
           cellValueFactory = _.value.color
-        }
       )
       items = data
-    }
+
     table
-  }
-}
+
+end TableViewColumnResizePolicyDemo
