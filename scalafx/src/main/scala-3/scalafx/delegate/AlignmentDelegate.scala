@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,68 +24,48 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene
+package scalafx.delegate
 
-import javafx.beans.{property => jfxbp}
-import javafx.scene.{effect => jfxse, paint => jfxsp}
-import scalafx.Includes._
+import javafx.beans.property as jfxbp
+import javafx.geometry as jfxg
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
-import scalafx.delegate.SFXDelegate
-import scalafx.scene.paint.Color
+import scalafx.delegate.AlignmentDelegate.*
+import scalafx.geometry.Pos
 
-import scala.language.{implicitConversions, reflectiveCalls}
+import scala.language.implicitConversions
+import scala.reflect.Selectable.reflectiveSelectable
+
+object AlignmentDelegate {
+
+  /**
+   * Type that contains `alignment` property.
+   */
+  type Aligned = {
+
+    /*
+     * The overall alignment of children (or text) within the component's width and height
+     */
+    def alignmentProperty(): jfxbp.ObjectProperty[jfxg.Pos]
+
+  }
+
+}
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
+ * Trait that unifies JavaFX classes that contains properties indicating component's internal alignment,
+ * represented by `alignmentProperty` and its respective getter and setters.
  */
-package object effect {
+trait AlignmentDelegate[J <: Object with Aligned]
+    extends SFXDelegate[J] {
 
   /**
-   * Type that indicates a JavaFX class that has the Property `inputProperty` of kind `ObjectProperty[Effect]`
+   * The overall alignment of children (or text) within the component's width and height.
    */
-  type Inputed = {
-    def inputProperty(): jfxbp.ObjectProperty[jfxse.Effect]
-  }
+  def alignment: ObjectProperty[jfxg.Pos] = delegate.alignmentProperty()
 
-  /**
-   * Trait that unifies all Effect subclasses whose Java counterpart have input Property. See type Inputed.
-   */
-  trait InputDelegate[J <: Object with Inputed]
-      extends SFXDelegate[J] {
-
-    /**
-     * The input for this Effect.
-     */
-    def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty()
-
-    def input_=(v: Effect): Unit = {
-      input() = v
-    }
-
-  }
-
-  /**
-   * Type that indicates a JavaFX class that has the Property `colorProperty` of kind `ObjectProperty[Color]`
-   */
-  type Colored = {
-    def colorProperty(): jfxbp.ObjectProperty[jfxsp.Color]
-  }
-
-  /**
-   * Trait that unify all Effect subclasses whose Java counterpart have color Property. See type Colored.
-   */
-  trait ColorDelegate[J <: Object with Colored]
-      extends SFXDelegate[J] {
-
-    /**
-     * The Effect's color.
-     */
-    def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty()
-
-    def color_=(c: Color): Unit = {
-      color() = c
-    }
-
+  def alignment_=(v: Pos): Unit = {
+    alignment() = v
   }
 
 }

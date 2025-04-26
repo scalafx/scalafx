@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,46 +26,52 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{property => jfxbp}
-import scalafx.Includes._
+import javafx.beans.property as jfxbp
+import scalafx.Includes.*
 import scalafx.beans.property.DoubleProperty
-import scalafx.delegate.PositionDelegate._
+import scalafx.delegate.DimensionDelegate.*
 
-import scala.language.{implicitConversions, reflectiveCalls}
+import scala.language.implicitConversions
+import scala.reflect.Selectable.reflectiveSelectable
 
-object PositionDelegate {
+object DimensionDelegate {
 
-  type Positioned = {
-    def xProperty(): jfxbp.DoubleProperty
+  /**
+   * Type that contains `height` and `width` properties.
+   */
+  type Dimensioned = {
 
-    def yProperty(): jfxbp.DoubleProperty
+    def heightProperty(): jfxbp.DoubleProperty
+
+    def widthProperty(): jfxbp.DoubleProperty
   }
-
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating localization in 2
- * dimensions, represented by `xProperty` and `yProperty` and their respective getter and setters.
+ * Trait that unifies JavaFX classes that contains properties indicating height and width,
+ * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
+ *
+ * @tparam J Original JavaFX type that contains `height` and `width` properties.
  */
-trait PositionDelegate[J <: Object with Positioned]
+trait DimensionDelegate[J <: Object with Dimensioned]
     extends SFXDelegate[J] {
 
   /**
-   * X Position
+   * Indicates the height of object.
    */
-  def x: DoubleProperty = delegate.xProperty()
+  def height: DoubleProperty = delegate.heightProperty()
 
-  def x_=(v: Double): Unit = {
-    x() = v
+  def height_=(h: Double): Unit = {
+    height() = h
   }
 
   /**
-   * Y Position
+   * Indicates the width of an object.
    */
-  def y: DoubleProperty = delegate.yProperty()
+  def width: DoubleProperty = delegate.widthProperty()
 
-  def y_=(v: Double): Unit = {
-    y() = v
+  def width_=(w: Double): Unit = {
+    width() = w
   }
 
 }

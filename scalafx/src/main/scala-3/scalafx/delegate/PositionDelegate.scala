@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,45 +26,47 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{property => jfxbp}
-import javafx.{geometry => jfxg}
-import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.delegate.AlignmentDelegate._
-import scalafx.geometry.Pos
+import javafx.beans.property as jfxbp
+import scalafx.Includes.*
+import scalafx.beans.property.DoubleProperty
+import scalafx.delegate.PositionDelegate.*
 
-import scala.language.{implicitConversions, reflectiveCalls}
+import scala.language.implicitConversions
+import scala.reflect.Selectable.reflectiveSelectable
 
-object AlignmentDelegate {
+object PositionDelegate {
 
-  /**
-   * Types that contains `alignment` property.
-   */
-  type Aligned = {
+  type Positioned = {
+    def xProperty(): jfxbp.DoubleProperty
 
-    /*
-     * The overall alignment of children (or text) within the component's width and height
-     */
-    def alignmentProperty(): jfxbp.ObjectProperty[jfxg.Pos]
-
+    def yProperty(): jfxbp.DoubleProperty
   }
 
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating component's internal alignment,
- * represented by `alignmentProperty` and its respective getter and setters.
+ * Trait that unifies JavaFX classes that contains properties indicating localization in 2
+ * dimensions, represented by `xProperty` and `yProperty` and their respective getter and setters.
  */
-trait AlignmentDelegate[J <: Object with Aligned]
+trait PositionDelegate[J <: Object with Positioned]
     extends SFXDelegate[J] {
 
   /**
-   * The overall alignment of children (or text) within the component's width and height.
+   * X Position
    */
-  def alignment: ObjectProperty[jfxg.Pos] = delegate.alignmentProperty()
+  def x: DoubleProperty = delegate.xProperty()
 
-  def alignment_=(v: Pos): Unit = {
-    alignment() = v
+  def x_=(v: Double): Unit = {
+    x() = v
+  }
+
+  /**
+   * Y Position
+   */
+  def y: DoubleProperty = delegate.yProperty()
+
+  def y_=(v: Double): Unit = {
+    y() = v
   }
 
 }

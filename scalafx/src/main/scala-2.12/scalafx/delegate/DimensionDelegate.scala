@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,32 +26,51 @@
  */
 package scalafx.delegate
 
-import scalafx.delegate.FireDelegate._
+import javafx.beans.property as jfxbp
+import scalafx.Includes.*
+import scalafx.beans.property.DoubleProperty
+import scalafx.delegate.DimensionDelegate.*
 
 import scala.language.{implicitConversions, reflectiveCalls}
 
-object FireDelegate {
+object DimensionDelegate {
 
   /**
-   * Defines a Type that contains a `fire()` method that has no return (`void`).
+   * Type that contains `height` and `width` properties.
    */
-  type Fired = {
-    def fire(): Unit
-  }
+  type Dimensioned = {
 
+    def heightProperty(): jfxbp.DoubleProperty
+
+    def widthProperty(): jfxbp.DoubleProperty
+  }
 }
 
 /**
- * Unify classes that contains a `fire()` method that has no return (`void`)
+ * Trait that unifies JavaFX classes that contains properties indicating height and width,
+ * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
+ *
+ * @tparam J Original JavaFX type that contains `height` and `width` properties.
  */
-trait FireDelegate[J <: Object with Fired]
+trait DimensionDelegate[J <: Object with Dimensioned]
     extends SFXDelegate[J] {
 
   /**
-   * Fires some kind of event.
+   * Indicates the height of object.
    */
-  def fire(): Unit = {
-    delegate.fire()
+  def height: DoubleProperty = delegate.heightProperty()
+
+  def height_=(h: Double): Unit = {
+    height() = h
+  }
+
+  /**
+   * Indicates the width of an object.
+   */
+  def width: DoubleProperty = delegate.widthProperty()
+
+  def width_=(w: Double): Unit = {
+    width() = w
   }
 
 }

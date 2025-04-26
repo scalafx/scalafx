@@ -36,7 +36,7 @@ import scala.language.{implicitConversions, reflectiveCalls}
 object DimensionDelegate {
 
   /**
-   * Types that contains `height` and `width` properties.
+   * Type that contains `height` and `width` properties.
    */
   type Dimensioned = {
 
@@ -65,7 +65,7 @@ trait DimensionDelegate[J <: Object with Dimensioned]
   }
 
   /**
-   * Indicates the width of object.
+   * Indicates the width of an object.
    */
   def width: DoubleProperty = delegate.widthProperty()
 

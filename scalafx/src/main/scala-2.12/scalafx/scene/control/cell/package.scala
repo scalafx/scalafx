@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,18 +27,17 @@
 
 package scalafx.scene.control
 
-import java.lang
-
-import javafx.beans.{property => jfxbp, value => jfxbv}
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, util => jfxu}
-import scalafx.Includes._
+import javafx.beans.{property as jfxbp, value as jfxbv}
+import javafx.scene.control as jfxsc
+import javafx.{collections as jfxc, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
+import java.lang
 import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
@@ -59,7 +58,7 @@ package object cell {
    * Cells which delegate contains the method `converterProperty(): jfxbp.ObjectProperty[jfxu.StringConverter[T]]`
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
-   * @tparam C  Derivated type from JavaFX Cell
+   * @tparam C Type derived from JavaFX `Cell`
    * @tparam J Original Java type used by converter.
    */
   trait ConvertableCell[C <: jfxsc.Cell[T] with Convertable[J], T, J]
@@ -77,7 +76,7 @@ package object cell {
   }
 
   /**
-   * Types that contains the method `comboBoxEditableProperty(): jfxbp.BooleanProperty`
+   * Type that contains the method `comboBoxEditableProperty(): jfxbp.BooleanProperty`
    */
   type ComboBoxEditable = {
     def comboBoxEditableProperty(): jfxbp.BooleanProperty
@@ -107,20 +106,20 @@ package object cell {
    * Cells which delegate contains the method `updateItem(item: Any, empty: Boolean): Unit`.
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
-   * @tparam C  Derivated type from JavaFX Cell
+   * @tparam C  Type derived from JavaFX `Cell`
    */
   trait UpdatableCell[C <: jfxsc.Cell[T], T]
       extends SFXDelegate[C] {
     /* IMPLEMENTATION NOTE:
-     * Unlike to what happened with other traits of this package object, it was not possible create a type like
+     * Unlike to what happened with other traits of this package object, it was not possible to create a type like
      * "type Updated[T] = { def updateItem(item: T, empty: Boolean): Unit }". In this case, the compiler shows this
      * error message: "Parameter type in structural refinement may not refer to an abstract type defined outside that
-     * refinement". The only way for which was possible implement the trait was create an internal type in which
-     * updateItem method from JavaFX class receive a item of type Any instead type T.
+     * refinement". The only way for which it was possible to implement the trait was creating an internal type in which
+     * updateItem method from JavaFX class receives an item of type Any instead of type T.
      */
 
     /**
-     * Types that contains the method `updateItem(item: Any, empty: Boolean): Unit`
+     * Type that contains the method `updateItem(item: Any, empty: Boolean): Unit`
      */
     type Updated = {
       def updateItem(item: Any, empty: Boolean): Unit
@@ -140,7 +139,7 @@ package object cell {
   }
 
   /**
-   * Types that contains the method `getItems(): ObservableList[T]`.
+   * Type that contains the method `getItems(): ObservableList[T]`.
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
@@ -178,7 +177,7 @@ package object cell {
     }
 
   /**
-   * Types that contains the property `selectedStateCallback`.
+   * Type that contains the property `selectedStateCallback`.
    *
    * @tparam J Original Java type used by converter.
    */
