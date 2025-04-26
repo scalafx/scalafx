@@ -25,8 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.application
-
 import javafx.application as jfxa
 import scalafx.application.JFXApp.{Parameters, PrimaryStage}
 import scalafx.delegate.SFXDelegate
