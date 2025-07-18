@@ -112,8 +112,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
    * @return the on hiding property
    * @since 10
    */
-  def onHiding: ObjectProperty[EventHandler[Event]] = delegate.onHidingProperty
-  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onHiding: ObjectProperty[EventHandler[Event]]                 = delegate.onHidingProperty
+  def onHiding_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHiding() = eventHandler
   }
 
@@ -123,8 +123,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
    * @return the on showing property
    * @since 10
    */
-  def onShowing: ObjectProperty[EventHandler[Event]] = delegate.onShowingProperty
-  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onShowing: ObjectProperty[EventHandler[Event]]                 = delegate.onShowingProperty
+  def onShowing_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = eventHandler
   }
 
@@ -134,8 +134,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
    * @return the on shown property
    * @since 10
    */
-  def onShown: ObjectProperty[EventHandler[Event]] = delegate.onShownProperty
-  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onShown: ObjectProperty[EventHandler[Event]]                 = delegate.onShownProperty
+  def onShown_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShown() = eventHandler
   }
 
@@ -145,8 +145,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
    * @return the on hidden property
    * @since 10
    */
-  def onHidden: ObjectProperty[EventHandler[Event]] = delegate.onHiddenProperty
-  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onHidden: ObjectProperty[EventHandler[Event]]                 = delegate.onHiddenProperty
+  def onHidden_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = eventHandler
   }
 

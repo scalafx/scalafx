@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -94,25 +94,25 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onHidden: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onHiddenProperty
 
-  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onHidden_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = eventHandler
   }
 
   def onHiding: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onHidingProperty
 
-  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onHiding_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHiding() = eventHandler
   }
 
   def onShowing: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onShowingProperty
 
-  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onShowing_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = eventHandler
   }
 
   def onShown: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onShownProperty
 
-  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onShown_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShown() = eventHandler
   }
 
