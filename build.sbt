@@ -1,6 +1,5 @@
-import java.net.URI
 import scala.xml.transform.{RewriteRule, RuleTransformer}
-import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
+import scala.xml.{Node as XmlNode, NodeSeq as XmlNodeSeq, *}
 
 //
 // Environment variables used by the build:
@@ -58,6 +57,7 @@ lazy val javafxModules =
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.19"
+
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
@@ -155,13 +155,22 @@ lazy val manifestSetting = packageOptions += {
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
 lazy val mavenCentralSettings = Seq(
-  homepage            := Option(new URI("http://www.scalafx.org/").toURL),
-  startYear           := Option(2011),
-  licenses            := Seq(("BSD", new URI("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt").toURL)),
-  sonatypeProfileName := "org.scalafx",
+  organization         := "org.scalafx",
+  organizationName     := "ScalaFX",
+  organizationHomepage := Option(url("http://www.scalafx.org/")),
+  homepage             := Option(url("http://www.scalafx.org/")),
+  startYear            := Option(2011),
+  licenses             := Seq(("BSD", url("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
   scmInfo := Option(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
-  publishMavenStyle := true,
-  publishTo         := sonatypePublishToBundle.value,
+  pomIncludeRepository := { _ => false },
+  publishMavenStyle    := true,
+  publishTo            := {
+    val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
+    if (isSnapshot.value)
+      Option("central-portal-snapshots" at centralSnapshots)
+    else
+      localStaging.value
+  },
   pomExtra :=
     <developers>
       <developer>
