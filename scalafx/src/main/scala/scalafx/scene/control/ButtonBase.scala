@@ -54,7 +54,7 @@ abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
    */
   def onAction: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onActionProperty
 
-  def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
+  def onAction_=(aeh: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = aeh
   }
 
