@@ -8,7 +8,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion  = "24.0.2"
-val scalafxVersion = "24.0.2-R36"
+val scalafxVersion = "24.0.2-R37-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
