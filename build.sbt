@@ -1,5 +1,5 @@
 import scala.xml.transform.{RewriteRule, RuleTransformer}
-import scala.xml.{Node as XmlNode, NodeSeq as XmlNodeSeq, *}
+import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 
 //
 // Environment variables used by the build:
@@ -8,7 +8,7 @@ import scala.xml.{Node as XmlNode, NodeSeq as XmlNodeSeq, *}
 //
 
 val javaFXVersion  = "24.0.2"
-val scalafxVersion = "24.0.2-R36-SNAPSHOT"
+val scalafxVersion = "24.0.2-R36"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
