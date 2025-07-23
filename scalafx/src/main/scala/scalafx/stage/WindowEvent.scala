@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,12 @@
  */
 package scalafx.stage
 
-import javafx.{stage => jfxs}
-
-import scala.language.implicitConversions
-import scalafx.Includes._
+import javafx.stage as jfxs
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
+
+import scala.language.implicitConversions
 
 object WindowEvent {
   implicit def sfxWindowEvent2jfx(v: WindowEvent): jfxs.WindowEvent = if (v != null) v.delegate else null

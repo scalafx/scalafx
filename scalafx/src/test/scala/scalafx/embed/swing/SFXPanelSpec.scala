@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,8 @@
  */
 package scalafx.embed.swing
 
-import javafx.embed.{swing => jfxes}
-
-import scalafx.Includes._
+import javafx.embed.swing as jfxes
+import scalafx.Includes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.embed.swing.SFXPanel]]. */

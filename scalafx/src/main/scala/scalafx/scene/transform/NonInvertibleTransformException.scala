@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.scene.transform
 
-import javafx.scene.{transform => jfxst}
+import javafx.scene.transform as jfxst
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object NonInvertibleTransformException {
   implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException)

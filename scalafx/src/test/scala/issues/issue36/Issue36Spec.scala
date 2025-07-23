@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 
 package issues.issue36
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 /**

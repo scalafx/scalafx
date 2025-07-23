@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 
 package scalafx.scene.text
 
-import javafx.scene.{text => jfxst}
-import scalafx.Includes._
+import javafx.scene.text as jfxst
+import scalafx.Includes.*
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 import scala.language.implicitConversions

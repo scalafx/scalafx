@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 
 package scalafx.scene.control.cell
 
-import javafx.scene.control.{cell => jfxscc}
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, util => jfxu}
+import javafx.scene.control as jfxsc
+import javafx.scene.control.cell as jfxscc
+import javafx.{collections as jfxc, util as jfxu}
 import scalafx.Includes.jfxTreeTableCell2sfx
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList

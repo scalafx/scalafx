@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -207,8 +207,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $BTBS
    */
   implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase): ButtonBase =
-    if (b != null) new ButtonBase(b) {}
-    else null
+    if (b != null) new ButtonBase(b) {} else null
 
   /**
    * $START$BUTN.html $BUTN$END
@@ -287,8 +286,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $CTRL
    */
   implicit def jfxControl2sfx(c: jfxsc.Control): Control =
-    if (c != null) new Control(c) {}
-    else null
+    if (c != null) new Control(c) {} else null
 
   /**
    * $START$CLPK.html $CLPK$END
@@ -306,8 +304,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $CBBS
    */
   implicit def jfxComboBoxBase2sfx[T](v: jfxsc.ComboBoxBase[T]): ComboBoxBase[T] =
-    if (v != null) new ComboBoxBase[T](v) {}
-    else null
+    if (v != null) new ComboBoxBase[T](v) {} else null
 
   /**
    * $START$CBBX.html $CBBX$END
@@ -342,8 +339,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $FCMD
    */
   implicit def jfxFocusModel2sfx[T](v: jfxsc.FocusModel[T]): FocusModel[T] =
-    if (v != null) new FocusModel[T](v) {}
-    else null
+    if (v != null) new FocusModel[T](v) {} else null
 
   /**
    * $START$HYLK.html $HYLK$END
@@ -390,8 +386,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $LBLD
    */
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled): Labeled =
-    if (l != null) new Labeled(l) {}
-    else null
+    if (l != null) new Labeled(l) {} else null
 
   /**
    * $START$LSCL.html $LSCL$END
@@ -482,8 +477,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $MSMD
    */
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]): MultipleSelectionModel[T] =
-    if (v != null) new MultipleSelectionModel[T](v) {}
-    else null
+    if (v != null) new MultipleSelectionModel[T](v) {} else null
 
   /**
    * $START$ORST.html $ORST$END
@@ -555,8 +549,7 @@ trait ControlIncludes extends CellIncludes {
     if (ev != null) new Spinner[T](ev) else null
 
   implicit def jfxSpinnerValueFactory2sfx[T](ev: jfxsc.SpinnerValueFactory[T]): SpinnerValueFactory[T] =
-    if (ev != null) new SpinnerValueFactory(ev) {}
-    else null
+    if (ev != null) new SpinnerValueFactory(ev) {} else null
 
   /**
    * $START$SPMB.html $SPMB$END
@@ -638,8 +631,7 @@ trait ControlIncludes extends CellIncludes {
    */
   implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC])
     : TablePositionBase[TC] =
-    if (tpb != null) new TablePositionBase[TC](tpb) {}
-    else null
+    if (tpb != null) new TablePositionBase[TC](tpb) {} else null
 
   /**
    * $START$TBRW.html $TBRW$END
@@ -679,8 +671,7 @@ trait ControlIncludes extends CellIncludes {
    */
   implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S])
     : TableViewSelectionModel[S] =
-    if (tvsm != null) new TableView.TableViewSelectionModel[S](tvsm) {}
-    else null
+    if (tvsm != null) new TableView.TableViewSelectionModel[S](tvsm) {} else null
 
   /**
    * $START$TBSM.html $TBSM$END
@@ -690,8 +681,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TBSM
    */
   implicit def jfxTableSelectionModel2sfx[T](tsm: jfxsc.TableSelectionModel[T]): TableSelectionModel[T] =
-    if (tsm != null) new TableSelectionModel[T](tsm) {}
-    else null
+    if (tsm != null) new TableSelectionModel[T](tsm) {} else null
 
   /**
    * $START$TBCB.html $TBCB$END
@@ -734,8 +724,7 @@ trait ControlIncludes extends CellIncludes {
    */
   implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC])
     : TableFocusModel[T, TC] =
-    if (tfm != null) new TableFocusModel[T, TC](tfm) {}
-    else null
+    if (tfm != null) new TableFocusModel[T, TC](tfm) {} else null
 
   implicit def jfxTextFormatter2sfx[V](t: jfxsc.TextFormatter[V]): TextFormatter[V] =
     if (t != null) new TextFormatter(t) else null
@@ -796,8 +785,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $SNBE
    */
   implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]): SkinBase[C] =
-    if (sb != null) new SkinBase[C](sb) {}
-    else null
+    if (sb != null) new SkinBase[C](sb) {} else null
 
   /**
    * $START$SKNB.html $SKNB$END
@@ -862,8 +850,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $SCMD
    */
   implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]): SelectionModel[T] =
-    if (v != null) new SelectionModel[T](v) {}
-    else null
+    if (v != null) new SelectionModel[T](v) {} else null
 
   /**
    * $START$SSMD.html $SSMD$END
@@ -873,8 +860,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $SSMD
    */
   implicit def jfxSingleSelectionModel2sfx[T](v: jfxsc.SingleSelectionModel[T]): SingleSelectionModel[T] =
-    if (v != null) new SingleSelectionModel[T](v) {}
-    else null
+    if (v != null) new SingleSelectionModel[T](v) {} else null
 
   /**
    * $START$SPPN.html $SPPN$END
@@ -951,8 +937,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TXIC
    */
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl): TextInputControl =
-    if (t != null) new TextInputControl(t) {}
-    else null
+    if (t != null) new TextInputControl(t) {} else null
 
   /**
    * $START$TOTP.html $TOTP$END
@@ -961,8 +946,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TOTP
    */
   implicit def jfxTooltip2sfx(t: jfxsc.Tooltip): Tooltip =
-    if (t != null) new Tooltip(t) {}
-    else null
+    if (t != null) new Tooltip(t) {} else null
 
   /**
    * $START$TOBR.html $TOBR$END
@@ -971,8 +955,7 @@ trait ControlIncludes extends CellIncludes {
    * @return $SFX $TOBR
    */
   implicit def jfxToolBar2sfx(t: jfxsc.ToolBar): ToolBar =
-    if (t != null) new ToolBar(t) {}
-    else null
+    if (t != null) new ToolBar(t) {} else null
 
   /**
    * $START$TRCL.html $TRCL$END
@@ -1123,8 +1106,7 @@ trait ControlIncludes extends CellIncludes {
    */
   implicit def jfxTreeTableViewSelectionModel2sfx[S](ttvsm: jfxsc.TreeTableView.TreeTableViewSelectionModel[S])
     : TreeTableView.TreeTableViewSelectionModel[S] =
-    if (ttvsm != null) new TreeTableView.TreeTableViewSelectionModel[S](ttvsm) {}
-    else null
+    if (ttvsm != null) new TreeTableView.TreeTableViewSelectionModel[S](ttvsm) {} else null
 
   /**
    * $START$TTVF.html $TTVF$END

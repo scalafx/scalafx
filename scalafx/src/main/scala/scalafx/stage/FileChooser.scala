@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,16 +27,15 @@
 
 package scalafx.stage
 
-import java.io.File
-
 import javafx.collections.ObservableList
-import javafx.{stage => jfxs}
-import scalafx.Includes._
+import javafx.stage as jfxs
+import scalafx.Includes.*
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.FileChooser.ExtensionFilter
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
+import java.io.File
 import scala.language.implicitConversions
 
 object FileChooser {

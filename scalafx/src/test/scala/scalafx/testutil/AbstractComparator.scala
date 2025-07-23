@@ -26,10 +26,9 @@
  */
 package scalafx.testutil
 
-import java.lang.reflect.{Method, Modifier}
-
 import org.scalatest.Assertions
 
+import java.lang.reflect.{Method, Modifier}
 import scala.annotation.tailrec
 
 private[testutil] trait AbstractComparator extends Assertions {
@@ -98,8 +97,8 @@ private[testutil] trait AbstractComparator extends Assertions {
 
   protected object JavaBeanEvaluator {
 
-    import java.lang.Boolean.{TYPE => JBoolean}
-    import java.lang.Void.{TYPE => JVoid}
+    import java.lang.Boolean.TYPE as JBoolean
+    import java.lang.Void.TYPE as JVoid
 
     private val setterPattern = "^set.+$"
 

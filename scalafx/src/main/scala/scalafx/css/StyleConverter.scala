@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package scalafx.css
 
-import java.io.{DataInputStream, DataOutputStream}
-
-import javafx.{css => jfxcss}
+import javafx.css as jfxcss
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.text.Font
 import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
+import java.io.{DataInputStream, DataOutputStream}
 import scala.language.implicitConversions
 
 /**

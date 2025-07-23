@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.embed.swing
 
-import javafx.embed.{swing => jfxes}
-import javax.swing.JComponent
+import javafx.embed.swing as jfxes
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
+import javax.swing.JComponent
 import scala.language.implicitConversions
 
 /**

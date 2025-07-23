@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{effect => jfxse}
+import javafx.scene.effect as jfxse
+import scalafx.scene.effect.Light.{Distant, Point, Spot}
 
 import scala.language.implicitConversions
-import scalafx.scene.effect.Light.{Distant, Point, Spot}
 
 object EffectIncludes extends EffectIncludes
 
@@ -142,8 +142,7 @@ trait EffectIncludes {
    * @param e $JFX $EFF
    * @return $SFX $EFF
    */
-  implicit def jfxEffect2sfx(e: jfxse.Effect): Effect = if (e != null) new Effect(e) {}
-  else null
+  implicit def jfxEffect2sfx(e: jfxse.Effect): Effect = if (e != null) new Effect(e) {} else null
 
   /**
    * $START$DPS.html $DPS$END
@@ -200,8 +199,7 @@ trait EffectIncludes {
    * @param l $JFX $LIG
    * @return $SFX $LIG
    */
-  implicit def jfxLight2sfx(l: jfxse.Light): Light = if (l != null) new Light(l) {}
-  else null
+  implicit def jfxLight2sfx(l: jfxse.Light): Light = if (l != null) new Light(l) {} else null
 
   /**
    * $START$LDS.html $LDS$END

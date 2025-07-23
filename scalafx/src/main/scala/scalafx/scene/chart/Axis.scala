@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc, paint => jfxsp, text => jfxst}
-import javafx.{geometry => jfxg}
-import scalafx.Includes._
-import scalafx.beans.binding._
+import javafx.geometry as jfxg
+import javafx.scene.{chart as jfxsc, paint as jfxsp, text as jfxst}
+import scalafx.Includes.*
+import scalafx.beans.binding.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
@@ -37,8 +37,8 @@ import scalafx.geometry.Side
 import scalafx.scene.layout.Region
 import scalafx.scene.paint.Paint
 import scalafx.scene.text.Font
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
 import scala.collection.mutable
 import scala.language.implicitConversions
 

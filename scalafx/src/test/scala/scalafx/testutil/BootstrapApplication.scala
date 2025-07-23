@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.testutil
 
-import java.util.concurrent.CountDownLatch
-
 import javafx.application.Application
 import javafx.stage.Stage
+
+import java.util.concurrent.CountDownLatch
 
 object BootstrapApplication {
   private val launchLatch = new CountDownLatch(1)

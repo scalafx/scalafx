@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.scene.image
 
-import javafx.scene.{image => jfxsi}
+import javafx.scene.image as jfxsi
+import scalafx.Includes.*
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
 
 object WritableImage {
   implicit def sfxWritableImage2jfx(wi: WritableImage): jfxsi.WritableImage = if (null == wi) null else wi.delegate

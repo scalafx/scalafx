@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.util.converter
 
-import java.text.SimpleDateFormat
-
-import javafx.{util => jfxu}
-import org.scalatest.matchers.should.Matchers._
+import javafx.util as jfxu
+import org.scalatest.matchers.should.Matchers.*
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import java.text.SimpleDateFormat
 
 /**
  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.

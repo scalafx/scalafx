@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.beans.{binding => jfxbb, property => jfxbp}
-import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
+import javafx.beans.{binding as jfxbb, property as jfxbp}
+import javafx.event as jfxe
+import javafx.scene.control as jfxsc
 import scalafx.beans.binding.BindingIncludes.{jfxObjectBinding2sfx, jfxStringBinding2sfx}
 import scalafx.beans.binding.{ObjectBinding, StringBinding}
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx

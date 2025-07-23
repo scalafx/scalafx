@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu}
-import scalafx.Includes._
+import javafx.{animation as jfxa, geometry as jfxg, scene as jfxs, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Point3D

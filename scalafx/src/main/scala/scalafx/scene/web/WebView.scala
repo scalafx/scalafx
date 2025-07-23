@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,8 +34,8 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
 import scalafx.scene.paint.Color
 import scalafx.scene.text.FontSmoothingType
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters.*
 import scala.collection.mutable
 import scala.language.implicitConversions
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,8 +29,8 @@ package scalafx.scene.layout
 import javafx.scene.layout as jfxsl
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.layout.LayoutIncludes.jfxBorder2sfx
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters.*
 import scala.language.implicitConversions
 
 object Border {

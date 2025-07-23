@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,8 @@
  */
 package scalafx.beans.binding
 
+import javafx.beans.binding as jfxbb
 import javafx.beans.value.ObservableBooleanValue
-import javafx.beans.{binding => jfxbb}
 import scalafx.beans.binding.BindingIncludes.jfxBooleanBinding2sfx
 
 import scala.language.implicitConversions

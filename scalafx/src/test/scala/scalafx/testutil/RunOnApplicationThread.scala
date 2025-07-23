@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.testutil
 
-import java.util.concurrent.CountDownLatch
-
 import javafx.application.Platform
 import org.scalatest.{Outcome, TestSuite, TestSuiteMixin}
+
+import java.util.concurrent.CountDownLatch
 
 trait RunOnApplicationThread extends TestSuiteMixin with TestSuite {
   // "with TestSuite" added above to avoid compilation error introduced in Scala 2.13 with ScalaTest 3.0.8

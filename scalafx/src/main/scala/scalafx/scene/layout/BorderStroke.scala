@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-
-import scala.language.implicitConversions
-import scalafx.Includes._
+import javafx.scene.layout as jfxsl
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
 import scalafx.scene.paint.Paint
+
+import scala.language.implicitConversions
 
 object BorderStroke {
   implicit def sfxBorderStroke2jfx(v: BorderStroke): jfxsl.BorderStroke = if (v != null) v.delegate else null

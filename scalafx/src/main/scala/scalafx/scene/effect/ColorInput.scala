@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{effect => jfxse, paint => jfxsp}
-import scalafx.Includes._
+import javafx.scene.{effect as jfxse, paint as jfxsp}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{DimensionDelegate, PositionDelegate, SFXDelegate}
-import scalafx.scene.paint._
+import scalafx.scene.paint.*
 
 import scala.language.implicitConversions
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import scalafx.Includes._
+import javafx.scene.layout as jfxsl
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 object BorderStrokeStyle {

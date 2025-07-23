@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,8 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
-
-import scalafx.Includes._
+import javafx.geometry as jfxg
+import scalafx.Includes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.NodeOrientation]]. */

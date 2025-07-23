@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.concurrent
 
-import javafx.{concurrent => jfxc}
+import javafx.concurrent as jfxc
 import scalafx.concurrent.Worker.State
 
 import scala.language.implicitConversions
@@ -57,8 +57,7 @@ trait ConcurrentIncludes {
    * @param s $JFX $SER
    * @return $SFX $SER
    */
-  implicit def jfxService2sfxService[T](s: jfxc.Service[T]): Service[T] = if (s != null) new Service[T](s) {}
-  else null
+  implicit def jfxService2sfxService[T](s: jfxc.Service[T]): Service[T] = if (s != null) new Service[T](s) {} else null
 
   /**
    * $START$SSER.html $SSER$END
@@ -67,8 +66,7 @@ trait ConcurrentIncludes {
    * @return $SFX $SSER
    */
   implicit def jfxScheduledService2sfxScheduledService[T](s: jfxc.ScheduledService[T]): ScheduledService[T] =
-    if (s != null) new ScheduledService[T](s) {}
-    else null
+    if (s != null) new ScheduledService[T](s) {} else null
 
   /**
    * $START$TSK.html $TSK$END
@@ -76,8 +74,7 @@ trait ConcurrentIncludes {
    * @param t $JFX $TSK
    * @return $SFX $TSK
    */
-  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]): Task[T] = if (t != null) new Task[T](t) {}
-  else null
+  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]): Task[T] = if (t != null) new Task[T](t) {} else null
 
   /**
    * $START$WRK.html $WRK$END

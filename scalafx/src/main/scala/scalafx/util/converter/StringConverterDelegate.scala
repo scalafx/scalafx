@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,7 @@
  */
 package scalafx.util.converter
 
-import javafx.{util => jfxu}
-
+import javafx.util as jfxu
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 

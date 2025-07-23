@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, event => jfxe, util => jfxu}
-import scalafx.Includes._
+import javafx.scene.control as jfxsc
+import javafx.{collections as jfxc, event as jfxe, util as jfxu}
+import scalafx.Includes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
@@ -119,7 +119,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
    */
   def onAction: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onActionProperty
 
-  def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
+  def onAction_=(aeh: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = aeh
   }
 
@@ -128,7 +128,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
    */
   def onShowing: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onShowingProperty
 
-  def onShowing_=(implicit aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onShowing_=(aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = aeh
   }
 
@@ -137,7 +137,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
    */
   def onShown: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onShownProperty
 
-  def onShown_=(implicit aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onShown_=(aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShown() = aeh
   }
 
@@ -146,7 +146,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
    */
   def onHiding: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onHidingProperty
 
-  def onHiding_=(implicit aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onHiding_=(aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHiding() = aeh
   }
 
@@ -155,7 +155,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
    */
   def onHidden: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onHiddenProperty
 
-  def onHidden_=(implicit aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
+  def onHidden_=(aeh: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = aeh
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2025, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,10 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa, scene => jfxs}
-import scalafx.Includes._
+import javafx.{animation as jfxa, scene as jfxs}
+import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
-import scalafx.collections._
+import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 

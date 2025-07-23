@@ -26,10 +26,10 @@
  */
 package scalafx.testutil
 
-import java.lang.reflect.Method
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.util.JavaConverters.*
 
-import scala.collection.JavaConverters.*
+import java.lang.reflect.Method
 import scala.collection.mutable
 
 /**
