@@ -33,6 +33,7 @@ package scalafx.collections
 object ObservableArrayOnChangeExample {
 
   def main(args: Array[String]): Unit = {
+
     // Create an ObservableFloatArray
     val floatArray = new ObservableFloatArray()
     // Add some initial values
@@ -42,11 +43,11 @@ object ObservableArrayOnChangeExample {
       println("Array changed!")
       println("Size changed: " + change.sizeChanged)
       println("Changed range: from " + change.start + " to " + change.end)
-      if (change.sizeChanged) println("New size: " + a.size)
+      if (change.sizeChanged)
+        println("New size: " + a.size)
       // You can iterate through the changed portion if needed
-      for (i <- change.start until change.end) {
+      for i <- change.start until change.end do
         println("Value at index " + i + ": " + a.get(i))
-      }
     }
 
     println("--- Initial array ---")
@@ -56,7 +57,7 @@ object ObservableArrayOnChangeExample {
     floatArray.set(1, 2.5f) // This triggers a change event
 
     println("\n--- Adding elements ---")
-    floatArray.addOne(5.0f) // This triggers a change event (sizeChanged will be true)
+    floatArray += 5.0f // This triggers a change event (sizeChanged will be true)
 
     println("\n--- Resizing ---")
     floatArray.resize(3) // This triggers a change event (sizeChanged will be true)
