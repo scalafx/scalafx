@@ -3,8 +3,8 @@
 [![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Scala CI](https://github.com/scalafx/scalafx/actions/workflows/scala.yml/badge.svg)](https://github.com/scalafx/scalafx/actions/workflows/scala.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13)
-[![Scaladoc](https://javadoc.io/badge2/org.scalafx/scalafx_2.13/scaladoc.svg)](https://javadoc.io/doc/org.scalafx/scalafx_2.13)
+[![Maven Central Version](https://img.shields.io/maven-central/v/org.scalafx/scalafx_3)](https://central.sonatype.com/artifact/org.scalafx/scalafx_3)
+[![Scaladoc](https://javadoc.io/badge2/org.scalafx/scalafx_3/scaladoc.svg)](https://javadoc.io/doc/org.scalafx/scalafx_3)
 
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX. This means that every ScalaFX
 application is also a valid Scala application. By extension, it supports full interoperability with Java and can run
