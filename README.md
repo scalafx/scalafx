@@ -74,7 +74,7 @@ object yourProject extends ScalaModule {
 }
 ```
 
-You can find sample ScalaFX Mill project here (note: its build configuration will not work with the current version of Mill): [scalafx-millproject](https://github.com/rom1dep/scalafx-millproject)
+You can find sample ScalaFX Mill project here: [scalafx-millproject](https://github.com/rom1dep/scalafx-millproject)
 
 #### Gradle
 
