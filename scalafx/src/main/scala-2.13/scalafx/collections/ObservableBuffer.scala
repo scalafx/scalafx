@@ -242,7 +242,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     // Custom implementation to minimize number of change notification.
     // This will issue only one change notification for all xs element,
     // rather than default implementation issuing separate notification foreach element of xs
-    delegate.addAll(xs.iterator.toSeq: _*)
+    delegate.addAll(xs.iterator.toSeq*)
     this
   }
 
@@ -253,7 +253,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @return $ownOB
    */
   def addAll(elem: T*): ObservableBuffer.this.type = {
-    delegate.addAll(elem: _*)
+    delegate.addAll(elem*)
     this
   }
 
@@ -317,7 +317,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     // Custom implementation to minimize number of change notification.
     // This will issue only one change notification for all xs element,
     // rather than default implementation issuing separate notification foreach element of xs
-    delegate.removeAll(xs.iterator.toSeq: _*)
+    delegate.removeAll(xs.iterator.toSeq*)
     this
   }
 
@@ -541,7 +541,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    */
   def onChange[T1 >: T](op: => Unit): Subscription = {
     val listener = new jfxc.ListChangeListener[T1] {
-      def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]): Unit = {
+      def onChanged(c: jfxc.ListChangeListener.Change[? <: T1]): Unit = {
         op
       }
     }
