@@ -52,7 +52,7 @@ object TriangleMeshDemo extends JFXApp3 {
       title = "TriangleMesh Demo"
       scene = new Scene(500, 500, true, SceneAntialiasing.Balanced) {
         fill = Color.Beige
-        val tetra = new MeshView(tetrahedron(500.0d)) {
+        val tetra: MeshView = new MeshView(tetrahedron(500.0d)) {
           val image = new Image(this, "images/TetrahedronMap.png")
           material = new PhongMaterial {
             specularColor = Color.White
