@@ -43,34 +43,23 @@ You can find examples of SBT setup in section [Demo Projects and Examples](#demo
 If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
 ```scala
-//| mill-version: 1.0.3
+//| mill-version: 1.0.6
 
 package build
 import mill._, scalalib._
 
 object yourProject extends ScalaModule {
   def jvmId = "temurin:22.0.2" // JavaFX 24 requires JDK version >= 22
-  def scalaVersion = "3.7.2"
-
-  // Customize coursier resolution to discover the OS-specific artifacts required by JavaFX
-  def resolutionCustomizer = Task.Anon {
-    Some((r: coursier.core.Resolution) =>
-      r.withOsInfo(coursier.core.Activation.Os.fromProperties(sys.props.toMap))
-    )
-  }
+  def scalaVersion = "3.7.3"
 
   // Add dependency on JavaFX libraries
-  val javaFXVersion = "24"
-  val scalaFXVersion = "24.0.2-R36"
-  val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => mvn"org.openjfx:javafx-$m:$javaFXVersion")
+  val javaFxVersion = "24"
+  val scalaFxVersion = "24.0.2-R36"
+  val javaFxModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
 
-  def mvnDeps = {
-    Seq(
-      mvn"org.scalafx::scalafx:$scalaFXVersion",
-      //...
-    ) ++ javaFXModules
-  }
+  def mvnDeps = Seq(
+    mvn"org.scalafx::scalafx:$scalaFxVersion"
+  ) ++ javaFxModules.map(mod => mvn"org.openjfx:javafx-$mod:$javaFxVersion")
 }
 ```
 
