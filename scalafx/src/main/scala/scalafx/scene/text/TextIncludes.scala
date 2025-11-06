@@ -85,6 +85,9 @@ trait TextIncludes {
    */
   implicit def jfxFontWeight2sfx(e: jfxst.FontWeight): FontWeight = FontWeight.jfxEnum2sfx(e)
 
+  implicit def jfxTabStopPolicy2sfxTabStopPolicy(t: jfxst.TabStopPolicy): TabStopPolicy =
+    if (t != null) new TabStopPolicy(t) else null
+
   /**
    * $START$TX.html $TX$END
    *
