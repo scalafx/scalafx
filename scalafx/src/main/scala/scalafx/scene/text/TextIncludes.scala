@@ -85,6 +85,8 @@ trait TextIncludes {
    */
   implicit def jfxFontWeight2sfx(e: jfxst.FontWeight): FontWeight = FontWeight.jfxEnum2sfx(e)
 
+  implicit def jfxLayoutInfo2sfx(t: jfxst.LayoutInfo): LayoutInfo = if (t != null) new LayoutInfo(t) else null
+
   implicit def jfxTabStopPolicy2sfxTabStopPolicy(t: jfxst.TabStopPolicy): TabStopPolicy =
     if (t != null) new TabStopPolicy(t) else null
 

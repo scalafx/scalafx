@@ -221,4 +221,9 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   def selectionEnd_=(v: Int): Unit = {
     selectionEnd() = v
   }
+
+  /**
+   * Returns a copy of the text layout geometry for this node.
+   */
+  def layoutInfo: LayoutInfo = delegate.getLayoutInfo()
 }
