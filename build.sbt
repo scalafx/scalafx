@@ -4,11 +4,11 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 // Environment variables used by the build:
 // GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined, Scaladocs will be built without diagrams.
-// JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
+// JAR_BUILT_BY      - Name to be added to the Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "24.0.2"
-val scalafxVersion = "24.0.2-R37-SNAPSHOT"
+val javaFXVersion  = "25"
+val scalafxVersion = "25.0.0-R37-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -70,6 +70,7 @@ lazy val scalafxSettings = Seq(
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
+  javaOptions   ++= Seq("-Djavafx.enablePreview=true"),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "21"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
