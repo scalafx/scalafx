@@ -156,6 +156,8 @@ trait LayoutIncludes {
    */
   implicit def jfxGridPane2sfx(v: jfxsl.GridPane): GridPane = if (v != null) new GridPane(v) else null
 
+  implicit def jfxHeaderButtonType2sfx(v: jfxsl.HeaderButtonType): HeaderButtonType = HeaderButtonType.jfxEnum2sfx(v)
+
   /**
    * $START$HBOX.html $HBOX$END
    *
