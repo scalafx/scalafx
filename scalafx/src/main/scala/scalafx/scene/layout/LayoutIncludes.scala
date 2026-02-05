@@ -158,6 +158,9 @@ trait LayoutIncludes {
 
   implicit def jfxHeaderButtonType2sfx(v: jfxsl.HeaderButtonType): HeaderButtonType = HeaderButtonType.jfxEnum2sfx(v)
 
+  implicit def jfxHeaderDragType2sfx(v: jfxsl.HeaderDragType): HeaderDragType =
+    if (v != null) HeaderDragType(v) else null
+
   /**
    * $START$HBOX.html $HBOX$END
    *
