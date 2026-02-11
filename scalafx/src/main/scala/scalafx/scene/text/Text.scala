@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,6 +43,13 @@ object Text {
 
 }
 
+/**
+ * The Text class defines a node that displays a text. Paragraphs are separated by '\n' and the text is wrapped on paragraph boundaries.
+ *
+ * Wraps JavaFX [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/Text.html Text]]
+ *
+ * @since 2
+ */
 class Text(override val delegate: jfxst.Text = new jfxst.Text)
     extends Shape(delegate)
     with PositionDelegate[jfxst.Text]
@@ -101,6 +108,21 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
+   * Returns the shape for the range of the text in local coordinates, with or without line spacing.
+   *
+   * @param start  the beginning character index for the range
+   * @param end the end character index (non-inclusive) for the range
+   * @param includeLineSpacing whether the shapes include line spacing
+   * @return an array of `PathElement` which can be used to create a `Shape`
+   * @since 25
+   */
+  def rangeShape(
+    start: Int,
+    end: Int,
+    includeLineSpacing: Boolean
+  ): Array[jfxss.PathElement] = delegate.getRangeShape(start, end, includeLineSpacing)
+
+  /**
    * Defines if each line of text should have a line through it.
    */
   def strikethrough: BooleanProperty = delegate.strikethroughProperty
@@ -108,6 +130,19 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   def strikethrough_=(v: Boolean): Unit = {
     strikethrough() = v
   }
+
+  /**
+   * Returns the shape for the strike through line in local coordinates.
+   *
+   * @param start the beginning character index for the range
+   * @param end the end character index (non-inclusive) for the range
+   * @return an array of `PathElement` which can be used to create a `Shape`
+   * @since 25
+   */
+  def strikeThroughShape(
+    start: Int,
+    end: Int
+  ): Array[jfxss.PathElement] = delegate.getStrikeThroughShape(start, end)
 
   /**
    * The size of a tab stop in spaces. Values less than 1 are treated as 1.
