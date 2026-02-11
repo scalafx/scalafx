@@ -48,9 +48,9 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip  := true
 ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.20"
+val Scala2_12 = "2.12.21"
 val Scala2_13 = "2.13.18"
-val Scala3_3  = "3.3.6"
+val Scala3_3  = "3.3.7"
 
 // Dependencies
 lazy val javafxModules =
