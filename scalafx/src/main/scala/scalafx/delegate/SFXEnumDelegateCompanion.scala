@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ import scala.language.implicitConversions
 trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
 
   /**
-   * Converts a `SFXEnumDelegate` to its respective JavaFX `Enum`.
+   * Converts an `SFXEnumDelegate` to its respective JavaFX `Enum`.
    *
    * @param s `SFXEnumDelegate` instance
    * @return Delegated `enum`
@@ -57,7 +57,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
     if (e != null) values.find(_.delegate == e).get
     else null.asInstanceOf[S]
 
-  /** Contain constants which will be source for `values` List */
+  /** Contain constants which will be the source for `values` List */
   protected def unsortedValues: Array[S]
 
   /** Returns a List containing the constants of this `enum` type, in the order they are declared. */
@@ -72,7 +72,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    */
   def apply(name: String): S = values.find(_.name == name) match {
     case Some(e) => e
-    case None => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
+    case None => throw new IllegalArgumentException(s"No enum constant ${values.head.getClass.getName}.$name")
   }
 
   /**
