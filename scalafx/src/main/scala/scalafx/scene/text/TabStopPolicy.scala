@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,8 @@ object TabStopPolicy {
  * The TabStopPolicy determines the tab stop positions within the text layout.
  *
  * Wraps [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/TabStopPolicy.html]]
+ *
+ * @since 25
  */
 class TabStopPolicy(override val delegate: jfxst.TabStopPolicy = new jfxst.TabStopPolicy)
     extends SFXDelegate[jfxst.TabStopPolicy] {
