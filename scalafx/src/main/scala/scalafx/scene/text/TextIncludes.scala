@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,6 +51,9 @@ object TextIncludes extends TextIncludes
  * @define TB TextBoundsType
  */
 trait TextIncludes {
+
+  implicit def jfxCaretInfo2sfx(t: jfxst.CaretInfo): CaretInfo = if (t != null) new CaretInfo(t) else null
+
 
   /**
    * $START$FT.html $FT$END
