@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,9 +69,16 @@ object StageStyle
   @deprecated("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
   val UNIFIED: StageStyle = Unified
 
-  protected override def unsortedValues: Array[StageStyle] =
-    Array(Decorated, Undecorated, Transparent, Utility, Unified)
+  /** Defines a Stage style in which the client area is extended into the header bar area,
+   * removing the separation between the two areas and allowing applications
+   * to place scene graph nodes in the header bar area of the stage.
+   *
+   * @since 25
+   */
+  case object Extended extends StageStyle(jfxs.StageStyle.EXTENDED)
 
+  protected override def unsortedValues: Array[StageStyle] =
+    Array(Decorated, Undecorated, Transparent, Utility, Unified, Extended)
 }
 
 /**

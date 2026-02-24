@@ -28,10 +28,11 @@
 package scalafx.scene.text
 
 import javafx.css as jfxcss
-import javafx.scene.text as jfxst
+import javafx.scene.{shape as jfxss, text as jfxst}
 import scalafx.Includes.*
 import scalafx.beans.property.{DoubleProperty, IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Point2D
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
 import scalafx.util.JavaConverters.*
@@ -85,6 +86,16 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   }
 
   /**
+   * The size of a tab stop in spaces.
+   * Values less than 1 are treated as 1. This value overrides the `tabSize` of contained [[scalafx.scene.text.TextFlow Text]] nodes.
+   */
+  def tabStopPolicy: ObjectProperty[jfxst.TabStopPolicy] = delegate.tabStopPolicyProperty()
+
+  def tabStopPolicy_=(v: TabStopPolicy): Unit = {
+    tabStopPolicy() = v
+  }
+
+  /**
    * Defines horizontal text alignment.
    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
@@ -104,5 +115,21 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   def requestLayout(): Unit = {
     delegate.requestLayout()
   }
+
+  /**
+   * Maps local point to HitInfo in the content.
+   * @param point the specified point to be tested
+   * @return a `HitInfo` representing the character index found
+   */
+  def hitInfo(point: Point2D): HitInfo = delegate.getHitInfo(point)
+
+  /**
+   * Returns the shape for the strike-through in local coordinates.
+   *
+   * @param start the beginning character index for the range
+   * @param end the end character index (non-inclusive) for the range
+   * @return an array of `PathElement` which can be used to create a `Shape`
+   */
+  def strikeThroughShape(start: Int, end: Int): Array[jfxss.PathElement] = delegate.getStrikeThroughShape(start, end)
 
 }

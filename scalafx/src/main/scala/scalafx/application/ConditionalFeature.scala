@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.application
 import javafx.application as jfxa
 import scalafx.delegate.*
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html javafx.application.ConditionalFeature]] */
+/** Wrapper for JavaFX [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/application/ConditionalFeature.html ConditionalFeature]] */
 object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
   case object Controls extends ConditionalFeature(jfxa.ConditionalFeature.CONTROLS)
@@ -106,6 +106,15 @@ object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeatu
   @deprecated("Use UnifiedWindow; UNIFIED_WINDOW will be removed in a future releas", "8.0.5")
   val UNIFIED_WINDOW: ConditionalFeature = UnifiedWindow
 
+  /**
+   * Indicates that a system supports [[scalafx.stage.StageStyle.Extended]].
+   *
+   * This feature is currently supported on Windows, Linux, and macOS.
+   *
+   * @since 25
+   */
+  case object ExtendedWindow extends ConditionalFeature(jfxa.ConditionalFeature.EXTENDED_WINDOW)
+
   case object VirtualKeyboard extends ConditionalFeature(jfxa.ConditionalFeature.VIRTUAL_KEYBOARD)
 
   @deprecated("Use VirtualKeyboard; VIRTUAL_KEYBOARD will be removed in a future releas", "8.0.5")
@@ -130,6 +139,7 @@ object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeatu
     InputMethod,
     TransparentWindow,
     UnifiedWindow,
+    ExtendedWindow,
     TwoLevelFocus,
     VirtualKeyboard,
     InputTouch,

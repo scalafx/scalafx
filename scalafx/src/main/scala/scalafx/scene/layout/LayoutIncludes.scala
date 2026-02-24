@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -155,6 +155,13 @@ trait LayoutIncludes {
    * @return $SFX $GDPN
    */
   implicit def jfxGridPane2sfx(v: jfxsl.GridPane): GridPane = if (v != null) new GridPane(v) else null
+
+  implicit def jfxHeaderButtonType2sfx(v: jfxsl.HeaderButtonType): HeaderButtonType = HeaderButtonType.jfxEnum2sfx(v)
+
+  implicit def jfxHeaderBar2sfx(v: jfxsl.HeaderBar): HeaderBar = if (v != null) new HeaderBar(v) else null
+
+  implicit def jfxHeaderDragType2sfx(v: jfxsl.HeaderDragType): HeaderDragType =
+    if (v != null) HeaderDragType(v) else null
 
   /**
    * $START$HBOX.html $HBOX$END

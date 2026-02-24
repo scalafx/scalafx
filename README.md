@@ -3,8 +3,8 @@
 [![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Scala CI](https://github.com/scalafx/scalafx/actions/workflows/scala.yml/badge.svg)](https://github.com/scalafx/scalafx/actions/workflows/scala.yml)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13)
-[![Scaladoc](https://javadoc.io/badge2/org.scalafx/scalafx_2.13/scaladoc.svg)](https://javadoc.io/doc/org.scalafx/scalafx_2.13)
+[![Maven Central Version](https://img.shields.io/maven-central/v/org.scalafx/scalafx_3)](https://central.sonatype.com/artifact/org.scalafx/scalafx_3)
+[![Scaladoc](https://javadoc.io/badge2/org.scalafx/scalafx_3/scaladoc.svg)](https://javadoc.io/doc/org.scalafx/scalafx_3)
 
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX. This means that every ScalaFX
 application is also a valid Scala application. By extension, it supports full interoperability with Java and can run
@@ -43,29 +43,23 @@ You can find examples of SBT setup in section [Demo Projects and Examples](#demo
 If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
 ```scala
-object yourProject extends ScalaModule {
-  def scalaVersion = "3.0.0"
+//| mill-version: 1.0.6
 
-  // Customize coursier resolution to discover the OS-specific artifacts required by JavaFX
-  // Note: this requires mill >= 0.9.7 (with pr/775 merged)
-  def resolutionCustomizer = T.task {
-    Some((r: coursier.core.Resolution) =>
-      r.withOsInfo(coursier.core.Activation.Os.fromProperties(sys.props.toMap))
-    )
-  }
+package build
+import mill._, scalalib._
+
+object yourProject extends ScalaModule {
+  def jvmId = "temurin:22.0.2" // JavaFX 24 requires JDK version >= 22
+  def scalaVersion = "3.7.3"
 
   // Add dependency on JavaFX libraries
-  val javaFXVersion = "16"
-  val scalaFXVersion = "16.0.0-R25"
-  val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => ivy"org.openjfx:javafx-$m:$javaFXVersion")
+  val javaFxVersion = "24"
+  val scalaFxVersion = "24.0.2-R36"
+  val javaFxModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
 
-  def ivyDeps = {
-    Agg(
-      ivy"org.scalafx::scalafx:$scalaFXVersion",
-      //...
-    ) ++ javaFXModules
-  }
+  def mvnDeps = Seq(
+    mvn"org.scalafx::scalafx:$scalaFxVersion"
+  ) ++ javaFxModules.map(mod => mvn"org.openjfx:javafx-$mod:$javaFxVersion")
 }
 ```
 

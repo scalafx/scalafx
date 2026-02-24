@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,6 +52,9 @@ object TextIncludes extends TextIncludes
  */
 trait TextIncludes {
 
+  implicit def jfxCaretInfo2sfx(t: jfxst.CaretInfo): CaretInfo = if (t != null) new CaretInfo(t) else null
+
+
   /**
    * $START$FT.html $FT$END
    *
@@ -85,6 +88,13 @@ trait TextIncludes {
    */
   implicit def jfxFontWeight2sfx(e: jfxst.FontWeight): FontWeight = FontWeight.jfxEnum2sfx(e)
 
+  implicit def jfxHitInfo2sfx(t: jfxst.HitInfo): HitInfo = if (t != null) new HitInfo(t) else null
+
+  implicit def jfxLayoutInfo2sfx(t: jfxst.LayoutInfo): LayoutInfo = if (t != null) new LayoutInfo(t) else null
+
+  implicit def jfxTabStopPolicy2sfxTabStopPolicy(t: jfxst.TabStopPolicy): TabStopPolicy =
+    if (t != null) new TabStopPolicy(t) else null
+
   /**
    * $START$TX.html $TX$END
    *
@@ -110,4 +120,6 @@ trait TextIncludes {
   implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType): TextBoundsType = TextBoundsType.jfxEnum2sfx(e)
 
   implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow): TextFlow = if (tf != null) new TextFlow(tf) else null
+
+  implicit def jfxTextLineInfo2sfx(tf: jfxst.TextLineInfo): TextLineInfo = if (tf != null) new TextLineInfo(tf) else null
 }

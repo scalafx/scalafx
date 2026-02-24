@@ -4,11 +4,11 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 // Environment variables used by the build:
 // GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined, Scaladocs will be built without diagrams.
-// JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
+// JAR_BUILT_BY      - Name to be added to the Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "24.0.2"
-val scalafxVersion = "24.0.2-R36"
+val javaFXVersion  = "25.0.2"
+val scalafxVersion = "25.0.2-R37-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -48,9 +48,9 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip  := true
 ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.20"
-val Scala2_13 = "2.13.16"
-val Scala3_3  = "3.3.6"
+val Scala2_12 = "2.12.21"
+val Scala2_13 = "2.13.18"
+val Scala3_3  = "3.3.7"
 
 // Dependencies
 lazy val javafxModules =
@@ -70,7 +70,8 @@ lazy val scalafxSettings = Seq(
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "21"),
+  javaOptions   ++= Seq("-Djavafx.enablePreview=true"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "23"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
