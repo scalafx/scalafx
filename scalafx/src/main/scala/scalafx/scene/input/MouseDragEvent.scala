@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,6 +41,14 @@ object MouseDragEvent {
    * Common supertype for all mouse event types.
    */
   val Any: EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.ANY
+
+  /**
+   * This event occurs when the gesture ends. It is delivered exactly once to the gesture source, and is always the
+   * last event in the full press-drag-release process. It is delivered even when the mouse is outside the window.
+   *
+   * @since 26
+   */
+  val MouseDragDone: EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_DONE
 
   /**
    * This event occurs when the gesture enters a node.
