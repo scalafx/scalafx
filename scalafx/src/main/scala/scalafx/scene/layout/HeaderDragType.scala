@@ -43,8 +43,15 @@ object HeaderDragType extends SFXEnumDelegateCompanion[jfxsl.HeaderDragType, Hea
   /** The node and its descendants are a draggable part of the `HeaderBar`. */
   case object DraggableSubtree extends HeaderDragType(jfxsl.HeaderDragType.DRAGGABLE_SUBTREE)
 
+  /** The node is transparent in regard to draggable-area hit testing. */
+  case object Transparent extends HeaderDragType(jfxsl.HeaderDragType.TRANSPARENT)
+
+  /** The node and its descendants are transparent in regard to draggable-area hit testing. */
+  case object TransparentSubtree extends HeaderDragType(jfxsl.HeaderDragType.TRANSPARENT_SUBTREE)
+
   /** Contain constants which will be the source for `values` List */
-  override protected def unsortedValues: Array[HeaderDragType] = Array(None, Draggable, DraggableSubtree)
+  override protected def unsortedValues: Array[HeaderDragType] =
+    Array(None, Draggable, DraggableSubtree, Transparent, TransparentSubtree)
 }
 
 /**
