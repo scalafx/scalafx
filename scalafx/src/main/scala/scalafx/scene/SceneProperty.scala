@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -201,6 +201,13 @@ class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Sce
   )
   def onMouseClicked: ObjectBinding[jfxbb.ObjectBinding[_ >: jfxsi.MouseEvent]] =
     jfxbb.Bindings.select[jfxbb.ObjectBinding[_ >: jfxsi.MouseEvent]](delegate, "onMouseClicked")
+
+  @deprecated(
+    "Use of SceneProperty can result in infinite recursion and StackOverflow errors. See discussion of [Issue #69](https://github.com/scalafx/scalafx/issues/69)",
+    "8.0.60-R10"
+  )
+  def onMouseDragDone: ObjectBinding[jfxbb.ObjectBinding[_ >: jfxsi.MouseDragEvent]] =
+    jfxbb.Bindings.select[jfxbb.ObjectBinding[_ >: jfxsi.MouseDragEvent]](delegate, "onMouseDragDone")
 
   @deprecated(
     "Use of SceneProperty can result in infinite recursion and StackOverflow errors. See discussion of [Issue #69](https://github.com/scalafx/scalafx/issues/69)",

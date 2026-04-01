@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -489,6 +489,21 @@ abstract class Node protected (override val delegate: jfxs.Node)
   def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseDragged() = v
   }
+
+  /**
+   * Defines a function to be called when a full press-drag-release gesture ends with this node as its source.
+   *
+   * @return the event handler that is called when a full press-drag-release finishes
+   * @see MouseDragEvent#MOUSE_DRAG_DONE
+   * @since 26
+   */
+  def onMouseDragDone: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragDoneProperty
+
+  def onMouseDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
+    onMouseDragDone() = v
+  }
+
 
   /**
    * Defines a function to be called when a full press-drag-release gesture enters this Node.
