@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -166,7 +166,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def getChildren: ObservableBuffer[jfxs.Node] = root.value match {
     case group: jfxs.Group => group.getChildren
     case pane: jfxsl.Pane  => pane.getChildren
-    case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\n" +
+    case _                 => throw new IllegalStateException("Cannot access children of root: " + root + "\n" +
         "Use a class that extends Group or Pane, or override the getChildren method.")
   }
 
@@ -372,6 +372,19 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
 
   def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseDragged() = v
+  }
+
+  /**
+   * Defines a function to be called when a full press-drag-release gesture ends.
+   *
+   * @see MouseDragEvent#MOUSE_DRAG_DONE
+   * @since 26
+   */
+  def onMouseDragDone: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
+    delegate.onMouseDragDoneProperty
+
+  def onMouseDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
+    onMouseDragDone() = v
   }
 
   /**

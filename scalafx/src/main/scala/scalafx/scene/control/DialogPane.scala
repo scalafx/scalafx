@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import scalafx.beans.property.{BooleanProperty, ObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
-import scalafx.scene.layout.Pane
+import scalafx.scene.layout.{HeaderBar, Pane}
 
 import scala.language.implicitConversions
 
@@ -74,7 +74,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * @return An ObjectProperty wrapping the current graphic.
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
-  def graphic_=(value: Node): Unit = {
+  def graphic_=(value: Node): Unit       = {
     ObjectProperty.fillProperty[jfxs.Node](this.graphic, value)
   }
 
@@ -86,8 +86,19 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * javadoc.
    */
   def header: ObjectProperty[jfxs.Node] = delegate.headerProperty
-  def header_=(value: Node): Unit = {
+  def header_=(value: Node): Unit       = {
     ObjectProperty.fillProperty[jfxs.Node](this.header, value)
+  }
+
+  /**
+   * Gets the value of the {@link #headerBarProperty() headerBar} property.
+   *
+   * @return the {@code HeaderBar}
+   * @since 26
+   */
+  def headerBar: HeaderBar                = delegate.getHeaderBar
+  def headerBar_=(value: HeaderBar): Unit = {
+    delegate.setHeaderBar(value)
   }
 
   /**
@@ -100,7 +111,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * DialogPane switching its layout to the 'header' layout - as outlined in
    * the [[scalafx.scene.control.DialogPane]] class javadoc.</p>
    */
-  def headerText: StringProperty = delegate.headerTextProperty
+  def headerText: StringProperty        = delegate.headerTextProperty
   def headerText_=(value: String): Unit = {
     headerText() = value
   }
@@ -109,7 +120,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * Property representing the content area of the dialog.
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
-  def content_=(value: Node): Unit = {
+  def content_=(value: Node): Unit       = {
     ObjectProperty.fillProperty[jfxs.Node](this.content, value)
   }
 
@@ -119,7 +130,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * meaning that if both the content node and the contentText properties are set,
    * the content text will not be displayed in a default DialogPane instance.
    */
-  def contentText: StringProperty = delegate.contentTextProperty
+  def contentText: StringProperty        = delegate.contentTextProperty
   def contentText_=(value: String): Unit = {
     contentText() = value
   }
@@ -130,7 +141,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * This button will be added automatically when the expandable content property is non-null.
    */
   def expandableContent: ObjectProperty[jfxs.Node] = delegate.expandableContentProperty
-  def expandableContent_=(value: Node): Unit = {
+  def expandableContent_=(value: Node): Unit       = {
     ObjectProperty.fillProperty[jfxs.Node](this.expandableContent, value)
   }
 
@@ -152,7 +163,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * @return The { @link ObservableList} of { @link ButtonType button types}
    *         available to the user.
    */
-  def buttonTypes: ObservableBuffer[jfxsc.ButtonType] = delegate.getButtonTypes
+  def buttonTypes: ObservableBuffer[jfxsc.ButtonType]  = delegate.getButtonTypes
   def buttonTypes_=(types: Iterable[ButtonType]): Unit = {
     buttonTypes.clear()
     buttonTypes ++= types.map(_.delegate)

@@ -30,9 +30,9 @@ package scalafx.scene.layout
 import javafx.scene.layout as jfxsl
 import javafx.{geometry as jfxg, scene as jfxs}
 import scalafx.Includes.*
-import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
+import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.{Insets, Pos}
+import scalafx.geometry.{Dimension2D, Insets, Pos}
 import scalafx.scene.Node
 import scalafx.stage.Stage
 
@@ -63,6 +63,16 @@ object HeaderBar {
     jfxsl.HeaderBar.getDragType(child)
 
   /**
+   * `HeaderDragType` of the child, indicating whether it is a draggable part
+   * of the `HeaderBar`. A value of `null` indicates that the drag type is not set.
+   *
+   * @param child the child node
+   * @return the `dragType` property
+   * @since 26
+   */
+  def dragType(child: Node): ObjectProperty[jfxsl.HeaderDragType] = jfxsl.HeaderBar.dragTypeProperty(child)
+
+  /**
    * Specifies the `HeaderButtonType` of the child, indicating its semantic use in the header bar.
    *
    * This property can be set on any [[Node]]. Specifying a header button type also provides the behavior
@@ -83,6 +93,19 @@ object HeaderBar {
    */
   def getButtonType(child: Node): HeaderButtonType =
     jfxsl.HeaderBar.getButtonType(child)
+
+  /**
+   * Specifies the `HeaderButtonType` of the child, indicating its semantic use in the header bar.
+   *
+   * This property can be set on any [[Node]]. Specifying a header button type also provides the behavior
+   * associated with the button type. If the default behavior is not desired, applications can register an
+   * event filter on the child node that consumes the [[MouseEvent#MOUSE_RELEASED]] event.
+   *
+   * @param child the child node
+   * @return the `buttonType` property
+   * @since 26
+   */
+  def buttonType(child: Node): ObjectProperty[jfxsl.HeaderButtonType] = jfxsl.HeaderBar.buttonTypeProperty(child)
 
   /**
    * Sentinel value that can be used for [[setPrefButtonHeight]] to indicate that
@@ -107,6 +130,81 @@ object HeaderBar {
    */
   def getPrefButtonHeight(stage: Stage): Double =
     jfxsl.HeaderBar.getPrefButtonHeight(stage)
+
+  /**
+   * Specifies the preferred height of the system-provided header buttons of the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @return the `prefButtonHeight` property
+   * @since 26
+   */
+  def prefButtonHeight(stage: Stage): DoubleProperty =
+    jfxsl.HeaderBar.prefButtonHeightProperty(stage)
+
+  /**
+   * Describes the size of the left system-reserved inset of the specified `Stage`, which is an area
+   * reserved for the iconify, maximize, and close window buttons. If there are no window buttons on the left
+   * side of the window, the returned area is an empty `Dimension2D`.
+   *
+   * @param stage the `Stage`
+   * @return the `leftSystemInset` property
+   * @since 26
+   */
+  def leftSystemInset(stage: Stage): ReadOnlyObjectProperty[jfxg.Dimension2D] =
+    jfxsl.HeaderBar.leftSystemInsetProperty(stage)
+
+  /**
+   * Gets the value of the [[#leftSystemInset(Stage) leftSystemInset]] property
+   * of the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @return the size of the left system-reserved inset
+   * @since 26
+   */
+  def getLeftSystemInset(stage: Stage): Dimension2D = jfxsl.HeaderBar.getLeftSystemInset(stage.delegate)
+
+  /**
+   * Describes the size of the right system-reserved inset of the specified `Stage`, which is an area
+   * reserved for the iconify, maximize, and close window buttons. If there are no window buttons on the right
+   * side of the window, the returned area is an empty `Dimension2D`.
+   *
+   * @param stage the `Stage`
+   * @return the `rightSystemInset` property
+   * @since 26
+   */
+  def rightSystemInset(stage: Stage): ReadOnlyObjectProperty[jfxg.Dimension2D] =
+    jfxsl.HeaderBar.rightSystemInsetProperty(stage)
+
+  /**
+   * Gets the value of the [[#rightSystemInset(Stage) rightSystemInset]] property
+   * of the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @return the size of the right system-reserved inset
+   * @since 26
+   */
+  def getRightSystemInset(stage: Stage): Dimension2D = jfxsl.HeaderBar.getRightSystemInset(stage.delegate)
+
+  /**
+   * The system-provided minimum recommended height for the `HeaderBar` of the specified `Stage`,
+   * which usually corresponds to the height of the default header buttons. Applications can use this value
+   * as a sensible lower limit for the height of the `HeaderBar`.
+   *
+   * @param stage the `Stage`
+   * @return the `minSystemHeight` property
+   * @since 26
+   */
+  def minSystemHeight(stage: Stage): ReadOnlyDoubleProperty = jfxsl.HeaderBar.minSystemHeightProperty(stage)
+
+  /**
+   * Gets the value of the [[#minSystemHeight(Stage) minSystemHeight]] property
+   * of the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @return the system-provided minimum recommended height for the `HeaderBar`
+   * @since 26
+   */
+  def getMinSystemHeight(stage: Stage): Double = jfxsl.HeaderBar.getMinSystemHeight(stage.delegate)
 
   /**
    * Sets the alignment for the child when contained in a `HeaderBar`.
@@ -147,25 +245,19 @@ object HeaderBar {
    */
   def getMargin(child: Node): Insets =
     jfxsl.HeaderBar.getMargin(child)
+
 }
 
 /**
  * A client-area header bar that is used as a replacement for the system-provided header bar in stages with
  * the StageStyle.Extended style.
  *
- * Wraps [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/layout/HeaderBar.html]]
+ * Wraps [[https://openjfx.io/javadoc/26/javafx.graphics/javafx/scene/layout/HeaderBar.html]]
  */
 
 class HeaderBar(override val delegate: jfxsl.HeaderBar = new jfxsl.HeaderBar)
     extends Region(delegate)
     with SFXDelegate[jfxsl.HeaderBar] {
-
-  /**
-   * The system-provided minimum recommended height for the `HeaderBar`, which usually corresponds
-   * to the height of the default header buttons. Applications can use this value as a sensible lower limit
-   * for the height of the `HeaderBar`.
-   */
-  def minSystemHeight: ReadOnlyDoubleProperty = delegate.minSystemHeightProperty
 
   /**
    * The center area of the `HeaderBar`.
@@ -174,41 +266,55 @@ class HeaderBar(override val delegate: jfxsl.HeaderBar = new jfxsl.HeaderBar)
   def center_=(n: Node): Unit           = delegate.setCenter(n)
 
   /**
-   * The leading area of the `HeaderBar`.
+   * The left area of the `HeaderBar`.
    */
-  def leading: ObjectProperty[jfxs.Node] = delegate.leadingProperty()
-  def leading_=(n: Node): Unit           = delegate.setLeading(n)
+  def left: ObjectProperty[jfxs.Node] = delegate.leftProperty()
+  def left_=(n: Node): Unit           = delegate.setLeft(n)
 
   /**
-   * The trailing area of the `HeaderBar`.
+   * The right area of the `HeaderBar`.
    */
-  def trailing: ObjectProperty[jfxs.Node] = delegate.trailingProperty()
-  def trailing_=(n: Node): Unit           = delegate.setTrailing(n)
+  def right: ObjectProperty[jfxs.Node] = delegate.rightProperty()
+  def right_=(n: Node): Unit           = delegate.setRight(n)
 
   /**
-   * Specifies whether additional padding should be added to the leading side of the `HeaderBar`.
+   * Specifies whether additional padding should be added to the left side of the `HeaderBar`.
    * The size of the additional padding corresponds to the size of the system-reserved area that contains
    * the default header buttons (iconify, maximize, and close). If the system-reserved area contains no
-   * header buttons, no additional padding is added to the leading side of the `HeaderBar`.
+   * header buttons, no additional padding is added to the left side of the `HeaderBar`.
+   *
+   * Applications that use a single `HeaderBar` extending the entire width of the window should
+   * set this property to `true` to prevent the header buttons from overlapping the content of the
+   * `HeaderBar`.
+   *
+   * @see rightSystemPadding
+   * @since 26
    */
-  def leadingSystemPadding: BooleanProperty    = delegate.leadingSystemPaddingProperty
-  def leadingSystemPadding_=(b: Boolean): Unit = delegate.setLeadingSystemPadding(b)
+  def leftSystemPadding: BooleanProperty    = delegate.leftSystemPaddingProperty
+  def leftSystemPadding_=(b: Boolean): Unit = delegate.setLeftSystemPadding(b)
 
   /**
-   * Specifies whether additional padding should be added to the trailing side of the `HeaderBar`.
+   * Specifies whether additional padding should be added to the right side of the `HeaderBar`.
    * The size of the additional padding corresponds to the size of the system-reserved area that contains
    * the default header buttons (iconify, maximize, and close). If the system-reserved area contains no
-   * header buttons, no additional padding is added to the trailing side of the `HeaderBar`.
+   * header buttons, no additional padding is added to the right side of the `HeaderBar`.
+   *
+   * Applications that use a single `HeaderBar` extending the entire width of the window should
+   * set this property to `true` to prevent the header buttons from overlapping the content of the
+   * `HeaderBar`.
+   *
+   * @see leftSystemPadding
+   * @since 26
    */
-  def trailingSystemPadding: BooleanProperty    = delegate.trailingSystemPaddingProperty
-  def trailingSystemPadding_=(b: Boolean): Unit = delegate.setTrailingSystemPadding(b)
+  def rightSystemPadding: BooleanProperty    = delegate.rightSystemPaddingProperty
+  def rightSystemPadding_=(b: Boolean): Unit = delegate.setRightSystemPadding(b)
 
-  def leftSystemInset: ReadOnlyObjectProperty[jfxg.Dimension2D] = delegate.leftSystemInsetProperty
-
-  /**
-   * Describes the size of the right system-reserved inset, which is an area reserved for the iconify, maximize,
-   * and close window buttons. If there are no window buttons on the right side of the window, the returned area
-   * is an empty `Dimension2D`.
-   */
-  def rightSystemInset: ReadOnlyObjectProperty[jfxg.Dimension2D] = delegate.rightSystemInsetProperty
+//  def leftSystemInset: ReadOnlyObjectProperty[jfxg.Dimension2D] = delegate.leftSystemInsetProperty
+//
+//  /**
+//   * Describes the size of the right system-reserved inset, which is an area reserved for the iconify, maximize,
+//   * and close window buttons. If there are no window buttons on the right side of the window, the returned area
+//   * is an empty `Dimension2D`.
+//   */
+//  def rightSystemInset: ReadOnlyObjectProperty[jfxg.Dimension2D] = delegate.rightSystemInsetProperty
 }
