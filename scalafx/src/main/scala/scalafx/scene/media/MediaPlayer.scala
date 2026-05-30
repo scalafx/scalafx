@@ -28,7 +28,8 @@ package scalafx.scene.media
 
 import javafx.scene.media as jfxsm
 import javafx.{event as jfxe, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.media.MediaIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.util.Duration

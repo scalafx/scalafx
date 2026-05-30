@@ -29,7 +29,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import javafx.{event as jfxe, scene as jfxs, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventTarget

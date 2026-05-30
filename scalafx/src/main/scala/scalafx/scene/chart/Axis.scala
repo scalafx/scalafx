@@ -28,7 +28,7 @@ package scalafx.scene.chart
 
 import javafx.geometry as jfxg
 import javafx.scene.{chart as jfxsc, paint as jfxsp, text as jfxst}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.binding.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer

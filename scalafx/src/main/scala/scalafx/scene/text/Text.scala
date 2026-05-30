@@ -28,7 +28,7 @@ package scalafx.scene.text
 
 import javafx.scene.{paint as jfxsp, shape as jfxss, text as jfxst}
 import javafx.{geometry as jfxg, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.VPos

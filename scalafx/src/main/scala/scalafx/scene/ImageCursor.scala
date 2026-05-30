@@ -28,7 +28,7 @@ package scalafx.scene
 
 import javafx.scene as jfxs
 import javafx.scene.image as jfxsi
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Dimension2D

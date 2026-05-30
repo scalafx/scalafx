@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,17 +24,52 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.animation
 
-import javafx.animation as jfxa
-import scalafx.CoreIncludes.*
-import scalafx.testutil.SimpleSFXDelegateSpec
+package scalafx
+
+import scalafx.animation.AnimationIncludes
+import scalafx.application.ApplicationIncludes
+import scalafx.beans.BeanIncludes
+import scalafx.collections.CollectionIncludes
+import scalafx.concurrent.ConcurrentIncludes
+import scalafx.css.CssIncludes
+import scalafx.delegate.DelegateIncludes
+import scalafx.embed.swing.SwingIncludes
+import scalafx.event.EventIncludes
+import scalafx.geometry.GeometryIncludes
+import scalafx.print.PrintIncludes
+import scalafx.scene.SceneIncludes
+import scalafx.scene.canvas.CanvasIncludes
+import scalafx.scene.input.InputIncludes
+import scalafx.scene.transform.TransformIncludes
+import scalafx.stage.StageIncludes
+import scalafx.util.UtilIncludes
+import scalafx.util.converter.ConverterIncludes
 
 /**
- * TranslateTransition Spec tests.
+ * Include file that contains the core implicit conversions,
+ * excluding media and web includes.
+ *
+ * Use `import scalafx.CoreIncludes.*` if you do not need javafx-media or javafx-web.
  */
-class TranslateTransitionSpec
-    extends SimpleSFXDelegateSpec[jfxa.TranslateTransition, TranslateTransition](
-      classOf[jfxa.TranslateTransition],
-      classOf[TranslateTransition]
-    )
+object CoreIncludes extends CoreIncludes
+
+trait CoreIncludes
+    extends AnimationIncludes
+    with DelegateIncludes
+    with CollectionIncludes
+    with EventIncludes
+    with SceneIncludes
+    with BeanIncludes
+    with UtilIncludes
+    with GeometryIncludes
+    with TransformIncludes
+    with InputIncludes
+    with StageIncludes
+    with ConverterIncludes
+    with ConcurrentIncludes
+    with CanvasIncludes
+    with ApplicationIncludes
+    with CssIncludes
+    with PrintIncludes
+    with SwingIncludes

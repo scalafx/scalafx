@@ -27,7 +27,7 @@
 package scalafx.scene
 
 import javafx.scene as jfxs
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.collections.*
 import scalafx.delegate.SFXDelegate

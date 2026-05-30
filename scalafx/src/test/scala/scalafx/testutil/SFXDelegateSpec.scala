@@ -37,7 +37,7 @@ import scalafx.delegate.SFXDelegate
  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
  * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
  * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
- * `import scalafx.Includes._`
+ * `import scalafx.CoreIncludes._`
  *
  * @tparam J JavaFX class to be wrapped by SFXDelegate class
  * @tparam S SFXDelegate subclass who will wrap JavaFX class

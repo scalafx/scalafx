@@ -27,7 +27,7 @@
 
 package issues.issue137
 
-import scalafx.Includes._
+import scalafx.CoreIncludes._
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer

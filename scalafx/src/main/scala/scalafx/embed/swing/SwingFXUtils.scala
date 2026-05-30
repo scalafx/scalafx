@@ -27,7 +27,7 @@
 package scalafx.embed.swing
 
 import javafx.embed.swing as jfxes
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.scene.image.{Image, WritableImage}
 
 import java.awt.image.BufferedImage

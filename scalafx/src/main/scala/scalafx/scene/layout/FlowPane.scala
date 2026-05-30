@@ -28,7 +28,7 @@ package scalafx.scene.layout
 
 import javafx.geometry as jfxg
 import javafx.scene.layout as jfxsl
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.{HPos, Insets, Orientation, VPos}

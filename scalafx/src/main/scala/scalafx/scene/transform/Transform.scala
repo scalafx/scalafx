@@ -28,7 +28,7 @@ package scalafx.scene.transform
 
 import javafx.event as jfxe
 import javafx.scene.transform as jfxst
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
 

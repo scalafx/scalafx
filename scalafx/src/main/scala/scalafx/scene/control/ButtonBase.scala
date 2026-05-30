@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.event as jfxe
 import javafx.scene.{control as jfxsc, input as jfxsi}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.scene.input.MouseEvent

@@ -28,7 +28,7 @@ package scalafx.delegate
 
 import javafx.beans.property as jfxbp
 import javafx.geometry as jfxg
-import scalafx.Includes.*
+import scalafx.beans.property.PropertyIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.AlignmentDelegate.*
 import scalafx.geometry.Pos

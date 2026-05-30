@@ -27,26 +27,8 @@
 
 package scalafx
 
-import scalafx.animation.AnimationIncludes
-import scalafx.application.ApplicationIncludes
-import scalafx.beans.BeanIncludes
-import scalafx.collections.CollectionIncludes
-import scalafx.concurrent.ConcurrentIncludes
-import scalafx.css.CssIncludes
-import scalafx.delegate.DelegateIncludes
-import scalafx.embed.swing.SwingIncludes
-import scalafx.event.EventIncludes
-import scalafx.geometry.GeometryIncludes
-import scalafx.print.PrintIncludes
-import scalafx.scene.SceneIncludes
-import scalafx.scene.canvas.CanvasIncludes
-import scalafx.scene.input.InputIncludes
 import scalafx.scene.media.MediaIncludes
-import scalafx.scene.transform.TransformIncludes
 import scalafx.scene.web.WebIncludes
-import scalafx.stage.StageIncludes
-import scalafx.util.UtilIncludes
-import scalafx.util.converter.ConverterIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -58,23 +40,6 @@ import scalafx.util.converter.ConverterIncludes
 object Includes extends Includes
 
 trait Includes
-    extends AnimationIncludes
-    with DelegateIncludes
-    with CollectionIncludes
-    with EventIncludes
-    with SceneIncludes
-    with BeanIncludes
-    with UtilIncludes
-    with GeometryIncludes
-    with TransformIncludes
-    with InputIncludes
-    with StageIncludes
+    extends CoreIncludes
     with WebIncludes
     with MediaIncludes
-    with ConverterIncludes
-    with ConcurrentIncludes
-    with CanvasIncludes
-    with ApplicationIncludes
-    with CssIncludes
-    with PrintIncludes
-    with SwingIncludes

@@ -27,7 +27,7 @@
 package scalafx.stage
 
 import javafx.stage as jfxs
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Rectangle2D

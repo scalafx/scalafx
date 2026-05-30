@@ -28,7 +28,7 @@ package scalafx.css
 
 import javafx.collections.{ObservableList, ObservableSet}
 import javafx.css as jfxcss
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 import java.util

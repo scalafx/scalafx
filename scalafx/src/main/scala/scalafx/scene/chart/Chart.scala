@@ -28,7 +28,7 @@ package scalafx.scene.chart
 
 import javafx.geometry as jfxg
 import javafx.scene.chart as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side

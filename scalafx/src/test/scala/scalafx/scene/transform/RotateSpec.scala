@@ -27,7 +27,7 @@
 package scalafx.scene.transform
 
 import javafx.scene.transform as jfxst
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

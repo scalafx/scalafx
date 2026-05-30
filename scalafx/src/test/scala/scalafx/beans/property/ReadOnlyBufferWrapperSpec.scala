@@ -29,7 +29,7 @@ package scalafx.beans.property
 
 import javafx.beans.property as jfxbp
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 import scala.language.implicitConversions

@@ -29,7 +29,7 @@ package scalafx.scene.layout
 
 import javafx.scene.layout as jfxsl
 import javafx.{geometry as jfxg, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{Dimension2D, Insets, Pos}

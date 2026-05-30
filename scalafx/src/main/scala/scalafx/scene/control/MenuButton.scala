@@ -31,7 +31,7 @@ import javafx.beans.property.ObjectProperty
 import javafx.event.{Event, EventHandler}
 import javafx.scene.control as jfxsc
 import javafx.{collections as jfxc, event as jfxe, geometry as jfxg}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType

@@ -28,7 +28,7 @@
 package scalafx.collections
 
 import javafx.collections as jfxc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.ObservableArray.Change
 import scalafx.testutil.SimpleSFXDelegateSpec
 

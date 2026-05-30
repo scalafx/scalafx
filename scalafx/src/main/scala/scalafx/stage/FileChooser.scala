@@ -29,7 +29,7 @@ package scalafx.stage
 
 import javafx.collections.ObservableList
 import javafx.stage as jfxs
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.FileChooser.ExtensionFilter
@@ -88,7 +88,7 @@ object FileChooser {
  *
  * Example:
  * {{{
- * import scalafx.Includes._
+ * import scalafx.CoreIncludes._
  * import scalafx.stage.FileChooser
  * import scalafx.stage.FileChooser.ExtensionFilter
  *

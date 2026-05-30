@@ -30,7 +30,7 @@ package scalafx.scene.control
 import javafx.beans.{property as jfxbp, value as jfxbv}
 import javafx.scene.control as jfxsc
 import javafx.{collections as jfxc, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer

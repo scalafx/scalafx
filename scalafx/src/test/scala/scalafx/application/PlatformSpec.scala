@@ -30,7 +30,7 @@ package scalafx.application
 import javafx.application as jfxa
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.RunOnApplicationThread
 
 import java.lang.reflect.Modifier

@@ -27,7 +27,8 @@
 package scalafx.scene.web
 
 import javafx.scene.web as jfxsw
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.web.WebIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
 

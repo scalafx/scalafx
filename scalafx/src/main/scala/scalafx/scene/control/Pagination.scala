@@ -29,7 +29,7 @@ package scalafx.scene.control
 import javafx.beans.property as jfxbp
 import javafx.scene.control as jfxsc
 import javafx.{scene as jfxs, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node

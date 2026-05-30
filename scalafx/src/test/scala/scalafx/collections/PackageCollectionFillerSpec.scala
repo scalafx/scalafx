@@ -30,7 +30,7 @@ import javafx.scene.control as jfxsc
 import javafx.{collections as jfxc, scene as jfxs}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.control.*
