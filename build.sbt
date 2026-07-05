@@ -97,7 +97,7 @@ lazy val scalafxSettings = Seq(
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
-  javaOptions   ++= Seq("-Djavafx.enablePreview=true"),
+  javaOptions ++= Seq("-Djavafx.enablePreview=true"),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "23"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
@@ -142,7 +142,7 @@ lazy val scalafxSettings = Seq(
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
-  pomPostProcess := { node: XmlNode =>
+  pomPostProcess := { (node: XmlNode) =>
     new RuleTransformer(new RewriteRule {
       override def transform(node: XmlNode): XmlNodeSeq = node match {
         case e: Elem if e.label == "dependency" && e.child.exists(c => c.label == "scope" && c.text == "provided") =>
