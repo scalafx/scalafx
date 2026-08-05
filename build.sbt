@@ -133,6 +133,20 @@ lazy val scalafxSettings = Seq(
               case None => Seq.empty[String]
             }
           )
+      case Some((3, _)) =>
+        Opts.doc.title("ScalaFX API") ++
+          Opts.doc.version(scalafxVersion) ++
+          Seq(
+            "-sourcepath",
+            baseDirectory.value.toString,
+            "-doc-root-content",
+            s"${baseDirectory.value}/src/main/scala-3/root-doc.md",
+            "-doc-source-url",
+            s"https://github.com/scalafx/scalafx/tree/$versionTagDir/scalafx/€{FILE_PATH}.scala",
+            s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+            "-doc-footer",
+            s"ScalaFX API v.$scalafxVersion"
+          )
       case _ => Seq.empty[String]
     }
   },
