@@ -23,6 +23,4 @@ jobs:
           cache: sbt
       - uses: sbt/setup-sbt@v1
       - name: Run headless test
-        uses: coactions/setup-xvfb@v1
-        with:
-          run: sbt +test
+        run: sbt +test

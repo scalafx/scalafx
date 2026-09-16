@@ -172,6 +172,8 @@ lazy val scalafxSettings = Seq(
   manifestSetting,
   Test / fork              := true,
   Test / parallelExecution := false,
+  // Run JavaFX in headless mode (JavaFX 26+), no xvfb/virtual display needed
+  Test / javaOptions += "-Dglass.platform=headless",
   // print junit-style XML for CI
   Test / testOptions += {
     val t = (Test / target).value
