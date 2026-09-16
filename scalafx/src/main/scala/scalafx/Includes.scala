@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 package scalafx
 
+import scalafx.embed.swing.SwingIncludes
 import scalafx.scene.media.MediaIncludes
 import scalafx.scene.web.WebIncludes
 
@@ -43,3 +44,4 @@ trait Includes
     extends CoreIncludes
     with WebIncludes
     with MediaIncludes
+    with SwingIncludes

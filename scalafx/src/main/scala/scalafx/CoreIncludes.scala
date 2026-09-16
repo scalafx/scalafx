@@ -34,7 +34,6 @@ import scalafx.collections.CollectionIncludes
 import scalafx.concurrent.ConcurrentIncludes
 import scalafx.css.CssIncludes
 import scalafx.delegate.DelegateIncludes
-import scalafx.embed.swing.SwingIncludes
 import scalafx.event.EventIncludes
 import scalafx.geometry.GeometryIncludes
 import scalafx.print.PrintIncludes
@@ -48,9 +47,9 @@ import scalafx.util.converter.ConverterIncludes
 
 /**
  * Include file that contains the core implicit conversions,
- * excluding media and web includes.
+ * excluding media, web, and swing includes.
  *
- * Use `import scalafx.CoreIncludes.*` if you do not need javafx-media or javafx-web.
+ * Use `import scalafx.CoreIncludes.*` if you do not need javafx-media, javafx-web, or javafx-swing.
  */
 object CoreIncludes extends CoreIncludes
 
@@ -72,4 +71,3 @@ trait CoreIncludes
     with ApplicationIncludes
     with CssIncludes
     with PrintIncludes
-    with SwingIncludes
