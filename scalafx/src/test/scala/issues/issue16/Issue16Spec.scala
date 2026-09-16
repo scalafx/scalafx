@@ -30,7 +30,7 @@ package issues.issue16
 import javafx.beans.property as jfxbp
 import javafx.scene.paint as jfxsp
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.scene.paint.Color
 

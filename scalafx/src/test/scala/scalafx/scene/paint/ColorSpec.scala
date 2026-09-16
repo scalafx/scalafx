@@ -30,7 +30,7 @@ import javafx.scene.paint as jfxsp
 import javafx.scene.paint.Color as JColor
 import org.scalactic.Tolerance.convertNumericToPlusOrMinusWrapper
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

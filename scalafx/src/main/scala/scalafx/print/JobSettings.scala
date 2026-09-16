@@ -27,7 +27,7 @@
 package scalafx.print
 
 import javafx.print as jfxp
-import scalafx.Includes.{jfxIntegerProperty2sfx, jfxObjectProperty2sfx, jfxStringProperty2sfx}
+import scalafx.CoreIncludes.{jfxIntegerProperty2sfx, jfxObjectProperty2sfx, jfxStringProperty2sfx}
 import scalafx.beans.property.{IntegerProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.print.PageLayout.sfxPageLayout2jfx

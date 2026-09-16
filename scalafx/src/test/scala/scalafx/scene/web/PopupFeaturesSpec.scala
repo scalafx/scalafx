@@ -27,7 +27,7 @@
 package scalafx.scene.web
 
 import javafx.scene.web as jfxsw
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

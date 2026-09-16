@@ -29,7 +29,7 @@ package scalafx.scene.control.cell
 import javafx.scene.control as jfxsc
 import javafx.scene.control.cell as jfxscc
 import javafx.util as jfxu
-import scalafx.Includes.jfxTreeTableCell2sfx
+import scalafx.CoreIncludes.jfxTreeTableCell2sfx
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TreeTableCell
 import scalafx.util.StringConverter

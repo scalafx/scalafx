@@ -27,7 +27,7 @@
 package issues.issue09
 
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.DoubleProperty
 
 /** Verify that code causing Issue 9 behaves correctly after fix. */

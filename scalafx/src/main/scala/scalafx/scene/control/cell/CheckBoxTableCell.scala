@@ -31,7 +31,7 @@ import javafx.beans.value as jfxbv
 import javafx.scene.control as jfxsc
 import javafx.scene.control.cell as jfxscc
 import javafx.util as jfxu
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.cell.CheckBoxTableCell.*

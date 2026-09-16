@@ -28,7 +28,7 @@
 package scalafx.scene.chart
 
 import javafx.scene.chart as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Test for [[scalafx.scene.layout.Priority]] */

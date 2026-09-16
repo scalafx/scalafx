@@ -28,7 +28,8 @@ package scalafx.scene.media
 
 import javafx.collections.ObservableList
 import javafx.scene.media as jfxsm
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.media.MediaIncludes.*
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 

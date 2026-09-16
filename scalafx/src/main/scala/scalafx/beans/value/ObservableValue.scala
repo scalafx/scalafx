@@ -198,5 +198,5 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    * @since 20
    */
   def when(condition: ObservableValue[scala.Boolean, java.lang.Boolean]): ObservableValue[J, J] =
-    scalafx.Includes.jfxObservableValue2sfx(delegate.when(condition.delegate))
+    scalafx.CoreIncludes.jfxObservableValue2sfx(delegate.when(condition.delegate))
 }

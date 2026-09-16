@@ -28,7 +28,7 @@
 package scalafx.scene.shape
 
 import javafx.scene.shape as jfxss
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Test for [[scalafx.scene.shape.StrokeLineCap]] */

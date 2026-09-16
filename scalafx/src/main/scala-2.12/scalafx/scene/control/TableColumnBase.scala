@@ -30,7 +30,7 @@ import java.{util => ju}
 
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-import scalafx.Includes._
+import scalafx.CoreIncludes._
 import scalafx.beans.property._
 import scalafx.collections.ObservableBuffer
 import scalafx.css.Styleable

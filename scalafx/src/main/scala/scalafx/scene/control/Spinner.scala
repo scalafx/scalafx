@@ -29,7 +29,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import javafx.util as jfxu
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate

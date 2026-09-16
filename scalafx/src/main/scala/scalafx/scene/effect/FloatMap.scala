@@ -27,7 +27,7 @@
 package scalafx.scene.effect
 
 import javafx.scene.effect as jfxse
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.SFXDelegate
 

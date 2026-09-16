@@ -30,7 +30,7 @@ package issues.issue262
 import javafx.util.converter.IntegerStringConverter
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.scene.control.cell.TextFieldListCell
 import scalafx.testutil.RunOnApplicationThread
 

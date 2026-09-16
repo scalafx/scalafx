@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import javafx.{collections as jfxc, scene as jfxs, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{IntegerProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.*

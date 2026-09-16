@@ -27,7 +27,7 @@
 package scalafx.css
 
 import javafx.css as jfxcss
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.css.StyleOrigin]]. */

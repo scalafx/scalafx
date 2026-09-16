@@ -29,7 +29,7 @@ package issues.issue36
 
 import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 /**

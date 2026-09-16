@@ -28,7 +28,7 @@ package scalafx.animation
 
 import javafx.scene.shape as jfxss
 import javafx.{animation as jfxa, scene as jfxs, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node

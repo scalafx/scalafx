@@ -27,7 +27,7 @@
 package scalafx.scene.paint
 
 import javafx.scene.paint as jfxsp
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.util.JavaConverters.*
 

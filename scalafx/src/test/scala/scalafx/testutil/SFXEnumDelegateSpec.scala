@@ -38,12 +38,12 @@ import scala.collection.mutable
  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
  * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
  * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
- * `import scalafx.Includes._`
+ * `import scalafx.CoreIncludes._`
  *
  * Here a complete test implemented using `SFXEnumDelegateSpec`,
  * {{{
  *  import javafx.{geometry => jfxg}
- *    *    *  import scalafx.Includes._
+ *    *    *  import scalafx.CoreIncludes._
  *  import scalafx.testutil.SFXEnumDelegateSpec
  *
  *  `@RunWith(classOf[JUnitRunner])`

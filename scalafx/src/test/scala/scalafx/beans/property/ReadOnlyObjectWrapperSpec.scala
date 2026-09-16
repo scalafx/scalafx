@@ -32,7 +32,7 @@ import javafx.scene.control as jfxsc
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
-import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper}
+import scalafx.CoreIncludes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
 import scalafx.scene.control.Button

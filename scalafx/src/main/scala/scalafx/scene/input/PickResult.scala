@@ -28,7 +28,7 @@ package scalafx.scene.input
 
 import javafx.event as jfxe
 import javafx.scene.input as jfxsi
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{Point2D, Point3D}
 import scalafx.scene.Node

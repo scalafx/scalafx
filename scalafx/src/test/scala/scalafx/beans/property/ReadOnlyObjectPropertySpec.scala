@@ -32,7 +32,7 @@ import javafx.scene.paint as jfxsp
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 
 /**
  * ReadOnlyObjectProperty Spec tests.

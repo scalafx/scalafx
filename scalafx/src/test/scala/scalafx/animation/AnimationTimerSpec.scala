@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import javafx.animation as jfxa
-import scalafx.Includes.jfxAnimationTimer2sfx
+import scalafx.CoreIncludes.jfxAnimationTimer2sfx
 import scalafx.animation.AnimationTimer.sfxAnimationTimer2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 

@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.css as jfxcss
 import javafx.scene.control as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, StringProperty}
 import scalafx.css.{PseudoClass, Styleable}
 import scalafx.delegate.SFXDelegate

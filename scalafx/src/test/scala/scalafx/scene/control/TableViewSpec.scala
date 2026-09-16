@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 

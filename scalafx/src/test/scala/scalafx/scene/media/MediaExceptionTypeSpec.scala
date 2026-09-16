@@ -27,7 +27,7 @@
 package scalafx.scene.media
 
 import javafx.scene.media as jfxsm
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.media.MediaException.Type]]. */

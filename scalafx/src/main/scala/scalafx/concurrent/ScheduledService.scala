@@ -28,7 +28,7 @@ package scalafx.concurrent
 
 import javafx.util.{Callback, Duration}
 import javafx.{concurrent as jfxc, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 

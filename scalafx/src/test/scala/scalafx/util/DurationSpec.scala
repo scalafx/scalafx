@@ -30,7 +30,7 @@ package scalafx.util
 import javafx.util as jfxu
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 
 import scala.language.postfixOps
 

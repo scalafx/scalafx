@@ -27,7 +27,7 @@
 package scalafx.print
 
 import javafx.print as jfxp
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions

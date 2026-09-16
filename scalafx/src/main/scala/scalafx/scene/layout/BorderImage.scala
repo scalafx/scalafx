@@ -27,7 +27,7 @@
 package scalafx.scene.layout
 
 import javafx.scene.layout as jfxsl
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
 import scalafx.scene.image.Image

@@ -30,7 +30,7 @@ package scalafx.collections.transformation
 import javafx.collections as jfxc
 import javafx.collections.transformation as jfxct
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.testutil.SimpleSFXDelegateSpec
 
