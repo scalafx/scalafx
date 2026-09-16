@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.scene.media
 
 import javafx.scene.media as jfxsm
-import scalafx.CoreIncludes.*
+import scalafx.scene.media.MediaIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
