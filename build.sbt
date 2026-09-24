@@ -26,7 +26,7 @@
  */
 
 import scala.xml.transform.{RewriteRule, RuleTransformer}
-import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
+import scala.xml.{Node as XmlNode, NodeSeq as XmlNodeSeq, *}
 
 //
 // Environment variables used by the build:
@@ -39,6 +39,10 @@ val scalafxVersion = "26.0.0-R39-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
+// Common settings, SBT 2 applies bare settings in build.sbt to all subprojects
+scalafxSettings
+mavenCentralSettings
+
 // Root project
 lazy val scalafxProject = (project in file("."))
   .settings(
@@ -50,7 +54,6 @@ lazy val scalafxProject = (project in file("."))
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
-  scalafxSettings,
   name        := "scalafx",
   description := "The ScalaFX framework",
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
@@ -62,7 +65,6 @@ lazy val scalafx = (project in file("scalafx")).settings(
 
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
-  scalafxSettings,
   name        := "scalafx-demos",
   description := "The ScalaFX demonstrations",
   libraryDependencies ++= javafxModules,
@@ -118,7 +120,7 @@ lazy val scalafxSettings = Seq(
             s"${baseDirectory.value}/src/main/scala/root-doc.creole",
             "-doc-source-url",
             s"https://github.com/scalafx/scalafx/tree/$versionTagDir/scalafx/€{FILE_PATH}.scala",
-            s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+            s"-doc-external-doc:${scalaInstance.value.libraryJar}#https://www.scala-lang.org/api/${scalaVersion.value}/",
             "-doc-footer",
             s"ScalaFX API v.$scalafxVersion"
           ) ++
@@ -143,7 +145,7 @@ lazy val scalafxSettings = Seq(
             s"${baseDirectory.value}/src/main/scala-3/root-doc.md",
             "-doc-source-url",
             s"https://github.com/scalafx/scalafx/tree/$versionTagDir/scalafx/€{FILE_PATH}.scala",
-            s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+            s"-doc-external-doc:${scalaInstance.value.libraryJar}#https://www.scala-lang.org/api/${scalaVersion.value}/",
             "-doc-footer",
             s"ScalaFX API v.$scalafxVersion"
           )
@@ -179,7 +181,7 @@ lazy val scalafxSettings = Seq(
     val t = (Test / target).value
     Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
   }
-) ++ mavenCentralSettings
+)
 
 lazy val manifestSetting = packageOptions += {
   Package.ManifestAttributes(
@@ -201,11 +203,11 @@ lazy val manifestSetting = packageOptions += {
 lazy val mavenCentralSettings = Seq(
   organization         := "org.scalafx",
   organizationName     := "ScalaFX",
-  organizationHomepage := Option(url("http://www.scalafx.org/")),
-  homepage             := Option(url("http://www.scalafx.org/")),
+  organizationHomepage := Option(uri("https://www.scalafx.org/")),
+  homepage             := Option(uri("https://www.scalafx.org/")),
   startYear            := Option(2011),
-  licenses             := Seq(("BSD", url("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
-  scmInfo := Option(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
+  licenses             := Seq(License("BSD-3-Clause", uri("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
+  scmInfo := Option(ScmInfo(uri("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
   pomIncludeRepository := { _ => false },
   publishMavenStyle    := true,
   publishTo            := {
