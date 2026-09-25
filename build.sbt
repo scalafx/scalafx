@@ -52,19 +52,13 @@ lazy val scalafxProject = (project in file("."))
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
   name        := "scalafx",
-  description := "The ScalaFX framework",
-  libraryDependencies ++= javafxModules,
-  run / fork             := true,
-  publishArtifact        := true,
-  Test / publishArtifact := false
+  description := "The ScalaFX framework"
 )
 
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   name        := "scalafx-demos",
   description := "The ScalaFX demonstrations",
-  libraryDependencies ++= javafxModules,
-  run / fork := true,
   javaOptions ++= Seq(
     "-Xmx512M",
     "-Djavafx.verbose"
@@ -83,13 +77,6 @@ lazy val javafxModules =
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.20"
 
-// scala-reflect is only used by Scala 2.12 sources (ObservableBuffer.sort uses runtime reflection)
-def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
-  CrossVersion.partialVersion(scalaVersion) match {
-    case Some((2, 12)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
-    case _             => Seq.empty[ModuleID]
-  }
-
 // Common settings
 lazy val scalafxSettings = Seq(
   version            := scalafxVersion,
@@ -98,16 +85,15 @@ lazy val scalafxSettings = Seq(
   javaOptions ++= Seq("-Djavafx.enablePreview=true"),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "23"),
   scalacOptions ++= {
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
-      case Some((3, _)) => Seq("-source:3.3-migration", "-explain", "-explain-types")
-      case _            => Seq.empty[String]
+    scalaBinaryVersion.value match {
+      case "3" => Seq("-source:3.3-migration", "-explain", "-explain-types")
+      case _   => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
     }
   },
   Compile / doc / name := "ScalaFX API",
   Compile / doc / scalacOptions ++= {
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, _)) =>
+    scalaBinaryVersion.value match {
+      case "2.12" | "2.13" =>
         Opts.doc.title("ScalaFX API") ++
           Opts.doc.version(scalafxVersion) ++
           Seq(
@@ -131,11 +117,9 @@ lazy val scalafxSettings = Seq(
               case None => Seq.empty[String]
             }
           )
-      case Some((3, _)) =>
+      case "3" =>
         Opts.doc.version(scalafxVersion) ++
           Seq(
-            "-sourcepath",
-            baseDirectory.value.toString,
             "-doc-root-content",
             s"${baseDirectory.value}/src/main/scala-3/root-doc.md",
             s"-source-links:github://scalafx/scalafx/$versionTagDir",
@@ -147,10 +131,16 @@ lazy val scalafxSettings = Seq(
     }
   },
   // Add other dependencies
-  libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
+  libraryDependencies ++= javafxModules,
+  // scala-reflect is only used by Scala 2.12 sources (ObservableBuffer.sort uses runtime reflection)
+  libraryDependencies ++= {
+    if (scalaBinaryVersion.value == "2.12") Seq("org.scala-lang" % "scala-reflect" % scalaVersion.value)
+    else Seq.empty
+  },
   libraryDependencies += scalaTestLib % Test,
   autoAPIMappings                    := true,
   manifestSetting,
+  run / fork               := true,
   Test / fork              := true,
   Test / parallelExecution := false,
   // Run JavaFX in headless mode (JavaFX 26+), no xvfb/virtual display needed
