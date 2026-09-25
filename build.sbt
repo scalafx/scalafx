@@ -150,7 +150,7 @@ lazy val scalafxSettings = Seq(
   },
   // Add other dependencies
   libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
-  libraryDependencies += scalaTestLib % "test",
+  libraryDependencies += scalaTestLib % Test,
   autoAPIMappings                    := true,
   manifestSetting,
   Test / fork              := true,
@@ -161,7 +161,7 @@ lazy val scalafxSettings = Seq(
 
 lazy val manifestSetting = packageOptions += {
   Package.ManifestAttributes(
-    "Created-By"               -> "Simple Build Tool",
+    "Created-By"               -> s"SBT ${sbtVersion.value}",
     "Built-By"                 -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
     "Build-Jdk"                -> System.getProperty("java.version"),
     "Specification-Title"      -> name.value,
