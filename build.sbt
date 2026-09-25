@@ -225,6 +225,22 @@ lazy val mavenCentralSettings = Seq(
     Developer("", "Brandon Stilson", "", uri("https://github.com/bbstilson")),
     Developer("", "Anatoly Trosinenko", "", uri("https://github.com/atrosinenko")),
     Developer("", "Mark Lewis", "", uri("https://github.com/MarkCLewis")),
-    Developer("", "Jeansen", "", uri("https://github.com/Jeansen"))
+    Developer("", "Jeansen", "", uri("https://github.com/Jeansen")),
+    Developer("", "Renato Cavalcanti", "", uri("")),
+    Developer("", "luc", "", uri("")),
+    Developer("", "Prasanna Kumar", "", uri("")),
+    Developer("", "Tani", "", uri("")),
+    Developer("", "Daniel Alves", "", uri("")),
+    Developer("", "Danila", "", uri("")),
+    Developer("", "Massimo Redaelli", "", uri("")),
+    Developer("", "Benedict Lee", "", uri("")),
+    Developer("", "Kris Allen", "", uri("https://github.com/kdallen25")),
+    Developer("", "Seth Tisue", "", uri("https://github.com/SethTisue")),
+    Developer("", "Samuel Bernard", "", uri("https://github.com/s-bernard")),
+    Developer("", "Liam Skirrow", "", uri("https://github.com/LiamSkirrow")),
+    Developer("", "philwalk", "", uri("https://github.com/philwalk")),
+    Developer("", "P.J. Henning", "", uri("https://github.com/pjhenning")),
+    Developer("", "Tobias Roeser", "", uri("https://github.com/lefou")),
+    Developer("", "RumbleTumbleKid", "", uri("https://github.com/RumbleTumbleKid"))
   )
 )
