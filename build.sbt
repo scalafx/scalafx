@@ -77,7 +77,7 @@ lazy val javafxModules =
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.20"
 
-// Common settings
+// Settings shared by all projects, applied as bare settings at the top of this file
 lazy val scalafxSettings = Seq(
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
@@ -163,7 +163,7 @@ lazy val manifestSetting = packageOptions += {
 }
 
 // Metadata needed by Maven Central
-// See also http://maven.apache.org/pom.html#Developers
+// See also https://maven.apache.org/pom.html#More_Project_Information
 lazy val mavenCentralSettings = Seq(
   organization         := "org.scalafx",
   organizationName     := "ScalaFX",
