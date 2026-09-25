@@ -181,7 +181,7 @@ lazy val mavenCentralSettings = Seq(
   homepage             := Option(uri("https://www.scalafx.org/")),
   startYear            := Option(2011),
   licenses := Seq(License("BSD-3-Clause", uri("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
-  scmInfo  := Option(ScmInfo(uri("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
+  scmInfo  := Option(ScmInfo(uri("https://github.com/scalafx/scalafx"), "scm:git:git@github.com:scalafx/scalafx.git")),
   pomIncludeRepository := { _ => false },
   publishTo            := {
     val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
