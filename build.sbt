@@ -192,143 +192,39 @@ lazy val mavenCentralSettings = Seq(
     else
       localStaging.value
   },
-  pomExtra :=
-    <developers>
-      <developer>
-        <id>rafael.afonso</id>
-        <name>Rafael Afonso</name>
-        <url>https://github.com/rafonso</url>
-      </developer>
-      <developer>
-        <name>Mike Allen</name>
-      </developer>
-      <developer>
-        <id>Alain.Fagot.Bearez</id>
-        <name>Alain Béarez</name>
-        <url>http://cua.li/TI/</url>
-      </developer>
-      <developer>
-        <id>steveonjava</id>
-        <name>Stephen Chin</name>
-        <url>http://www.nighthacking.com/</url>
-      </developer>
-      <developer>
-        <id>KevinCoghlan</id>
-        <name>Kevin Coghlan</name>
-        <url>http://www.kevincoghlan.com</url>
-      </developer>
-      <developer>
-        <id>akauppi</id>
-        <name>Asko Kauppi</name>
-      </developer>
-      <developer>
-        <id>rladstaetter</id>
-        <name>Robert Ladstätter</name>
-      </developer>
-      <developer>
-        <id>peter.pilgrim</id>
-        <name>Peter Pilgrim</name>
-        <url>http://www.xenonique.co.uk/blog/</url>
-      </developer>
-      <developer>
-        <name>Matthew Pocock</name>
-      </developer>
-      <developer>
-        <id>sven.reimers</id>
-        <name>Sven Reimers</name>
-        <url>http://wiki.netbeans.org/SvenReimers/</url>
-      </developer>
-      <developer>
-        <id>jpsacha</id>
-        <name>Jarek Sacha</name>
-        <url>https://github.com/jpsacha</url>
-      </developer>
-      <developer>
-        <name>Curtis Stanford</name>
-      </developer>
-      <developer>
-        <name>Facsimiler</name>
-        <url>https://github.com/Facsimiler</url>
-      </developer>
-      <developer>
-        <name>Romain DEP.</name>
-        <url>https://github.com/rom1dep</url>
-      </developer>
-      <developer>
-        <name>estanislaobosch</name>
-        <url>https://github.com/estanislaobosch</url>
-      </developer>
-      <developer>
-        <name>Ken McDonald</name>
-        <url>https://github.com/KenMcDonald</url>
-      </developer>
-      <developer>
-        <name>Brian Schlining</name>
-        <url>https://www.mbari.org/schlining-brian/</url>
-      </developer>
-      <developer>
-        <name>Yusuke Izawa</name>
-        <url>https://github.com/3tty0n</url>
-      </developer>
-      <developer>
-        <name>Roman Hargrave</name>
-        <url>https://github.com/RomanHargrave</url>
-      </developer>
-      <developer>
-        <name>Johannes Mockenhaupt</name>
-        <url>https://github.com/jotomo</url>
-      </developer>
-      <developer>
-        <name>Piotr Mardziel</name>
-        <url>https://piotr.mardziel.com/</url>
-      </developer>
-      <developer>
-        <name>nigredo-tori</name>
-        <url>https://github.com/nigredo-tori</url>
-      </developer>
-      <developer>
-        <name>Damian Bronecki</name>
-        <url>https://github.com/dbronecki</url>
-      </developer>
-      <developer>
-        <name>SwhGo_oN</name>
-        <url>https://github.com/swhgoon</url>
-      </developer>
-      <developer>
-        <name>Rajmahendra</name>
-        <url>https://github.com/rajmahendra</url>
-      </developer>
-      <developer>
-        <name>Sam Privett</name>
-        <url>https://github.com/maspe36</url>
-      </developer>
-      <developer>
-        <name>Eric Zoerner</name>
-        <url>https://github.com/ezoerner</url>
-      </developer>
-      <developer>
-        <name>Edward Samson</name>
-        <url>https://github.com/esamson</url>
-      </developer>
-      <developer>
-        <name>Emily Herbert</name>
-        <url>https://github.com/emilyaherbert</url>
-      </developer>
-      <developer>
-        <name>Brandon Stilson</name>
-        <url>https://github.com/bbstilson</url>
-      </developer>
-      <developer>
-        <name>Anatoly Trosinenko</name>
-        <url>https://github.com/atrosinenko</url>
-      </developer>
-      <developer>
-        <name>Mark Lewis</name>
-        <url>https://github.com/MarkCLewis</url>
-      </developer>
-      <developer>
-        <name>Jeansen</name>
-        <url>https://github.com/Jeansen</url>
-      </developer>
-    </developers>
+  developers := List(
+    Developer("rafael.afonso", "Rafael Afonso", "", uri("https://github.com/rafonso")),
+    Developer("", "Mike Allen", "", uri("")),
+    Developer("Alain.Fagot.Bearez", "Alain Béarez", "", uri("http://cua.li/TI/")),
+    Developer("steveonjava", "Stephen Chin", "", uri("http://www.nighthacking.com/")),
+    Developer("KevinCoghlan", "Kevin Coghlan", "", uri("http://www.kevincoghlan.com")),
+    Developer("akauppi", "Asko Kauppi", "", uri("")),
+    Developer("rladstaetter", "Robert Ladstätter", "", uri("")),
+    Developer("peter.pilgrim", "Peter Pilgrim", "", uri("http://www.xenonique.co.uk/blog/")),
+    Developer("", "Matthew Pocock", "", uri("")),
+    Developer("sven.reimers", "Sven Reimers", "", uri("http://wiki.netbeans.org/SvenReimers/")),
+    Developer("jpsacha", "Jarek Sacha", "", uri("https://github.com/jpsacha")),
+    Developer("", "Curtis Stanford", "", uri("")),
+    Developer("", "Facsimiler", "", uri("https://github.com/Facsimiler")),
+    Developer("", "Romain DEP.", "", uri("https://github.com/rom1dep")),
+    Developer("", "estanislaobosch", "", uri("https://github.com/estanislaobosch")),
+    Developer("", "Ken McDonald", "", uri("https://github.com/KenMcDonald")),
+    Developer("", "Brian Schlining", "", uri("https://www.mbari.org/schlining-brian/")),
+    Developer("", "Yusuke Izawa", "", uri("https://github.com/3tty0n")),
+    Developer("", "Roman Hargrave", "", uri("https://github.com/RomanHargrave")),
+    Developer("", "Johannes Mockenhaupt", "", uri("https://github.com/jotomo")),
+    Developer("", "Piotr Mardziel", "", uri("https://piotr.mardziel.com/")),
+    Developer("", "nigredo-tori", "", uri("https://github.com/nigredo-tori")),
+    Developer("", "Damian Bronecki", "", uri("https://github.com/dbronecki")),
+    Developer("", "SwhGo_oN", "", uri("https://github.com/swhgoon")),
+    Developer("", "Rajmahendra", "", uri("https://github.com/rajmahendra")),
+    Developer("", "Sam Privett", "", uri("https://github.com/maspe36")),
+    Developer("", "Eric Zoerner", "", uri("https://github.com/ezoerner")),
+    Developer("", "Edward Samson", "", uri("https://github.com/esamson")),
+    Developer("", "Emily Herbert", "", uri("https://github.com/emilyaherbert")),
+    Developer("", "Brandon Stilson", "", uri("https://github.com/bbstilson")),
+    Developer("", "Anatoly Trosinenko", "", uri("https://github.com/atrosinenko")),
+    Developer("", "Mark Lewis", "", uri("https://github.com/MarkCLewis")),
+    Developer("", "Jeansen", "", uri("https://github.com/Jeansen"))
+  )
 )
