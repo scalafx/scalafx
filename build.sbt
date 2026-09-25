@@ -25,9 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import scala.xml.transform.{RewriteRule, RuleTransformer}
-import scala.xml.{Node as XmlNode, NodeSeq as XmlNodeSeq, *}
-
 //
 // Environment variables used by the build:
 // GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined, Scaladocs will be built without diagrams.
@@ -56,7 +53,6 @@ lazy val scalafxProject = (project in file("."))
 lazy val scalafx = (project in file("scalafx")).settings(
   name        := "scalafx",
   description := "The ScalaFX framework",
-  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
   libraryDependencies ++= javafxModules,
   run / fork             := true,
   publishArtifact        := true,
@@ -95,7 +91,6 @@ def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
 
 // Common settings
 lazy val scalafxSettings = Seq(
-  organization       := "org.scalafx",
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
@@ -155,32 +150,12 @@ lazy val scalafxSettings = Seq(
   // Add other dependencies
   libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
   libraryDependencies += scalaTestLib % "test",
-  // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
-  // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
-  // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
-  pomPostProcess := { (node: XmlNode) =>
-    new RuleTransformer(new RewriteRule {
-      override def transform(node: XmlNode): XmlNodeSeq = node match {
-        case e: Elem if e.label == "dependency" && e.child.exists(c => c.label == "scope" && c.text == "provided") =>
-          val organization = e.child.filter(_.label == "groupId").flatMap(_.text).mkString
-          val artifact     = e.child.filter(_.label == "artifactId").flatMap(_.text).mkString
-          val version      = e.child.filter(_.label == "version").flatMap(_.text).mkString
-          Comment(s"provided dependency $organization#$artifact;$version has been omitted")
-        case _ => node
-      }
-    }).transform(node).head
-  },
-  autoAPIMappings := true,
+  autoAPIMappings                    := true,
   manifestSetting,
   Test / fork              := true,
   Test / parallelExecution := false,
   // Run JavaFX in headless mode (JavaFX 26+), no xvfb/virtual display needed
-  Test / javaOptions += "-Dglass.platform=headless",
-  // print junit-style XML for CI
-  Test / testOptions += {
-    val t = (Test / target).value
-    Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
-  }
+  Test / javaOptions += "-Dglass.platform=headless"
 )
 
 lazy val manifestSetting = packageOptions += {
@@ -206,10 +181,9 @@ lazy val mavenCentralSettings = Seq(
   organizationHomepage := Option(uri("https://www.scalafx.org/")),
   homepage             := Option(uri("https://www.scalafx.org/")),
   startYear            := Option(2011),
-  licenses             := Seq(License("BSD-3-Clause", uri("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
-  scmInfo := Option(ScmInfo(uri("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
+  licenses := Seq(License("BSD-3-Clause", uri("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
+  scmInfo  := Option(ScmInfo(uri("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
   pomIncludeRepository := { _ => false },
-  publishMavenStyle    := true,
   publishTo            := {
     val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
     if (isSnapshot.value)
