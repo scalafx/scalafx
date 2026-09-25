@@ -83,10 +83,11 @@ lazy val javafxModules =
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.20"
 
+// scala-reflect is only used by Scala 2.12 sources (ObservableBuffer.sort uses runtime reflection)
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
-    case _            => Seq.empty[ModuleID]
+    case Some((2, 12)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
+    case _             => Seq.empty[ModuleID]
   }
 
 // Common settings
