@@ -83,17 +83,19 @@ object HeaderBarColorSchemeDemo extends JFXApp3 {
       style = LightStyle
     }
 
+    val contentScene = new Scene(560, 340) {
+      root = contentPane
+    }
+
     stage = new PrimaryStage {
       initStyle(StageStyle.Extended)
       title = "HeaderBar systemColorScheme Demo"
-      scene = new Scene(560, 340) {
-        root = contentPane
-      }
+      scene = contentScene
     }
 
     // Window content color scheme, sets the scene color scheme preference
     def setContentColorScheme(colorScheme: ColorScheme): Unit = {
-      stage.scene().getPreferences.setColorScheme(colorScheme)
+      contentScene.preferences.colorScheme = colorScheme
       contentPane.style = if (colorScheme == ColorScheme.Dark) DarkStyle else LightStyle
     }
 

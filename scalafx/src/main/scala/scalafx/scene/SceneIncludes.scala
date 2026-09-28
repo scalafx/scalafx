@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -183,6 +183,16 @@ trait LowerPriorityIncludes {
    * @return $SFX $SCE
    */
   implicit def jfxScene2sfx(v: jfxs.Scene): Scene = if (v != null) new Scene(v) else null
+
+  /**
+   * Converts a JavaFX `Scene.Preferences` instance to its ScalaFX counterpart.
+   *
+   * @param v $JFX `Scene.Preferences`
+   * @return $SFX `Scene.Preferences`
+   * @since JavaFX 25
+   */
+  implicit def jfxScenePreferences2sfx(v: jfxs.Scene.Preferences): Scene.Preferences =
+    if (v != null) new Scene.Preferences(v) else null
 
   /**
    * $START$SCA.html $SCA$END

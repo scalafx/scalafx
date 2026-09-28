@@ -28,8 +28,9 @@
 package scalafx.scene
 
 import javafx.scene.{input as jfxsi, layout as jfxsl, paint as jfxsp}
-import javafx.{collections as jfxc, event as jfxe, geometry as jfxg, scene as jfxs, util as jfxu}
+import javafx.{application as jfxa, collections as jfxc, event as jfxe, geometry as jfxg, scene as jfxs, util as jfxu}
 import scalafx.CoreIncludes.*
+import scalafx.application.ColorScheme
 import scalafx.beans.property.{ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.collections.*
 import scalafx.delegate.SFXDelegate
@@ -42,6 +43,112 @@ import scala.language.implicitConversions
 
 object Scene {
   implicit def sfxScene2jfx(v: Scene): jfxs.Scene = if (v != null) v.delegate else null
+
+  object Preferences {
+    implicit def sfxScenePreferences2jfx(p: Preferences): jfxs.Scene.Preferences = if (p != null) p.delegate else null
+  }
+
+  /**
+   * Contains scene preferences that can override [[scalafx.application.Platform.Preferences platform]] preferences.
+   *
+   * All preferences are ''null-coalescing'' properties: if set to `null` (using the setter method,
+   * `Property.setValue`, or with a binding), the property evaluates to the value of the corresponding
+   * platform-provided preference. Likewise, specifying a non-null value for any given property will override the
+   * platform-provided value.
+   *
+   * Wraps [[https://openjfx.io/javadoc/27/javafx.graphics/javafx/scene/Scene.Preferences.html javafx.scene.Scene.Preferences]]
+   *
+   * @see [[scalafx.application.Platform.Preferences]]
+   * @since JavaFX 25
+   */
+  class Preferences(override val delegate: jfxs.Scene.Preferences) extends SFXDelegate[jfxs.Scene.Preferences] {
+
+    /**
+     * Specifies whether the scene should prefer light text on dark backgrounds, or dark text
+     * on light backgrounds.
+     *
+     * This property corresponds to the `prefers-color-scheme` CSS media feature.
+     *
+     * Default value is the platform color scheme, see [[scalafx.application.Platform.Preferences.colorScheme]].
+     */
+    def colorScheme: ObjectProperty[jfxa.ColorScheme] = delegate.colorSchemeProperty
+
+    /**
+     * @param v the color scheme, or `null` to use the platform-provided value
+     */
+    def colorScheme_=(v: ColorScheme): Unit = {
+      delegate.setColorScheme(v)
+    }
+
+    /**
+     * Specifies whether applications should always show scroll bars. If set to `false`, applications
+     * may choose to hide scroll bars that are not actively used, or make them smaller or less noticeable.
+     *
+     * This property corresponds to the `-fx-prefers-persistent-scrollbars` CSS media feature.
+     *
+     * Default value is the platform preference,
+     * see [[scalafx.application.Platform.Preferences.persistentScrollBars]].
+     */
+    def persistentScrollBars: ObjectProperty[java.lang.Boolean] = delegate.persistentScrollBarsProperty
+
+    /**
+     * @param v the value, or `null` to use the platform-provided value
+     */
+    def persistentScrollBars_=(v: Boolean): Unit = {
+      delegate.setPersistentScrollBars(v)
+    }
+
+    /**
+     * Specifies whether the scene should minimize the amount of non-essential animations,
+     * reducing discomfort for users who experience motion sickness or vertigo.
+     *
+     * This property corresponds to the `prefers-reduced-motion` CSS media feature.
+     *
+     * Default value is the platform preference, see [[scalafx.application.Platform.Preferences.reducedMotion]].
+     */
+    def reducedMotion: ObjectProperty[java.lang.Boolean] = delegate.reducedMotionProperty
+
+    /**
+     * @param v the value, or `null` to use the platform-provided value
+     */
+    def reducedMotion_=(v: Boolean): Unit = {
+      delegate.setReducedMotion(v)
+    }
+
+    /**
+     * Specifies whether the scene should minimize the amount of transparent or translucent
+     * layer effects, which can help to increase contrast and readability for some users.
+     *
+     * This property corresponds to the `prefers-reduced-transparency` CSS media feature.
+     *
+     * Default value is the platform preference, see [[scalafx.application.Platform.Preferences.reducedTransparency]].
+     */
+    def reducedTransparency: ObjectProperty[java.lang.Boolean] = delegate.reducedTransparencyProperty
+
+    /**
+     * @param v the value, or `null` to use the platform-provided value
+     */
+    def reducedTransparency_=(v: Boolean): Unit = {
+      delegate.setReducedTransparency(v)
+    }
+
+    /**
+     * Specifies whether the scene should minimize the amount of internet traffic, which users
+     * might request because they are on a metered network or a limited data plan.
+     *
+     * This property corresponds to the `prefers-reduced-data` CSS media feature.
+     *
+     * Default value is the platform preference, see [[scalafx.application.Platform.Preferences.reducedData]].
+     */
+    def reducedData: ObjectProperty[java.lang.Boolean] = delegate.reducedDataProperty
+
+    /**
+     * @param v the value, or `null` to use the platform-provided value
+     */
+    def reducedData_=(v: Boolean): Unit = {
+      delegate.setReducedData(v)
+    }
+  }
 }
 
 /**
@@ -783,6 +890,14 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def onTouchStationary_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]): Unit = {
     onTouchStationary() = v
   }
+
+  /**
+   * Gets the scene preferences that can override [[scalafx.application.Platform.Preferences platform]] preferences.
+   *
+   * @return the `Preferences` instance
+   * @since JavaFX 25
+   */
+  def preferences: Scene.Preferences = new Scene.Preferences(delegate.getPreferences)
 
   /**
    * Takes a snapshot of this scene and returns the rendered image when it is ready.
