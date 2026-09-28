@@ -31,8 +31,8 @@
 // JAR_BUILT_BY      - Name to be added to the Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "26"
-val scalafxVersion = "26.0.0-R39-SNAPSHOT"
+val javaFXVersion  = "27"
+val scalafxVersion = "27.0.0-R39-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -82,8 +82,7 @@ lazy val scalafxSettings = Seq(
   version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
-  javaOptions ++= Seq("-Djavafx.enablePreview=true"),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "23"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "25"),
   scalacOptions ++= {
     scalaBinaryVersion.value match {
       case "3" => Seq("-source:3.3-migration", "-explain", "-explain-types")

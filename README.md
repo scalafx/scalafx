@@ -30,7 +30,7 @@ __ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is inten
 Here is how you can add dependency using SBT.
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "23.0.1-R34"
+libraryDependencies += "org.scalafx" %% "scalafx" % "27.0.0-R39"
 ```
 
 Note that in ScalaFX version prior to `20.0.0-R31` and SBT older than 1.6, you needed to explicitly provide dependency on
@@ -43,18 +43,18 @@ You can find examples of SBT setup in section [Demo Projects and Examples](#demo
 If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
 ```scala
-//| mill-version: 1.0.6
+//| mill-version: 1.1.10
 
 package build
 import mill._, scalalib._
 
 object yourProject extends ScalaModule {
-  def jvmId = "temurin:22.0.2" // JavaFX 24 requires JDK version >= 22
+  def jvmId = "temurin:25" // JavaFX 27 requires JDK version >= 25
   def scalaVersion = "3.7.3"
 
   // Add dependency on JavaFX libraries
-  val javaFxVersion = "24"
-  val scalaFxVersion = "24.0.2-R36"
+  val javaFxVersion = "27"
+  val scalaFxVersion = "27.0.0-R39"
   val javaFxModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
 
   def mvnDeps = Seq(
@@ -72,7 +72,7 @@ Example of `build.gradle`:
 plugins {
     id 'scala'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 repositories {
@@ -80,13 +80,13 @@ repositories {
 }
 
 javafx {
-    version = "21"
+    version = "27"
     modules = ['javafx.controls', 'javafx.media']
 }
 
 dependencies {
-    implementation 'org.scala-lang:scala3-library_3:3.3.1'
-    implementation 'org.scalafx:scalafx_3:21.0.0-R32'
+    implementation 'org.scala-lang:scala3-library_3:3.3.8'
+    implementation 'org.scalafx:scalafx_3:27.0.0-R39'
 }
 
 application {
@@ -161,9 +161,9 @@ folder of the project.
 
 The following software is needed to build ScalaFX:
 
-  1. [SBT](http://www.scala-sbt.org/) v.1.9.0 or better
-  2. [Scala](http://www.scala.org/). ScalaFX 23 builds with Scala 2.12.20 or newer.
-  3. Java 21 or better is required as of JavaFX 23 / ScalaFX 23.0.1-R34 (this is [JavaFX 23 requirement](https://openjfx.io/highlights/23/)
+  1. [SBT](http://www.scala-sbt.org/) v.2.0.0 or better
+  2. [Scala](http://www.scala.org/). ScalaFX 27 builds with Scala 2.12.21 or newer.
+  3. Java 25 or better is required as of JavaFX 27 / ScalaFX 27.0.0-R39 (this is [JavaFX 27 requirement](https://openjfx.io/highlights/27/))
 
 It works with Windows, Mac OS X, and Linux ports.
 

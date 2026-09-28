@@ -28,8 +28,9 @@
 package scalafx.scene.layout
 
 import javafx.scene.layout as jfxsl
-import javafx.{geometry as jfxg, scene as jfxs}
+import javafx.{application as jfxa, geometry as jfxg, scene as jfxs}
 import scalafx.CoreIncludes.*
+import scalafx.application.ColorScheme
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{Dimension2D, Insets, Pos}
@@ -108,38 +109,121 @@ object HeaderBar {
   def buttonType(child: Node): ObjectProperty[jfxsl.HeaderButtonType] = jfxsl.HeaderBar.buttonTypeProperty(child)
 
   /**
-   * Sentinel value that can be used for [[setPrefButtonHeight]] to indicate that
-   * the platform should choose the platform-specific default button height.
+   * Sentinel value that can be used for the [[#systemButtonHeight(Stage) systemButtonHeight]] attached property
+   * to indicate that the platform should choose the platform-specific default button height.
    */
   val UseDefaultSize: Double = jfxsl.HeaderBar.USE_DEFAULT_SIZE
 
   /**
-   * Specifies the preferred height of the system-provided header buttons of the specified stage.
+   * Specifies the color scheme of the system-provided header buttons for the specified `Stage`.
+   *
+   * This is a ''null-coalescing'' property: if set to `null` (using the setter method, `Property.setValue`,
+   * or with a binding), the property evaluates to the value of `Scene.Preferences.colorScheme`.
+   * Likewise, specifying a non-null value will override the scene-provided value.
+   * Overriding the scene-provided color scheme is usually only necessary in the rare case when an application
+   * needs different color schemes for header buttons and the window content (bright title bar in dark mode,
+   * or a dark title bar in light mode). The specified color scheme is only a hint for the platform window toolkit
+   * and may be ignored.
+   *
+   * Default value is `Scene.Preferences.getColorScheme`.
+   *
+   * @param stage the `Stage`
+   * @return the `systemColorScheme` attached property
+   * @since 27
+   */
+  def systemColorScheme(stage: Stage): ObjectProperty[jfxa.ColorScheme] =
+    jfxsl.HeaderBar.systemColorSchemeProperty(stage)
+
+  /**
+   * Sets the value of the [[#systemColorScheme(Stage) systemColorScheme]] attached property
+   * for the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @param value the color scheme, or `null` to indicate no preference
+   * @since 27
+   */
+  def setSystemColorScheme(stage: Stage, value: ColorScheme): Unit =
+    jfxsl.HeaderBar.setSystemColorScheme(stage, value)
+
+  /**
+   * Gets the value of the [[#systemColorScheme(Stage) systemColorScheme]] attached property
+   * for the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @return the color scheme
+   * @since 27
+   */
+  def getSystemColorScheme(stage: Stage): ColorScheme =
+    jfxsl.HeaderBar.getSystemColorScheme(stage)
+
+  /**
+   * Specifies the preferred height of the system-provided header buttons for the specified `Stage`.
+   *
+   * Any value except zero and [[UseDefaultSize]] is only a hint for the platform window toolkit.
+   * The platform might accommodate the preferred height in various ways, such as by stretching the header buttons
+   * (fully or partially) to fill the preferred height, or centering the header buttons (fully or partially)
+   * within the preferred height. Some platforms might only accommodate the preferred height within
+   * platform-specific constraints, or ignore it entirely.
+   *
+   * Setting the preferred height to zero hides the system-provided header buttons, allowing applications to use
+   * custom header buttons instead (see [[setButtonType]]).
+   *
+   * The default value [[UseDefaultSize]] indicates that the platform should choose the button height.
+   *
+   * @param stage the `Stage`
+   * @return the `systemButtonHeight` attached property
+   * @since 27
+   */
+  def systemButtonHeight(stage: Stage): DoubleProperty =
+    jfxsl.HeaderBar.systemButtonHeightProperty(stage)
+
+  /**
+   * Sets the value of the [[#systemButtonHeight(Stage) systemButtonHeight]] attached property
+   * for the specified `Stage`.
    *
    * @param stage  the `Stage`
    * @param height the preferred height, or 0 to hide the system-provided header buttons
+   * @since 27
    */
-  def setPrefButtonHeight(stage: Stage, height: Double): Unit =
-    jfxsl.HeaderBar.setPrefButtonHeight(stage, height)
+  def setSystemButtonHeight(stage: Stage, height: Double): Unit =
+    jfxsl.HeaderBar.setSystemButtonHeight(stage, height)
 
   /**
-   * Returns the preferred height of the system-provided header buttons of the specified stage.
+   * Gets the value of the [[#systemButtonHeight(Stage) systemButtonHeight]] attached property
+   * for the specified `Stage`.
    *
    * @param stage the `Stage`
    * @return the preferred height of the system-provided header buttons
+   * @since 27
    */
-  def getPrefButtonHeight(stage: Stage): Double =
-    jfxsl.HeaderBar.getPrefButtonHeight(stage)
+  def getSystemButtonHeight(stage: Stage): Double =
+    jfxsl.HeaderBar.getSystemButtonHeight(stage)
 
   /**
-   * Specifies the preferred height of the system-provided header buttons of the specified `Stage`.
+   * Specifies the system-recommended minimum height for the `HeaderBar` for the specified `Stage`,
+   * which usually corresponds to the height of the default header buttons. Applications can use this value
+   * as a sensible lower limit for the height of the `HeaderBar`.
+   *
+   * By default, `minHeight` is set to the value of `systemMinHeight`, unless `minHeight` is explicitly set
+   * by a stylesheet or application code.
    *
    * @param stage the `Stage`
-   * @return the `prefButtonHeight` property
-   * @since 26
+   * @return the `systemMinHeight` attached property
+   * @since 27
    */
-  def prefButtonHeight(stage: Stage): DoubleProperty =
-    jfxsl.HeaderBar.prefButtonHeightProperty(stage)
+  def systemMinHeight(stage: Stage): ReadOnlyDoubleProperty =
+    jfxsl.HeaderBar.systemMinHeightProperty(stage)
+
+  /**
+   * Gets the value of the [[#systemMinHeight(Stage) systemMinHeight]] attached property
+   * for the specified `Stage`.
+   *
+   * @param stage the `Stage`
+   * @return the system-recommended minimum height for the `HeaderBar`
+   * @since 27
+   */
+  def getSystemMinHeight(stage: Stage): Double =
+    jfxsl.HeaderBar.getSystemMinHeight(stage)
 
   /**
    * Describes the size of the left system-reserved inset of the specified `Stage`, which is an area
@@ -184,27 +268,6 @@ object HeaderBar {
    * @since 26
    */
   def getRightSystemInset(stage: Stage): Dimension2D = jfxsl.HeaderBar.getRightSystemInset(stage.delegate)
-
-  /**
-   * The system-provided minimum recommended height for the `HeaderBar` of the specified `Stage`,
-   * which usually corresponds to the height of the default header buttons. Applications can use this value
-   * as a sensible lower limit for the height of the `HeaderBar`.
-   *
-   * @param stage the `Stage`
-   * @return the `minSystemHeight` property
-   * @since 26
-   */
-  def minSystemHeight(stage: Stage): ReadOnlyDoubleProperty = jfxsl.HeaderBar.minSystemHeightProperty(stage)
-
-  /**
-   * Gets the value of the [[#minSystemHeight(Stage) minSystemHeight]] property
-   * of the specified `Stage`.
-   *
-   * @param stage the `Stage`
-   * @return the system-provided minimum recommended height for the `HeaderBar`
-   * @since 26
-   */
-  def getMinSystemHeight(stage: Stage): Double = jfxsl.HeaderBar.getMinSystemHeight(stage.delegate)
 
   /**
    * Sets the alignment for the child when contained in a `HeaderBar`.
@@ -308,13 +371,4 @@ class HeaderBar(override val delegate: jfxsl.HeaderBar = new jfxsl.HeaderBar)
    */
   def rightSystemPadding: BooleanProperty    = delegate.rightSystemPaddingProperty
   def rightSystemPadding_=(b: Boolean): Unit = delegate.setRightSystemPadding(b)
-
-//  def leftSystemInset: ReadOnlyObjectProperty[jfxg.Dimension2D] = delegate.leftSystemInsetProperty
-//
-//  /**
-//   * Describes the size of the right system-reserved inset, which is an area reserved for the iconify, maximize,
-//   * and close window buttons. If there are no window buttons on the right side of the window, the returned area
-//   * is an empty `Dimension2D`.
-//   */
-//  def rightSystemInset: ReadOnlyObjectProperty[jfxg.Dimension2D] = delegate.rightSystemInsetProperty
 }
