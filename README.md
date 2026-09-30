@@ -216,7 +216,9 @@ cd scalafx
 sbt compile           # compile with the default Scala version (3.3.8)
 sbt test              # run tests
 sbt +test             # run tests with all cross-built Scala versions
+sbt ++2.13.18 test    # run tests with a specific Scala version
 sbt +publishLocal     # publish all cross-built artifacts to the local repository
+sbt +publishM2        # publish all cross-built artifacts to the local Maven repository (~/.m2)
 sbt scalafxDemos/run  # choose and run one of the demos
 ```
 
