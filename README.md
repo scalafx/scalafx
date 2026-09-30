@@ -191,76 +191,13 @@ or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users),
 or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx). Please report any problems
 using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 
-We request all the team members to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in our
-mailing list, issue discussion, Gitter room or any of ScalaFX meetups.
+We ask everyone to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in all ScalaFX
+community spaces: GitHub Discussions, issues, pull requests, the mailing list, and meetups.
 
 ## Contributing
 
-For more info on contributing, check our [Contributing page](https://scalafx.org/docs/contributing/).
-
-### Software Required
-
-The following software is needed to build ScalaFX:
-
-  1. [SBT](https://www.scala-sbt.org/) 2.x (currently 2.0.9). The SBT launcher picks up the version from `project/build.properties` automatically.
-  2. [Scala](https://www.scala-lang.org/). ScalaFX 27 is cross-built for Scala 3.3.8 (default), 2.13.18, and 2.12.21.
-  3. Java 25 or better is required as of JavaFX 27 / ScalaFX 27.0.0-R39 (this is [JavaFX 27 requirement](https://openjfx.io/highlights/27/))
-
-It works with Windows, macOS, and Linux ports.
-
-### Building from Source
-
-```shell
-git clone https://github.com/scalafx/scalafx.git
-cd scalafx
-sbt compile           # compile with the default Scala version (3.3.8)
-sbt test              # run tests
-sbt +test             # run tests with all cross-built Scala versions
-sbt ++2.13.18 test    # run tests with a specific Scala version
-sbt +publishLocal     # publish all cross-built artifacts to the local repository
-sbt +publishM2        # publish all cross-built artifacts to the local Maven repository (~/.m2)
-sbt scalafxDemos/run  # choose and run one of the demos
-```
-
-Tests run JavaFX in headless mode (`-Dglass.platform=headless`), so no display or Xvfb is needed, including on CI.
-
-To include class diagrams in the generated Scaladoc (`sbt doc`), set the `GRAPHVIZ_DOT_PATH` environment variable
-to the full path of the [Graphviz](https://graphviz.org/) `dot` executable. Without it, Scaladoc is built without diagrams.
-
-### Project Structure
-
-The current project directory structure:
-
-    ./docs
-    ./notes
-    ./project
-    ./scalafx
-    ./scalafx-demos
-
-Where `.` is the root folder of the project.
-
-The `docs` folder contains images used in this README.
-
-The `notes` folder contains release notes for past releases.
-
-The `scalafx` folder is the sub-project for the ScalaFX Framework.
-
-The `scalafx-demos` is the sub-project for the ScalaFX Framework Demonstrations, some are a bit out of date, help needed here :).
-
-The `project` folder is reserved for SBT build system setup.
-
-### Source Code Branching Policy
-
-Development happens on the `master` branch.
-Releases are done on the `stable` branch.
-Releases are tagged with version number.
-Pull requests are only accepted off a branch created from the `master` branch.
-When working on a pull request, create a separate branch for each feature or bug fix.
-This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
-
-The ScalaFX 8 and 2.2 development is no longer active.
-For those who need it, the code is on branches: `SFX-8` and  `SFX-2`. 
-Past releases are on `SFX-8-stable` and `SFX-2-stable` branches.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to build ScalaFX from source, the project
+structure, coding guidelines, and how to submit pull requests.
 
 ## License, Authors, and Credits
 
