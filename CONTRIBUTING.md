@@ -92,6 +92,24 @@ The ScalaFX 8 and 2.2 development is no longer active.
 For those who need it, the code is on branches `SFX-8` and `SFX-2`.
 Past releases are on the `SFX-8-stable` and `SFX-2-stable` branches.
 
+## Releasing (Maintainers)
+
+### Update README.md
+
+`README.md` contains version numbers in copy-paste snippets that need to be updated for each release.
+
+1. Find the version numbers in `README.md`:
+   ```shell
+   grep -nE '[0-9]+\.[0-9]+\.[0-9]+-R[0-9]+|JDK [0-9]+|temurin:|javaFxVersion|version = "' README.md
+   ```
+2. Update the ScalaFX version (for instance, `27.0.0-R39`) in the SBT, Scala CLI, Mill, and Gradle snippets.
+3. For a new JavaFX major version, also update the JavaFX version (Mill `javaFxVersion`, Gradle `javafx.version`)
+   and the minimum JDK version (Quick Start text, Mill `jvmId`).
+4. Add a row for the new release to the "Compatibility of Recent Versions" table.
+   The minimum JDK version is given in the JavaFX release highlights, for instance https://openjfx.io/highlights/27/.
+   Remove the oldest row, if the table gets too long.
+5. After the release is available on Maven Central, run the "Hello ScalaFX" example with `scala-cli` to verify it.
+
 ## Code of Conduct
 
 We ask everyone to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in all ScalaFX
