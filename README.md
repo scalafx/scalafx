@@ -13,6 +13,10 @@ anywhere the Java Virtual Machine (JVM) and JavaFX are supported.
 
 Have a question or an idea? Join us in [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions).
 
+Example of an [ScalaFX App](https://github.com/scalafx/scalafx-ensemble): 
+
+<a href="https://github.com/scalafx/scalafx-ensemble"><img src="docs/images/ScalaFX_Ensemble.png" alt="ScalaFX Ensemble application showing a gallery of ScalaFX controls and charts" width="600"></a>
+
 ## Quick Start
 
 ScalaFX binaries are published in the Maven Central repository as
