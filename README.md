@@ -11,6 +11,8 @@ ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
 application is also a valid Scala application. By extension, it supports full interoperability with Java and can run
 anywhere the Java Virtual Machine (JVM) and JavaFX are supported.
 
+Have a question or an idea? Join us in [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions).
+
 ## Quick Start
 
 ScalaFX binaries are published in the Maven Central repository as
@@ -186,10 +188,15 @@ For other build tools, add `https://central.sonatype.com/repository/maven-snapsh
 
 ## Getting Help and Community
 
-If you have ScalaFX related questions please use [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions),
-or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users),
-or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx). Please report any problems
-using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
+**[ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions) is the main place for the ScalaFX community.**
+Use it to ask questions, share ideas, show your projects, and get announcements. Questions asked there are seen by
+the maintainers and other users, and the answers stay searchable for everyone.
+
+* **Questions, ideas, and help** - [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions)
+* **Bug reports and feature requests** - [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
+  If you are not sure whether something is a bug, start a discussion first.
+* **Other channels** - [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx)
+  and the [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users)
 
 We ask everyone to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in all ScalaFX
 community spaces: GitHub Discussions, issues, pull requests, the mailing list, and meetups.
