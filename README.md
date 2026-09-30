@@ -16,6 +16,42 @@ or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users),
 or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx). Please report any problems
 using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 
+## Hello ScalaFX
+
+A minimal ScalaFX application in Scala 3. Save it as `HelloApp.scala` and run it with
+[Scala CLI](https://scala-cli.virtuslab.org/) using `scala-cli HelloApp.scala` (requires JDK 25+):
+
+```scala
+//> using dep org.scalafx::scalafx:27.0.0-R39
+
+import scalafx.application.JFXApp3
+import scalafx.scene.Scene
+import scalafx.scene.control.Label
+import scalafx.scene.layout.StackPane
+
+object HelloApp extends JFXApp3:
+  override def start(): Unit =
+    stage = new JFXApp3.PrimaryStage:
+      title = "Hello ScalaFX"
+      scene = new Scene(300, 200):
+        root = new StackPane:
+          children = new Label("Hello, ScalaFX!")
+```
+
+<img src="docs/images/HelloApp.png" alt="HelloApp window showing the centered text 'Hello, ScalaFX!'" width="312">
+
+For more details, including how to create a full SBT project, see
+[For the Impatient](https://scalafx.org/laika/01-getting-started/01-for-the-impatient.html) on the ScalaFX website.
+
+## Documentation
+
+* [ScalaFX website](https://scalafx.org) - guides, starting
+  with [For the Impatient](https://scalafx.org/laika/01-getting-started/01-for-the-impatient.html)
+  and [Further Resources](https://scalafx.org/laika/01-getting-started/06-further-resources.html)
+* [ScalaFX API (Scaladoc)](https://javadoc.io/doc/org.scalafx/scalafx_3)
+* [scalafx-demos](scalafx-demos/src/main/scala/scalafx) - many small demo applications in this repository
+* [Demo projects and examples](#demo-projects-and-examples) - sample projects in the ScalaFX organization
+
 ## Getting Started
 
 ScalaFX binaries are published in the Maven Central repository:
@@ -26,7 +62,7 @@ The official website for ScalaFX is https://scalafx.org.
 ### ScalaFX Dependencies
 
 __ScalaFX 27__ is the current actively maintained version. It requires __JDK 25 or newer__
-(a [JavaFX 27 requirement](https://openjfx.io/highlights/27/)) and is published for Scala 3.3+, 2.13, and 2.12.
+(a [JavaFX 27 requirement](https://openjfx.io/highlights/27/)). See [Compatibility](#compatibility) for older versions.
 
 #### SBT
 Here is how you can add dependency using SBT.
@@ -105,31 +141,18 @@ The ScalaFX version number has two parts. The first part corresponds to the late
 second part is an incremental release number. For instance, version `27.0.0-R39` means that it was tested with JavaFX
 version `27` and that it is the 39th release of ScalaFX.
 
-#### Legacy Releases
+### Compatibility of Recent Versions
 
-##### ScalaFX 10
+| ScalaFX                   | JavaFX  | Minimum JDK | Scala               |
+|---------------------------|---------|-------------|---------------------|
+| `27.0.0-R39`              | 27      | 25          | 3.3+, 2.13, 2.12    |
+| `26.0.0-R38`              | 26      | 24          | 3.3+, 2.13, 2.12    |
+| `25.0.2-R37`              | 25      | 23          | 3.3+, 2.13, 2.12    |
+| `24.0.2-R36`              | 24      | 22          | 3.3+, 2.13, 2.12    |
+| `23.0.1-R34`              | 23      | 21          | 3.3+, 2.13, 2.12    |
+| `22.0.0-R33`              | 22      | 17          | 3.3+, 2.13, 2.12    |
 
-with Java 10 use:
-```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "10.0.2-R15"
-```
-
-##### ScalaFX 8
-To use ScalaFX with SBT and Java 8 add following dependency (to use
-the latest scalafx you might need Java version at least 1.8.40):
-
-```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.192-R14"
-```
-
-##### ScalaFX 2
-
-With Java 7 use:
-
-```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
-```
-
+Each row shows the last release for that JavaFX range. Details for every release are in the [notes](notes) folder.
 
 ### Demo Projects and Examples
 
@@ -167,6 +190,24 @@ The following software is needed to build ScalaFX:
   3. Java 25 or better is required as of JavaFX 27 / ScalaFX 27.0.0-R39 (this is [JavaFX 27 requirement](https://openjfx.io/highlights/27/))
 
 It works with Windows, macOS, and Linux ports.
+
+
+## Building from Source
+
+```shell
+git clone https://github.com/scalafx/scalafx.git
+cd scalafx
+sbt compile           # compile with the default Scala version (3.3.8)
+sbt test              # run tests
+sbt +test             # run tests with all cross-built Scala versions
+sbt +publishLocal     # publish all cross-built artifacts to the local repository
+sbt scalafxDemos/run  # choose and run one of the demos
+```
+
+Tests run JavaFX in headless mode (`-Dglass.platform=headless`), so no display or Xvfb is needed, including on CI.
+
+To include class diagrams in the generated Scaladoc (`sbt doc`), set the `GRAPHVIZ_DOT_PATH` environment variable
+to the full path of the [Graphviz](https://graphviz.org/) `dot` executable. Without it, Scaladoc is built without diagrams.
 
 
 ## Project Structure
