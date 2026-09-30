@@ -64,10 +64,21 @@ For more details, including how to create a full SBT project, see
 
 ### Demo Projects and Examples
 
-The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
-projects that illustrate the use of ScalaFX.
-The simplest one, and recommended to start with, is [scalafx-hello-world](https://github.com/scalafx/scalafx-hello-world).
-There is also a Gradle version here: [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
+The [ScalaFX Organization](https://github.com/scalafx) on GitHub contains sample projects that illustrate
+the use of ScalaFX:
+
+* [scalafx-hello-world](https://github.com/scalafx/scalafx-hello-world) - the simplest SBT project,
+  recommended to start with
+* [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle) - the same, built with Gradle
+* [scalafx.g8](https://github.com/scalafx/scalafx.g8) - Giter8 template for new ScalaFX projects,
+  use it with `sbt new scalafx/scalafx.g8`
+* [ScalaFX-Tutorials](https://github.com/scalafx/ScalaFX-Tutorials) - examples of using ScalaFX, each in a small
+  standalone project
+* [scalafx-ensemble](https://github.com/scalafx/scalafx-ensemble) - a gallery of over 60 sample applications
+  (controls, charts, graphics, media, and web views) with their source code
+* [ProScalaFX](https://github.com/scalafx/ProScalaFX) - examples from the "Pro JavaFX" books translated to ScalaFX
+* [scalafx-extras](https://github.com/scalafx/scalafx-extras) - additions to ScalaFX that do not have
+  corresponding concepts in JavaFX, with demos
 
 ## Build Tool Setup
 
@@ -196,10 +207,9 @@ the maintainers and other users, and the answers stay searchable for everyone.
 * **Bug reports and feature requests** - [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
   If you are not sure whether something is a bug, start a discussion first.
 * **Other channels** - [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx)
-  and the [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users)
 
 We ask everyone to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in all ScalaFX
-community spaces: GitHub Discussions, issues, pull requests, the mailing list, and meetups.
+community spaces: GitHub Discussions, issues, pull requests, and meetups.
 
 ## Contributing
 

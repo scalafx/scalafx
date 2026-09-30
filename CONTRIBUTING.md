@@ -95,7 +95,7 @@ Past releases are on the `SFX-8-stable` and `SFX-2-stable` branches.
 ## Code of Conduct
 
 We ask everyone to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in all ScalaFX
-community spaces: GitHub Discussions, issues, pull requests, the mailing list, and meetups.
+community spaces: GitHub Discussions, issues, pull requests, and meetups.
 
 ## License
 
