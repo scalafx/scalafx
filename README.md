@@ -11,15 +11,23 @@ ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
 application is also a valid Scala application. By extension, it supports full interoperability with Java and can run
 anywhere the Java Virtual Machine (JVM) and JavaFX are supported.
 
-If you have ScalaFX related questions please use [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions),
-or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users),
-or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx). Please report any problems
-using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
+## Quick Start
 
-## Hello ScalaFX
+ScalaFX binaries are published in the Maven Central repository as
+[org.scalafx:scalafx_3](https://central.sonatype.com/artifact/org.scalafx/scalafx_3).
+With SBT, add:
+
+```scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "27.0.0-R39"
+```
+
+ScalaFX 27 requires __JDK 25 or newer__ (a [JavaFX 27 requirement](https://openjfx.io/highlights/27/)).
+See [Compatibility and Versioning](#compatibility-and-versioning) for older versions.
+
+### Hello ScalaFX
 
 A minimal ScalaFX application in Scala 3. Save it as `HelloApp.scala` and run it with
-[Scala CLI](https://scala-cli.virtuslab.org/) using `scala-cli HelloApp.scala` (requires JDK 25+):
+[Scala CLI](https://scala-cli.virtuslab.org/) using `scala-cli HelloApp.scala`:
 
 ```scala
 //> using dep org.scalafx::scalafx:27.0.0-R39
@@ -43,7 +51,7 @@ object HelloApp extends JFXApp3:
 For more details, including how to create a full SBT project, see
 [For the Impatient](https://scalafx.org/laika/01-getting-started/01-for-the-impatient.html) on the ScalaFX website.
 
-## Documentation
+### Documentation
 
 * [ScalaFX website](https://scalafx.org) - guides, starting
   with [For the Impatient](https://scalafx.org/laika/01-getting-started/01-for-the-impatient.html)
@@ -52,31 +60,31 @@ For more details, including how to create a full SBT project, see
 * [scalafx-demos](scalafx-demos/src/main/scala/scalafx) - many small demo applications in this repository
 * [Demo projects and examples](#demo-projects-and-examples) - sample projects in the ScalaFX organization
 
-## Getting Started
+### Demo Projects and Examples
 
-ScalaFX binaries are published in the Maven Central repository:
-[org.scalafx:scalafx_3](https://central.sonatype.com/artifact/org.scalafx/scalafx_3)
+The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
+projects that illustrate the use of ScalaFX.
+The simplest one, and recommended to start with, is [scalafx-hello-world](https://github.com/scalafx/scalafx-hello-world).
+There is also a Gradle version here: [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
 
-The official website for ScalaFX is https://scalafx.org.
+## Build Tool Setup
 
-### ScalaFX Dependencies
-
-__ScalaFX 27__ is the current actively maintained version. It requires __JDK 25 or newer__
-(a [JavaFX 27 requirement](https://openjfx.io/highlights/27/)). See [Compatibility](#compatibility) for older versions.
-
-#### SBT
-Here is how you can add dependency using SBT.
+<details open>
+<summary><b>SBT</b></summary>
 
 ```scala
 libraryDependencies += "org.scalafx" %% "scalafx" % "27.0.0-R39"
 ```
 
-Note that in ScalaFX version prior to `20.0.0-R31` and SBT older than 1.6, you needed to explicitly provide dependency on
-JavaFX modules including platform dependent modules. This is no longer needed.
+SBT resolves the JavaFX modules, including the platform-specific ones, through the ScalaFX dependency.
+There is no need to add them explicitly.
 
-You can find examples of SBT setup in section [Demo Projects and Examples](#demo-projects-and-examples) below.
+You can find examples of SBT setup in section [Demo Projects and Examples](#demo-projects-and-examples).
 
-#### Mill
+</details>
+
+<details>
+<summary><b>Mill</b></summary>
 
 If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
@@ -101,11 +109,18 @@ object yourProject extends ScalaModule {
 }
 ```
 
-You can find sample ScalaFX Mill project here: [scalafx-millproject](https://github.com/rom1dep/scalafx-millproject)
+Unlike SBT, Mill does not resolve the platform-specific JavaFX modules through the ScalaFX dependency,
+so the JavaFX modules are listed explicitly.
 
-#### Gradle
+You can find a sample ScalaFX Mill project here: [scalafx-millproject](https://github.com/rom1dep/scalafx-millproject)
+
+</details>
+
+<details>
+<summary><b>Gradle</b></summary>
 
 Example of `build.gradle`:
+
 ```groovy
 plugins {
     id 'scala'
@@ -132,14 +147,11 @@ application {
 }
 ```
 
-A complete sample Gradle project can ge found in [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
+A complete sample Gradle project can be found in [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
 
+</details>
 
-### What is in the version number
-
-The ScalaFX version number has two parts. The first part corresponds to the latest JavaFX version it was tested with. The
-second part is an incremental release number. For instance, version `27.0.0-R39` means that it was tested with JavaFX
-version `27` and that it is the 39th release of ScalaFX.
+## Compatibility and Versioning
 
 ### Compatibility of Recent Versions
 
@@ -152,15 +164,15 @@ version `27` and that it is the 39th release of ScalaFX.
 | `23.0.1-R34`              | 23      | 21          | 3.3+, 2.13, 2.12    |
 | `22.0.0-R33`              | 22      | 17          | 3.3+, 2.13, 2.12    |
 
-Each row shows the last release for that JavaFX range. Details for every release are in the [notes](notes) folder.
+Each row shows the last release for that JavaFX version. Details for every release are in the [notes](notes) folder.
 
-### Demo Projects and Examples
+### What is in the version number
 
-The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
-project that illustrate use of ScalaFX.
-The simplest one, and recommended to start with, is [scalafx-hello-world](https://github.com/scalafx/scalafx-hello-world). There is also a Gradle version here: [ScalaFX-Hello-World-Gradle](https://github.com/scalafx/ScalaFX-Hello-World-Gradle).
+The ScalaFX version number has two parts. The first part corresponds to the latest JavaFX version it was tested with. The
+second part is an incremental release number. For instance, version `27.0.0-R39` means that it was tested with JavaFX
+version `27` and that it is the 39th release of ScalaFX.
 
-### Development Snapshots
+## Development Snapshots
 
 Snapshot releases are published to the
 [Maven Central snapshots repository](https://central.sonatype.com/repository/maven-snapshots/org/scalafx/).
@@ -172,16 +184,21 @@ resolvers += Resolver.sonatypeCentralSnapshots
 
 For other build tools, add `https://central.sonatype.com/repository/maven-snapshots/` as a Maven repository.
 
+## Getting Help and Community
 
-## Software License
+If you have ScalaFX related questions please use [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions),
+or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users),
+or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx). Please report any problems
+using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 
-This software is licensed under the BSD 3-Clause License (BSD-3-Clause).
+We request all the team members to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in our
+mailing list, issue discussion, Gitter room or any of ScalaFX meetups.
 
-The License text for this software can be found in [LICENSE.txt](LICENSE.txt) in the root
-folder of the project.
+## Contributing
 
+For more info on contributing, check our [Contributing page](https://scalafx.org/docs/contributing/).
 
-## Software Required
+### Software Required
 
 The following software is needed to build ScalaFX:
 
@@ -191,8 +208,7 @@ The following software is needed to build ScalaFX:
 
 It works with Windows, macOS, and Linux ports.
 
-
-## Building from Source
+### Building from Source
 
 ```shell
 git clone https://github.com/scalafx/scalafx.git
@@ -209,17 +225,19 @@ Tests run JavaFX in headless mode (`-Dglass.platform=headless`), so no display o
 To include class diagrams in the generated Scaladoc (`sbt doc`), set the `GRAPHVIZ_DOT_PATH` environment variable
 to the full path of the [Graphviz](https://graphviz.org/) `dot` executable. Without it, Scaladoc is built without diagrams.
 
-
-## Project Structure
+### Project Structure
 
 The current project directory structure:
 
+    ./docs
     ./notes
     ./project
     ./scalafx
     ./scalafx-demos
 
 Where `.` is the root folder of the project.
+
+The `docs` folder contains images used in this README.
 
 The `notes` folder contains release notes for past releases.
 
@@ -229,8 +247,7 @@ The `scalafx-demos` is the sub-project for the ScalaFX Framework Demonstrations,
 
 The `project` folder is reserved for SBT build system setup.
 
-
-## Source Code Branching Policy
+### Source Code Branching Policy
 
 Development happens on the `master` branch.
 Releases are done on the `stable` branch.
@@ -243,20 +260,13 @@ The ScalaFX 8 and 2.2 development is no longer active.
 For those who need it, the code is on branches: `SFX-8` and  `SFX-2`. 
 Past releases are on `SFX-8-stable` and `SFX-2-stable` branches.
 
+## License, Authors, and Credits
 
-## Authors
+This software is licensed under the BSD 3-Clause License (BSD-3-Clause).
+The License text for this software can be found in [LICENSE.txt](LICENSE.txt) in the root folder of the project.
 
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
 program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
-
-## Credits
-
-The most up to date list of contributors to the project can be found on the [Contributors](https://github.com/scalafx/scalafx/graphs/contributors) page.
-
-
-## Community
-We request all the team members to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in our mailing list, issue discussion, Gitter room or any of ScalaFX meetups.
-
-For more info on Contribute, check our [Contributing page](https://scalafx.org/docs/contributing/).
-
+The most up to date list of contributors to the project can be found on the
+[Contributors](https://github.com/scalafx/scalafx/graphs/contributors) page.
