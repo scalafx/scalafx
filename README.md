@@ -5,6 +5,7 @@
 [![Scala CI](https://github.com/scalafx/scalafx/actions/workflows/scala.yml/badge.svg)](https://github.com/scalafx/scalafx/actions/workflows/scala.yml)
 [![Maven Central Version](https://img.shields.io/maven-central/v/org.scalafx/scalafx_3)](https://central.sonatype.com/artifact/org.scalafx/scalafx_3)
 [![Scaladoc](https://javadoc.io/badge2/org.scalafx/scalafx_3/scaladoc.svg)](https://javadoc.io/doc/org.scalafx/scalafx_3)
+[![License](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](LICENSE.txt)
 
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX. This means that every ScalaFX
 application is also a valid Scala application. By extension, it supports full interoperability with Java and can run
@@ -18,13 +19,14 @@ using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 ## Getting Started
 
 ScalaFX binaries are published in the Maven Central repository:
-[http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
+[org.scalafx:scalafx_3](https://central.sonatype.com/artifact/org.scalafx/scalafx_3)
 
-The official website for ScalaFX is http://scalafx.org.
+The official website for ScalaFX is https://scalafx.org.
 
 ### ScalaFX Dependencies
 
-__ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is intended to support __Java 11 and newer__.
+__ScalaFX 27__ is the current actively maintained version. It requires __JDK 25 or newer__
+(a [JavaFX 27 requirement](https://openjfx.io/highlights/27/)) and is published for Scala 3.3+, 2.13, and 2.12.
 
 #### SBT
 Here is how you can add dependency using SBT.
@@ -99,9 +101,9 @@ A complete sample Gradle project can ge found in [ScalaFX-Hello-World-Gradle](ht
 
 ### What is in the version number
 
-ScalaFX version number has two part. The first part corresponds to the latest JavaFX version it was tested with. The
-second part is an incremental release number. For instance, version `15.0.1-R20` means that it was tested with JavaFX
-version `15.0.1` and that is the 20th release of ScalaFX.
+The ScalaFX version number has two parts. The first part corresponds to the latest JavaFX version it was tested with. The
+second part is an incremental release number. For instance, version `27.0.0-R39` means that it was tested with JavaFX
+version `27` and that it is the 39th release of ScalaFX.
 
 #### Legacy Releases
 
@@ -137,21 +139,20 @@ The simplest one, and recommended to start with, is [scalafx-hello-world](https:
 
 ### Development Snapshots
 
-Snapshot releases are also regularly published on [Sonatype Snapshots](https://oss.sonatype.org/content/repositories/snapshots/org/scalafx/). To use a snapshot
-build you may need to add "Sonatype OSS Snapshots" resolver to you SBT
-configuration:
+Snapshot releases are published to the
+[Maven Central snapshots repository](https://central.sonatype.com/repository/maven-snapshots/org/scalafx/).
+To use a snapshot build, add the Central snapshots resolver to your SBT configuration:
 
 ```scala
-resolvers += Opts.resolver.sonatypeSnapshots
+resolvers += Resolver.sonatypeCentralSnapshots
 ```
 
-If you just want to download a recent snapshot build you can also use Travis CI build site
-https://travis-ci.org/scalafx/scalafx
+For other build tools, add `https://central.sonatype.com/repository/maven-snapshots/` as a Maven repository.
 
 
 ## Software License
 
-This software licensed under BSD Open Source.
+This software is licensed under the BSD 3-Clause License (BSD-3-Clause).
 
 The License text for this software can be found in [LICENSE.txt](LICENSE.txt) in the root
 folder of the project.
@@ -161,11 +162,11 @@ folder of the project.
 
 The following software is needed to build ScalaFX:
 
-  1. [SBT](http://www.scala-sbt.org/) v.2.0.0 or better
-  2. [Scala](http://www.scala.org/). ScalaFX 27 builds with Scala 2.12.21 or newer.
+  1. [SBT](https://www.scala-sbt.org/) 2.x (currently 2.0.9). The SBT launcher picks up the version from `project/build.properties` automatically.
+  2. [Scala](https://www.scala-lang.org/). ScalaFX 27 is cross-built for Scala 3.3.8 (default), 2.13.18, and 2.12.21.
   3. Java 25 or better is required as of JavaFX 27 / ScalaFX 27.0.0-R39 (this is [JavaFX 27 requirement](https://openjfx.io/highlights/27/))
 
-It works with Windows, Mac OS X, and Linux ports.
+It works with Windows, macOS, and Linux ports.
 
 
 ## Project Structure
@@ -190,8 +191,7 @@ The `project` folder is reserved for SBT build system setup.
 
 ## Source Code Branching Policy
 
-The current development is for ScalaFX 20.
-The development is done on the `master` branch.
+Development happens on the `master` branch.
 Releases are done on the `stable` branch.
 Releases are tagged with version number.
 Pull requests are only accepted off a branch created from the `master` branch.
@@ -215,7 +215,7 @@ The most up to date list of contributors to the project can be found on the [Con
 
 
 ## Community
-We request all the team members to follow the [Typelevel Code of Conduct](http://typelevel.org/conduct.html) in our mailing list, issue discussion, Gitter room or any of ScalaFX meetups.
+We request all the team members to follow the [Typelevel Code of Conduct](https://typelevel.org/code-of-conduct/) in our mailing list, issue discussion, Gitter room or any of ScalaFX meetups.
 
-For more info on Contribute, check our [Contributing page](http://http://www.scalafx.org/docs/contributing/).
+For more info on Contribute, check our [Contributing page](https://scalafx.org/docs/contributing/).
 
