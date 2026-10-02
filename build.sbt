@@ -31,14 +31,42 @@
 // JAR_BUILT_BY      - Name to be added to the Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "27"
-val scalafxVersion = "27.0.0-R39-SNAPSHOT"
+import sbtrelease.ReleaseStateTransformations.*
 
-val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
+// ScalaFX version is in `version.sbt`, it is updated by `sbt release`
+val javaFXVersion = "27"
+
+def versionTagName(version: String): String = s"v.$version"
+def versionTagDir(version: String): String  = if (version.endsWith("SNAPSHOT")) "master" else versionTagName(version)
 
 // Common settings, SBT 2 applies bare settings in build.sbt to all subprojects
 scalafxSettings
 mavenCentralSettings
+
+// Release process, run with `sbt release`
+releaseVersion     := ReleaseVersions.releaseVersion
+releaseNextVersion := ReleaseVersions.nextVersion
+releaseTagName     := versionTagName((ThisBuild / version).value)
+releaseCrossBuild  := true
+// Releases are made from `stable` branch, after `master` is merged into it.
+// The release does not commit, tag, merge, or push, git commands that complete the release are printed at the end.
+releaseProcess := Seq[ReleaseStep](
+  ReleaseGit.checkGit,
+  checkSnapshotDependencies,
+  inquireVersions,
+  ReleaseSteps.checkReleaseNotes,
+  releaseStepTask(scalafxProject / SigningCheck.checkSigning),
+  runClean,
+  runTest,
+  setReleaseVersion,
+  releaseStepCommandAndRemaining("+publishSigned"),
+  releaseStepCommand("sonaRelease"),
+  ReleaseSteps.updateReadme,
+  ReleaseGit.printManualSteps
+)
+
+// Drop a failed deployment on Sonatype Central Portal: `sbt "sonaDrop <deploymentId>"`
+commands += SonaDrop.command
 
 // Root project
 lazy val scalafxProject = (project in file("."))
@@ -47,6 +75,7 @@ lazy val scalafxProject = (project in file("."))
     publishArtifact := false,
     publish / skip  := true
   )
+  .settings(SigningCheck.settings) // `sbt checkSigning`, defined only here, so it runs once
   .aggregate(scalafx, scalafxDemos)
 
 // ScalaFX project
@@ -79,7 +108,6 @@ lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.20"
 
 // Settings shared by all projects, applied as bare settings at the top of this file
 lazy val scalafxSettings = Seq(
-  version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "25"),
@@ -94,16 +122,16 @@ lazy val scalafxSettings = Seq(
     scalaBinaryVersion.value match {
       case "2.12" | "2.13" =>
         Opts.doc.title("ScalaFX API") ++
-          Opts.doc.version(scalafxVersion) ++
+          Opts.doc.version(version.value) ++
           Seq(
             "-sourcepath",
             baseDirectory.value.toString,
             "-doc-root-content",
             s"${baseDirectory.value}/src/main/scala/root-doc.creole",
             "-doc-source-url",
-            s"https://github.com/scalafx/scalafx/tree/$versionTagDir/scalafx/€{FILE_PATH}.scala",
+            s"https://github.com/scalafx/scalafx/tree/${versionTagDir(version.value)}/scalafx/€{FILE_PATH}.scala",
             "-doc-footer",
-            s"ScalaFX API v.$scalafxVersion"
+            s"ScalaFX API v.${version.value}"
           ) ++
           (
             Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
@@ -117,14 +145,14 @@ lazy val scalafxSettings = Seq(
             }
           )
       case "3" =>
-        Opts.doc.version(scalafxVersion) ++
+        Opts.doc.version(version.value) ++
           Seq(
             "-doc-root-content",
             s"${baseDirectory.value}/src/main/scala-3/root-doc.md",
-            s"-source-links:github://scalafx/scalafx/$versionTagDir",
+            s"-source-links:github://scalafx/scalafx/${versionTagDir(version.value)}",
             s"-external-mappings:.*scala3?-library.*::scaladoc3::https://www.scala-lang.org/api/${scalaVersion.value}/",
             "-doc-footer",
-            s"ScalaFX API v.$scalafxVersion"
+            s"ScalaFX API v.${version.value}"
           )
       case _ => Seq.empty[String]
     }
