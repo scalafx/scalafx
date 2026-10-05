@@ -230,3 +230,12 @@ program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
 The most up to date list of contributors to the project can be found on the
 [Contributors](https://github.com/scalafx/scalafx/graphs/contributors) page.
+
+## Open Source Support
+
+[![JetBrains logo.](https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg)](https://jb.gg/OpenSource)
+
+Tooling provided by [JetBrains](https://www.jetbrains.com/). Thanks to JetBrains for supporting this project with Open Source development licenses.
+
+
+
