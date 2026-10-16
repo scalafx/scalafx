@@ -174,6 +174,15 @@ lazy val scalafxSettings = Seq(
   },
   // Scaladoc 3 does not accept `-source`, inherited from compile options, sbt would report it as unused
   Compile / doc / scalacOptions ~= (_.filterNot(_.startsWith("-source:"))),
+  // Scaladoc 2 links to JavaFX API docs, each JavaFX jar mapped to its module docs (Scaladoc 3 uses `externalDocMappings`)
+  Compile / doc / apiMappings ++= {
+    val javafxDocs = s"https://openjfx.io/javadoc/$javaFXVersion"
+    if (scalaBinaryVersion.value == "3") Map.empty
+    else
+      (Compile / dependencyClasspath).value.map(_.data).flatMap { jar =>
+        javafxModuleNames.find(m => jar.name.startsWith(s"javafx-$m-")).map(m => jar -> url(s"$javafxDocs/javafx.$m/"))
+      }.toMap
+  },
   // Add other dependencies
   libraryDependencies ++= javafxModules,
   // scala-reflect is only used by Scala 2.12 sources (ObservableBuffer.sort uses runtime reflection)
