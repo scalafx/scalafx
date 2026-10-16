@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,14 +36,14 @@ object ApplicationIncludes extends ApplicationIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/package-summary.html `javafx.application`]] Classes to
+ * [[javafx.application]] Classes to
  * their ScalaFX counterparts.
  */
 trait ApplicationIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
+   * [[javafx.application.Application.Parameters]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX Parameters
@@ -63,7 +63,7 @@ trait ApplicationIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
+   * [[javafx.application.ConditionalFeature]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX ConditionalFeature

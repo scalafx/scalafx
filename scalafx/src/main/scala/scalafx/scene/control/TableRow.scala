@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ object TableRow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableRow.html]].
+ * Wraps [[javafx.scene.control.TableRow]].
  */
 class TableRow[T](override val delegate: jfxsc.TableRow[T] = new jfxsc.TableRow[T])
     extends IndexedCell[T]

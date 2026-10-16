@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,11 +39,11 @@ object SingleSelectionModel {
    * Creates a new [[scalafx.scene.control.SingleSelectionModel]] from functions that defines a data
    * model and quantity of items. This method was created to supply necessity
    * to override protected methods
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html#getItemCount() getItemCount()]]
+   * [[javafx.scene.control.SingleSelectionModel.getItemCount getItemCount()]]
    * and
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html#getModelItem(int) getModelItem(int)]]
+   * [[javafx.scene.control.SingleSelectionModel.getModelItem getModelItem(int)]]
    * from
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html SingleSelectionModel]].
+   * [[javafx.scene.control.SingleSelectionModel SingleSelectionModel]].
    *
    * @tparam T The type of the item contained in the control that can be
    *           selected.

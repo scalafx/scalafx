@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ object TextInputDialog {
  * @constructor Creates a new TextInputDialog without a default value entered into the dialog.
  *
  * @define TC TextInputDialog
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html
+ * @define URL0 [[javafx.scene.control.TextInputDialog
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

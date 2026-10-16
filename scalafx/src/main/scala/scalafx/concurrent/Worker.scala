@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ object Worker {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Worker.html Worker]]
+ * Wrapper trait for [[javafx.concurrent.Worker Worker]]
  * Interface.
  */
 trait Worker[T] extends SFXDelegate[jfxc.Worker[T]] {

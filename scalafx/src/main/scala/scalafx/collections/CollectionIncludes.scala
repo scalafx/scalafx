@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,13 +37,13 @@ object CollectionIncludes extends CollectionIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]]
+ * [[javafx.collections]]
  * Classes to their ScalaFX counterparts.
  */
 trait CollectionIncludes extends TransformationIncludes {
 
   /**
-   * Converts a [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html `ObservableList`]]
+   * Converts a [[javafx.collections.ObservableList ObservableList]]
    * to a [[scalafx.collections.ObservableBuffer]].
    *
    * @tparam T List Type
@@ -55,7 +55,7 @@ trait CollectionIncludes extends TransformationIncludes {
     else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+   * Converts a JavaFX [[javafx.collections.ObservableMap ObservableMap]]
    * to a ScalaFX [[scalafx.collections.ObservableMap]].
    *
    * @tparam K Key Type
@@ -70,7 +70,7 @@ trait CollectionIncludes extends TransformationIncludes {
     else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html `ObservableSet`]]
+   * Converts a JavaFX [[javafx.collections.ObservableSet ObservableSet]]
    * to a ScalaFX [[scalafx.collections.ObservableSet]].
    *
    * @tparam T Set Type
@@ -84,7 +84,7 @@ trait CollectionIncludes extends TransformationIncludes {
     else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableFloatArray.html]] `ObservableFloatArray` to a ScalaFX [[scalafx.collections.ObservableFloatArray]].
+   * Converts a JavaFX [[javafx.collections.ObservableFloatArray]] ObservableFloatArray to a ScalaFX [[scalafx.collections.ObservableFloatArray]].
    *
    * @param ofa JavaFX ObservableFloatArray
    * @return ScalaFX ObservableFloatArray
@@ -93,7 +93,7 @@ trait CollectionIncludes extends TransformationIncludes {
     if (ofa != null) new ObservableFloatArray(ofa) else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableIntegerArray.html]] `ObservableIntegerArray` to a ScalaFX [[scalafx.collections.ObservableIntegerArray]].
+   * Converts a JavaFX [[javafx.collections.ObservableIntegerArray]] ObservableIntegerArray to a ScalaFX [[scalafx.collections.ObservableIntegerArray]].
    *
    * @param oia JavaFX ObservableIntegerArray
    * @return ScalaFX ObservableIntegerArray

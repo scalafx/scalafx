@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -83,7 +83,7 @@ object JFXApp {
 
   /**
    * Wraps
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html Application.Parameters]]
+   * [[javafx.application.Application.Parameters Application.Parameters]]
    * class.
    */
   abstract class Parameters extends SFXDelegate[jfxa.Application.Parameters] {
@@ -224,9 +224,9 @@ object JFXApp {
 /**
  * ScalaFX applications can extend JFXApp to create properly initialized JavaFX applications.
  *
- * On the back end `JFXApp` first calls [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch javafx.application.Application.launch]] then executes body of its
+ * On the back end `JFXApp` first calls [[javafx.application.Application.launch]] then executes body of its
  * constructor when
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#start(javafx.stage.Stage) javafx.application.Application.start(primaryStage:Stage)]]
+ * [[javafx.application.Application.start javafx.application.Application.start(primaryStage:Stage)]]
  * is called. Here is an example use:
  *
  * {{{

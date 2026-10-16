@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@ object Service {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Service.html Service]]
+ * Wrapper trait for [[javafx.concurrent.Service Service]]
  * Class.
  */
 abstract class Service[T](override val delegate: jfxc.Service[T])

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,7 +69,7 @@ object Duration {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html $D]].
+ * Wraps a JavaFX [[javafx.util.Duration Duration]].
  *
  * @constructor Creates a new $D from a JavaFX $D.
  * @param delegate JavaFX $D to be delegated.

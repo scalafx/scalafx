@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,13 @@ object PaintIncludes extends PaintIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/package-summary.html `javafx.scene.paint`]]
+ * [[javafx.scene.paint]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  * @define BEGINSTRING Converts an HTML or CSS attribute string to a
  * @define ENDSTRING See $JFX's `Color.web()` for more details.
  * @define PARAMSTRING The name or numeric representation of the color in one of the supported formats
@@ -133,7 +133,7 @@ trait PaintIncludes {
     jfxsp.Color.rgb(tuple._1, tuple._2, tuple._3, tuple._4)
 
   /**
-   * $START$CLR.html $CLR$END
+   * $START [[javafx.scene.paint.Color Color]] $END
    *
    * @param c $JFX $CLR
    * @return $SFX $CLR
@@ -141,7 +141,7 @@ trait PaintIncludes {
   implicit def jfxColor2sfx(c: jfxsp.Color): Color = if (c != null) new Color(c) else null
 
   /**
-   * $START$CMT.html $CMT$END
+   * $START [[javafx.scene.paint.CycleMethod CycleMethod]] $END
    *
    * @param e $JFX $CMT
    * @return $SFX $CMT
@@ -149,7 +149,7 @@ trait PaintIncludes {
   implicit def jfxCycleMethod2sfx(e: jfxsp.CycleMethod): CycleMethod = CycleMethod.jfxEnum2sfx(e)
 
   /**
-   * $START$LGD.html $LGD$END
+   * $START [[javafx.scene.paint.LinearGradient LinearGradient]] $END
    *
    * @param lg $JFX $LGD
    * @return $SFX $LGD
@@ -158,7 +158,7 @@ trait PaintIncludes {
     if (lg != null) new LinearGradient(lg) else null
 
   /**
-   * $START$PHM.html $PHM$END
+   * $START [[javafx.scene.paint.PhongMaterial PhongMaterial]] $END
    *
    * @param pm $JFX $PHM
    * @return $SFX $PHM
@@ -167,7 +167,7 @@ trait PaintIncludes {
     if (pm != null) new PhongMaterial(pm) else null
 
   /**
-   * $START$RGD.html $RGD$END
+   * $START [[javafx.scene.paint.RadialGradient RadialGradient]] $END
    *
    * @param rg $JFX $RGD
    * @return $SFX $RGD
@@ -176,7 +176,7 @@ trait PaintIncludes {
     if (rg != null) new RadialGradient(rg) else null
 
   /**
-   * $START$STP.html $STP$END
+   * $START [[javafx.scene.paint.Stop Stop]] $END
    *
    * @param c $JFX $STP
    * @return $SFX $STP
@@ -184,7 +184,7 @@ trait PaintIncludes {
   implicit def jfxStop2sfx(c: jfxsp.Stop): Stop = if (c != null) new Stop(c) else null
 
   /**
-   * $START$PNT.html $PNT$END
+   * $START [[javafx.scene.paint.Paint Paint]] $END
    *
    * @param p $JFX $PNT
    * @return $SFX $PNT

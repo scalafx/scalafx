@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  *
  * An action may have any number of parameters, depending on the particular action.
  *
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/AccessibleAction.html]]
+ * Wraps [[javafx.scene.AccessibleAction]]
  */
 object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, AccessibleAction] {
 

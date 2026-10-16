@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ import scala.language.implicitConversions
 object KeyFrame {
 
   /**
-   * Converts a ScalaFX $KF to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]],
+   * Converts a ScalaFX $KF to a JavaFX [[javafx.animation.KeyFrame KeyFrame]],
    * extracting its delegate.
    *
    * @param v ScalaFX $KF
@@ -72,7 +72,7 @@ object KeyFrame {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]].
+ * Wraps a [[javafx.animation.KeyFrame KeyFrame]].
  *
  * @constructor Creates a new ScalaFX $KF from a JavaFX $KF.
  * @param delegate JavaFX $KF to be delegated.
@@ -98,7 +98,7 @@ class KeyFrame(override val delegate: jfxa.KeyFrame)
   def onFinished: jfxe.EventHandler[jfxe.ActionEvent] = delegate.getOnFinished
 
   /**
-   * Returns an immutable Set of [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html `KeyValue`]]
+   * Returns an immutable Set of [[javafx.animation.KeyValue KeyValue]]
    * instances.
    */
   def values: mutable.Set[jfxa.KeyValue] = delegate.getValues.asScala

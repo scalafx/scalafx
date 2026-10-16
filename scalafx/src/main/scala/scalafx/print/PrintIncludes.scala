@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,13 +38,13 @@ object PrintIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/package-summary.html `javafx.print`]]
+ * [[javafx.print]]
  * Classes/Enums to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define COLL Collation
  * @define JS JobSettings
@@ -90,7 +90,7 @@ trait PrintIncludes {
   implicit def jfxPageLayout2sfx(pl: jfxp.PageLayout): PageLayout = if (pl != null) new PageLayout(pl) else null
 
   /**
-   * $START$PO.html $PO$END
+   * $START [[javafx.print.PageOrientation PageOrientation]] $END
    *
    * @param po $JFX $PO
    * @return $SFX $PO
@@ -98,7 +98,7 @@ trait PrintIncludes {
   implicit def jfxPageOrientation2sfx(po: jfxp.PageOrientation): PageOrientation = PageOrientation.jfxEnum2sfx(po)
 
   /**
-   * $START$PR.html $PR$END
+   * $START [[javafx.print.PageRange PageRange]] $END
    *
    * @param pr $JFX $PR
    * @return $SFX $PR
@@ -106,7 +106,7 @@ trait PrintIncludes {
   implicit def jfxPageRange2sfx(pr: jfxp.PageRange): PageRange = if (pr != null) new PageRange(pr) else null
 
   /**
-   * $START$PP.html $PP$END
+   * $START [[javafx.print.Paper Paper]] $END
    *
    * @param pp $JFX $PP
    * @return $SFX $PP
@@ -114,7 +114,7 @@ trait PrintIncludes {
   implicit def jfxPaper2sfx(pp: jfxp.Paper): Paper = if (pp != null) new Paper(pp) else null
 
   /**
-   * $START$PS.html $PS$END
+   * $START [[javafx.print.PrintSides PrintSides]] $END
    *
    * @param ps $JFX $PS
    * @return $SFX $PP
@@ -122,7 +122,7 @@ trait PrintIncludes {
   implicit def jfxPaperSource2sfx(ps: jfxp.PaperSource): PaperSource = if (ps != null) new PaperSource(ps) else null
 
   /**
-   * $START$PC.html $PC$END
+   * $START [[javafx.print.PrintColor PrintColor]] $END
    *
    * @param pc $JFX $PC
    * @return $SFX $PC
@@ -130,7 +130,7 @@ trait PrintIncludes {
   implicit def jfxPrintColor2sfx(pc: jfxp.PrintColor): PrintColor = PrintColor.jfxEnum2sfx(pc)
 
   /**
-   * $START$PA.html $PA$END
+   * $START [[javafx.print.PrinterAttributes PrinterAttributes]] $END
    *
    * @param pa $JFX $PA
    * @return $SFX $PA
@@ -139,7 +139,7 @@ trait PrintIncludes {
     if (pa != null) new PrinterAttributes(pa) else null
 
   /**
-   * $START$PRT.html $PRT$END
+   * $START [[javafx.print.Printer Printer]] $END
    *
    * @param p $JFX $PRT
    * @return $SFX $PRT
@@ -147,7 +147,7 @@ trait PrintIncludes {
   implicit def jfxPrinter2sfx(p: jfxp.Printer): Printer = if (p != null) new Printer(p) else null
 
   /**
-   * $START$MT.html $MT$END
+   * $START [[javafx.print.Printer.MarginType Printer.MarginType]] $END
    *
    * @param mt $JFX $MT
    * @return $SFX $MT
@@ -156,7 +156,7 @@ trait PrintIncludes {
     Printer.MarginType.jfxEnum2sfx(mt)
 
   /**
-   * $START$PJ.html $PJ$END
+   * $START [[javafx.print.PrinterJob PrinterJob]] $END
    *
    * @param pj $JFX $PJ
    * @return $SFX $PJ
@@ -164,7 +164,7 @@ trait PrintIncludes {
   implicit def jfxPrintJob2sfx(pj: jfxp.PrinterJob): PrinterJob = if (pj != null) new PrinterJob(pj) else null
 
   /**
-   * $START$JS.html $JS$END
+   * $START [[javafx.print.JobSettings JobSettings]] $END
    *
    * @param js $JFX $JS
    * @return $SFX $JS
@@ -173,7 +173,7 @@ trait PrintIncludes {
     PrinterJob.JobStatus.jfxEnum2sfx(js)
 
   /**
-   * $START$PQ.html $PQ$END
+   * $START [[javafx.print.PrintQuality PrintQuality]] $END
    *
    * @param pq $JFX $PQ
    * @return $SFX $PQ
@@ -181,7 +181,7 @@ trait PrintIncludes {
   implicit def jfxPrintQuality2sfx(pq: jfxp.PrintQuality): PrintQuality = PrintQuality.jfxEnum2sfx(pq)
 
   /**
-   * $START$PR.html $PR$END
+   * $START [[javafx.print.PageRange PageRange]] $END
    *
    * @param pr $JFX $PR
    * @return $SFX $PR
@@ -190,7 +190,7 @@ trait PrintIncludes {
     if (pr != null) new PrintResolution(pr) else null
 
   /**
-   * $START$PS.html $PS$END
+   * $START [[javafx.print.PrintSides PrintSides]] $END
    *
    * @param ps $JFX $PS
    * @return $SFX $PS

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object DatePicker {
  * The calendar is based on either the standard ISO-8601 chronology or any of the other chronology classes defined in the
  * `java.time.chrono` package.
  *
- * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/DatePicker.html]].
+ * Wraps [[javafx.scene.control.DatePicker]].
  */
 class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker())
     extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {

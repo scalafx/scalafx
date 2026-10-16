@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object ResizeFeaturesBase {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/ResizeFeaturesBase.html ResizeFeaturesBase]].
+ * Wraps JavaFX [[javafx.scene.control.ResizeFeaturesBase ResizeFeaturesBase]].
  *
  * @constructor Creates a new ScalaFX ResizeFeaturesBase from a JavaFX ResizeFeaturesBase.
  * @param delegate JavaFX ResizeFeaturesBase to be wrapped.

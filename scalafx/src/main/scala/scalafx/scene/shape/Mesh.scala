@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,6 @@ object Mesh {
   implicit def sfxMesh2jfx(m: Mesh): jfxss.Mesh = if (m != null) m.delegate else null
 }
 
-/** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Mesh.html]]. */
+/** Wraps [[javafx.scene.shape.Mesh]]. */
 abstract class Mesh(override val delegate: jfxss.Mesh)
     extends SFXDelegate[jfxss.Mesh] {}

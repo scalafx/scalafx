@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.scene.transform
 import javafx.scene.transform as jfxst
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/MatrixType.html javafx.scene.transform.MatrixType]] */
+/** Wrapper for [[javafx.scene.transform.MatrixType]] */
 object MatrixType extends SFXEnumDelegateCompanion[jfxst.MatrixType, MatrixType] {
 
   /** A 2D affine transformation matrix of 2 rows and 3 columns. */

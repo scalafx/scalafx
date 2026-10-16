@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,13 +38,13 @@ object BindingIncludes extends BindingIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/package-summary.html `javafx.beans.binding`]]
+ * [[javafx.beans.binding]]
  * Classes to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define BOB BooleanBinding
  * @define BOE BooleanExpression
@@ -59,7 +59,7 @@ trait BindingIncludes extends Bindings {
   // Implicit upcasts from JavaFX to ScalaFX types for all bindings
 
   /**
-   * $START$BOB.html $BOB$END
+   * $START [[javafx.beans.binding.BooleanBinding BooleanBinding]] $END
    *
    * @param bb $JFX $BOB
    * @return $SFX $BOB
@@ -68,7 +68,7 @@ trait BindingIncludes extends Bindings {
     if (bb != null) new BooleanBinding(bb) else null
 
   /**
-   * $START$BOE.html $BOE$END
+   * $START [[javafx.beans.binding.BooleanExpression BooleanExpression]] $END
    *
    * @param be $JFX $BOE
    * @return $SFX $BOE
@@ -89,7 +89,7 @@ trait BindingIncludes extends Bindings {
     if (v != null) new MapExpression(v) else null
 
   /**
-   * $START$NUB.html $NUB$END
+   * $START [[javafx.beans.binding.NumberBinding NumberBinding]] $END
    *
    * @param nb $JFX $NUB
    * @return $SFX $NUB
@@ -98,7 +98,7 @@ trait BindingIncludes extends Bindings {
     if (nb != null) new NumberBinding(nb) else null
 
   /**
-   * $START$NUE.html $NUE$END
+   * $START [[javafx.beans.binding.NumberExpression NumberExpression]] $END
    *
    * @param ne $JFX $NUE
    * @return $SFX $NUE
@@ -107,7 +107,7 @@ trait BindingIncludes extends Bindings {
     if (ne != null) new NumberExpression(ne) else null
 
   /**
-   * $START$OBB.html $OBB$END
+   * $START [[javafx.beans.binding.ObjectBinding ObjectBinding]] $END
    *
    * @tparam T $OBB Type
    * @param ob $JFX $OBB
@@ -117,7 +117,7 @@ trait BindingIncludes extends Bindings {
     if (ob != null) new ObjectBinding[T](ob) else null
 
   /**
-   * $START$OBE.html $OBE$END
+   * $START [[javafx.beans.binding.ObjectExpression ObjectExpression]] $END
    *
    * @tparam T $OBE Type
    * @param oe $JFX $OBE
@@ -133,7 +133,7 @@ trait BindingIncludes extends Bindings {
     if (v != null) new SetExpression(v) else null
 
   /**
-   * $START$STB.html $STB$END
+   * $START [[javafx.beans.binding.StringBinding StringBinding]] $END
    *
    * @param sb $JFX $STB
    * @return $SFX $STB
@@ -142,7 +142,7 @@ trait BindingIncludes extends Bindings {
     if (sb != null) new StringBinding(sb) else null
 
   /**
-   * $START$STE.html $STE$END
+   * $START [[javafx.beans.binding.StringExpression StringExpression]] $END
    *
    * @param se $JFX $STE
    * @return $SFX $STE

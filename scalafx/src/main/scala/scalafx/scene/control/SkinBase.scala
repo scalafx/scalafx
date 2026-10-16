@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ object SkinBase {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SkinBase.html]].
+ * Wraps [[javafx.scene.control.SkinBase]].
  */
 abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jfxsc.SkinBase[C])
     extends SFXDelegate[jfxsc.SkinBase[C]] {

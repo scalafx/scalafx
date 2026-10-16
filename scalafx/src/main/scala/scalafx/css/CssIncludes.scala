@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,15 +34,15 @@ object CssIncludes extends CssIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html `javafx.css`]]
+ * [[javafx.css]]
  * classes/interfaces to their ScalaFX counterparts.
  *
  * @since 8.0
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/css/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  * @define PV ParsedValue
  * @define PS PseudoClass
  * @define ST Styleable
@@ -55,7 +55,7 @@ object CssIncludes extends CssIncludes
 trait CssIncludes {
 
   /*
-   * $START$PV.html $PV$END
+   * $START [[javafx.css.ParsedValue ParsedValue]] $END
    *
    * @param pv $JFX $PV
    * @return $SFX $PV
@@ -64,7 +64,7 @@ trait CssIncludes {
   //    new ParsedValue[V, T](pv)
 
   /**
-   * $START$PS.html $PS$END
+   * $START [[javafx.css.PseudoClass PseudoClass]] $END
    *
    * @param d $JFX $PS
    * @return $SFX $PS
@@ -72,7 +72,7 @@ trait CssIncludes {
   implicit def jfxPseudoClass2sfx(d: jfxcss.PseudoClass): PseudoClass = if (d != null) new PseudoClass(d) {} else null
 
   /**
-   * $START$ST.html $ST$END
+   * $START [[javafx.css.Styleable Styleable]] $END
    *
    * @param s $JFX $ST
    * @return $SFX $ST
@@ -85,7 +85,7 @@ trait CssIncludes {
     else null
 
   /*
-   * $START$SP.html $SP$END
+   * $START [[javafx.css.StyleableProperty StyleableProperty]] $END
    *
    * @param s $JFX $SP
    * @return $SFX $SP
@@ -95,7 +95,7 @@ trait CssIncludes {
   //  }
 
   /**
-   * $START$SO.html $SO$END
+   * $START [[javafx.css.StyleOrigin StyleOrigin]] $END
    *
    * @param o $JFX $SO
    * @return $SFX $SO
@@ -103,7 +103,7 @@ trait CssIncludes {
   implicit def jfxStyleOrigin2sfx(o: jfxcss.StyleOrigin): StyleOrigin = StyleOrigin.jfxEnum2sfx(o)
 
   /*
-   * $START$MD.html $MD$END
+   * $START [[javafx.css.CssMetaData CssMetaData]] $END
    *
    * @param cmd $JFX $MD
    * @return $SFX $MD
@@ -112,7 +112,7 @@ trait CssIncludes {
   //    new CssMetaData[S, V](cmd) {}
 
   /*
-   * $START$FD.html $MD$END
+   * $START [[javafx.css.FontCssMetaData CssMetaData]] $END
    *
    * @param f $JFX $FD
    * @return $SFX $FD
@@ -121,7 +121,7 @@ trait CssIncludes {
   //    new FontCssMetaData[S](f) {}
 
   /**
-   * $START$SC.html $SC$END
+   * $START [[javafx.css.StyleConverter StyleConverter]] $END
    *
    * @tparam F
    * @tparam T

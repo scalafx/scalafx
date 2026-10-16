@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,13 +36,13 @@ object ImageIncludes extends ImageIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/package-summary.html `javafx.scene.image`]]
+ * [[javafx.scene.image]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX   JavaFX
  * @define SFX   ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define IMG Image
  * @define IMV ImageView
@@ -56,7 +56,7 @@ object ImageIncludes extends ImageIncludes
 trait ImageIncludes {
 
   /**
-   * $START$IMG.html $IMG$END
+   * $START [[javafx.scene.image.Image Image]] $END
    *
    * @param i $JFX $IMG
    * @return $SFX $IMG
@@ -64,7 +64,7 @@ trait ImageIncludes {
   implicit def jfxImage2sfx(i: jfxsi.Image): Image = if (i != null) new Image(i) else null
 
   /**
-   * $START$IMV.html $IMV$END
+   * $START [[javafx.scene.image.ImageView ImageView]] $END
    *
    * @param iv $JFX $IMV
    * @return $SFX $IMV
@@ -72,7 +72,7 @@ trait ImageIncludes {
   implicit def jfxImageView2sfx(iv: jfxsi.ImageView): ImageView = if (iv != null) new ImageView(iv) else null
 
   /**
-   * $START$PXF.html $PXF$END
+   * $START [[javafx.scene.image.PixelFormat PixelFormat]] $END
    *
    * @param pf $JFX $PXF
    * @return $SFX $PXF
@@ -82,7 +82,7 @@ trait ImageIncludes {
   else null
 
   /**
-   * $START$PFT.html $PFT$END
+   * $START [[javafx.scene.image.PixelFormat.Type PixelFormat.Type]] $END
    *
    * @param t $JFX $PFT
    * @return $SFX $PFT
@@ -90,7 +90,7 @@ trait ImageIncludes {
   implicit def jfxType2sfx(t: jfxsi.PixelFormat.Type): Type = PixelFormat.Type.jfxEnum2sfx(t)
 
   /**
-   * $START$PXR.html $PXR$END
+   * $START [[javafx.scene.image.PixelReader PixelReader]] $END
    *
    * @param pr $JFX $PXR
    * @return $SFX $PXR
@@ -102,7 +102,7 @@ trait ImageIncludes {
     else null
 
   /**
-   * $START$PXW.html $PXW$END
+   * $START [[javafx.scene.image.PixelWriter PixelWriter]] $END
    *
    * @param pw $JFX $PXW
    * @return $SFX $PXW
@@ -114,7 +114,7 @@ trait ImageIncludes {
     else null
 
   /**
-   * $START$WRI.html $WRI$END
+   * $START [[javafx.scene.image.WritableImage WritableImage]] $END
    *
    * @param wi $JFX $WRI
    * @return $SFX $WRI
@@ -123,7 +123,7 @@ trait ImageIncludes {
     if (wi != null) new WritableImage(wi) else null
 
   /**
-   * $START$WPF.html $WPF$END
+   * $START [[javafx.scene.image.WritablePixelFormat WritablePixelFormat]] $END
    *
    * @param pf $JFX $WPF
    * @return $SFX $WPF

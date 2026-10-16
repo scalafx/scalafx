@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object ObjectProperty {
 
   /**
    * Implicit conversion from a ScalaFX's $OP to a JavaFX's
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
+   * [[javafx.beans.property.ObjectProperty ObjectProperty]], extracting its delegate.
    *
    * @param op ScalaFX's $OP
    * @return JavaFX's $OP, extracted from op's delegate.

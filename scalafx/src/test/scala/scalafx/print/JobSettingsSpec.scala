@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,8 +34,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * Tests for [[scalafx.print.JobSettings]] temporarily inactive.
  *
  * When running in an enviroment with no defined printer,
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.html#createPrinterJob--
- * PrinterJob.createPrinterJob()]] will return 'null'. Consequently, there will be a
+ * [[javafx.print.PrinterJob.createPrinterJob PrinterJob.createPrinterJob()]]
+ * will return 'null'. Consequently, there will be a
  * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock.
  * Therefore, it is necessary to skip the conversion tests when there is no printer defined in
  * environment.

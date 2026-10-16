@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object PickResult {
 
 /**
  * A container for the result of a pick event. Wrapper for JavaFX's
- * [[http://download.java.net/jdk8/jfxdocs/javafx/scene/input/PickResult.html PickResult]].
+ * [[javafx.scene.input.PickResult PickResult]].
  */
 class PickResult(override val delegate: jfxsi.PickResult)
     extends SFXDelegate[jfxsi.PickResult] {

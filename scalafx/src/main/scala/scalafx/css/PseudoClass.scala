@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ object PseudoClass {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/PseudoClass.html JavaFX PseudoClass]].
+ * Wraps [[javafx.css.PseudoClass JavaFX PseudoClass]].
  *
  * @constructor Creates a new ScalaFX PseudoClass from its JavaFX counterpart.
  * @param delegate JavaFX PseudoClass.

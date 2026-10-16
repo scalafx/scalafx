@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -98,7 +98,7 @@ object PixelFormat {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelFormat.Type.html]]
+   * Wraps [[javafx.scene.image.PixelFormat.Type]]
    */
   sealed abstract class Type(override val delegate: jfxsi.PixelFormat.Type)
       extends SFXEnumDelegate[jfxsi.PixelFormat.Type]
@@ -122,7 +122,7 @@ object PixelFormat {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelFormat.html]]
+ * Wraps [[javafx.scene.image.PixelFormat]]
  */
 abstract class PixelFormat[B <: Buffer](override val delegate: jfxsi.PixelFormat[B])
     extends SFXDelegate[jfxsi.PixelFormat[B]] {

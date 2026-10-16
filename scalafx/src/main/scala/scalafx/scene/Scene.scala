@@ -56,7 +56,7 @@ object Scene {
    * platform-provided preference. Likewise, specifying a non-null value for any given property will override the
    * platform-provided value.
    *
-   * Wraps [[https://openjfx.io/javadoc/27/javafx.graphics/javafx/scene/Scene.Preferences.html javafx.scene.Scene.Preferences]]
+   * Wraps [[javafx.scene.Scene.Preferences]]
    *
    * @see [[scalafx.application.Platform.Preferences]]
    * @since JavaFX 25
@@ -152,17 +152,17 @@ object Scene {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html]].
+ * Wraps [[javafx.scene.Scene]].
  *
  * @constructor Create a new ScalaFX Scene with JavaFX Scene as delegate.
  * @param delegate JavaFX Scene delegated. Its default value is a JavaFX Scene with a
- *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html Group]] as root Node.
+ *                 [[javafx.scene.Group Group]] as root Node.
  */
 class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
     extends SFXDelegate[jfxs.Scene] {
 
   /**
-   * Creates a Scene with a [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html Group]] as root Node with a
+   * Creates a Scene with a [[javafx.scene.Group Group]] as root Node with a
    * specific size.
    *
    * @param width  The width of the scene
@@ -593,7 +593,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * stylesheet will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   * [[https://openjfx.io/javadoc/27/javafx.graphics/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
    *
    * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
    */
@@ -605,7 +605,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * stylesheet will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   * [[https://openjfx.io/javadoc/27/javafx.graphics/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
    *
    * @param url The URL is a hierarchical URI of the form `[scheme:][//authority][path]`.
    *            If the URL does not have a `[scheme:]` component, the URL is considered to be the `[path]`

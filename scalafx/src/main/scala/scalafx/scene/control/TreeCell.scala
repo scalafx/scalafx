@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ object TreeCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeCell.html]]
+ * Wraps [[javafx.scene.control.TreeCell]]
  *
  * @tparam T The type of the value contained within the `TreeItem` property.
  */

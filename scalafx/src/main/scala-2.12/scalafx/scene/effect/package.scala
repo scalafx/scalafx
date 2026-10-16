@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ import scalafx.scene.paint.Color
 import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
+ * Wraps [[javafx.scene.effect]] package.
  */
 package object effect {
 

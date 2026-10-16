@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,13 @@ object CanvasIncludes extends CanvasIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/package-summary.html `javafx.scene.canvas`]]
+ * [[javafx.scene.canvas]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define CANV Canvas
  * @define GRCT GraphicsContext
@@ -48,7 +48,7 @@ object CanvasIncludes extends CanvasIncludes
 trait CanvasIncludes {
 
   /**
-   * $START$CANV.html $CANV$END
+   * $START [[javafx.scene.canvas.Canvas Canvas]] $END
    *
    * @param c $JFX $CANV
    * @return $SFX $CANV
@@ -56,7 +56,7 @@ trait CanvasIncludes {
   implicit def jfxCanvas2sfx(c: jfxsc.Canvas): Canvas = if (c != null) new Canvas(c) else null
 
   /**
-   * $START$GRCT.html $GRCT$END
+   * $START [[javafx.scene.canvas.GraphicsContext GraphicsContext]] $END
    *
    * @param gc $JFX $GRCT
    * @return $SFX $GRCT

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object PopupWindow {
 
   /**
    * Anchor location constants for popup anchor point selection.
-   * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]
+   * Wraps [[javafx.stage.PopupWindow.AnchorLocation AnchorLocation]]
    */
   object AnchorLocation
       extends SFXEnumDelegateCompanion[jfxs.PopupWindow.AnchorLocation, AnchorLocation] {
@@ -107,7 +107,7 @@ object PopupWindow {
 
   /**
    * Anchor location constants for popup anchor point selection.
-   * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]
+   * Wraps [[javafx.stage.PopupWindow.AnchorLocation AnchorLocation]]
    */
   sealed abstract class AnchorLocation(override val delegate: jfxs.PopupWindow.AnchorLocation)
       extends SFXEnumDelegate[jfxs.PopupWindow.AnchorLocation]

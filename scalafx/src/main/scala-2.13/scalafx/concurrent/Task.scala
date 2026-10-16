@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object Task {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Task.html Task]]
+ * Wrapper trait for [[javafx.concurrent.Task Task]]
  * Class.
  */
 abstract class Task[T](override val delegate: jfxc.Task[T])

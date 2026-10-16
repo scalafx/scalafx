@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object SnapshotResult {
 }
 
 /**
- * Wraps JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotResult.html SnapshotResult]].
+ * Wraps JavaFX's [[javafx.scene.SnapshotResult SnapshotResult]].
  * How the original Java class does not have public constructors, it is not possible instantiate in Scala.
  *
  * @since 2.2

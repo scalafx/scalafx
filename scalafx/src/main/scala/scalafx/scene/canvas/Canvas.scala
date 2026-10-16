@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ object Canvas {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html JavaFX Canvas]]
+ * Wraps [[javafx.scene.canvas.Canvas JavaFX Canvas]]
  */
 class Canvas(override val delegate: jfxsc.Canvas = new jfxsc.Canvas)
     extends Node(delegate)

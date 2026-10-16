@@ -34,13 +34,13 @@ object LayoutIncludes extends LayoutIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/package-summary.html `javafx.scene.layout`]]
+ * [[javafx.scene.layout]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define ACPN AnchorPane
  * @define BKGN Background
@@ -62,7 +62,7 @@ object LayoutIncludes extends LayoutIncludes
 trait LayoutIncludes {
 
   /**
-   * $START$ACPN.html $ACPN$END
+   * $START [[javafx.scene.layout.AnchorPane AnchorPane]] $END
    *
    * @param a $JFX $ACPN
    * @return $SFX $ACPN
@@ -70,7 +70,7 @@ trait LayoutIncludes {
   implicit def jfxAnchorPane2sfx(a: jfxsl.AnchorPane): AnchorPane = if (a != null) new AnchorPane(a) else null
 
   /**
-   * $START$BKGN.html $BKGN$END
+   * $START [[javafx.scene.layout.Background Background]] $END
    *
    * @param v $JFX $BKGN
    * @return $SFX $BKGN
@@ -93,7 +93,7 @@ trait LayoutIncludes {
     if (v != null) new BackgroundSize(v) else null
 
   /**
-   * $START$BRDR.html $BRDR$END
+   * $START [[javafx.scene.layout.Border Border]] $END
    *
    * @param v $JFX $BRDR
    * @return $SFX $BRDR
@@ -103,7 +103,7 @@ trait LayoutIncludes {
   implicit def jfxBorderImage2sfx(v: jfxsl.BorderImage): BorderImage = if (v != null) new BorderImage(v) else null
 
   /**
-   * $START$BDPN.html $BDPN$END
+   * $START [[javafx.scene.layout.BorderPane BorderPane]] $END
    *
    * @param v $JFX $BDPN
    * @return $SFX $BDPN
@@ -120,7 +120,7 @@ trait LayoutIncludes {
   implicit def jfxBorderWidths2sfx(v: jfxsl.BorderWidths): BorderWidths = if (v != null) new BorderWidths(v) else null
 
   /**
-   * $START$CLCT.html $CLCT$END
+   * $START [[javafx.scene.layout.ColumnConstraints ColumnConstraints]] $END
    *
    * @param v $JFX $CLCT
    * @return $SFX $CLCT
@@ -129,7 +129,7 @@ trait LayoutIncludes {
     if (v != null) new ColumnConstraints(v) else null
 
   /**
-   * $START$CTBS.html $CTBS$END
+   * $START [[javafx.scene.layout.ConstraintsBase ConstraintsBase]] $END
    *
    * @param v $JFX $CTBS
    * @return $SFX $CTBS
@@ -141,7 +141,7 @@ trait LayoutIncludes {
   implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii): CornerRadii = if (v != null) new CornerRadii(v) {} else null
 
   /**
-   * $START$FLPN.html $FLPN$END
+   * $START [[javafx.scene.layout.FlowPane FlowPane]] $END
    *
    * @param v $JFX $FLPN
    * @return $SFX $FLPN
@@ -149,7 +149,7 @@ trait LayoutIncludes {
   implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane): FlowPane = if (v != null) new FlowPane(v) else null
 
   /**
-   * $START$GDPN.html $GDPN$END
+   * $START [[javafx.scene.layout.GridPane GridPane]] $END
    *
    * @param v $JFX $GDPN
    * @return $SFX $GDPN
@@ -164,7 +164,7 @@ trait LayoutIncludes {
     if (v != null) HeaderDragType(v) else null
 
   /**
-   * $START$HBOX.html $HBOX$END
+   * $START [[javafx.scene.layout.HBox HBox]] $END
    *
    * @param v $JFX $HBOX
    * @return $SFX $HBOX
@@ -172,7 +172,7 @@ trait LayoutIncludes {
   implicit def jfxHBox2sfx(v: jfxsl.HBox): HBox = if (v != null) new HBox(v) else null
 
   /**
-   * $START$PANE.html $PANE$END
+   * $START [[javafx.scene.layout.Pane Pane]] $END
    *
    * @param v $JFX $PANE
    * @return $SFX $PANE
@@ -180,7 +180,7 @@ trait LayoutIncludes {
   implicit def jfxPane2sfx(v: jfxsl.Pane): Pane = if (v != null) new Pane(v) else null
 
   /**
-   * $START$PRIO.html $PRIO$END
+   * $START [[javafx.scene.layout.Priority Priority]] $END
    *
    * @param e $JFX $PRIO
    * @return $SFX $PRIO
@@ -188,7 +188,7 @@ trait LayoutIncludes {
   implicit def jfxPriority2sfx(e: jfxsl.Priority): Priority = Priority.jfxEnum2sfx(e)
 
   /**
-   * $START$REGI.html $REGI$END
+   * $START [[javafx.scene.layout.Region Region]] $END
    *
    * @param v $JFX $REGI
    * @return $SFX $REGI
@@ -196,7 +196,7 @@ trait LayoutIncludes {
   implicit def jfxRegion2sfx(v: jfxsl.Region): Region = if (v != null) new Region(v) else null
 
   /**
-   * $START$RWCT.html $RWCT$END
+   * $START [[javafx.scene.layout.RowConstraints RowConstraints]] $END
    *
    * @param v $JFX $RWCT
    * @return $SFX $RWCT
@@ -205,7 +205,7 @@ trait LayoutIncludes {
     if (v != null) new RowConstraints(v) else null
 
   /**
-   * $START$STPN.html $STPN$END
+   * $START [[javafx.scene.layout.StackPane StackPane]] $END
    *
    * @param v $JFX $STPN
    * @return $SFX $STPN
@@ -213,7 +213,7 @@ trait LayoutIncludes {
   implicit def jfxStackPane2sfx(v: jfxsl.StackPane): StackPane = if (v != null) new StackPane(v) else null
 
   /**
-   * $START$TLPN.html $TLPN$END
+   * $START [[javafx.scene.layout.TilePane TilePane]] $END
    *
    * @param v $JFX $TLPN
    * @return $SFX $TLPN
@@ -221,7 +221,7 @@ trait LayoutIncludes {
   implicit def jfxTilePane2sfx(v: jfxsl.TilePane): TilePane = if (v != null) new TilePane(v) else null
 
   /**
-   * $START$VBOX.html $VBOX$END
+   * $START [[javafx.scene.layout.VBox VBox]] $END
    *
    * @param v $JFX $VBOX
    * @return $SFX $VBOX

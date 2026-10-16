@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object EventDispatchChain {
  * Wraps a $JFX $URL0 $FC]].
  *
  * @define FC EventDispatchChain
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventDispatchChain.html
+ * @define URL0 [[javafx.event.EventDispatchChain
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

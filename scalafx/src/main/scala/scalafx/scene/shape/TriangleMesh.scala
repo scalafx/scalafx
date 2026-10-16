@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ object TriangleMesh {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/TriangleMesh.html]].
+ * Wraps [[javafx.scene.shape.TriangleMesh]].
  */
 class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.TriangleMesh())
     extends Mesh(delegate)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object Affine {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Affine.html]]
+ * Wraps [[javafx.scene.transform.Affine]]
  */
 class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Transform(delegate)
     with SFXDelegate[jfxst.Affine] {

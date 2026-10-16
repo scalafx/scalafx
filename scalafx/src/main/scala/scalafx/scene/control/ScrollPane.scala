@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@ object ScrollPane {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollPane.ScrollBarPolicy.html]] */
+  /** Wrapper for [[javafx.scene.control.ScrollPane.ScrollBarPolicy]] */
   sealed abstract class ScrollBarPolicy(override val delegate: jfxsc.ScrollPane.ScrollBarPolicy)
       extends SFXEnumDelegate[jfxsc.ScrollPane.ScrollBarPolicy]
 

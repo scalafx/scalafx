@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,7 +69,7 @@ object FlowPane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html]]
+ * Wraps [[javafx.scene.layout.FlowPane]]
  */
 class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
     extends Pane(delegate)

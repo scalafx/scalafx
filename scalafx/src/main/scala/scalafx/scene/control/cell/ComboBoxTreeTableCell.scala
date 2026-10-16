@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ import scala.language.implicitConversions
  * @define RET A function that will return a TableCell that is able to work on the type of element contained within the TableColumn.
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html
+ * @define URL0 [[javafx.scene.control.cell.ComboBoxTreeTableCell
  * @define ORIGINALDOC Original Documentation]].
  * @define SATISFY Added just to satisfy Spec tests.
  */
@@ -159,7 +159,7 @@ object ComboBoxTreeTableCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ComboBoxTreeTableCell.html $CBTC]]
+ * Wraps [[javafx.scene.control.cell.ComboBoxTreeTableCell ComboBoxTreeTableCell]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBTC from a $JFX $CBTC

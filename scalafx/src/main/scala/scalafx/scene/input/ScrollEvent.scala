@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,7 @@ object ScrollEvent {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
+   * Wraps [[javafx.scene.input.ScrollEvent.HorizontalTextScrollUnits]]
    */
   sealed abstract class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
       extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
@@ -96,7 +96,7 @@ object ScrollEvent {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
+   * Wraps [[javafx.scene.input.ScrollEvent.VerticalTextScrollUnits]]
    */
   sealed abstract class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
       extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
@@ -133,7 +133,7 @@ object ScrollEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.html]]
+ * Wraps [[javafx.scene.input.ScrollEvent]]
  */
 class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
     extends GestureEvent(delegate)

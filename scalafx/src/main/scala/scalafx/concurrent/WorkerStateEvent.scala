@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -93,7 +93,7 @@ object WorkerStateEvent {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/WorkerStateEvent.html WorkerStateEvent]] Class.
+ * Wrapper trait for [[javafx.concurrent.WorkerStateEvent WorkerStateEvent]] Class.
  */
 class WorkerStateEvent(override val delegate: jfxc.WorkerStateEvent)
     extends Event(delegate)

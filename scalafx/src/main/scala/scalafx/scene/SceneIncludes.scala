@@ -43,7 +43,7 @@ object SceneIncludes extends SceneIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html `javafx.scene`]] and subpackages
+ * [[javafx.scene]] and subpackages
  * Classes/Traits to their ScalaFX counterparts.
  */
 trait SceneIncludes extends ChartIncludes
@@ -58,13 +58,13 @@ trait SceneIncludes extends ChartIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html `javafx.scene`]]
+ * [[javafx.scene]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define CHI CacheHint
  * @define CAM Camera
@@ -91,7 +91,7 @@ trait LowerPriorityIncludes {
   implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight): AmbientLight = if (v != null) new AmbientLight(v) else null
 
   /**
-   * $START$CHI.html $CHI$END
+   * $START [[javafx.scene.CacheHint CacheHint]] $END
    *
    * @param e $JFX $CHI
    * @return $SFX $CHI
@@ -99,7 +99,7 @@ trait LowerPriorityIncludes {
   implicit def jfxCacheHint2sfx(e: jfxs.CacheHint): CacheHint = CacheHint.jfxEnum2sfx(e)
 
   /**
-   * $START$CAM.html $CAM$END
+   * $START [[javafx.scene.Camera Camera]] $END
    *
    * @param v $JFX $CAM
    * @return $SFX $CAM
@@ -107,7 +107,7 @@ trait LowerPriorityIncludes {
   implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {} else null
 
   /**
-   * $START$CUR.html $CUR$END
+   * $START [[javafx.scene.Cursor Cursor]] $END
    *
    * @param v $JFX $CUR
    * @return $SFX $CUR
@@ -115,7 +115,7 @@ trait LowerPriorityIncludes {
   implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {} else null
 
   /**
-   * $START$DPT.html $DPT$END
+   * $START [[javafx.scene.DepthTest DepthTest]] $END
    *
    * @param e $JFX $DPT
    * @return $SFX $DPT
@@ -123,7 +123,7 @@ trait LowerPriorityIncludes {
   implicit def jfxDepthTest2sfx(e: jfxs.DepthTest): DepthTest = DepthTest.jfxEnum2sfx(e)
 
   /**
-   * $START$GRP.html $GRP$END
+   * $START [[javafx.scene.Group Group]] $END
    *
    * @param v $JFX $GRP
    * @return $SFX $GRP
@@ -131,7 +131,7 @@ trait LowerPriorityIncludes {
   implicit def jfxGroup2sfx(v: jfxs.Group): Group = if (v != null) new Group(v) else null
 
   /**
-   * $START$IMC.html $IMC$END
+   * $START [[javafx.scene.ImageCursor ImageCursor]] $END
    *
    * @param ic $JFX $IMC
    * @return $SFX $IMC
@@ -141,7 +141,7 @@ trait LowerPriorityIncludes {
   implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {} else null
 
   /**
-   * $START$NOD.html $NOD$END
+   * $START [[javafx.scene.Node Node]] $END
    *
    * @param v $JFX $NOD
    * @return $SFX $NOD
@@ -149,7 +149,7 @@ trait LowerPriorityIncludes {
   implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {} else null
 
   /**
-   * $START$PRC.html $PRC$END
+   * $START [[javafx.scene.ParallelCamera ParallelCamera]] $END
    *
    * @param v $JFX $PRC
    * @return $SFX $PRC
@@ -158,7 +158,7 @@ trait LowerPriorityIncludes {
     if (v != null) new ParallelCamera(v) else null
 
   /**
-   * $START$PAR.html $PAR$END
+   * $START [[javafx.scene.Parent Parent]] $END
    *
    * @param v $JFX $PAR
    * @return $SFX $PAR
@@ -166,7 +166,7 @@ trait LowerPriorityIncludes {
   implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {} else null
 
   /**
-   * $START$PEC.html $PEC$END
+   * $START [[javafx.scene.PerspectiveCamera PerspectiveCamera]] $END
    *
    * @param v $JFX $PEC
    * @return $SFX $PEC
@@ -177,7 +177,7 @@ trait LowerPriorityIncludes {
   implicit def jfxPointLight2sfx(v: jfxs.PointLight): PointLight = if (v != null) new PointLight(v) else null
 
   /**
-   * $START$SCE.html $SCE$END
+   * $START [[javafx.scene.Scene Scene]] $END
    *
    * @param v $JFX $SCE
    * @return $SFX $SCE
@@ -195,7 +195,7 @@ trait LowerPriorityIncludes {
     if (v != null) new Scene.Preferences(v) else null
 
   /**
-   * $START$SCA.html $SCA$END
+   * $START [[javafx.scene.SceneAntialiasing SceneAntialiasing]] $END
    *
    * @param v $JFX $SCA
    * @return $SFX $SCA
@@ -218,7 +218,7 @@ trait LowerPriorityIncludes {
     if (p != null) new SceneProperty(p) else null
 
   /**
-   * $START$SNP.html $SNP$END
+   * $START [[javafx.scene.SnapshotParameters SnapshotParameters]] $END
    *
    * @param sp $JFX $SNP
    * @return $SFX $SNP
@@ -227,7 +227,7 @@ trait LowerPriorityIncludes {
     if (sp != null) new SnapshotParameters(sp) else null
 
   /**
-   * $START$SSCE.html $SSCE$END
+   * $START [[javafx.scene.SubScene SubScene]] $END
    *
    * @param v $JFX $SSCE
    * @return $SFX $SSCE

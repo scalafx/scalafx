@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object ReadOnlyMapProperty {
  * Wraps a $JFX $URL0 ReadOnlyMapProperty]].
  *
  * @define TC          ReadOnlyMapProperty
- * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyMapProperty.html
+ * @define URL0        [[javafx.beans.property.ReadOnlyMapProperty
  * @define JFX         JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ object InnerShadow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/InnerShadow.html]]
+ * Wraps [[javafx.scene.effect.InnerShadow]]
  */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
     extends Effect(delegate)

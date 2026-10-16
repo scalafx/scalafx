@@ -315,7 +315,7 @@ object HeaderBar {
  * A client-area header bar that is used as a replacement for the system-provided header bar in stages with
  * the StageStyle.Extended style.
  *
- * Wraps [[https://openjfx.io/javadoc/26/javafx.graphics/javafx/scene/layout/HeaderBar.html]]
+ * Wraps [[javafx.scene.layout.HeaderBar]]
  */
 
 class HeaderBar(override val delegate: jfxsl.HeaderBar = new jfxsl.HeaderBar)

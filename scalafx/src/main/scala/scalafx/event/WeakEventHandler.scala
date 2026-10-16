@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object WeakEventHandler {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler.html WeakEventHandler]].
+ * Wraps JavaFX [[javafx.event.WeakEventHandler WeakEventHandler]].
  *
  * @constructor Creates a new ScalaFX WeakEventHandler from a JavaFX WeakEventHandler.
  * @param delegate JavaFX WeakEventHandler to be wrapped

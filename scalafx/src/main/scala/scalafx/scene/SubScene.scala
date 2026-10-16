@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ object SubScene {
   implicit def sfxSubScene2jfx(v: SubScene): jfxs.SubScene = if (v != null) v.delegate else null
 }
 
-/** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/SubScene.html]]. */
+/** Wraps [[javafx.scene.SubScene]]. */
 class SubScene(override val delegate: jfxs.SubScene)
     extends Node(delegate)
     with SFXDelegate[jfxs.SubScene] {
@@ -48,7 +48,7 @@ class SubScene(override val delegate: jfxs.SubScene)
   // TODO Combine common features with Scene in a trait used by both.
 
   /**
-   * Creates a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
+   * Creates a SubScene with a [[javafx.scene.Group Group]]
    * as root Node with a specified size.
    *
    * @param width The width of the scene
@@ -57,7 +57,7 @@ class SubScene(override val delegate: jfxs.SubScene)
   def this(width: Double, height: Double) = this(new jfxs.SubScene(new jfxs.Group(), width, height))
 
   /**
-   * Constructs a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
+   * Constructs a SubScene with a [[javafx.scene.Group Group]]
    * as root Node, with a dimension of width and height,
    * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
    */
@@ -142,7 +142,7 @@ class SubScene(override val delegate: jfxs.SubScene)
    * stylesheet will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   * [[https://openjfx.io/javadoc/27/javafx.graphics/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
    *
    * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
    */
@@ -154,7 +154,7 @@ class SubScene(override val delegate: jfxs.SubScene)
    * stylesheet will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   * [[https://openjfx.io/javadoc/27/javafx.graphics/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
    *
    * @param url  The URL is a hierarchical URI of the form `[scheme:][//authority][path]`.
    *             If the URL does not have a `[scheme:]` component, the URL is considered to be the `[path]`

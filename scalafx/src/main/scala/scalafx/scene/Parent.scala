@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ object Parent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html]].
+ * Wraps [[javafx.scene.Parent]].
  */
 abstract class Parent(override val delegate: jfxs.Parent)
     extends Node(delegate)

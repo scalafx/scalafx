@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 import scala.language.implicitConversions
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] */
+/** Wrapper for [[javafx.scene.text.FontWeight]] */
 object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight] {
 
   case object Thin extends FontWeight(jfxst.FontWeight.THIN)
@@ -97,7 +97,7 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
   def findByName(name: String): FontWeight = jfxst.FontWeight.findByName(name)
 
   /**
-   * Returns the closest [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
+   * Returns the closest [[javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
    * and OpenType specifications.
    */
   def findByWeight(weight: Int): FontWeight = jfxst.FontWeight.findByWeight(weight)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@ object BufferBinding {
  * Wraps a $JFX $URL0 ListBinding]].
  *
  * @define TC          BufferBinding
- * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListBinding.html
+ * @define URL0        [[javafx.beans.binding.ListBinding
  * @define JFX         JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

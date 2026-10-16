@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,7 @@ object TabPane {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
+  /** Wrapper for [[javafx.scene.control.TabPane.TabClosingPolicy]] */
   sealed abstract class TabClosingPolicy(override val delegate: jfxsc.TabPane.TabClosingPolicy)
       extends SFXEnumDelegate[jfxsc.TabPane.TabClosingPolicy]
 

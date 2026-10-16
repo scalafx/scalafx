@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ import scala.language.implicitConversions
 object Timeline extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TM to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html $TM]],
+   * Converts a ScalaFX $TM to a JavaFX [[javafx.animation.Timeline Timeline]],
    * extracting its delegate.
    *
    * @param v ScalaFX $TM
@@ -66,7 +66,7 @@ object Timeline extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html Timeline]].
+ * Wraps a [[javafx.animation.Timeline Timeline]].
  *
  * @constructor Creates a new ScalaFX $TM from a JavaFX $TM.
  * @param delegate JavaFX $TM to be delegated.

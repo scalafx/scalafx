@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object WritablePixelFormat {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/WritablePixelFormat.html]]
+ * Wraps [[javafx.scene.image.WritablePixelFormat]]
  */
 abstract class WritablePixelFormat[B <: Buffer](override val delegate: jfxsi.WritablePixelFormat[B])
     extends PixelFormat(delegate)

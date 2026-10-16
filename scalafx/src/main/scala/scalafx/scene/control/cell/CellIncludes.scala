@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,13 @@ object CellIncludes extends CellIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]]
+ * [[javafx.scene.control.cell]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define CHBLC CheckBoxListCell
  * @define CHBTC CheckBoxTableCell
@@ -49,7 +49,7 @@ object CellIncludes extends CellIncludes
  * @define XOBLC ChoiceBoxListCell
  * @define XOBTC ChoiceBoxTableCell
  * @define XOBRC ChoiceBoxTreeCell
- * @define XOTTC ChoiceBoxTreeTreeCell
+ * @define XOTTC ChoiceBoxTreeTableCell
  * @define CMBLC ComboBoxListCell
  * @define CMBTC ComboBoxTableCell
  * @define CMBRC ComboBoxTreeCell
@@ -65,7 +65,7 @@ object CellIncludes extends CellIncludes
 trait CellIncludes {
 
   /**
-   * $START$CHBLC.html $CHBLC$END
+   * $START [[javafx.scene.control.cell.CheckBoxListCell CheckBoxListCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $CHBLC
@@ -75,7 +75,7 @@ trait CellIncludes {
     if (cell != null) new CheckBoxListCell[T](cell) else null
 
   /**
-   * $START$CHBTC.html $CHBTC$END
+   * $START [[javafx.scene.control.cell.CheckBoxTableCell CheckBoxTableCell]] $END
    *
    * @tparam S $STYPE
    * @tparam T $TTYPE
@@ -86,7 +86,7 @@ trait CellIncludes {
     if (cell != null) new CheckBoxTableCell[S, T](cell) else null
 
   /**
-   * $START$CHBRC.html $CHBRC$END
+   * $START [[javafx.scene.control.cell.CheckBoxTreeCell CheckBoxTreeCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $CHBRC
@@ -96,7 +96,7 @@ trait CellIncludes {
     if (cell != null) new CheckBoxTreeCell[T](cell) else null
 
   /**
-   * $START$CBTTC.html $CBTTC$END
+   * $START [[javafx.scene.control.cell.CheckBoxTreeTableCell CheckBoxTreeTableCell]] $END
    *
    * @tparam S $STYPE
    * @tparam T $TTYPE
@@ -107,7 +107,7 @@ trait CellIncludes {
     : CheckBoxTreeTableCell[S, T] = if (cell != null) new CheckBoxTreeTableCell[S, T](cell) else null
 
   /**
-   * $START$XOBLC.html $XOBLC$END
+   * $START [[javafx.scene.control.cell.ChoiceBoxListCell ChoiceBoxListCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $XOBLC
@@ -117,7 +117,7 @@ trait CellIncludes {
     if (cell != null) new ChoiceBoxListCell[T](cell) else null
 
   /**
-   * $START$XOBTC.html $XOBTC$END
+   * $START [[javafx.scene.control.cell.ChoiceBoxTableCell ChoiceBoxTableCell]] $END
    *
    * @tparam S $STYPE
    * @tparam T $TTYPE
@@ -128,7 +128,7 @@ trait CellIncludes {
     if (cell != null) new ChoiceBoxTableCell[S, T](cell) else null
 
   /**
-   * $START$XOBRC.html $XOBRC$END
+   * $START [[javafx.scene.control.cell.ChoiceBoxTreeCell ChoiceBoxTreeCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $XOBRC
@@ -138,7 +138,7 @@ trait CellIncludes {
     if (cell != null) new ChoiceBoxTreeCell[T](cell) else null
 
   /**
-   * $START$XOTTC.html $XOTTC$END
+   * $START [[javafx.scene.control.cell.ChoiceBoxTreeTableCell ChoiceBoxTreeTableCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $XOTTC
@@ -148,7 +148,7 @@ trait CellIncludes {
     : ChoiceBoxTreeTableCell[S, T] = if (cell != null) new ChoiceBoxTreeTableCell[S, T](cell) else null
 
   /**
-   * $START$CMBLC.html $CMBLC$END
+   * $START [[javafx.scene.control.cell.ComboBoxListCell ComboBoxListCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $CMBLC
@@ -158,7 +158,7 @@ trait CellIncludes {
     if (cell != null) new ComboBoxListCell[T](cell) else null
 
   /**
-   * $START$CMBTC.html $CMBTC$END
+   * $START [[javafx.scene.control.cell.ComboBoxTableCell ComboBoxTableCell]] $END
    *
    * @tparam S $STYPE
    * @tparam T $TTYPE
@@ -169,7 +169,7 @@ trait CellIncludes {
     if (cell != null) new ComboBoxTableCell[S, T](cell) else null
 
   /**
-   * $START$CMBRC.html $CMBRC$END
+   * $START [[javafx.scene.control.cell.ComboBoxTreeCell ComboBoxTreeCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $CMBRC
@@ -179,7 +179,7 @@ trait CellIncludes {
     if (cell != null) new ComboBoxTreeCell[T](cell) else null
 
   /**
-   * $START$CMBRC.html $CMBRC$END
+   * $START [[javafx.scene.control.cell.ComboBoxTreeCell ComboBoxTreeCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $CMBRC
@@ -189,7 +189,7 @@ trait CellIncludes {
     : ComboBoxTreeTableCell[S, T] = if (cell != null) new ComboBoxTreeTableCell[S, T](cell) else null
 
   /**
-   * $START$PRBTC.html $PRBTC$END
+   * $START [[javafx.scene.control.cell.ProgressBarTableCell ProgressBarTableCell]] $END
    *
    * @tparam S $STYPE
    * @param cell $JFX $PRBTC
@@ -199,7 +199,7 @@ trait CellIncludes {
     if (cell != null) new ProgressBarTableCell[S](cell) else null
 
   /**
-   * $START$TXFLC.html $TXFLC$END
+   * $START [[javafx.scene.control.cell.TextFieldListCell TextFieldListCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $TXFLC
@@ -209,7 +209,7 @@ trait CellIncludes {
     if (cell != null) new TextFieldListCell[T](cell) else null
 
   /**
-   * $START$TXFTC.html $TXFTC$END
+   * $START [[javafx.scene.control.cell.TextFieldTableCell TextFieldTableCell]] $END
    *
    * @tparam S $STYPE
    * @tparam T $TTYPE
@@ -220,7 +220,7 @@ trait CellIncludes {
     if (cell != null) new TextFieldTableCell[S, T](cell) else null
 
   /**
-   * $START$TXFRC.html $TXFRC$END
+   * $START [[javafx.scene.control.cell.TextFieldTreeCell TextFieldTreeCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $TXFRC
@@ -230,7 +230,7 @@ trait CellIncludes {
     if (cell != null) new TextFieldTreeCell[T](cell) else null
 
   /**
-   * $START$TXTTC.html $TXTTC$END
+   * $START [[javafx.scene.control.cell.TextFieldTreeTableCell TextFieldTreeTableCell]] $END
    *
    * @tparam T $TTYPE
    * @param cell $JFX $TXTTC

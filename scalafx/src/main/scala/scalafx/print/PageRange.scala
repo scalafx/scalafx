@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ object PageRange {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageRange.html JavaFX PageRange]].
+ * Wraps [[javafx.print.PageRange JavaFX PageRange]].
  *
  * @constructor Creates a new ScalaFX PageRange from its JavaFX counterpart.
  * @param delegate JavaFX PageRange. Since there is no public 'default' constructor for it, there is not a default value.

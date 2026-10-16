@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scala.language.implicitConversions
 object SequentialTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html $ST]],
+   * Converts a ScalaFX $ST to a JavaFX [[javafx.animation.SequentialTransition SequentialTransition]],
    * extracting its delegate.
    *
    * @param v ScalaFX $ST
@@ -55,7 +55,7 @@ object SequentialTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html SequentialTransition]].
+ * Wraps a [[javafx.animation.SequentialTransition SequentialTransition]].
  *
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.

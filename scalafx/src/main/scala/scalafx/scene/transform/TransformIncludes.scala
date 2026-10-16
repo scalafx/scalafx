@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,13 +34,13 @@ object TransformIncludes extends TransformIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/package-summary.html `javafx.scene.transform`]]
+ * [[javafx.scene.transform]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX   JavaFX
  * @define SFX   ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/
- *               @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ *               @define END instance to its $SFX counterpart.
  * @define AF    Affine
  * @define RT    Rotate
  * @define SC    Scale
@@ -51,7 +51,7 @@ object TransformIncludes extends TransformIncludes
 trait TransformIncludes {
 
   /**
-   * $START$AF.html $AF$END
+   * $START [[javafx.scene.transform.Affine Affine]] $END
    *
    * @param v $JFX $AF
    * @return $SFX $AF
@@ -65,7 +65,7 @@ trait TransformIncludes {
     if (v != null) new NonInvertibleTransformException(v) else null
 
   /**
-   * $START$RT.html $RT$END
+   * $START [[javafx.scene.transform.Rotate Rotate]] $END
    *
    * @param v $JFX $RT
    * @return $SFX $RT
@@ -73,7 +73,7 @@ trait TransformIncludes {
   implicit def jfxRotate2sfx(v: jfxst.Rotate): Rotate = if (v != null) new Rotate(v) else null
 
   /**
-   * $START$SC.html $SC$END
+   * $START [[javafx.scene.transform.Scale Scale]] $END
    *
    * @param v $JFX $SC
    * @return $SFX $SC
@@ -81,7 +81,7 @@ trait TransformIncludes {
   implicit def jfxScale2sfx(v: jfxst.Scale): Scale = if (v != null) new Scale(v) else null
 
   /**
-   * $START$SH.html $SH$END
+   * $START [[javafx.scene.transform.Shear Shear]] $END
    *
    * @param v $JFX $SH
    * @return $SFX $SH
@@ -89,7 +89,7 @@ trait TransformIncludes {
   implicit def jfxShear2sfx(v: jfxst.Shear): Shear = if (v != null) new Shear(v) else null
 
   /**
-   * $START$TR.html $TR$END
+   * $START [[javafx.scene.transform.Transform Transform]] $END
    *
    * @param v $JFX $TR
    * @return $SFX $TR
@@ -100,7 +100,7 @@ trait TransformIncludes {
     if (v != null) new TransformChangedEvent(v) else null
 
   /**
-   * $START$TL.html $TL$END
+   * $START [[javafx.scene.transform.Translate Translate]] $END
    *
    * @param v $JFX $TL
    * @return $SFX $TL

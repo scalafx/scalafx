@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,7 +48,7 @@ object TransformChangedEvent {
   val TRANSFORM_CHANGED: EventType[jfxst.TransformChangedEvent] = TransformChanged
 }
 
-/** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/scene/transform/TransformChangedEvent.html]] */
+/** Wraps [[javafx.scene.transform.TransformChangedEvent]] */
 class TransformChangedEvent(override val delegate: jfxst.TransformChangedEvent = new jfxst.TransformChangedEvent())
     extends Event(delegate) with SFXDelegate[jfxst.TransformChangedEvent] {
 

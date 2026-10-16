@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -143,7 +143,7 @@ object Alert {
  * }}}
  *
  * @define TC Alert
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/Alert.html
+ * @define URL0 [[javafx.scene.control.Alert
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

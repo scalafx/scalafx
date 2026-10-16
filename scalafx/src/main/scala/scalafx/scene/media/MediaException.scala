@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -125,7 +125,7 @@ object MediaException {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaException.Type.html]]
+   * Wraps [[javafx.scene.media.MediaException.Type]]
    */
   sealed abstract class Type(override val delegate: jfxsm.MediaException.Type)
       extends SFXEnumDelegate[jfxsm.MediaException.Type]

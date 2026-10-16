@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,7 +63,7 @@ object TreeTableRow {
  * @since 8.0
  *
  * @define TTR TreeTableRow
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableRow.html
+ * @define URL0 [[javafx.scene.control.TreeTableRow
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */
@@ -77,7 +77,7 @@ class TreeTableRow[T](override val delegate: jfxsc.TreeTableRow[T] = new jfxsc.T
    * The disclosure node is commonly seen represented as a triangle that rotates on screen to
    * indicate whether or not the TreeItem that it is placed beside is expanded or collapsed.
    *
-   * @see $URL0#disclosureNodeProperty $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableRow.disclosureNodeProperty Original Documentation]].
    */
   def disclosureNode: ObjectProperty[jfxs.Node] = delegate.disclosureNodeProperty
 
@@ -88,7 +88,7 @@ class TreeTableRow[T](override val delegate: jfxsc.TreeTableRow[T] = new jfxsc.T
   /**
    * Each TreeTableCell represents at most a single TreeItem, which is represented by this property.
    *
-   * @see $URL0#treeItemProperty $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableRow.treeItemProperty Original Documentation]].
    */
   def treeItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.treeItemProperty
 
@@ -96,7 +96,7 @@ class TreeTableRow[T](override val delegate: jfxsc.TreeTableRow[T] = new jfxsc.T
    * A TreeTableCell is explicitly linked to a single `TreeTableView` instance, which is
    * represented by this property.
    *
-   * @see $URL0#treeTableViewProperty $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableRow.treeTableViewProperty Original Documentation]].
    */
   def treeTableView: ReadOnlyObjectProperty[jfxsc.TreeTableView[T]] = delegate.treeTableViewProperty
 
@@ -104,7 +104,7 @@ class TreeTableRow[T](override val delegate: jfxsc.TreeTableRow[T] = new jfxsc.T
    * Updates the TreeItem associated with this TreeTableCell.
    *
    * @param treeItem The new TreeItem that should be associated with this TreeTableCell.
-   * @see $URL0#updateTreeTableView-javafx.scene.control.TreeTableView- $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableRow.updateTreeTableView Original Documentation]].
    */
   def updateTreeItem(treeItem: TreeItem[T]): Unit = {
     delegate.updateTreeItem(treeItem)

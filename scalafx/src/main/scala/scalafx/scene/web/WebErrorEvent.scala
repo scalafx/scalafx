@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -95,7 +95,7 @@ object WebErrorEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.html JavaFX WebEvent]].
+ * Wraps [[javafx.scene.web.WebEvent JavaFX WebEvent]].
  *
  * @constructor Creates a new ScalaFX WebErrorEvent from its JavaFX equivalent.
  * @param delegate JavaFX WebErrorEvent. Since it has no default constructor, there is not default value.

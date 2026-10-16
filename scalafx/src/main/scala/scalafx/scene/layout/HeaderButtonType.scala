@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,7 @@ object HeaderButtonType extends SFXEnumDelegateCompanion[jfxsl.HeaderButtonType,
  * with the platform window manager. For example, hovering over a [[HeaderButtonType.Maximize]] button on Windows
  * will summon snap layouts.
  *
- * Wrapper for [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/layout/HeaderButtonType.html]]
+ * Wrapper for [[javafx.scene.layout.HeaderButtonType]]
  */
 sealed abstract class HeaderButtonType(override val delegate: jfxsl.HeaderButtonType)
     extends SFXEnumDelegate[jfxsl.HeaderButtonType]

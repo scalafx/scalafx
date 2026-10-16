@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,7 +86,7 @@ object PrinterJob {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.JobStatus.html JavaFX JobStatus]].
+   * Wraps [[javafx.print.PrinterJob.JobStatus JavaFX JobStatus]].
    */
   sealed abstract class JobStatus(override val delegate: jfxp.PrinterJob.JobStatus)
       extends SFXEnumDelegate[jfxp.PrinterJob.JobStatus]
@@ -116,7 +116,7 @@ object PrinterJob {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.html JavaFX PrinterJob]].
+ * Wraps [[javafx.print.PrinterJob JavaFX PrinterJob]].
  *
  * @constructor Creates a new ScalaFX PrinterJob from its JavaFX counterpart.
  * @param delegate JavaFX PrinterJob. Since there is no public constructor for it, there is not a default value.

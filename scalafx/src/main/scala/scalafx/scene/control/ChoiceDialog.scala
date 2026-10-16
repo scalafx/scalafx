@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object ChoiceDialog {
  * A dialog that shows a list of choices to the user, from which they can pick
  * one item at most.
  *
- * Wraps a $JFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceDialog.html ChoiceDialog]].
+ * Wraps a $JFX [[javafx.scene.control.ChoiceDialog ChoiceDialog]].
  *
  * @see Dialog
  * @tparam T The type of the items to show to the user, and the type that is returned

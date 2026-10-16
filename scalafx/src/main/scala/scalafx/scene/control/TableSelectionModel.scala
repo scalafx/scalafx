@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object TableSelectionModel {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableSelectionModel.html TableSelectionModel]].
+ * Wraps JavaFX [[javafx.scene.control.TableSelectionModel TableSelectionModel]].
  *
  * @constructor creates a new ScalaFX TableSelectionModel from a JavaFX one.
  * @param delegate JavaFX TableSelectionModel

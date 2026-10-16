@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ import scala.language.implicitConversions
 object PauseTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html $PT]],
+   * Converts a ScalaFX $PT to a JavaFX [[javafx.animation.PauseTransition PauseTransition]],
    * extracting its delegate.
    *
    * @param v ScalaFX $PT
@@ -53,7 +53,7 @@ object PauseTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html $PT]].
+ * Wraps a [[javafx.animation.PauseTransition PauseTransition]].
  *
  * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
  * @param delegate JavaFX $PT to be delegated.

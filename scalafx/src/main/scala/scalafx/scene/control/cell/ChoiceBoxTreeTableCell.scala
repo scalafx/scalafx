@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@ import scala.language.implicitConversions
  * @define TTYPE The type of the elements contained within the `$TTC` instance.
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html
+ * @define URL0 [[javafx.scene.control.cell.ChoiceBoxTreeTableCell
  * @define ORIGINALDOC Original Documentation]].
  * @define SATISFY Added just to satisfy Spec tests.
  */
@@ -77,7 +77,7 @@ object ChoiceBoxTreeTableCell {
    * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $RETFTTC
-   * @see $URL0#ChoiceBoxTreeTableCell-javafx.collections.ObservableList- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def forTreeTableColumn[S, T](items: ObservableBuffer[T]): (jfxsc.TreeTableColumn[S, T] => TreeTableCell[S, T]) =
     (view: jfxsc.TreeTableColumn[S, T]) => jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](items).call(view)
@@ -97,7 +97,7 @@ object ChoiceBoxTreeTableCell {
    * @param converter $CONVPARAM
    * @param items $ITEMSPARAM
    * @return $RETFTTC
-   * @see $URL0#ChoiceBoxTreeTableCell-javafx.util.StringConverter-javafx.collections.ObservableList- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def forTreeTableColumn[S, T](
     converter: StringConverter[T],
@@ -123,7 +123,7 @@ object ChoiceBoxTreeTableCell {
    * @param converter $CONVPARAM
    * @param items $ITEMSPARAM
    * @return $RETFTTC
-   * @see $URL0#ChoiceBoxTreeTableCell-javafx.util.StringConverter-T...- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def forTreeTableColumn[S, T](
     converter: StringConverter[T],
@@ -148,7 +148,7 @@ object ChoiceBoxTreeTableCell {
    * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $RETFTTC
-   * @see $URL0#ChoiceBoxTreeTableCell-T...- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def forTreeTableColumn[S, T](items: T*): (jfxsc.TreeTableColumn[S, T] => TreeTableCell[S, T]) =
     (view: jfxsc.TreeTableColumn[S, T]) => jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](items: _*).call(view)
@@ -163,7 +163,7 @@ object ChoiceBoxTreeTableCell {
 }
 
 /**
- * Wraps $JFX $URL0 $CBTTC]]
+ * Wraps $JFX $URL0 ChoiceBoxTreeTableCell]]
  *
  * @tparam T The type of the elements contained within the TreeTableColumn.
  * @tparam S
@@ -181,7 +181,7 @@ object ChoiceBoxTreeTableCell {
  * @define CONSCOMPL Creates a `$CBTTC` instance with the given items being used to populate the
  *         [[scalafx.scene.control.ChoiceBox C h o i c e B o x]] when it is shown, and the [[scalafx.util.StringConverter S t r i n g C o n v e r t e r]]
  *         being used to convert the item in to a user-readable form.
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html
+ * @define URL0 [[javafx.scene.control.cell.ChoiceBoxTreeTableCell
  * @define ORIGINALDOC Original Documentation]].
  */
 class ChoiceBoxTreeTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTreeTableCell[S, T] =
@@ -196,7 +196,7 @@ class ChoiceBoxTreeTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTreeTa
    * $CONSCOMPL
    *
    * @param items $BUFITEMSPARAM
-   * @see $URL0#ChoiceBoxTreeTableCell-javafx.collections.ObservableList- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeTableCell[S, T](items.delegate))
 
@@ -205,7 +205,7 @@ class ChoiceBoxTreeTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTreeTa
    *
    * @param converter $CONVPARAM
    * @param items     $BUFITEMSPARAM
-   * @see $URL0#ChoiceBoxTreeTableCell-javafx.util.StringConverter-javafx.collections.ObservableList- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
     this(new jfxscc.ChoiceBoxTreeTableCell[S, T](sfxStringConverter2jfx(converter), items.delegate))
@@ -215,7 +215,7 @@ class ChoiceBoxTreeTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTreeTa
    *
    * @param converter $CONVPARAM
    * @param items     $ITEMSPARAM
-   * @see $URL0#ChoiceBoxTreeTableCell-javafx.util.StringConverter-T...- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def this(converter: StringConverter[T], items: T*) =
     this(new jfxscc.ChoiceBoxTreeTableCell[S, T](sfxStringConverter2jfx(converter), items: _*))
@@ -224,7 +224,7 @@ class ChoiceBoxTreeTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTreeTa
    * $CONSCOMPL
    *
    * @param items $ITEMSPARAM
-   * @see $URL0#ChoiceBoxTreeTableCell-T...- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.ChoiceBoxTreeTableCell Original Documentation]].
    */
   def this(items: T*) = this(new jfxscc.ChoiceBoxTreeTableCell[S, T](items: _*))
 

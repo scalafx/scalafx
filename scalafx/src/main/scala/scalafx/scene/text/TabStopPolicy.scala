@@ -41,7 +41,7 @@ object TabStopPolicy {
 /**
  * The TabStopPolicy determines the tab stop positions within the text layout.
  *
- * Wraps [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/TabStopPolicy.html]]
+ * Wraps [[javafx.scene.text.TabStopPolicy]]
  *
  * @since 25
  */

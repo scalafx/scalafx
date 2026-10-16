@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ object BorderStroke {
 }
 
 /**
- * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStroke.html javafx.scene.layout.BorderStroke]].
+ * Wrapper for [[javafx.scene.layout.BorderStroke]].
  */
 class BorderStroke(override val delegate: jfxsl.BorderStroke)
     extends SFXDelegate[jfxsl.BorderStroke] {

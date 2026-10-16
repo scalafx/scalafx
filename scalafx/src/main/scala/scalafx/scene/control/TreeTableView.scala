@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -74,7 +74,7 @@ object TreeTableView {
   /**
    * An immutable wrapper class for use in the TableView column resize functionality.
    *
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.ResizeFeatures.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TreeTableView.ResizeFeatures]]
    *
    * @constructor Creates a new ScalaFX ResizeFeatures from its JavaFX counterpart.
    * @param delegate JavaFX ResizeFeatures to be wrapped.
@@ -135,7 +135,7 @@ object TreeTableView {
    * It provides additional API to easily access the TreeItem that the edit event took place on,
    * as well as the input provided by the end user.
    *
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.EditEvent.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TreeTableView.EditEvent]]
    *
    * @constructor Creates a new ScalaFX EditEvent from its JavaFX counterpart.
    * @param delegate JavaFX EditEvent to be wrapped.
@@ -201,7 +201,7 @@ object TreeTableView {
   /**
    * A FocusModel with additional functionality to support the requirements of a TableView control.
    *
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.TreeTableViewFocusModel.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TreeTableView.TreeTableViewFocusModel]]
    *
    * @constructor Creates a new ScalaFX TreeTableViewFocusModel from its JavaFX counterpart.
    * @param delegate JavaFX TreeTableViewFocusModel to be wrapped.
@@ -283,7 +283,7 @@ object TreeTableView {
   /**
    * A simple extension of the SelectionModel abstract class to allow for special support for TreeTableView controls.
    *
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.TreeTableViewSelectionModel.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TreeTableView.TreeTableViewSelectionModel]]
    *
    * @constructor Creates a new TreeTableViewSelectionModel from a JavaFX one.
    * @param delegate A JavaFX TreeTableViewSelectionModel to be wrapped. Its default value is a new JavaFX TreeTableViewSelectionModel.
@@ -575,7 +575,7 @@ object TreeTableView {
  * `TableColumn`-based approach that the `TableView` control uses, except instead of using the `TableView`-specific
  * `TableColumn` class, you should instead use the `TreeTableView`-specific `TreeTableColumn` class instead.
  *
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.TreeTableView.html]]
+ * Wraps a JavaFX [[javafx.scene.control.TreeTableView]]
  *
  * @constructor Creates a new TreeTableView from a JavaFX one.
  * @param delegate A JavaFX TreeTableView to be wrapped. Its default value is a new JavaFX TreeTableView.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object ColorScheme extends SFXEnumDelegateCompanion[jfxa.ColorScheme, ColorSchem
  * which specifies whether applications should prefer light text on dark backgrounds,
  * or dark text on light backgrounds.
  *
- * Wraps [[https://openjfx.io/javadoc/22/javafx.graphics/javafx/application/ColorScheme.html javafx.application.ColorScheme]]
+ * Wraps [[javafx.application.ColorScheme]]
  *
  * @since JavaFX 22
  */

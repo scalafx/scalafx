@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ import java.lang
 import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.
+ * Wraps [[javafx.scene.control.cell]] package.
  */
 package object cell {
 
@@ -148,7 +148,7 @@ package object cell {
   }
 
   /**
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Cell.html javafx.scene.control.Cell]]s that contains the method `getItems(): ObservableList[T]`.
+   * [[javafx.scene.control.Cell]]s that contains the method `getItems(): ObservableList[T]`.
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
    * @tparam C  Derived type from JavaFX Cell

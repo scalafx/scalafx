@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -75,7 +75,7 @@ object HBox {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html]]
+ * Wraps [[javafx.scene.layout.HBox]]
  */
 class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
     extends Pane(delegate)

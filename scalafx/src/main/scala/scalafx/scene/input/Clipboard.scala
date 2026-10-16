@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -85,7 +85,7 @@ object Clipboard {
  *
  * }}}
  *
- * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Clipboard.html Clipboard]].
+ * Wraps a $JFX [[javafx.scene.input.Clipboard Clipboard]].
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.

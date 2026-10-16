@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object SeparatorMenuItem {
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
  *
  * @define FC SeparatorMenuItem
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SeparatorMenuItem.html
+ * @define URL0 [[javafx.scene.control.SeparatorMenuItem
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

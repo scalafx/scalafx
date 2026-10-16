@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ import scala.language.implicitConversions
  * @define TTYPE The type of the elements contained within the `$TTC` instance.
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html
+ * @define URL0 [[javafx.scene.control.cell.CheckBoxTreeTableCell
  * @define ORIGINALDOC Original Documentation]].
  * @define SATISFY Added just to satisfy Spec tests.
  */
@@ -82,7 +82,7 @@ object CheckBoxTreeTableCell {
    * @tparam S $STYPE
    * @param selectedProperty $SP
    * @return $RETFTTC
-   * @see $URL0#forTreeTableColumn-javafx.util.Callback- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.CheckBoxTreeTableCell.forTreeTableColumn Original Documentation]].
    */
   def forTreeTableColumn[S, T](selectedProperty: IntToBool): (jfxsc.TreeTableColumn[S, T] => TreeTableCell[S, T]) = {
     (column: jfxsc.TreeTableColumn[S, T]) =>
@@ -108,7 +108,7 @@ object CheckBoxTreeTableCell {
    * @param selectedProperty $SP
    * @param showLabel In some cases, it may be desirable to show a label in the TreeTableCell beside the CheckBox.
    * @return $RETFTTC
-   * @see $URL0#forTreeTableColumn-javafx.util.Callback-boolean- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.CheckBoxTreeTableCell.forTreeTableColumn Original Documentation]].
    */
   def forTreeTableColumn[S, T](
     selectedProperty: IntToBool,
@@ -140,7 +140,7 @@ object CheckBoxTreeTableCell {
    * @param converter A [[scalafx.util.StringConverter S t r i n g C o n v e r t e r]] that, give an object of type T, will return a
    *                  String that can be used to represent the object visually.
    * @return $RETFTTC
-   * @see $URL0#forTreeTableColumn-javafx.util.Callback-javafx.util.StringConverter- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.CheckBoxTreeTableCell.forTreeTableColumn Original Documentation]].
    */
   def forTreeTableColumn[S, T](
     selectedProperty: IntToBool,
@@ -169,7 +169,7 @@ object CheckBoxTreeTableCell {
    *
    * @tparam S $STYPE
    * @return $RETFTTC
-   * @see $URL0#forTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.CheckBoxTreeTableCell.forTreeTableColumn Original Documentation]].
    */
   def forTreeTableColumn[S](column: jfxsc.TreeTableColumn[S, JBoolean])
     : jfxu.Callback[jfxsc.TreeTableColumn[S, JBoolean], jfxsc.TreeTableCell[S, JBoolean]] = {
@@ -186,7 +186,7 @@ object CheckBoxTreeTableCell {
 }
 
 /**
- * Wraps $JFX $URL0 $CBTTC]]
+ * Wraps $JFX $URL0 CheckBoxTreeTableCell]]
  *
  * @tparam T The type of the elements contained within the TreeTableColumn.
  * @tparam S
@@ -198,7 +198,7 @@ object CheckBoxTreeTableCell {
  * @define JFX JavaFX
  * @define OV ObservableValue
  * @define SP Function that will return an $OV given an index from the TreeTableColumn.
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html
+ * @define URL0 [[javafx.scene.control.cell.CheckBoxTreeTableCell
  * @define ORIGINALDOC Original Documentation]].
  */
 class CheckBoxTreeTableCell[S, T](override val delegate: jfxscc.CheckBoxTreeTableCell[S, T] =
@@ -213,7 +213,7 @@ class CheckBoxTreeTableCell[S, T](override val delegate: jfxscc.CheckBoxTreeTabl
    * Creates a default $CBTTC with a custom function to retrieve an $OV for a given cell index.
    *
    * @param selectedProperty $SP
-   * @see $URL0#CheckBoxTreeTableCell-javafx.util.Callback- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.CheckBoxTreeTableCell Original Documentation]].
    */
   def this(selectedProperty: java.lang.Integer => ObservableValue[Boolean, java.lang.Boolean]) =
     this(new jfxscc.CheckBoxTreeTableCell[S, T](selectedProperty))
@@ -223,7 +223,7 @@ class CheckBoxTreeTableCell[S, T](override val delegate: jfxscc.CheckBoxTreeTabl
    *
    * @param selectedProperty $SP
    * @param converter A StringConverter that, given an object of type T, will return a String that can be used to represent the object visually.
-   * @see $URL0#CheckBoxTreeTableCell-javafx.util.Callback-javafx.util.StringConverter- $ORIGINALDOC
+   * @see [[javafx.scene.control.cell.CheckBoxTreeTableCell Original Documentation]].
    */
   def this(
     selectedProperty: java.lang.Integer => ObservableValue[Boolean, java.lang.Boolean],

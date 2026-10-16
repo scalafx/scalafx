@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ object ScheduledService {
    * consecutive failures and computes the backoff amount from that information.
    *
    * It delegates to JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#EXPONENTIAL_BACKOFF_STRATEGY EXPONENTIAL_BACKOFF_STRATEGY]]
+   * [[javafx.concurrent.ScheduledService.EXPONENTIAL_BACKOFF_STRATEGY EXPONENTIAL_BACKOFF_STRATEGY]]
    */
   val ExponentialBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) =
     jfxc.ScheduledService.EXPONENTIAL_BACKOFF_STRATEGY
@@ -57,7 +57,7 @@ object ScheduledService {
    * consecutive failures and computes the backoff amount from that information.
    *
    * It delegates to JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LOGARITHMIC_BACKOFF_STRATEGY LOGARITHMIC_BACKOFF_STRATEGY]]
+   * [[javafx.concurrent.ScheduledService.LOGARITHMIC_BACKOFF_STRATEGY LOGARITHMIC_BACKOFF_STRATEGY]]
    */
   val LogarithmicBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) =
     jfxc.ScheduledService.LOGARITHMIC_BACKOFF_STRATEGY
@@ -69,7 +69,7 @@ object ScheduledService {
    * consecutive failures and computes the backoff amount from that information.
    *
    * It delegates to JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LINEAR_BACKOFF_STRATEGY LINEAR_BACKOFF_STRATEGY]]
+   * [[javafx.concurrent.ScheduledService.LINEAR_BACKOFF_STRATEGY LINEAR_BACKOFF_STRATEGY]]
    */
   val LinearBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) =
     jfxc.ScheduledService.LINEAR_BACKOFF_STRATEGY
@@ -87,7 +87,7 @@ object ScheduledService {
 }
 
 /**
- * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html ScheduledService]]
+ * Wrapper class for [[javafx.concurrent.ScheduledService ScheduledService]]
  * Class.
  */
 abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[T])

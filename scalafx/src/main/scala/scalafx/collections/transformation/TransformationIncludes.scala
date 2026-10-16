@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ object TransformationIncludes extends TransformationIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/package-summary.html javafx.collections.transformation]]
+ * [[javafx.collections.transformation]]
  * Classes to their ScalaFX counterparts.
  */
 trait TransformationIncludes {

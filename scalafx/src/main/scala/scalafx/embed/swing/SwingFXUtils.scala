@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import java.awt.image.BufferedImage
 import scala.language.implicitConversions
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.html JavaFX SwingFXUtils]].
+ * Wraps [[javafx.embed.swing.SwingFXUtils JavaFX SwingFXUtils]].
  *
  * @since 8.0
  */

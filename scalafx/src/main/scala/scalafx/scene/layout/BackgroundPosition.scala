@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ object BackgroundPosition {
 /**
  * Represents the position of a BackgroundImage within the Region's drawing area.
  *
- * Wrapper for [[http://docs.oracle.com/javafx/8/api/javafx/scene/layout/BackgroundPosition]]
+ * Wrapper for [[javafx.scene.layout.BackgroundPosition]]
  */
 class BackgroundPosition(override val delegate: jfxsl.BackgroundPosition)
     extends SFXDelegate[jfxsl.BackgroundPosition] {

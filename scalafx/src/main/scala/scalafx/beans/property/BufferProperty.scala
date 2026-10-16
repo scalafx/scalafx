@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -107,7 +107,7 @@ object BufferProperty {
 }
 
 /**
- * Wraps a $JFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html ListProperty]].
+ * Wraps a $JFX [[javafx.beans.property.ListProperty ListProperty]].
  *
  * @define TC   BufferProperty
  * @define JFX  JavaFX

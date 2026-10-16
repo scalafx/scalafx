@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ object HTMLEditor {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/HTMLEditor.html JavaFX HTMLEditor]]
+ * Wraps [[javafx.scene.web.HTMLEditor JavaFX HTMLEditor]]
  *
  * @constructor Creates a new HTMLEditor from its JavaFX counterpart.
  * @param delegate JavaFX HTMLEditor. Its default value is a new instance.

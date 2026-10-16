@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object ProgressIndicator {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ProgressIndicator.html]]
+ * Wraps [[javafx.scene.control.ProgressIndicator]]
  */
 class ProgressIndicator(override val delegate: jfxsc.ProgressIndicator = new jfxsc.ProgressIndicator)
     extends Control(delegate)

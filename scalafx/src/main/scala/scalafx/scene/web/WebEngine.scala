@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ object WebEngine {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.html JavaFX WebEngine]].
+ * Wraps [[javafx.scene.web.WebEngine JavaFX WebEngine]].
  *
  * @constructor Creates a new WebEngine from its JavaFX counterpart.
  * @param delegate A JavaFX WebEngine. Its default value is a new instance.

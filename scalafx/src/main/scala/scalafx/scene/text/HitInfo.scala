@@ -37,7 +37,7 @@ object HitInfo {
 
 /**
  * Represents the hit information in a Text node.
- * Wraps [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/HitInfo.html]]
+ * Wraps [[javafx.scene.text.HitInfo]]
  */
 class HitInfo(override val delegate: jfxst.HitInfo)
     extends SFXDelegate[jfxst.HitInfo] {

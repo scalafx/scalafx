@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.util.Duration
 import scala.language.implicitConversions
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Interpolator.html $INT]].
+ * Wraps a [[javafx.animation.Interpolator Interpolator]].
  * Really no point wrapping the JavaFX $INT class, so this just exposes the statics.
  *
  * @define INT `Interpolator`

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -107,7 +107,7 @@ object Paper {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Paper.html JavaFX Paper]].
+ * Wraps [[javafx.print.Paper JavaFX Paper]].
  *
  * @constructor Creates a new ScalaFX Paper from its JavaFX counterpart.
  * @param delegate JavaFX Paper. Since there is no public constructor for it, there is not a default value.

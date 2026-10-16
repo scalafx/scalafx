@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,7 +62,7 @@ object TreeTableCell {
  * @since 8.0
  *
  * @define TTC TreeTableCell
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableCell.html
+ * @define URL0 [[javafx.scene.control.TreeTableCell
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */
@@ -71,19 +71,19 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
     with SFXDelegate[jfxsc.TreeTableCell[S, T]] {
 
   /**
-   * @see $URL0#tableColumnProperty $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableCell.tableColumnProperty Original Documentation]].
    */
   def tableColumn: ReadOnlyObjectProperty[jfxsc.TreeTableColumn[S, T]] = delegate.tableColumnProperty
 
   /**
-   * @see $URL0#tableRowProperty $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableCell.tableRowProperty Original Documentation]].
    */
   def tableRow: ReadOnlyObjectProperty[jfxsc.TreeTableRow[S]] = delegate.tableRowProperty
 
   /**
    * The TreeTableView associated with this $TTC.
    *
-   * @see $URL0#treeTableViewProperty $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableCell.treeTableViewProperty Original Documentation]].
    */
   def treeTableView: ReadOnlyObjectProperty[jfxsc.TreeTableView[S]] = delegate.treeTableViewProperty
 
@@ -91,7 +91,7 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
    * Updates the TreeTableView associated with this $TTC. This is typically only done once when
    * the $TTC is first added to the TreeTableView.
    *
-   * @see $URL0#updateTreeTableView-javafx.scene.control.TreeTableView- $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableCell.updateTreeTableView Original Documentation]].
    */
   def updateTreeTableView(tv: TreeTableView[S]): Unit = {
     delegate.updateTreeTableView(tv)
@@ -100,7 +100,7 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
   /**
    * Updates the TreeTableRow associated with this $TTC.
    *
-   * @see $URL0#updateTreeTableRow-javafx.scene.control.TreeTableRow- $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableCell.updateTreeTableRow Original Documentation]].
    */
   @deprecated("Use updateTableRow instead", since = "17")
   def updateTreeTableRow(treeTableRow: TreeTableRow[S]): Unit = {
@@ -124,7 +124,7 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
   /**
    * Updates the TreeTableColumn associated with this $TTC.
    *
-   * @see $URL0#updateTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
+   * @see [[javafx.scene.control.TreeTableCell.updateTreeTableColumn Original Documentation]].
    */
   @deprecated("Use updateTableColumn instead", since = "17")
   def updateTreeTableColumn(col: TreeTableColumn[S, T]): Unit = {

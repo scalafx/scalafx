@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ object SortedBuffer {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @define TC SortedList
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/SortedList.html
+ * @define URL0 [[javafx.collections.transformation.SortedList
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

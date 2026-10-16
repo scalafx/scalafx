@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@ object WebView {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.html JavaFX WebView]].
+ * Wraps [[javafx.scene.web.WebView JavaFX WebView]].
  *
  * @constructor Creates a new WebView from its JavaFX counterpart.
  * @param delegate A JavaFX WebView. Its default value is a new instance.

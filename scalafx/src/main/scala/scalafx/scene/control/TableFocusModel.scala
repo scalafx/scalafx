@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ object TableFocusModel {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableFocusModel.html TableFocusModel]].
+ * Wraps a JavaFX [[javafx.scene.control.TableFocusModel TableFocusModel]].
  *
  * @constructor Creates a new ScalaFX TableFocusModel from its JavaFX counterpart.
  * @param delegate JavaFX TableFocusModel to be wrapped.

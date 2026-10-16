@@ -46,7 +46,7 @@ object Text {
 /**
  * The Text class defines a node that displays a text. Paragraphs are separated by '\n' and the text is wrapped on paragraph boundaries.
  *
- * Wraps JavaFX [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/Text.html Text]]
+ * Wraps JavaFX [[javafx.scene.text.Text Text]]
  *
  * @since 2
  */

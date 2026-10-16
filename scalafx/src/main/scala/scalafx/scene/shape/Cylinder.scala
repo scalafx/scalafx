@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object Cylinder {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Cylinder.html]].
+ * Wraps [[javafx.scene.shape.Cylinder]].
  */
 class Cylinder(override val delegate: jfxss.Cylinder = new jfxss.Cylinder())
     extends Shape3D(delegate)

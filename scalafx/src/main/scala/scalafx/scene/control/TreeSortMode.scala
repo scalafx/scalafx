@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,10 @@ import javafx.scene.control as jfxsc
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Wrapper for $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeSortMode.html TreeSortMode]].
+ * Wrapper for $JFX [[javafx.scene.control.TreeSortMode TreeSortMode]].
  *
  * @define TSM         TreeSortMode
- * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TSM.html
+ * @define URL0        [[javafx.scene.control.TreeSortMode
  * @define JFX         JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */
@@ -60,7 +60,7 @@ object TreeSortMode
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeSortMode.html TreeSortMode]].
+ * Wraps JavaFX [[javafx.scene.control.TreeSortMode TreeSortMode]].
  *
  * @constructor Creates a new TreeSortMode from a JavaFX one.
  * @param delegate JavaFX TreeSortMode

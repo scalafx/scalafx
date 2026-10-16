@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ object JobSettings {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/JobSettings.html JavaFX JobSettings]].
+ * Wraps [[javafx.print.JobSettings JavaFX JobSettings]].
  *
  * @constructor Creates a new ScalaFX JobSettings from its JavaFX counterpart.
  * @param delegate JavaFX JobSettings. Since there is no public constructor for it, there is not a default value.

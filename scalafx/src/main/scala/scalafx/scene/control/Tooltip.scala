@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -113,7 +113,7 @@ object Tooltip {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Tooltip.html Tooltip]].
+ * Wraps a JavaFX [[javafx.scene.control.Tooltip Tooltip]].
  *
  * @constructor Creates a new ScalaFX Tooltip from its JavaFX counterpart.
  * @param delegate JavaFX Tooltip to be wrapped. It defaul value is a new JavaFX Tooltip with no text.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,10 +37,10 @@ object AnimationIncludes extends AnimationIncludes
 
 /**
  * Contains implicit methods to convert classes from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their
+ * [[javafx.animation]] classes to their
  * respective ScalaFX versions.
  *
- * @define INTERP [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Interpolatable.html `Interpolatable`]]
+ * @define INTERP [[javafx.animation.Interpolatable Interpolatable]]
  * @define INTERPM `interpolate` method
  * @define GENERATE Generates a ScalaFX
  * @define FROM from its JavaFX counterparty.
@@ -73,7 +73,7 @@ trait AnimationIncludes {
     Set[KeyValue[_, _ <: Object]](t.linear)
 
   /**
-   * Converts a `Set` of [[scalafx.animation.Tweenable]]s in a `Set` of [[scalafx.animation.KeyValue]]s.
+   * Converts a `Set` of [[scalafx.animation.Tweenable]]s in a Set of [[scalafx.animation.KeyValue]]s.
    *
    * @param ts `Set` of [[scalafx.animation.Tweenable]]s
    * @return `Set` of [[scalafx.animation.KeyValue]]s.

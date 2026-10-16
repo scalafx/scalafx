@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ object ComboBox {
 }
 
 /**
- * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/ComboBox.html JavaFX ComboBox]],
+ * Wraps [[javafx.scene.control.ComboBox JavaFX ComboBox]],
  * an implementation of the ComboBoxBase abstract class for the most common form of ComboBox,
  * where a popup list is shown to users providing them with a choice that they may select from.
  *

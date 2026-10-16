@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object ContextMenu {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ContextMenu.html]].
+ * Wraps [[javafx.scene.control.ContextMenu]].
  */
 class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMenu)
     extends PopupControl(delegate)

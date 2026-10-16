@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,13 +36,13 @@ object StageIncludes extends StageIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://download.java.net/jdk8/jfxdocs/javafx/stage/package-summary.html `javafx.stage`]]
+ * [[javafx.stage]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://download.java.net/jdk8/jfxdocs/javafx/stage/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define DC DirectoryChooser
  * @define FC FileChooser
@@ -60,7 +60,7 @@ object StageIncludes extends StageIncludes
 trait StageIncludes {
 
   /**
-   * $START$DC.html $DC$END
+   * $START [[javafx.stage.DirectoryChooser DirectoryChooser]] $END
    *
    * @param dc $JFX $DC
    * @return $SFX $DC
@@ -69,7 +69,7 @@ trait StageIncludes {
     if (dc != null) new DirectoryChooser(dc) else null
 
   /**
-   * $START$FC.html $FC$END
+   * $START [[javafx.stage.FileChooser FileChooser]] $END
    *
    * @param fc $JFX $FC
    * @return $SFX $FC
@@ -77,7 +77,7 @@ trait StageIncludes {
   implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser): FileChooser = if (fc != null) new FileChooser(fc) else null
 
   /**
-   * $START$FE.html $FE$END
+   * $START [[javafx.stage.FileChooser.ExtensionFilter FileChooser.ExtensionFilter]] $END
    *
    * @param ef $JFX $FE
    * @return $SFX $FE
@@ -86,7 +86,7 @@ trait StageIncludes {
     if (ef != null) new FileChooser.ExtensionFilter(ef) else null
 
   /**
-   * $START$PW.html $PW$END
+   * $START [[javafx.stage.PopupWindow PopupWindow]] $END
    *
    * @param pw $JFX $PW
    * @return $SFX $PW
@@ -94,7 +94,7 @@ trait StageIncludes {
   implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {} else null
 
   /**
-   * $START$PWAL.html $PWAL$END
+   * $START [[javafx.stage.PopupWindow.AnchorLocation PopupWindow.AnchorLocation]] $END
    *
    * @param v $JFX $PWAL
    * @return $SFX $PWAL
@@ -103,7 +103,7 @@ trait StageIncludes {
     PopupWindow.AnchorLocation.jfxEnum2sfx(v)
 
   /**
-   * $START$PP.html $PP$END
+   * $START [[javafx.stage.Popup Popup]] $END
    *
    * @param p $JFX $PP
    * @return $SFX $PP
@@ -111,7 +111,7 @@ trait StageIncludes {
   implicit def jfxPopup2sfx(p: jfxs.Popup): Popup = if (p != null) new Popup(p) else null
 
   /**
-   * $START$MD.html $MD$END
+   * $START [[javafx.stage.Modality Modality]] $END
    *
    * @param e $JFX $MD
    * @return $SFX $MD
@@ -119,7 +119,7 @@ trait StageIncludes {
   implicit def jfxModality2sfx(e: jfxs.Modality): Modality = Modality.jfxEnum2sfx(e)
 
   /**
-   * $START$SC.html $SC$END
+   * $START [[javafx.stage.Screen Screen]] $END
    *
    * @param s $JFX $SC
    * @return $SFX $SC
@@ -127,7 +127,7 @@ trait StageIncludes {
   implicit def jfxScreen2sfx(s: jfxs.Screen): Screen = if (s != null) new Screen(s) else null
 
   /**
-   * $START$ST.html $ST$END
+   * $START [[javafx.stage.Stage Stage]] $END
    *
    * @param s $JFX $ST
    * @return $SFX $ST
@@ -135,7 +135,7 @@ trait StageIncludes {
   implicit def jfxStage2sfx(s: jfxs.Stage): Stage = if (s != null) new Stage(s) else null
 
   /**
-   * $START$SS.html $SS$END
+   * $START [[javafx.stage.StageStyle StageStyle]] $END
    *
    * @param e $JFX $SS
    * @return $SFX $SS
@@ -143,7 +143,7 @@ trait StageIncludes {
   implicit def jfxStageStyle2sfx(e: jfxs.StageStyle): StageStyle = StageStyle.jfxEnum2sfx(e)
 
   /**
-   * $START$WN.html $WN$END
+   * $START [[javafx.stage.Window Window]] $END
    *
    * @param w $JFX $WN
    * @return $SFX $WN
@@ -151,7 +151,7 @@ trait StageIncludes {
   implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {} else null
 
   /**
-   * $START$WE.html $WE$END
+   * $START [[javafx.stage.WindowEvent WindowEvent]] $END
    *
    * @param we $JFX $WE
    * @return $SFX $WE

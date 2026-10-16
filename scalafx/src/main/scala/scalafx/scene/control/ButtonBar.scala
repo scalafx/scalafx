@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -123,7 +123,7 @@ object ButtonBar {
   }
 
   /**
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.ButtonData.html ButtonData]].
+   * Wraps a JavaFX [[javafx.scene.control.ButtonBar.ButtonData ButtonData]].
    *
    * @constructor Creates a new ButtonData from a JavaFX one.
    * @param delegate JavaFX ButtonData
@@ -134,7 +134,7 @@ object ButtonBar {
   }
 
   /**
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.ButtonData.html ButtonData]].
+   * Wraps a JavaFX [[javafx.scene.control.ButtonBar.ButtonData ButtonData]].
    */
   object ButtonData extends SFXEnumDelegateCompanion[jfxsc.ButtonBar.ButtonData, ButtonData] {
 
@@ -277,7 +277,7 @@ object ButtonBar {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @define TC ButtonBar
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.html
+ * @define URL0 [[javafx.scene.control.ButtonBar
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  * @constructor      Creates a default ButtonBar instance using the default properties for

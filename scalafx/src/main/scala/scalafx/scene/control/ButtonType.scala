@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -117,7 +117,7 @@ object ButtonType {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @define TC ButtonType
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonType.html
+ * @define URL0 [[javafx.scene.control.ButtonType
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

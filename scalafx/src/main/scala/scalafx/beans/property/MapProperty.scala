@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -77,7 +77,7 @@ object MapProperty {
  * Wraps a $JFX $URL0 MapProperty]].
  *
  * @define TC          MapProperty
- * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/MapProperty.html
+ * @define URL0        [[javafx.beans.property.MapProperty
  * @define JFX         JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

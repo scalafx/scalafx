@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,13 +35,13 @@ object ConverterIncludes extends ConverterIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/converter/package-summary.html `javafx.util.converter`]]
+ * [[javafx.util.converter]]
  * Classes to their ScalaFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/util/converter/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define BDSC BigDecimalStringConverter
  * @define BISC BigIntegerStringConverter
@@ -64,7 +64,7 @@ object ConverterIncludes extends ConverterIncludes
 trait ConverterIncludes {
 
   /**
-   * $START$BDSC.html $BDSC$END
+   * $START [[javafx.util.converter.BigDecimalStringConverter BigDecimalStringConverter]] $END
    *
    * @param c $JFX $BDSC
    * @return $SFX $BDSC
@@ -73,7 +73,7 @@ trait ConverterIncludes {
     if (c != null) new BigDecimalStringConverter(c) else null
 
   /**
-   * $START$BISC.html $BISC$END
+   * $START [[javafx.util.converter.BigIntegerStringConverter BigIntegerStringConverter]] $END
    *
    * @param c $JFX $BISC
    * @return $SFX $BISC
@@ -82,7 +82,7 @@ trait ConverterIncludes {
     if (c != null) new BigIntStringConverter(c) else null
 
   /**
-   * $START$BOSC.html $BOSC$END
+   * $START [[javafx.util.converter.BooleanStringConverter BooleanStringConverter]] $END
    *
    * @param c $JFX $BOSC
    * @return $SFX $BOSC
@@ -91,7 +91,7 @@ trait ConverterIncludes {
     if (c != null) new BooleanStringConverter(c) else null
 
   /**
-   * $START$BYSC.html $BYSC$END
+   * $START [[javafx.util.converter.ByteStringConverter ByteStringConverter]] $END
    *
    * @param c $JFX $BYSC
    * @return $SFX $BYSC
@@ -100,7 +100,7 @@ trait ConverterIncludes {
     if (c != null) new ByteStringConverter(c) else null
 
   /**
-   * $START$CHSC.html $CHSC$END
+   * $START [[javafx.util.converter.CharacterStringConverter CharacterStringConverter]] $END
    *
    * @param c $JFX $CHSC
    * @return $SFX $CHSC
@@ -109,7 +109,7 @@ trait ConverterIncludes {
     if (c != null) new CharStringConverter(c) else null
 
   /**
-   * $START$CUSC.html $CUSC$END
+   * $START [[javafx.util.converter.CurrencyStringConverter CurrencyStringConverter]] $END
    *
    * @param c $JFX $CUSC
    * @return $SFX $CUSC
@@ -118,7 +118,7 @@ trait ConverterIncludes {
     if (c != null) new CurrencyStringConverter(c) else null
 
   /**
-   * $START$DASC.html $DASC$END
+   * $START [[javafx.util.converter.DateStringConverter DateStringConverter]] $END
    *
    * @param c $JFX $DASC
    * @return $SFX $DASC
@@ -127,7 +127,7 @@ trait ConverterIncludes {
     if (c != null) new DateStringConverter(c) else null
 
   /**
-   * $START$DTSC.html $DTSC$END
+   * $START [[javafx.util.converter.DateTimeStringConverter DateTimeStringConverter]] $END
    *
    * @param c $JFX $DTSC
    * @return $SFX $DTSC
@@ -136,7 +136,7 @@ trait ConverterIncludes {
     if (c != null) new DateTimeStringConverter(c) else null
 
   /**
-   * $START$DESC.html $DESC$END
+   * $START [[javafx.util.converter.DefaultStringConverter DefaultStringConverter]] $END
    *
    * @param c $JFX $DESC
    * @return $SFX $DESC
@@ -145,7 +145,7 @@ trait ConverterIncludes {
     if (c != null) new DefaultStringConverter(c) else null
 
   /**
-   * $START$DOSC.html $DOSC$END
+   * $START [[javafx.util.converter.DoubleStringConverter DoubleStringConverter]] $END
    *
    * @param c $JFX $DOSC
    * @return $SFX $DOSC
@@ -154,7 +154,7 @@ trait ConverterIncludes {
     if (c != null) new DoubleStringConverter(c) else null
 
   /**
-   * $START$FLSC.html $FLSC$END
+   * $START [[javafx.util.converter.FloatStringConverter FloatStringConverter]] $END
    *
    * @param c $JFX $FLSC
    * @return $SFX $FLSC
@@ -166,7 +166,7 @@ trait ConverterIncludes {
     if (c != null) new FormatStringConverter(c) else null
 
   /**
-   * $START$INSC.html $INSC$END
+   * $START [[javafx.util.converter.IntegerStringConverter IntegerStringConverter]] $END
    *
    * @param c $JFX $INSC
    * @return $SFX $INSC
@@ -175,7 +175,7 @@ trait ConverterIncludes {
     if (c != null) new IntStringConverter(c) else null
 
   /**
-   * $START$LOSC.html $LOSC$END
+   * $START [[javafx.util.converter.LongStringConverter LongStringConverter]] $END
    *
    * @param c $JFX $LOSC
    * @return $SFX $LOSC
@@ -184,7 +184,7 @@ trait ConverterIncludes {
     if (c != null) new LongStringConverter(c) else null
 
   /**
-   * $START$NUSC.html $NUSC$END
+   * $START [[javafx.util.converter.NumberStringConverter NumberStringConverter]] $END
    *
    * @param c $JFX $NUSC
    * @return $SFX $NUSC
@@ -193,7 +193,7 @@ trait ConverterIncludes {
     if (c != null) new NumberStringConverter(c) else null
 
   /**
-   * $START$PESC.html $PESC$END
+   * $START [[javafx.util.converter.PercentageStringConverter PercentageStringConverter]] $END
    *
    * @param c $JFX $PESC
    * @return $SFX $PESC
@@ -202,7 +202,7 @@ trait ConverterIncludes {
     if (c != null) new PercentageStringConverter(c) else null
 
   /**
-   * $START$SHSC.html $SHSC$END
+   * $START [[javafx.util.converter.ShortStringConverter ShortStringConverter]] $END
    *
    * @param c $JFX $SHSC
    * @return $SFX $SHSC
@@ -211,7 +211,7 @@ trait ConverterIncludes {
     if (c != null) new ShortStringConverter(c) else null
 
   /**
-   * $START$TISC.html $TISC$END
+   * $START [[javafx.util.converter.TimeStringConverter TimeStringConverter]] $END
    *
    * @param c $JFX $TISC
    * @return $SFX $TISC

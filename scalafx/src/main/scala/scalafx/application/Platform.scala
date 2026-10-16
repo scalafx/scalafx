@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ import scalafx.scene.input.KeyCode
 
 import scala.language.implicitConversions
 
-/** Application platform support, wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Platform.html javafx.application.Platform]]. */
+/** Application platform support, wrapper for [[javafx.application.Platform]]. */
 object Platform {
 
   object Preferences {
@@ -45,7 +45,7 @@ object Platform {
   }
 
   /**
-   * Contains UI preferences of the current platform, wrapper for [[https://openjfx.io/javadoc/22/javafx.graphics/javafx/application/Platform.Preferences.html javafx.application.Platform.Preferences]]
+   * Contains UI preferences of the current platform, wrapper for [[javafx.application.Platform.Preferences]]
    *
    * @since JavaFX 22
    */
@@ -359,7 +359,7 @@ object Platform {
   def accessibilityActive: ReadOnlyBooleanProperty = jfxa.Platform.accessibilityActiveProperty
 
   /**
-   * Gets the preferences of the current platform, wraps [[https://openjfx.io/javadoc/22/javafx.graphics/javafx/application/Platform.html#getPreferences() Platform#getPreferences]]
+   * Gets the preferences of the current platform, wraps [[javafx.application.Platform.getPreferences Platform#getPreferences]]
    */
   def preferences: Preferences = jfxa.Platform.getPreferences
 }

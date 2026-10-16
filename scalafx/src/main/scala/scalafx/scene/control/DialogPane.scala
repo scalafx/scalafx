@@ -59,7 +59,7 @@ object DialogPane {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @define TC DialogPane
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DialogPane.html
+ * @define URL0 [[javafx.scene.control.DialogPane
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

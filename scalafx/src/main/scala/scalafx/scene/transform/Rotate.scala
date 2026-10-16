@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object Rotate {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Rotate.html]]
+ * Wraps [[javafx.scene.transform.Rotate]]
  */
 class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Transform(delegate)
     with SFXDelegate[jfxst.Rotate] {

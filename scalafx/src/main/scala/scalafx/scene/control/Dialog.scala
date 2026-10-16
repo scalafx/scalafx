@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,7 @@ object Dialog {
  *
  * @tparam R The default return type of the dialog, via the result property or `showAndWait` method.
  * @define TC          Dialog
- * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
+ * @define URL0        [[javafx.scene.control.Dialog
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

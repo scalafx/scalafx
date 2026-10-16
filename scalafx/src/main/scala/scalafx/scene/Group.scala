@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ object Group {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html]].
+ * Wraps [[javafx.scene.Group]].
  */
 class Group(override val delegate: jfxs.Group = new jfxs.Group())
     extends Parent(delegate)

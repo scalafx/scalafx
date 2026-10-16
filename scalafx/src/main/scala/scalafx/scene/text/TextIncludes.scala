@@ -34,13 +34,13 @@ object TextIncludes extends TextIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/package-summary.html `javafx.scene.text`]]
+ * [[javafx.scene.text]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define FT Font
  * @define FP FontPosture
@@ -56,7 +56,7 @@ trait TextIncludes {
 
 
   /**
-   * $START$FT.html $FT$END
+   * $START [[javafx.scene.text.Font Font]] $END
    *
    * @param f $JFX $FT
    * @return $SFX $FT
@@ -64,7 +64,7 @@ trait TextIncludes {
   implicit def jfxFont2sfxFont(f: jfxst.Font): Font = if (f != null) new Font(f) else null
 
   /**
-   * $START$FP.html $FP$END
+   * $START [[javafx.scene.text.FontPosture FontPosture]] $END
    *
    * @param e $JFX $FP
    * @return $SFX $FP
@@ -72,7 +72,7 @@ trait TextIncludes {
   implicit def jfxFontPosture2sfx(e: jfxst.FontPosture): FontPosture = FontPosture.jfxEnum2sfx(e)
 
   /**
-   * $START$FS.html $FS$END
+   * $START [[javafx.scene.text.FontSmoothingType FontSmoothingType]] $END
    *
    * @param e $JFX $FS
    * @return $SFX $FS
@@ -81,7 +81,7 @@ trait TextIncludes {
     FontSmoothingType.jfxEnum2sfx(e)
 
   /**
-   * $START$FW.html $FW$END
+   * $START [[javafx.scene.text.FontWeight FontWeight]] $END
    *
    * @param e $JFX $FW
    * @return $SFX $FW
@@ -96,7 +96,7 @@ trait TextIncludes {
     if (t != null) new TabStopPolicy(t) else null
 
   /**
-   * $START$TX.html $TX$END
+   * $START [[javafx.scene.text.Text Text]] $END
    *
    * @param t $JFX $TX
    * @return $SFX $TX
@@ -104,7 +104,7 @@ trait TextIncludes {
   implicit def jfxText2sfxText(t: jfxst.Text): Text = if (t != null) new Text(t) else null
 
   /**
-   * $START$TA.html $TA$END
+   * $START [[javafx.scene.text.TextAlignment TextAlignment]] $END
    *
    * @param e $JFX $TA
    * @return $SFX $TA
@@ -112,7 +112,7 @@ trait TextIncludes {
   implicit def jfxTextAlignment2sfx(e: jfxst.TextAlignment): TextAlignment = TextAlignment.jfxEnum2sfx(e)
 
   /**
-   * $START$TB.html $TB$END
+   * $START [[javafx.scene.text.TextBoundsType TextBoundsType]] $END
    *
    * @param e $JFX $TB
    * @return $SFX $TB

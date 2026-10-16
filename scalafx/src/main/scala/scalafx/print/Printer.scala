@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -84,7 +84,7 @@ object Printer {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.MarginType.html JavaFX MarginType]].
+   * Wraps [[javafx.print.Printer.MarginType JavaFX MarginType]].
    *
    * @since 8.0
    */
@@ -112,7 +112,7 @@ object Printer {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html JavaFX Printer]].
+ * Wraps [[javafx.print.Printer JavaFX Printer]].
  *
  * @constructor Creates a new ScalaFX Printer from its JavaFX counterpart.
  * @param delegate JavaFX Printer. Since there is no public constructor for it, there is not a default value.

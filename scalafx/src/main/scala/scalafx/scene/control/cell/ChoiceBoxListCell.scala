@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -138,7 +138,7 @@ object ChoiceBoxListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBLC]]
+ * Wraps [[javafx.scene.control.cell.ChoiceBoxListCell ChoiceBoxListCell]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBLC from a JavaFX $CBLC

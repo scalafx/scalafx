@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ object TransformationBuffer {
  * @tparam F - the upper bound of the type of the source buffer.
  *
  * @define TC TransformationList
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/TransformationList.html
+ * @define URL0 [[javafx.collections.transformation.TransformationList
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

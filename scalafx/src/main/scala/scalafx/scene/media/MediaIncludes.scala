@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,15 +36,15 @@ object MediaIncludes extends MediaIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/media/package-summary.html `javafx.scene.media`]]
+ * [[javafx.scene.media]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/media/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.media.
- * @ d e f i n e F I N I S H W R ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
+ * @ d e f i n e F I N I S H W R ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[javafx.event.EventHandler EventHandler]] that manipulates it's $JFX couterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *
@@ -67,7 +67,7 @@ object MediaIncludes extends MediaIncludes
 trait MediaIncludes {
 
   /**
-   * $START$AUCL.html $AUCL$END
+   * $START [[javafx.scene.media.AudioClip AudioClip]] $END
    *
    * @param ac $JFX $AUCL
    * @return $SFX $AUCL
@@ -75,7 +75,7 @@ trait MediaIncludes {
   implicit def jfxAudioClip2sfx(ac: jfxsm.AudioClip): AudioClip = if (ac != null) new AudioClip(ac) else null
 
   /**
-   * $START$AUEQ.html $AUEQ$END
+   * $START [[javafx.scene.media.AudioEqualizer AudioEqualizer]] $END
    *
    * @param ae $JFX $AUEQ
    * @return $SFX $AUEQ
@@ -84,7 +84,7 @@ trait MediaIncludes {
     if (ae != null) new AudioEqualizer(ae) else null
 
   /**
-   * $START$AUTR.html $AUTR$END
+   * $START [[javafx.scene.media.AudioTrack AudioTrack]] $END
    *
    * @param at $JFX $AUTR
    * @return $SFX $AUTR
@@ -92,7 +92,7 @@ trait MediaIncludes {
   implicit def jfxAudioTrack2sfx(at: jfxsm.AudioTrack): AudioTrack = if (at != null) new AudioTrack(at) else null
 
   /**
-   * $START$EQBD.html $EQBD$END
+   * $START [[javafx.scene.media.EqualizerBand EqualizerBand]] $END
    *
    * @param eb $JFX $EQBD
    * @return $SFX $EQBD
@@ -101,7 +101,7 @@ trait MediaIncludes {
     if (eb != null) new EqualizerBand(eb) else null
 
   /**
-   * $START$MEDI.html $MEDI$END
+   * $START [[javafx.scene.media.Media Media]] $END
    *
    * @param m $JFX $MEDI
    * @return $SFX $MEDI
@@ -109,7 +109,7 @@ trait MediaIncludes {
   implicit def jfxMedia2sfx(m: jfxsm.Media): Media = if (m != null) new Media(m) else null
 
   /**
-   * $START$MDEE.html $MDEE$END
+   * $START [[javafx.scene.media.MediaErrorEvent MediaErrorEvent]] $END
    *
    * @param mee $JFX $MDEE
    * @return $SFX $MDEE
@@ -118,7 +118,7 @@ trait MediaIncludes {
     if (mee != null) new MediaErrorEvent(mee) else null
 
   /**
-   * $START$MDEX.html $MDEX$END
+   * $START [[javafx.scene.media.MediaException MediaException]] $END
    *
    * @param me $JFX $MDEX
    * @return $SFX $MDEX
@@ -127,7 +127,7 @@ trait MediaIncludes {
     if (me != null) new MediaException(me) else null
 
   /**
-   * $START$MDET.html $MDET$END
+   * $START [[javafx.scene.media.MediaException.Type MediaException.Type]] $END
    *
    * @param t $JFX $MDET
    * @return $SFX $MDET
@@ -135,7 +135,7 @@ trait MediaIncludes {
   implicit def jfxMediaExceptionType2sfx(t: jfxsm.MediaException.Type): Type = MediaException.Type.jfxEnum2sfx(t)
 
   /**
-   * $START$MDME.html $MDME$END
+   * $START [[javafx.scene.media.MediaMarkerEvent MediaMarkerEvent]] $END
    *
    * @param mme $JFX $MDME
    * @return $SFX $MDME
@@ -144,7 +144,7 @@ trait MediaIncludes {
     if (mme != null) new MediaMarkerEvent(mme) else null
 
   /**
-   * $START$MDPL.html $MDPL$END
+   * $START [[javafx.scene.media.MediaPlayer MediaPlayer]] $END
    *
    * @param mp $JFX $MDPL
    * @return $SFX $MDPL
@@ -152,7 +152,7 @@ trait MediaIncludes {
   implicit def jfxMediaPlayer2sfx(mp: jfxsm.MediaPlayer): MediaPlayer = if (mp != null) new MediaPlayer(mp) else null
 
   /**
-   * $START$MPST.html $MPST$END
+   * $START [[javafx.scene.media.MediaPlayer.Status MediaPlayer.Status]] $END
    *
    * @param s $JFX $MPST
    * @return $SFX $MPST
@@ -160,7 +160,7 @@ trait MediaIncludes {
   implicit def jfxMediaPlayerStatus2sfx(s: jfxsm.MediaPlayer.Status): Status = MediaPlayer.Status.jfxEnum2sfx(s)
 
   /**
-   * $START$MDVW.html $MDVW$END
+   * $START [[javafx.scene.media.MediaView MediaView]] $END
    *
    * @param mv $JFX $MDVW
    * @return $SFX $MDVW
@@ -168,7 +168,7 @@ trait MediaIncludes {
   implicit def jfxMediaView2sfx(mv: jfxsm.MediaView): MediaView = if (mv != null) new MediaView(mv) else null
 
   /**
-   * $START$SBTR.html $SBTR$END
+   * $START [[javafx.scene.media.SubtitleTrack SubtitleTrack]] $END
    *
    * @param st $JFX $SBTR
    * @return $SFX $SBTR
@@ -177,7 +177,7 @@ trait MediaIncludes {
     if (st != null) new SubtitleTrack(st) else null
 
   /**
-   * $START$TRAC.html $TRAC$END
+   * $START [[javafx.scene.media.Track Track]] $END
    *
    * @param t $JFX $TRAC
    * @return $SFX $TRAC
@@ -185,7 +185,7 @@ trait MediaIncludes {
   implicit def jfxTrack2sfx(t: jfxsm.Track): Track = if (t != null) new Track(t) {} else null
 
   /**
-   * $START$VDTC.html $VDTC$END
+   * $START [[javafx.scene.media.VideoTrack VideoTrack]] $END
    *
    * @param vt $JFX $VDTC
    * @return $SFX $VDTC

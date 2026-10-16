@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,14 +34,14 @@ object GeometryIncludes extends GeometryIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/package-summary.html `javafx.geometry`]]
+ * [[javafx.geometry]]
  * Classes to their ScalaFX counterparts.
  */
 trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Bounds `javafx.geometry.Bounds`]]
+   * [[javafx.geometry.Bounds]]
    * instance to its ScalaFX counterpart.
    *
    * @param b JavaFX Bounds
@@ -51,7 +51,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/BoundingBox `javafx.geometry.BoundingBox`]]
+   * [[javafx.geometry.BoundingBox]]
    * instance to its ScalaFX counterpart.
    *
    * @param b JavaFX BoundingBox
@@ -61,7 +61,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Dimension2D `javafx.geometry.Dimension2D`]]
+   * [[javafx.geometry.Dimension2D]]
    * instance to its ScalaFX counterpart.
    *
    * @param d JavaFX Dimension2D
@@ -71,7 +71,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HorizontalDirection `javafx.geometry.HorizontalDirection`]]
+   * [[javafx.geometry.HorizontalDirection]]
    * instance to its ScalaFX counterpart.
    *
    * @param h JavaFX HorizontalDirection
@@ -82,7 +82,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HPos `javafx.geometry.HPos`]]
+   * [[javafx.geometry.HPos]]
    * instance to its ScalaFX counterpart.
    *
    * @param h JavaFX HPos
@@ -92,7 +92,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Insets `javafx.geometry.Insets`]]
+   * [[javafx.geometry.Insets]]
    * instance to its ScalaFX counterpart.
    *
    * @param i JavaFX Insets
@@ -102,7 +102,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/NodeNodeOrientation `javafx.geometry.NodeOrientation`]]
+   * [[javafx.geometry.NodeOrientation]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX NodeOrientation
@@ -112,7 +112,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Orientation `javafx.geometry.Orientation`]]
+   * [[javafx.geometry.Orientation]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX Orientation
@@ -122,7 +122,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Point2D `javafx.geometry.Point2D`]]
+   * [[javafx.geometry.Point2D]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX Point2D
@@ -132,7 +132,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Point3D `javafx.geometry.Point3D`]]
+   * [[javafx.geometry.Point3D]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX Point3D
@@ -142,7 +142,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Pos `javafx.geometry.Pos`]]
+   * [[javafx.geometry.Pos]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX Pos
@@ -152,7 +152,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Rectangle2D `javafx.geometry.Rectangle2D`]]
+   * [[javafx.geometry.Rectangle2D]]
    * instance to its ScalaFX counterpart.
    *
    * @param r JavaFX Rectangle2D
@@ -162,7 +162,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Side `javafx.geometry.Side`]]
+   * [[javafx.geometry.Side]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX Side
@@ -172,7 +172,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/VerticalDirection `javafx.geometry.VerticalDirection`]]
+   * [[javafx.geometry.VerticalDirection]]
    * instance to its ScalaFX counterpart.
    *
    * @param h JavaFX VerticalDirection
@@ -182,7 +182,7 @@ trait GeometryIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/VPos `javafx.geometry.VPos`]]
+   * [[javafx.geometry.VPos]]
    * instance to its ScalaFX counterpart.
    *
    * @param v JavaFX VPos

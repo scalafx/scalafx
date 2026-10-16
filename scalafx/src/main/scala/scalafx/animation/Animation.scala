@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ trait AnimationStatics {
 object Animation extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]],
+   * Converts a ScalaFX $AN to a JavaFX [[javafx.animation.Animation Animation]],
    * extracting its delegate.
    *
    * @param v ScalaFX $AN
@@ -100,7 +100,7 @@ object Animation extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.Status.html $ST]]
+   * Wraps [[javafx.animation.Animation.Status Status]]
    *
    * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
    * @param delegate JavaFX $ST to be delegated.
@@ -111,7 +111,7 @@ object Animation extends AnimationStatics {
 }
 
 /**
- * Wraps JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]].
+ * Wraps JavaFX's [[javafx.animation.Animation Animation]].
  *
  * @define AN `Animation`
  * @define DV Default value:

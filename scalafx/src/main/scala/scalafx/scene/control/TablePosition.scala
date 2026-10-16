@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object TablePosition {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TablePosition.html]].
+ * Wraps [[javafx.scene.control.TablePosition]].
  *
  * @constructor creates a new ScalaFX TablePosition from a JavaFX one.
  * @param JavaFX TablePositionBase to be wrapped

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,13 +35,13 @@ object ConcurrentIncludes extends ConcurrentIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
+ * [[javafx.concurrent]]
  * Classes to their ScalaFX counterparts.
  *
  * @define JFX   JavaFX
  * @define SFX   ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  * @define SER Service
  * @define SSER ScheduledService
  * @define TSK Task
@@ -52,7 +52,7 @@ object ConcurrentIncludes extends ConcurrentIncludes
 trait ConcurrentIncludes {
 
   /**
-   * $START$SER.html $SER$END
+   * $START [[javafx.concurrent.Service Service]] $END
    *
    * @param s $JFX $SER
    * @return $SFX $SER
@@ -60,7 +60,7 @@ trait ConcurrentIncludes {
   implicit def jfxService2sfxService[T](s: jfxc.Service[T]): Service[T] = if (s != null) new Service[T](s) {} else null
 
   /**
-   * $START$SSER.html $SSER$END
+   * $START [[javafx.concurrent.ScheduledService ScheduledService]] $END
    *
    * @param s $JFX $SSER
    * @return $SFX $SSER
@@ -69,7 +69,7 @@ trait ConcurrentIncludes {
     if (s != null) new ScheduledService[T](s) {} else null
 
   /**
-   * $START$TSK.html $TSK$END
+   * $START [[javafx.concurrent.Task Task]] $END
    *
    * @param t $JFX $TSK
    * @return $SFX $TSK
@@ -77,7 +77,7 @@ trait ConcurrentIncludes {
   implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]): Task[T] = if (t != null) new Task[T](t) {} else null
 
   /**
-   * $START$WRK.html $WRK$END
+   * $START [[javafx.concurrent.Worker Worker]] $END
    *
    * @param w $JFX $WRK
    * @return $SFX $WRK
@@ -89,7 +89,7 @@ trait ConcurrentIncludes {
     else null
 
   /**
-   * $START$WRS.html $WRS$END
+   * $START [[javafx.concurrent.Worker.State Worker.State]] $END
    *
    * @param s $JFX $WRS
    * @return $SFX $WRS
@@ -97,7 +97,7 @@ trait ConcurrentIncludes {
   implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State): State = Worker.State.jfxEnum2sfx(s)
 
   /**
-   * $START$WSE.html $WSE$END
+   * $START [[javafx.concurrent.WorkerStateEvent WorkerStateEvent]] $END
    *
    * @param w $JFX $WSE
    * @return $SFX $WSE

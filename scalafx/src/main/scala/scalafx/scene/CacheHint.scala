@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.scene
 import javafx.scene as jfxs
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/CacheHint.html javafx.scene.CacheHint]] */
+/** Wrapper for [[javafx.scene.CacheHint]] */
 object CacheHint extends SFXEnumDelegateCompanion[jfxs.CacheHint, CacheHint] {
 
   case object Default extends CacheHint(jfxs.CacheHint.DEFAULT)

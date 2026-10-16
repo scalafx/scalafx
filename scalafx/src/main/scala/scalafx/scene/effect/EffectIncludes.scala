@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,13 +35,13 @@ object EffectIncludes extends EffectIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]]
+ * [[javafx.scene.effect]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define BLE Blend
  * @define BLM BlendMode
@@ -72,7 +72,7 @@ object EffectIncludes extends EffectIncludes
 trait EffectIncludes {
 
   /**
-   * $START$BLE.html $BLE$END
+   * $START [[javafx.scene.effect.Blend Blend]] $END
    *
    * @param b $JFX $BLE
    * @return $SFX $BLE
@@ -80,7 +80,7 @@ trait EffectIncludes {
   implicit def jfxBlend2sfx(b: jfxse.Blend): Blend = if (b != null) new Blend(b) else null
 
   /**
-   * $START$BLM.html $BLM$END
+   * $START [[javafx.scene.effect.BlendMode BlendMode]] $END
    *
    * @param e $JFX $BLM
    * @return $SFX $BLM
@@ -88,7 +88,7 @@ trait EffectIncludes {
   implicit def jfxBlendMode2sfx(e: jfxse.BlendMode): BlendMode = BlendMode.jfxEnum2sfx(e)
 
   /**
-   * $START$BLO.html $BLO$END
+   * $START [[javafx.scene.effect.Bloom Bloom]] $END
    *
    * @param b $JFX $BLO
    * @return $SFX $BLO
@@ -96,7 +96,7 @@ trait EffectIncludes {
   implicit def jfxBloom2sfx(b: jfxse.Bloom): Bloom = if (b != null) new Bloom(b) else null
 
   /**
-   * $START$BBL.html $BBL$END
+   * $START [[javafx.scene.effect.BoxBlur BoxBlur]] $END
    *
    * @param bb $JFX $BBL
    * @return $SFX $BBL
@@ -104,7 +104,7 @@ trait EffectIncludes {
   implicit def jfxBoxBlur2sfx(bb: jfxse.BoxBlur): BoxBlur = if (bb != null) new BoxBlur(bb) else null
 
   /**
-   * $START$BLT.html $BLT$END
+   * $START [[javafx.scene.effect.BlurType BlurType]] $END
    *
    * @param e $JFX $BLT
    * @return $SFX $BLT
@@ -112,7 +112,7 @@ trait EffectIncludes {
   implicit def jfxBlurType2sfx(e: jfxse.BlurType): BlurType = BlurType.jfxEnum2sfx(e)
 
   /**
-   * $START$CLA.html $CLA$END
+   * $START [[javafx.scene.effect.ColorAdjust ColorAdjust]] $END
    *
    * @param ca $JFX $CLA
    * @return $SFX $CLA
@@ -120,7 +120,7 @@ trait EffectIncludes {
   implicit def jfxColorAdjust2sfx(ca: jfxse.ColorAdjust): ColorAdjust = if (ca != null) new ColorAdjust(ca) else null
 
   /**
-   * $START$CLI.html $CLI$END
+   * $START [[javafx.scene.effect.ColorInput ColorInput]] $END
    *
    * @param ci $JFX $CLI
    * @return $SFX $CLI
@@ -128,7 +128,7 @@ trait EffectIncludes {
   implicit def jfxColorInput2sfx(ci: jfxse.ColorInput): ColorInput = if (ci != null) new ColorInput(ci) else null
 
   /**
-   * $START$DSM.html $DSM$END
+   * $START [[javafx.scene.effect.DisplacementMap DisplacementMap]] $END
    *
    * @param dm $JFX $DSM
    * @return $SFX $DSM
@@ -137,7 +137,7 @@ trait EffectIncludes {
     if (dm != null) new DisplacementMap(dm) else null
 
   /**
-   * $START$EFF.html $EFF$END
+   * $START [[javafx.scene.effect.Effect Effect]] $END
    *
    * @param e $JFX $EFF
    * @return $SFX $EFF
@@ -145,7 +145,7 @@ trait EffectIncludes {
   implicit def jfxEffect2sfx(e: jfxse.Effect): Effect = if (e != null) new Effect(e) {} else null
 
   /**
-   * $START$DPS.html $DPS$END
+   * $START [[javafx.scene.effect.DropShadow DropShadow]] $END
    *
    * @param ds $JFX $DPS
    * @return $SFX $DPS
@@ -153,7 +153,7 @@ trait EffectIncludes {
   implicit def jfxDropShadow2sfx(ds: jfxse.DropShadow): DropShadow = if (ds != null) new DropShadow(ds) else null
 
   /**
-   * $START$FLM.html $FLM$END
+   * $START [[javafx.scene.effect.FloatMap FloatMap]] $END
    *
    * @param fm $JFX $FLM
    * @return $SFX $FLM
@@ -161,7 +161,7 @@ trait EffectIncludes {
   implicit def jfxFloatMap2sfx(fm: jfxse.FloatMap): FloatMap = if (fm != null) new FloatMap(fm) else null
 
   /**
-   * $START$GSB.html $GSB$END
+   * $START [[javafx.scene.effect.GaussianBlur GaussianBlur]] $END
    *
    * @param gb $JFX $GSB
    * @return $SFX $GSB
@@ -170,7 +170,7 @@ trait EffectIncludes {
     if (gb != null) new GaussianBlur(gb) else null
 
   /**
-   * $START$GLW.html $GLW$END
+   * $START [[javafx.scene.effect.Glow Glow]] $END
    *
    * @param g $JFX $GLW
    * @return $SFX $GLW
@@ -178,7 +178,7 @@ trait EffectIncludes {
   implicit def jfxGlow2sfx(g: jfxse.Glow): Glow = if (g != null) new Glow(g) else null
 
   /**
-   * $START$IIN.html $IIN$END
+   * $START [[javafx.scene.effect.ImageInput ImageInput]] $END
    *
    * @param ii $JFX $IIN
    * @return $SFX $IIN
@@ -186,7 +186,7 @@ trait EffectIncludes {
   implicit def jfxImageInput2sfx(ii: jfxse.ImageInput): ImageInput = if (ii != null) new ImageInput(ii) else null
 
   /**
-   * $START$INS.html $INS$END
+   * $START [[javafx.scene.effect.InnerShadow InnerShadow]] $END
    *
    * @param ii $JFX $INS
    * @return $SFX $INS
@@ -194,7 +194,7 @@ trait EffectIncludes {
   implicit def jfxInnerShadow2sfx(ii: jfxse.InnerShadow): InnerShadow = if (ii != null) new InnerShadow(ii) else null
 
   /**
-   * $START$LIG.html $LIG$END
+   * $START [[javafx.scene.effect.Light Light]] $END
    *
    * @param l $JFX $LIG
    * @return $SFX $LIG
@@ -202,7 +202,7 @@ trait EffectIncludes {
   implicit def jfxLight2sfx(l: jfxse.Light): Light = if (l != null) new Light(l) {} else null
 
   /**
-   * $START$LDS.html $LDS$END
+   * $START [[javafx.scene.effect.Light.Distant Light.Distant]] $END
    *
    * @param d $JFX $LDS
    * @return $SFX $LDS
@@ -210,7 +210,7 @@ trait EffectIncludes {
   implicit def jfxLightDistant2sfx(d: jfxse.Light.Distant): Distant = if (d != null) new Light.Distant(d) else null
 
   /**
-   * $START$LPT.html $LPT$END
+   * $START [[javafx.scene.effect.Light.Point Light.Point]] $END
    *
    * @param p $JFX $LPT
    * @return $SFX $LPT
@@ -218,7 +218,7 @@ trait EffectIncludes {
   implicit def jfxLightPoint2sfx(p: jfxse.Light.Point): Point = if (p != null) new Light.Point(p) else null
 
   /**
-   * $START$LSP.html $LSP$END
+   * $START [[javafx.scene.effect.Light.Spot Light.Spot]] $END
    *
    * @param s $JFX $LSP
    * @return $SFX $LSP
@@ -226,7 +226,7 @@ trait EffectIncludes {
   implicit def jfxLightSpot2sfx(s: jfxse.Light.Spot): Spot = if (s != null) new Light.Spot(s) else null
 
   /**
-   * $START$LIN.html $LIN$END
+   * $START [[javafx.scene.effect.Lighting Lighting]] $END
    *
    * @param l $JFX $LIN
    * @return $SFX $LIN
@@ -234,7 +234,7 @@ trait EffectIncludes {
   implicit def jfxLighting2sfx(l: jfxse.Lighting): Lighting = if (l != null) new Lighting(l) else null
 
   /**
-   * $START$MBL.html $MBL$END
+   * $START [[javafx.scene.effect.MotionBlur MotionBlur]] $END
    *
    * @param mb $JFX $MBL
    * @return $SFX $MBL
@@ -242,7 +242,7 @@ trait EffectIncludes {
   implicit def jfxMotionBlur2sfx(mb: jfxse.MotionBlur): MotionBlur = if (mb != null) new MotionBlur(mb) else null
 
   /**
-   * $START$PTR.html $PTR$END
+   * $START [[javafx.scene.effect.PerspectiveTransform PerspectiveTransform]] $END
    *
    * @param pt $JFX $PTR
    * @return $SFX $PTR
@@ -251,7 +251,7 @@ trait EffectIncludes {
     if (pt != null) new PerspectiveTransform(pt) else null
 
   /**
-   * $START$RFL.html $RFL$END
+   * $START [[javafx.scene.effect.Reflection Reflection]] $END
    *
    * @param r $JFX $RFL
    * @return $SFX $RFL
@@ -259,7 +259,7 @@ trait EffectIncludes {
   implicit def jfxReflection2sfx(r: jfxse.Reflection): Reflection = if (r != null) new Reflection(r) else null
 
   /**
-   * $START$SPT.html $SPT$END
+   * $START [[javafx.scene.effect.SepiaTone SepiaTone]] $END
    *
    * @param st $JFX $SPT
    * @return $SFX $SPT
@@ -267,7 +267,7 @@ trait EffectIncludes {
   implicit def jfxSepiaTone2sfx(st: jfxse.SepiaTone): SepiaTone = if (st != null) new SepiaTone(st) else null
 
   /**
-   * $START$SHW.html $SHW$END
+   * $START [[javafx.scene.effect.Shadow Shadow]] $END
    *
    * @param s $JFX $SHW
    * @return $SFX $SHW

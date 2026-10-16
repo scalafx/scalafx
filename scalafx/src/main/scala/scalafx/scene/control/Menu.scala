@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ object Menu {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Menu.html]].
+ * Wraps [[javafx.scene.control.Menu]].
  */
 class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
     extends MenuItem(delegate)

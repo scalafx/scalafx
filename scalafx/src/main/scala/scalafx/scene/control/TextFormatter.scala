@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,7 +63,7 @@ object TextFormatter {
    * Contains the state representing a change in the content or selection for a
    * `TextInputControl`.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/control/TextFormatter.Change.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TextFormatter.Change]]
    */
   class Change(override val delegate: jfxsc.TextFormatter.Change)
       extends SFXDelegate[jfxsc.TextFormatter.Change] {
@@ -203,7 +203,7 @@ object TextFormatter {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @define TC TextFormatter
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/control/TextFormatter.html
+ * @define URL0 [[javafx.scene.control.TextFormatter
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ object SortEvent {
 }
 
 /**
- * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html SortEvent]].
+ * Wraps a $JFX [[javafx.scene.control.SortEvent SortEvent]].
  *
  * @constructor Creates a new ScalaFX SortEvent from a JavaFX one.
  * @param delegate JavaFX SortEvent to be wrapped.
@@ -78,7 +78,7 @@ class SortEvent[C](override val delegate: jfxsc.SortEvent[C])
    *
    * @param source Event Source
    * @param target Event Target
-   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html#SortEvent-C-javafx.event.EventTarget- Original Documentation]].
+   * @see [[javafx.scene.control.SortEvent Original Documentation]].
    */
   def this(source: C, target: jfxe.EventTarget) = this(new jfxsc.SortEvent[C](source, target))
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ object SwingNode {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.html JavaFX
+ * Wraps [[javafx.embed.swing.SwingNode JavaFX
  * SwingNode]]. This class is not implementing the `impl_*` methods from the original class.
  *
  * @constructor Creates a new ScalaFX SwingNode from its JavaFX counterpart.

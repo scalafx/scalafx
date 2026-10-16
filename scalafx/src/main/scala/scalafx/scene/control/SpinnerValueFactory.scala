@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -244,7 +244,7 @@ object SpinnerValueFactory {
  * The SpinnerValueFactory is the model behind the `Spinner` control - without a value factory installed a
  * `Spinner` is unusable.
  *
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SpinnerValueFactory.html]].
+ * Wraps a JavaFX [[javafx.scene.control.SpinnerValueFactory]].
  *
  * @param delegate A JavaFX SpinnerValueFactory to be wrapped. Its default value is a new JavaFX SpinnerValueFactory.
  * @tparam T The type of the data this value factory deals with, which must

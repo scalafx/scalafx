@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object Shear {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Shear.html]]
+ * Wraps [[javafx.scene.transform.Shear]]
  */
 class Shear(override val delegate: jfxst.Shear = new jfxst.Shear)
     extends Transform(delegate)

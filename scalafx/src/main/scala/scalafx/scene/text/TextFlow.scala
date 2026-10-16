@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@ object TextFlow {
  * A single `Text` node can span over several lines due to wrapping and the visual location
  * of `Text` node can differ from the logical location due to bidi reordering.
  *
- * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/text/TextFlow.html]]
+ * Wraps [[javafx.scene.text.TextFlow]]
  */
 class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
     extends Pane(delegate)

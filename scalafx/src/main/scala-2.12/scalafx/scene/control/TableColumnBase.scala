@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object TableColumnBase {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
+ * Wraps [[javafx.scene.control.TableColumnBase]].
  */
 abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
     extends EventHandlerDelegate

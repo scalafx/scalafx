@@ -41,7 +41,7 @@ object CaretInfo {
 /**
  * Provides the information associated with the caret.
  *
- * Wraps JavaFX [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/CaretInfo.html CaretInfo]]
+ * Wraps JavaFX [[javafx.scene.text.CaretInfo CaretInfo]]
  *
  * @since 25
  */

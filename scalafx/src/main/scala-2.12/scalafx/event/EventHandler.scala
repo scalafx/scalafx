@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.event.subscriptions.Subscription
 import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
- * Companion Object for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]]
+ * Companion Object for [[javafx.event.EventHandler EventHandler]]
  * interface.
  */
 object EventHandler {}

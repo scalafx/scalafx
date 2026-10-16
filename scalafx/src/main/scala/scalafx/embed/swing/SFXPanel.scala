@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@ object SFXPanel {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/JFXPanel.html JavaFX
+ * Wraps [[javafx.embed.swing.JFXPanel JavaFX
  * JFXPanel]]. To use methods and properties from JComponent, use its delegate.
  *
  * @constructor Creates a new SFXPanel from its JavaFX counterpart.

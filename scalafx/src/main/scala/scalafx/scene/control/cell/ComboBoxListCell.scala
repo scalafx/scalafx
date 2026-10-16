@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -129,13 +129,13 @@ object ComboBoxListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeCell.html $CBLC]]
+ * Wraps [[javafx.scene.control.cell.ComboBoxListCell ComboBoxListCell]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBLC from a JavaFX $CBLC
  * @param delegate JavaFX $CBLC
  *
- * @define CBLC `ChoiceBoxListCell`
+ * @define CBLC `ComboBoxListCell`
  * @define CMBX `ComboBox`
  * @define STCV `StringConverter`
  * @define CONSTRCONVERTER Creates a $CBLC instance with the given items being used to populate the $CMBX when it is shown, and the $STCV being used to convert the item in to a user-readable form.

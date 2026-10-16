@@ -30,7 +30,7 @@ package scalafx.application
 import javafx.application as jfxa
 import scalafx.delegate.*
 
-/** Wrapper for JavaFX [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/application/ConditionalFeature.html ConditionalFeature]] */
+/** Wrapper for JavaFX [[javafx.application.ConditionalFeature ConditionalFeature]] */
 object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
   case object Controls extends ConditionalFeature(jfxa.ConditionalFeature.CONTROLS)

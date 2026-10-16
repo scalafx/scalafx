@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@ object TreeTableColumn {
   }
 
   /**
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableColumn.CellDataFeatures.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TreeTableColumn.CellDataFeatures]]
    *
    * @constructor Creates a new CellDataFeatures from a JavaFX one.
    * @param delegate A JavaFX CellDataFeatures to be wrapped. Its default value is a new JavaFX CellDataFeatures.
@@ -116,7 +116,7 @@ object TreeTableColumn {
   }
 
   /**
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableColumn.CellEditEvent.html]]
+   * Wraps a JavaFX [[javafx.scene.control.TreeTableColumn.CellEditEvent]]
    *
    * @constructor Creates a new CellDataFeatures from a JavaFX one.
    * @param delegate A JavaFX CellDataFeatures to be wrapped. Its default value is a new JavaFX CellDataFeatures.
@@ -189,7 +189,7 @@ object TreeTableColumn {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableColumn.SortType.html]] */
+  /** Wrapper for [[javafx.scene.control.TreeTableColumn.SortType]] */
   sealed abstract class SortType(override val delegate: jfxsc.TreeTableColumn.SortType)
       extends SFXEnumDelegate[jfxsc.TreeTableColumn.SortType]
 
@@ -237,7 +237,7 @@ object TreeTableColumn {
  * A `TreeTableView` is made up of a number of `TreeTableColumn` instances.
  * Each `TreeTableColumn` in a `TreeTableView` is responsible for displaying (and editing) the contents of that column.
  *
- * Wraps a JavaFX [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/TreeTableColumn.html TreeTableColumn]]
+ * Wraps a JavaFX [[javafx.scene.control.TreeTableColumn TreeTableColumn]]
  *
  * @constructor Creates a new `TreeTableColumn` from a JavaFX one.
  * @param delegate A JavaFX TreeTableColumn to be wrapped. Its default value is a new JavaFX TreeTableColumn.

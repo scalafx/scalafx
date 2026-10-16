@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object PrintColor
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.html JavaFX PrintColor]].
+ * Wraps [[javafx.print.PrintColor JavaFX PrintColor]].
  */
 sealed abstract class PrintColor(override val delegate: jfxp.PrintColor)
     extends SFXEnumDelegate[jfxp.PrintColor]

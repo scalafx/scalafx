@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  * the current value of the slider.  The slider must respond
  * appropriately to both these requests.
  *
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/AccessibleRole.html]]
+ * Wraps [[javafx.scene.AccessibleRole]]
  */
 object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, AccessibleRole] {
 

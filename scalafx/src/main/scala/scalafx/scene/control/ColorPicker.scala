@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ object ColorPicker {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Pagination.html]]
+ * Wraps [[javafx.scene.control.Pagination]]
  */
 class ColorPicker(override val delegate: jfxsc.ColorPicker = new jfxsc.ColorPicker)
     extends ComboBoxBase[jfxsp.Color](delegate)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ object ReadOnlyStringWrapper {
   def apply(value: String) = new ReadOnlyStringWrapper(new jfxbp.ReadOnlyStringWrapper(value))
 }
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper.html javafx.beans.property.ReadOnlyStringWrapper]] */
+/** Wrapper for [[javafx.beans.property.ReadOnlyStringWrapper]] */
 class ReadOnlyStringWrapper(override val delegate: jfxbp.ReadOnlyStringWrapper = new jfxbp.ReadOnlyStringWrapper())
     extends StringProperty(delegate)
     with SFXDelegate[jfxbp.ReadOnlyStringWrapper] {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -114,7 +114,7 @@ object MediaPlayer {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaPlayer.Status.html]]
+   * Wraps [[javafx.scene.media.MediaPlayer.Status]]
    */
   sealed abstract class Status(override val delegate: jfxsm.MediaPlayer.Status)
       extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]

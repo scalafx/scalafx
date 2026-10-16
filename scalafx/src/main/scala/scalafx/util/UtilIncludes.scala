@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,13 +36,13 @@ object UtilIncludes extends UtilIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/package-summary.html `javafx.util`]]
+ * [[javafx.util]]
  * Classes to their ScalaFX counterparts.
  */
 trait UtilIncludes {
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html `Callback`]] to a Function1.
+   * Converts a JavaFX [[javafx.util.Callback Callback]] to a Function1.
    *
    * @tparam P Callback parameter type
    * @tparam R Callback  return type.
@@ -52,7 +52,7 @@ trait UtilIncludes {
   implicit def jfxCallbackToFunction1[P, R](c: jfxu.Callback[P, R]): (P) => R = (param: P) => c.call(param)
 
   //  /**
-  //   * Converts a Function1 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html `Callback`]].
+  //   * Converts a Function1 to a JavaFX [[javafx.util.Callback Callback]].
   //   *
   //   * @tparam P Callback parameter type
   //   * @tparam R Callback  return type.
@@ -64,7 +64,7 @@ trait UtilIncludes {
   //  }
 
   /**
-   * Convert a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html Pair]] in a Scala Tuple2.
+   * Convert a JavaFX [[javafx.util.Pair Pair]] in a Scala Tuple2.
    *
    * @tparam K Key Type
    * @tparam V Value Type
@@ -74,7 +74,7 @@ trait UtilIncludes {
   implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]): (K, V) = (p.getKey, p.getValue)
 
   /**
-   * Convert a Scala Tuple2 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html Pair]].
+   * Convert a Scala Tuple2 to a JavaFX [[javafx.util.Pair Pair]].
    *
    * @tparam K Key Type
    * @tparam V Value Type
@@ -94,7 +94,7 @@ trait UtilIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html `javafx.util.Duration`]]
+   * [[javafx.util.Duration]]
    * instance to its ScalaFX counterpart.
    *
    * @param d JavaFX Duration
@@ -104,7 +104,7 @@ trait UtilIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html `javafx.util.StringConverter`]]
+   * [[javafx.util.StringConverter]]
    * instance to its ScalaFX counterpart.
    *
    * @tparam T StringConverter Type

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,14 +35,14 @@ object EventIncludes extends EventIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/package-summary.html `javafx.event`]]
+ * [[javafx.event]]
  * Classes to their ScalaFX counterparts.
  */
 trait EventIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent `javafx.event.ActionEvent`]]
+   * [[javafx.event.ActionEvent]]
    * instance to its ScalaFX counterpart.
    *
    * @param ae JavaFX ActionEvent
@@ -52,7 +52,7 @@ trait EventIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event `javafx.event.Event`]]
+   * [[javafx.event.Event]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX Event
@@ -71,7 +71,7 @@ trait EventIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventType `javafx.event.EventType`]]
+   * [[javafx.event.EventType]]
    * instance to its ScalaFX counterpart.
    *
    * @tparam T Event Type
@@ -83,7 +83,7 @@ trait EventIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler `javafx.event.WeakEventHandler`]]
+   * [[javafx.event.WeakEventHandler]]
    * instance to its ScalaFX counterpart.
    *
    * @tparam T Event Type

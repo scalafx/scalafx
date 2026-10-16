@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,13 +35,13 @@ object ShapeIncludes extends ShapeIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/package-summary.html `javafx.scene.shape`]]
+ * [[javafx.scene.shape]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define ARC Arc
  * @define ACT ArcTo
@@ -76,7 +76,7 @@ object ShapeIncludes extends ShapeIncludes
 trait ShapeIncludes {
 
   /**
-   * $START$ARC.html $ARC$END
+   * $START [[javafx.scene.shape.Arc Arc]] $END
    *
    * @param r $JFX $ARC
    * @return $SFX $ARC
@@ -84,7 +84,7 @@ trait ShapeIncludes {
   implicit def jfxArc2sfx(r: jfxss.Arc): Arc = if (r != null) new Arc(r) else null
 
   /**
-   * $START$ACT.html $ACT$END
+   * $START [[javafx.scene.shape.ArcTo ArcTo]] $END
    *
    * @param a $JFX $ACT
    * @return $SFX $ACT
@@ -92,7 +92,7 @@ trait ShapeIncludes {
   implicit def jfxArcTo2sfx(a: jfxss.ArcTo): ArcTo = if (a != null) new ArcTo(a) else null
 
   /**
-   * $START$ATY.html $ATY$END
+   * $START [[javafx.scene.shape.ArcType ArcType]] $END
    *
    * @param e $JFX $ATY
    * @return $SFX $ATY
@@ -100,7 +100,7 @@ trait ShapeIncludes {
   implicit def jfxArcType2sfx(e: jfxss.ArcType): ArcType = ArcType.jfxEnum2sfx(e)
 
   /**
-   * ${START}Box.html Box$END
+   * $START [[javafx.scene.shape.Box Box]] $END
    *
    * @param b $JFX Box
    * @return $SFX Box
@@ -108,7 +108,7 @@ trait ShapeIncludes {
   implicit def jfxBox2sfx(b: jfxss.Box): Box = if (b != null) new Box(b) {} else null
 
   /**
-   * $START$CLC.html $CLC$END
+   * $START [[javafx.scene.shape.Circle Circle]] $END
    *
    * @param r $JFX $CLC
    * @return $SFX $CLC
@@ -116,7 +116,7 @@ trait ShapeIncludes {
   implicit def jfxCircle2sfx(r: jfxss.Circle): Circle = if (r != null) new Circle(r) else null
 
   /**
-   * $START$CLP.html $CLP$END
+   * $START [[javafx.scene.shape.ClosePath ClosePath]] $END
    *
    * @param c $JFX $CLP
    * @return $SFX $CLP
@@ -124,7 +124,7 @@ trait ShapeIncludes {
   implicit def jfxClosePath2sfx(c: jfxss.ClosePath): ClosePath = if (c != null) new ClosePath(c) else null
 
   /**
-   * $START$CCR.html $CCR$END
+   * $START [[javafx.scene.shape.CubicCurve CubicCurve]] $END
    *
    * @param c $JFX $CCR
    * @return $SFX $CCR
@@ -132,7 +132,7 @@ trait ShapeIncludes {
   implicit def jfxCubicCurve2sfx(c: jfxss.CubicCurve): CubicCurve = if (c != null) new CubicCurve(c) else null
 
   /**
-   * $START$CCT.html $CCT$END
+   * $START [[javafx.scene.shape.CubicCurveTo CubicCurveTo]] $END
    *
    * @param c $JFX $CCT
    * @return $SFX $CCT
@@ -140,7 +140,7 @@ trait ShapeIncludes {
   implicit def jfxCubicCurveTo2sfx(c: jfxss.CubicCurveTo): CubicCurveTo = if (c != null) new CubicCurveTo(c) else null
 
   /**
-   * $START$CUF.html $CUF$END
+   * $START [[javafx.scene.shape.CullFace CullFace]] $END
    *
    * @param cf $JFX $CUF
    * @return $SFX $CUF
@@ -150,7 +150,7 @@ trait ShapeIncludes {
   implicit def jfxCylinder2sfx(c: jfxss.Cylinder): Cylinder = if (c != null) new Cylinder(c) else null
 
   /**
-   * $START$DRM.html $DRM$END
+   * $START [[javafx.scene.shape.DrawMode DrawMode]] $END
    *
    * @param e $JFX $DRM
    * @return $SFX $DRM
@@ -158,7 +158,7 @@ trait ShapeIncludes {
   implicit def jfxDrawMode2sfx(e: jfxss.DrawMode): DrawMode = DrawMode.jfxEnum2sfx(e)
 
   /**
-   * $START$ELI.html $ELI$END
+   * $START [[javafx.scene.shape.Ellipse Ellipse]] $END
    *
    * @param r $JFX $ELI
    * @return $SFX $ELI
@@ -166,7 +166,7 @@ trait ShapeIncludes {
   implicit def jfxEllipse2sfx(r: jfxss.Ellipse): Ellipse = if (r != null) new Ellipse(r) else null
 
   /**
-   * $START$FLR.html $FLR$END
+   * $START [[javafx.scene.shape.FillRule FillRule]] $END
    *
    * @param e $JFX $FLR
    * @return $SFX $FLR
@@ -174,7 +174,7 @@ trait ShapeIncludes {
   implicit def jfxFillRule2sfx(e: jfxss.FillRule): FillRule = FillRule.jfxEnum2sfx(e)
 
   /**
-   * $START$HLT.html $HLT$END
+   * $START [[javafx.scene.shape.HLineTo HLineTo]] $END
    *
    * @param h $JFX $HLT
    * @return $SFX $HLT
@@ -182,7 +182,7 @@ trait ShapeIncludes {
   implicit def jfxHLineTo2sfx(h: jfxss.HLineTo): HLineTo = if (h != null) new HLineTo(h) else null
 
   /**
-   * $START$LIN.html $LIN$END
+   * $START [[javafx.scene.shape.Line Line]] $END
    *
    * @param r $JFX $LIN
    * @return $SFX $LIN
@@ -190,7 +190,7 @@ trait ShapeIncludes {
   implicit def jfxLine2sfx(r: jfxss.Line): Line = if (r != null) new Line(r) else null
 
   /**
-   * $START$LNT.html $LNT$END
+   * $START [[javafx.scene.shape.LineTo LineTo]] $END
    *
    * @param l $JFX $LNT
    * @return $SFX $LNT
@@ -200,7 +200,7 @@ trait ShapeIncludes {
   implicit def jfxMeshView2sfx(mv: jfxss.MeshView): MeshView = if (mv != null) new MeshView(mv) else null
 
   /**
-   * $START$MVT.html $MVT$END
+   * $START [[javafx.scene.shape.MoveTo MoveTo]] $END
    *
    * @param l $JFX $MVT
    * @return $SFX $MVT
@@ -208,7 +208,7 @@ trait ShapeIncludes {
   implicit def jfxMoveTo2sfx(l: jfxss.MoveTo): MoveTo = if (l != null) new MoveTo(l) else null
 
   /**
-   * $START$PTH.html $PTH$END
+   * $START [[javafx.scene.shape.Path Path]] $END
    *
    * @param r $JFX $PTH
    * @return $SFX $PTH
@@ -216,7 +216,7 @@ trait ShapeIncludes {
   implicit def jfxPath2sfx(r: jfxss.Path): Path = if (r != null) new Path(r) else null
 
   /**
-   * $START$PTE.html $PTE$END
+   * $START [[javafx.scene.shape.PathElement PathElement]] $END
    *
    * @param e $JFX $PTE
    * @return $SFX $PTE
@@ -224,7 +224,7 @@ trait ShapeIncludes {
   implicit def jfxPathElement2sfx(e: jfxss.PathElement): PathElement = if (e != null) new PathElement(e) {} else null
 
   /**
-   * $START$PLG.html $PLG$END
+   * $START [[javafx.scene.shape.Polygon Polygon]] $END
    *
    * @param p $JFX $PLG
    * @return $SFX $PLG
@@ -232,7 +232,7 @@ trait ShapeIncludes {
   implicit def jfxPolygon2sfx(p: jfxss.Polygon): Polygon = if (p != null) new Polygon(p) else null
 
   /**
-   * $START$PLL.html $PLL$END
+   * $START [[javafx.scene.shape.Polyline Polyline]] $END
    *
    * @param p $JFX $PLL
    * @return $SFX $PLL
@@ -240,7 +240,7 @@ trait ShapeIncludes {
   implicit def jfxPolyline2sfx(p: jfxss.Polyline): Polyline = if (p != null) new Polyline(p) else null
 
   /**
-   * $START$QDC.html $QDC$END
+   * $START [[javafx.scene.shape.QuadCurve QuadCurve]] $END
    *
    * @param q $JFX $QDC
    * @return $SFX $QDC
@@ -248,7 +248,7 @@ trait ShapeIncludes {
   implicit def jfxQuadCurve2sfx(q: jfxss.QuadCurve): QuadCurve = if (q != null) new QuadCurve(q) else null
 
   /**
-   * $START$QCT.html $QCT$END
+   * $START [[javafx.scene.shape.QuadCurveTo QuadCurveTo]] $END
    *
    * @param q $JFX $QCT
    * @return $SFX $QCT
@@ -256,7 +256,7 @@ trait ShapeIncludes {
   implicit def jfxQuadCurveTo2sfx(q: jfxss.QuadCurveTo): QuadCurveTo = if (q != null) new QuadCurveTo(q) else null
 
   /**
-   * $START$REC.html $REC$END
+   * $START [[javafx.scene.shape.Rectangle Rectangle]] $END
    *
    * @param r $JFX $REC
    * @return $SFX $REC
@@ -264,7 +264,7 @@ trait ShapeIncludes {
   implicit def jfxRectangle2sfx(r: jfxss.Rectangle): Rectangle = if (r != null) new Rectangle(r) else null
 
   /**
-   * $START$SHA.html $SHA$END
+   * $START [[javafx.scene.shape.Shape Shape]] $END
    *
    * @param s $JFX $SHA
    * @return $SFX $SHA
@@ -272,7 +272,7 @@ trait ShapeIncludes {
   implicit def jfxShape2sfx(s: jfxss.Shape): Shape = if (s != null) new Shape(s) {} else null
 
   /**
-   * $START$SHA3D.html $SHA3D$END
+   * $START [[javafx.scene.shape.Shape3D Shape3D]] $END
    *
    * @param s $JFX $SHA3D
    * @return $SFX $SHA3D
@@ -282,7 +282,7 @@ trait ShapeIncludes {
   implicit def jfxSphere2sfx(s: jfxss.Sphere): Sphere = if (s != null) new Sphere(s) else null
 
   /**
-   * $START$SLC.html $SLC$END
+   * $START [[javafx.scene.shape.StrokeLineCap StrokeLineCap]] $END
    *
    * @param e $JFX $SLC
    * @return $SFX $SLC
@@ -290,7 +290,7 @@ trait ShapeIncludes {
   implicit def jfxStrokeLineCap2sfx(e: jfxss.StrokeLineCap): StrokeLineCap = StrokeLineCap.jfxEnum2sfx(e)
 
   /**
-   * $START$SLJ.html $SLJ$END
+   * $START [[javafx.scene.shape.StrokeLineJoin StrokeLineJoin]] $END
    *
    * @param e $JFX $SLJ
    * @return $SFX $SLJ
@@ -298,7 +298,7 @@ trait ShapeIncludes {
   implicit def jfxStrokeLineJoin2sfx(e: jfxss.StrokeLineJoin): StrokeLineJoin = StrokeLineJoin.jfxEnum2sfx(e)
 
   /**
-   * $START$STT.html $STT$END
+   * $START [[javafx.scene.shape.StrokeType StrokeType]] $END
    *
    * @param e $JFX $STT
    * @return $SFX $STT
@@ -306,7 +306,7 @@ trait ShapeIncludes {
   implicit def jfxStrokeType2sfx(e: jfxss.StrokeType): StrokeType = StrokeType.jfxEnum2sfx(e)
 
   /**
-   * $START$SVP.html $SVP$END
+   * $START [[javafx.scene.shape.SVGPath SVGPath]] $END
    *
    * @param s $JFX $SVP
    * @return $SFX $SVP
@@ -319,7 +319,7 @@ trait ShapeIncludes {
   implicit def jfxVertexFormat2sfx(v: jfxss.VertexFormat): VertexFormat = if (v != null) new VertexFormat(v) else null
 
   /**
-   * $START$VLT.html $VLT$END
+   * $START [[javafx.scene.shape.VLineTo VLineTo]] $END
    *
    * @param v $JFX $VLT
    * @return $SFX $VLT

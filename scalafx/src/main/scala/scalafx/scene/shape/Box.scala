@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object Box {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Box.html]].
+ * Wraps [[javafx.scene.shape.Box]].
  */
 class Box(override val delegate: jfxss.Box = new jfxss.Box())
     extends Shape3D(delegate)

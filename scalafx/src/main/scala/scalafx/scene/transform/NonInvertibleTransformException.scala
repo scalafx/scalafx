@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ object NonInvertibleTransformException {
     if (v != null) v.delegate else null
 }
 
-/** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/scene/transform/NonInvertibleTransformException.html]] */
+/** Wraps [[javafx.scene.transform.NonInvertibleTransformException]] */
 class NonInvertibleTransformException(override val delegate: jfxst.NonInvertibleTransformException)
     extends Exception(delegate) with SFXDelegate[jfxst.NonInvertibleTransformException] {
 

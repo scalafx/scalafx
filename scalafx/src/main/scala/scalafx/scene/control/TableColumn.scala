@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ object TableColumn {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.CellDataFeatures.html]].
+   * Wraps [[javafx.scene.control.TableColumn.CellDataFeatures]].
    */
   class CellDataFeatures[S, T](override val delegate: jfxsc.TableColumn.CellDataFeatures[S, T])
       extends SFXDelegate[jfxsc.TableColumn.CellDataFeatures[S, T]] {
@@ -87,7 +87,7 @@ object TableColumn {
    * A TableView is made up of a number of TableColumn instances.
    * Each TableColumn in a table is responsible for displaying (and editing) the contents of that column.
    *
-   * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/TableColumn.html]].
+   * Wraps [[javafx.scene.control.TableColumn]].
    */
   class CellEditEvent[S, T](override val delegate: jfxsc.TableColumn.CellEditEvent[S, T])
       extends Event(delegate)
@@ -156,7 +156,7 @@ object TableColumn {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.SortType.html]] */
+  /** Wrapper for [[javafx.scene.control.TableColumn.SortType]] */
   sealed abstract class SortType(override val delegate: jfxsc.TableColumn.SortType)
       extends SFXEnumDelegate[jfxsc.TableColumn.SortType]
 
@@ -197,7 +197,7 @@ object TableColumn {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html]].
+ * Wraps [[javafx.scene.control.TableColumn]].
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
     extends TableColumnBase[S, T](delegate)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -144,13 +144,13 @@ object ChoiceBoxTableCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBLC]]
+ * Wraps [[javafx.scene.control.cell.ChoiceBoxTableCell ChoiceBoxTableCell]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBLC from a JavaFX $CBLC
  * @param delegate JavaFX $CBLC
  *
- * @define CBLC `ChoiceBoxListCell`
+ * @define CBLC `ChoiceBoxTableCell`
  * @define CONVPARAM A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
  * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing.
  * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM

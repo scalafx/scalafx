@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ object EventTarget {
  * Wraps a $JFX $URL0 $FC]].
  *
  * @define FC EventTarget
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventTarget.html
+ * @define URL0 [[javafx.event.EventTarget
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

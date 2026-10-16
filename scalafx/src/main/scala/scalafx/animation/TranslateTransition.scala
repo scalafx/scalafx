@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scala.language.implicitConversions
 object TranslateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html $TT]],
+   * Converts a ScalaFX $TT to a JavaFX [[javafx.animation.TranslateTransition TranslateTransition]],
    * extracting its delegate.
    *
    * @param v ScalaFX $TT
@@ -55,7 +55,7 @@ object TranslateTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html TranslateTransition]].
+ * Wraps a [[javafx.animation.TranslateTransition TranslateTransition]].
  *
  * @constructor Creates a new ScalaFX $TT from a JavaFX $TT.
  * @param delegate JavaFX $TT to be delegated.

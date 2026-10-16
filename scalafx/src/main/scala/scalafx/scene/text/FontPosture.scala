@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 import scala.language.implicitConversions
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontPosture.html javafx.scene.text.FontPosture]] */
+/** Wrapper for [[javafx.scene.text.FontPosture]] */
 object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPosture] {
 
   case object Regular extends FontPosture(jfxst.FontPosture.REGULAR)

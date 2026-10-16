@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,15 +38,15 @@ object InputIncludes extends InputIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/package-summary.html `javafx.scene.input`]]
+ * [[javafx.scene.input]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.input.
- * @ d e f i n e F I N I S H W R ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX counterpart.
+ * @ d e f i n e F I N I S H W R ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[javafx.event.EventHandler EventHandler]] that manipulates it's $JFX counterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *
@@ -86,7 +86,7 @@ object InputIncludes extends InputIncludes
 trait InputIncludes {
 
   /**
-   * $START$CLIP.html $CLIP$END
+   * $START [[javafx.scene.input.Clipboard Clipboard]] $END
    *
    * @param c $JFX $CLIP
    * @return $SFX $CLIP
@@ -94,7 +94,7 @@ trait InputIncludes {
   implicit def jfxClipboard2sfx(c: jfxsi.Clipboard): Clipboard = if (c != null) new Clipboard(c) else null
 
   /**
-   * $START$CLCT.html $CLCT$END
+   * $START [[javafx.scene.input.ClipboardContent ClipboardContent]] $END
    *
    * @param c $JFX $CLCT
    * @return $SFX $CLCT
@@ -103,7 +103,7 @@ trait InputIncludes {
     if (c != null) new ClipboardContent(c) else null
 
   /**
-   * $START$CMEV.html $CMEV$END
+   * $START [[javafx.scene.input.ContextMenuEvent ContextMenuEvent]] $END
    *
    * @param c $JFX $CMEV
    * @return $SFX $CMEV
@@ -112,7 +112,7 @@ trait InputIncludes {
     if (c != null) new ContextMenuEvent(c) else null
 
   /**
-   * $START$DTFM.html $DTFM$END
+   * $START [[javafx.scene.input.DataFormat DataFormat]] $END
    *
    * @param df $JFX $DTFM
    * @return $SFX $DTFM
@@ -120,7 +120,7 @@ trait InputIncludes {
   implicit def jfxDataFormat2sfx(df: jfxsi.DataFormat): DataFormat = if (df != null) new DataFormat(df) else null
 
   /**
-   * $START$DRGB.html $DRGB$END
+   * $START [[javafx.scene.input.Dragboard Dragboard]] $END
    *
    * @param d $JFX $DRGB
    * @return $SFX $DRGB
@@ -128,7 +128,7 @@ trait InputIncludes {
   implicit def jfxDragboard2sfx(d: jfxsi.Dragboard): Dragboard = if (d != null) new Dragboard(d) else null
 
   /**
-   * $START$DREV.html $DREV$END
+   * $START [[javafx.scene.input.DragEvent DragEvent]] $END
    *
    * @param de $JFX $DREV
    * @return $SFX $DREV
@@ -136,7 +136,7 @@ trait InputIncludes {
   implicit def jfxDragEvent2sfx(de: jfxsi.DragEvent): DragEvent = if (de != null) new DragEvent(de) else null
 
   /**
-   * $START$GTEV.html $GTEV$END
+   * $START [[javafx.scene.input.GestureEvent GestureEvent]] $END
    *
    * @param ge $JFX $GTEV
    * @return $SFX $GTEV
@@ -145,7 +145,7 @@ trait InputIncludes {
     if (ge != null) new GestureEvent(ge) else null
 
   /**
-   * $START$IPEV.html $IPEV$END
+   * $START [[javafx.scene.input.InputEvent InputEvent]] $END
    *
    * @param ie $JFX $IPEV
    * @return $SFX $IPEV
@@ -153,7 +153,7 @@ trait InputIncludes {
   implicit def jfxInputEvent2sfx(ie: jfxsi.InputEvent): InputEvent = if (ie != null) new InputEvent(ie) else null
 
   /**
-   * $START$IMEV.html $IMEV$END
+   * $START [[javafx.scene.input.InputMethodEvent InputMethodEvent]] $END
    *
    * @param ime $JFX $IMEV
    * @return $SFX $IMEV
@@ -162,7 +162,7 @@ trait InputIncludes {
     if (ime != null) new InputMethodEvent(ime) else null
 
   /**
-   * $START$IMHL.html $IMHL$END
+   * $START [[javafx.scene.input.InputMethodHighlight InputMethodHighlight]] $END
    *
    * @param e $JFX $IMHL
    * @return $SFX $IMHL
@@ -171,7 +171,7 @@ trait InputIncludes {
     InputMethodHighlight.jfxEnum2sfx(e)
 
   /**
-   * $START$IMTR.html $IMTR$END
+   * $START [[javafx.scene.input.InputMethodTextRun InputMethodTextRun]] $END
    *
    * @param imtr $JFX $IMTR
    * @return $SFX $IMTR
@@ -180,7 +180,7 @@ trait InputIncludes {
     if (imtr != null) new InputMethodTextRun(imtr) else null
 
   /**
-   * $START$KYCB.html $KYCB$END
+   * $START [[javafx.scene.input.KeyCombination KeyCombination]] $END
    *
    * @param kc $JFX $KYCB
    * @return $SFX $KYCB
@@ -190,7 +190,7 @@ trait InputIncludes {
   else null
 
   /**
-   * $START$KCMV.html $KCMV$END
+   * $START [[javafx.scene.input.KeyCombination.ModifierValue KeyCombination.ModifierValue]] $END
    *
    * @param mv $JFX $KCMV
    * @return $SFX $KCMV
@@ -199,7 +199,7 @@ trait InputIncludes {
     KeyCombination.ModifierValue.jfxEnum2sfx(mv)
 
   /**
-   * $START$KCCB.html $KCCB$END
+   * $START [[javafx.scene.input.KeyCharacterCombination KeyCharacterCombination]] $END
    *
    * @param kcc $JFX $KCCB
    * @return $SFX $KCCB
@@ -208,7 +208,7 @@ trait InputIncludes {
     if (kcc != null) new KeyCharacterCombination(kcc) else null
 
   /**
-   * $START$KYCD.html $KYCD$END
+   * $START [[javafx.scene.input.KeyCode KeyCode]] $END
    *
    * @param e $JFX $KYCD
    * @return $SFX $KYCD
@@ -216,7 +216,7 @@ trait InputIncludes {
   implicit def jfxKeyCode2sfx(e: jfxsi.KeyCode): KeyCode = KeyCode.jfxEnum2sfx(e)
 
   /**
-   * $START$KCCM.html $KCCM$END
+   * $START [[javafx.scene.input.KeyCodeCombination KeyCodeCombination]] $END
    *
    * @param kcc $JFX $KCCM
    * @return $SFX $KCCM
@@ -225,7 +225,7 @@ trait InputIncludes {
     if (kcc != null) new KeyCodeCombination(kcc) else null
 
   /**
-   * $START$KCMD.html $KCMD$END
+   * $START [[javafx.scene.input.KeyCombination.Modifier KeyCombination.Modifier]] $END
    *
    * @param m $JFX $KCMD
    * @return $SFX $KCMD
@@ -235,7 +235,7 @@ trait InputIncludes {
   else null
 
   /**
-   * $START$KEEV.html $KEEV$END
+   * $START [[javafx.scene.input.KeyEvent KeyEvent]] $END
    *
    * @param ke $JFX $KEEV
    * @return $SFX $KEEV
@@ -243,7 +243,7 @@ trait InputIncludes {
   implicit def jfxKeyEvent2sfx(ke: jfxsi.KeyEvent): KeyEvent = if (ke != null) new KeyEvent(ke) else null
 
   /**
-   * $START$MNMC.html $MNMC$END
+   * $START [[javafx.scene.input.Mnemonic Mnemonic]] $END
    *
    * @param m $JFX $MNMC
    * @return $SFX $MNMC
@@ -251,7 +251,7 @@ trait InputIncludes {
   implicit def jfxMnemonic2sfx(m: jfxsi.Mnemonic): Mnemonic = if (m != null) new Mnemonic(m) else null
 
   /**
-   * $START$MSBT.html $MSBT$END
+   * $START [[javafx.scene.input.MouseButton MouseButton]] $END
    *
    * @param e $JFX $MSBT
    * @return $SFX $MSBT
@@ -259,7 +259,7 @@ trait InputIncludes {
   implicit def jfxMouseButton2sfx(e: jfxsi.MouseButton): MouseButton = MouseButton.jfxEnum2sfx(e)
 
   /**
-   * $START$MSEV.html $MSEV$END
+   * $START [[javafx.scene.input.MouseEvent MouseEvent]] $END
    *
    * @param me $JFX $MSEV
    * @return $SFX $MSEV
@@ -267,7 +267,7 @@ trait InputIncludes {
   implicit def jfxMouseEvent2sfx(me: jfxsi.MouseEvent): MouseEvent = if (me != null) new MouseEvent(me) else null
 
   /**
-   * $START$MSDE.html $MSDE$END
+   * $START [[javafx.scene.input.MouseDragEvent MouseDragEvent]] $END
    *
    * @param mde $JFX $MSDE
    * @return $SFX $MSDE
@@ -279,7 +279,7 @@ trait InputIncludes {
     if (m != null) new PickResult(m) else null
 
   /**
-   * $START$RTEV.html $RTEV$END
+   * $START [[javafx.scene.input.RotateEvent RotateEvent]] $END
    *
    * @param re $JFX $RTEV
    * @return $SFX $RTEV
@@ -287,7 +287,7 @@ trait InputIncludes {
   implicit def jfxRotateEvent2sfx(re: jfxsi.RotateEvent): RotateEvent = if (re != null) new RotateEvent(re) else null
 
   /**
-   * $START$SCEV.html $SCEV$END
+   * $START [[javafx.scene.input.ScrollEvent ScrollEvent]] $END
    *
    * @param se $JFX $SCEV
    * @return $SFX $SCEV
@@ -295,7 +295,7 @@ trait InputIncludes {
   implicit def jfxScrollEvent2sfx(se: jfxsi.ScrollEvent): ScrollEvent = if (se != null) new ScrollEvent(se) else null
 
   /**
-   * $START$SEHS.html $SEHS$END
+   * $START [[javafx.scene.input.ScrollEvent.HorizontalTextScrollUnits ScrollEvent.HorizontalTextScrollUnits]] $END
    *
    * @param h $JFX $SEHS
    * @return $SFX $SEHS
@@ -304,7 +304,7 @@ trait InputIncludes {
     : HorizontalTextScrollUnits = ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(h)
 
   /**
-   * $START$SEVS.html $SEVS$END
+   * $START [[javafx.scene.input.ScrollEvent.VerticalTextScrollUnits ScrollEvent.VerticalTextScrollUnits]] $END
    *
    * @param v $JFX $SEVS
    * @return $SFX $SEVS
@@ -313,7 +313,7 @@ trait InputIncludes {
     : VerticalTextScrollUnits = ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(v)
 
   /**
-   * $START$SWEV.html $SWEV$END
+   * $START [[javafx.scene.input.SwipeEvent SwipeEvent]] $END
    *
    * @param se $JFX $SWEV
    * @return $SFX $SWEV
@@ -321,7 +321,7 @@ trait InputIncludes {
   implicit def jfxSwipeEvent2sfx(se: jfxsi.SwipeEvent): SwipeEvent = if (se != null) new SwipeEvent(se) else null
 
   /**
-   * $START$TCEV.html $TCEV$END
+   * $START [[javafx.scene.input.TouchEvent TouchEvent]] $END
    *
    * @param te $JFX $TCEV
    * @return $SFX $TCEV
@@ -329,7 +329,7 @@ trait InputIncludes {
   implicit def jfxTouchEvent2sfx(te: jfxsi.TouchEvent): TouchEvent = if (te != null) new TouchEvent(te) else null
 
   /**
-   * $START$TCPT.html $TCPT$END
+   * $START [[javafx.scene.input.TouchPoint TouchPoint]] $END
    *
    * @param tp $JFX $TCPT
    * @return $SFX $TCPT
@@ -337,7 +337,7 @@ trait InputIncludes {
   implicit def jfxTouchPoint2sfx(tp: jfxsi.TouchPoint): TouchPoint = if (tp != null) new TouchPoint(tp) else null
 
   /**
-   * $START$TPST.html $TPST$END
+   * $START [[javafx.scene.input.TouchPoint.State TouchPoint.State]] $END
    *
    * @param s $JFX $TPST
    * @return $SFX $TPST
@@ -345,7 +345,7 @@ trait InputIncludes {
   implicit def jfxTouchPointState2sfx(s: jfxsi.TouchPoint.State): State = TouchPoint.State.jfxEnum2sfx(s)
 
   /**
-   * $START$TRMD.html $TRMD$END
+   * $START [[javafx.scene.input.TransferMode TransferMode]] $END
    *
    * @param e $JFX $TRMD
    * @return $SFX $TRMD
@@ -353,7 +353,7 @@ trait InputIncludes {
   implicit def jfxTransferMode2sfx(e: jfxsi.TransferMode): TransferMode = TransferMode.jfxEnum2sfx(e)
 
   /**
-   * $START$ZMEV.html $ZMEV$END
+   * $START [[javafx.scene.input.ZoomEvent ZoomEvent]] $END
    *
    * @param ze $JFX $ZMEV
    * @return $SFX $ZMEV

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,8 +46,8 @@ import scala.language.implicitConversions
  * @define OBJCOMPEND ]].
  * @define JFX        JavaFX
  * @define SFX        ScalaFX
- * @define WRAPSTA    Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
- * @define WRAPEND    ]].
+ * @define WRAPSTA    Wraps a $JFX
+ * @define WRAPEND    .
  * @define CONSSTA    Creates a new $SFX
  * @define CONSEND    from its $JFX counterpart.
  * @define CONSPARAM  to be wrapped.
@@ -72,7 +72,7 @@ object TableView {
    * or to the left (when the delta is negative).
    *
    * It delegates to JavaFX
-   * [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
+   * [[javafx.scene.control.TableView.UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
    */
   val UnconstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
     jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
@@ -86,7 +86,7 @@ object TableView {
    * Then it decreases the width of the second rightmost column until it reaches minimum width and so on.
    * When all right hand side columns reach minimum size, the user cannot increase the size of resized column any more.
    *
-   * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
+   * It delegates to JavaFX [[javafx.scene.control.TableView.CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
    */
   @deprecated("Use ConstrainedResizePolicyFlexLastColumn instead.", since = "JavaFX 20")
   val ConstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] =
@@ -187,7 +187,7 @@ object TableView {
   }
 
   /**
-   * $WRAPSTA$TV.$RF.html $RF$WRAPEND
+   * $WRAPSTA [[javafx.scene.control.TableView.ResizeFeatures ResizeFeatures]]$WRAPEND
    *
    * @constructor $CONSSTA $RF $CONSEND
    * @param delegate $JFX $RF $CONSPARAM
@@ -234,7 +234,7 @@ object TableView {
   }
 
   /**
-   * $WRAPSTA$TV.$TVSM.html $TVSM$WRAPEND
+   * $WRAPSTA [[javafx.scene.control.TableView.TableViewSelectionModel TableViewSelectionModel]]$WRAPEND
    *
    * @constructor $CONSSTA $TVSM $CONSEND
    * @param delegate $JFX $TVSM $CONSPARAM
@@ -302,7 +302,7 @@ object TableView {
   }
 
   /**
-   * $WRAPSTA$TV.$TVFM.html $TVFM$WRAPEND
+   * $WRAPSTA [[javafx.scene.control.TableView.TableViewFocusModel TableViewFocusModel]]$WRAPEND
    *
    * @constructor $CONSSTA $TVFM $CONSEND
    * @param delegate $JFX $TVFM $CONSPARAM
@@ -349,7 +349,7 @@ object TableView {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html TableView]].
+ * Wraps JavaFX [[javafx.scene.control.TableView TableView]].
  *
  * @constructor Creates a new ScalaFX TableView Wrapping a JavaFX TableView.
  * @param delegate JavaFX TableView to be wrapped. Its default value is a new JavaFX TableView.

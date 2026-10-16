@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -106,7 +106,7 @@ object StringConverter {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html `StringConverter`]].
+ * Wraps a JavaFX [[javafx.util.StringConverter StringConverter]].
  *
  * @constructor Creates a new ScalaFX StringConverter from a JavaFX StringConverter.
  * @tparam T Type to be converted from/to `String`.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ object ScrollBar {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollBar.html]]
+ * Wraps [[javafx.scene.control.ScrollBar]]
  */
 class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
     extends Control(delegate)

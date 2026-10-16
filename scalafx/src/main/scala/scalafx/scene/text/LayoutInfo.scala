@@ -46,7 +46,7 @@ object LayoutInfo {
  * such as break up of the text into lines,
  * as well as other shapes derived from the layout (selection, underline, etc.).
  *
- * Wraps JavaFX [[https://openjfx.io/javadoc/25/javafx.graphics/javafx/scene/text/LayoutInfo.html LayoutInfo]]
+ * Wraps JavaFX [[javafx.scene.text.LayoutInfo LayoutInfo]]
  */
 class LayoutInfo(override val delegate: jfxst.LayoutInfo)
     extends SFXDelegate[jfxst.LayoutInfo] {

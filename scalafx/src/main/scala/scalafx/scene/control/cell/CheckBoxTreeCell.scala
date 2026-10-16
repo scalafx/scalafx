@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.scene.control.cell.CheckBoxTreeCell]].
  *
- * @define CBTC   `CheckBoxTableCell`
+ * @define CBTC   `CheckBoxTreeCell`
  * @define SP     A Function that, given an object of type `TreeItem`, will return an `ObservableValue[Boolean]` that
  *                represents whether the given item is selected or not.
  * @define FTVRET A Function that will return a TreeCell that is able to work on the type of element contained within the
@@ -137,7 +137,7 @@ object CheckBoxTreeCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBTC]]
+ * Wraps [[javafx.scene.control.cell.CheckBoxTreeCell CheckBoxTreeCell]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBTC from a JavaFX $CBTC

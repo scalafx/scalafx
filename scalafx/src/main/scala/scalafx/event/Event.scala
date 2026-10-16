@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ object Event {
 }
 
 /**
- * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event.html Event]].
+ * Wrapper class for [[javafx.event.Event Event]].
  */
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
 

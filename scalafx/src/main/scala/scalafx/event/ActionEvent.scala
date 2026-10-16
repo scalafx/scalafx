@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,7 +63,7 @@ object ActionEvent {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html ActionEvent]].
+ * Wraps JavaFX [[javafx.event.ActionEvent ActionEvent]].
  */
 class ActionEvent(override val delegate: jfxe.ActionEvent = new jfxe.ActionEvent)
     extends Event(delegate)

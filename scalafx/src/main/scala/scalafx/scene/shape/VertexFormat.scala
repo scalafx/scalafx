@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ object VertexFormat {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @define TC VertexFormat
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html
+ * @define URL0 [[javafx.scene.shape.VertexFormat
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */

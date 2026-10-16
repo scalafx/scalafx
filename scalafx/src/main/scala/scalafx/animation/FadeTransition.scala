@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scala.language.implicitConversions
 object FadeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html $FT]],
+   * Converts a ScalaFX $FT to a JavaFX [[javafx.animation.FadeTransition FadeTransition]],
    * extracting its delegate.
    *
    * @param v ScalaFX $FT
@@ -54,7 +54,7 @@ object FadeTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html $FT]].
+ * Wraps a [[javafx.animation.FadeTransition FadeTransition]].
  *
  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
  * @param delegate JavaFX $FT to be delegated.

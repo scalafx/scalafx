@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.util.JavaConverters.*
 import scala.language.implicitConversions
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]] package,
+ * Wraps [[javafx.collections]] package,
  * adding Scala's collections features to original JavaFX collections.
  */
 package object collections {

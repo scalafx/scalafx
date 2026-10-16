@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,7 +62,7 @@ object Spinner {
  * A single line text field that lets the user select a number or an object
  * value from an ordered sequence.
  *
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Spinner.html Spinner]].
+ * Wraps a JavaFX [[javafx.scene.control.Spinner Spinner]].
  *
  * @constructor Constructs a default Spinner instance, with the default 'spinner' style class and a non-editable editor.
  * @param delegate A JavaFX Spinner to be wrapped. Its default value is a new JavaFX Spinner.

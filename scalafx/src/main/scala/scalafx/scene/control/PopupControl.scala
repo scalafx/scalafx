@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,7 +78,7 @@ object PopupControl {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/PopupControl.html PopupControl]].
+ * Wraps a JavaFX [[javafx.scene.control.PopupControl PopupControl]].
  *
  * @constructor Creates a new ScalaFX PopupControl from its JavaFX counterpart.
  * @param delegate JavaFX PopupControl to be wrapped. It defaul value is a new JavaFX PopupControl

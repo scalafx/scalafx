@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ import scala.language.implicitConversions
 object StrokeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html $ST]],
+   * Converts a ScalaFX $ST to a JavaFX [[javafx.animation.StrokeTransition StrokeTransition]],
    * extracting its delegate.
    *
    * @param v ScalaFX $ST
@@ -56,7 +56,7 @@ object StrokeTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html StrokeTransition]].
+ * Wraps a [[javafx.animation.StrokeTransition StrokeTransition]].
  *
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.

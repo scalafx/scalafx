@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import scala.language.implicitConversions
 
 /**
  * Enum indicating the repetition rules for border images.
- * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderRepeat.html javafx.scene.layout.BorderRepeat]].
+ * Wrapper for [[javafx.scene.layout.BorderRepeat]].
  */
 object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderRepeat] {
 

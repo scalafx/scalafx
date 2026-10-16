@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ trait Bindings {
 
   /**
    * Returns the highest value among a collection of $JFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * [[javafx.beans.value.ObservableNumberValue ObservableNumberValue]]s.
    *
    * @param v1     First Value
    * @param values Collection of values
@@ -58,7 +58,7 @@ trait Bindings {
 
   /**
    * Returns the Lowest value among a collection of $JFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * [[javafx.beans.value.ObservableNumberValue ObservableNumberValue]]s.
    *
    * @param v1     First Value
    * @param values Collection of values
@@ -69,7 +69,7 @@ trait Bindings {
 
   /**
    * Returns the sum of a collection of $JFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * [[javafx.beans.value.ObservableNumberValue ObservableNumberValue]]s.
    *
    * @param v1     First Value
    * @param values Collection of values
@@ -80,7 +80,7 @@ trait Bindings {
 
   /**
    * @param condition Function that returns a $JFX
-   *                  [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableBooleanValue.html `ObservableBooleanValue`]]
+   *                  [[javafx.beans.value.ObservableBooleanValue ObservableBooleanValue]]
    * @return A ConditionBuilder wrapping `condition`.
    */
   def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))
@@ -163,7 +163,7 @@ trait Bindings {
   /**
    * Helper function to create a custom BooleanBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createBooleanBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createBooleanBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createBooleanBinding Bindings.createBooleanBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding
@@ -185,7 +185,7 @@ trait Bindings {
   /**
    * Helper function to create a custom DoubleBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createDoubleBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createDoubleBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createDoubleBinding Bindings.createDoubleBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding
@@ -207,7 +207,7 @@ trait Bindings {
   /**
    * Helper function to create a custom FloatBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createFloatBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createFloatBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createFloatBinding Bindings.createFloatBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding
@@ -229,7 +229,7 @@ trait Bindings {
   /**
    * Helper function to create a custom IntegerBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createIntegerBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createIntegerBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createIntegerBinding Bindings.createIntegerBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding
@@ -251,7 +251,7 @@ trait Bindings {
   /**
    * Helper function to create a custom LongBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createLongBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createLongBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createLongBinding Bindings.createLongBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding
@@ -273,7 +273,7 @@ trait Bindings {
   /**
    * Helper function to create a custom ObjectBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createObjectBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createObjectBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createObjectBinding Bindings.createObjectBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding
@@ -295,7 +295,7 @@ trait Bindings {
   /**
    * Helper function to create a custom StringBinding.
    *
-   * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createStringBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createStringBinding]].
+   * Wraps a JavaFX [[javafx.beans.binding.Bindings.createStringBinding Bindings.createStringBinding]].
    *
    * @param func         The function that calculates the value of this binding
    * @param dependencies The dependencies of this binding

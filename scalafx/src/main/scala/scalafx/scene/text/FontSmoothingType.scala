@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.scene.text
 import javafx.scene.text as jfxst
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontSmoothingType.html javafx.scene.text.FontSmoothingType]] */
+/** Wrapper for [[javafx.scene.text.FontSmoothingType]] */
 object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingType, FontSmoothingType] {
 
   case object Gray extends FontSmoothingType(jfxst.FontSmoothingType.GRAY)

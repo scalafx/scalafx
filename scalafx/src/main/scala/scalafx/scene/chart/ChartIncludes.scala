@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,13 +38,13 @@ object ChartIncludes extends ChartIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]]
+ * [[javafx.scene.chart]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define START Converts a $JFX
+ * @define END instance to its $SFX counterpart.
  *
  * @define ARCH AreaChart
  * @define AXIS Axis
@@ -71,7 +71,7 @@ object ChartIncludes extends ChartIncludes
 trait ChartIncludes {
 
   /**
-   * $START$ARCH.html $ARCH$END
+   * $START [[javafx.scene.chart.AreaChart AreaChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -82,7 +82,7 @@ trait ChartIncludes {
     if (b != null) new AreaChart[X, Y](b) else null
 
   /**
-   * $START$AXIS.html $AXIS$END
+   * $START [[javafx.scene.chart.Axis Axis]] $END
    *
    * @tparam X $XTYPE
    * @param a $JFX $AXIS
@@ -91,7 +91,7 @@ trait ChartIncludes {
   implicit def jfxAxis2sfx[X](a: jfxsc.Axis[X]): Axis[X] = if (a != null) new Axis[X](a) {} else null
 
   /**
-   * $START$BRCH.html $BRCH$END
+   * $START [[javafx.scene.chart.BarChart BarChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -102,7 +102,7 @@ trait ChartIncludes {
     if (b != null) new BarChart[X, Y](b) else null
 
   /**
-   * $START$BBCH.html $BBCH$END
+   * $START [[javafx.scene.chart.BubbleChart BubbleChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -113,7 +113,7 @@ trait ChartIncludes {
     if (b != null) new BubbleChart[X, Y](b) else null
 
   /**
-   * $START$CHAR.html $CHAR$END
+   * $START [[javafx.scene.chart.Chart Chart]] $END
    *
    * @param c $JFX $CHAR
    * @return $SFX $CHAR
@@ -121,7 +121,7 @@ trait ChartIncludes {
   implicit def jfxChart2sfx(c: jfxsc.Chart): Chart = if (c != null) new Chart(c) {} else null
 
   /**
-   * $START$LNCH.html $LNCH$END
+   * $START [[javafx.scene.chart.LineChart LineChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -135,7 +135,7 @@ trait ChartIncludes {
     LineChart.SortingPolicy.jfxEnum2sfx(v)
 
   /**
-   * $START$PICH.html $PICH$END
+   * $START [[javafx.scene.chart.PieChart PieChart]] $END
    *
    * @param b $JFX $PICH
    * @return $SFX $PICH
@@ -143,7 +143,7 @@ trait ChartIncludes {
   implicit def jfxPieChart2sfx(b: jfxsc.PieChart): PieChart = if (b != null) new PieChart(b) else null
 
   /**
-   * $START$PIDT.html $PIDT$END
+   * $START [[javafx.scene.chart.PieChart.Data PieChart.Data]] $END
    *
    * @param b $JFX $PIDT
    * @return $SFX $PIDT
@@ -152,7 +152,7 @@ trait ChartIncludes {
     if (b != null) new PieChart.Data(b) else null
 
   /**
-   * $START$SCCH.html $SCCH$END
+   * $START [[javafx.scene.chart.ScatterChart ScatterChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -163,7 +163,7 @@ trait ChartIncludes {
     if (b != null) new ScatterChart[X, Y](b) else null
 
   /**
-   * $START$STCH.html $STCH$END
+   * $START [[javafx.scene.chart.StackedAreaChart StackedAreaChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -174,7 +174,7 @@ trait ChartIncludes {
     if (b != null) new StackedAreaChart[X, Y](b) else null
 
   /**
-   * $START$SBCH.html $SBCH$END
+   * $START [[javafx.scene.chart.StackedBarChart StackedBarChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -185,7 +185,7 @@ trait ChartIncludes {
     if (b != null) new StackedBarChart[X, Y](b) else null
 
   /**
-   * $START$TIMK.html $TIMK$END
+   * $START [[javafx.scene.chart.Axis.TickMark Axis.TickMark]] $END
    *
    * @tparam T $TIMK Type.
    * @param b $JFX $TIMK
@@ -195,7 +195,7 @@ trait ChartIncludes {
     if (b != null) new Axis.TickMark[T](b) else null
 
   /**
-   * $START$CAAX.html $CAAX$END
+   * $START [[javafx.scene.chart.CategoryAxis CategoryAxis]] $END
    *
    * @param b $JFX $CAAX
    * @return $SFX $CAAX
@@ -203,7 +203,7 @@ trait ChartIncludes {
   implicit def jfxCategoryAxis2sfx(b: jfxsc.CategoryAxis): CategoryAxis = if (b != null) new CategoryAxis(b) else null
 
   /**
-   * $START$NMAX.html $NMAX$END
+   * $START [[javafx.scene.chart.NumberAxis NumberAxis]] $END
    *
    * @param b $JFX $NMAX
    * @return $SFX $NMAX
@@ -211,7 +211,7 @@ trait ChartIncludes {
   implicit def jfxNumberAxis2sfx(b: jfxsc.NumberAxis): NumberAxis = if (b != null) new NumberAxis(b) else null
 
   /**
-   * $START$NMDF.html $NMDF$END
+   * $START [[javafx.scene.chart.NumberAxis.DefaultFormatter NumberAxis.DefaultFormatter]] $END
    *
    * @param b $JFX $NMDF
    * @return $SFX $NMDF
@@ -220,7 +220,7 @@ trait ChartIncludes {
     if (b != null) new NumberAxis.DefaultFormatter(b) else null
 
   /**
-   * $START$VAAX.html $VAAX$END
+   * $START [[javafx.scene.chart.ValueAxis ValueAxis]] $END
    *
    * @tparam X $XTYPE, derivated from Number.
    * @param a $JFX $VAAX
@@ -231,7 +231,7 @@ trait ChartIncludes {
   else null
 
   /**
-   * $START$XYCH.html $XYCH$END
+   * $START [[javafx.scene.chart.XYChart XYChart]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -242,7 +242,7 @@ trait ChartIncludes {
   else null
 
   /**
-   * $START$XYDT.html $XYDT$END
+   * $START [[javafx.scene.chart.XYChart.Data XYChart.Data]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
@@ -253,7 +253,7 @@ trait ChartIncludes {
     if (b != null) new XYChart.Data[X, Y](b) else null
 
   /**
-   * $START$XYSR.html $XYSR$END
+   * $START [[javafx.scene.chart.XYChart.Series XYChart.Series]] $END
    *
    * @tparam X $XTYPE
    * @tparam Y $YTYPE
