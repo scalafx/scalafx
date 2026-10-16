@@ -158,6 +158,8 @@ lazy val scalafxSettings = Seq(
       case _ => Seq.empty[String]
     }
   },
+  // Scaladoc 3 does not accept `-source`, inherited from compile options, sbt would report it as unused
+  Compile / doc / scalacOptions ~= (_.filterNot(_.startsWith("-source:"))),
   // Add other dependencies
   libraryDependencies ++= javafxModules,
   // scala-reflect is only used by Scala 2.12 sources (ObservableBuffer.sort uses runtime reflection)
