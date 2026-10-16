@@ -50,19 +50,20 @@ releaseTagName     := versionTagName((ThisBuild / version).value)
 releaseCrossBuild  := true
 // Releases are made from `stable` branch, after `master` is merged into it.
 // The release does not commit, tag, merge, or push, git commands that complete the release are printed at the end.
-releaseProcess := Seq[ReleaseStep](
-  ReleaseGit.checkGit,
-  checkSnapshotDependencies,
-  inquireVersions,
-  ReleaseSteps.checkReleaseNotes,
-  releaseStepTask(scalafxProject / SigningCheck.checkSigning),
-  runClean,
-  runTest,
-  setReleaseVersion,
-  releaseStepCommandAndRemaining("+publishSigned"),
-  releaseStepCommand("sonaRelease"),
-  ReleaseSteps.updateReadme,
-  ReleaseGit.printManualSteps
+releaseProcess := ReleaseSteps.reportingFailures(
+  "check git"                   -> ReleaseGit.checkGit,
+  "check Central credentials"   -> ReleaseSteps.checkCentralCredentials,
+  "check snapshot dependencies" -> checkSnapshotDependencies,
+  "inquire versions"            -> inquireVersions,
+  "check release notes"         -> ReleaseSteps.checkReleaseNotes,
+  "check signing"               -> releaseStepTask(scalafxProject / SigningCheck.checkSigning),
+  "clean"                       -> runClean,
+  "test"                        -> runTest,
+  "set release version"         -> setReleaseVersion,
+  "publish signed artifacts"    -> releaseStepCommandAndRemaining("+publishSigned"),
+  ReleaseSteps.UploadToCentral  -> releaseStepCommand("sonaRelease"),
+  "update README.md"            -> ReleaseSteps.updateReadme,
+  "print manual steps"          -> ReleaseGit.printManualSteps
 )
 
 // Drop a failed deployment on Sonatype Central Portal: `sbt "sonaDrop <deploymentId>"`
