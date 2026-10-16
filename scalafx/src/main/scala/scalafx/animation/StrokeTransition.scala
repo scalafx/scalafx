@@ -28,7 +28,7 @@ package scalafx.animation
 
 import javafx.scene.{paint as jfxsp, shape as jfxss}
 import javafx.{animation as jfxa, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color

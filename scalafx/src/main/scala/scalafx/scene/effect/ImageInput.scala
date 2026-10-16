@@ -27,7 +27,7 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect as jfxse, image as jfxsi}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.scene.image.Image

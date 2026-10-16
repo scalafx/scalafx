@@ -27,7 +27,7 @@
 package scalafx.css
 
 import javafx.css as jfxcss
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.{ObservableBuffer, ObservableSet}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node

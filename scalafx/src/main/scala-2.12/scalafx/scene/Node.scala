@@ -29,7 +29,7 @@ package scalafx.scene
 
 import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
 import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
-import scalafx.Includes._
+import scalafx.CoreIncludes._
 import scalafx.beans.property._
 import scalafx.collections._
 import scalafx.css.Styleable

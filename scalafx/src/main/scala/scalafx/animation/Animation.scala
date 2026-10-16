@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import javafx.{animation as jfxa, event as jfxe, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.*
 import scalafx.util.Duration

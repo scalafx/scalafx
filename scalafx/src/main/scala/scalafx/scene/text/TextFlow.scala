@@ -29,7 +29,7 @@ package scalafx.scene.text
 
 import javafx.css as jfxcss
 import javafx.scene.{shape as jfxss, text as jfxst}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Point2D

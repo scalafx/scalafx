@@ -27,7 +27,7 @@
 package scalafx.event
 
 import javafx.event as jfxe
-import scalafx.Includes.jfxEvent2sfx
+import scalafx.CoreIncludes.jfxEvent2sfx
 import scalafx.event.Event.sfxEvent2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 

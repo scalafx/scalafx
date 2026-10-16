@@ -28,7 +28,7 @@
 package scalafx.application
 
 import javafx.application as jfxa
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.application.ColorScheme]] */

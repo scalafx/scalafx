@@ -28,7 +28,7 @@
 package scalafx.event
 
 import javafx.event as jfxe
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions

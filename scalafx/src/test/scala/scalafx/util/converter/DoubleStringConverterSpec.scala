@@ -27,7 +27,7 @@
 package scalafx.util.converter
 
 import javafx.util.converter as jfxuc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 
 /**
  * DoubleStringConverter Spec tests.

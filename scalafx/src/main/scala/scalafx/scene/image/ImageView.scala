@@ -28,7 +28,7 @@ package scalafx.scene.image
 
 import javafx.geometry as jfxg
 import javafx.scene.image as jfxsi
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D

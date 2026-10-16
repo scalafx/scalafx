@@ -28,7 +28,7 @@
 package scalafx.scene.effect
 
 import javafx.scene.effect as jfxse
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.effect.BlurType]]. */

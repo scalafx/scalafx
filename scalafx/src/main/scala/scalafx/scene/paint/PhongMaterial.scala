@@ -28,7 +28,7 @@
 package scalafx.scene.paint
 
 import javafx.scene.{image as jfxsi, paint as jfxsp}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image

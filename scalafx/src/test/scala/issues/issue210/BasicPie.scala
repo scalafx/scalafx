@@ -27,7 +27,7 @@
 
 package issues.issue210
 
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.application.JFXApp3
 import scalafx.scene.chart.PieChart
 import scalafx.scene.control.Tooltip

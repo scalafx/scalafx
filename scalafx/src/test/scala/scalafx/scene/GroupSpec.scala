@@ -28,7 +28,7 @@ package scalafx.scene
 
 import javafx.scene as jfxs
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

@@ -28,7 +28,7 @@
 package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.scene.control.Alert.AlertType
 import scalafx.testutil.SFXEnumDelegateSpec
 

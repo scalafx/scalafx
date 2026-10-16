@@ -28,7 +28,7 @@ package scalafx.application
 
 import javafx.application as jfxa
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.jfxParameters2sfx
+import scalafx.CoreIncludes.jfxParameters2sfx
 import scalafx.application.JFXApp3.Parameters.sfxParameters2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.util.JavaConverters.*

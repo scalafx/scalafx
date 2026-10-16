@@ -27,7 +27,7 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect as jfxse, paint as jfxsp}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{DimensionDelegate, PositionDelegate, SFXDelegate}
 import scalafx.scene.paint.*

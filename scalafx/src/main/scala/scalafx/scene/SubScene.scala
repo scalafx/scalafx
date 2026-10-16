@@ -28,7 +28,7 @@ package scalafx.scene
 
 import javafx.scene.{layout as jfxsl, paint as jfxsp}
 import javafx.{collections as jfxc, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.collections.*
 import scalafx.delegate.SFXDelegate

@@ -28,7 +28,8 @@ package scalafx.scene.media
 
 import javafx.scene.media as jfxsm
 import javafx.util as jfxu
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.media.MediaIncludes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.collections.CollectionIncludes.jfxObservableMap2sfxObservableMap
 import scalafx.collections.{ObservableBuffer, ObservableMap}

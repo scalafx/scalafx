@@ -31,7 +31,7 @@ import javafx.beans.property as jfxbp
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.ObservableMap
 
 /**

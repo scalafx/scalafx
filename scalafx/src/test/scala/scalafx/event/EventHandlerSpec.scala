@@ -26,7 +26,7 @@
  */
 
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.event.{ActionEvent, Event}
 import scalafx.scene.Group
 import scalafx.scene.control.Button

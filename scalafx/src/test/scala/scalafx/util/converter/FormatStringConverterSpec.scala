@@ -29,7 +29,7 @@ package scalafx.util.converter
 
 import javafx.util.converter as jfxuc
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 import java.text.NumberFormat

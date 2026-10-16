@@ -29,7 +29,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import javafx.util.converter.FormatStringConverter
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.{BootstrapApplication, RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 import java.text.NumberFormat

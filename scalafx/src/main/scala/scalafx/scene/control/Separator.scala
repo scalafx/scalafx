@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.geometry as jfxg
 import javafx.scene.control as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{HPos, Orientation, VPos}

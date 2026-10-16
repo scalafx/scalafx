@@ -27,7 +27,7 @@
 package scalafx.stage
 
 import javafx.{event as jfxe, stage as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node

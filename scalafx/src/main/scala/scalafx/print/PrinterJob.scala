@@ -27,7 +27,7 @@
 package scalafx.print
 
 import javafx.print as jfxp
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node

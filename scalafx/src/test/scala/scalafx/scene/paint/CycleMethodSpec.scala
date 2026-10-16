@@ -28,7 +28,7 @@
 package scalafx.scene.paint
 
 import javafx.scene.paint as jfxsp
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Test for [[scalafx.scene.paint.CycleMethod]] */

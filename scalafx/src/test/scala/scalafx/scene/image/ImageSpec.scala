@@ -27,7 +27,7 @@
 package scalafx.scene.image
 
 import javafx.scene.image as jfxsi
-import scalafx.Includes.jfxImage2sfx
+import scalafx.CoreIncludes.jfxImage2sfx
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 

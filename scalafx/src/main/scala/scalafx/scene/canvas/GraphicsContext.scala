@@ -27,7 +27,7 @@
 package scalafx.scene.canvas
 
 import javafx.scene.canvas as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.VPos
 import scalafx.scene.effect.{BlendMode, Effect}

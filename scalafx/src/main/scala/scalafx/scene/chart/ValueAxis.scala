@@ -28,7 +28,7 @@ package scalafx.scene.chart
 
 import javafx.scene.chart as jfxsc
 import javafx.util as jfxu
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter

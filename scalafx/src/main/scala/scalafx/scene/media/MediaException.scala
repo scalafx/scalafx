@@ -27,7 +27,8 @@
 package scalafx.scene.media
 
 import javafx.scene.media as jfxsm
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.media.MediaIncludes.*
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 import scala.language.implicitConversions

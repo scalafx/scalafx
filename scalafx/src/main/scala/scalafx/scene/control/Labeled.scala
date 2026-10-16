@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control as jfxsc, paint as jfxsp, text as jfxst}
 import javafx.{geometry as jfxg, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.scene.Node

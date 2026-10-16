@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene as jfxs
 import javafx.scene.control as jfxsc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

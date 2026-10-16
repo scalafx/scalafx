@@ -28,7 +28,7 @@
 package scalafx.collections.transformation
 
 import javafx.collections.transformation as jfxct
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate

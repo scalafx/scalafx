@@ -27,7 +27,7 @@
 package scalafx.scene
 
 import javafx.scene as jfxs
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.paint.Paint

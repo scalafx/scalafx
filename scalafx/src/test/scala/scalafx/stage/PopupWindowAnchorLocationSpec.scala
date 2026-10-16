@@ -28,7 +28,7 @@
 package scalafx.stage
 
 import javafx.stage as jfxs
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.stage.PopupWindow.AnchorLocation]]. */

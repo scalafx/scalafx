@@ -27,7 +27,7 @@
 
 package issues.issue102
 
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.application.JFXApp3
 import scalafx.geometry.Insets
 import scalafx.scene.Scene

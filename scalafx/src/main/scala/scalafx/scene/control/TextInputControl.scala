@@ -28,7 +28,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control as jfxsc, text as jfxst}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 

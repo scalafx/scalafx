@@ -27,7 +27,7 @@
 package scalafx.scene.input
 
 import javafx.scene.input as jfxsi
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.scene.input.DataFormat.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 

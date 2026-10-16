@@ -28,7 +28,7 @@
 package scalafx.geometry
 
 import javafx.geometry as jfxg
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

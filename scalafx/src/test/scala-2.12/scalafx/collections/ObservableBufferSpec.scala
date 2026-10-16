@@ -29,7 +29,7 @@ package scalafx.collections
 
 import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
 import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
+import scalafx.CoreIncludes._
 import scalafx.collections.ObservableBuffer._
 import scalafx.testutil.SimpleSFXDelegateSpec
 

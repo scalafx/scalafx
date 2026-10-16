@@ -27,7 +27,7 @@
 package scalafx.delegate
 
 import javafx.beans.property as jfxbp
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate.*
 

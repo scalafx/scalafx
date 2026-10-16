@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import javafx.{css as jfxcss, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.CollectionIncludes.observableList2ObservableBuffer
 import scalafx.collections.ObservableBuffer
 import scalafx.css.PseudoClass

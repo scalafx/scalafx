@@ -28,7 +28,7 @@
 package scalafx.scene.layout
 
 import javafx.scene.layout as jfxsl
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
 import scalafx.testutil.SimpleSFXDelegateSpec
 

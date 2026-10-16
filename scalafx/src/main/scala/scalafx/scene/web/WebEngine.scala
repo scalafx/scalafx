@@ -29,7 +29,8 @@ package scalafx.scene.web
 import javafx.scene.web as jfxsw
 import javafx.{event as jfxe, geometry as jfxg, util as jfxu}
 import org.w3c.dom.Document
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.web.WebIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.print.PrinterJob

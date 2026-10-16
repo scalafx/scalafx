@@ -25,48 +25,69 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import scala.xml.transform.{RewriteRule, RuleTransformer}
-import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
-
 //
 // Environment variables used by the build:
 // GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined, Scaladocs will be built without diagrams.
 // JAR_BUILT_BY      - Name to be added to the Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "26"
-val scalafxVersion = "26.0.0-R38"
+import sbtrelease.ReleaseStateTransformations.*
 
-val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
+// ScalaFX version is in `version.sbt`, it is updated by `sbt release`
+val javaFXVersion = "27"
+
+def versionTagName(version: String): String = s"v.$version"
+def versionTagDir(version: String): String  = if (version.endsWith("SNAPSHOT")) "master" else versionTagName(version)
+
+// Common settings, SBT 2 applies bare settings in build.sbt to all subprojects
+scalafxSettings
+mavenCentralSettings
+
+// Release process, run with `sbt release`
+releaseVersion     := ReleaseVersions.releaseVersion
+releaseNextVersion := ReleaseVersions.nextVersion
+releaseTagName     := versionTagName((ThisBuild / version).value)
+releaseCrossBuild  := true
+// Releases are made from `stable` branch, after `master` is merged into it.
+// The release does not commit, tag, merge, or push, git commands that complete the release are printed at the end.
+releaseProcess := Seq[ReleaseStep](
+  ReleaseGit.checkGit,
+  checkSnapshotDependencies,
+  inquireVersions,
+  ReleaseSteps.checkReleaseNotes,
+  releaseStepTask(scalafxProject / SigningCheck.checkSigning),
+  runClean,
+  runTest,
+  setReleaseVersion,
+  releaseStepCommandAndRemaining("+publishSigned"),
+  releaseStepCommand("sonaRelease"),
+  ReleaseSteps.updateReadme,
+  ReleaseGit.printManualSteps
+)
+
+// Drop a failed deployment on Sonatype Central Portal: `sbt "sonaDrop <deploymentId>"`
+commands += SonaDrop.command
 
 // Root project
-//lazy val scalafxProject = (project in file("."))
-//  .settings(
-name            := "scalafx-project"
-publishArtifact := false
-publish / skip  := true
-//  )
-//  .aggregate(scalafx, scalafxDemos)
+lazy val scalafxProject = (project in file("."))
+  .settings(
+    name            := "scalafx-project",
+    publishArtifact := false,
+    publish / skip  := true
+  )
+  .settings(SigningCheck.settings) // `sbt checkSigning`, defined only here, so it runs once
+  .aggregate(scalafx, scalafxDemos)
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
-  scalafxSettings,
   name        := "scalafx",
-  description := "The ScalaFX framework",
-  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
-  libraryDependencies ++= javafxModules,
-  run / fork             := true,
-  publishArtifact        := true,
-  Test / publishArtifact := false
+  description := "The ScalaFX framework"
 )
 
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
-  scalafxSettings,
   name        := "scalafx-demos",
   description := "The ScalaFX demonstrations",
-  libraryDependencies ++= javafxModules,
-  run / fork := true,
   javaOptions ++= Seq(
     "-Xmx512M",
     "-Djavafx.verbose"
@@ -77,7 +98,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 val Scala2_12 = "2.12.21"
 val Scala2_13 = "2.13.18"
-val Scala3_3  = "3.3.7"
+val Scala3_3  = "3.3.8"
 
 // Dependencies
 lazy val javafxModules =
@@ -85,42 +106,32 @@ lazy val javafxModules =
     .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.20"
 
-def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
-  CrossVersion.partialVersion(scalaVersion) match {
-    case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
-    case _            => Seq.empty[ModuleID]
-  }
-
-// Common settings
+// Settings shared by all projects, applied as bare settings at the top of this file
 lazy val scalafxSettings = Seq(
-  organization       := "org.scalafx",
-  version            := scalafxVersion,
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
-  javaOptions   ++= Seq("-Djavafx.enablePreview=true"),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "23"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "25"),
   scalacOptions ++= {
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
-      case Some((3, _)) => Seq("-source:3.3-migration", "-explain", "-explain-types")
-      case _            => Seq.empty[String]
+    scalaBinaryVersion.value match {
+      case "3" => Seq("-source:3.3-migration", "-explain", "-explain-types")
+      case _   => Seq("-Xcheckinit", "-Xsource:3", "-Xmigration")
     }
   },
+  Compile / doc / name := "ScalaFX API",
   Compile / doc / scalacOptions ++= {
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, _)) =>
+    scalaBinaryVersion.value match {
+      case "2.12" | "2.13" =>
         Opts.doc.title("ScalaFX API") ++
-          Opts.doc.version(scalafxVersion) ++
+          Opts.doc.version(version.value) ++
           Seq(
             "-sourcepath",
             baseDirectory.value.toString,
             "-doc-root-content",
             s"${baseDirectory.value}/src/main/scala/root-doc.creole",
             "-doc-source-url",
-            s"https://github.com/scalafx/scalafx/tree/$versionTagDir/scalafx/€{FILE_PATH}.scala",
-            s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+            s"https://github.com/scalafx/scalafx/tree/${versionTagDir(version.value)}/scalafx/€{FILE_PATH}.scala",
             "-doc-footer",
-            s"ScalaFX API v.$scalafxVersion"
+            s"ScalaFX API v.${version.value}"
           ) ++
           (
             Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
@@ -133,41 +144,39 @@ lazy val scalafxSettings = Seq(
               case None => Seq.empty[String]
             }
           )
+      case "3" =>
+        Opts.doc.version(version.value) ++
+          Seq(
+            "-doc-root-content",
+            s"${baseDirectory.value}/src/main/scala-3/root-doc.md",
+            s"-source-links:github://scalafx/scalafx/${versionTagDir(version.value)}",
+            s"-external-mappings:.*scala3?-library.*::scaladoc3::https://www.scala-lang.org/api/${scalaVersion.value}/",
+            "-doc-footer",
+            s"ScalaFX API v.${version.value}"
+          )
       case _ => Seq.empty[String]
     }
   },
   // Add other dependencies
-  libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
-  libraryDependencies += scalaTestLib % "test",
-  // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
-  // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
-  // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
-  pomPostProcess := { node: XmlNode =>
-    new RuleTransformer(new RewriteRule {
-      override def transform(node: XmlNode): XmlNodeSeq = node match {
-        case e: Elem if e.label == "dependency" && e.child.exists(c => c.label == "scope" && c.text == "provided") =>
-          val organization = e.child.filter(_.label == "groupId").flatMap(_.text).mkString
-          val artifact     = e.child.filter(_.label == "artifactId").flatMap(_.text).mkString
-          val version      = e.child.filter(_.label == "version").flatMap(_.text).mkString
-          Comment(s"provided dependency $organization#$artifact;$version has been omitted")
-        case _ => node
-      }
-    }).transform(node).head
+  libraryDependencies ++= javafxModules,
+  // scala-reflect is only used by Scala 2.12 sources (ObservableBuffer.sort uses runtime reflection)
+  libraryDependencies ++= {
+    if (scalaBinaryVersion.value == "2.12") Seq("org.scala-lang" % "scala-reflect" % scalaVersion.value)
+    else Seq.empty
   },
-  autoAPIMappings := true,
+  libraryDependencies += scalaTestLib % Test,
+  autoAPIMappings                    := true,
   manifestSetting,
+  run / fork               := true,
   Test / fork              := true,
   Test / parallelExecution := false,
-  // print junit-style XML for CI
-  Test / testOptions += {
-    val t = (Test / target).value
-    Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
-  }
-) ++ mavenCentralSettings
+  // Run JavaFX in headless mode (JavaFX 26+), no xvfb/virtual display needed
+  Test / javaOptions += "-Dglass.platform=headless"
+)
 
 lazy val manifestSetting = packageOptions += {
   Package.ManifestAttributes(
-    "Created-By"               -> "Simple Build Tool",
+    "Created-By"               -> s"SBT ${sbtVersion.value}",
     "Built-By"                 -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
     "Build-Jdk"                -> System.getProperty("java.version"),
     "Specification-Title"      -> name.value,
@@ -181,17 +190,16 @@ lazy val manifestSetting = packageOptions += {
 }
 
 // Metadata needed by Maven Central
-// See also http://maven.apache.org/pom.html#Developers
+// See also https://maven.apache.org/pom.html#More_Project_Information
 lazy val mavenCentralSettings = Seq(
   organization         := "org.scalafx",
   organizationName     := "ScalaFX",
-  organizationHomepage := Option(url("http://www.scalafx.org/")),
-  homepage             := Option(url("http://www.scalafx.org/")),
+  organizationHomepage := Option(uri("https://www.scalafx.org/")),
+  homepage             := Option(uri("https://www.scalafx.org/")),
   startYear            := Option(2011),
-  licenses             := Seq(("BSD", url("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
-  scmInfo := Option(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
+  licenses := Seq(License("BSD-3-Clause", uri("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
+  scmInfo  := Option(ScmInfo(uri("https://github.com/scalafx/scalafx"), "scm:git:git@github.com:scalafx/scalafx.git")),
   pomIncludeRepository := { _ => false },
-  publishMavenStyle    := true,
   publishTo            := {
     val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
     if (isSnapshot.value)
@@ -199,143 +207,55 @@ lazy val mavenCentralSettings = Seq(
     else
       localStaging.value
   },
-  pomExtra :=
-    <developers>
-      <developer>
-        <id>rafael.afonso</id>
-        <name>Rafael Afonso</name>
-        <url>https://github.com/rafonso</url>
-      </developer>
-      <developer>
-        <name>Mike Allen</name>
-      </developer>
-      <developer>
-        <id>Alain.Fagot.Bearez</id>
-        <name>Alain Béarez</name>
-        <url>http://cua.li/TI/</url>
-      </developer>
-      <developer>
-        <id>steveonjava</id>
-        <name>Stephen Chin</name>
-        <url>http://www.nighthacking.com/</url>
-      </developer>
-      <developer>
-        <id>KevinCoghlan</id>
-        <name>Kevin Coghlan</name>
-        <url>http://www.kevincoghlan.com</url>
-      </developer>
-      <developer>
-        <id>akauppi</id>
-        <name>Asko Kauppi</name>
-      </developer>
-      <developer>
-        <id>rladstaetter</id>
-        <name>Robert Ladstätter</name>
-      </developer>
-      <developer>
-        <id>peter.pilgrim</id>
-        <name>Peter Pilgrim</name>
-        <url>http://www.xenonique.co.uk/blog/</url>
-      </developer>
-      <developer>
-        <name>Matthew Pocock</name>
-      </developer>
-      <developer>
-        <id>sven.reimers</id>
-        <name>Sven Reimers</name>
-        <url>http://wiki.netbeans.org/SvenReimers/</url>
-      </developer>
-      <developer>
-        <id>jpsacha</id>
-        <name>Jarek Sacha</name>
-        <url>https://github.com/jpsacha</url>
-      </developer>
-      <developer>
-        <name>Curtis Stanford</name>
-      </developer>
-      <developer>
-        <name>Facsimiler</name>
-        <url>https://github.com/Facsimiler</url>
-      </developer>
-      <developer>
-        <name>Romain DEP.</name>
-        <url>https://github.com/rom1dep</url>
-      </developer>
-      <developer>
-        <name>estanislaobosch</name>
-        <url>https://github.com/estanislaobosch</url>
-      </developer>
-      <developer>
-        <name>Ken McDonald</name>
-        <url>https://github.com/KenMcDonald</url>
-      </developer>
-      <developer>
-        <name>Brian Schlining</name>
-        <url>https://www.mbari.org/schlining-brian/</url>
-      </developer>
-      <developer>
-        <name>Yusuke Izawa</name>
-        <url>https://github.com/3tty0n</url>
-      </developer>
-      <developer>
-        <name>Roman Hargrave</name>
-        <url>https://github.com/RomanHargrave</url>
-      </developer>
-      <developer>
-        <name>Johannes Mockenhaupt</name>
-        <url>https://github.com/jotomo</url>
-      </developer>
-      <developer>
-        <name>Piotr Mardziel</name>
-        <url>https://piotr.mardziel.com/</url>
-      </developer>
-      <developer>
-        <name>nigredo-tori</name>
-        <url>https://github.com/nigredo-tori</url>
-      </developer>
-      <developer>
-        <name>Damian Bronecki</name>
-        <url>https://github.com/dbronecki</url>
-      </developer>
-      <developer>
-        <name>SwhGo_oN</name>
-        <url>https://github.com/swhgoon</url>
-      </developer>
-      <developer>
-        <name>Rajmahendra</name>
-        <url>https://github.com/rajmahendra</url>
-      </developer>
-      <developer>
-        <name>Sam Privett</name>
-        <url>https://github.com/maspe36</url>
-      </developer>
-      <developer>
-        <name>Eric Zoerner</name>
-        <url>https://github.com/ezoerner</url>
-      </developer>
-      <developer>
-        <name>Edward Samson</name>
-        <url>https://github.com/esamson</url>
-      </developer>
-      <developer>
-        <name>Emily Herbert</name>
-        <url>https://github.com/emilyaherbert</url>
-      </developer>
-      <developer>
-        <name>Brandon Stilson</name>
-        <url>https://github.com/bbstilson</url>
-      </developer>
-      <developer>
-        <name>Anatoly Trosinenko</name>
-        <url>https://github.com/atrosinenko</url>
-      </developer>
-      <developer>
-        <name>Mark Lewis</name>
-        <url>https://github.com/MarkCLewis</url>
-      </developer>
-      <developer>
-        <name>Jeansen</name>
-        <url>https://github.com/Jeansen</url>
-      </developer>
-    </developers>
+  developers := List(
+    Developer("rafael.afonso", "Rafael Afonso", "", uri("https://github.com/rafonso")),
+    Developer("", "Mike Allen", "", uri("")),
+    Developer("Alain.Fagot.Bearez", "Alain Béarez", "", uri("http://cua.li/TI/")),
+    Developer("steveonjava", "Stephen Chin", "", uri("http://www.nighthacking.com/")),
+    Developer("KevinCoghlan", "Kevin Coghlan", "", uri("http://www.kevincoghlan.com")),
+    Developer("akauppi", "Asko Kauppi", "", uri("")),
+    Developer("rladstaetter", "Robert Ladstätter", "", uri("")),
+    Developer("peter.pilgrim", "Peter Pilgrim", "", uri("http://www.xenonique.co.uk/blog/")),
+    Developer("", "Matthew Pocock", "", uri("")),
+    Developer("sven.reimers", "Sven Reimers", "", uri("http://wiki.netbeans.org/SvenReimers/")),
+    Developer("jpsacha", "Jarek Sacha", "", uri("https://github.com/jpsacha")),
+    Developer("", "Curtis Stanford", "", uri("")),
+    Developer("", "Facsimiler", "", uri("https://github.com/Facsimiler")),
+    Developer("", "Romain DEP.", "", uri("https://github.com/rom1dep")),
+    Developer("", "estanislaobosch", "", uri("https://github.com/estanislaobosch")),
+    Developer("", "Ken McDonald", "", uri("https://github.com/KenMcDonald")),
+    Developer("", "Brian Schlining", "", uri("https://www.mbari.org/schlining-brian/")),
+    Developer("", "Yusuke Izawa", "", uri("https://github.com/3tty0n")),
+    Developer("", "Roman Hargrave", "", uri("https://github.com/RomanHargrave")),
+    Developer("", "Johannes Mockenhaupt", "", uri("https://github.com/jotomo")),
+    Developer("", "Piotr Mardziel", "", uri("https://piotr.mardziel.com/")),
+    Developer("", "nigredo-tori", "", uri("https://github.com/nigredo-tori")),
+    Developer("", "Damian Bronecki", "", uri("https://github.com/dbronecki")),
+    Developer("", "SwhGo_oN", "", uri("https://github.com/swhgoon")),
+    Developer("", "Rajmahendra", "", uri("https://github.com/rajmahendra")),
+    Developer("", "Sam Privett", "", uri("https://github.com/maspe36")),
+    Developer("", "Eric Zoerner", "", uri("https://github.com/ezoerner")),
+    Developer("", "Edward Samson", "", uri("https://github.com/esamson")),
+    Developer("", "Emily Herbert", "", uri("https://github.com/emilyaherbert")),
+    Developer("", "Brandon Stilson", "", uri("https://github.com/bbstilson")),
+    Developer("", "Anatoly Trosinenko", "", uri("https://github.com/atrosinenko")),
+    Developer("", "Mark Lewis", "", uri("https://github.com/MarkCLewis")),
+    Developer("", "Jeansen", "", uri("https://github.com/Jeansen")),
+    Developer("", "Renato Cavalcanti", "", uri("")),
+    Developer("", "luc", "", uri("")),
+    Developer("", "Prasanna Kumar", "", uri("")),
+    Developer("", "Tani", "", uri("")),
+    Developer("", "Daniel Alves", "", uri("")),
+    Developer("", "Danila", "", uri("")),
+    Developer("", "Massimo Redaelli", "", uri("")),
+    Developer("", "Benedict Lee", "", uri("")),
+    Developer("", "Kris Allen", "", uri("https://github.com/kdallen25")),
+    Developer("", "Seth Tisue", "", uri("https://github.com/SethTisue")),
+    Developer("", "Samuel Bernard", "", uri("https://github.com/s-bernard")),
+    Developer("", "Liam Skirrow", "", uri("https://github.com/LiamSkirrow")),
+    Developer("", "philwalk", "", uri("https://github.com/philwalk")),
+    Developer("", "P.J. Henning", "", uri("https://github.com/pjhenning")),
+    Developer("", "Tobias Roeser", "", uri("https://github.com/lefou")),
+    Developer("", "RumbleTumbleKid", "", uri("https://github.com/RumbleTumbleKid"))
+  )
 )

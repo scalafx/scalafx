@@ -28,7 +28,8 @@ package scalafx.scene.web
 
 import javafx.scene.{text as jfxst, web as jfxsw}
 import javafx.{css as jfxc, event as jfxe, geometry as jfxg, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.web.WebIncludes.*
 import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent

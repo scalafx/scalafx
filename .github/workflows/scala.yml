@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '24', '25', '26' ]
+        java: [ '25', '26', '27' ]
     name: Java ${{ matrix.Java }} sample
     steps:
       - uses: actions/checkout@v6
@@ -23,6 +23,4 @@ jobs:
           cache: sbt
       - uses: sbt/setup-sbt@v1
       - name: Run headless test
-        uses: coactions/setup-xvfb@v1
-        with:
-          run: sbt +test
+        run: sbt +test

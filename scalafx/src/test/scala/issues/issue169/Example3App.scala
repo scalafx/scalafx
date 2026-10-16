@@ -28,7 +28,7 @@
 package issues.issue169
 
 import javafx.{beans as jfxb, collections as jfxc, util as jfxu}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.collections.ObservableBuffer
 
 /**

@@ -36,7 +36,7 @@ import java.text.SimpleDateFormat
  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
  * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
  * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
- * `import scalafx.Includes._`
+ * `import scalafx.CoreIncludes._`
  *
  * @tparam J Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
  * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,

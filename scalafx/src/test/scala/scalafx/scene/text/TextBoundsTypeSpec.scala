@@ -28,7 +28,7 @@
 package scalafx.scene.text
 
 import javafx.scene.text as jfxst
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Test for [[scalafx.scene.text.TextBoundsType]] */

@@ -30,7 +30,7 @@ package scalafx.scene.control.cell
 import javafx.scene.control as jfxsc
 import javafx.scene.control.cell as jfxscc
 import javafx.{collections as jfxc, util as jfxu}
-import scalafx.Includes.jfxTreeTableCell2sfx
+import scalafx.CoreIncludes.jfxTreeTableCell2sfx
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
 import scalafx.delegate.SFXDelegate

@@ -29,7 +29,7 @@ package scalafx.scene.layout
 
 import javafx.scene.layout as jfxsl
 import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 
 class HeaderBarSpec
     extends SimpleSFXDelegateSpec[jfxsl.HeaderBar, HeaderBar](classOf[jfxsl.HeaderBar], classOf[HeaderBar])

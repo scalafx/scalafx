@@ -27,7 +27,7 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.cell as jfxscc
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

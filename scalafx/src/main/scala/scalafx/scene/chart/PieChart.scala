@@ -29,7 +29,7 @@ package scalafx.scene.chart
 
 import javafx.scene.chart as jfxsc
 import javafx.{collections as jfxc, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate

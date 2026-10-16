@@ -28,7 +28,8 @@ package scalafx.scene.media
 
 import javafx.scene.media as jfxsm
 import javafx.{event as jfxe, geometry as jfxg}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
+import scalafx.scene.media.MediaIncludes.*
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D

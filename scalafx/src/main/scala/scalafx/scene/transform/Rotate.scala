@@ -28,7 +28,7 @@ package scalafx.scene.transform
 
 import javafx.geometry as jfxg
 import javafx.scene.transform as jfxst
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Point3D

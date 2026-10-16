@@ -29,7 +29,7 @@ package scalafx.animation
 import javafx.animation as jfxa
 import javafx.beans.property as jfxbp
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 

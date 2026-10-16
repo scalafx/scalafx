@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.control as jfxsc
 import javafx.{geometry as jfxg, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate

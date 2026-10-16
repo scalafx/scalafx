@@ -28,7 +28,7 @@ package scalafx.stage
 
 import javafx.scene.{image as jfxsim, input as jfxsi}
 import javafx.stage as jfxs
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate

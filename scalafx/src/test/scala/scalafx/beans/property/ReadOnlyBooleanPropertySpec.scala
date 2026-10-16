@@ -31,7 +31,7 @@ import javafx.beans.property as jfxbp
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.{BeforeAndAfterEach, NonImplicitAssertions}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 
 /**
  * ReadOnlyBooleanProperty Spec tests.

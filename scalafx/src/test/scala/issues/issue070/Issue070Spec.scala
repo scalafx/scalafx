@@ -27,7 +27,7 @@
 package issues.issue070
 
 import org.scalatest.flatspec.AnyFlatSpec
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.concurrent.{Task, WorkerStateEvent}
 import scalafx.testutil.RunOnApplicationThread
 

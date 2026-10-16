@@ -29,7 +29,7 @@ package scalafx.application
 
 import javafx.application as jfxa
 import javafx.scene.paint as jfxap
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.input.KeyCode

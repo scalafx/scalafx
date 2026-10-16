@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control as jfxsc, input as jfxsi}
 import javafx.{event as jfxe, scene as jfxs}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableMap
 import scalafx.css.Styleable

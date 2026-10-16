@@ -27,7 +27,7 @@
 package scalafx.event
 
 import javafx.event as jfxe
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** WeakEventHandler[T] Spec tests. */

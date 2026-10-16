@@ -27,7 +27,7 @@
 package scalafx.scene.shape
 
 import javafx.scene.{paint as jfxsp, shape as jfxss}
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node

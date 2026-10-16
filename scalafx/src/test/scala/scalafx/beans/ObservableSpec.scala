@@ -31,7 +31,7 @@ import javafx.beans as jfxb
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.*
-import scalafx.Includes.*
+import scalafx.CoreIncludes.*
 import scalafx.beans.property.DoubleProperty
 import scalafx.util.Subscription
 
