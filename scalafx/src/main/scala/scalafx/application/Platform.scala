@@ -163,7 +163,7 @@ object Platform {
    * <p>
    * This method may or may not return to the caller before the run method
    * of the specified Runnable has been called. In any case, once this method
-   * returns, you may call [[runLater(Runnable)]] with additional Runnables.
+   * returns, you may call `runLater` with additional Runnables.
    * Those Runnables will be called, also on the JavaFX Application Thread,
    * after the Runnable passed into this method has been called.
    * </p>
@@ -175,7 +175,7 @@ object Platform {
    * </p>
    *
    * <ul>
-   * <li>For standard JavaFX applications that extend [[Application]], and
+   * <li>For standard JavaFX applications that extend [[javafx.application.Application]], and
    * use either the Java launcher or one of the launch methods in the
    * Application class to launch the application, the FX runtime is
    * initialized automatically by the launcher before the `Application`
@@ -195,11 +195,11 @@ object Platform {
    * </p>
    *
    * <p>Calling this method when the JavaFX runtime is already running will result in an
-   * [[IllegalStateException]] being thrown - it is only valid to request
+   * [[java.lang.IllegalStateException]] being thrown - it is only valid to request
    * that the JavaFX runtime be started once.
    * </p>
    *
-   * @throws IllegalStateException if the JavaFX runtime is already running
+   * @throws java.lang.IllegalStateException if the JavaFX runtime is already running
    * @param runnable the Runnable whose run method will be executed on the
    *                 JavaFX Application Thread once it has been started
    * @see Application
@@ -253,12 +253,13 @@ object Platform {
    *
    * @param key the Object that identifies the nested event loop, which
    *            must not be null
-   * @throws IllegalArgumentException if the specified key is associated
+   *
+   * @throws java.lang.IllegalArgumentException if the specified key is associated
    *                                  with a nested event loop that has not yet returned
-   * @throws NullPointerException     if the key is null
-   * @throws IllegalStateException    if this method is called during
-   *                                  animation or layout processing.
-   * @throws IllegalStateException    if this method is called on a thread
+   *
+   * @throws java.lang.NullPointerException     if the key is null
+   * @throws java.lang.IllegalStateException if this method is called during
+   *                                  animation or layout processing, or on a thread
    *                                  other than the JavaFX Application Thread.
    * @return the value passed into the corresponding call to exitEventLoop
    * @since 9
@@ -277,12 +278,15 @@ object Platform {
    *
    * @param key  the Object that identifies the nested event loop, which
    *             must not be null
+   *
    * @param rval an Object that is returned to the caller of the
    *             corresponding enterNestedEventLoop. This may be null.
-   * @throws IllegalArgumentException if the specified key is not associated
+   *
+   * @throws java.lang.IllegalArgumentException if the specified key is not associated
    *                                  with an active nested event loop
-   * @throws NullPointerException     if the key is null
-   * @throws IllegalStateException    if this method is called on a thread
+   *
+   * @throws java.lang.NullPointerException     if the key is null
+   * @throws java.lang.IllegalStateException if this method is called on a thread
    *                                  other than the FX Application thread
    * @since 9
    */
@@ -291,7 +295,7 @@ object Platform {
   /**
    * Returns a flag indicating whether the key corresponding to `keyCode`
    * is in the locked (or "on") state.
-   * `keyCode` must be one of: [[KeyCode.Caps]] or [[KeyCode.NumLock]].
+   * `keyCode` must be one of: [[scalafx.scene.input.KeyCode.Caps]] or [[scalafx.scene.input.KeyCode.NumLock]].
    * If the underlying system is not able to determine the state of the
    * specified `keyCode`, `None` is returned.
    * If the keyboard attached to the system doesn't have the specified key,
@@ -301,9 +305,11 @@ object Platform {
    * @param keyCode the `keyCode` of the lock state to query
    * @return the lock state of the key corresponding to `keyCode`,
    *         or None if the system cannot determine its state
-   * @throws IllegalArgumentException if `keyCode` is not one of the
+   *
+   * @throws java.lang.IllegalArgumentException if `keyCode` is not one of the
    *                                  valid`keyCode` values
-   * @throws IllegalStateException    if this method is called on a thread
+   *
+   * @throws java.lang.IllegalStateException if this method is called on a thread
    *                                  other than the JavaFX Application Thread
    * @since 17
    */
@@ -318,7 +324,7 @@ object Platform {
    * This method must be called on the JavaFX Application thread.
    *
    * @return true if there is a nested event loop running, and false otherwise.
-   * @throws IllegalStateException if this method is called on a thread
+   * @throws java.lang.IllegalStateException if this method is called on a thread
    *                               other than the JavaFX Application Thread.
    * @since 9
    */
@@ -326,12 +332,12 @@ object Platform {
 
   /**
    * Indicates whether a nested event loop can be started from the current thread in the current state.
-   * A nested event loop can be started from an event handler or from a [[Runnable]] passed to
-   * [[runLater]].
+   * A nested event loop can be started from an event handler or from a [[java.lang.Runnable]] passed to
+   * `runLater`.
    * This method must be called on the JavaFX Application thread.
    *
    * @return `true` if a nested event loop can be started, and `false` otherwise.
-   * @throws IllegalStateException if this method is called on a thread other than the JavaFX Application Thread.
+   * @throws java.lang.IllegalStateException if this method is called on a thread other than the JavaFX Application Thread.
    * @since 21
    */
   def canStartNestedEventLoop: Boolean = jfxa.Platform.canStartNestedEventLoop

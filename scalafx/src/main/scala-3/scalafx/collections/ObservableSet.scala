@@ -36,7 +36,7 @@ import scala.collection.{IterableFactory, mutable}
 import scala.language.implicitConversions
 
 /**
- * Companion Object for `[[scalafx.collections.ObservableSet]]`.
+ * Companion Object for [[scalafx.collections.ObservableSet]].
  *
  * @define OS `ObservableSet`
  */

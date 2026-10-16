@@ -30,7 +30,7 @@ import javafx.scene.control as jfxsc
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Wrapper for [[scalafx.scene.control.$TSM]]
+ * Wrapper for $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeSortMode.html TreeSortMode]].
  *
  * @define TSM         TreeSortMode
  * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TSM.html

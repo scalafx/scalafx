@@ -79,12 +79,11 @@ object DataFormat {
 /**
  * Data format identifier used as means of identifying the data stored on a clipboard/dragboard.
  *
- * Wraps a $JFX [[ $URL0 $FC]].
+ * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/DataFormat.html DataFormat]].
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
  * @define FC   DataFormat
- * @define URL0 http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/DataFormat.html
  * @define JFX  JavaFX
  */
 class DataFormat(override val delegate: jfxsi.DataFormat = new jfxsi.DataFormat) extends SFXDelegate[jfxsi.DataFormat] {

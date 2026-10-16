@@ -40,7 +40,7 @@ object TextLineInfo {
 /**
  * Provides the information about a text line in a text layout.
  *
- * Wrapper for JavaFX [[javafx.scene.text.TextLineInfo TextLineInfo]]
+ * Wrapper for JavaFX `javafx.scene.text.TextLineInfo`
  *
  * @since 25
  */

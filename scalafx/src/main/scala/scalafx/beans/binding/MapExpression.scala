@@ -71,7 +71,7 @@ class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
    * Optionally returns the value associated with a key.
    *
    * @param key the key value
-   * @return an option value containing the value associated with key in this $MAP, or None if
+   * @return an option value containing the value associated with key in this map, or None if
    *         none exists.
    */
   def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None

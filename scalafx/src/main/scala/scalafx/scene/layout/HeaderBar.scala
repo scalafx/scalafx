@@ -100,7 +100,7 @@ object HeaderBar {
    *
    * This property can be set on any [[Node]]. Specifying a header button type also provides the behavior
    * associated with the button type. If the default behavior is not desired, applications can register an
-   * event filter on the child node that consumes the [[MouseEvent#MOUSE_RELEASED]] event.
+   * event filter on the child node that consumes the [[scalafx.scene.input.MouseEvent.MouseReleased]] event.
    *
    * @param child the child node
    * @return the `buttonType` property
@@ -109,7 +109,7 @@ object HeaderBar {
   def buttonType(child: Node): ObjectProperty[jfxsl.HeaderButtonType] = jfxsl.HeaderBar.buttonTypeProperty(child)
 
   /**
-   * Sentinel value that can be used for the [[#systemButtonHeight(Stage) systemButtonHeight]] attached property
+   * Sentinel value that can be used for the [[systemButtonHeight]] attached property
    * to indicate that the platform should choose the platform-specific default button height.
    */
   val UseDefaultSize: Double = jfxsl.HeaderBar.USE_DEFAULT_SIZE
@@ -135,7 +135,7 @@ object HeaderBar {
     jfxsl.HeaderBar.systemColorSchemeProperty(stage)
 
   /**
-   * Sets the value of the [[#systemColorScheme(Stage) systemColorScheme]] attached property
+   * Sets the value of the [[systemColorScheme]] attached property
    * for the specified `Stage`.
    *
    * @param stage the `Stage`
@@ -146,7 +146,7 @@ object HeaderBar {
     jfxsl.HeaderBar.setSystemColorScheme(stage, value)
 
   /**
-   * Gets the value of the [[#systemColorScheme(Stage) systemColorScheme]] attached property
+   * Gets the value of the [[systemColorScheme]] attached property
    * for the specified `Stage`.
    *
    * @param stage the `Stage`
@@ -178,7 +178,7 @@ object HeaderBar {
     jfxsl.HeaderBar.systemButtonHeightProperty(stage)
 
   /**
-   * Sets the value of the [[#systemButtonHeight(Stage) systemButtonHeight]] attached property
+   * Sets the value of the [[systemButtonHeight]] attached property
    * for the specified `Stage`.
    *
    * @param stage  the `Stage`
@@ -189,7 +189,7 @@ object HeaderBar {
     jfxsl.HeaderBar.setSystemButtonHeight(stage, height)
 
   /**
-   * Gets the value of the [[#systemButtonHeight(Stage) systemButtonHeight]] attached property
+   * Gets the value of the [[systemButtonHeight]] attached property
    * for the specified `Stage`.
    *
    * @param stage the `Stage`
@@ -215,7 +215,7 @@ object HeaderBar {
     jfxsl.HeaderBar.systemMinHeightProperty(stage)
 
   /**
-   * Gets the value of the [[#systemMinHeight(Stage) systemMinHeight]] attached property
+   * Gets the value of the [[systemMinHeight]] attached property
    * for the specified `Stage`.
    *
    * @param stage the `Stage`
@@ -238,7 +238,7 @@ object HeaderBar {
     jfxsl.HeaderBar.leftSystemInsetProperty(stage)
 
   /**
-   * Gets the value of the [[#leftSystemInset(Stage) leftSystemInset]] property
+   * Gets the value of the [[leftSystemInset]] property
    * of the specified `Stage`.
    *
    * @param stage the `Stage`
@@ -260,7 +260,7 @@ object HeaderBar {
     jfxsl.HeaderBar.rightSystemInsetProperty(stage)
 
   /**
-   * Gets the value of the [[#rightSystemInset(Stage) rightSystemInset]] property
+   * Gets the value of the [[rightSystemInset]] property
    * of the specified `Stage`.
    *
    * @param stage the `Stage`

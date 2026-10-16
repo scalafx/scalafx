@@ -78,7 +78,7 @@ object ScheduledService {
    * Create a new [[scalafx.concurrent.ScheduledService]] with a operation to be invoked after this was started on the JavaFX
    * Application Thread.
    *
-   * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
+   * @param op code that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
    *           the JavaFX Application Thread.
    */
   def apply[T](op: => Task[T]): ScheduledService[T] = new ScheduledService[T](new jfxc.ScheduledService[T] {

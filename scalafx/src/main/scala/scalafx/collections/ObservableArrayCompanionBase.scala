@@ -85,7 +85,7 @@ private[collections] abstract class ObservableArrayCompanionBase[V: ClassTag, T 
    *
    * @param n Size of the new array.  This value cannot be negative.
    * @return An observable array with the specified dimension and zeroed elements.
-   * @throws NegativeArraySizeException if `n` is negative.
+   * @throws java.lang.NegativeArraySizeException if `n` is negative.
    */
   def ofDim(n: Int): T = apply(Array.ofDim(n))
 

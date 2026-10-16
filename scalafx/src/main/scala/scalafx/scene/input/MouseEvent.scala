@@ -82,7 +82,7 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
    * @param secondaryButtonDown true if secondary button was pressed.
    * @param synthesized         if this event was synthesized
    * @param popupTrigger        whether this event denotes a popup trigger for current platform
-   * @param stillSincePress     see { @link #isStillSincePress() }
+   * @param stillSincePress     see [[scalafx.scene.input.MouseEvent.stillSincePress]]
    * @param pickResult          pick result. Can be null, in this case a 2D pick result
    *                            without any further values is constructed
    *                            based on the scene coordinates
@@ -151,7 +151,7 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
    * @param secondaryButtonDown true if secondary button was pressed.
    * @param synthesized         if this event was synthesized
    * @param popupTrigger        whether this event denotes a popup trigger for current platform
-   * @param stillSincePress     see { @link #isStillSincePress() }
+   * @param stillSincePress     see [[scalafx.scene.input.MouseEvent.stillSincePress]]
    * @param pickResult          pick result. Can be null, in this case a 2D pick result
    *                            without any further values is constructed
    *                            based on the scene coordinates and target

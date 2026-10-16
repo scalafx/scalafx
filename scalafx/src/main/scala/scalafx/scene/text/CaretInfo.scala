@@ -52,7 +52,7 @@ class CaretInfo(override val delegate: jfxst.CaretInfo) extends SFXDelegate[jfxs
    *
    * @param index the line index
    * @return the bounds of the caret segment
-   * @throws IndexOutOfBoundsException if the index is out of range
+   * @throws java.lang.IndexOutOfBoundsException if the index is out of range
    *                                   `code (index < 0 || index >= getSegmentCount())`
    */
   def segmentAt(index: Int): Rectangle2D = delegate.getSegmentAt(index)

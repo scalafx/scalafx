@@ -32,7 +32,7 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 /**
- * Factory for `[[scalafx.beans.property.ObjectProperty]]` instances.
+ * Factory for [[scalafx.beans.property.ObjectProperty]] instances.
  *
  * @define OP `ObjectProperty`
  * @define ISSUE14 Special case when value is an ScalaFX wrapper, to be used as a work around for

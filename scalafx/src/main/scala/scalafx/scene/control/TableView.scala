@@ -42,7 +42,7 @@ import scala.language.implicitConversions
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
- * @define OBJCOMPSTA Object companion for [[scalafx.scene.control
+ * @define OBJCOMPSTA Object companion for  [[scalafx.scene.control.
  * @define OBJCOMPEND ]].
  * @define JFX        JavaFX
  * @define SFX        ScalaFX

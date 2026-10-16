@@ -36,7 +36,7 @@ import scala.collection.{MapFactory, MapFactoryDefaults, StrictOptimizedIterable
 import scala.language.implicitConversions
 
 /**
- * Companion Object for `[[scalafx.collections.ObservableMap]]`.
+ * Companion Object for [[scalafx.collections.ObservableMap]].
  *
  * @define OM `ObservableMap`
  */

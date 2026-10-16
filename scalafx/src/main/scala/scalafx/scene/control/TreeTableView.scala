@@ -597,7 +597,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * @return An integer representing the number of parents above the given node,
    *         or -1 if the given TreeItem is null.
    */
-  @deprecated("use [[treeItemLevel(TreeItem)]] instead", "8.0_20")
+  @deprecated("use `treeItemLevel(TreeItem)` instead", "8.0_20")
   def nodeLevel(node: TreeItem[S]): Int = jfxsc.TreeTableView.getNodeLevel(node: TreeItem[S])
 
   /**
@@ -692,8 +692,8 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
 
   /**
    * This is the function called when the user completes a column-resize operation. The two most common policies are
-   * available as static functions in the TableView class: [[TreeTableView#UNCONSTRAINED_RESIZE_POLICY]] and
-   * [[TreeTableView#CONSTRAINED_RESIZE_POLICY]].
+   * available in the TreeTableView object: [[TreeTableView.UnconstrainedResizePolicy]] and
+   * [[TreeTableView.ConstrainedResizePolicy]].
    */
   def columnResizePolicy: ObjectProperty[TreeTableView.ResizeFeatures[S] => Boolean] = {
     // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
@@ -832,7 +832,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
   }
 
   /**
-   * Called when there's a request to scroll an index into view using [[scrollTo(int)]]
+   * Called when there's a request to scroll an index into view using [[scrollTo]]
    */
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]): Unit = {

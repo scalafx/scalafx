@@ -88,7 +88,7 @@ trait UtilIncludes {
    * Converts a Double to a Duration.
    *
    * @param d Double to convert
-   * @return A [[scalafx.util.Duration.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]] instance.
+   * @return A `DurationHelper` from where it is possible create a new [[scalafx.util.Duration]] instance.
    */
   implicit def double2DurationHelper(d: Double): DurationHelper = new DurationHelper(d)
 

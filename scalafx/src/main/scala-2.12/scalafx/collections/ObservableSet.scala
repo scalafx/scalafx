@@ -38,7 +38,7 @@ import scala.collection.mutable.{Builder, Set, SetLike}
 import scala.language.implicitConversions
 
 /**
- * Companion Object for `[[scalafx.collections.ObservableSet]]`.
+ * Companion Object for [[scalafx.collections.ObservableSet]].
  *
  * @define OS `ObservableSet`
  */

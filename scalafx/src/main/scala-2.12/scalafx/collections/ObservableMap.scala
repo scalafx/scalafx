@@ -38,7 +38,7 @@ import scala.collection.mutable
 import scala.language.implicitConversions
 
 /**
- * Companion Object for `[[scalafx.collections.ObservableMap]]`.
+ * Companion Object for [[scalafx.collections.ObservableMap]].
  *
  * @define OM `ObservableMap`
  */

@@ -62,7 +62,7 @@ object Spinner {
  * A single line text field that lets the user select a number or an object
  * value from an ordered sequence.
  *
- * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Spinner.html]].
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Spinner.html Spinner]].
  *
  * @constructor Constructs a default Spinner instance, with the default 'spinner' style class and a non-editable editor.
  * @param delegate A JavaFX Spinner to be wrapped. Its default value is a new JavaFX Spinner.
@@ -161,7 +161,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
 
   /**
    * The value property on Spinner is a read-only property, as it is bound to
-   * the SpinnerValueFactory [[scalafx.scene.control.Spinner#valueFactory() valueFactory property]].
+   * the SpinnerValueFactory [[scalafx.scene.control.Spinner.valueFactory valueFactory property]].
    * Should the value factory change, this value property
    * will be unbound from the old value factory and bound to the new one.
    *
@@ -216,7 +216,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
 
   /**
    * The duration that the mouse has to be pressed on an arrow button before the next value steps.
-   * Successive step duration is set using [[scalafx.scene.control.Spinner#repeatDelay() repeat delay]].
+   * Successive step duration is set using [[scalafx.scene.control.Spinner.repeatDelay repeat delay]].
    *
    * @return the initial delay property
    * @since 11
@@ -228,7 +228,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
 
   /**
    * The duration that the mouse has to be pressed for each successive step after the first value steps.
-   * Initial step duration is set using [[scalafx.scene.control.Spinner#initialDelay() initial delay]].
+   * Initial step duration is set using [[scalafx.scene.control.Spinner.initialDelay initial delay]].
    *
    * @return the repeat delay property
    * @since 11

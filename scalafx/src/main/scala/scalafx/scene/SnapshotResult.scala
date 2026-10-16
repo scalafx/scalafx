@@ -38,7 +38,7 @@ object SnapshotResult {
 }
 
 /**
- * Wraps JavaFX's `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotResult.html SnapshotResult]]`.
+ * Wraps JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotResult.html SnapshotResult]].
  * How the original Java class does not have public constructors, it is not possible instantiate in Scala.
  *
  * @since 2.2

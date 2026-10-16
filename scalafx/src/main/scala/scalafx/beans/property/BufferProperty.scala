@@ -107,10 +107,9 @@ object BufferProperty {
 }
 
 /**
- * Wraps a $JFX [[ $URL0 ListProperty]].
+ * Wraps a $JFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html ListProperty]].
  *
  * @define TC   BufferProperty
- * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html
  * @define JFX  JavaFX
  */
 class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = new jfxbp.SimpleListProperty[E])

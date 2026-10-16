@@ -44,7 +44,6 @@ object WebIncludes extends WebIncludes
  * @define SFX ScalaFX
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/
  * @define END ]]` instance to its $SFX counterpart.
- * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.web.
  * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX counterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
@@ -118,10 +117,10 @@ trait WebIncludes {
   implicit def jfxWebView2sfx(wv: jfxsw.WebView): WebView = if (wv != null) new WebView(wv) else null
 
   /**
-   * $BEGINWR$WE$FINISHWR
+   * Converts a Function that manipulates a $SFX [[scalafx.scene.web.WebEvent$FINISHWR
    *
-   * @param handler $PARAMWR $WE
-   * @return $RETWR $WE
+   * @param handler $PARAMWR $WT
+   * @return $RETWR $WT
    */
   implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any): EventHandler[jfxsw.WebEvent[T]] =
     new jfxe.EventHandler[jfxsw.WebEvent[T]] {

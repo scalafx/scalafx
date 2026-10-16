@@ -84,7 +84,7 @@ class LayoutInfo(override val delegate: jfxst.LayoutInfo)
    * @param index              the line index
    * @param includeLineSpacing determines whether the result includes the line spacing
    * @return the `TextLineInfo` object
-   * @throws IndexOutOfBoundsException if the index is out of range
+   * @throws java.lang.IndexOutOfBoundsException if the index is out of range
    *                                   {@code (index < 0 || index >= getTextLineCount())}
    */
   def textLine(index: Int, includeLineSpacing: Boolean): TextLineInfo = delegate.getTextLine(index, includeLineSpacing)

@@ -177,7 +177,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    *    val whenProperty      = longLivedProperty.when(condition)
    *
    *    // observe whenProperty, which will in turn observe longLivedProperty
-   *    whenProperty.onChange((_, old, current) => println(s"whenProperty change : $old -> $current"));
+   * whenProperty.onChange((_, old, current) => println(s"whenProperty change : \$old -> \$current"));
    *
    *    longLivedProperty.value = "B" // "B" is printed
    *

@@ -245,7 +245,7 @@ class Window protected (override val delegate: jfxs.Window)
    * <ul>
    * <li>Window creation
    * <li>At some point during moving a window to a new `Screen`
-   * which may be before or after the [[Screen]] property is updated.
+   * which may be before or after the [[scalafx.stage.Screen Screen]] property is updated.
    * <li>In response to a change in user preferences for output scaling.
    * </ul>
    *
@@ -267,7 +267,7 @@ class Window protected (override val delegate: jfxs.Window)
    * <ul>
    * <li>Window creation
    * <li>At some point during moving a window to a new `Screen`
-   * which may be before or after the [[Screen]] property is updated.
+   * which may be before or after the [[scalafx.stage.Screen Screen]] property is updated.
    * <li>In response to a change in user preferences for output scaling.
    * </ul>
    *

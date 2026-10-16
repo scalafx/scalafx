@@ -130,7 +130,7 @@ object Font {
    * <p>
    * If a security manager is present, the application
    * must have both permission to read from the specified URL location
-   * and the [[javafx.util.FXPermission]] "loadFont".
+   * and the `javafx.util.FXPermission` "loadFont".
    * If the application does not have permission to read from the specified
    * URL location, then null is returned.
    * If the application does not have the "loadFont" permission then this method
@@ -175,7 +175,7 @@ object Font {
    * from a TrueType Collection (TTC).
    * <p>
    * If a security manager is present, the application
-   * must have the [[javafx.util.FXPermission]] "loadFont".
+   * must have the `javafx.util.FXPermission` "loadFont".
    * If the application does not have permission then this method
    * will return the default system font with the specified font size.
    * <p>

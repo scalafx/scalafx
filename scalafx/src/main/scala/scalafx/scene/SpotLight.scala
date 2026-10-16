@@ -41,7 +41,7 @@ object SpotLight {
 
 /**
  * A `SpotLight` is a `PointLight` that radiates light in a cone in a specific direction.
- * The direction is defined by the [[directionProperty()]] direction vector property of the light. The direction
+ * The direction is defined by the [[direction]] direction vector property of the light. The direction
  * can be rotated by setting a rotation transform on the `SpotLight`. For example, if the direction vector is
  * `(1, 1, 1)` and the light is not rotated, it will point in the `(1, 1, 1)` direction, and if the light is
  * rotated 90 degrees on the y axis, it will point in the `(1, 1, -1)` direction.
@@ -49,9 +49,9 @@ object SpotLight {
  * In addition to the factors that control the light intensity of a `PointLight`, a `SpotLight` has a
  * light-cone attenuation factor, `spot`, that is determined by 3 properties:
  * <ul>
- * <li> [[innerAngleProperty]] innerAngle: the angle of the inner cone (see image below)
- * <li> [[outerAngleProperty]] outerAngle: the angle of the outer cone (see image below)
- * <li> [[falloffProperty]] falloff: the factor that controls the light's intensity drop inside the outer cone
+ * <li> [[innerAngle]] innerAngle: the angle of the inner cone (see image below)
+ * <li> [[outerAngle]] outerAngle: the angle of the outer cone (see image below)
+ * <li> [[falloff]] falloff: the factor that controls the light's intensity drop inside the outer cone
  * </ul>
  * The valid ranges for these properties are `0 <= innerAngle <= outerAngle <= 180` and `falloff >= 0`;
  * values outside either of these ranges can produce unexpected results.

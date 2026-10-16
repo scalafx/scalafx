@@ -51,7 +51,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    * Converts a JavaFX `enum` to its respective `SFXEnumDelegate`.
    *
    * @param e JavaFX `enum`
-   * @return `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
+   * @return [[scalafx.delegate.SFXEnumDelegate]] equivalent to argument.
    */
   def jfxEnum2sfx(e: E): S =
     if (e != null) values.find(_.delegate == e).get
@@ -67,7 +67,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    * Returns the `enum` constant of this type with the specified name.
    *
    * @param name the name of the constant to return
-   * @throws IllegalArgumentException If the specified `enum` type has no constant with the specified name,
+   * @throws java.lang.IllegalArgumentException If the specified `enum` type has no constant with the specified name,
    *                                  or the specified class object does not represent an `enum` type.
    */
   def apply(name: String): S = values.find(_.name == name) match {
@@ -79,7 +79,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    * Converts a JavaFX `enum` to its respective `SFXEnumDelegate`.
    *
    * @param e JavaFX `enum`
-   * @return `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
+   * @return [[scalafx.delegate.SFXEnumDelegate]] equivalent to argument.
    */
   def apply(e: E): S = jfxEnum2sfx(e)
 

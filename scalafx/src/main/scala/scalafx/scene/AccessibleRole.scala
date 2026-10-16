@@ -103,11 +103,11 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object Button extends AccessibleRole(jfxs.AccessibleRole.BUTTON)
@@ -117,13 +117,13 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
-   * <li> {@link AccessibleAttribute#INDETERMINATE} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
+   * <li> `AccessibleAttribute.INDETERMINATE` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object CheckBox extends AccessibleRole(jfxs.AccessibleRole.CHECK_BOX)
@@ -133,15 +133,15 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#ACCELERATOR} </li>
-   * <li> {@link AccessibleAttribute#MNEMONIC} </li>
-   * <li> {@link AccessibleAttribute#DISABLED} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.ACCELERATOR` </li>
+   * <li> `AccessibleAttribute.MNEMONIC` </li>
+   * <li> `AccessibleAttribute.DISABLED` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object CheckMenuItem extends AccessibleRole(jfxs.AccessibleRole.CHECK_MENU_ITEM)
@@ -151,14 +151,14 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#EXPANDED} </li>
-   * <li> {@link AccessibleAttribute#EDITABLE} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.EXPANDED` </li>
+   * <li> `AccessibleAttribute.EDITABLE` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#EXPAND} </li>
-   * <li> {@link AccessibleAction#COLLAPSE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Expand]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Collapse]] </li>
    * </ul>
    */
   case object ComboBox extends AccessibleRole(jfxs.AccessibleRole.COMBO_BOX)
@@ -168,8 +168,8 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#PARENT_MENU} </li>
-   * <li> {@link AccessibleAttribute#VISIBLE} </li>
+   * <li> `AccessibleAttribute.PARENT_MENU` </li>
+   * <li> `AccessibleAttribute.VISIBLE` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -182,8 +182,8 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#DATE} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.DATE` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -196,11 +196,11 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object DecrementButton extends AccessibleRole(jfxs.AccessibleRole.DECREMENT_BUTTON)
@@ -209,12 +209,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * Hyperlink role.
    *
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#VISITED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.VISITED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object Hyperlink extends AccessibleRole(jfxs.AccessibleRole.HYPERLINK)
@@ -224,11 +224,11 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object IncrementButton extends AccessibleRole(jfxs.AccessibleRole.INCREMENT_BUTTON)
@@ -244,9 +244,9 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * </ul>
    * <p>
    * It is strongly recommended that a text description of the image be provided
-   * for each {@link ImageView}.  This can be done by setting either
-   * {@link Node#accessibleTextProperty()} for the {@link ImageView}
-   * or by using {@link AccessibleAttribute#LABELED_BY}.
+   * for each [[scalafx.scene.image.ImageView ImageView]].  This can be done by setting either
+   * [[scalafx.scene.Node.accessibleText]] for the [[scalafx.scene.image.ImageView ImageView]]
+   * or by using `AccessibleAttribute.LABELED_BY`.
    * </p>
    */
   case object ImageView extends AccessibleRole(jfxs.AccessibleRole.IMAGE_VIEW)
@@ -256,18 +256,18 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ITEM_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#ITEM_COUNT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED_ITEMS} </li>
-   * <li> {@link AccessibleAttribute#MULTIPLE_SELECTION} </li>
-   * <li> {@link AccessibleAttribute#VERTICAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#HORIZONTAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#FOCUS_ITEM} </li>
+   * <li> `AccessibleAttribute.ITEM_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.ITEM_COUNT` </li>
+   * <li> `AccessibleAttribute.SELECTED_ITEMS` </li>
+   * <li> `AccessibleAttribute.MULTIPLE_SELECTION` </li>
+   * <li> `AccessibleAttribute.VERTICAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.HORIZONTAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.FOCUS_ITEM` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SHOW_ITEM} </li>
-   * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.ShowItem]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetSelectedItems]] </li>
    * </ul>
    */
   case object ListView extends AccessibleRole(jfxs.AccessibleRole.LIST_VIEW)
@@ -277,13 +277,13 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#INDEX} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    */
   case object ListItem extends AccessibleRole(jfxs.AccessibleRole.LIST_ITEM)
@@ -293,15 +293,15 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#ACCELERATOR} </li>
-   * <li> {@link AccessibleAttribute#MNEMONIC} </li>
-   * <li> {@link AccessibleAttribute#DISABLED} </li>
-   * <li> {@link AccessibleAttribute#SUBMENU} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.ACCELERATOR` </li>
+   * <li> `AccessibleAttribute.MNEMONIC` </li>
+   * <li> `AccessibleAttribute.DISABLED` </li>
+   * <li> `AccessibleAttribute.SUBMENU` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object Menu extends AccessibleRole(jfxs.AccessibleRole.MENU)
@@ -323,11 +323,11 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object MenuButton extends AccessibleRole(jfxs.AccessibleRole.MENU_BUTTON)
@@ -337,14 +337,14 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#ACCELERATOR} </li>
-   * <li> {@link AccessibleAttribute#MNEMONIC} </li>
-   * <li> {@link AccessibleAttribute#DISABLED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.ACCELERATOR` </li>
+   * <li> `AccessibleAttribute.MNEMONIC` </li>
+   * <li> `AccessibleAttribute.DISABLED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object MenuItem extends AccessibleRole(jfxs.AccessibleRole.MENU_ITEM)
@@ -354,28 +354,28 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ROLE} </li>
-   * <li> {@link AccessibleAttribute#PARENT} </li>
-   * <li> {@link AccessibleAttribute#SCENE} </li>
-   * <li> {@link AccessibleAttribute#BOUNDS} </li>
-   * <li> {@link AccessibleAttribute#DISABLED} </li>
-   * <li> {@link AccessibleAttribute#FOCUSED} </li>
-   * <li> {@link AccessibleAttribute#VISIBLE} </li>
+   * <li> `AccessibleAttribute.ROLE` </li>
+   * <li> `AccessibleAttribute.PARENT` </li>
+   * <li> `AccessibleAttribute.SCENE` </li>
+   * <li> `AccessibleAttribute.BOUNDS` </li>
+   * <li> `AccessibleAttribute.DISABLED` </li>
+   * <li> `AccessibleAttribute.FOCUSED` </li>
+   * <li> `AccessibleAttribute.VISIBLE` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    * Optional Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#LABELED_BY} </li>
-   * <li> {@link AccessibleAttribute#ROLE_DESCRIPTION} </li>
-   * <li> {@link AccessibleAttribute#HELP} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.LABELED_BY` </li>
+   * <li> `AccessibleAttribute.ROLE_DESCRIPTION` </li>
+   * <li> `AccessibleAttribute.HELP` </li>
    * </ul>
    * Optional Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SHOW_MENU} </li>
+   * <li> [[scalafx.scene.AccessibleAction.ShowMenu]] </li>
    * </ul>
    */
   case object Node extends AccessibleRole(jfxs.AccessibleRole.NODE)
@@ -385,12 +385,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    */
   case object PageItem extends AccessibleRole(jfxs.AccessibleRole.PAGE_ITEM)
@@ -400,9 +400,9 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ITEM_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#ITEM_COUNT} </li>
-   * <li> {@link AccessibleAttribute#FOCUS_ITEM} </li>
+   * <li> `AccessibleAttribute.ITEM_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.ITEM_COUNT` </li>
+   * <li> `AccessibleAttribute.FOCUS_ITEM` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -415,7 +415,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#CHILDREN} </li>
+   * <li> `AccessibleAttribute.CHILDREN` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -428,7 +428,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} - must return null or empty string </li>
+   * <li> `AccessibleAttribute.TEXT` - must return null or empty string </li>
    * </ul>
    * Actions:
    * <ul>
@@ -441,10 +441,10 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#VALUE} </li>
-   * <li> {@link AccessibleAttribute#MIN_VALUE} </li>
-   * <li> {@link AccessibleAttribute#MAX_VALUE} </li>
-   * <li> {@link AccessibleAttribute#INDETERMINATE} </li>
+   * <li> `AccessibleAttribute.VALUE` </li>
+   * <li> `AccessibleAttribute.MIN_VALUE` </li>
+   * <li> `AccessibleAttribute.MAX_VALUE` </li>
+   * <li> `AccessibleAttribute.INDETERMINATE` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -457,12 +457,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object RadioButton extends AccessibleRole(jfxs.AccessibleRole.RADIO_BUTTON)
@@ -472,15 +472,15 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#ACCELERATOR} </li>
-   * <li> {@link AccessibleAttribute#MNEMONIC} </li>
-   * <li> {@link AccessibleAttribute#DISABLED} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.ACCELERATOR` </li>
+   * <li> `AccessibleAttribute.MNEMONIC` </li>
+   * <li> `AccessibleAttribute.DISABLED` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object RadioMenuItem extends AccessibleRole(jfxs.AccessibleRole.RADIO_MENU_ITEM)
@@ -490,16 +490,16 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#VALUE} </li>
-   * <li> {@link AccessibleAttribute#MIN_VALUE} </li>
-   * <li> {@link AccessibleAttribute#MAX_VALUE} </li>
-   * <li> {@link AccessibleAttribute#ORIENTATION} </li>
+   * <li> `AccessibleAttribute.VALUE` </li>
+   * <li> `AccessibleAttribute.MIN_VALUE` </li>
+   * <li> `AccessibleAttribute.MAX_VALUE` </li>
+   * <li> `AccessibleAttribute.ORIENTATION` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#INCREMENT} </li>
-   * <li> {@link AccessibleAction#DECREMENT} </li>
-   * <li> {@link AccessibleAction#SET_VALUE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Increment]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Decrement]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetValue]] </li>
    * </ul>
    */
   case object Slider extends AccessibleRole(jfxs.AccessibleRole.SLIDER)
@@ -509,12 +509,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#INCREMENT} </li>
-   * <li> {@link AccessibleAction#DECREMENT} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Increment]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Decrement]] </li>
    * </ul>
    */
   case object Spinner extends AccessibleRole(jfxs.AccessibleRole.SPINNER)
@@ -524,12 +524,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#FONT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.FONT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SET_TEXT} </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetText]] </li>
    * </ul>
    */
   case object Text extends AccessibleRole(jfxs.AccessibleRole.TEXT)
@@ -539,22 +539,22 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#FONT} </li>
-   * <li> {@link AccessibleAttribute#EDITABLE} </li>
-   * <li> {@link AccessibleAttribute#SELECTION_START} </li>
-   * <li> {@link AccessibleAttribute#SELECTION_END} </li>
-   * <li> {@link AccessibleAttribute#CARET_OFFSET} </li>
-   * <li> {@link AccessibleAttribute#OFFSET_AT_POINT} </li>
-   * <li> {@link AccessibleAttribute#LINE_START} </li>
-   * <li> {@link AccessibleAttribute#LINE_END} </li>
-   * <li> {@link AccessibleAttribute#LINE_FOR_OFFSET} </li>
-   * <li> {@link AccessibleAttribute#BOUNDS_FOR_RANGE} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.FONT` </li>
+   * <li> `AccessibleAttribute.EDITABLE` </li>
+   * <li> `AccessibleAttribute.SELECTION_START` </li>
+   * <li> `AccessibleAttribute.SELECTION_END` </li>
+   * <li> `AccessibleAttribute.CARET_OFFSET` </li>
+   * <li> `AccessibleAttribute.OFFSET_AT_POINT` </li>
+   * <li> `AccessibleAttribute.LINE_START` </li>
+   * <li> `AccessibleAttribute.LINE_END` </li>
+   * <li> `AccessibleAttribute.LINE_FOR_OFFSET` </li>
+   * <li> `AccessibleAttribute.BOUNDS_FOR_RANGE` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SET_TEXT} </li>
-   * <li> {@link AccessibleAction#SET_TEXT_SELECTION} </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetText]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetTextSelection]] </li>
    * </ul>
    */
   case object TextArea extends AccessibleRole(jfxs.AccessibleRole.TEXT_AREA)
@@ -564,19 +564,19 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#FONT} </li>
-   * <li> {@link AccessibleAttribute#EDITABLE} </li>
-   * <li> {@link AccessibleAttribute#SELECTION_START} </li>
-   * <li> {@link AccessibleAttribute#SELECTION_END} </li>
-   * <li> {@link AccessibleAttribute#CARET_OFFSET} </li>
-   * <li> {@link AccessibleAttribute#OFFSET_AT_POINT} </li>
-   * <li> {@link AccessibleAttribute#BOUNDS_FOR_RANGE} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.FONT` </li>
+   * <li> `AccessibleAttribute.EDITABLE` </li>
+   * <li> `AccessibleAttribute.SELECTION_START` </li>
+   * <li> `AccessibleAttribute.SELECTION_END` </li>
+   * <li> `AccessibleAttribute.CARET_OFFSET` </li>
+   * <li> `AccessibleAttribute.OFFSET_AT_POINT` </li>
+   * <li> `AccessibleAttribute.BOUNDS_FOR_RANGE` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SET_TEXT} </li>
-   * <li> {@link AccessibleAction#SET_TEXT_SELECTION} </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetText]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetTextSelection]] </li>
    * </ul>
    */
   case object TextField extends AccessibleRole(jfxs.AccessibleRole.TEXT_FIELD)
@@ -586,12 +586,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
    * </ul>
    */
   case object ToggleButton extends AccessibleRole(jfxs.AccessibleRole.TOGGLE_BUTTON)
@@ -613,18 +613,18 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#VALUE} </li>
-   * <li> {@link AccessibleAttribute#MAX_VALUE} </li>
-   * <li> {@link AccessibleAttribute#MIN_VALUE} </li>
-   * <li> {@link AccessibleAttribute#ORIENTATION} </li>
+   * <li> `AccessibleAttribute.VALUE` </li>
+   * <li> `AccessibleAttribute.MAX_VALUE` </li>
+   * <li> `AccessibleAttribute.MIN_VALUE` </li>
+   * <li> `AccessibleAttribute.ORIENTATION` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#INCREMENT} </li>
-   * <li> {@link AccessibleAction#DECREMENT} </li>
-   * <li> {@link AccessibleAction#BLOCK_INCREMENT} </li>
-   * <li> {@link AccessibleAction#BLOCK_DECREMENT} </li>
-   * <li> {@link AccessibleAction#SET_VALUE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Increment]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Decrement]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.BlockIncrement]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.BlockDecrement]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetValue]] </li>
    * </ul>
    */
   case object ScrollBar extends AccessibleRole(jfxs.AccessibleRole.SCROLL_BAR)
@@ -634,9 +634,9 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#CONTENTS} </li>
-   * <li> {@link AccessibleAttribute#HORIZONTAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#VERTICAL_SCROLLBAR} </li>
+   * <li> `AccessibleAttribute.CONTENTS` </li>
+   * <li> `AccessibleAttribute.HORIZONTAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.VERTICAL_SCROLLBAR` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -649,14 +649,14 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#EXPANDED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.EXPANDED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#FIRE} </li>
-   * <li> {@link AccessibleAction#EXPAND} </li>
-   * <li> {@link AccessibleAction#COLLAPSE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Fire]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Expand]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Collapse]] </li>
    * </ul>
    */
   case object SplitMenuButton extends AccessibleRole(jfxs.AccessibleRole.SPLIT_MENU_BUTTON)
@@ -666,12 +666,12 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    */
   case object TabItem extends AccessibleRole(jfxs.AccessibleRole.TAB_ITEM)
@@ -681,9 +681,9 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ITEM_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#ITEM_COUNT} </li>
-   * <li> {@link AccessibleAttribute#FOCUS_ITEM} </li>
+   * <li> `AccessibleAttribute.ITEM_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.ITEM_COUNT` </li>
+   * <li> `AccessibleAttribute.FOCUS_ITEM` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -696,14 +696,14 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#ROW_INDEX} </li>
-   * <li> {@link AccessibleAttribute#COLUMN_INDEX} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.ROW_INDEX` </li>
+   * <li> `AccessibleAttribute.COLUMN_INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    */
   case object TableCell extends AccessibleRole(jfxs.AccessibleRole.TABLE_CELL)
@@ -713,8 +713,8 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#INDEX} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.INDEX` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -727,8 +727,8 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#INDEX} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.INDEX` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -741,22 +741,22 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ROW_COUNT} </li>
-   * <li> {@link AccessibleAttribute#ROW_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#COLUMN_COUNT} </li>
-   * <li> {@link AccessibleAttribute#COLUMN_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#SELECTED_ITEMS} </li>
-   * <li> {@link AccessibleAttribute#CELL_AT_ROW_COLUMN} </li>
-   * <li> {@link AccessibleAttribute#HEADER} </li>
-   * <li> {@link AccessibleAttribute#MULTIPLE_SELECTION} </li>
-   * <li> {@link AccessibleAttribute#VERTICAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#HORIZONTAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#FOCUS_ITEM} </li>
+   * <li> `AccessibleAttribute.ROW_COUNT` </li>
+   * <li> `AccessibleAttribute.ROW_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.COLUMN_COUNT` </li>
+   * <li> `AccessibleAttribute.COLUMN_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED_ITEMS` </li>
+   * <li> `AccessibleAttribute.CELL_AT_ROW_COLUMN` </li>
+   * <li> `AccessibleAttribute.HEADER` </li>
+   * <li> `AccessibleAttribute.MULTIPLE_SELECTION` </li>
+   * <li> `AccessibleAttribute.VERTICAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.HORIZONTAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.FOCUS_ITEM` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SHOW_ITEM} </li>
-   * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.ShowItem]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetSelectedItems]] </li>
    * </ul>
    */
   case object TableView extends AccessibleRole(jfxs.AccessibleRole.TABLE_VIEW)
@@ -766,7 +766,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#VALUE} </li>
+   * <li> `AccessibleAttribute.VALUE` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -779,13 +779,13 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#EXPANDED} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.EXPANDED` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#EXPAND} </li>
-   * <li> {@link AccessibleAction#COLLAPSE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Expand]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Collapse]] </li>
    * </ul>
    */
   case object TitledPane extends AccessibleRole(jfxs.AccessibleRole.TITLED_PANE)
@@ -795,7 +795,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#OVERFLOW_BUTTON} </li>
+   * <li> `AccessibleAttribute.OVERFLOW_BUTTON` </li>
    * </ul>
    * Actions:
    * <ul>
@@ -808,21 +808,21 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#INDEX} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
-   * <li> {@link AccessibleAttribute#EXPANDED} </li>
-   * <li> {@link AccessibleAttribute#LEAF} </li>
-   * <li> {@link AccessibleAttribute#DISCLOSURE_LEVEL} </li>
-   * <li> {@link AccessibleAttribute#TREE_ITEM_COUNT} </li>
-   * <li> {@link AccessibleAttribute#TREE_ITEM_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#TREE_ITEM_PARENT} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
+   * <li> `AccessibleAttribute.EXPANDED` </li>
+   * <li> `AccessibleAttribute.LEAF` </li>
+   * <li> `AccessibleAttribute.DISCLOSURE_LEVEL` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_COUNT` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_PARENT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#EXPAND} </li>
-   * <li> {@link AccessibleAction#COLLAPSE} </li>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Expand]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Collapse]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    */
   case object TreeItem extends AccessibleRole(jfxs.AccessibleRole.TREE_ITEM)
@@ -832,22 +832,22 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <p>
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute# TEXT} </li>
-   * <li> {@link AccessibleAttribute# INDEX} </li>
-   * <li> {@link AccessibleAttribute# SELECTED} </li>
-   * <li> {@link AccessibleAttribute# EXPANDED} </li>
-   * <li> {@link AccessibleAttribute# LEAF} </li>
-   * <li> {@link AccessibleAttribute# DISCLOSURE_LEVEL} </li>
-   * <li> {@link AccessibleAttribute# TREE_ITEM_COUNT} </li>
-   * <li> {@link AccessibleAttribute# TREE_ITEM_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute# TREE_ITEM_PARENT} </li>
-   * <li> {@link AccessibleAttribute# TOGGLE_STATE} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
+   * <li> `AccessibleAttribute.EXPANDED` </li>
+   * <li> `AccessibleAttribute.LEAF` </li>
+   * <li> `AccessibleAttribute.DISCLOSURE_LEVEL` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_COUNT` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_PARENT` </li>
+   * <li> `AccessibleAttribute.TOGGLE_STATE` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction# EXPAND} </li>
-   * <li> {@link AccessibleAction# COLLAPSE} </li>
-   * <li> {@link AccessibleAction# REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Expand]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Collapse]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    *
    * @since 21
@@ -859,14 +859,14 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#TEXT} </li>
-   * <li> {@link AccessibleAttribute#SELECTED} </li>
-   * <li> {@link AccessibleAttribute#ROW_INDEX} </li>
-   * <li> {@link AccessibleAttribute#COLUMN_INDEX} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.SELECTED` </li>
+   * <li> `AccessibleAttribute.ROW_INDEX` </li>
+   * <li> `AccessibleAttribute.COLUMN_INDEX` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.RequestFocus]] </li>
    * </ul>
    */
   case object TreeTableCell extends AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_CELL)
@@ -876,18 +876,18 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#INDEX} </li>
-   * <li> {@link AccessibleAttribute#EXPANDED} </li>
-   * <li> {@link AccessibleAttribute#LEAF} </li>
-   * <li> {@link AccessibleAttribute#DISCLOSURE_LEVEL} </li>
-   * <li> {@link AccessibleAttribute#TREE_ITEM_COUNT} </li>
-   * <li> {@link AccessibleAttribute#TREE_ITEM_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#TREE_ITEM_PARENT} </li>
+   * <li> `AccessibleAttribute.INDEX` </li>
+   * <li> `AccessibleAttribute.EXPANDED` </li>
+   * <li> `AccessibleAttribute.LEAF` </li>
+   * <li> `AccessibleAttribute.DISCLOSURE_LEVEL` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_COUNT` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.TREE_ITEM_PARENT` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#EXPAND} </li>
-   * <li> {@link AccessibleAction#COLLAPSE} </li>
+   * <li> [[scalafx.scene.AccessibleAction.Expand]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.Collapse]] </li>
    * </ul>
    */
   case object TreeTableRow extends AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_ROW)
@@ -897,22 +897,22 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ROW_COUNT} </li>
-   * <li> {@link AccessibleAttribute#ROW_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#COLUMN_COUNT} </li>
-   * <li> {@link AccessibleAttribute#COLUMN_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#SELECTED_ITEMS} </li>
-   * <li> {@link AccessibleAttribute#CELL_AT_ROW_COLUMN} </li>
-   * <li> {@link AccessibleAttribute#HEADER} </li>
-   * <li> {@link AccessibleAttribute#MULTIPLE_SELECTION} </li>
-   * <li> {@link AccessibleAttribute#VERTICAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#HORIZONTAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#FOCUS_ITEM} </li>
+   * <li> `AccessibleAttribute.ROW_COUNT` </li>
+   * <li> `AccessibleAttribute.ROW_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.COLUMN_COUNT` </li>
+   * <li> `AccessibleAttribute.COLUMN_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED_ITEMS` </li>
+   * <li> `AccessibleAttribute.CELL_AT_ROW_COLUMN` </li>
+   * <li> `AccessibleAttribute.HEADER` </li>
+   * <li> `AccessibleAttribute.MULTIPLE_SELECTION` </li>
+   * <li> `AccessibleAttribute.VERTICAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.HORIZONTAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.FOCUS_ITEM` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SHOW_ITEM} </li>
-   * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.ShowItem]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetSelectedItems]] </li>
    * </ul>
    */
   case object TreeTableView extends AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_VIEW)
@@ -922,18 +922,18 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    *
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute#ROW_COUNT} </li>
-   * <li> {@link AccessibleAttribute#ROW_AT_INDEX} </li>
-   * <li> {@link AccessibleAttribute#SELECTED_ITEMS} </li>
-   * <li> {@link AccessibleAttribute#MULTIPLE_SELECTION} </li>
-   * <li> {@link AccessibleAttribute#VERTICAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#HORIZONTAL_SCROLLBAR} </li>
-   * <li> {@link AccessibleAttribute#FOCUS_ITEM} </li>
+   * <li> `AccessibleAttribute.ROW_COUNT` </li>
+   * <li> `AccessibleAttribute.ROW_AT_INDEX` </li>
+   * <li> `AccessibleAttribute.SELECTED_ITEMS` </li>
+   * <li> `AccessibleAttribute.MULTIPLE_SELECTION` </li>
+   * <li> `AccessibleAttribute.VERTICAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.HORIZONTAL_SCROLLBAR` </li>
+   * <li> `AccessibleAttribute.FOCUS_ITEM` </li>
    * </ul>
    * Actions:
    * <ul>
-   * <li> {@link AccessibleAction#SHOW_ITEM} </li>
-   * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
+   * <li> [[scalafx.scene.AccessibleAction.ShowItem]] </li>
+   * <li> [[scalafx.scene.AccessibleAction.SetSelectedItems]] </li>
    * </ul>
    */
   case object TreeView extends AccessibleRole(jfxs.AccessibleRole.TREE_VIEW)
@@ -943,9 +943,9 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <p>
    * Attributes:
    * <ul>
-   * <li> {@link AccessibleAttribute# TEXT} </li>
-   * <li> {@link AccessibleAttribute# ROLE_DESCRIPTION} </li>
-   * <li> {@link AccessibleAttribute# CHILDREN} </li>
+   * <li> `AccessibleAttribute.TEXT` </li>
+   * <li> `AccessibleAttribute.ROLE_DESCRIPTION` </li>
+   * <li> `AccessibleAttribute.CHILDREN` </li>
    * </ul>
    *
    * @since 20

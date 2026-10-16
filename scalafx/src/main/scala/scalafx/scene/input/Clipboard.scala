@@ -85,12 +85,11 @@ object Clipboard {
  *
  * }}}
  *
- * Wraps a $JFX [[ $URL0 $FC]].
+ * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Clipboard.html Clipboard]].
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
  * @define FC   Clipboard
- * @define URL0 http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Clipboard.html
  * @define JFX  JavaFX
  */
 class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxsi.Clipboard] {

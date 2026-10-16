@@ -35,7 +35,7 @@ import scala.collection.mutable
 import scala.reflect.ClassTag
 
 /**
- * Companion Object for `[[scalafx.collections.ObservableArray]]`.
+ * Companion Object for [[scalafx.collections.ObservableArray]].
  *
  * @define OA `ObservableArray`
  */

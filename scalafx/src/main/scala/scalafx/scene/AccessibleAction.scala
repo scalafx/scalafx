@@ -34,7 +34,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  * This enum describes the actions that an assistive technology
  * such as a screen reader can request from the scene graph.
  *
- * The {@link AccessibleRole} dictates the set of actions that
+ * The [[scalafx.scene.AccessibleRole AccessibleRole]] dictates the set of actions that
  * the screen reader will request for a particular control. For
  * example, a push button normally fires an event to indicate
  * that it was pressed in response to the FIRE action.
@@ -47,13 +47,13 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
 
   /**
    * Request that the node be decremented by a large value.
-   * A smaller decrement is requested using {@link #DECREMENT}.
+   * A smaller decrement is requested using [[scalafx.scene.AccessibleAction.Decrement]].
    */
   case object BlockDecrement extends AccessibleAction(jfxs.AccessibleAction.BLOCK_DECREMENT)
 
   /**
    * Request that the node be incremented by a large value.
-   * A smaller increment is requested using {@link #INCREMENT}.
+   * A smaller increment is requested using [[scalafx.scene.AccessibleAction.Increment]].
    *
    * Used by Slider, ScrollBar, and others
    */
@@ -68,7 +68,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
 
   /**
    * Request that the node be decremented by a small value.
-   * A larger decrement is requested using {@link #BLOCK_DECREMENT}.
+   * A larger decrement is requested using [[scalafx.scene.AccessibleAction.BlockDecrement]].
    *
    * Used by Slider, ScrollBar, and others
    */
@@ -92,7 +92,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
 
   /**
    * Request that the node be incremented by a small value.
-   * A larger increment is requested using {@link #BLOCK_INCREMENT}.
+   * A larger increment is requested using [[scalafx.scene.AccessibleAction.BlockIncrement]].
    *
    * Used by Slider, ScrollBar, and others
    */
@@ -100,7 +100,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
 
   /**
    * Request that the node take focus.  By default, a node will
-   * request focus using  {@link javafx.scene.Node#requestFocus()}.
+   * request focus using  [[scalafx.scene.Node.requestFocus]].
    * Both JavaFX and the assisteve technology have the concept of
    * a focus node and most of the time, they are the same.
    * In some cases, a control might want the JavaFX focus to remain
@@ -119,7 +119,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Parameters:
    * <ul>
-   * <li> {@link Node} the item to show </li>
+   * <li> [[scalafx.scene.Node Node]] the item to show </li>
    * </ul>
    */
   case object ShowItem extends AccessibleAction(jfxs.AccessibleAction.SHOW_ITEM)
@@ -131,8 +131,8 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Parameters:
    * <ul>
-   * <li> {@link java.lang.Integer} the start offset </li>
-   * <li> {@link java.lang.Integer} the end offset </li>
+   * <li> `Integer` the start offset </li>
+   * <li> `Integer` the end offset </li>
    * </ul>
    */
   case object ShowTextRange extends AccessibleAction(jfxs.AccessibleAction.SHOW_TEXT_RANGE)
@@ -144,7 +144,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Parameters:
    * <ul>
-   * <li> {@link javafx.collections.ObservableList}&lt;{@link Node}&gt; the items to select </li>
+   * <li> `ObservableList`&lt;[[scalafx.scene.Node Node]]&gt; the items to select </li>
    * </ul>
    */
   case object SetSelectedItems extends AccessibleAction(jfxs.AccessibleAction.SET_SELECTED_ITEMS)
@@ -156,8 +156,8 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Parameters:
    * <ul>
-   * <li> {@link java.lang.Integer} the start offset </li>
-   * <li> {@link java.lang.Integer} the end offset </li>
+   * <li> `Integer` the start offset </li>
+   * <li> `Integer` the end offset </li>
    * </ul>
    */
   case object SetTextSelection extends AccessibleAction(jfxs.AccessibleAction.SET_TEXT_SELECTION)
@@ -169,7 +169,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Parameters:
    * <ul>
-   * <li> {@link String} the new text</li>
+   * <li> `String` the new text</li>
    * </ul>
    */
   case object SetText extends AccessibleAction(jfxs.AccessibleAction.SET_TEXT)
@@ -181,7 +181,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Parameters:
    * <ul>
-   * <li> {@link java.lang.Double} the new value </li>
+   * <li> `Double` the new value </li>
    * </ul>
    */
   case object SetValue extends AccessibleAction(jfxs.AccessibleAction.SET_VALUE)

@@ -79,7 +79,7 @@ object ButtonBar {
    * subsequently placed in a [[scalafx.scene.control.ButtonBar]] it will be placed in the
    * correct position relative to all other buttons in the bar.
    *
-   * @param button The button to annotate with the given { @link ButtonData} value.
+   * @param button The button to annotate with the given [[scalafx.scene.control.ButtonBar.ButtonData]] value.
    * @param buttonData The ButtonData to designate the button as.
    */
   def setButtonData(button: Node, buttonData: ButtonBar.ButtonData): Unit = {
@@ -116,14 +116,14 @@ object ButtonBar {
   /**
    * Returns whether the given node is part of the uniform sizing calculations
    * or not. By default all nodes that have not opted out (via
-   * [[scalafx.scene.control.ButtonBar.setButtonUniformSize( N o d e, b o o l e a n]]) will return true here.
+   * [[scalafx.scene.control.ButtonBar.setButtonUniformSize]]) will return true here.
    */
   def isButtonUniformSize(button: Node): Boolean = {
     jfxsc.ButtonBar.isButtonUniformSize(button)
   }
 
   /**
-   * Wraps a $JFX $URL0 $FC]].
+   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.ButtonData.html ButtonData]].
    *
    * @constructor Creates a new ButtonData from a JavaFX one.
    * @param delegate JavaFX ButtonData
@@ -134,12 +134,7 @@ object ButtonBar {
   }
 
   /**
-   * Wraps a $JFX $URL0 $FC]].
-   *
-   * @define EN          ButtonData
-   * @define URL0       [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html
-   * @define JFX        JavaFX
-   * @define ORIGINALDOC Original Documentation]].
+   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.ButtonData.html ButtonData]].
    */
   object ButtonData extends SFXEnumDelegateCompanion[jfxsc.ButtonBar.ButtonData, ButtonData] {
 

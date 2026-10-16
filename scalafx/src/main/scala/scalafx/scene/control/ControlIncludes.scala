@@ -1091,7 +1091,7 @@ trait ControlIncludes extends CellIncludes {
    *
    * @tparam S The type of the TreeItem instances contained within the TreeTableView.
    * @param rf $JFX $TTVE
-   * @return $SFX $TVVE
+   * @return $SFX $TTVE
    */
   implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S])
     : TreeTableView.ResizeFeatures[S] =

@@ -48,7 +48,7 @@ object Subscription {
    *
    * @param subscriptions an array of subscriptions to combine, cannot be `null` or contain `null`
    * @return a `Subscription`, never `null`
-   * @throws NullPointerException when `subscriptions` is `null` or contains `null`
+   * @throws java.lang.NullPointerException when `subscriptions` is `null` or contains `null`
    */
   def combine(subscriptions: Subscription*): Subscription =
     jfxu.Subscription.combine(subscriptions.map(_.delegate)*)
@@ -66,7 +66,7 @@ class Subscription(override val delegate: jfxu.Subscription) extends SFXDelegate
    * @param other another `Subscription`, cannot be `null`
    * @return a combined `Subscription` which will cancel both when
    *         cancelled, never `null`
-   * @throws NullPointerException when `other` is `null`
+   * @throws java.lang.NullPointerException when `other` is `null`
    */
   def and(other: Subscription): Subscription = delegate.and(other)
 }

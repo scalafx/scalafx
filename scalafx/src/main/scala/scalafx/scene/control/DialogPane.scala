@@ -91,7 +91,7 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
   }
 
   /**
-   * Gets the value of the {@link #headerBarProperty() headerBar} property.
+   * Gets the value of the `headerBar` property.
    *
    * @return the {@code HeaderBar}
    * @since 26
@@ -156,11 +156,11 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
 
   /**
    * Observable list of button types used for the dialog button bar area
-   * (created via the [[scalafx.scene.control.DialogPane.createButtonBar( )]] method). Modifying the contents
+   * (created via the `createButtonBar()` method of the JavaFX `DialogPane`). Modifying the contents
    * of this list will immediately change the buttons displayed to the user
    * within the dialog pane.
    *
-   * @return The { @link ObservableList} of { @link ButtonType button types}
+   * @return The `ObservableBuffer` of [[scalafx.scene.control.ButtonType button types]]
    *         available to the user.
    */
   def buttonTypes: ObservableBuffer[jfxsc.ButtonType]  = delegate.getButtonTypes
@@ -174,10 +174,10 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * Node for a given [[scalafx.scene.control.ButtonType]]\ (assuming it is part of the
    * [[scalafx.scene.control.DialogPane.buttonTypes]] list).
    *
-   * @param buttonType The { @link ButtonType} for which a Node representation is requested.
+   * @param buttonType The [[scalafx.scene.control.ButtonType]] for which a Node representation is requested.
    * @return The Node used to represent the button type, as created by
-   *         { @link #createButton(ButtonType)}, and only if the button type
-   *         is part of the { @link #getButtonTypes() button types} list, otherwise null.
+   *         `createButton(ButtonType)`, and only if the button type
+   *         is part of the [[buttonTypes]] list, otherwise null.
    */
   def lookupButton(buttonType: ButtonType): Node = delegate.lookupButton(buttonType)
 }

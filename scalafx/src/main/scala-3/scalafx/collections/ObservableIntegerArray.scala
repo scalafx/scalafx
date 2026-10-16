@@ -73,7 +73,7 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    * Elements will be zeroed out.
    *
    * @param n Size of new $OIA.  This value cannot be negative.
-   * @throws NegativeArraySizeException if `n` is negative.
+   * @throws java.lang.NegativeArraySizeException if `n` is negative.
    */
   def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n): _*))
 

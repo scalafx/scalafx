@@ -116,7 +116,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * or StageStyle.UNIFIED.
    *
    * @param style the style for this dialog.
-   * @throws IllegalStateException if this property is set after the dialog
+   * @throws java.lang.IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
   def initStyle(style: StageStyle): Unit = {
@@ -129,7 +129,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Modality.WINDOW_MODAL, or Modality.APPLICATION_MODAL.
    *
    * @param modality the modality for this dialog.
-   * @throws IllegalStateException if this property is set after the dialog
+   * @throws java.lang.IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
   def initModality(modality: Modality): Unit = {
@@ -145,11 +145,11 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def modality: Modality = delegate.getModality
 
   /**
-   * Specifies the owner [[Window]] for this dialog, or null for a top-level,
+   * Specifies the owner [[scalafx.stage.Window]] for this dialog, or null for a top-level,
    * unowned dialog. This must be done prior to making the dialog visible.
    *
-   * @param window the owner [[Window]] for this dialog.
-   * @throws IllegalStateException if this property is set after the dialog
+   * @param window the owner [[scalafx.stage.Window]] for this dialog.
+   * @throws java.lang.IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
   def initOwner(window: Window): Unit = {

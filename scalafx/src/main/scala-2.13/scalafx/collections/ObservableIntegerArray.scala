@@ -50,7 +50,7 @@ object ObservableIntegerArray
    * defaults to 1.
    * @return Observable array with values: `start, start + step, start + 2 * step, ...`, up to, but not including,
    * `end`.
-   * @throws IllegalArgumentException if `step` is 0.
+   * @throws java.lang.IllegalArgumentException if `step` is 0.
    */
   def range(start: Int, end: Int, step: Int = 1): ObservableIntegerArray = apply(Array.range(start, end, step))
 }
@@ -73,7 +73,7 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    * Elements will be zeroed out.
    *
    * @param n Size of new $OIA.  This value cannot be negative.
-   * @throws NegativeArraySizeException if `n` is negative.
+   * @throws java.lang.NegativeArraySizeException if `n` is negative.
    */
   def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n): _*))
 

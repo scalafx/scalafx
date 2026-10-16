@@ -68,7 +68,8 @@ class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.Cus
   def this(node: Node) = this(new jfxsc.CustomMenuItem(node))
 
   /**
-   * Bridge constructor for [[jfxsc.CustomMenuItem(Node, boolean)]]
+   * Bridge constructor for `javafx.scene.control.CustomMenuItem(Node, boolean)`
+   *
    * @param node to be embedded inside this CustomMenuItem
    * @param hidOnClick if false the menu will not hide when the user interacts with the node.
    */

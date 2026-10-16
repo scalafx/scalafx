@@ -58,7 +58,7 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
    * Elements will be zeroed out.
    *
    * @param n Size of new $OFA.  This value cannot be negative.
-   * @throws NegativeArraySizeException if `n` is negative.
+   * @throws java.lang.NegativeArraySizeException if `n` is negative.
    */
   def this(n: Int) = this(jfxc.FXCollections.observableFloatArray(new Array[Float](n): _*))
 

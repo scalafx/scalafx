@@ -52,7 +52,7 @@ object ChoiceDialog {
  * A dialog that shows a list of choices to the user, from which they can pick
  * one item at most.
  *
- * Wraps a $JFX [[ $URL0 $TC]].
+ * Wraps a $JFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceDialog.html ChoiceDialog]].
  *
  * @see Dialog
  * @tparam T The type of the items to show to the user, and the type that is returned
@@ -61,7 +61,6 @@ object ChoiceDialog {
  *              null default choice. Users of this constructor will subsequently need to
  *              call `items` to specify which items to show to the user.
  * @define TC   ChoiceDialog
- * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/ChoiceDialog.html
  * @define JFX  JavaFX
  */
 class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.ChoiceDialog[T]())

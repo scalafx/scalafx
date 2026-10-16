@@ -5,13 +5,14 @@ and JavaFX are supported.
 
 ## Package Structure
 
-ScalaFX package structure corresponds to JavaFX package structure, for instance [[scalafx.animation
-`scalafx.animation`]] corresponds to `javafx.animation`.
+ScalaFX package structure corresponds to JavaFX package structure, for instance [[scalafx.animation scalafx.animation]]
+corresponds to `javafx.animation`.
 
 ## Example Usage
 
-A basic ScalaFX application is created creating an object that is an instance of [[scalafx.application.JFXApp3
-`JFXApp3`]]. Following Java FX theatre metaphor, it contains a `stage` that contains a `scene`. A `stage` roughly
+A basic ScalaFX application is created creating an object that is an instance
+of [[scalafx.application.JFXApp3 JFXApp3]].
+Following Java FX theatre metaphor, it contains a `stage` that contains a `scene`. A `stage` roughly
 corresponds to a window in a typical UI environment. The `scene` holds UI content presented to the user. In the example
 below, the content is a pane with a single `label` component.
 
