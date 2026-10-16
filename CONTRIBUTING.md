@@ -94,21 +94,148 @@ Past releases are on the `SFX-8-stable` and `SFX-2-stable` branches.
 
 ## Releasing (Maintainers)
 
-### Update README.md
+Releases are made from the `stable` branch with [sbt-release](https://github.com/sbt/sbt-release).
+Development happens on `master`. For a release, `master` is merged into `stable`, the release is made on `stable`,
+then `stable` is merged back into `master`, where the next development (`-SNAPSHOT`) version is set.
 
-`README.md` contains version numbers in copy-paste snippets that need to be updated for each release.
+`sbt release` tests, publishes to Maven Central, and updates version numbers in files.
+It does not commit, tag, merge, or push, those steps are done manually, `sbt release` prints the commands at the end.
 
-1. Find the version numbers in `README.md`:
+The current version is in `version.sbt`, do not edit it manually.
+
+### Prerequisites
+
+- PGP key for signing artifacts, see [sbt-pgp](https://github.com/sbt/sbt-pgp).
+  Check that signing works with `sbt checkSigning`, it signs a temporary file with the same setup as the release.
+- Sonatype Central Portal credentials, `SONATYPE_USERNAME` and `SONATYPE_PASSWORD` environment variables
+  (or credentials for `central.sonatype.com` in sbt settings).
+- Local `master` and `stable` branches tracking `master` and `stable` on GitHub.
+
+### Release notes
+
+Before the release, write the release notes, `notes/<version>.md`, for instance, `notes/27.0.0-R39.md`,
+and commit them to `master`. Use notes of the previous release as a template.
+The release aborts if the notes are missing or do not state the JavaFX version and the minimum Java version.
+Their opening paragraphs have to include, with the actual versions:
+
+```markdown
+This release supports [JavaFX 27]. ...
+
+Note that [JavaFX 27 requires Java **25 or later**][JavaFX 27]. ...
+```
+
+The JavaFX version has to match the release version, `27` for `27.0.0-R39`.
+The minimum Java version is given in the JavaFX release highlights, for instance https://openjfx.io/highlights/27/.
+The release uses these versions to update `README.md`.
+The notes are also the description of the GitHub release, see [Complete the release](#complete-the-release).
+
+### For a new JavaFX major version
+
+Before the release, update `javaFXVersion` in `build.sbt` and commit it to `master`.
+`README.md` is updated by the release, see below. Remove the oldest row from its compatibility table,
+if the table gets too long.
+
+### Merge `master` into `stable`
+
+```shell
+git checkout master
+git pull
+git checkout stable
+git pull
+git merge master
+```
+
+Resolve conflicts, if any, and commit the merge.
+Do not push `stable` yet, push it after the release is published.
+
+Before starting the release, the working tree has to be clean, `git status` shows "nothing to commit, working tree clean".
+The release aborts if there are modified, staged, or untracked files, files ignored by `.gitignore` are fine.
+
+### Make the release
+
+On the `stable` branch, run:
+
+```shell
+sbt release
+```
+
+You will be asked for the release version and the next development version.
+The release version removes `-SNAPSHOT` and keeps the release number,
+the next development version increments the release number, for instance:
+`27.0.0-R39-SNAPSHOT` → release `27.0.0-R39` → next `27.0.0-R40-SNAPSHOT`.
+
+If the JavaFX version changed, type the release version, or provide it on the command line,
+the next version will be derived from it:
+
+```shell
+sbt "release release-version 27.0.1-R39"
+```
+
+Add `with-defaults` to skip the questions, for instance, `sbt "release with-defaults"`.
+
+Actions performed by the `release` command:
+
+1. Checks that the working tree is clean, that the current branch is `stable`, that `master` is merged into it,
+   and that local `master` and `stable` are not behind GitHub.
+2. Checks that release notes `notes/<version>.md` exist and reads JavaFX and minimum Java versions from them.
+3. Checks that artifacts can be signed (`checkSigning`), before the long test and publish steps.
+4. Runs tests for all Scala versions.
+5. Sets the release version in `version.sbt`.
+6. Publishes signed artifacts for all Scala versions to Maven Central,
+   waits until the Central Portal validates and publishes them.
+7. Updates `README.md`: the ScalaFX version in snippets, JavaFX and JDK versions in the Mill and Gradle snippets
+   and in the Quick Start text, and the compatibility table. For the same JavaFX major version, the table row
+   is updated, for a new JavaFX major version, a row is added.
+8. Prints git commands that complete the release, with the actual versions, tag, and remote names.
+
+### Complete the release
+
+Run the git commands printed at the end of `sbt release`. Review the changes (`git diff`) before committing.
+For instance, for release `27.0.0-R39`:
+
+```shell
+# Commit and tag the release on 'stable'
+git commit -am "Mark release version 27.0.0-R39"
+git tag -a v.27.0.0-R39 -m "Releasing 27.0.0-R39"
+git push origin stable v.27.0.0-R39  # the tag push creates the GitHub release
+
+# Merge 'stable' into 'master' and set the next development version
+git checkout master
+git merge --no-ff --no-edit stable
+printf 'ThisBuild / version := "%s"\n' 27.0.0-R40-SNAPSHOT > version.sbt
+git commit -am "Mark the next development release 27.0.0-R40-SNAPSHOT"
+git push origin master
+```
+
+The next development version is the release version with the release number incremented and `-SNAPSHOT` added.
+
+Pushing the release tag starts the "GitHub Release" workflow (`.github/workflows/release.yml`). It creates
+a GitHub release `Release v.<version>` with the release notes, `notes/<version>.md`, as the description,
+and a discussion for it in the "General" category. If the workflow fails, create the release manually:
+
+```shell
+gh release create v.27.0.0-R39 --verify-tag --title "Release v.27.0.0-R39" \
+  --notes-file notes/27.0.0-R39.md --discussion-category "General"
+```
+
+### If the release fails
+
+`sbt release` does not change git, a failure leaves only uncommitted changes to `version.sbt` (and `README.md`).
+
+1. If the Central Portal validation failed, the error message contains the deployment ID,
+   `deployment <deploymentId> failed with validation errors`. Drop the failed deployment:
    ```shell
-   grep -nE '[0-9]+\.[0-9]+\.[0-9]+-R[0-9]+|JDK [0-9]+|temurin:|javaFxVersion|version = "' README.md
+   sbt "sonaDrop <deploymentId>"
    ```
-2. Update the ScalaFX version (for instance, `27.0.0-R39`) in the SBT, Scala CLI, Mill, and Gradle snippets.
-3. For a new JavaFX major version, also update the JavaFX version (Mill `javaFxVersion`, Gradle `javafx.version`)
-   and the minimum JDK version (Quick Start text, Mill `jvmId`).
-4. Add a row for the new release to the "Compatibility of Recent Versions" table.
-   The minimum JDK version is given in the JavaFX release highlights, for instance https://openjfx.io/highlights/27/.
-   Remove the oldest row, if the table gets too long.
-5. After the release is available on Maven Central, run the "Hello ScalaFX" example with `scala-cli` to verify it.
+2. Revert the uncommitted changes:
+   ```shell
+   git checkout -- version.sbt README.md
+   ```
+3. Fix the problem and run `sbt release` again.
+
+### After the release
+
+After the release is available on Maven Central, run the "Hello ScalaFX" example with `scala-cli` to verify it.
 
 ## Code of Conduct
 
