@@ -35,6 +35,8 @@ import sbtrelease.ReleaseStateTransformations.*
 
 // ScalaFX version is in `version.sbt`, it is updated by `sbt release`
 val javaFXVersion = "27"
+// Minimum Java version required by JavaFX, used for `-release` and for links to JDK API docs
+val javaRelease = "25"
 
 def versionTagName(version: String): String = s"v.$version"
 def versionTagDir(version: String): String  = if (version.endsWith("SNAPSHOT")) "master" else versionTagName(version)
@@ -102,16 +104,28 @@ val Scala2_13 = "2.13.18"
 val Scala3_3  = "3.3.8"
 
 // Dependencies
-lazy val javafxModules =
-  Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
+lazy val javafxModuleNames = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+lazy val javafxModules = javafxModuleNames.map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion)
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.20"
+
+/**
+ * Scaladoc 3 links to API docs of dependencies, `regex matching classpath entry::doc kind::URL`.
+ * JDK and JavaFX docs are organized by module, so each module gets its own mapping.
+ */
+def externalDocMappings(scalaVersion: String): Seq[String] = {
+  val jdkDocs = s"https://docs.oracle.com/en/java/javase/$javaRelease/docs/api"
+  val javafxDocs = s"https://openjfx.io/javadoc/$javaFXVersion"
+  Seq(s".*scala3?-library.*::scaladoc3::https://www.scala-lang.org/api/$scalaVersion/") ++
+    javafxModuleNames.map(m => s".*javafx-$m-.*::javadoc::$javafxDocs/javafx.$m/") ++
+    Seq(s".*jdk-jsobject-.*::javadoc::$javafxDocs/jdk.jsobject/") ++
+    Seq("java.base", "java.desktop").map(m => s".*${m.replace(".", "\\.")}.*::javadoc::$jdkDocs/$m/")
+}
 
 // Settings shared by all projects, applied as bare settings at the top of this file
 lazy val scalafxSettings = Seq(
   crossScalaVersions := Seq(Scala3_3, Scala2_13, Scala2_12),
   scalaVersion       := Scala3_3,
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "25"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", javaRelease),
   scalacOptions ++= {
     scalaBinaryVersion.value match {
       case "3" => Seq("-source:3.3-migration", "-explain", "-explain-types")
@@ -151,7 +165,7 @@ lazy val scalafxSettings = Seq(
             "-doc-root-content",
             s"${baseDirectory.value}/src/main/scala-3/root-doc.md",
             s"-source-links:github://scalafx/scalafx/${versionTagDir(version.value)}",
-            s"-external-mappings:.*scala3?-library.*::scaladoc3::https://www.scala-lang.org/api/${scalaVersion.value}/",
+            "-external-mappings:" + externalDocMappings(scalaVersion.value).mkString(","),
             "-doc-footer",
             s"ScalaFX API v.${version.value}"
           )

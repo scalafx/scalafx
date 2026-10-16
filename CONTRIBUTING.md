@@ -133,6 +133,8 @@ The notes are also the description of the GitHub release, see [Complete the rele
 ### For a new JavaFX major version
 
 Before the release, update `javaFXVersion` in `build.sbt` and commit it to `master`.
+If the new JavaFX requires a newer Java version, update `javaRelease` in `build.sbt` too; it sets `-release` and
+the JDK version of API doc links.
 `README.md` is updated by the release, see below. Remove the oldest row from its compatibility table,
 if the table gets too long.
 
