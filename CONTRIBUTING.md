@@ -107,8 +107,9 @@ The current version is in `version.sbt`, do not edit it manually.
 
 - PGP key for signing artifacts, see [sbt-pgp](https://github.com/sbt/sbt-pgp).
   Check that signing works with `sbt checkSigning`, it signs a temporary file with the same setup as the release.
-- Sonatype Central Portal credentials, `SONATYPE_USERNAME` and `SONATYPE_PASSWORD` environment variables
-  (or credentials for `central.sonatype.com` in sbt settings).
+- Sonatype Central Portal credentials, `SONATYPE_USERNAME` and `SONATYPE_PASSWORD` environment variables,
+  or credentials for `central.sonatype.com` in global sbt settings. Note that sbt 2 reads global settings from
+  `~/.config/sbt/2/*.sbt`, not from `~/.sbt/1.0`.
 - Local `master` and `stable` branches tracking `master` and `stable` on GitHub.
 
 ### Release notes
@@ -156,27 +157,27 @@ The release aborts if there are modified, staged, or untracked files, files igno
 On the `stable` branch, run:
 
 ```shell
-sbt release
+sbt "release with-defaults"
 ```
 
-You will be asked for the release version and the next development version.
-The release version removes `-SNAPSHOT` and keeps the release number,
+The default release version removes `-SNAPSHOT` and keeps the release number,
 the next development version increments the release number, for instance:
 `27.0.0-R39-SNAPSHOT` → release `27.0.0-R39` → next `27.0.0-R40-SNAPSHOT`.
 
-If the JavaFX version changed, type the release version, or provide it on the command line,
+If the JavaFX version changed, provide the release version on the command line,
 the next version will be derived from it:
 
 ```shell
 sbt "release release-version 27.0.1-R39"
 ```
 
-Add `with-defaults` to skip the questions, for instance, `sbt "release with-defaults"`.
+Do not run plain `sbt release`, it asks for the versions interactively, and the sbt 2 client does not pass
+the answers to the sbt server, the release waits forever. If that happens, stop it with Ctrl+C and `sbt shutdown`.
 
 Actions performed by the `release` command:
 
 1. Checks that the working tree is clean, that the current branch is `stable`, that `master` is merged into it,
-   and that local `master` and `stable` are not behind GitHub.
+   that local `master` and `stable` are not behind GitHub, and that Central Portal credentials are set.
 2. Checks that release notes `notes/<version>.md` exist and reads JavaFX and minimum Java versions from them.
 3. Checks that artifacts can be signed (`checkSigning`), before the long test and publish steps.
 4. Runs tests for all Scala versions.
@@ -219,6 +220,18 @@ gh release create v.27.0.0-R39 --verify-tag --title "Release v.27.0.0-R39" \
 ```
 
 ### If the release fails
+
+When a step fails, the release stops and prints a summary as the last error messages:
+which step failed, why, and what has to be done before running the release again, for instance:
+
+```
+[error] RELEASE 27.0.0-R39 FAILED at step 11/13, upload to Central (sonaRelease)
+[error]   Reason: deployment <deploymentId> failed with validation errors
+[error]   Artifacts may be uploaded, check https://central.sonatype.com/publishing/deployments
+[error]   and drop a deployment that failed or was not published: sbt "sonaDrop <deploymentId>"
+[error]   version.sbt is set to the release version, revert it: git checkout -- version.sbt
+[error]   Fix the problem and run the release again.
+```
 
 `sbt release` does not change git, a failure leaves only uncommitted changes to `version.sbt` (and `README.md`).
 

@@ -43,14 +43,24 @@ import java.util.Base64
  */
 object SonaDrop {
 
-  private val host = "central.sonatype.com"
+  val host = "central.sonatype.com"
+
+  /** How to set credentials, sbt 2 does not read global settings from `~/.sbt/1.0`. */
+  val credentialsHelp: String =
+    "set SONATYPE_USERNAME and SONATYPE_PASSWORD environment variables, " +
+      s"or add credentials for $host to global sbt settings, `~/.config/sbt/2/*.sbt`"
+
+  /** Central Portal credentials, found the same way as by `sonaRelease`. */
+  def credentials(state: State): (State, Option[Credentials.DirectCredentials]) = {
+    val (newState, creds) = Project.extract(state).runTask(Keys.credentials, state)
+    (newState, IvyCredentials.forHost(creds, host))
+  }
 
   val command: Command = Command.single("sonaDrop") { (state, deploymentId) =>
-    val (newState, creds) = Project.extract(state).runTask(Keys.credentials, state)
-    IvyCredentials.forHost(creds, host) match {
-      case Some(cred) => drop(deploymentId, cred.userName, cred.passwd, newState)
-      case None       =>
-        newState.log.error(s"No credentials are found for $host, set SONATYPE_USERNAME and SONATYPE_PASSWORD")
+    credentials(state) match {
+      case (newState, Some(cred)) => drop(deploymentId, cred.userName, cred.passwd, newState)
+      case (newState, None)       =>
+        newState.log.error(s"No credentials are found for $host, $credentialsHelp")
         newState.fail
     }
   }
