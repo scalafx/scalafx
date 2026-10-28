@@ -101,7 +101,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 val Scala2_12 = "2.12.21"
 val Scala2_13 = "2.13.18"
-val Scala3_3  = "3.3.8"
+val Scala3_3  = "3.3.9"
 
 // Dependencies
 lazy val javafxModuleNames = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
