@@ -119,7 +119,8 @@ object XYChart {
 
 abstract class XYChart[X, Y](override val delegate: jfxsc.XYChart[X, Y])
     extends Chart(delegate)
-    with SFXDelegate[jfxsc.XYChart[X, Y]] {
+    with SFXDelegate[jfxsc.XYChart[X, Y]]
+    with XYChartVersionSpecific[X, Y] {
 
   def alternativeColumnFillVisible: BooleanProperty = delegate.alternativeColumnFillVisibleProperty
 
