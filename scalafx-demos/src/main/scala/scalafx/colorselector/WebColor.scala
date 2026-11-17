@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -198,6 +198,5 @@ sealed case class WebColor(name: String, color: Color) {
   /**
    * Verifies if a determined color is equivalent to color represented by this WebColor.
    */
-  def sameColor(c: Color) =
-    ((c.red == color.red) && (c.green == color.green) && (c.blue == color.blue))
+  def sameColor(c: Color) = ((c.red == color.red) && (c.green == color.green) && (c.blue == color.blue))
 }

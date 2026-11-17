@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -284,8 +284,8 @@ class ObservableMapSpec[K, V]
     map onChange {
       (*, change) =>
         change match {
-          case Add(key1, value1)    => addedValues += ((key1, value1))
-          case Remove(key1, value1) => removedValues += ((key1, value1))
+          case Add(key1, value1)             => addedValues += ((key1, value1))
+          case Remove(key1, value1)          => removedValues += ((key1, value1))
           case Replace(key1, added, removed) => {
             addedValues += ((key1, added))
             removedValues += ((key1, removed))

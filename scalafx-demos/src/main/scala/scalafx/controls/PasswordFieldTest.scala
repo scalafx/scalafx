@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ import scalafx.scene.paint.Color
 
 object PasswordFieldTest extends JFXApp3 {
   override def start(): Unit = {
-    val passwordField = new PasswordField
+    val passwordField      = new PasswordField
     val controlsPane: VBox = new VBox {
       spacing = 5
       fillWidth = true

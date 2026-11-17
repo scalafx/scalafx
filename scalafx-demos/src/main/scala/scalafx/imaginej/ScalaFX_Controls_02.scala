@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,7 +71,7 @@ object ScalaFX_Controls_02 extends JFXApp3 {
     }
     val okImageView = new ImageView { image = new Image(this, "images/ok.png") }
     val koImageView = new ImageView { image = new Image(this, "images/ko.png") }
-    val okButton1 = new Button {
+    val okButton1   = new Button {
       graphic = okImageView
       text = "Accept"
       style = "-fx-font: 22 arial; -fx-base: #b6e7c9;"
@@ -91,12 +91,12 @@ object ScalaFX_Controls_02 extends JFXApp3 {
         label.text = "Declined"
       }
     }
-    koButton1 addOnMouseEnteredHandler ({ (_: MouseEvent) =>
+    koButton1.addOnMouseEnteredHandler { (_: MouseEvent) =>
       koButton1.effect = new DropShadow()
-    })
-    koButton1 addOnMouseExitedHandler ({ (_: MouseEvent) =>
+    }
+    koButton1.addOnMouseExitedHandler { (_: MouseEvent) =>
       koButton1.effect = null
-    })
+    }
     val hBox1 = new HBox {
       spacing = 10
       alignment = Pos.BottomCenter

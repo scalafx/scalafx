@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ object LoginDialogDemo extends JFXApp3 {
       dialog.dialogPane().buttonTypes = Seq(loginButtonType, ButtonType.Cancel)
       val username = new TextField() { promptText = "Username" }
       val password = new PasswordField() { promptText = "Password" }
-      val grid = new GridPane() {
+      val grid     = new GridPane() {
         hgap = 10
         vgap = 10
         padding = Insets(20, 100, 10, 10)

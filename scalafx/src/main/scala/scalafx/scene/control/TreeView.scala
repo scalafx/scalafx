@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -168,7 +168,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Represents the cell factory that will be used for creating TreeCells, which are used to represent items in the TreeView.
    */
   def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]] = delegate.cellFactoryProperty
-  def cellFactory_=(v: jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]): Unit = {
+  def cellFactory_=(v: jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]): Unit      = {
     cellFactory.value = v
   }
   def cellFactory_=(v: TreeView[T] => TreeCell[T]): Unit = {
@@ -219,7 +219,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
           new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
             def call(tv: jfxsc.TreeView[T]): jfxsc.TreeCell[T] = {
               new jfxsc.TreeCell[T] {
-                val sfxThis = new TreeCell(this)
+                val sfxThis                                            = new TreeCell(this)
                 override def updateItem(item: T, empty: Boolean): Unit = {
                   super.updateItem(item, empty)
                   if (empty || item == null) {

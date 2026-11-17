@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ object MenuTest extends JFXApp3 {
   override def start(): Unit = {
     val history                              = new VBox()
     def printEvent(eventStr: String)(): Unit = history.children += (new Label(eventStr))
-    val menu = new Menu("File") {
+    val menu                                 = new Menu("File") {
       items = List(
         new MenuItem("Open") {
           onAction = (ae: ActionEvent) => history.children += (new Label("Selected item `Open`"))

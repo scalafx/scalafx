@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -120,7 +120,7 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
    * Since the value is part of the `Formatter`, changing the TextFormatter will update the text based on the new textFormatter.
    */
   def textFormatter: ObjectProperty[jfxsc.TextFormatter[_]] = delegate.textFormatterProperty()
-  def textFormatter_=(v: TextFormatter[_]): Unit = {
+  def textFormatter_=(v: TextFormatter[_]): Unit            = {
     ObjectProperty.fillProperty(textFormatter, v)
   }
 }

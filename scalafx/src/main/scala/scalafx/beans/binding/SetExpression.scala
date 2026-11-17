@@ -70,7 +70,7 @@ class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
   def +=(element: E): Boolean = delegate.add(element)
 
   def ++=(elem1: E, elem2: E, elems: E*): Boolean = this.++=(Seq(elem1, elem2) ++ elems)
-  def ++=(xs: Seq[E]): Boolean = {
+  def ++=(xs: Seq[E]): Boolean                    = {
     import scalafx.util.JavaConverters.*
     delegate.addAll(xs.asJavaCollection)
   }
@@ -94,13 +94,13 @@ class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
   def -=(element: E): Boolean = this.delegate.remove(element)
 
   def --=(elem1: E, elem2: E, elems: E*): Boolean = this.--=(Seq(elem1, elem2) ++ elems)
-  def --=(xs: Seq[E]): Boolean = {
+  def --=(xs: Seq[E]): Boolean                    = {
     import scalafx.util.JavaConverters.*
     delegate.removeAll(xs.asJavaCollection)
   }
 
   def retainAll(elem1: E, elem2: E, elems: E*): Boolean = this.retainAll(Seq(elem1, elem2) ++ elems)
-  def retainAll(xs: Seq[E]): Boolean = {
+  def retainAll(xs: Seq[E]): Boolean                    = {
     import scalafx.util.JavaConverters.*
     delegate.retainAll(xs.asJavaCollection)
   }

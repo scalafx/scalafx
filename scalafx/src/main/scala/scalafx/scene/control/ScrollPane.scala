@@ -152,7 +152,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specify the minimum width of the ScrollPane Viewport.
    * This is the width that will be available to the content node.
    */
-  def minViewportHeight: DoubleProperty = delegate.minViewportHeightProperty()
+  def minViewportHeight: DoubleProperty    = delegate.minViewportHeightProperty()
   def minViewportHeight_=(v: Double): Unit = {
     minViewportHeight() = v
   }
@@ -170,7 +170,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specify the minimum width of the ScrollPane Viewport.
    * This is the width that will be available to the content node.
    */
-  def minViewportWidth: DoubleProperty = delegate.minViewportWidthProperty()
+  def minViewportWidth: DoubleProperty    = delegate.minViewportWidthProperty()
   def minViewportWidth_=(v: Double): Unit = {
     minViewportWidth() = v
   }

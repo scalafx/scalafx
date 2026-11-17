@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -181,7 +181,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
           new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
             def call(tv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
               new jfxsc.ListCell[T] {
-                val sfxThis = new ListCell(this)
+                val sfxThis                                            = new ListCell(this)
                 override def updateItem(item: T, empty: Boolean): Unit = {
                   super.updateItem(item, empty)
                   if (empty || item == null) {

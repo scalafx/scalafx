@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.CoreIncludes.*
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 class LayoutInfoSpec
-  extends SimpleSFXDelegateSpec[jfxst.LayoutInfo, LayoutInfo](classOf[jfxst.LayoutInfo], classOf[LayoutInfo]) {
+    extends SimpleSFXDelegateSpec[jfxst.LayoutInfo, LayoutInfo](classOf[jfxst.LayoutInfo], classOf[LayoutInfo]) {
 
   override protected def getJavaClassInstance: jfxst.LayoutInfo = new Text().getLayoutInfo
 }

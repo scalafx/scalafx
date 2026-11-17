@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ class NonInvertibleTransformExceptionSpec
       classOf[NonInvertibleTransformException]
     ) {
 
-  override protected def getJavaClassInstance = new jfxst.NonInvertibleTransformException("test message")
+  override protected def getJavaClassInstance  = new jfxst.NonInvertibleTransformException("test message")
   override protected def getScalaClassInstance =
     new NonInvertibleTransformException(new jfxst.NonInvertibleTransformException("test message"))
 }

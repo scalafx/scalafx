@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -66,7 +66,7 @@ object SimpleColorfulCircles extends JFXApp3 {
             strokeType = Outside
             effect = new BoxBlur(10, 10, 3)
           }
-        content = circles :+ (new Rectangle {
+        content = circles :+ new Rectangle {
           width <== _scene.width
           height <== _scene.height
           fill = new LinearGradient(
@@ -79,7 +79,7 @@ object SimpleColorfulCircles extends JFXApp3 {
             Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839)
           )
           blendMode = Overlay
-        })
+        }
       }
     }
     new Timeline {

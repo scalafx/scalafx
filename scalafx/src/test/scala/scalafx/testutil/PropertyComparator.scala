@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ trait PropertyComparator
   }
 
   private def getProperties(javafxClass: Class[_]): Set[String] = {
-    val javafxRegex = """(.*)Property""".r
+    val javafxRegex      = """(.*)Property""".r
     val javaFxProperties = javafxClass.getDeclaredMethods
       .filter(super.isPublicMethod)
       .filterNot(m => super.isImplementation(m.getName))

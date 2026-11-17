@@ -54,7 +54,6 @@ trait TextIncludes {
 
   implicit def jfxCaretInfo2sfx(t: jfxst.CaretInfo): CaretInfo = if (t != null) new CaretInfo(t) else null
 
-
   /**
    * $START [[javafx.scene.text.Font Font]] $END
    *
@@ -121,5 +120,6 @@ trait TextIncludes {
 
   implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow): TextFlow = if (tf != null) new TextFlow(tf) else null
 
-  implicit def jfxTextLineInfo2sfx(tf: jfxst.TextLineInfo): TextLineInfo = if (tf != null) new TextLineInfo(tf) else null
+  implicit def jfxTextLineInfo2sfx(tf: jfxst.TextLineInfo): TextLineInfo =
+    if (tf != null) new TextLineInfo(tf) else null
 }

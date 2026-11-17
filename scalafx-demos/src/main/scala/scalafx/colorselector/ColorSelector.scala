@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -128,7 +128,7 @@ object ColorSelector extends JFXApp3 {
       hgrow = Priority.Never
       style = "-fx-font-family: Consolas;"
     }
-    val chbDisableAlpha = new CheckBox { selected <==> controlAlpha.disable }
+    val chbDisableAlpha     = new CheckBox { selected <==> controlAlpha.disable }
     def formatColor(): Unit = {
       txfColorValue.text() = cmbColorFormat.value.value.format(currentColor(), !chbDisableAlpha.selected.value)
     }
@@ -147,7 +147,7 @@ object ColorSelector extends JFXApp3 {
     }
     currentColor.onChange(colorChanged())
     def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
-    val rectangleRegion = new Region {
+    val rectangleRegion               = new Region {
       effect = new Reflection { fraction = 0.45d }
       onMouseClicked = (event: MouseEvent) => {
         if (event.getClickCount == 2 && event.button == MouseButton.Primary) {

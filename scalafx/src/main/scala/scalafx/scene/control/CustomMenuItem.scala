@@ -79,14 +79,14 @@ class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.Cus
    * The node to display within this CustomMenuItem.
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty()
-  def content_=(value: Node): Unit = {
+  def content_=(value: Node): Unit       = {
     ObjectProperty.fillProperty(content, value)
   }
 
   /**
    * If true, this menu item, and all visible menus, will be hidden when this menu item is clicked on.
    */
-  def hideOnClick: BooleanProperty = delegate.hideOnClickProperty()
+  def hideOnClick: BooleanProperty        = delegate.hideOnClickProperty()
   def hideOnClick_=(value: Boolean): Unit = {
     hideOnClick() = value
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,14 +48,14 @@ class ObservableFloatArraySpec
    */
 
   trait InstanceTests {
-    val array0: Array[Float] = Array.empty
-    val array1               = Array(4.0f, 5.0f, 6.0f, 7.0f)
-    val array2               = Array(8.0f, 9.0f, 10.0f, 11.0f, 12.0f)
-    val instance0            = ObservableFloatArray(array0)
-    val instance1            = ObservableFloatArray(array1)
-    val instance2            = ObservableFloatArray(array2)
-    val change               = Buffer.empty[(ObservableFloatArray, Change)]
-    var changes              = 0
+    val array0: Array[Float]                                   = Array.empty
+    val array1                                                 = Array(4.0f, 5.0f, 6.0f, 7.0f)
+    val array2                                                 = Array(8.0f, 9.0f, 10.0f, 11.0f, 12.0f)
+    val instance0                                              = ObservableFloatArray(array0)
+    val instance1                                              = ObservableFloatArray(array1)
+    val instance2                                              = ObservableFloatArray(array2)
+    val change                                                 = Buffer.empty[(ObservableFloatArray, Change)]
+    var changes                                                = 0
     def onChangeFull(a: ObservableFloatArray, c: Change): Unit = {
       change += ((a, c))
     }
@@ -302,7 +302,7 @@ class ObservableFloatArraySpec
   }
   it should "return valid initialized array from companion's fill(n)(f)" in {
     def fillArray(n: Int): ObservableFloatArray = {
-      var lastVal = 0.0f
+      var lastVal        = 0.0f
       def initVal: Float = {
         lastVal += 1.0f
         lastVal

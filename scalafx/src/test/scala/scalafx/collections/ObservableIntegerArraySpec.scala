@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,14 +48,14 @@ class ObservableIntegerArraySpec
    */
 
   trait InstanceTests {
-    val array0: Array[Int] = Array.empty
-    val array1             = Array(4, 5, 6, 7)
-    val array2             = Array(8, 9, 10, 11, 12)
-    val instance0          = ObservableIntegerArray(array0)
-    val instance1          = ObservableIntegerArray(array1)
-    val instance2          = ObservableIntegerArray(array2)
-    val change             = Buffer.empty[(ObservableIntegerArray, Change)]
-    var changes            = 0
+    val array0: Array[Int]                                       = Array.empty
+    val array1                                                   = Array(4, 5, 6, 7)
+    val array2                                                   = Array(8, 9, 10, 11, 12)
+    val instance0                                                = ObservableIntegerArray(array0)
+    val instance1                                                = ObservableIntegerArray(array1)
+    val instance2                                                = ObservableIntegerArray(array2)
+    val change                                                   = Buffer.empty[(ObservableIntegerArray, Change)]
+    var changes                                                  = 0
     def onChangeFull(a: ObservableIntegerArray, c: Change): Unit = {
       change += ((a, c))
     }
@@ -302,7 +302,7 @@ class ObservableIntegerArraySpec
   }
   it should "return valid initialized array from companion's fill(n)(f)" in {
     def fillArray(n: Int): ObservableIntegerArray = {
-      var lastVal = 0
+      var lastVal      = 0
       def initVal: Int = {
         lastVal += 1
         lastVal

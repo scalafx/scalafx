@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -123,7 +123,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp3 {
     }
     val iconImageView = new ImageView { image = new Image(this, "images/icon.png") }
     val oldAndNewText = new Text { text = "Old and New" }
-    val oldText = new Text {
+    val oldText       = new Text {
       text = """Old
 20%"""
     }
@@ -132,7 +132,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp3 {
 80%"""
     }
     val newImageView = new ImageView { image = new Image(this, "images/new.png") }
-    val gridPane = new GridPane {
+    val gridPane     = new GridPane {
       hgap = 10
       vgap = 10
       padding = Insets(0, 0, 0, 10)

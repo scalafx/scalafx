@@ -265,7 +265,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
           new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
             def call(tv: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
               new jfxsc.TableCell[S, T] {
-                val sfxThis = new TableCell(this)
+                val sfxThis                                            = new TableCell(this)
                 override def updateItem(item: T, empty: Boolean): Unit = {
                   super.updateItem(item, empty)
                   if (empty || item == null) {

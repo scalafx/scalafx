@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,32 +40,32 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
   }
 
   val originalMaxHeight = target.maxHeight
-  val sldMaxHeight = new SliderLabelControl(target.maxHeight) {
+  val sldMaxHeight      = new SliderLabelControl(target.maxHeight) {
     min = -10
   }
 
   val originalPrefHeight = target.prefHeight
-  val sldPrefHeight = new SliderLabelControl(target.prefHeight) {
+  val sldPrefHeight      = new SliderLabelControl(target.prefHeight) {
     min = -10
   }
 
   val originalMinHeight = target.minHeight
-  val sldMinHeight = new SliderLabelControl(target.minHeight) {
+  val sldMinHeight      = new SliderLabelControl(target.minHeight) {
     min = -10
   }
 
   val originalMinWidth = target.minWidth
-  val sldMinWidth = new SliderLabelControl(target.minWidth) {
+  val sldMinWidth      = new SliderLabelControl(target.minWidth) {
     min = -10
   }
 
   val originalPrefWidth = target.prefWidth
-  val sldPrefWidth = new SliderLabelControl(target.prefWidth) {
+  val sldPrefWidth      = new SliderLabelControl(target.prefWidth) {
     min = -10
   }
 
   val originalMaxWidth = target.maxWidth
-  val sldMaxWidth = new SliderLabelControl(target.maxWidth) {
+  val sldMaxWidth      = new SliderLabelControl(target.maxWidth) {
     min = -10
   }
 

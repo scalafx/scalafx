@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object TextFormatterDemo extends JFXApp3 {
       wrapText = true
       prefHeight = Region.UseComputedSize
     }
-    val slider = new Slider(0, 10000, 1000)
+    val slider    = new Slider(0, 10000, 1000)
     val textField = {
       val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
       val converter      = new FormatStringConverter[Number](currencyFormat)

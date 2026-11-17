@@ -257,7 +257,7 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
    * Represents the current value of the SpinnerValueFactory, or null if no
    * value has been set.
    */
-  def value: ObjectProperty[T] = delegate.valueProperty()
+  def value: ObjectProperty[T]   = delegate.valueProperty()
   def value_=(newValue: T): Unit = {
     value() = newValue
   }
@@ -268,7 +268,7 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
    * property.
    */
   def converter: ObjectProperty[jfxu.StringConverter[T]] = delegate.converterProperty()
-  def converter_=(newValue: StringConverter[T]): Unit = {
+  def converter_=(newValue: StringConverter[T]): Unit    = {
     converter() = newValue
   }
 
@@ -277,7 +277,7 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
    * be circular. For example, should an integer-based value model increment
    * from the maximum value back to the minimum value (and vice versa).
    */
-  def wrapAround: BooleanProperty = delegate.wrapAroundProperty()
+  def wrapAround: BooleanProperty        = delegate.wrapAroundProperty()
   def wrapAround_=(value: Boolean): Unit = {
     wrapAround() = value
   }

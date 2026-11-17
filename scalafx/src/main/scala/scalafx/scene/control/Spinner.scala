@@ -197,7 +197,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
    * is valid, it will remain as the value. If it is invalid, the value factory
    * will need to react accordingly and back out this change.
    */
-  def editable: BooleanProperty = delegate.editableProperty()
+  def editable: BooleanProperty        = delegate.editableProperty()
   def editable_=(value: Boolean): Unit = {
     editable() = value
   }
@@ -209,7 +209,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
    * @return the prompt text property
    * @since 9
    */
-  def promptText: StringProperty = delegate.promptTextProperty()
+  def promptText: StringProperty        = delegate.promptTextProperty()
   def promptText_=(value: String): Unit = {
     promptText() = value
   }
@@ -222,7 +222,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
    * @since 11
    */
   def initialDelay: ObjectProperty[jfxu.Duration] = delegate.initialDelayProperty()
-  def initialDelay_=(value: Duration): Unit = {
+  def initialDelay_=(value: Duration): Unit       = {
     initialDelay() = value
   }
 
@@ -234,7 +234,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
    * @since 11
    */
   def repeatDelay: ObjectProperty[jfxu.Duration] = delegate.repeatDelayProperty()
-  def repeatDelay_=(value: Duration): Unit = {
+  def repeatDelay_=(value: Duration): Unit       = {
     repeatDelay() = value
   }
 

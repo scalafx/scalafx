@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ import scalafx.util.converter.DoubleStringConverter
 
 object SliderTest extends JFXApp3 {
   override def start(): Unit = {
-    val slider = new Slider { alignmentInParent = Pos.Center }
+    val slider       = new Slider { alignmentInParent = Pos.Center }
     val controlsPane = new VBox {
       spacing = 5
       fillWidth = true
@@ -89,7 +89,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   txfValue.onAction = _ => fillDoublePropertyFromText(target.value, txfValue, false)
 
   val originalBlockIncrement = target.blockIncrement.get
-  val txfBlockIncrement = new TextField {
+  val txfBlockIncrement      = new TextField {
     text = originalBlockIncrement.get.toString
   }
   target.blockIncrement.onChange(txfBlockIncrement.text = target.blockIncrement.get.toString)
@@ -103,56 +103,56 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   })
 
   val originalMajorTickUnit = target.majorTickUnit.get()
-  val txfMajorTickUnit = new TextField {
+  val txfMajorTickUnit      = new TextField {
     text = originalMajorTickUnit.toString
   }
   target.majorTickUnit.onChange(txfMajorTickUnit.text = target.majorTickUnit.get.toString)
   txfMajorTickUnit.onAction = _ => fillDoublePropertyFromText(target.majorTickUnit, txfMajorTickUnit, false)
 
   val originalMax = target.max.get()
-  val txfMax = new TextField {
+  val txfMax      = new TextField {
     text = originalMax.toString
   }
   target.max.onChange(txfMax.text = target.max.get.toString)
   txfMax.onAction = _ => fillDoublePropertyFromText(target.max, txfMax, false)
 
   val originalMinorTickCount = target.minorTickCount.get()
-  val txfMinorTickCount = new TextField {
+  val txfMinorTickCount      = new TextField {
     text = originalMinorTickCount.toString
   }
   target.minorTickCount.onChange(txfMinorTickCount.text = target.minorTickCount.get.toString)
   txfMinorTickCount.onAction = _ => fillIntPropertyFromText(target.minorTickCount, txfMinorTickCount, false)
 
   val originalMin = target.min.get()
-  val txfMin = new TextField {
+  val txfMin      = new TextField {
     text = originalMin.toString
   }
   target.min.onChange(txfMin.text = target.min.get.toString)
   txfMin.onAction = _ => fillDoublePropertyFromText(target.min, txfMin, false)
 
   val originalShowTickLabels = target.showTickLabels.get
-  val chbShowTickLabels = new CheckBox {
+  val chbShowTickLabels      = new CheckBox {
     selected <==> target.showTickLabels
   }
 
   val originalShowTickMarks = target.showTickMarks.get
-  val chbShowTickMarks = new CheckBox {
+  val chbShowTickMarks      = new CheckBox {
     selected <==> target.showTickMarks
   }
 
   val originalSnapToTicks = target.snapToTicks.get()
-  val chbSnapToTicks = new CheckBox {
+  val chbSnapToTicks      = new CheckBox {
     selected <==> target.snapToTicks
   }
 
   val originalValueChanging = target.valueChanging.get()
-  val chbValueChanging = new CheckBox {
+  val chbValueChanging      = new CheckBox {
     selected <==> target.valueChanging
   }
 
   val originalOrientation = target.orientation.get()
   val tggOrientation      = new ToggleGroup
-  val rdbHorizontal = new RadioButton {
+  val rdbHorizontal       = new RadioButton {
     text = Orientation.Horizontal.toString
     toggleGroup = tggOrientation
   }

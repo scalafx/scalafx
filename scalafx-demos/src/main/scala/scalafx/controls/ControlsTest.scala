@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ object ControlsTest extends JFXApp3 {
   override def start(): Unit = {
     val indicatorPane = new VBox { children = List(new Label { text = "LEFT" }) }
     val controlsPane  = new VBox { children = List(new Label { text = "RIGHT" }) }
-    val centerPane = new BorderPane {
+    val centerPane    = new BorderPane {
       top = new Label { text = "Label" }
       center = new StackPane { children = List(new Button { text = "Button" }) }
     }

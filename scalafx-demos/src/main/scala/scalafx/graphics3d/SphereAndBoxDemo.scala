@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@ object SphereAndBoxDemo extends JFXApp3 {
           translateZ = -225
         }
         val shapes = new Group(box, sphere)
-        val light = new PointLight {
+        val light  = new PointLight {
           color = Color.AntiqueWhite
           translateX = -265
           translateY = -260
@@ -76,7 +76,7 @@ object SphereAndBoxDemo extends JFXApp3 {
       }
     }
     def addMouseInteraction(scene: Scene, node: Node): Unit = {
-      val angleY = DoubleProperty(-50)
+      val angleY  = DoubleProperty(-50)
       val yRotate = new Rotate {
         angle <== angleY
         axis = Rotate.YAxis

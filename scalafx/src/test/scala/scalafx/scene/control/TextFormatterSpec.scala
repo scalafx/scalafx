@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ class TextFormatterSpec
     )
     with RunOnApplicationThread {
 
-  override protected def getScalaClassInstance: TextFormatter[String] = new TextFormatter(getJavaClassInstance)
+  override protected def getScalaClassInstance: TextFormatter[String]      = new TextFormatter(getJavaClassInstance)
   override protected def getJavaClassInstance: jfxsc.TextFormatter[String] =
     new jfxsc.TextFormatter(TextFormatter.IdentityStringConverter)
 }

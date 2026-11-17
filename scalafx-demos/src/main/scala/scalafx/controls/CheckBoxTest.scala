@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ import scalafx.scene.paint.Color
 
 object CheckBoxTest extends JFXApp3 {
   override def start(): Unit = {
-    val check = new CheckBox { text = "CheckBox" }
+    val check        = new CheckBox { text = "CheckBox" }
     val controlsPane = new VBox {
       spacing = 5
       fillWidth = true

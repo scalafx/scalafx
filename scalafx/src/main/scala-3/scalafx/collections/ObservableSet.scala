@@ -192,7 +192,7 @@ trait ObservableSet[T]
         val changeEvent: Change[J] = (change.wasAdded, change.wasRemoved) match {
           case (true, false) => ObservableSet.Add(change.getElementAdded)
           case (false, true) => ObservableSet.Remove(change.getElementRemoved)
-          case _ => throw new IllegalStateException(
+          case _             => throw new IllegalStateException(
               s"Irregular Change. Added: ${change.getElementAdded}, Removed: ${change.getElementRemoved}"
             )
         }

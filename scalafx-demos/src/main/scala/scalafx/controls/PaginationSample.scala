@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ import scalafx.scene.layout.{AnchorPane, VBox}
  */
 object PaginationSample extends JFXApp3 {
   override def start(): Unit = {
-    val itemsPerPage = 8
+    val itemsPerPage                     = 8
     def createPage(pageIndex: Int): VBox = {
       def getPage(i: Int) = {
         val link = new Hyperlink {

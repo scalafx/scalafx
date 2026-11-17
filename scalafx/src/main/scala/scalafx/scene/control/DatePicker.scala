@@ -126,7 +126,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
           new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
             override def call(v: jfxsc.DatePicker): jfxsc.DateCell = {
               new jfxsc.DateCell {
-                val sfxThis = new DateCell(this)
+                val sfxThis                                                    = new DateCell(this)
                 override def updateItem(item: LocalDate, empty: Boolean): Unit = {
                   super.updateItem(item, empty)
                   if (empty || item == null) {

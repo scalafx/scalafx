@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -114,7 +114,7 @@ object DialogsDemo extends JFXApp3 {
         ex.printStackTrace(pw)
         sw.toString
       }
-      val label = new Label("The exception stacktrace was:")
+      val label    = new Label("The exception stacktrace was:")
       val textArea = new TextArea {
         text = exceptionText
         editable = false
@@ -156,7 +156,7 @@ object DialogsDemo extends JFXApp3 {
       val ButtonTypeOne   = new ButtonType("One")
       val ButtonTypeTwo   = new ButtonType("Two")
       val ButtonTypeThree = new ButtonType("Three")
-      val alert = new Alert(AlertType.Confirmation) {
+      val alert           = new Alert(AlertType.Confirmation) {
         initOwner(stage)
         title = "Confirmation Dialog with Custom Actions"
         headerText = "Look, a Confirmation Dialog with Custom Actions."
@@ -192,7 +192,7 @@ object DialogsDemo extends JFXApp3 {
     }
     def choiceDialog(): Unit = {
       val choices = Seq("a", "b", "c")
-      val dialog = new ChoiceDialog(defaultChoice = "b", choices = choices) {
+      val dialog  = new ChoiceDialog(defaultChoice = "b", choices = choices) {
         initOwner(stage)
         title = "Choice Dialog"
         headerText = "Look, a Choice Dialog."

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@ class PopupControlControls(target: PopupControl)
     extends PropertiesNodes[PopupControl](target, "Popup Control Properties") {
 
   val originalId: String = target.id.get()
-  val txfID = new TextField {
+  val txfID              = new TextField {
     text <==> target.id
     prefWidth = 50.0
     minWidth = 50.0

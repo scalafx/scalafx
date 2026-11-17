@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -91,8 +91,8 @@ class KeyFrameSpec
   }
 
   it should "have a simpler syntax for finish handlers as non-param functions" in {
-    var callCount1 = 0
-    var callCount2 = 0
+    var callCount1    = 0
+    var callCount2    = 0
     val finishHandler = () => {
       // There is a potential problems with code blocks as event handlers,
       // only the last statement is executed during handler invocation
@@ -110,9 +110,9 @@ class KeyFrameSpec
   }
 
   it should "have a simpler syntax for finish handlers with events" in {
-    var callCount1  = 0
-    var callCount2  = 0
-    val actionEvent = new jfxe.ActionEvent()
+    var callCount1    = 0
+    var callCount2    = 0
+    val actionEvent   = new jfxe.ActionEvent()
     val finishHandler = { (event: ActionEvent) =>
       callCount1 += 1
       callCount2 += 1
@@ -128,7 +128,7 @@ class KeyFrameSpec
 
   it should "have a convenient apply construction format and property access for values" in {
     val doubleProperty = new DoubleProperty(null, "sample")
-    val frames = Set(
+    val frames         = Set(
       KeyValue(doubleProperty, 50d)
     )
     KeyFrame(10 ms, values = frames).values should equal(frames.map(_.delegate))

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2022, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@ object BasicPie extends JFXApp3 {
       val pieValue: Double = d.pieValue()
       val percent          = (pieValue / total) * 100
       val msg              = f"${d.name()}: $pieValue%.2f ($percent%.2f%%)"
-      val tt = new Tooltip {
+      val tt               = new Tooltip {
         text = msg
         style = "-fx-background-color: yellow; -fx-text-fill: black; "
       }

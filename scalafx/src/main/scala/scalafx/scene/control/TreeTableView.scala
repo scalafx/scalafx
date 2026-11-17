@@ -621,7 +621,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
   /**
    * Property that represents whether or not the TreeView root node is visible.
    */
-  def showRoot: BooleanProperty = delegate.showRootProperty
+  def showRoot: BooleanProperty    = delegate.showRootProperty
   def showRoot_=(v: Boolean): Unit = {
     showRoot() = v
   }
@@ -632,7 +632,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * column assuming it is non-null and contained within the visible leaf columns list.
    */
   def treeColumn: ObjectProperty[jfxsc.TreeTableColumn[S, _]] = delegate.treeColumnProperty
-  def treeColumn_=(v: TreeTableColumn[S, _]): Unit = {
+  def treeColumn_=(v: TreeTableColumn[S, _]): Unit            = {
     treeColumn() = v
   }
 
@@ -652,7 +652,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * TreeTableView. Generally the default implementation should be more than sufficient.
    */
   def focusModel: ObjectProperty[jfxsc.TreeTableView.TreeTableViewFocusModel[S]] = delegate.focusModelProperty
-  def focusModel_=(v: TreeTableView.TreeTableViewFocusModel[S]): Unit = {
+  def focusModel_=(v: TreeTableView.TreeTableViewFocusModel[S]): Unit            = {
     focusModel() = v
   }
 
@@ -669,7 +669,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * Specifies whether this TreeTableView is editable - only if the TreeTableView and the TreeCells within it are both
    * editable will a TreeCell be able to go into their editing state.
    */
-  def editable: BooleanProperty = delegate.editableProperty
+  def editable: BooleanProperty    = delegate.editableProperty
   def editable_=(v: Boolean): Unit = {
     editable() = v
   }
@@ -747,7 +747,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * to show the user, or that there are no currently visible columns.
    */
   def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
-  def placeholder_=(v: Node): Unit = {
+  def placeholder_=(v: Node): Unit           = {
     placeholder() = v
   }
 
@@ -765,7 +765,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * -fx-fixed-cell-size, instead of `-fx-cell-size`. If both properties are specified in CSS,
    * -fx-fixed-cell-size takes precedence.
    */
-  def fixedCellSize: DoubleProperty = delegate.fixedCellSizeProperty
+  def fixedCellSize: DoubleProperty    = delegate.fixedCellSizeProperty
   def fixedCellSize_=(v: Double): Unit = {
     fixedCellSize() = v
   }
@@ -775,7 +775,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * in the sort order list.
    */
   def sortMode: ObjectProperty[jfxsc.TreeSortMode] = delegate.sortModeProperty
-  def sortMode_=(v: TreeSortMode): Unit = {
+  def sortMode_=(v: TreeSortMode): Unit            = {
     sortMode() = v
   }
 
@@ -817,7 +817,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * Called when there's a request to sort the control.
    */
   def onSort: ObjectProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TreeTableView[S]]]] = delegate.onSortProperty
-  def onSort_=(v: jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TreeTableView[S]]]): Unit = {
+  def onSort_=(v: jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TreeTableView[S]]]): Unit      = {
     onSort() = v
   }
 
@@ -835,7 +835,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
    * Called when there's a request to scroll an index into view using [[scrollTo]]
    */
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
-  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]): Unit = {
+  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]): Unit      = {
     onScrollTo() = v
   }
 

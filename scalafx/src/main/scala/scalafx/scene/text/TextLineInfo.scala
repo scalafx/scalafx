@@ -36,7 +36,6 @@ object TextLineInfo {
   implicit def sfxTextLineInfo2jfx(v: TextLineInfo): jfxst.TextLineInfo = if (v != null) v.delegate else null
 }
 
-
 /**
  * Provides the information about a text line in a text layout.
  *

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,7 @@ object TriangleMeshDemo extends JFXApp3 {
             diffuseMap = image
           }
         }
-        val shapes = new Group(tetra)
+        val shapes     = new Group(tetra)
         val pointLight = new PointLight {
           color = Color.AntiqueWhite
           translateX = -300.0d
@@ -114,7 +114,7 @@ object TriangleMeshDemo extends JFXApp3 {
       mesh
     }
     def addMouseInteraction(scene: Scene, node: Node): Unit = {
-      val angleY = DoubleProperty(0)
+      val angleY  = DoubleProperty(0)
       val yRotate = new Rotate {
         angle <== angleY
         axis = Rotate.YAxis

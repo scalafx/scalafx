@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
 
     val group = new Group()
 
-    var counter = 0
+    var counter      = 0
     val subscription = group.handleEvent(Event.Any) {
       () =>
         // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
@@ -64,11 +64,11 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
   "`filterEvent`" should "create subscription and cancel for Event Filters" in {
 
     val button = new Button()
-    val group = new Group {
+    val group  = new Group {
       children = button
     }
 
-    var groupCounter = 0
+    var groupCounter      = 0
     val groupSubscription = group.filterEvent(ActionEvent.Action) {
       () =>
         // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
@@ -105,7 +105,7 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
   "`filterEvent`" should "not consume events when not cancelled/active" in {
 
     val button = new Button()
-    val group = new Group {
+    val group  = new Group {
       children = button
     }
 

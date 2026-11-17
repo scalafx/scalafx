@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,13 +60,14 @@ object VideoCubeDemo extends JFXApp3 {
     }
     val folderSysProperty = "scalafx.graphics3d.VideoCubeDemo.folder"
     val folderOption      = Option[String](System.getProperty(folderSysProperty))
-    val folder = folderOption match {
+    val folder            = folderOption match {
       case Some(folderName) =>
         val file = new File(folderName)
         if (file.exists() && file.isDirectory) file
         else
           throw new IllegalArgumentException(
-            "System property `" + folderSysProperty + " = " + folderName + "` " + "has to point to an existing directory."
+            "System property `" + folderSysProperty + " = " + folderName + "` " +
+              "has to point to an existing directory."
           )
       case None =>
         throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
@@ -132,10 +133,10 @@ object VideoCubeDemo extends JFXApp3 {
     cubeSystem.translateX = 800 / 2
     cubeSystem.translateY = 600 / 2
     stage.getScene.setCamera(new PerspectiveCamera())
-    val lowX  = -75
-    val lowY  = -75
-    val highX = 900
-    val highY = 700
+    val lowX             = -75
+    val lowY             = -75
+    val highX            = 900
+    val highY            = 700
     val starryBackground = new Group {
       val stars: Seq[Rectangle] = (1 to 500).map(_ =>
         new Rectangle {

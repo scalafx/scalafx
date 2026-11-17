@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ import scalafx.scene.paint.Color
 
 object SeparatorDemo extends JFXApp3 {
   override def start(): Unit = {
-    val separator = new Separator
+    val separator    = new Separator
     val pnlSeparator = new FlowPane {
       children = List(new Button { text = "Button 1" }, separator, new Button { text = "Button 2" })
       minHeight = 100

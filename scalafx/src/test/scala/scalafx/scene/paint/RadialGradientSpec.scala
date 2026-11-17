@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ class RadialGradientSpec
 
   it should "return valid instance from companion's apply(List[Stop])" in {
     val expected: RadialGradient = new RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
-    val radialGradient = RadialGradient(
+    val radialGradient           = RadialGradient(
       focusAngle = 0,
       focusDistance = 0,
       centerX = 0,

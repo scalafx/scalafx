@@ -212,7 +212,7 @@ class Alert(override val delegate: jfxsc.Alert)
    * Returns an `ObservableBuffer` of all `ButtonType` instances that
    * are currently set inside this Alert instance.
    */
-  def buttonTypes: ObservableBuffer[jfxsc.ButtonType] = delegate.getButtonTypes
+  def buttonTypes: ObservableBuffer[jfxsc.ButtonType]  = delegate.getButtonTypes
   def buttonTypes_=(types: Iterable[ButtonType]): Unit = {
     buttonTypes.clear()
     buttonTypes ++= types.map(_.delegate)

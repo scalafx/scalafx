@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,7 +63,7 @@ import scalafx.scene.text.{Font, TextAlignment}
 object ScalaFX_Controls_01 extends JFXApp3 {
   override def start(): Unit = {
     val labelsImageView = new ImageView { image = new Image(this, "images/labels.jpg") }
-    val searchLabel = new Label {
+    val searchLabel     = new Label {
       text = "Search"
       graphic = labelsImageView
       font = Font.font("Arial", 30)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object ProgressIndicatorTest extends JFXApp3 {
   override def start(): Unit = {
     val progressIndicator           = new ProgressIndicator
     val progressIndicatorController = new ProgressIndicatorControls(progressIndicator)
-    val mainPane = new BorderPane {
+    val mainPane                    = new BorderPane {
       top = progressIndicator
       center = progressIndicatorController
       vgrow = Priority.Always

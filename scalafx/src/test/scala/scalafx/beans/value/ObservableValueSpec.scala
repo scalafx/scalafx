@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2023, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -130,8 +130,8 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support subscribe 2 arguments" in {
     property() = 310
-    var updatedOld = 0
-    var updatedNew = 0
+    var updatedOld      = 0
+    var updatedNew      = 0
     val s: Subscription = property.subscribe { (x, y) =>
       updatedOld = x.intValue()
       updatedNew = y.intValue()

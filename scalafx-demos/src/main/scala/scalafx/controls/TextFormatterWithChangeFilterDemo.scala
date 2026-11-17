@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ import scalafx.util.StringConverter
 object TextFormatterWithChangeFilterDemo extends JFXApp3 {
   override def start(): Unit = {
     case class Message(text: String) { override def toString = "\"" + text + "\"" }
-    val prompt = "> "
+    val prompt    = "> "
     val converter = new StringConverter[Message] {
       override def fromString(s: String): Message = {
         val r = if (s.startsWith(prompt)) s.substring(prompt.length) else s
@@ -68,7 +68,7 @@ object TextFormatterWithChangeFilterDemo extends JFXApp3 {
       if (change.caretPosition < prompt.length) change.caretPosition = prompt.length
       change
     }
-    val formatter = new TextFormatter[Message](converter, Message("hello"), filter)
+    val formatter      = new TextFormatter[Message](converter, Message("hello"), filter)
     val outputTextArea = new TextArea {
       editable = false
       focusTraversable = false

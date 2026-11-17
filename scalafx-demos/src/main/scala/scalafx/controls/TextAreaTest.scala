@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,9 +40,9 @@ import scalafx.scene.paint.Color
 
 object TextAreaTest extends JFXApp3 {
   private val initialPreferredHeight: Int = 380
-  override def start(): Unit = {
+  override def start(): Unit              = {
     lazy val textArea = new TextArea { prefColumnCount = 20 }
-    val controlsPane = new VBox {
+    val controlsPane  = new VBox {
       spacing = 5
       fillWidth = true
       alignment = Pos.Center

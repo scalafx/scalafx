@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ import scalafx.scene.{Group, Scene}
 object CanvasDoodleTest extends JFXApp3 {
   override def start(): Unit = {
     val canvas = new Canvas(200, 200)
-    val rect = new Rectangle {
+    val rect   = new Rectangle {
       height = 400
       width = 400
       fill = new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0, Color.Red), Stop(1, Color.Yellow)))

@@ -54,7 +54,7 @@ object Dragboard {
 class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delegate) with SFXDelegate[jfxsi.Dragboard] {
 
   /** The image used as a drag view. */
-  def dragView: Image = delegate.getDragView
+  def dragView: Image                = delegate.getDragView
   def dragView_=(image: Image): Unit = {
     delegate.setDragView(image)
   }
@@ -67,13 +67,13 @@ class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delega
   }
 
   /** The x position of the cursor of the drag view image. */
-  def dragViewOffsetX: Double = delegate.getDragViewOffsetX
+  def dragViewOffsetX: Double                  = delegate.getDragViewOffsetX
   def dragViewOffsetX_=(offsetX: Double): Unit = {
     delegate.setDragViewOffsetX(offsetX)
   }
 
   /** The y position of the cursor of the drag view image. */
-  def dragViewOffsetY: Double = delegate.getDragViewOffsetY
+  def dragViewOffsetY: Double                  = delegate.getDragViewOffsetY
   def dragViewOffsetY_=(offsetY: Double): Unit = {
     delegate.setDragViewOffsetY(offsetY)
   }

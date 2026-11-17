@@ -322,7 +322,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
           new jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] {
             def call(tv: jfxsc.TreeTableColumn[S, T]): jfxsc.TreeTableCell[S, T] = {
               new jfxsc.TreeTableCell[S, T] {
-                val sfxThis = new TreeTableCell(this)
+                val sfxThis                                            = new TreeTableCell(this)
                 override def updateItem(item: T, empty: Boolean): Unit = {
                   super.updateItem(item, empty)
                   if (empty || item == null) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,9 +53,9 @@ import scalafx.scene.shape.Rectangle
 object RectangleDrawingDemo extends JFXApp3 {
   override def start(): Unit = {
     object Updater {
-      private var _start = new Point2D(0, 0)
-      private var _end   = new Point2D(0, 0)
-      val rectangle      = new Rectangle { fill = Color.Blue }
+      private var _start                                             = new Point2D(0, 0)
+      private var _end                                               = new Point2D(0, 0)
+      val rectangle                                                  = new Rectangle { fill = Color.Blue }
       def update(start: Point2D = _start, end: Point2D = _end): Unit = {
         _start = start
         _end = end

@@ -72,7 +72,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    */
   def apply(name: String): S = values.find(_.name == name) match {
     case Some(e) => e
-    case None => throw new IllegalArgumentException(s"No enum constant ${values.head.getClass.getName}.$name")
+    case None    => throw new IllegalArgumentException(s"No enum constant ${values.head.getClass.getName}.$name")
   }
 
   /**

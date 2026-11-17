@@ -69,7 +69,8 @@ object StageStyle
   @deprecated("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
   val UNIFIED: StageStyle = Unified
 
-  /** Defines a Stage style in which the client area is extended into the header bar area,
+  /**
+   * Defines a Stage style in which the client area is extended into the header bar area,
    * removing the separation between the two areas and allowing applications
    * to place scene graph nodes in the header bar area of the stage.
    *

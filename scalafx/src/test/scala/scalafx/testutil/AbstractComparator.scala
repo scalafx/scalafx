@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -176,7 +176,7 @@ private[testutil] trait AbstractComparator extends Assertions {
    */
   private def groupMethods(cls: Class[_], useStatic: Boolean) = {
     val staticIndicator: Boolean => Boolean = if (useStatic) b => b else b => !b
-    val isAcceptable: Method => Boolean =
+    val isAcceptable: Method => Boolean     =
       m => isPublicMethod(m) && staticIndicator(Modifier.isStatic(m.getModifiers)) && !isSpecialMethodName(m.getName)
 
     cls.getDeclaredMethods
@@ -198,7 +198,7 @@ private[testutil] trait AbstractComparator extends Assertions {
     javaMethodsNotMirrored: List[Method] = Nil
   ): List[Method] = {
     javaMethods match {
-      case Nil => javaMethodsNotMirrored
+      case Nil                        => javaMethodsNotMirrored
       case javaMethod :: otherMethods =>
         val finderMethod   = MethodsComparators.getFinderMethod(javaMethod)
         val desirableName  = getDesirableMethodName(javaMethod)

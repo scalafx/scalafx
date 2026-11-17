@@ -504,7 +504,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
     onMouseDragDone() = v
   }
 
-
   /**
    * Defines a function to be called when a full press-drag-release gesture enters this Node.
    */

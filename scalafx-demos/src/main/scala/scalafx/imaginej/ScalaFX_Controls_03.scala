@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,13 +61,13 @@ object ScalaFX_Controls_03 extends JFXApp3 {
   override def start(): Unit = {
     val iconImageView  = new ImageView {}
     val theToggleGroup = new ToggleGroup {}
-    theToggleGroup.selectedToggle onChange ({ (_, _, _) =>
+    theToggleGroup.selectedToggle.onChange { (_, _, _) =>
       val selectedToggle = theToggleGroup.getSelectedToggle
       if (selectedToggle != null) {
         val userDataString = selectedToggle.getUserData.toString
         iconImageView.image = new Image(this, "images/" + userDataString + ".jpg")
       }
-    })
+    }
     val homeRadioButton = new RadioButton {
       toggleGroup = theToggleGroup
       userData = "Home"

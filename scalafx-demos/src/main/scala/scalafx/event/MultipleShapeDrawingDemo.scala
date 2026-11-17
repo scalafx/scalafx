@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ import scalafx.scene.shape.{Circle, Ellipse, Line, Rectangle}
 object MultipleShapeDrawingDemo extends JFXApp3 {
   override def start(): Unit = {
     object RectangleInteractor extends ShapeDrawInteractor {
-      val rectangle = new Rectangle { fill = Color.web("RED", 0.5d) }
+      val rectangle               = new Rectangle { fill = Color.web("RED", 0.5d) }
       override def update(): Unit = {
         rectangle.x = math.min(startPt.x, endPt.x)
         rectangle.y = math.min(startPt.y, endPt.y)
@@ -62,7 +62,7 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
       }
     }
     object EllipseInteractor extends ShapeDrawInteractor {
-      val ellipse = new Ellipse { fill = Color.web("GREEN", 0.5d) }
+      val ellipse                 = new Ellipse { fill = Color.web("GREEN", 0.5d) }
       override def update(): Unit = {
         ellipse.centerX = startPt.x
         ellipse.centerY = startPt.y
@@ -156,15 +156,15 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
     }
     trait MouseHandler { def handler: MouseEvent => Unit }
     trait ShapeDrawInteractor extends MouseHandler {
-      private var _start   = new Point2D(0, 0)
-      private var _end     = new Point2D(0, 0)
-      def startPt: Point2D = _start
+      private var _start              = new Point2D(0, 0)
+      private var _end                = new Point2D(0, 0)
+      def startPt: Point2D            = _start
       def startPt_=(p: Point2D): Unit = {
         _start = p
         _end = p
         update()
       }
-      def endPt: Point2D = _end
+      def endPt: Point2D            = _end
       def endPt_=(p: Point2D): Unit = {
         _end = p
         update()

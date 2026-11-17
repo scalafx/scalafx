@@ -145,7 +145,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
           new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
             def call(tv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
               new jfxsc.ListCell[T] {
-                val sfxThis = new ListCell(this)
+                val sfxThis                                            = new ListCell(this)
                 override def updateItem(item: T, empty: Boolean): Unit = {
                   super.updateItem(item, empty)
                   if (empty || item == null) {

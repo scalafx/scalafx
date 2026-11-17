@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import scala.language.implicitConversions
 object Circle {
   implicit def sfxCircle2jfx(v: Circle): jfxss.Circle = if (v != null) v.delegate else null
 
-  def apply(radius: Double) = new Circle(new jfxss.Circle(radius))
+  def apply(radius: Double)                                   = new Circle(new jfxss.Circle(radius))
   def apply(centerX: Double, centerY: Double, radius: Double) =
     new Circle(new jfxss.Circle(centerX, centerY, radius))
   def apply(centerX: Double, centerY: Double, radius: Double, fill: Paint) =

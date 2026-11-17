@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,8 +60,8 @@ import scalafx.scene.shape.Rectangle
 
 object ScalaFX_Controls_04 extends JFXApp3 {
   override def start(): Unit = {
-    val priorityLabel  = new Label { text = "Priority:" }
-    val theToggleGroup = new ToggleGroup {}
+    val priorityLabel     = new Label { text = "Priority:" }
+    val theToggleGroup    = new ToggleGroup {}
     val minorToggleButton = new ToggleButton {
       text = "Minor"
       toggleGroup = theToggleGroup
@@ -83,7 +83,7 @@ object ScalaFX_Controls_04 extends JFXApp3 {
       selected = true
       style = "-fx-base: salmon;"
     }
-    val hBox = new HBox { children = List(minorToggleButton, majorToggleButton, criticalToggleButton) }
+    val hBox      = new HBox { children = List(minorToggleButton, majorToggleButton, criticalToggleButton) }
     val rectangle = new Rectangle {
       width = 158
       height = 50
@@ -97,7 +97,7 @@ object ScalaFX_Controls_04 extends JFXApp3 {
       padding = Insets(20, 10, 10, 20)
       children = List(priorityLabel, hBox, rectangle)
     }
-    theToggleGroup.selectedToggle onChange ({ (_, _, newToggle) =>
+    theToggleGroup.selectedToggle.onChange { (_, _, newToggle) =>
       if (newToggle != null) {
         val selectedToggle = theToggleGroup.getSelectedToggle
         val userDataColor  = selectedToggle.getUserData.asInstanceOf[Color]
@@ -105,7 +105,7 @@ object ScalaFX_Controls_04 extends JFXApp3 {
       } else {
         rectangle.fill = Color.White
       }
-    })
+    }
     stage = new PrimaryStage {
       title = "ScalaFX Controls 04"
       width = 250

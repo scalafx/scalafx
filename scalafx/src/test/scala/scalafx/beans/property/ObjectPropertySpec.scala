@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2024, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -196,7 +196,10 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
 
   it should "support implicit conversion to a String Binding" is pending
 
-  it should "support implicit conversion from a ScalaFX ObjectProperty with a SFXDelegate of a type T to a JavaFX ObjectProperty of type T" in {
+  it should (
+    "support implicit conversion from a ScalaFX ObjectProperty with a SFXDelegate of a type T " +
+      "to a JavaFX ObjectProperty of type T"
+  ) in {
     val scalaObjProperty: ObjectProperty[Button]            = ObjectProperty[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ObjectProperty[jfxsc.Button] = scalaObjProperty
 

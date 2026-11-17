@@ -185,7 +185,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
    * @since 10
    */
   def tabDragPolicy: ObjectProperty[jfxsc.TabPane.TabDragPolicy] = delegate.tabDragPolicyProperty
-  def tabDragPolicy_=(value: jfxsc.TabPane.TabDragPolicy): Unit = {
+  def tabDragPolicy_=(value: jfxsc.TabPane.TabDragPolicy): Unit  = {
     tabDragPolicy() = value
   }
 

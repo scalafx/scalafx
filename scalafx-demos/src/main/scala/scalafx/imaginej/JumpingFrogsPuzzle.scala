@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -366,7 +366,7 @@ class Control {
   def update(model: Model, view: View): Unit = {
     view.frogShapes.foreach {
       case `theDummyFrogShape` =>
-      case frogShape =>
+      case frogShape           =>
         frogShape.onMouseClicked = { (_: MouseEvent) =>
           val frog = frogShape.getFrog
           if (model.canJumpOneRight(frog)) {

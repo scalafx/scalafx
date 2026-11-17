@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2025, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ class FormatStringConverterSpec
       classOf[FormatStringConverter[Number]]
     ) {
 
-  override protected def getJavaClassInstance = getScalaClassInstance
+  override protected def getJavaClassInstance  = getScalaClassInstance
   override protected def getScalaClassInstance =
     new FormatStringConverter[Number](NumberFormat.getCurrencyInstance(Locale.US))
 

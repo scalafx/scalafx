@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2026, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ import scalafx.scene.text.TextAlignment
 
 object TooltipDemo extends JFXApp3 {
   override def start(): Unit = {
-    val myTooltip = new Tooltip
+    val myTooltip  = new Tooltip
     val btnTooltip = new Button {
       text = "Mouse over me to see Tooltip"
       tooltip = myTooltip
@@ -77,7 +77,7 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   }
 
   val originalContentDisplay = target.contentDisplay()
-  val chbContentDisplay = new ChoiceBox[jfxsc.ContentDisplay] {
+  val chbContentDisplay      = new ChoiceBox[jfxsc.ContentDisplay] {
     items = ObservableBuffer(
       ContentDisplay.Bottom,
       ContentDisplay.Center,
@@ -91,18 +91,18 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   }
 
   val originalText = target.text()
-  val txfText = new TextField {
+  val txfText      = new TextField {
     text <==> target.text
   }
 
   val originalTextAlignment = target.textAlignment()
-  val chbTextAlignment = new ChoiceBox[jfxst.TextAlignment] {
+  val chbTextAlignment      = new ChoiceBox[jfxst.TextAlignment] {
     items = ObservableBuffer(TextAlignment.Center, TextAlignment.Justify, TextAlignment.Left, TextAlignment.Right)
     value <==> target.textAlignment
   }
 
   val originalTextOverrun = target.textOverrun()
-  val chbTextOverrun = new ChoiceBox[jfxsc.OverrunStyle] {
+  val chbTextOverrun      = new ChoiceBox[jfxsc.OverrunStyle] {
     items = ObservableBuffer(
       OverrunStyle.CenterEllipsis,
       OverrunStyle.CenterWordEllipsis,
@@ -116,7 +116,7 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   }
 
   val originalWrap = target.wrapText()
-  val chbWrap = new CheckBox {
+  val chbWrap      = new CheckBox {
     selected <==> target.wrapText
   }
 
