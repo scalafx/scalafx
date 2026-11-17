@@ -26,7 +26,7 @@
  */
 
 import sbt.*
-import sbt.internal.librarymanagement.ivy.IvyCredentials
+import sbt.librarymanagement.CredentialUtils
 
 import java.net.URI
 import java.net.http.{HttpClient, HttpRequest, HttpResponse}
@@ -53,7 +53,7 @@ object SonaDrop {
   /** Central Portal credentials, found the same way as by `sonaRelease`. */
   def credentials(state: State): (State, Option[Credentials.DirectCredentials]) = {
     val (newState, creds) = Project.extract(state).runTask(Keys.credentials, state)
-    (newState, IvyCredentials.forHost(creds, host))
+    (newState, CredentialUtils.forHost(creds, host))
   }
 
   val command: Command = Command.single("sonaDrop") { (state, deploymentId) =>
