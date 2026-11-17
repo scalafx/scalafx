@@ -180,7 +180,7 @@ lazy val scalafxSettings = Seq(
     if (scalaBinaryVersion.value == "3") Map.empty
     else
       (Compile / dependencyClasspath).value.map(_.data).flatMap { jar =>
-        javafxModuleNames.find(m => jar.name.startsWith(s"javafx-$m-")).map(m => jar -> url(s"$javafxDocs/javafx.$m/"))
+        javafxModuleNames.find(m => jar.name.startsWith(s"javafx-$m-")).map(m => jar -> uri(s"$javafxDocs/javafx.$m/"))
       }.toMap
   },
   // Add other dependencies
